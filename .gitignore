@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+#Misc files
+Makefile
+TODO.txt
+imgui.ini
+res/SpaceXLogo.png
+res/HighResLogo.xcf
+res/textures/*
