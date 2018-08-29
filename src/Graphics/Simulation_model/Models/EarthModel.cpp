@@ -36,7 +36,7 @@ namespace Graphics {
 
 		mNearTerrain->sendRenderCommand(mRenderer);
 
-		//temp
+		//temp#
 		//mSphereMesh_temp->sendRenderCommand(mRenderer);
 		//
 

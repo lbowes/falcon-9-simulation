@@ -1,8 +1,8 @@
 //This class is responsible for everything to do with rendering the simulation. The physical simulation itself
 //should be completely isolated from the visuals of the program. All models/shaders/cameras etc should be 
 //managed in here.
-#ifndef GRAPHICS_VISUALSHELL
-#define GRAPHICS_VISUALSHELL
+#ifndef GRAPHICS_GRAPHICALSHELL
+#define GRAPHICS_GRAPHICALSHELL
 #pragma once
 
 #include "Graphics/Simulation_model/SimulationModelLayer.h"

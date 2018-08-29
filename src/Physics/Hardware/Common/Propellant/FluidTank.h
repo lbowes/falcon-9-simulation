@@ -25,7 +25,7 @@ namespace Physics {
 
 			double
 				mPropellantVolume = 0.0,  //m^3
-				mPropellantLevel = 0.0,   //m, starting from the top of the lower wall of the tank (= 0.0) 
+				mPropellantLevel = 0.0,   //m, measured from the top of the lower wall of the tank (= 0.0) 
 				mMaxPropellantMass = 0.0, //kgs
 				mInternalVolume = 0.0,    //m^3
 				mInternalHeight = 0.0,    //m

@@ -17,6 +17,8 @@ namespace Physics {
 		protected:
 			PropSupplyLine* mSupplyLine = nullptr;
 			
+			//TODO: Very few members below are currently used. Remove unnecessary members here and complete
+
 			glm::dvec3
 				mVe_SL,		                 //EFFECTIVE exhaust velocity at sea level
 				mVe_Vac;		             //EFFECTIVE exhaust velocity in vacuum

@@ -1,5 +1,5 @@
-#ifndef FLUIDTANKGROUP_H
-#define FLUIDTANKGROUP_H
+#ifndef PHYSICS_HARDWARE_FLUIDTANKGROUP_H
+#define PHYSICS_HARDWARE_FLUIDTANKGROUP_H
 #pragma once
 
 #include "FluidTank.h"

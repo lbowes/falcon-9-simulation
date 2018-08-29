@@ -19,11 +19,14 @@ namespace Physics {
 			
 			mStage1.checkInput_temp(dt);
 
+			//Basic stage separation just disconnects both stages and doesn't apply any force.
+			//TODO: Implement separation mechanism 
 			if (Input::isKeyReleased(GLFW_KEY_ENTER)) {
 				mSubBodies[0].disconnect();
 				mSubBodies[1].disconnect();
 			}
 
+			//Reconnects both stages together, and moves the launch vehicle into its inertial state
 			if (Input::isKeyPressed(GLFW_KEY_G)) {
 				mState.reset();
 				glm::dvec3 vehiclePosition = { 0.0, 3.0, 0.0 };

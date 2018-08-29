@@ -1,8 +1,9 @@
-#ifndef FLUID_H
-#define FLUID_H
+#ifndef PHYSICS_FLUID_H
+#define PHYSICS_FLUID_H
 #pragma once
 
 namespace Physics {
+	
 	enum class FluidState { liquid, gas };
 
 	struct Fluid {
@@ -20,6 +21,7 @@ namespace Physics {
 		enum Names { liquidOxygen, RP1, nitrogen };
 		static Fluid mFluids[3];
 	};
+	
 }
 
 #endif
