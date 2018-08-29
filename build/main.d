@@ -375,6 +375,4 @@ build/main.o: src/main.cpp /usr/include/stdc-predef.h src/F9Simulation.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Overlay/Marker2DOverlay.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/OrthographicCamera.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Application.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/ImGui/imgui_impl_glfw_gl3.h \
- src/Physics/External/SurfaceLocation.h \
- src/Physics/External/GeoCoordUtils.h
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/ImGui/imgui_impl_glfw_gl3.h
