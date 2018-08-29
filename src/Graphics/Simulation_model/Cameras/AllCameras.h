@@ -1,0 +1,125 @@
+/* The position of SimulationCamera will always be fixed at (0, 0, 0). It will *always* be on the origin.
+ * The direction of this camera (including the front and up vectors) will change, as this does not have
+ * any effect on precision. 
+*/
+
+#ifndef GRAPHICS_ALLCAMERAS_H
+#define GRAPHICS_ALLCAMERAS_H
+#pragma once
+
+#include "Graphics/Simulation_model/SimpleCameraState.hpp"
+
+#include <GraphicsFramework/PerspectiveCamera.h>
+#include <GraphicsFramework/Input.h>
+#include <PhysicsFramework/State.h>
+
+#define CONFIGURE_INTERSTAGE_CAM 0
+
+namespace Physics {
+	namespace Hardware {
+		class Falcon9Stage1;
+	}
+}
+
+namespace Graphics {
+
+	class SimulationCamera {
+	protected:
+		SimpleCameraState mCameraState;
+		GF::PerspectiveCamera mPerspectiveCamera;
+
+	public:
+		SimulationCamera(float near, float far, float aspect, float FOV);
+		~SimulationCamera() = default;
+
+		glm::mat4 getViewProjection_generated() const;
+		const GF::Camera& getInternalCamera_immutable() const { return mPerspectiveCamera; }
+		GF::Camera& getInternalCamera_mutable() { return mPerspectiveCamera; }
+
+		SimpleCameraState getState() const { return mCameraState; }
+
+	};
+
+	class FPVCamera : public SimulationCamera {
+	private:
+		const float
+			mMinMovementSpeed = 25.0f,        //10.0f
+			mMaxMovementSpeed = 20000.0f,     //20000.0f
+			mSpeedAdjustSensitivity = 200.0f, //200.0f
+			mMovementFriction = 7.0f,         //7.0f
+			mZoomSensitivity = 0.1f,          //0.1f
+			mLookAroundSensitivity = 0.05f;   //0.05f
+
+		float
+			mMovementSpeed = 400.0f,          //400.0f  
+			mFOV = 45.0f,
+			mPitch = 0.0f,
+			mYaw = 0.0f;
+
+		glm::dvec3 mVelocity_highP;
+		
+		glm::vec3 mDirection_OGL;
+
+	public:
+		FPVCamera(glm::dvec3 position_highP, glm::vec3 direction_OGL, float near, float far, float aspect, float FOV);
+		~FPVCamera() = default;
+
+		void update(float windowAspect, float dt);
+		void handleInput(float dt);
+
+	private:
+		void handleDirectionInput();
+		void handleMovementInput(float dt);
+
+	};
+
+	class InterstageCamera : public SimulationCamera {
+	private:
+		const State& mStage1State;
+
+		const float
+			mClockDegree_degs = 10.882f,
+			mPitch_degs = 2.222f,
+			mHeight_stage = 45.89f,
+			mHeightAboveWall = 1.951f,
+			mFOV = 44.712002f;
+
+		glm::vec3
+			mPosition_stage,
+			mFront_stage,
+			mUp_stage;
+
+	public:
+		InterstageCamera(const State& stage1State, float aspect);
+		~InterstageCamera() = default;
+
+		void update(float windowAspect/* , float dt */);
+
+	};
+
+	class ChaserCamera : public SimulationCamera {
+	private:
+		const glm::vec3 mPosition_stage = glm::vec3(-0.401277f, 44.73737f, -1.850528f);
+
+		const float
+			mZoomSensitivity = 0.1f,        //0.1f
+			mLookAroundSensitivity = 0.05f; //0.05f
+
+		glm::vec3 mDirection_OGL;
+
+		float
+			mPitch = 0.0f,
+			mYaw = 0.0f;
+
+	public:
+		ChaserCamera(glm::vec3 direction_OGL, float near, float far, float aspect, float FOV);
+		~ChaserCamera() = default;
+
+		void update(float windowAspect, glm::dvec3 stage1CoMPosition_world/* , float dt */);
+		void handleInput();
+
+	};
+
+}
+
+#endif
