@@ -3,8 +3,12 @@
 namespace Physics {
 	namespace Hardware {
 
-		Falcon9::Falcon9() {
+		Falcon9::Falcon9() :
+			ILaunchVehicle({ "LC-39A" })
+		{
 			assemble();
+			//mSurfaceLocation.setGPSPosition({ 53.826687, -2.419171, 0.0 });
+			mSurfaceLocation.setGPSPosition({ 90.0, 0.0, 20.0 });
 		}
 
 		void Falcon9::update(double t, double dt) {
@@ -30,7 +34,7 @@ namespace Physics {
 			if (Input::isKeyPressed(GLFW_KEY_G)) {
 				mState.reset();
 				glm::dvec3 vehiclePosition = { 0.0, 3.0, 0.0 };
-				glm::dquat vehicleRotation = glm::rotate(glm::dquat(), glm::radians(0.0), { 1.0, 0.0, 0.0 });
+				glm::dmat4 vehicleRotation = glm::rotate(glm::dmat4(1.0f), glm::radians(0.0), { 1.0, 0.0, 0.0 });
 				mState.setObjectToParentTransform({ vehiclePosition, vehicleRotation });
 
 				mStage1.getState().reset();

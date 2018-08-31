@@ -12,15 +12,20 @@ namespace Physics {
 
 		class SurfaceLocation {
 		private:
-			glm::dvec3 mGPSCoordinate_LLH;
-			GF::CoordTransform3D mEUNtoECEF;
 			const std::string& mName;
+			glm::dvec3 mGPSCoordinate_LLH;
+			GF::CoordTransform3D mEUN_to_ECEF;
 
 		public:
-			SurfaceLocation(const glm::dvec3& gpsCoord_LLH, const std::string& name = "");
+			SurfaceLocation(const std::string& name, const glm::dvec3& gpsCoord_LLH = { 0.0, 0.0, 0.0 });
 			~SurfaceLocation() = default;
 
-			const GF::CoordTransform3D& getEUNtoECEFCoordTransform() const { return mEUNtoECEF; }
+			void setGPSPosition(const glm::dvec3& gpsCoord_LLH);
+			
+			const GF::CoordTransform3D& getEUN_to_ECEFTransform() const { return mEUN_to_ECEF; }
+
+		private:
+			void updateENU_to_ECEFTransform();
 
 		};
 

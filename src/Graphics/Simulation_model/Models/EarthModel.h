@@ -31,24 +31,24 @@ namespace Graphics {
 		static constexpr unsigned mSegments = 32;
 	
 		//The earth model will be an approximation of an ellipsoid (a sphere to begin with), made up of square panels on the surface called 'chunks'.
-		//This angle represents the angle between chunk boundary points. The smaller the angle, the more chunks are wrapped round the sphere.
+		//This angle represents the angle between chunk boundary points on the surface. The smaller the angle, the more chunks are wrapped round the sphere.
 		//Must be a factor of 360.0 degrees.
 		static constexpr double mChunkAngle_degs = 360.0 / mSegments;  
 		
 		//The radius of the (test) sphere in metres
-		static constexpr double mRadius = 100.0; //100.0
+		static constexpr double mRadius = 1000.0; //100.0
 
 		//The position of centre of the sphere
 		static constexpr glm::dvec3 mCentrePosition_highP = glm::dvec3(0.0, -mRadius, 0.0);
 
 		//Reference axes
-		static constexpr glm::dvec3 
-			mHorizontalRefAxis = { 1.0, 0.0, 0.0 },
-			mVerticalRefAxis = { 0.0, 1.0, 0.0 }; 
+		static glm::dvec3 
+			mHorizontalRefAxis,
+			mVerticalRefAxis; 
 
-		glm::dvec2 mCurrentModuloAxisAngles = { 0.0, 0.0 };
-
-		GF::Graphics::Mesh* mSphereMesh_temp = nullptr;
+		//The camera's angle around the sphere is continuous, but chunks discretize the surface.
+		//This variable stores the nearest bottom-left chunk vertex to the camera's current angle.
+		glm::dvec2 mLastModuloAxisAngles = { 0.0, 0.0 };
 
 		GF::Graphics::Mesh
 			*mNearTerrain = nullptr;
@@ -76,13 +76,14 @@ namespace Graphics {
 		EarthModel(GF::ResourceSet& resourceBucket);
 		~EarthModel() = default;
 
-		void render(const SimulationCamera& currentSimCamera);
+		void render(const SimulationCamera& activeSimCam, glm::dmat4 eunToEcefRotation);
 
 	private:
 		void loadResources();
-		void updateAllTransforms_OGL(SimpleCameraState currentCameraState);
-		void updateMeshStructure(SimpleCameraState currentCameraState);
+		void updateAllTransforms_OGL(glm::dvec3 camPosition_EUN);
+		void updateMeshStructure(glm::dvec3 camPosition_EUN);
 		glm::dvec3 getChunkPosition_world(glm::dvec2 flooredAxisAngles) const;
+		void transformReferenceAxes(glm::dmat4 eunToEcefRotation);
 
 	};
 

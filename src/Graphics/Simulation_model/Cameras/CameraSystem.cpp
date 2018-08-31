@@ -18,7 +18,8 @@ namespace Graphics {
 		if (GF::Input::isKeyReleased(GLFW_KEY_C)) 
 			mCurrentCamera = mCurrentCamera + 1 > chaser ? FPV : mCurrentCamera + 1;
 		
-		if (!mHasFocus) return;
+		if (!mHasFocus) 
+			return;
 		
 		if(mCurrentCamera == FPV)
 			FPV_CAM->handleInput(dt);
@@ -27,9 +28,16 @@ namespace Graphics {
 	}
 
 	void CameraSystem::addAllCameras(const State& stage1State, float windowAspect) {
+		//temp
+		Physics::External::SurfaceLocation temp({ "temp", glm::dvec3(53.826687, -2.419171, 0.0) });
+		glm::dvec3 
+			pos_eun = glm::dvec3(temp.getEUN_to_ECEFTransform().getLocalToParent_rotation() * glm::dvec4(20.0, 5.0, 0.0, 1.0)),
+			front_eun = glm::dvec3(temp.getEUN_to_ECEFTransform().getLocalToParent_rotation() * glm::dvec4(-1.0, 0.0, 0.0, 1.0));
+		//
+
 		mCameras.push_back(std::make_unique<FPVCamera>(
-			glm::vec3(20.0, 5.0, 0.0), //glm::dvec3(-85.0, 30.0, 0.0)
-			glm::vec3(-1.0, 0.0, 0.0),
+			pos_eun, //glm::dvec3(-85.0, 30.0, 0.0)
+			front_eun,
 			0.1f,
 			10000.0f,
 			windowAspect,

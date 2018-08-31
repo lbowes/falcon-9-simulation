@@ -3,6 +3,7 @@
 #pragma once
 
 #include "IStage.h"
+#include "Physics/External/SurfaceLocation.h"
 
 #include <vector>
 #include <algorithm>
@@ -16,14 +17,17 @@ namespace Physics {
 	namespace Hardware {
 		
 		class ILaunchVehicle : public RigidBodyGroup {
-		private:
+		protected:
+			Physics::External::SurfaceLocation mSurfaceLocation;
 
 		public:
-			ILaunchVehicle();
+			ILaunchVehicle(const Physics::External::SurfaceLocation& surfaceLocation);
 			virtual ~ILaunchVehicle() = default;
 
 			void update(double t, double dt);
 			
+			Physics::External::SurfaceLocation& getSurfaceLocation() { return mSurfaceLocation; } 
+
 		private:
 			virtual void assemble() = 0;
 			void basicCollision();

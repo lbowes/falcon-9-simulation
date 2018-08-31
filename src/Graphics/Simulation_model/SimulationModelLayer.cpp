@@ -29,7 +29,7 @@ namespace Graphics {
 
 		flushRenderers();
 		
-		mEarthModel->render(currentSimCamera);
+		mEarthModel->render(currentSimCamera, mDataSource.getSurfaceLocation().getEUN_to_ECEFTransform().getLocalToParent_rotation());
 	}
 	
 	void SimulationModelLayer::checkInput(float dt, glm::vec2 windowDimensions) {

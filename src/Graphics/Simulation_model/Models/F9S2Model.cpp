@@ -22,8 +22,7 @@ namespace Graphics {
 		using namespace Physics::Hardware;
 
 		//Engines
-		for (const auto& engine : mStage2Data.getEngines().getAllComponents())
-			mComponentModels.push_back(std::make_unique<EngineMesh>("Merlin1DVac", "res/models/Merlin1DVac.obj", *static_cast<Engine*>(engine.get()), mResourceBucket, mModel));
+		mComponentModels.push_back(std::make_unique<EngineMesh>("Merlin1DVac", "res/models/Merlin1DVac.obj", *static_cast<Engine*>(mStage2Data.getEngines().getComponent(0)), mResourceBucket, mModel));
 	}
 
 	void F9S2Model::update(glm::mat4 totalStageTransform_OGL) {

@@ -9,7 +9,7 @@ namespace Graphics {
 
 	void Overlay2D::render(glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions) {
 		mUILayer.render(windowDimensions);
-		//mVehicleOverlay.render(viewProjection, windowAspect, windowDimensions);
+		mVehicleOverlay.render(viewProjection, windowAspect, windowDimensions);
 	}
 
 }

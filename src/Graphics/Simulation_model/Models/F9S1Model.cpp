@@ -38,11 +38,14 @@ namespace Graphics {
 			mComponentMeshes.push_back(std::make_unique<GasThrusterMesh>(*static_cast<GasThruster*>(thruster.get()), mResourceBucket, mModel));
 
 		//Engine meshes
+		unsigned char count = 0;
 		for (const auto& engine : mStage1Data.getEngines().getAllComponents()) {
 			const Physics::Hardware::Engine& engineDataSource = *static_cast<Engine*>(engine.get());
 			
-			mComponentMeshes.push_back(std::make_unique<EngineMesh>("Merlin1D", BOX_MODELS ? "res/models/Merlin1D_Box.obj" : "res/models/Merlin1D.obj", engineDataSource, mResourceBucket, mModel));
+			mComponentMeshes.push_back(std::make_unique<EngineMesh>("Merlin1D" + std::to_string(count), BOX_MODELS ? "res/models/Merlin1D_Box.obj" : "res/models/Merlin1D.obj", engineDataSource, mResourceBucket, mModel));
 			mExhausts.push_back(std::make_unique<ExhaustJet>(engineDataSource, mStage1Data.getEngines(), mResourceBucket, mModel));
+
+			count++;
 		}
 	}
 

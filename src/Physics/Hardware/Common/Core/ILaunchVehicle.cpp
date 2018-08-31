@@ -3,8 +3,9 @@
 namespace Physics {
 	namespace Hardware {
 
-		ILaunchVehicle::ILaunchVehicle() :
-			RigidBodyGroup(Integrator::rungeKutta4, SubUpdateDepth::deep)
+		ILaunchVehicle::ILaunchVehicle(const Physics::External::SurfaceLocation& surfaceLocation) :
+			RigidBodyGroup(Integrator::rungeKutta4, SubUpdateDepth::deep),
+			mSurfaceLocation(surfaceLocation)
 		{ 
 			//TODO: -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 			//Using the GPS coordinate and the ENU orientation passed in, we need to initialise the inertial transform of the launch vehicle.

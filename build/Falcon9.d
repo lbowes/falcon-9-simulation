@@ -291,6 +291,8 @@ build/Falcon9.o: src/Physics/Hardware/Falcon_9/Falcon9.cpp \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/Earth.h \
  /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/RigidBody.h \
  /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/State.h \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/SurfaceLocation.h \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/GeoCoordUtils.h \
  /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/RigidBodyGroup.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Falcon9Stage1.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Merlin1D.h \

@@ -15,8 +15,6 @@ namespace Graphics {
 	class EngineMesh : public IStageComponentMesh {
 		friend class ExhaustJet;	
 	private:
-		static unsigned char mNumInstances;
-		
 		const std::string
 			mName = "",
 			mOBJFilePath = "";
