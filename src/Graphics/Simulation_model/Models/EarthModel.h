@@ -76,7 +76,7 @@ namespace Graphics {
 		EarthModel(GF::ResourceSet& resourceBucket);
 		~EarthModel() = default;
 
-		void render(const SimulationCamera& activeSimCam, glm::dmat4 eunToEcefRotation);
+		void render(const SimulationCamera& activeSimCam, const GF::CoordTransform3D& eunToEcef);
 
 	private:
 		void loadResources();

@@ -266,9 +266,9 @@ build/F9S2Model.o: src/Graphics/Simulation_model/Models/F9S2Model.cpp \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Model3D.h \
  src/Graphics/Simulation_model/Models/GasThrusterMesh.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/ISimulationModel.hpp \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/SimpleCameraState.hpp \
- /usr/include/glm/gtx/quaternion.hpp /usr/include/glm/glm.hpp \
- /usr/include/c++/7/climits \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Renderer.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Camera.h \
+ /usr/include/glm/glm.hpp /usr/include/c++/7/climits \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
@@ -284,10 +284,9 @@ build/F9S2Model.o: src/Graphics/Simulation_model/Models/F9S2Model.cpp \
  /usr/include/glm/detail/func_packing_simd.inl \
  /usr/include/glm/integer.hpp /usr/include/glm/detail/func_integer.inl \
  /usr/include/glm/detail/func_integer_simd.inl \
- /usr/include/glm/simd/integer.h /usr/include/glm/gtx/norm.hpp \
- /usr/include/glm/gtx/norm.inl /usr/include/glm/gtx/quaternion.inl \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Renderer.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Camera.h \
+ /usr/include/glm/simd/integer.h /usr/include/glm/gtx/quaternion.hpp \
+ /usr/include/glm/gtx/norm.hpp /usr/include/glm/gtx/norm.inl \
+ /usr/include/glm/gtx/quaternion.inl \
  /usr/include/glm/gtc/matrix_transform.hpp \
  /usr/include/glm/gtc/matrix_transform.inl \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/RenderQueue.h \

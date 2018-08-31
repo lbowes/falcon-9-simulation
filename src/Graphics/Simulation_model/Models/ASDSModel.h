@@ -14,17 +14,17 @@ namespace Graphics {
 	private:
 		GF::Graphics::Shader& mShader;
 		GF::Graphics::Mesh* mMeshHandle = nullptr;
-		
-		float mHeight = 0.0f;
+		const double mHeight = 3.0;
+		const glm::dvec3 mPosition = { 0.0, mHeight, 0.0 };		
 
 	public:
-		ASDSModel(GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket, GF::Graphics::Shader& shader, float height);
+		ASDSModel(GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket, GF::Graphics::Shader& shader);
 		~ASDSModel() = default;
 
 	private:
 		void loadResources();
 
-		virtual void updateAllTransforms_OGL(SimpleCameraState currentCameraState);
+		virtual void updateAllTransforms_OGL(glm::dvec3 currentCameraPosition);
 		virtual void makeRenderCalls();
 
 	};

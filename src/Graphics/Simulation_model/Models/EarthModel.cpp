@@ -19,7 +19,7 @@ namespace Graphics {
 		loadResources();
 	}
 
-	void EarthModel::render(const SimulationCamera& activeSimCam, glm::dmat4 eunToEcefRotation) {
+	void EarthModel::render(const SimulationCamera& activeSimCam, const GF::CoordTransform3D& eunToEcef) {
 		//Copy the required state of the currently active camera
 		const GF::Camera& cam = activeSimCam.getInternalCamera_immutable();
 		tempCamera.setFront(cam.getFront());
@@ -28,13 +28,13 @@ namespace Graphics {
 		tempCamera.setAspect(cam.getAspect());
 
 		//In order to build the earth model with the correct orientation, given that the launch vehicle may be positioned
-		//at any location on the surface of the earth and it must be the origin, the two references axes used to calculate
+		//at any location on the surface of the earth and it must be the origin, the two reference axes used to calculate
 		//chunk (bottom-left) vertex positions must be rotated into the correct space. This has the effect of rotating the 
 		//earth underneath the LV, in order to position the LV correctly on the surface.
-		transformReferenceAxes(eunToEcefRotation);
+		transformReferenceAxes(eunToEcef.getLocalToParent_rotation());
 
 		//This is where the lat-lon earth mesh is generated based purely on the EUN position of the camera.
-		glm::dvec3 cameraPos_EUN = activeSimCam.getState().mPosition_highP;		
+		glm::dvec3 cameraPos_EUN = activeSimCam.getPosition();		
 		updateMeshStructure(cameraPos_EUN);
 		
 		//

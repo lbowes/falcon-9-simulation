@@ -2,9 +2,10 @@ build/ASDSModel.o: src/Graphics/Simulation_model/Models/ASDSModel.cpp \
  /usr/include/stdc-predef.h \
  src/Graphics/Simulation_model/Models/ASDSModel.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/ISimulationModel.hpp \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/SimpleCameraState.hpp \
- /usr/include/glm/vec3.hpp /usr/include/glm/detail/setup.hpp \
- /usr/include/c++/7/cassert \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Renderer.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Camera.h \
+ /usr/include/glm/glm.hpp /usr/include/glm/detail/_fixes.hpp \
+ /usr/include/c++/7/cmath \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -13,25 +14,28 @@ build/ASDSModel.o: src/Graphics/Simulation_model/Models/ASDSModel.cpp \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/cpu_defines.h \
- /usr/include/assert.h /usr/include/c++/7/cstddef \
- /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h \
- /usr/include/glm/simd/platform.h \
- /usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/7/include/mmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/7/include/mm_malloc.h \
- /usr/include/c++/7/stdlib.h /usr/include/c++/7/cstdlib \
- /usr/include/stdlib.h \
+ /usr/include/c++/7/bits/cpp_type_traits.h \
+ /usr/include/c++/7/ext/type_traits.h /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
- /usr/include/x86_64-linux-gnu/bits/waitflags.h \
- /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
+ /usr/include/x86_64-linux-gnu/bits/types.h \
+ /usr/include/x86_64-linux-gnu/bits/typesizes.h \
+ /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+ /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
+ /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+ /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
+ /usr/include/c++/7/bits/std_abs.h /usr/include/stdlib.h \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h \
+ /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+ /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
  /usr/include/x86_64-linux-gnu/sys/types.h \
- /usr/include/x86_64-linux-gnu/bits/types.h \
- /usr/include/x86_64-linux-gnu/bits/typesizes.h \
  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
@@ -53,29 +57,14 @@ build/ASDSModel.o: src/Graphics/Simulation_model/Models/ASDSModel.cpp \
  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
  /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /usr/include/c++/7/bits/std_abs.h /usr/include/glm/detail/type_vec3.hpp \
- /usr/include/glm/detail/type_vec.hpp \
- /usr/include/glm/detail/qualifier.hpp /usr/include/glm/detail/setup.hpp \
- /usr/include/glm/detail/type_int.hpp /usr/include/c++/7/type_traits \
- /usr/include/c++/7/cstdint \
- /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h \
- /usr/include/x86_64-linux-gnu/bits/wchar.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /usr/include/glm/detail/compute_vector_relational.hpp \
- /usr/include/c++/7/cstring /usr/include/string.h /usr/include/strings.h \
- /usr/include/c++/7/limits /usr/include/glm/detail/type_vec3.inl \
- /usr/include/glm/gtx/quaternion.hpp /usr/include/glm/glm.hpp \
- /usr/include/glm/detail/_fixes.hpp /usr/include/c++/7/cmath \
- /usr/include/c++/7/bits/cpp_type_traits.h \
- /usr/include/c++/7/ext/type_traits.h /usr/include/math.h \
- /usr/include/x86_64-linux-gnu/bits/math-vector.h \
- /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
- /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
- /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
- /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
- /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
+ /usr/include/glm/detail/setup.hpp /usr/include/c++/7/cassert \
+ /usr/include/assert.h /usr/include/c++/7/cstddef \
+ /usr/include/glm/simd/platform.h \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/mmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/mm_malloc.h \
+ /usr/include/c++/7/stdlib.h /usr/include/c++/7/cstdlib \
  /usr/include/c++/7/climits \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h \
@@ -85,11 +74,23 @@ build/ASDSModel.o: src/Graphics/Simulation_model/Models/ASDSModel.cpp \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
  /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/7/cfloat \
- /usr/lib/gcc/x86_64-linux-gnu/7/include/float.h /usr/include/glm/fwd.hpp \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/float.h \
+ /usr/include/c++/7/limits /usr/include/glm/fwd.hpp \
+ /usr/include/glm/detail/type_int.hpp /usr/include/glm/detail/setup.hpp \
+ /usr/include/c++/7/type_traits /usr/include/c++/7/cstdint \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
  /usr/include/glm/detail/type_float.hpp \
+ /usr/include/glm/detail/type_vec.hpp \
+ /usr/include/glm/detail/qualifier.hpp \
+ /usr/include/glm/detail/compute_vector_relational.hpp \
+ /usr/include/c++/7/cstring /usr/include/string.h /usr/include/strings.h \
  /usr/include/glm/detail/type_mat.hpp /usr/include/glm/vec2.hpp \
  /usr/include/glm/detail/type_vec2.hpp \
- /usr/include/glm/detail/type_vec2.inl /usr/include/glm/vec4.hpp \
+ /usr/include/glm/detail/type_vec2.inl /usr/include/glm/vec3.hpp \
+ /usr/include/glm/detail/type_vec3.hpp \
+ /usr/include/glm/detail/type_vec3.inl /usr/include/glm/vec4.hpp \
  /usr/include/glm/detail/type_vec4.hpp \
  /usr/include/glm/detail/type_vec4.inl \
  /usr/include/glm/detail/type_vec4_simd.inl /usr/include/glm/mat2x2.hpp \
@@ -171,14 +172,13 @@ build/ASDSModel.o: src/Graphics/Simulation_model/Models/ASDSModel.cpp \
  /usr/include/glm/integer.hpp /usr/include/glm/detail/func_integer.inl \
  /usr/include/glm/ext/vec1.hpp /usr/include/glm/detail/type_vec1.inl \
  /usr/include/glm/detail/func_integer_simd.inl \
- /usr/include/glm/simd/integer.h /usr/include/glm/gtc/constants.hpp \
- /usr/include/glm/detail/setup.hpp /usr/include/glm/gtc/constants.inl \
- /usr/include/glm/gtc/quaternion.hpp /usr/include/glm/gtc/quaternion.inl \
- /usr/include/glm/gtc/epsilon.hpp /usr/include/glm/gtc/epsilon.inl \
+ /usr/include/glm/simd/integer.h /usr/include/glm/gtx/quaternion.hpp \
+ /usr/include/glm/gtc/constants.hpp /usr/include/glm/detail/setup.hpp \
+ /usr/include/glm/gtc/constants.inl /usr/include/glm/gtc/quaternion.hpp \
+ /usr/include/glm/gtc/quaternion.inl /usr/include/glm/gtc/epsilon.hpp \
+ /usr/include/glm/gtc/epsilon.inl \
  /usr/include/glm/gtc/quaternion_simd.inl /usr/include/glm/gtx/norm.hpp \
  /usr/include/glm/gtx/norm.inl /usr/include/glm/gtx/quaternion.inl \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Renderer.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Camera.h \
  /usr/include/glm/gtc/matrix_transform.hpp \
  /usr/include/glm/gtc/matrix_transform.inl /usr/include/c++/7/memory \
  /usr/include/c++/7/bits/stl_algobase.h \

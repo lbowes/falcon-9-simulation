@@ -303,7 +303,6 @@ build/SimulationModelLayer.o: \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Core/StageComponentGroup.h \
  src/Graphics/Simulation_model/Models/GasThrusterMesh.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/ISimulationModel.hpp \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/SimpleCameraState.hpp \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Renderer.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Camera.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/RenderQueue.h \

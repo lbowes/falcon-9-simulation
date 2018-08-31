@@ -35,17 +35,14 @@ namespace Graphics {
 			componentModel->updateResources(totalStageTransform_OGL);
 	}
 
-	void F9S2Model::updateAllTransforms_OGL(SimpleCameraState currentCameraState) {
+	void F9S2Model::updateAllTransforms_OGL(glm::dvec3 currentCameraPosition) {
 		using namespace glm;
 
 		const State& state = mStage2Data.getState();
 
-		mSimpleCameraState.mPosition_highP = state.getObjectSpace().toParentSpace();
-		mSimpleCameraState.mOrientation_highP = state.getOrientation_world();
-
 		mat4
-			posTransform_OGL = translate(currentCameraState.mPosition_highP - mSimpleCameraState.mPosition_highP),
-			rotTransform_OGL = toMat4(inverse(mSimpleCameraState.mOrientation_highP)),
+			posTransform_OGL = translate(currentCameraPosition - state.getObjectSpace().toParentSpace()),
+			rotTransform_OGL = toMat4(inverse(state.getOrientation_world())),
 			totalTransform_OGL = inverse(rotTransform_OGL * posTransform_OGL);
 
 		update(totalTransform_OGL);

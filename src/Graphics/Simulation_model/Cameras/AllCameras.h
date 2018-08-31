@@ -7,8 +7,6 @@
 #define GRAPHICS_ALLCAMERAS_H
 #pragma once
 
-#include "Graphics/Simulation_model/SimpleCameraState.hpp"
-
 #include <GraphicsFramework/PerspectiveCamera.h>
 #include <GraphicsFramework/Input.h>
 #include <PhysicsFramework/State.h>
@@ -25,7 +23,7 @@ namespace Graphics {
 
 	class SimulationCamera {
 	protected:
-		SimpleCameraState mCameraState;
+		glm::dvec3 mPosition;
 		GF::PerspectiveCamera mPerspectiveCamera;
 
 	public:
@@ -36,7 +34,7 @@ namespace Graphics {
 		const GF::Camera& getInternalCamera_immutable() const { return mPerspectiveCamera; }
 		GF::Camera& getInternalCamera_mutable() { return mPerspectiveCamera; }
 
-		SimpleCameraState getState() const { return mCameraState; }
+		const glm::dvec3& getPosition() const { return mPosition; }
 
 	};
 
@@ -56,12 +54,12 @@ namespace Graphics {
 			mPitch = 0.0f,
 			mYaw = 0.0f;
 
-		glm::dvec3 mVelocity_highP;
+		glm::dvec3 mVelocity;
 		
-		glm::vec3 mDirection_OGL;
+		glm::vec3 mDirection;
 
 	public:
-		FPVCamera(glm::dvec3 position_highP, glm::vec3 direction_OGL, float near, float far, float aspect, float FOV);
+		FPVCamera(glm::dvec3 position, glm::vec3 direction, float near, float far, float aspect, float FOV);
 		~FPVCamera() = default;
 
 		void update(float windowAspect, float dt);
@@ -105,14 +103,14 @@ namespace Graphics {
 			mZoomSensitivity = 0.1f,        //0.1f
 			mLookAroundSensitivity = 0.05f; //0.05f
 
-		glm::vec3 mDirection_OGL;
+		glm::vec3 mDirection;
 
 		float
 			mPitch = 0.0f,
 			mYaw = 0.0f;
 
 	public:
-		ChaserCamera(glm::vec3 direction_OGL, float near, float far, float aspect, float FOV);
+		ChaserCamera(glm::vec3 direction, float near, float far, float aspect, float FOV);
 		~ChaserCamera() = default;
 
 		void update(float windowAspect, glm::dvec3 stage1CoMPosition_world/* , float dt */);

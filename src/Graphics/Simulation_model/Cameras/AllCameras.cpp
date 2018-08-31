@@ -26,31 +26,31 @@ namespace Graphics {
 	{
 		return 
 			mPerspectiveCamera.getProjection() * 
-			glm::lookAt(glm::vec3(mCameraState.mPosition_highP), glm::vec3(mCameraState.mPosition_highP) + mPerspectiveCamera.getFront(), mPerspectiveCamera.getUp());
+			glm::lookAt(glm::vec3(mPosition), glm::vec3(mPosition) + mPerspectiveCamera.getFront(), mPerspectiveCamera.getUp());
 	}
 
-	FPVCamera::FPVCamera(glm::dvec3 position_highP, glm::vec3 direction_OGL, float near, float far, float aspect, float FOV) :
+	FPVCamera::FPVCamera(glm::dvec3 position, glm::vec3 direction, float near, float far, float aspect, float FOV) :
 		SimulationCamera(near, far, aspect, FOV),
-		mDirection_OGL(direction_OGL)
+		mDirection(direction)
 	{
 		using namespace glm;
 
-		mPerspectiveCamera.setFront(direction_OGL);
+		mPerspectiveCamera.setFront(direction);
 		mPerspectiveCamera.setUp({ 0.0f, 1.0f, 0.0f });
 
 		//Calculating intial yaw and pitch values from direction vector
-		vec3 horizontalDirection = normalize(vec3(direction_OGL.x, 0.0f, direction_OGL.z));
+		vec3 horizontalDirection = normalize(vec3(direction.x, 0.0f, direction.z));
 		mYaw = degrees(orientedAngle(horizontalDirection, { 1.0f, 0.0f, 0.0f }, { 0.0f, 1.0f, 0.0f }));
-		mPitch = degrees(asin(normalize(direction_OGL).y));
+		mPitch = degrees(asin(normalize(direction).y));
 
-		mCameraState.mPosition_highP = position_highP;
+		mPosition = position;
 	}
 
 	void FPVCamera::update(float windowAspect, float dt) {
 		mPerspectiveCamera.setAspect(windowAspect);
 
-		mCameraState.mPosition_highP += mVelocity_highP * static_cast<double>(dt);
-		mVelocity_highP *= 1.0 / (1.0 + (dt * mMovementFriction));
+		mPosition += mVelocity * static_cast<double>(dt);
+		mVelocity *= 1.0 / (1.0 + (dt * mMovementFriction));
 	}
 
 	void FPVCamera::handleInput(float dt) {
@@ -67,13 +67,12 @@ namespace Graphics {
 		if (mPitch > 89.0f) mPitch = 89.0f;
 		if (mPitch < -89.0f) mPitch = -89.0f;
 
-		mDirection_OGL.x = cos(glm::radians(mPitch)) * cos(glm::radians(mYaw));
-		mDirection_OGL.y = sin(glm::radians(mPitch));
-		mDirection_OGL.z = cos(glm::radians(mPitch)) * sin(glm::radians(mYaw));
-		mDirection_OGL = normalize(mDirection_OGL);
+		mDirection.x = cos(glm::radians(mPitch)) * cos(glm::radians(mYaw));
+		mDirection.y = sin(glm::radians(mPitch));
+		mDirection.z = cos(glm::radians(mPitch)) * sin(glm::radians(mYaw));
+		mDirection = normalize(mDirection);
 
-		mCameraState.mOrientation_highP = glm::angleAxis(0.0, glm::dvec3(mDirection_OGL));
-		mPerspectiveCamera.setFront(mDirection_OGL);
+		mPerspectiveCamera.setFront(mDirection);
 	}
 
 	void FPVCamera::handleMovementInput(float dt) {
@@ -81,22 +80,22 @@ namespace Graphics {
 		using namespace glm;
 
 		if (Input::isKeyPressed(GLFW_KEY_W))
-			mVelocity_highP += normalize(vec3(mDirection_OGL.x, 0.0f, mDirection_OGL.z)) * mMovementSpeed * dt;
+			mVelocity += normalize(vec3(mDirection.x, 0.0f, mDirection.z)) * mMovementSpeed * dt;
 		
 		if (Input::isKeyPressed(GLFW_KEY_S))          
-			mVelocity_highP -= normalize(vec3(mDirection_OGL.x, 0.0f, mDirection_OGL.z)) * mMovementSpeed * dt;
+			mVelocity -= normalize(vec3(mDirection.x, 0.0f, mDirection.z)) * mMovementSpeed * dt;
 		
 		if (Input::isKeyPressed(GLFW_KEY_A))          
-			mVelocity_highP -= normalize(cross(mDirection_OGL, vec3(0.0f, 1.0f, 0.0f))) * mMovementSpeed * dt;
+			mVelocity -= normalize(cross(mDirection, vec3(0.0f, 1.0f, 0.0f))) * mMovementSpeed * dt;
 		
 		if (Input::isKeyPressed(GLFW_KEY_D))          
-			mVelocity_highP += normalize(cross(mDirection_OGL, vec3(0.0f, 1.0f, 0.0f))) * mMovementSpeed * dt;
+			mVelocity += normalize(cross(mDirection, vec3(0.0f, 1.0f, 0.0f))) * mMovementSpeed * dt;
 		
 		if (Input::isKeyPressed(GLFW_KEY_SPACE))      
-			mVelocity_highP.y += mMovementSpeed * dt;
+			mVelocity.y += mMovementSpeed * dt;
 		
 		if (Input::isKeyPressed(GLFW_KEY_LEFT_SHIFT)) 
-			mVelocity_highP.y -= mMovementSpeed * dt;
+			mVelocity.y -= mMovementSpeed * dt;
 
 		//Speed adjustment
 		float mouseScroll = GF::Input::getMouseScroll();
@@ -121,7 +120,7 @@ namespace Graphics {
 		mUp_stage = glm::rotate(mUp_stage, glm::radians(mPitch_degs), glm::cross(normalize(mUp_stage), glm::vec3(0.0f, 1.0f, 0.0f)));
 		mFront_stage = glm::rotate(glm::vec3(0.0f, -1.0f, 0.0f), glm::radians(mPitch_degs), glm::cross(normalize(mUp_stage), glm::vec3(0.0f, 1.0f, 0.0f)));
 
-		mCameraState.mPosition_highP = stage1State.getObjectSpace().toParentSpace(mPosition_stage);
+		mPosition = stage1State.getObjectSpace().toParentSpace(mPosition_stage);
 		mPerspectiveCamera.setFront(stage1State.getObjectSpace().toParentSpace_rotation(mFront_stage));
 		mPerspectiveCamera.setUp(stage1State.getObjectSpace().toParentSpace_rotation(mUp_stage));
 		mPerspectiveCamera.setFOVY(mFOV);
@@ -171,14 +170,14 @@ namespace Graphics {
 
 		up_stage = glm::rotate(up_stage, glm::radians(pitch_degs), glm::cross(normalize(up_stage), glm::vec3(0.0f, 1.0f, 0.0f)));
 
-		mCameraState.mPosition_highP = mStage1State.getObjectSpace().toParentSpace(position_stage);
+		mPosition = mStage1State.getObjectSpace().toParentSpace(position_stage);
 		mPerspectiveCamera.setFront(mStage1State.getObjectSpace().toParentSpace_rotation(front_stage));
 		mPerspectiveCamera.setUp(mStage1State.getObjectSpace().toParentSpace_rotation(up_stage));
 		mPerspectiveCamera.setFOVY(FOV);
 		
 		printf("clockDegree_degs: %f\npitch_degs: %f\nheight_stage: %f\nheightAboveWall: %f\nFOV: %f\n\n\n", clockDegree_degs, pitch_degs, height_stage, heightAboveWall, FOV);
 #else
-		mCameraState.mPosition_highP = mStage1State.getObjectSpace().toParentSpace(mPosition_stage);
+		mPosition = mStage1State.getObjectSpace().toParentSpace(mPosition_stage);
 		mPerspectiveCamera.setFront(mStage1State.getObjectSpace().toParentSpace_rotation(mFront_stage));
 		mPerspectiveCamera.setUp(mStage1State.getObjectSpace().toParentSpace_rotation(mUp_stage));
 #endif
@@ -186,24 +185,24 @@ namespace Graphics {
 		mPerspectiveCamera.setAspect(windowAspect);
 	}
 
-	ChaserCamera::ChaserCamera(glm::vec3 direction_OGL, float near, float far, float aspect, float FOV) :
+	ChaserCamera::ChaserCamera(glm::vec3 direction, float near, float far, float aspect, float FOV) :
 		SimulationCamera(near, far, aspect, FOV)
 	{
 		using namespace glm;
 
-		mPerspectiveCamera.setFront(direction_OGL);
+		mPerspectiveCamera.setFront(direction);
 		mPerspectiveCamera.setUp({ 0.0f, 1.0f, 0.0f });
 
 		//Calculating intial yaw and pitch values from direction vector
-		vec3 horizontalDirection = normalize(vec3(direction_OGL.x, 0.0f, direction_OGL.z));
+		vec3 horizontalDirection = normalize(vec3(direction.x, 0.0f, direction.z));
 		mYaw = degrees(orientedAngle(horizontalDirection, { 1.0f, 0.0f, 0.0f }, { 0.0f, 1.0f, 0.0f }));
-		mPitch = degrees(asin(normalize(direction_OGL).y));
+		mPitch = degrees(asin(normalize(direction).y));
 	}
 
 	void ChaserCamera::update(float windowAspect, glm::dvec3 stage1CoMPosition_world/* , float dt */) {
 		mPerspectiveCamera.setAspect(windowAspect);
 
-		mCameraState.mPosition_highP = stage1CoMPosition_world - glm::dvec3(100.0f, 0.0f, 0.0f);
+		mPosition = stage1CoMPosition_world - glm::dvec3(100.0, 0.0, 0.0);
 	}
 	
 	void ChaserCamera::handleInput() {
@@ -215,13 +214,12 @@ namespace Graphics {
 		if (mPitch > 89.0f) mPitch = 89.0f;
 		if (mPitch < -89.0f) mPitch = -89.0f;
 
-		mDirection_OGL.x = cos(glm::radians(mPitch)) * cos(glm::radians(mYaw));
-		mDirection_OGL.y = sin(glm::radians(mPitch));
-		mDirection_OGL.z = cos(glm::radians(mPitch)) * sin(glm::radians(mYaw));
-		mDirection_OGL = normalize(mDirection_OGL);
+		mDirection.x = cos(glm::radians(mPitch)) * cos(glm::radians(mYaw));
+		mDirection.y = sin(glm::radians(mPitch));
+		mDirection.z = cos(glm::radians(mPitch)) * sin(glm::radians(mYaw));
+		mDirection = normalize(mDirection);
 
-		mCameraState.mOrientation_highP = glm::angleAxis(0.0, glm::dvec3(mDirection_OGL));
-		mPerspectiveCamera.setFront(mDirection_OGL);
+		mPerspectiveCamera.setFront(mDirection);
 	}
 
 }

@@ -22,10 +22,10 @@ namespace Graphics {
 		mSolidRenderer.setCamera(currentCamera);
 		mWireframeRenderer.setCamera(currentCamera);
 
-		SimpleCameraState currentCameraState = currentSimCamera.getState();
-		//mASDSModel->render(currentCameraState);
-		mF9S1Model->render(currentCameraState);
-		mF9S2Model->render(currentCameraState);
+		glm::dvec3 currentCamPos = currentSimCamera.getPosition();
+		//mASDSModel->render(currentCamPos);
+		mF9S1Model->render(currentCamPos);
+		mF9S2Model->render(currentCamPos);
 
 		flushRenderers();
 		
@@ -60,7 +60,7 @@ namespace Graphics {
 		mF9S1Model = make_unique<F9S1Model>(mDataSource.getStage1(), WIREFRAME_RENDERING ? mWireframeRenderer : mSolidRenderer, mResourceBucket);
 		mF9S2Model = make_unique<F9S2Model>(mDataSource.getStage2(), WIREFRAME_RENDERING ? mWireframeRenderer : mSolidRenderer, mResourceBucket);
 		
-		mASDSModel = make_unique<ASDSModel>(WIREFRAME_RENDERING ? mWireframeRenderer : mSolidRenderer, mResourceBucket, *mResourceBucket.getResource<Shader>("bodyShader"), 0.0f);
+		mASDSModel = make_unique<ASDSModel>(WIREFRAME_RENDERING ? mWireframeRenderer : mSolidRenderer, mResourceBucket, *mResourceBucket.getResource<Shader>("bodyShader"));
 		mEarthModel = make_unique<EarthModel>(mResourceBucket);
 
 		GF::Camera& currentCamera = mCameras.getCurrentSimCamera().getInternalCamera_mutable();
