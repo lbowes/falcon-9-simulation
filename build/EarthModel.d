@@ -1,10 +1,7 @@
 build/EarthModel.o: src/Graphics/Simulation_model/Models/EarthModel.cpp \
  /usr/include/stdc-predef.h \
  src/Graphics/Simulation_model/Models/EarthModel.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/Cameras/AllCameras.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/PerspectiveCamera.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Camera.h \
- /usr/include/glm/glm.hpp /usr/include/glm/detail/_fixes.hpp \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/Earth.h \
  /usr/include/c++/7/cmath \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
@@ -57,14 +54,38 @@ build/EarthModel.o: src/Graphics/Simulation_model/Models/EarthModel.cpp \
  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
  /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /usr/include/glm/detail/setup.hpp /usr/include/c++/7/cassert \
- /usr/include/assert.h /usr/include/c++/7/cstddef \
- /usr/include/glm/simd/platform.h \
+ /usr/include/glm/trigonometric.hpp /usr/include/glm/detail/setup.hpp \
+ /usr/include/c++/7/cassert /usr/include/assert.h \
+ /usr/include/c++/7/cstddef /usr/include/glm/simd/platform.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/mmintrin.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/mm_malloc.h \
  /usr/include/c++/7/stdlib.h /usr/include/c++/7/cstdlib \
+ /usr/include/glm/detail/qualifier.hpp /usr/include/glm/detail/setup.hpp \
+ /usr/include/glm/detail/func_trigonometric.inl \
+ /usr/include/glm/detail/_vectorize.hpp \
+ /usr/include/glm/detail/type_vec1.hpp \
+ /usr/include/glm/detail/type_vec2.hpp \
+ /usr/include/glm/detail/type_vec.hpp \
+ /usr/include/glm/detail/type_int.hpp /usr/include/c++/7/type_traits \
+ /usr/include/c++/7/cstdint \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/include/glm/detail/compute_vector_relational.hpp \
+ /usr/include/c++/7/cstring /usr/include/string.h /usr/include/strings.h \
+ /usr/include/c++/7/limits /usr/include/glm/detail/type_vec2.inl \
+ /usr/include/glm/detail/type_vec3.hpp \
+ /usr/include/glm/detail/type_vec3.inl \
+ /usr/include/glm/detail/type_vec4.hpp \
+ /usr/include/glm/detail/type_vec4.inl \
+ /usr/include/glm/detail/type_vec4_simd.inl \
+ /usr/include/glm/detail/func_trigonometric_simd.inl \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/Cameras/AllCameras.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/PerspectiveCamera.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Camera.h \
+ /usr/include/glm/glm.hpp /usr/include/glm/detail/_fixes.hpp \
  /usr/include/c++/7/climits \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h \
@@ -74,27 +95,11 @@ build/EarthModel.o: src/Graphics/Simulation_model/Models/EarthModel.cpp \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
  /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/7/cfloat \
- /usr/lib/gcc/x86_64-linux-gnu/7/include/float.h \
- /usr/include/c++/7/limits /usr/include/glm/fwd.hpp \
- /usr/include/glm/detail/type_int.hpp /usr/include/glm/detail/setup.hpp \
- /usr/include/c++/7/type_traits /usr/include/c++/7/cstdint \
- /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h \
- /usr/include/x86_64-linux-gnu/bits/wchar.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/float.h /usr/include/glm/fwd.hpp \
  /usr/include/glm/detail/type_float.hpp \
- /usr/include/glm/detail/type_vec.hpp \
- /usr/include/glm/detail/qualifier.hpp \
- /usr/include/glm/detail/compute_vector_relational.hpp \
- /usr/include/c++/7/cstring /usr/include/string.h /usr/include/strings.h \
  /usr/include/glm/detail/type_mat.hpp /usr/include/glm/vec2.hpp \
- /usr/include/glm/detail/type_vec2.hpp \
- /usr/include/glm/detail/type_vec2.inl /usr/include/glm/vec3.hpp \
- /usr/include/glm/detail/type_vec3.hpp \
- /usr/include/glm/detail/type_vec3.inl /usr/include/glm/vec4.hpp \
- /usr/include/glm/detail/type_vec4.hpp \
- /usr/include/glm/detail/type_vec4.inl \
- /usr/include/glm/detail/type_vec4_simd.inl /usr/include/glm/mat2x2.hpp \
- /usr/include/glm/detail/type_mat2x2.hpp \
+ /usr/include/glm/vec3.hpp /usr/include/glm/vec4.hpp \
+ /usr/include/glm/mat2x2.hpp /usr/include/glm/detail/type_mat2x2.hpp \
  /usr/include/glm/detail/type_mat2x2.inl /usr/include/glm/matrix.hpp \
  /usr/include/glm/mat2x3.hpp /usr/include/glm/detail/type_mat2x3.hpp \
  /usr/include/glm/detail/type_mat2x3.inl /usr/include/glm/mat2x4.hpp \
@@ -120,8 +125,6 @@ build/EarthModel.o: src/Graphics/Simulation_model/Models/EarthModel.cpp \
  /usr/include/glm/vector_relational.hpp \
  /usr/include/glm/detail/func_vector_relational.inl \
  /usr/include/glm/detail/func_vector_relational_simd.inl \
- /usr/include/glm/detail/_vectorize.hpp \
- /usr/include/glm/detail/type_vec1.hpp \
  /usr/include/glm/detail/func_exponential_simd.inl \
  /usr/include/glm/simd/exponential.h /usr/include/glm/common.hpp \
  /usr/include/glm/detail/func_common.inl \
@@ -162,10 +165,8 @@ build/EarthModel.o: src/Graphics/Simulation_model/Models/EarthModel.cpp \
  /usr/include/glm/detail/func_geometric_simd.inl \
  /usr/include/glm/simd/geometric.h \
  /usr/include/glm/detail/func_matrix_simd.inl \
- /usr/include/glm/simd/matrix.h /usr/include/glm/trigonometric.hpp \
- /usr/include/glm/detail/func_trigonometric.inl \
- /usr/include/glm/detail/func_trigonometric_simd.inl \
- /usr/include/glm/packing.hpp /usr/include/glm/detail/func_packing.inl \
+ /usr/include/glm/simd/matrix.h /usr/include/glm/packing.hpp \
+ /usr/include/glm/detail/func_packing.inl \
  /usr/include/glm/detail/type_half.hpp \
  /usr/include/glm/detail/type_half.inl \
  /usr/include/glm/detail/func_packing_simd.inl \

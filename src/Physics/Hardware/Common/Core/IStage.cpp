@@ -111,7 +111,7 @@ namespace Physics {
 		void IStage::basicCollision() {
 			glm::dvec3 currentPosition = mState.getObjectSpace().toParentSpace();
 
-			double groundHeight = 3.0; //3.0
+			double groundHeight = 0.0; //3.0
 
 			if (currentPosition.y < groundHeight) {
 				currentPosition.y += groundHeight - currentPosition.y;

@@ -32,7 +32,7 @@ namespace Physics {
 		void ILaunchVehicle::basicCollision() {
 			glm::dvec3 currentPos_world = mState.getObjectSpace().toParentSpace();
 			
-			const double groundHeight = 3.0; //3.0
+			const double groundHeight = 0.0; //3.0
 
 			if (currentPos_world.y < groundHeight) {
 				currentPos_world.y += groundHeight - currentPos_world.y;

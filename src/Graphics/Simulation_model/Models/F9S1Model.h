@@ -42,7 +42,6 @@ namespace Graphics {
 	private:
 		void loadResources();
 		void addComponentModels();
-		void update(glm::mat4 totalStageTransform_OGL);
 
 		virtual void updateAllTransforms_OGL(glm::dvec3 currentCameraPosition);
 		virtual void makeRenderCalls();

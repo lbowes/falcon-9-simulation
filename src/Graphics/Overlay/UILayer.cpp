@@ -127,24 +127,24 @@ namespace Graphics {
 		string dataString = "";
 		
 		glm::dvec3 temp = stage1State.getCMPosition_world();
-		dataString += "Position: " + to_string(temp.x) + " " + to_string(temp.y) + " " + to_string(temp.z) + "\n";
+		dataString += "Position:            " + to_string(temp.x) + " " + to_string(temp.y) + " " + to_string(temp.z) + "\n";
 
 		temp = stage1State.getVelocity_world();
-		dataString += "Velocity: " + to_string(temp.x) + " " + to_string(temp.y) + " " + to_string(temp.z) + "\n";
+		dataString += "Velocity:            " + to_string(temp.x) + " " + to_string(temp.y) + " " + to_string(temp.z) + "\n";
 
 		temp = mDataSource.getStage1().getAccel_world();
 		dataString += "Linear acceleration: " + to_string(temp.x) + " " + to_string(temp.y) + " " + to_string(temp.z) + "\n";
 		
 		temp = stage1State.getMomentum_world();
-		dataString += "Momentum: " + to_string(temp.x) + " " + to_string(temp.y) + " " + to_string(temp.z) + "\n";
+		dataString += "Momentum:            " + to_string(temp.x) + " " + to_string(temp.y) + " " + to_string(temp.z) + "\n";
 
 		temp = stage1State.getAngularVelocity_world();
-		dataString += "Angular Velocity: " + to_string(temp.x) + " " + to_string(temp.y) + " " + to_string(temp.z) + "\n";
+		dataString += "Angular Velocity:    " + to_string(temp.x) + " " + to_string(temp.y) + " " + to_string(temp.z) + "\n";
 
 		temp = stage1State.getAngularMomentum_world();
-		dataString += "Angular Momentum: " + to_string(temp.x) + " " + to_string(temp.y) + " " + to_string(temp.z) + "\n";
+		dataString += "Angular Momentum:    " + to_string(temp.x) + " " + to_string(temp.y) + " " + to_string(temp.z) + "\n";
 
-		dataString += "Mass: " + to_string(stage1State.getMass_local().getValue());
+		dataString += "Mass:                " + to_string(stage1State.getMass_local().getValue());
 
 		mTextDrawList->AddText(ImVec2(0, 0), ImColor(1.0f, 1.0f, 1.0f), dataString.c_str());
 #endif

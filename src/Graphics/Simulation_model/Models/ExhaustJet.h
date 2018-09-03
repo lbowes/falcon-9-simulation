@@ -4,7 +4,7 @@
 
 #include "Physics/Hardware/Common/Propulsion/ThrustGeneratorGroup.h"
 
-#include <GraphicsFramework/Model3D.h>
+#include <GraphicsFramework/Renderer.h>
 #include <GraphicsFramework/ResourceSet.h>
 
 namespace Physics {
@@ -19,7 +19,7 @@ namespace Graphics {
 	private:
 		static constexpr unsigned char
 			mNumSegments = 16,
-			mNumRings = 12;
+			mNumRings = 24;
 		
 		static unsigned char mNumInstances;
 		
@@ -28,7 +28,7 @@ namespace Graphics {
 		const Physics::Hardware::ThrustGeneratorGroup& mNearbyEngines;
 
 		GF::ResourceSet& mResourceBucket;
-		GF::Model3D& mParentModel;
+		GF::Graphics::Renderer& mRenderer;
 		GF::Graphics::Mesh* mMesh = nullptr;
 		GF::Graphics::Shader* mShader = nullptr;
 
@@ -36,15 +36,18 @@ namespace Graphics {
 		std::vector<unsigned> mIndexData;
 
 	public:
-		ExhaustJet(const Physics::Hardware::Engine& sourceEngine, const Physics::Hardware::ThrustGeneratorGroup& nearbyEngines, GF::ResourceSet& resourceBucket, GF::Model3D& parentModel);
+		ExhaustJet(const Physics::Hardware::Engine& sourceEngine, const Physics::Hardware::ThrustGeneratorGroup& nearbyEngines, GF::ResourceSet& resourceBucket, GF::Graphics::Renderer& renderer);
 		~ExhaustJet() = default;
 
-		void update(glm::mat4 totalStageTransform_OGL, float percentAirPressure, glm::vec3 ambientFlow_stage);
+		void render();
+		void updateTransform(glm::mat4 totalStageTransform_OGL);
+		void update(float percentAirPressure, glm::vec3 ambientFlow_stage);
 
 	private:
 		void loadResources();
 		void initBufferData();
 		float recalcMaxLength();
+		glm::vec3 recalcAmbPressureDir_stage();
 
 	};
 

@@ -23,13 +23,13 @@ namespace Graphics {
 		mWireframeRenderer.setCamera(currentCamera);
 
 		glm::dvec3 currentCamPos = currentSimCamera.getPosition();
-		//mASDSModel->render(currentCamPos);
+		mASDSModel->render(currentCamPos);
 		mF9S1Model->render(currentCamPos);
 		mF9S2Model->render(currentCamPos);
 
 		flushRenderers();
 		
-		mEarthModel->render(currentSimCamera, mDataSource.getSurfaceLocation().getEUN_to_ECEFTransform().getLocalToParent_rotation());
+		mEarthModel->render(currentSimCamera, mDataSource.getSurfaceLocation().getEUN_to_ECEFTransform());
 	}
 	
 	void SimulationModelLayer::checkInput(float dt, glm::vec2 windowDimensions) {

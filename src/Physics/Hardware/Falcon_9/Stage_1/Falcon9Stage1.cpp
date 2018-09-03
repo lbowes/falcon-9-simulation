@@ -165,8 +165,6 @@ namespace Physics {
 			static_cast<FluidTank*>(mPropellantSupplies[Propellants::RP1])->addPropellant(123.570_tonnes); //123570.0
 #endif
 			static_cast<FluidTank*>(mPropellantSupplies[Propellants::nitrogen])->addPropellant(8.0);
-
-			//mPropellantSupplies.update();
 		}
 
 		void Falcon9Stage1::otherUpdates(double t, double dt) {
@@ -196,14 +194,14 @@ namespace Physics {
 			const double heightAboveBase = 0.70534;
 
 			//Central engine								
-			mEngines.addComponent(std::make_unique<Merlin1D>(GF::CoordTransform3D(dvec3(0.0, heightAboveBase - 0.13, 0.0), rotate(dmat4(1.0), radians(-143.12), { 0.0, 1.0, 0.0 }))));
+			mEngines.addComponent(std::make_unique<Merlin1D>(GF::CoordTransform3D(dvec3(0.0, heightAboveBase - 0.13, 0.0), rotate(radians(-143.12), dvec3(0.0, 1.0, 0.0)))));
 
-			//Outer engines
+			//8 outboard engines
 			for (unsigned i = 0; i < 8; i++) {
 				double angle = -15.6095 + i * 45.0;
 				dvec3 pointer = rotate(dvec3(0.0, heightAboveBase, 1.33853), radians(angle), { 0.0, 1.0, 0.0 });
 
-				mEngines.addComponent(std::make_unique<Merlin1D>(GF::CoordTransform3D(pointer, rotate(dmat4(1.0), radians(angle + 90.0), { 0.0, 1.0, 0.0 }))));
+				mEngines.addComponent(std::make_unique<Merlin1D>(GF::CoordTransform3D(pointer, rotate(radians(angle + 90.0), dvec3(0.0, 1.0, 0.0)))));
 			}
 		}
 
@@ -217,15 +215,15 @@ namespace Physics {
 				rightGroupPos_stage = dvec3(0.0, clustersHeight, -1.88);
 
 			//Left cluster
-			mThrusters.addComponent(std::make_unique<GasThruster>(GF::CoordTransform3D(leftGroupPos_stage + dvec3(0.0, 0.05, 0.0), toQuat(rotate(radians(90.0), dvec3(-1.0, 0.0, 0.0)))))); //outward
-			mThrusters.addComponent(std::make_unique<GasThruster>(GF::CoordTransform3D(leftGroupPos_stage, toQuat(rotate(radians(90.0), dvec3(0.0, 0.0, -1.0)))))); 				        //left
-			mThrusters.addComponent(std::make_unique<GasThruster>(GF::CoordTransform3D(leftGroupPos_stage, toQuat(rotate(radians(90.0), dvec3(0.0, 0.0, 1.0))))));  				        //right
-			mThrusters.addComponent(std::make_unique<GasThruster>(GF::CoordTransform3D(leftGroupPos_stage)));														                        //ullage
+			mThrusters.addComponent(std::make_unique<GasThruster>(GF::CoordTransform3D(leftGroupPos_stage + dvec3(0.0, 0.05, 0.0), rotate(radians(90.0), dvec3(-1.0, 0.0, 0.0))))); //outward
+			mThrusters.addComponent(std::make_unique<GasThruster>(GF::CoordTransform3D(leftGroupPos_stage, rotate(radians(90.0), dvec3(0.0, 0.0, -1.0))))); 				        //left
+			mThrusters.addComponent(std::make_unique<GasThruster>(GF::CoordTransform3D(leftGroupPos_stage, rotate(radians(90.0), dvec3(0.0, 0.0, 1.0)))));  				        //right
+			mThrusters.addComponent(std::make_unique<GasThruster>(GF::CoordTransform3D(leftGroupPos_stage)));														                //ullage
 
 			//Right cluster	 
-			mThrusters.addComponent(std::make_unique<GasThruster>(GF::CoordTransform3D(rightGroupPos_stage + dvec3(0.0, 0.05, 0.0), toQuat(rotate(radians(90.0), dvec3(1.0, 0.0, 0.0))))));  //outward
-			mThrusters.addComponent(std::make_unique<GasThruster>(GF::CoordTransform3D(rightGroupPos_stage, toQuat(rotate(radians(90.0), dvec3(0.0, 0.0, -1.0))))));                         //left
-			mThrusters.addComponent(std::make_unique<GasThruster>(GF::CoordTransform3D(rightGroupPos_stage, toQuat(rotate(radians(90.0), dvec3(0.0, 0.0, 1.0))))));                          //right
+			mThrusters.addComponent(std::make_unique<GasThruster>(GF::CoordTransform3D(rightGroupPos_stage + dvec3(0.0, 0.05, 0.0), rotate(radians(90.0), dvec3(1.0, 0.0, 0.0)))));  //outward
+			mThrusters.addComponent(std::make_unique<GasThruster>(GF::CoordTransform3D(rightGroupPos_stage, rotate(radians(90.0), dvec3(0.0, 0.0, -1.0)))));                         //left
+			mThrusters.addComponent(std::make_unique<GasThruster>(GF::CoordTransform3D(rightGroupPos_stage, rotate(radians(90.0), dvec3(0.0, 0.0, 1.0)))));                          //right
 			mThrusters.addComponent(std::make_unique<GasThruster>(GF::CoordTransform3D(rightGroupPos_stage)));                                                                               //ullage
 		}
 

@@ -2,6 +2,7 @@
 #define GRAPHICS_EARTHMODEL_H
 #pragma once
 
+#include "Physics/External/Earth.h"
 #include "Graphics/Simulation_model/Cameras/AllCameras.h"
 
 #include <GraphicsFramework/Renderer.h>
@@ -36,15 +37,12 @@ namespace Graphics {
 		static constexpr double mChunkAngle_degs = 360.0 / mSegments;  
 		
 		//The radius of the (test) sphere in metres
-		static constexpr double mRadius = 1000.0; //100.0
-
-		//The position of centre of the sphere
-		static constexpr glm::dvec3 mCentrePosition_highP = glm::dvec3(0.0, -mRadius, 0.0);
+		static constexpr double mRadius = 6378137.0; //6378137.0
 
 		//Reference axes
-		static glm::dvec3 
-			mHorizontalRefAxis,
-			mVerticalRefAxis; 
+		static constexpr glm::dvec3 
+			mHorizontalRefAxis = { 1.0, 0.0, 0.0 },
+			mVerticalRefAxis = { 0.0, 1.0, 0.0 }; 
 
 		//The camera's angle around the sphere is continuous, but chunks discretize the surface.
 		//This variable stores the nearest bottom-left chunk vertex to the camera's current angle.
@@ -80,10 +78,9 @@ namespace Graphics {
 
 	private:
 		void loadResources();
-		void updateAllTransforms_OGL(glm::dvec3 camPosition_EUN);
-		void updateMeshStructure(glm::dvec3 camPosition_EUN);
-		glm::dvec3 getChunkPosition_world(glm::dvec2 flooredAxisAngles) const;
-		void transformReferenceAxes(glm::dmat4 eunToEcefRotation);
+		void updateMeshStructure(glm::dvec3 camPosition_EUN, const GF::CoordTransform3D& eunToEcef);
+		void updateTransforms_OGL(glm::dvec3 cameraPosition_EUN);
+		glm::dvec3 getChunkPosition_ecef(glm::dvec2 flooredAxisAngles) const;
 
 	};
 

@@ -276,14 +276,22 @@ build/ExhaustJet.o: src/Graphics/Simulation_model/Models/ExhaustJet.cpp \
  /usr/include/c++/7/bits/atomic_base.h \
  /usr/include/c++/7/bits/atomic_lockfree_defines.h \
  /usr/include/c++/7/backward/auto_ptr.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Model3D.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Mesh.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Texture2D.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Renderer.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Camera.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/RenderQueue.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/RenderCommand.hpp \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/ResourceSet.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/IndexBuffer.h \
+ /usr/include/GL/glew.h /usr/include/GL/glu.h /usr/include/GL/gl.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Resource.hpp \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexBuffer.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexFormat.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/TextureCube.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Texture.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/TextureLoader.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/stb_image/stb_image.h \
- /usr/include/GL/glew.h /usr/include/GL/glu.h /usr/include/GL/gl.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Resource.hpp \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Mesh.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Texture2D.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Shader.h \
  /usr/include/glm/gtc/type_ptr.hpp /usr/include/glm/gtc/vec1.hpp \
  /usr/include/glm/gtc/vec1.inl /usr/include/glm/gtc/type_ptr.inl \
@@ -291,11 +299,6 @@ build/ExhaustJet.o: src/Graphics/Simulation_model/Models/ExhaustJet.cpp \
  /usr/include/c++/7/bits/hashtable_policy.h \
  /usr/include/c++/7/bits/unordered_map.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexArray.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexBuffer.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexFormat.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/IndexBuffer.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/ResourceSet.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/TextureCube.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propulsion/Engine.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propellant/SupplyLine.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propellant/FluidTank.h \

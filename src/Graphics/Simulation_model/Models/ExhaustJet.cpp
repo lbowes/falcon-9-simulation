@@ -11,17 +11,27 @@ namespace Graphics {
 	
 	unsigned char ExhaustJet::mNumInstances = 0;
 
-	ExhaustJet::ExhaustJet(const Physics::Hardware::Engine& sourceEngine, const Physics::Hardware::ThrustGeneratorGroup& nearbyEngines, GF::ResourceSet& resourceBucket, GF::Model3D& parentModel) :
+	ExhaustJet::ExhaustJet(const Physics::Hardware::Engine& sourceEngine, const Physics::Hardware::ThrustGeneratorGroup& nearbyEngines, GF::ResourceSet& resourceBucket, GF::Graphics::Renderer& renderer) :
 		mSourceEngine(sourceEngine),
 		mNearbyEngines(nearbyEngines),
 		mResourceBucket(resourceBucket), 
-		mParentModel(parentModel)
+		mRenderer(renderer)
 	{
 		loadResources();
 		mNumInstances++;
 	}
 
-	void ExhaustJet::update(glm::mat4 totalStageTransform_OGL, float percentAirPressure, glm::vec3 ambientFlow_stage) {
+	void ExhaustJet::render() {
+		mMesh->sendRenderCommand(mRenderer);
+		mRenderer.flush();
+	}
+
+	void ExhaustJet::updateTransform(glm::mat4 totalStageTransform_OGL) {
+		glm::mat4 engineTransform_OGL = totalStageTransform_OGL * glm::mat4(mSourceEngine.getCompToStageTransform().getLocalToParent_position());
+		mMesh->setModelTransform(engineTransform_OGL * glm::translate(glm::vec3(0.0f, -mSourceEngine.mTotalLength, 0.0f)));
+	}
+
+	void ExhaustJet::update(float percentAirPressure, glm::vec3 ambientFlow_stage) {
 		if(!mSourceEngine.isActive()) {
 			mMesh->setVisibility(false);
 			return;
@@ -29,14 +39,12 @@ namespace Graphics {
 		else {
 			mMesh->setVisibility(true);
 			
-			glm::mat4 engineTransform_OGL = totalStageTransform_OGL * glm::mat4(mSourceEngine.getCompToStageTransform().getLocalToParent_total());
-			mMesh->setModelTransform(engineTransform_OGL * glm::translate(glm::vec3(0.0f, -mSourceEngine.mTotalLength, 0.0f)));
-			
 			mShader->bind();
-			mShader->setUniform("maxLength", recalcMaxLength());
-			mShader->setUniform("percentAirPressure", percentAirPressure);
+			mShader->setUniform("throttleInRange_percent", mSourceEngine.getThrottle());
+			mShader->setUniform("airPressure_percent", percentAirPressure);
 			mShader->setUniform("time", static_cast<float>(glfwGetTime()));
-			mShader->setUniform("ambientFlow", glm::vec3(mSourceEngine.getCompToStageTransform().toLocalSpace_rotation(ambientFlow_stage)));
+			mShader->setUniform("ambientFlow", -ambientFlow_stage);
+			mShader->setUniform("ambientPressureDir", recalcAmbPressureDir_stage());
 		}
 	}
 
@@ -62,8 +70,6 @@ namespace Graphics {
 		mMesh = mResourceBucket.addMesh("exhaustMesh" + id, GL_TRIANGLES, nullptr, mShader);
 		mMesh->addBuffer(positionBuffer);
 		mMesh->addIndexBuffer(indexBuffer);
-
-		mParentModel.addMesh(mMesh);
 	}
 
 	void ExhaustJet::initBufferData() {
@@ -91,10 +97,33 @@ namespace Graphics {
 		}
 	}
 
-	float ExhaustJet::recalcMaxLength() {
-		//TODO: Calculate maximum length of
+	glm::vec3 ExhaustJet::recalcAmbPressureDir_stage() {	
+		using namespace glm;
 		
-		return 60.0f;
+		vec3 averageActiveEnginePos_stage = vec3(0.0f);
+
+		unsigned activeEngineCount = 0;
+
+		for(const auto& c : mNearbyEngines.getAllComponents()) {
+			const Physics::Hardware::Engine* engine = static_cast<Physics::Hardware::Engine*>(c.get());
+
+			if(engine->isActive()) {
+				dvec3 enginePos_stage = engine->getCompToStageTransform().toParentSpace();
+				averageActiveEnginePos_stage += vec3(enginePos_stage.x, 0.0f, enginePos_stage.z);
+				activeEngineCount++;
+			}
+		}
+
+		averageActiveEnginePos_stage /= activeEngineCount;
+
+		vec3 sourceEnginePosition = mSourceEngine.getCompToStageTransform().toParentSpace();
+
+		if(averageActiveEnginePos_stage == sourceEnginePosition)
+			return vec3(0.0f, -1.0f, 0.0f);	
+		else {
+			vec3 output = normalize(averageActiveEnginePos_stage - sourceEnginePosition);
+			return vec3(output.x, 0.0f, output.z);
+		}
 	}
 
 }

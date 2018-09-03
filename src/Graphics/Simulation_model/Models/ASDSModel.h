@@ -15,7 +15,7 @@ namespace Graphics {
 		GF::Graphics::Shader& mShader;
 		GF::Graphics::Mesh* mMeshHandle = nullptr;
 		const double mHeight = 3.0;
-		const glm::dvec3 mPosition = { 0.0, mHeight, 0.0 };		
+		const glm::dvec3 mPosition = { 0.0, -mHeight, 0.0 };		
 
 	public:
 		ASDSModel(GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket, GF::Graphics::Shader& shader);

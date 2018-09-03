@@ -7,14 +7,13 @@ namespace Graphics {
 	constexpr unsigned EarthModel::mSegments;
 	constexpr double EarthModel::mChunkAngle_degs;  
 	constexpr double EarthModel::mRadius;
-	constexpr glm::dvec3 EarthModel::mCentrePosition_highP;
-	glm::dvec3 
-		EarthModel::mHorizontalRefAxis,
-		EarthModel::mVerticalRefAxis; 
-	
+	constexpr glm::dvec3 
+			EarthModel::mHorizontalRefAxis,
+			EarthModel::mVerticalRefAxis; 
+
 	EarthModel::EarthModel(GF::ResourceSet& resourceBucket) :
 		mResourceBucket(resourceBucket),
-		tempCamera(glm::vec3(0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.1f, 1000.0f, 0.0f, 45.0f)  
+		tempCamera(glm::vec3(0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.1f, 6378137.0, 0.0f, 45.0f)  
 	{	
 		loadResources();
 	}
@@ -27,19 +26,12 @@ namespace Graphics {
 		tempCamera.setFOVY(cam.getFOVY());
 		tempCamera.setAspect(cam.getAspect());
 
-		//In order to build the earth model with the correct orientation, given that the launch vehicle may be positioned
-		//at any location on the surface of the earth and it must be the origin, the two reference axes used to calculate
-		//chunk (bottom-left) vertex positions must be rotated into the correct space. This has the effect of rotating the 
-		//earth underneath the LV, in order to position the LV correctly on the surface.
-		transformReferenceAxes(eunToEcef.getLocalToParent_rotation());
-
 		//This is where the lat-lon earth mesh is generated based purely on the EUN position of the camera.
 		glm::dvec3 cameraPos_EUN = activeSimCam.getPosition();		
-		updateMeshStructure(cameraPos_EUN);
+		//updateMeshStructure(cameraPos_EUN, eunToEcef);
 		
-		//
-		updateAllTransforms_OGL(cameraPos_EUN);
-		
+		updateTransforms_OGL(cameraPos_EUN);
+
 		mNearTerrain->sendRenderCommand(mRenderer);
 
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -62,12 +54,8 @@ namespace Graphics {
 		mRenderer.setCamera(tempCamera);
 	}
 
-	void EarthModel::updateAllTransforms_OGL(glm::dvec3 camPosition_EUN) {
-		glm::mat4 transform = inverse(translate(camPosition_EUN - mCentrePosition_highP));
-		mNearTerrain->setModelTransform(transform);
-	}
-
-	void EarthModel::updateMeshStructure(glm::dvec3 camPosition_EUN) {
+	void EarthModel::updateMeshStructure(glm::dvec3 camPosition_EUN, const GF::CoordTransform3D& eunToEcef) {
+#if 0
 		using namespace glm;
 		
 		const dvec3 P = normalize(camPosition_EUN - mCentrePosition_highP);
@@ -137,17 +125,91 @@ namespace Graphics {
 
 		mNearPosBuffer->updateData(mNearTerrainPositionData);
 		mNearIndexBuffer->updateData(mNearTerrainIndexData);
+#else
+		using namespace glm;
+
+		const dvec3 temp = eunToEcef.toParentSpace(camPosition_EUN);
+
+		//ImGui::Text("%f, %f, %f\n", temp.x, temp.y, temp.z);
+
+		const dvec3 P = normalize(eunToEcef.toParentSpace(camPosition_EUN));
+
+		const dvec2 axisAngles {
+			-degrees(orientedAngle(normalize(dvec3(P.x, 0.0, P.z)), mHorizontalRefAxis, mVerticalRefAxis)),
+			-degrees(orientedAngle(P, mVerticalRefAxis, cross(P, mVerticalRefAxis)))
+		};
+
+		//The modulo of the axis angles for the chunk directly beneath the camera. This is the 'base' chunk reference position.
+		const dvec2 baseModuloAxisAngles = floor(axisAngles / mChunkAngle_degs) * mChunkAngle_degs;
+
+		if(mLastModuloAxisAngles == baseModuloAxisAngles)
+			return;
+
+		mLastModuloAxisAngles = baseModuloAxisAngles;
+
+		mNearTerrainPositionData.clear();
+		mNearTerrainIndexData.clear();
+
+		//Add position data
+		for(unsigned h = 0; h < mSegments; h++) {
+			for(unsigned v = 0; v < mSegments; v++) {
+				dvec3 vertexPos_BL = eunToEcef.toLocalSpace(getChunkPosition_ecef(baseModuloAxisAngles + dvec2(h, v) * mChunkAngle_degs));
+
+				//Why is this not working? -----------------------------------------------
+				if(degrees(angle(normalize(vertexPos_BL), P)) < 30.0) {
+					
+					//Bottom left vertex
+					mNearTerrainPositionData.push_back(vertexPos_BL.x);
+					mNearTerrainPositionData.push_back(vertexPos_BL.y);
+					mNearTerrainPositionData.push_back(vertexPos_BL.z);
+					
+					//Top left vertex
+					dvec3 vertexPos_TL = eunToEcef.toLocalSpace(getChunkPosition_ecef(baseModuloAxisAngles + dvec2(h, v) * mChunkAngle_degs + dvec2(mChunkAngle_degs, 0.0)));
+					mNearTerrainPositionData.push_back(vertexPos_TL.x);
+					mNearTerrainPositionData.push_back(vertexPos_TL.y);
+					mNearTerrainPositionData.push_back(vertexPos_TL.z);
+
+					//Top right vertex
+					dvec3 vertexPos_TR = eunToEcef.toLocalSpace(getChunkPosition_ecef(baseModuloAxisAngles + dvec2(h, v) * mChunkAngle_degs + dvec2(mChunkAngle_degs, mChunkAngle_degs)));
+					mNearTerrainPositionData.push_back(vertexPos_TR.x);
+					mNearTerrainPositionData.push_back(vertexPos_TR.y);
+					mNearTerrainPositionData.push_back(vertexPos_TR.z);
+					
+					//Bottom right
+					dvec3 vertexPos_BR = eunToEcef.toLocalSpace(getChunkPosition_ecef(baseModuloAxisAngles + dvec2(h, v) * mChunkAngle_degs + dvec2(0.0, mChunkAngle_degs)));
+					mNearTerrainPositionData.push_back(vertexPos_BR.x);
+					mNearTerrainPositionData.push_back(vertexPos_BR.y);
+					mNearTerrainPositionData.push_back(vertexPos_BR.z);
+				}
+			}
+		}
+
+		//Index data
+		const unsigned chunkCount = mNearTerrainPositionData.size() / 12;
+
+		for(unsigned i = 0; i < chunkCount; i++) {
+			mNearTerrainIndexData.push_back(i * 4);			
+			mNearTerrainIndexData.push_back(i * 4 + 1);			
+			mNearTerrainIndexData.push_back(i * 4 + 2);			
+
+			mNearTerrainIndexData.push_back(i * 4 + 2);			
+			mNearTerrainIndexData.push_back(i * 4 + 3);			
+			mNearTerrainIndexData.push_back(i * 4);			
+		}
+
+		mNearPosBuffer->updateData(mNearTerrainPositionData);
+		mNearIndexBuffer->updateData(mNearTerrainIndexData);
+#endif
 	}
 
-	glm::dvec3 EarthModel::getChunkPosition_world(glm::dvec2 moduloAxisAngles) const {
+	void EarthModel::updateTransforms_OGL(glm::dvec3 cameraPosition_EUN) {
+		mNearTerrain->setModelTransform(inverse(translate(cameraPosition_EUN)));
+	}
+	
+	glm::dvec3 EarthModel::getChunkPosition_ecef(glm::dvec2 moduloAxisAngles) const {
 		glm::dvec3 pos = glm::rotate(mVerticalRefAxis * mRadius, glm::radians(moduloAxisAngles.y), cross(mHorizontalRefAxis, mVerticalRefAxis));
 		pos = glm::rotate(pos, glm::radians(moduloAxisAngles.x), mVerticalRefAxis);
 		return pos;
 	}
-
-	void EarthModel::transformReferenceAxes(glm::dmat4 eunToEcefRotation) {
-		mHorizontalRefAxis = glm::dvec3(eunToEcefRotation * glm::dvec4(1.0, 0.0, 0.0, 1.0));
-		mVerticalRefAxis = glm::dvec3(eunToEcefRotation * glm::dvec4(0.0, 1.0, 0.0, 1.0));
-	}	
 
 }

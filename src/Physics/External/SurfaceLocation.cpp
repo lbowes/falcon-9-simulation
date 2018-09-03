@@ -25,9 +25,9 @@ namespace Physics {
 			double latitudeRotation_degs = ::External::Earth::geocentricToGeodeticLat(mGPSCoordinate_LLH.x) - 90.0;
 			
 			dmat4 
-				eunAlignmentRot = rotate(dmat4(1.0f), radians(-90.0), dvec3(0.0, 1.0, 0.0)),
-				latitudeRot = rotate(dmat4(1.0f), radians(latitudeRotation_degs), dvec3(0.0, 0.0, 1.0)),
-				longitudeRot = rotate(dmat4(1.0f), radians(-mGPSCoordinate_LLH.y), dvec3(0.0, 1.0, 0.0));
+				eunAlignmentRot = rotate(radians(-90.0), dvec3(0.0, 1.0, 0.0)),
+				latitudeRot = rotate(radians(latitudeRotation_degs), dvec3(0.0, 0.0, 1.0)),
+				longitudeRot = rotate(radians(-mGPSCoordinate_LLH.y), dvec3(0.0, 1.0, 0.0));
 
 			mEUN_to_ECEF.setLocalToParent_rotation(longitudeRot * latitudeRot * eunAlignmentRot);
 		}

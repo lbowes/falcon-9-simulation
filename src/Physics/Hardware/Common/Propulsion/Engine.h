@@ -48,6 +48,8 @@ namespace Physics {
 			virtual ~Engine() = default;
 
 			double getThrottle() const { return mThrottle; }
+			double getThrottleMin() const { return mThrottleMin; }
+			double getThrottleMax() const { return mThrottleMax; }
 			void setThrottle(double newThrottle);
 			void attachPropSupplyLine(PropSupplyLine* supplyLine) { mSupplyLine = supplyLine; }
 

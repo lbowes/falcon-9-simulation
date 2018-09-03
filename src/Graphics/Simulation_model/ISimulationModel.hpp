@@ -12,8 +12,6 @@ namespace Graphics {
 		GF::Graphics::Renderer& mRenderer;
 		GF::ResourceSet& mResourceBucket;
 
-		//SimpleCameraState mSimpleCameraState;
-
 	public:
 		ISimulationModel(GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket) :
 			mRenderer(renderer),

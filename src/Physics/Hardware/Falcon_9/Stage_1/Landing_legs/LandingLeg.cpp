@@ -134,11 +134,3 @@ namespace Physics {
 
 	}
 }
-
-//*------------------------PLAN------------------------
-/* - Generally neaten up and finalise the work that has been done with the landing legs so far.
- 
- * - When calculating 'accelerationCoM_world' include the angular acceleration of the leg. This will have to be calculated by storing a previous and current velocity
-     of the leg's centre of mass in world space. These will in turn require calculating the velocity of the legs CoM as a point on the stage in world space (using 
-	 RigidBody function) before adding the angular velocity in world space.
- */
