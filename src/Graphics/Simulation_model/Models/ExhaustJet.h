@@ -28,7 +28,7 @@ namespace Graphics {
 		const Physics::Hardware::ThrustGeneratorGroup& mNearbyEngines;
 
 		GF::ResourceSet& mResourceBucket;
-		GF::Graphics::Renderer& mRenderer;
+		GF::Graphics::Renderer mRenderer;
 		GF::Graphics::Mesh* mMesh = nullptr;
 		GF::Graphics::Shader* mShader = nullptr;
 
@@ -36,12 +36,12 @@ namespace Graphics {
 		std::vector<unsigned> mIndexData;
 
 	public:
-		ExhaustJet(const Physics::Hardware::Engine& sourceEngine, const Physics::Hardware::ThrustGeneratorGroup& nearbyEngines, GF::ResourceSet& resourceBucket, GF::Graphics::Renderer& renderer);
+		ExhaustJet(const Physics::Hardware::Engine& sourceEngine, const Physics::Hardware::ThrustGeneratorGroup& nearbyEngines, GF::ResourceSet& resourceBucket);
 		~ExhaustJet() = default;
 
-		void render();
+		void render(GF::Camera& currentCamera);
 		void updateTransform(glm::mat4 totalStageTransform_OGL);
-		void update(float percentAirPressure, glm::vec3 ambientFlow_stage);
+		void update(float airPressure_percent, glm::vec3 ambientFlowDir_stage);
 
 	private:
 		void loadResources();

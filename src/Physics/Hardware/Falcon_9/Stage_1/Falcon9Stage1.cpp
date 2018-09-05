@@ -149,10 +149,10 @@ namespace Physics {
 				mState.setOrientation_world(rotate(mState.getOrientation_world(), glm::radians(-80.0), { 1.0, 0.0, 0.0 }));
 				
 				static_cast<FluidTank*>(mPropellantSupplies.getComponent(Propellants::liquidOxygen))->removeAllPropellant();
-				static_cast<FluidTank*>(mPropellantSupplies.getComponent(Propellants::liquidOxygen))->addPropellant(287.430_tonnes * 0.12);
+				static_cast<FluidTank*>(mPropellantSupplies.getComponent(Propellants::liquidOxygen))->addPropellant(287.430_tonnes * 0.048);
 
 				static_cast<FluidTank*>(mPropellantSupplies.getComponent(Propellants::RP1))->removeAllPropellant();
-				static_cast<FluidTank*>(mPropellantSupplies.getComponent(Propellants::RP1))->addPropellant(123.570_tonnes * 0.12);
+				static_cast<FluidTank*>(mPropellantSupplies.getComponent(Propellants::RP1))->addPropellant(123.570_tonnes * 0.048);
 			}
 		}
 

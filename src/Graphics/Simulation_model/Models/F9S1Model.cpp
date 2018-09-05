@@ -1,6 +1,8 @@
 #include "F9S1Model.h"
 #include "Physics/Hardware/Falcon_9/Stage_1/Falcon9Stage1.h"
 
+#include <GraphicsFramework/Vendor/ImGui/imgui.h>
+
 namespace Graphics {
 
 	F9S1Model::F9S1Model(const Physics::Hardware::Falcon9Stage1& stage1Data, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket) :
@@ -40,11 +42,7 @@ namespace Graphics {
 		//Engine meshes
 		unsigned char count = 0;
 		for (const auto& engine : mStage1Data.getEngines().getAllComponents()) {
-			const Physics::Hardware::Engine& engineDataSource = *static_cast<Engine*>(engine.get());
-			
-			mComponentMeshes.push_back(std::make_unique<EngineMesh>("Merlin1D" + std::to_string(count), BOX_MODELS ? "res/models/Merlin1D_Box.obj" : "res/models/Merlin1D.obj", engineDataSource, mResourceBucket, mModel));
-			mExhausts.push_back(std::make_unique<ExhaustJet>(engineDataSource, mStage1Data.getEngines(), mResourceBucket, mRenderer));
-
+			mComponentMeshes.push_back(std::make_unique<EngineMesh>("Merlin1D" + std::to_string(count), BOX_MODELS ? "res/models/Merlin1D_Box.obj" : "res/models/Merlin1D.obj", *static_cast<Engine*>(engine.get()), mResourceBucket, mModel));
 			count++;
 		}
 	}
@@ -56,36 +54,20 @@ namespace Graphics {
 
 		mat4
 			posTransform_OGL = translate(currentCameraPosition- state.getObjectSpace().toParentSpace()),
-			rotTransform_OGL = toMat4(inverse(state.getOrientation_world())),
-			totalTransform_OGL = inverse(rotTransform_OGL * posTransform_OGL);
+			rotTransform_OGL = toMat4(inverse(state.getOrientation_world()));
+			
+		mTotalTransform_OGL = inverse(rotTransform_OGL * posTransform_OGL);
 
 		//Updates the transform of the mesh representing the fuselage
-		mModel.getMesh(0)->setModelTransform(totalTransform_OGL);
+		mModel.getMesh(0)->setModelTransform(mTotalTransform_OGL);
 
 		//Update all component mesh transforms
 		for (const auto& componentMesh : mComponentMeshes) 
-			componentMesh->updateResources(totalTransform_OGL);
-
-		//Update exhaust jet transforms
-		for (const auto& exhaustJet : mExhausts)
-			exhaustJet->updateTransform(totalTransform_OGL);
+			componentMesh->updateResources(mTotalTransform_OGL);
 	}
 
 	void F9S1Model::makeRenderCalls() {
-		using namespace Physics::External;
-		
-		//Render components
 		mModel.sendRenderCommands(mRenderer);
-
-		//Render exhaust models
-		float percentAirPressure = static_cast<float>(Environment::getAirPressure_Pa(floor(mStage1Data.getState().getCMPosition_world().y))) / Environment::seaLevelStdPressure;
-		const State& s1State = mStage1Data.getState();
-		glm::vec3 ambientFlow_stage = -s1State.getObjectSpace().toLocalSpace_rotation(s1State.velocityAtLocalPoint_world(glm::vec3(0.0f)));
-
-		for (const auto& exhaustJet : mExhausts) {
-			exhaustJet->update(percentAirPressure, ambientFlow_stage);
-			exhaustJet->render();
-		}
 	}
 
 	//------------------------------------------LANDING LEG MODEL------------------------------------------

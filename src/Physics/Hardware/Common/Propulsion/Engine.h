@@ -50,6 +50,7 @@ namespace Physics {
 			double getThrottle() const { return mThrottle; }
 			double getThrottleMin() const { return mThrottleMin; }
 			double getThrottleMax() const { return mThrottleMax; }
+			double getNozzleExitDiameter() const { return mNozzleExitDiameter; }
 			void setThrottle(double newThrottle);
 			void attachPropSupplyLine(PropSupplyLine* supplyLine) { mSupplyLine = supplyLine; }
 

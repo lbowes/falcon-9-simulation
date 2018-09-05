@@ -6,6 +6,7 @@
 #include "Models/F9S2Model.h"
 #include "Models/ASDSModel.h"
 #include "Models/EarthModel.h"
+#include "Models/ExhaustJet.h"
 #include "Cameras/CameraSystem.h"
 
 #include <GraphicsFramework/Renderer.h>
@@ -22,11 +23,12 @@ namespace Graphics {
 		GF::ResourceSet mResourceBucket;
 		Physics::Hardware::Falcon9& mDataSource;
 		
-		//TODO: is this definitely how this should be done?
 		std::unique_ptr<F9S1Model> mF9S1Model;
 		std::unique_ptr<F9S2Model> mF9S2Model;
 		std::unique_ptr<ASDSModel> mASDSModel;
 		std::unique_ptr<EarthModel> mEarthModel;
+
+		std::vector<std::unique_ptr<ExhaustJet>> mStage1Exhausts;
 
 		CameraSystem mCameras;
 

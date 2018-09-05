@@ -15,6 +15,8 @@ namespace Graphics {
 	}
 
 	void SimulationModelLayer::render(float windowAspect, float dt) {
+		using namespace Physics::External;
+		
 		mCameras.update(windowAspect, dt, mDataSource.getStage1().getState().getCMPosition_world());
 		
 		SimulationCamera& currentSimCamera = mCameras.getCurrentSimCamera();
@@ -22,14 +24,26 @@ namespace Graphics {
 		mSolidRenderer.setCamera(currentCamera);
 		mWireframeRenderer.setCamera(currentCamera);
 
+		//Render objects
 		glm::dvec3 currentCamPos = currentSimCamera.getPosition();
-		mASDSModel->render(currentCamPos);
+		//mASDSModel->render(currentCamPos);
 		mF9S1Model->render(currentCamPos);
 		mF9S2Model->render(currentCamPos);
-
 		flushRenderers();
-		
+
+		//Render Earth
 		mEarthModel->render(currentSimCamera, mDataSource.getSurfaceLocation().getEUN_to_ECEFTransform());
+
+		//Render exhaust models
+		const State& s1State = mDataSource.getStage1().getState();
+		float airPressure_percent = static_cast<float>(Environment::getAirPressure_Pa(floor(s1State.getCMPosition_world().y))) / Environment::seaLevelStdPressure;
+		glm::vec3 ambientFlow_stage = -s1State.getObjectSpace().toLocalSpace_rotation(s1State.velocityAtLocalPoint_world(glm::vec3(0.0f)));
+
+		for (const auto& exhaustJet : mStage1Exhausts) {
+			exhaustJet->update(airPressure_percent, ambientFlow_stage);
+			exhaustJet->updateTransform(mF9S1Model->getTotalTransform_OGL());
+			exhaustJet->render(currentCamera);
+		}
 	}
 	
 	void SimulationModelLayer::checkInput(float dt, glm::vec2 windowDimensions) {
@@ -59,9 +73,12 @@ namespace Graphics {
 
 		mF9S1Model = make_unique<F9S1Model>(mDataSource.getStage1(), WIREFRAME_RENDERING ? mWireframeRenderer : mSolidRenderer, mResourceBucket);
 		mF9S2Model = make_unique<F9S2Model>(mDataSource.getStage2(), WIREFRAME_RENDERING ? mWireframeRenderer : mSolidRenderer, mResourceBucket);
-		
 		mASDSModel = make_unique<ASDSModel>(WIREFRAME_RENDERING ? mWireframeRenderer : mSolidRenderer, mResourceBucket, *mResourceBucket.getResource<Shader>("bodyShader"));
 		mEarthModel = make_unique<EarthModel>(mResourceBucket);
+
+		const Physics::Hardware::ThrustGeneratorGroup& S1Engines = mDataSource.getStage1().getEngines();
+		for (const auto& engine : S1Engines.getAllComponents())
+			mStage1Exhausts.push_back(std::make_unique<ExhaustJet>(*static_cast<Physics::Hardware::Engine*>(engine.get()), S1Engines, mResourceBucket));
 
 		GF::Camera& currentCamera = mCameras.getCurrentSimCamera().getInternalCamera_mutable();
 		mSolidRenderer.setCamera(currentCamera);
@@ -69,12 +86,12 @@ namespace Graphics {
 	}
 
 	void SimulationModelLayer::flushRenderers() {
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		mSolidRenderer.flush();
 		
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		glLineWidth(1.0f);
 		mWireframeRenderer.flush();
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 
 }

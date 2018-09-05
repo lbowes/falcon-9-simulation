@@ -7,7 +7,6 @@
 #pragma once
 
 #include "EngineMesh.h"
-#include "ExhaustJet.h"
 #include "GasThrusterMesh.h"
 #include "Graphics/Simulation_model/ISimulationModel.hpp"
 
@@ -32,12 +31,13 @@ namespace Graphics {
 		GF::Graphics::Shader* mMainShader = nullptr;
 		std::vector<std::unique_ptr<IStageComponentMesh>> mComponentMeshes;
 		const Physics::Hardware::Falcon9Stage1& mStage1Data;
-
-		std::vector<std::unique_ptr<ExhaustJet>> mExhausts;
+		glm::dmat4 mTotalTransform_OGL;
 
 	public:
 		F9S1Model(const Physics::Hardware::Falcon9Stage1& stage1Data, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket);
 		~F9S1Model() = default;
+
+		glm::dmat4 getTotalTransform_OGL() const { return mTotalTransform_OGL; }
 
 	private:
 		void loadResources();

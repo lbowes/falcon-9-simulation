@@ -7,23 +7,30 @@
 #include <GraphicsFramework/Vendor/ImGui/imgui.h>
 #include <glm/gtx/rotate_vector.hpp>
 
+#include <iostream>
+
 namespace Graphics {
 	
 	unsigned char ExhaustJet::mNumInstances = 0;
 
-	ExhaustJet::ExhaustJet(const Physics::Hardware::Engine& sourceEngine, const Physics::Hardware::ThrustGeneratorGroup& nearbyEngines, GF::ResourceSet& resourceBucket, GF::Graphics::Renderer& renderer) :
+	ExhaustJet::ExhaustJet(const Physics::Hardware::Engine& sourceEngine, const Physics::Hardware::ThrustGeneratorGroup& nearbyEngines, GF::ResourceSet& resourceBucket) :
 		mSourceEngine(sourceEngine),
 		mNearbyEngines(nearbyEngines),
-		mResourceBucket(resourceBucket), 
-		mRenderer(renderer)
+		mResourceBucket(resourceBucket) 
 	{
 		loadResources();
 		mNumInstances++;
 	}
 
-	void ExhaustJet::render() {
+	void ExhaustJet::render(GF::Camera& currentCamera) {
+		mRenderer.setCamera(currentCamera);
+		
 		mMesh->sendRenderCommand(mRenderer);
+		
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);		
+		glDepthMask(GL_FALSE);
 		mRenderer.flush();
+		glDepthMask(GL_TRUE);
 	}
 
 	void ExhaustJet::updateTransform(glm::mat4 totalStageTransform_OGL) {
@@ -31,7 +38,7 @@ namespace Graphics {
 		mMesh->setModelTransform(engineTransform_OGL * glm::translate(glm::vec3(0.0f, -mSourceEngine.mTotalLength, 0.0f)));
 	}
 
-	void ExhaustJet::update(float percentAirPressure, glm::vec3 ambientFlow_stage) {
+	void ExhaustJet::update(float airPressure_percent, glm::vec3 ambientFlowDir_stage) {
 		if(!mSourceEngine.isActive()) {
 			mMesh->setVisibility(false);
 			return;
@@ -39,12 +46,31 @@ namespace Graphics {
 		else {
 			mMesh->setVisibility(true);
 			
+			float throttleInRange_percent = (mSourceEngine.getThrottle() - mSourceEngine.getThrottleMin()) / (mSourceEngine.getThrottleMax() - mSourceEngine.getThrottleMin());
+
+			static float 
+				variableAirPressure,
+				variableThrottleInRange;
+
+			ImGui::Begin("Exhaust debug");
+			static bool environmentInfluence = true;
+			ImGui::Checkbox("Environmental influence", &environmentInfluence);
+			if(!environmentInfluence) {
+				ImGui::SliderFloat("airPressure_percent", &variableAirPressure, 0.0f, 1.0f);
+				ImGui::SliderFloat("throttleInRange_percent", &variableThrottleInRange, 0.0f, 1.0f);
+			}
+			else {
+				variableAirPressure = airPressure_percent;
+				variableThrottleInRange = throttleInRange_percent;
+			}
+			ImGui::End();
+
 			mShader->bind();
-			mShader->setUniform("throttleInRange_percent", mSourceEngine.getThrottle());
-			mShader->setUniform("airPressure_percent", percentAirPressure);
-			mShader->setUniform("time", static_cast<float>(glfwGetTime()));
-			mShader->setUniform("ambientFlow", -ambientFlow_stage);
-			mShader->setUniform("ambientPressureDir", recalcAmbPressureDir_stage());
+			mShader->setUniform("u_throttleInRange_percent", variableThrottleInRange);
+			mShader->setUniform("u_airPressure_percent", variableAirPressure);
+			mShader->setUniform("u_time", static_cast<float>(glfwGetTime()));
+			mShader->setUniform("u_ambientFlowDir", -ambientFlowDir_stage);
+			mShader->setUniform("u_ambientPressureDir", recalcAmbPressureDir_stage());
 		}
 	}
 
@@ -61,11 +87,12 @@ namespace Graphics {
 		mShader->addUniform("modelMatrix");
 		mShader->addUniform("viewMatrix");
 		mShader->addUniform("projectionMatrix");
-		mShader->addUniform("maxLength");
-		mShader->addUniform("percentAirPressure");
-		mShader->addUniform("time");
-		mShader->addUniform("ambientFlow");
-		mShader->addUniform("ambientPressureDir");
+		mShader->addUniformWithDefault("u_nozzleDiameter_m", mSourceEngine.getNozzleExitDiameter());
+		mShader->addUniform("u_throttleInRange_percent");
+		mShader->addUniform("u_airPressure_percent");
+		mShader->addUniform("u_time");
+		mShader->addUniform("u_ambientFlowDir");
+		mShader->addUniform("u_ambientPressureDir");
 
 		mMesh = mResourceBucket.addMesh("exhaustMesh" + id, GL_TRIANGLES, nullptr, mShader);
 		mMesh->addBuffer(positionBuffer);
@@ -109,21 +136,21 @@ namespace Graphics {
 
 			if(engine->isActive()) {
 				dvec3 enginePos_stage = engine->getCompToStageTransform().toParentSpace();
-				averageActiveEnginePos_stage += vec3(enginePos_stage.x, 0.0f, enginePos_stage.z);
+				averageActiveEnginePos_stage += enginePos_stage;
 				activeEngineCount++;
 			}
 		}
 
-		averageActiveEnginePos_stage /= activeEngineCount;
+		if(activeEngineCount > 0)
+			averageActiveEnginePos_stage /= activeEngineCount;
 
 		vec3 sourceEnginePosition = mSourceEngine.getCompToStageTransform().toParentSpace();
 
-		if(averageActiveEnginePos_stage == sourceEnginePosition)
-			return vec3(0.0f, -1.0f, 0.0f);	
-		else {
-			vec3 output = normalize(averageActiveEnginePos_stage - sourceEnginePosition);
-			return vec3(output.x, 0.0f, output.z);
-		}
+		ImGui::Text("averageActiveEnginePos_stage: %f, %f, %f\n", averageActiveEnginePos_stage.x, averageActiveEnginePos_stage.y, averageActiveEnginePos_stage.z);
+		ImGui::Text("sourceEnginePosition: %f, %f, %f\n", sourceEnginePosition.x, sourceEnginePosition.y, sourceEnginePosition.z);
+
+		vec3 output = normalize(averageActiveEnginePos_stage - sourceEnginePosition);
+		return vec3(output.x, 0.0f, output.z);
 	}
 
 }

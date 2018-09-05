@@ -264,17 +264,11 @@ build/F9S1Model.o: src/Graphics/Simulation_model/Models/F9S1Model.cpp \
  /usr/include/c++/7/bits/unordered_map.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexArray.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Model3D.h \
- src/Graphics/Simulation_model/Models/ExhaustJet.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propulsion/ThrustGeneratorGroup.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propulsion/IThrustGenerator.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Core/IStageComponent.hpp \
- /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/Mass.h \
- /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/InertiaTensor.h \
- /usr/include/glm/gtc/matrix_inverse.hpp \
- /usr/include/glm/gtc/matrix_inverse.inl \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/CoordTransform3D.h \
- /usr/include/glm/gtx/transform.hpp /usr/include/glm/glm.hpp \
- /usr/include/c++/7/climits \
+ src/Graphics/Simulation_model/Models/GasThrusterMesh.h \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/ISimulationModel.hpp \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Renderer.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Camera.h \
+ /usr/include/glm/glm.hpp /usr/include/c++/7/climits \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
@@ -290,23 +284,27 @@ build/F9S1Model.o: src/Graphics/Simulation_model/Models/F9S1Model.cpp \
  /usr/include/glm/detail/func_packing_simd.inl \
  /usr/include/glm/integer.hpp /usr/include/glm/detail/func_integer.inl \
  /usr/include/glm/detail/func_integer_simd.inl \
- /usr/include/glm/simd/integer.h \
- /usr/include/glm/gtc/matrix_transform.hpp \
- /usr/include/glm/gtc/matrix_transform.inl \
- /usr/include/glm/gtx/transform.inl /usr/include/glm/gtx/quaternion.hpp \
+ /usr/include/glm/simd/integer.h /usr/include/glm/gtx/quaternion.hpp \
  /usr/include/glm/gtx/norm.hpp /usr/include/glm/gtx/norm.inl \
  /usr/include/glm/gtx/quaternion.inl \
+ /usr/include/glm/gtc/matrix_transform.hpp \
+ /usr/include/glm/gtc/matrix_transform.inl \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/RenderQueue.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/RenderCommand.hpp \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Falcon9Stage1.h \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Core/IStage.h \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propulsion/ThrustGeneratorGroup.h \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propulsion/IThrustGenerator.h \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Core/IStageComponent.hpp \
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/Mass.h \
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/InertiaTensor.h \
+ /usr/include/glm/gtc/matrix_inverse.hpp \
+ /usr/include/glm/gtc/matrix_inverse.inl \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/CoordTransform3D.h \
+ /usr/include/glm/gtx/transform.hpp /usr/include/glm/gtx/transform.inl \
  /usr/include/glm/gtx/rotate_vector.hpp \
  /usr/include/glm/gtx/rotate_vector.inl \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Core/StageComponentGroup.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Renderer.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Camera.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/RenderQueue.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/RenderCommand.hpp \
- src/Graphics/Simulation_model/Models/GasThrusterMesh.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/ISimulationModel.hpp \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Falcon9Stage1.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Core/IStage.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propulsion/GasThruster.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propellant/SupplyLine.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propellant/FluidTank.h \
@@ -351,4 +349,6 @@ build/F9S1Model.o: src/Graphics/Simulation_model/Models/F9S1Model.cpp \
  /usr/include/c++/7/bits/locale_facets.tcc \
  /usr/include/c++/7/bits/basic_ios.tcc \
  /usr/include/c++/7/bits/ostream.tcc /usr/include/c++/7/istream \
- /usr/include/c++/7/bits/istream.tcc /usr/local/include/GLFW/glfw3.h
+ /usr/include/c++/7/bits/istream.tcc /usr/local/include/GLFW/glfw3.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/ImGui/imgui.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/ImGui/imconfig.h

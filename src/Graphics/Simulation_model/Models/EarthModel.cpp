@@ -36,6 +36,7 @@ namespace Graphics {
 
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		mRenderer.flush();
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 
 	void EarthModel::loadResources() {
