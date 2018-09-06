@@ -31,6 +31,7 @@ namespace Graphics {
 		glDepthMask(GL_FALSE);
 		mRenderer.flush();
 		glDepthMask(GL_TRUE);
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);		
 	}
 
 	void ExhaustJet::updateTransform(glm::mat4 totalStageTransform_OGL) {
@@ -146,8 +147,8 @@ namespace Graphics {
 
 		vec3 sourceEnginePosition = mSourceEngine.getCompToStageTransform().toParentSpace();
 
-		ImGui::Text("averageActiveEnginePos_stage: %f, %f, %f\n", averageActiveEnginePos_stage.x, averageActiveEnginePos_stage.y, averageActiveEnginePos_stage.z);
-		ImGui::Text("sourceEnginePosition: %f, %f, %f\n", sourceEnginePosition.x, sourceEnginePosition.y, sourceEnginePosition.z);
+		//ImGui::Text("averageActiveEnginePos_stage: %f, %f, %f\n", averageActiveEnginePos_stage.x, averageActiveEnginePos_stage.y, averageActiveEnginePos_stage.z);
+		//ImGui::Text("sourceEnginePosition: %f, %f, %f\n", sourceEnginePosition.x, sourceEnginePosition.y, sourceEnginePosition.z);
 
 		vec3 output = normalize(averageActiveEnginePos_stage - sourceEnginePosition);
 		return vec3(output.x, 0.0f, output.z);

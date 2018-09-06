@@ -76,15 +76,37 @@ float cnoise(vec2 P) {
   	return 2.3 * n_xy;
 }
 
-vec4 getColour(float alongFlame_percent) {
+float lerp(float a, float b, float x) {
+	return a + (b - a) * clamp(x, 0.0f, 1.0f);
+}
+
+float alpha_distortion(float uniqueSeed, float alongFlame_percent) 
+	//Calculates a value between 0.0f and 1.0f to multiply the existing transparency with
+	//'uniqueSeed' must be unique for each vertex at a given layer (x or z position)
+{
+	const float speed = 20.0f;
+	
+	float 
+		//a = sin(alongFlame_percent * 40.0f - u_time * speed),            //A pseudo random alpha value that varies with time
+		a = (cnoise(vec2(uniqueSeed - u_time * speed, alongFlame_percent)) + 1.0f) / 2.0f,            //A pseudo random alpha value that varies with time
+		c = pow(1.0f - alongFlame_percent, 2.0) * u_airPressure_percent; //The constant opacity of the plume that is not affected by alpha distortions
+
+	return max(a, c);
+}
+
+vec4 getColour(float uniqueSeed, float alongFlame_percent) 
+	//'uniqueSeed' must be unique for each vertex at a given layer (x or z position)
+{
 	const vec4 
 		start = vec4(1.0f, 0.0f, 0.0f, 1.0f),
 		end = vec4(0.0f, 0.0f, 1.0f, 0.0f);
 
 	float 
 		vacuumIntensity = 0.05f,
-		currentIntensity = vacuumIntensity + (1.0f - vacuumIntensity) * u_airPressure_percent,
+		currentIntensity = lerp(vacuumIntensity, 1.0f, u_airPressure_percent),
 		transparency = currentIntensity * pow(1.0f - alongFlame_percent, 2.0f - alongFlame_percent);
+
+	transparency *= alpha_distortion(uniqueSeed, alongFlame_percent);
 
 	return vec4(vec3(start.xyz + (end.xyz - start.xyz) * alongFlame_percent), transparency);
 }
@@ -96,34 +118,36 @@ float getLength() {
 	
 	//The throttle should not have a visual effect on the plume in a vacuum, it should be very large regardless.
 	//At lower altitudes the throttle's effect is most visible.
-	float currentMinLength = minLength + (maxLength - minLength) * (1.0f - u_airPressure_percent);
+	float currentMinLength = lerp(minLength, maxLength, 1.0f - u_airPressure_percent);
 
-	return currentMinLength + (maxLength - currentMinLength) * u_throttleInRange_percent;
+	return lerp(currentMinLength, maxLength, u_throttleInRange_percent);
 }
 
-//A linearly interpolated radius from the nozzle radius to the current pressure radius at the end of the plume
-float rL(float alongFlame_percent) {
+float rL(float alongFlame_percent) 
+	//A linearly interpolated radius from the nozzle radius to the current pressure radius at the end of the plume
+{
 	const float 
 		exitRadius_SL = 0.0f,
 		exitRadius_vac = 30.0f;
 
-	float exitRadius_current = exitRadius_SL + (exitRadius_vac - exitRadius_SL) * (1.0f - u_airPressure_percent);
+	float exitRadius_current = lerp(exitRadius_SL, exitRadius_vac, 1.0f - u_airPressure_percent);
 
-	return u_nozzleDiameter_m + (exitRadius_current - u_nozzleDiameter_m) * alongFlame_percent;
+	return lerp(u_nozzleDiameter_m, exitRadius_current, alongFlame_percent);
 }
 
-//A quadratic addition added to the linear radius to produce a curved 'inverted raindrop' (sea level) or 'parasol' shaped plume (vacuum)
-float rQ(float alongFlame_percent) {
+float rQ(float alongFlame_percent) 
+	//A quadratic addition added to the linear radius to produce a curved 'inverted raindrop' (sea level) or 'parasol' shaped plume (vacuum)
+{
 	const float 
 		size_SL = 0.3f,   //maximum size of addition at sea level
 		size_vac = 20.0f, //maximum size of addition at vacuum
-		t_SL = 0.03f,      //curve turning point position along the length of the flame at sea level
+		t_SL = 0.03f,     //curve turning point position along the length of the flame at sea level
 		t_vac = 1.0f;     //curve turning point position along the length of the flame at vacuum
 
 	//Calculate the current location of the turning point
 	float 
-		size_current = size_SL + (size_vac - size_SL) * (1.0f - u_airPressure_percent),
-		t_current = t_SL + (t_vac - t_SL) * (1.0f - u_airPressure_percent);
+		size_current = lerp(size_SL, size_vac, 1.0f - u_airPressure_percent),
+		t_current = lerp(t_SL, t_vac, 1.0f - u_airPressure_percent);
 
 	//Addition increasing up to turning point
 	if(alongFlame_percent <= t_current) {
@@ -135,18 +159,37 @@ float rQ(float alongFlame_percent) {
 		return size_current;
 }
 
-float getRadius(float alongFlame_percent) {
+vec3 radial_distort(vec3 initial, float alongFlame_percent) {
+	if(alongFlame_percent == 0.0f)
+		return vec3(0.0f);
+	else {
+		//return normalize(initial) * (sin(alongFlame_percent * 20.0f - u_time * 20.0f) + 1.0f) / 2.0f * 2.0f;
+
+		const float maxDistort = 10.0f;
+
+		float r_norm = (cnoise(vec2(initial.x - u_time * 20.0f, alongFlame_percent)) + 1.0f) / 2.0f;
+		//r_norm = r_norm < 0.2f ? 0.0f : r_norm;
+		float r = r_norm * maxDistort * pow(alongFlame_percent, 3.0);
+
+		return normalize(initial) * r;
+	}
+}
+
+float getRadius(float alongFlame_percent) 
+	//Total of rL() and rQ()
+{
 	if(alongFlame_percent == 0.0)
 		return u_nozzleDiameter_m;
 	else {
 		return 
 			rL(alongFlame_percent) +
-			rQ(alongFlame_percent);	
+			rQ(alongFlame_percent);
 	}
 }
 
-//Ambient pressure distortion
-vec3 AP_distort(float alongFlame_percent) {
+vec3 AP_distort(float alongFlame_percent) 
+	//Ambient pressure distortion
+{
 	if(alongFlame_percent == 0.0f)
 		return vec3(0.0f);
 	else {	
@@ -168,11 +211,12 @@ void main() {
 	position.z = radius.z;
 
 	position += AP_distort(x);
+	position += radial_distort(radius, x);
 
 	//position += normalize(a_Position) * cnoise(vec2(time * 10.0, a_Position.y * 10.0));
 
 
 
-	colour = getColour(abs(a_Position.y));
+	colour = getColour(position.x, abs(a_Position.y));
 	gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0f);
 }
