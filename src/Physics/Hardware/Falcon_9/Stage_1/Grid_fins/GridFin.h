@@ -22,21 +22,20 @@ namespace Physics {
 			static constexpr double
 				mRollRange_degs = 90.0,
 				mMaxPitch_degs = 0.0,
+				mDeployRate = 0.1,
+				mStowRate = 0.2,		 //(after landing)
 				mMinPitch_degs = -90.0,
 				mCmDistFromTop = 0.4064; //m
 
 			enum class Phase { stowed, deploying, deployed, stowing };
 			Phase mCurrentPhase = Phase::stowed;
 
-			const double
-				mClockingDegree_degs = 0.0,
-				mStowRate = 0.2;			//(after landing)
+			const double mClockingDegree_degs = 0.0;
 
 			double
-				mRollAngle = 0.0,	        //vertical = 0, upper bound (local right) = 45, lower bound (local left) = -45, rotational range therefore = 90
-				mPitchAngle = -90.0,          //horizontal is 0, upper bound is 0, lower bound is -90, rotational range is therefore 90
-				mDeployRate = 0.1,
-				mPercentDeployed = 0.0;     //0.0 = stowed, 1.0 = deployed and locked in place
+				mRollAngle = 0.0,	     //vertical = 0, upper bound (local right) = 45, lower bound (local left) = -45, rotational range therefore = 90
+				mPitchAngle = -90.0,     //horizontal is 0, upper bound is 0, lower bound is -90, rotational range is therefore 90
+				mPercentDeployed = 0.0;  //0.0 = stowed, 1.0 = deployed and locked in place
 
 		public:
 			GridFin(double clockingDegree_degs);

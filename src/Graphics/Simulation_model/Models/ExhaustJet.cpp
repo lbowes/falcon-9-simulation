@@ -147,11 +147,17 @@ namespace Graphics {
 
 		vec3 sourceEnginePosition = mSourceEngine.getCompToStageTransform().toParentSpace();
 
-		//ImGui::Text("averageActiveEnginePos_stage: %f, %f, %f\n", averageActiveEnginePos_stage.x, averageActiveEnginePos_stage.y, averageActiveEnginePos_stage.z);
-		//ImGui::Text("sourceEnginePosition: %f, %f, %f\n", sourceEnginePosition.x, sourceEnginePosition.y, sourceEnginePosition.z);
+		vec3 output;
+		if(averageActiveEnginePos_stage == sourceEnginePosition)
+			output = vec3(0.0, 1.0, 0.0);
+		else
+			output = normalize(averageActiveEnginePos_stage - sourceEnginePosition);
 
-		vec3 output = normalize(averageActiveEnginePos_stage - sourceEnginePosition);
-		return vec3(output.x, 0.0f, output.z);
+		ImGui::Text("averageActiveEnginePos_stage: %f, %f, %f\n", averageActiveEnginePos_stage.x, averageActiveEnginePos_stage.y, averageActiveEnginePos_stage.z);
+		ImGui::Text("sourceEnginePosition: %f, %f, %f\n", sourceEnginePosition.x, sourceEnginePosition.y, sourceEnginePosition.z);
+		ImGui::Text("output: %f, %f, %f\n", output.x, output.y, output.z);
+
+		return output;
 	}
 
 }

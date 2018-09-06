@@ -1,5 +1,7 @@
 #include "GridFin.h"
 
+#include <iostream>
+
 namespace Physics {
 	namespace Hardware {
 
@@ -14,17 +16,19 @@ namespace Physics {
 
 		void GridFin::update(double dt/* , double fluidDensity, glm::dvec3 flowVelocity_stage */) {
 			switch (mCurrentPhase) {
-				case Phase::stowed:
+				case Phase::stowed: {
+					printf("stowed\n");
 					mPercentDeployed = 0.0;
 					break;
+				}
 
 				case Phase::deploying: {
+					printf("deploying\n");
 					mPercentDeployed += mDeployRate * dt;
 
 					if (mPercentDeployed > 1.0) {
 						mPercentDeployed = 1.0;
 						mCurrentPhase = Phase::deployed;
-						mDeployRate = 0.0;
 					}
 					else if (mPercentDeployed < 0.0)
 						mPercentDeployed = 0.0;
@@ -32,12 +36,15 @@ namespace Physics {
 					break;
 				}
 
-				case Phase::deployed:
+				case Phase::deployed: {
+					printf("deployed\n");
 					mPercentDeployed = 1.0;
 					break;
+				}
 
 				case Phase::stowing: {
-
+					printf("stowing\n");
+					
 					if (abs(mRollAngle) > 0.1) {
 						mRollAngle -= mRollAngle * 0.95 * dt;
 						return;
