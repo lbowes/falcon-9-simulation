@@ -7,7 +7,7 @@
 #include <GraphicsFramework/Vendor/ImGui/imgui.h>
 #include <glm/gtx/rotate_vector.hpp>
 
-#include <iostream>
+#define EXHAUST_WIREFRAME 0
 
 namespace Graphics {
 	
@@ -27,11 +27,15 @@ namespace Graphics {
 		
 		mMesh->sendRenderCommand(mRenderer);
 		
-		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);		
+#if EXHAUST_WIREFRAME
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);		
+#endif
 		glDepthMask(GL_FALSE);
 		mRenderer.flush();
 		glDepthMask(GL_TRUE);
-		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);		
+#if EXHAUST_WIREFRAME
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);		
+#endif
 	}
 
 	void ExhaustJet::updateTransform(glm::mat4 totalStageTransform_OGL) {

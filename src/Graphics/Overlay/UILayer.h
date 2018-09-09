@@ -23,12 +23,12 @@ namespace Graphics {
 			stage2_testGraph;
 		
 		Physics::Hardware::Falcon9& mDataSource;
-		float& mSimulationSpeedHandle;
+		float& mSimSpeedHandle;
 
 		ImDrawList* mTextDrawList = nullptr;
 
 	public:
-		UILayer(Physics::Hardware::Falcon9& simDataSource, float& simulationSpeedHandle);
+		UILayer(Physics::Hardware::Falcon9& simDataSource, float& simSpeedHandle);
 		~UILayer() = default;
 
 		void render(glm::vec2 mainWindowSize);

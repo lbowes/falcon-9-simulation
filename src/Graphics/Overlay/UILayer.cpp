@@ -6,9 +6,9 @@
 
 namespace Graphics {
 	
-	UILayer::UILayer(Physics::Hardware::Falcon9& simDataSource, float& simulationSpeedHandle) :
+	UILayer::UILayer(Physics::Hardware::Falcon9& simDataSource, float& simSpeedHandle) :
 		mDataSource(simDataSource),
-		mSimulationSpeedHandle(simulationSpeedHandle)
+		mSimSpeedHandle(simSpeedHandle)
 	{
 		load();
 		
@@ -231,18 +231,18 @@ namespace Graphics {
 
 		//temp
 		Begin("Simulation controls", 0, ImGuiWindowFlags_AlwaysAutoResize);
-		SliderFloat("Speed", &mSimulationSpeedHandle, 0.0f, 10.0f);
+		SliderFloat("Speed", &mSimSpeedHandle, 0.0f, 10.0f);
 		
 		if (Button("Pause")) 
-			mSimulationSpeedHandle = 0.0f; 
+			mSimSpeedHandle = 0.0f; 
 		
 		SameLine();
 		if (Button("Resume")) 
-			mSimulationSpeedHandle = 1.0f; 
+			mSimSpeedHandle = 1.0f; 
 		
 		SameLine();
 		if (Button("50%%")) 
-			mSimulationSpeedHandle = 0.5f;
+			mSimSpeedHandle = 0.5f;
 
 		if (Button("Deploy grid fins")) {
 			for (const auto& fin : mDataSource.getStage1().getGridFins().getAllComponents())

@@ -21,7 +21,7 @@ namespace Graphics {
 	}
 
 	void GraphicalShell::load() {
-		mWindow.setClearColour(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f));
+		mWindow.setClearColour(glm::vec4(0.259f, 0.435f, 0.588f, 1.0f));
 	}
 
 }
