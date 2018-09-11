@@ -41,7 +41,9 @@
         "utility": "cpp",
         "algorithm": "cpp",
         "*.txt": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "chrono": "cpp",
+        "ratio": "cpp"
     },
     "terminal.integrated.fontSize": 15,
     "editor.formatOnPaste": false,

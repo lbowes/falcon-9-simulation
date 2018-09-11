@@ -1,4 +1,4 @@
-build/main.o: src/main.cpp /usr/include/stdc-predef.h src/F9Simulation.h \
+build/main.o: src/main.cpp /usr/include/stdc-predef.h src/Simulation.h \
  src/Physics/Hardware/Falcon_9/Falcon9.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Core/ILaunchVehicle.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Core/IStage.h \
@@ -330,50 +330,7 @@ build/main.o: src/main.cpp /usr/include/stdc-predef.h src/F9Simulation.h \
  /usr/include/c++/7/bits/istream.tcc /usr/local/include/GLFW/glfw3.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_2/Falcon9Stage2.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_2/Merlin1DVac.h \
- src/Graphics/GraphicalShell.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/SimulationModelLayer.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/Models/F9S1Model.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/Models/EngineMesh.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/Models/IStageComponentMesh.hpp \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/ResourceSet.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/IndexBuffer.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Resource.hpp \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexBuffer.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexFormat.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/TextureCube.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Texture.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/TextureLoader.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Mesh.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Texture2D.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Shader.h \
- /usr/include/glm/gtc/type_ptr.hpp /usr/include/glm/gtc/vec1.hpp \
- /usr/include/glm/gtc/vec1.inl /usr/include/glm/gtc/type_ptr.inl \
- /usr/include/c++/7/unordered_map /usr/include/c++/7/bits/hashtable.h \
- /usr/include/c++/7/bits/hashtable_policy.h \
- /usr/include/c++/7/bits/unordered_map.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexArray.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Model3D.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/Models/GasThrusterMesh.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/ISimulationModel.hpp \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Renderer.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Camera.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/RenderQueue.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/RenderCommand.hpp \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/Models/F9S2Model.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/Models/ASDSModel.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/Models/EarthModel.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/Cameras/AllCameras.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/PerspectiveCamera.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/Models/ExhaustJet.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/Cameras/CameraSystem.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/SkyBox.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Overlay/Overlay2D.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Overlay/UILayer.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Overlay/Graph.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/ImGui/imgui.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/ImGui/imconfig.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Overlay/VehicleOverlay.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Overlay/Marker2DOverlay.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/OrthographicCamera.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Application.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/ImGui/imgui_impl_glfw_gl3.h
+ /usr/include/c++/7/fstream /usr/include/c++/7/bits/codecvt.h \
+ /usr/include/x86_64-linux-gnu/c++/7/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/7/bits/c++io.h \
+ /usr/include/c++/7/bits/fstream.tcc
