@@ -6,9 +6,8 @@
 
 namespace Graphics {
 	
-	UILayer::UILayer(Physics::Hardware::Falcon9& simDataSource, float& simSpeedHandle) :
-		mDataSource(simDataSource),
-		mSimSpeedHandle(simSpeedHandle)
+	UILayer::UILayer(float& playbackSpeedHandle) :
+		mSimSpeedHandle(playbackSpeedHandle)
 	{
 		load();
 		
@@ -25,28 +24,21 @@ namespace Graphics {
 		//
 	}
 
-	void UILayer::render(glm::vec2 mainWindowSize) {
+	void UILayer::render(const Physics::SimState::Falcon9::Stage1& stage1, glm::vec2 mainWindowSize) {
 		mTextDrawList = ImGui::GetOverlayDrawList();
 
-		stage1PhysicsState();
-		//stage1Propellant(115.0f);
-		//stage1ExtraInfo(115.0f);
+		stage1PhysicsState(stage1);
 		simulationControls();
 
-		//temp testing graph
-		const State&
-			stage1State = mDataSource.getStage1().getState(),
-			stage2State = mDataSource.getStage2().getState();
-		
 		static double lastTime = 0.0;
-		if (stage1State.getCMPosition_world().y > 0.0) {
+		if (stage1.mPosition.y > 0.0) {
 			double
 				currentTime = glfwGetTime(),
 				delta = currentTime - lastTime;
 
 			if (delta > 0.5) {
-				stage1_testGraph.addDataPoint({ static_cast<float>(stage1State.getCMPosition_world().z), static_cast<float>(stage1State.getCMPosition_world().y) });
-				stage2_testGraph.addDataPoint({ static_cast<float>(stage2State.getCMPosition_world().z), static_cast<float>(stage2State.getCMPosition_world().y) });
+				stage1_testGraph.addDataPoint({ static_cast<float>(stage1.mPosition.z), static_cast<float>(stage1.mPosition.y) });
+				stage2_testGraph.addDataPoint({ static_cast<float>(stage1.mPosition.z), static_cast<float>(stage1.mPosition.y) });
 
 				delta = 0.0;
 				lastTime = currentTime;
@@ -80,150 +72,33 @@ namespace Graphics {
 		ImGui::PushStyleColor(ImGuiCol_MenuBarBg,        barColourMain);
 	}
 
-	void UILayer::stage1PhysicsState() const {
-#if 0
-		using namespace ImGui;
-		
-		State& stage1State = mDataSource.getStage1().getState();
-		
-		Begin("Stage_1 Overview");
-		Text("Physics state");
-		BeginChild("State", ImVec2(0.0f, verticalSize), true);
-		{
-			Columns(2);
-			glm::dvec3 temp = stage1State.getCMPosition_world();
-			Text("Position\nx: %.10f\ny: %.10f\nz: %.10f", temp.x, temp.y, temp.z);
-
-			NextColumn();
-			temp = stage1State.getVelocity_world();
-			Text("Linear Velocity\nx: %.10f\ny: %.10f\nz: %.10f", temp.x, temp.y, temp.z); Separator();
-			
-			NextColumn();
-			temp = mDataSource.getStage1().getAccel_world();
-			Text("Linear Acceleration\nx: %.10f\ny: %.10f\nz: %.10f", temp.x, temp.y, temp.z);
-
-			NextColumn();
-			temp = stage1State.getMomentum_world();
-			Text("Momentum\nx: %.10f\ny: %.10f\nz: %.10f", temp.x, temp.y, temp.z); Separator();
-
-			NextColumn();
-			temp = stage1State.getAngularVelocity_world();
-			Text("Angular Velocity\nx: %.10f\ny: %.10f\nz: %.10f", temp.x, temp.y, temp.z);
-
-			NextColumn();
-			temp = stage1State.getAngularMomentum_world();
-			Text("Angular Momentum\nx: %.10f\ny: %.10f\nz: %.10f", temp.x, temp.y, temp.z);
-		}
-		EndChild();
-
-		Text("Total mass: %.3f", stage1State.getMass_local().getValue());
-		
-		End();
-#else
+	void UILayer::stage1PhysicsState(const Physics::SimState::Falcon9::Stage1& stage1) const {
 		using namespace std;
 
-		State& stage1State = mDataSource.getStage1().getState();
-		
 		string dataString = "";
 		
-		glm::dvec3 temp = stage1State.getCMPosition_world();
-		dataString += "Position:            " + to_string(temp.x) + " " + to_string(temp.y) + " " + to_string(temp.z) + "\n";
+		glm::dvec3 vec = stage1.mPosition;
+		dataString += "Position:            " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
 
-		temp = stage1State.getVelocity_world();
-		dataString += "Velocity:            " + to_string(temp.x) + " " + to_string(temp.y) + " " + to_string(temp.z) + "\n";
+		vec = stage1.mVelocity;
+		dataString += "Velocity:            " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
 
-		temp = mDataSource.getStage1().getAccel_world();
-		dataString += "Linear acceleration: " + to_string(temp.x) + " " + to_string(temp.y) + " " + to_string(temp.z) + "\n";
+		vec = stage1.mAcceleration;
+		dataString += "Linear acceleration: " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
 		
-		temp = stage1State.getMomentum_world();
-		dataString += "Momentum:            " + to_string(temp.x) + " " + to_string(temp.y) + " " + to_string(temp.z) + "\n";
+		vec = stage1.mMomentum;
+		dataString += "Momentum:            " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
 
-		temp = stage1State.getAngularVelocity_world();
-		dataString += "Angular Velocity:    " + to_string(temp.x) + " " + to_string(temp.y) + " " + to_string(temp.z) + "\n";
+		vec = stage1.mAngularVelocity;
+		dataString += "Angular velocity:    " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
 
-		temp = stage1State.getAngularMomentum_world();
-		dataString += "Angular Momentum:    " + to_string(temp.x) + " " + to_string(temp.y) + " " + to_string(temp.z) + "\n";
+		vec = stage1.mAngularMomentum;
+		dataString += "Angular momentum:    " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
 
-		dataString += "Mass:                " + to_string(stage1State.getMass_local().getValue());
+		dataString += "Total mass:          " + to_string(stage1.mTotalMass);
 
 		mTextDrawList->AddText(ImVec2(0, 0), ImColor(1.0f, 1.0f, 1.0f), dataString.c_str());
-#endif
 	}
-
-#if 0
-	void UILayer::stage1Propellant() const {
-		using namespace ImGui;
-		using namespace Physics;
-		using namespace Physics::Hardware;
-
-		const FluidTankGroup& tanks = mDataSource.getStage1().getPropellantSupplies();
-		unsigned propMassRemaining = 0;
-		float propPercentRemaining = 0.0f;
-		std::stringstream ss;
-		std::string overlay;
-
-		Begin("Stage_1 Overview");
-		Text("Propellant");
-		BeginChild("Propellant", ImVec2(0.0f, verticalSize), true);
-		{
-			//Liquid Oxygen
-			{
-				propMassRemaining = static_cast<int>(floor(static_cast<const FluidTank*>(tanks[Propellants::liquidOxygen])->getPropMassValue_tank()));
-				propPercentRemaining = static_cast<float>(static_cast<const FluidTank*>(tanks[Propellants::liquidOxygen])->getPercentFull());
-				ss << std::fixed << std::setprecision(2) << propPercentRemaining * 100;
-				overlay = "LOX: " + ss.str() + "% " + std::to_string(propMassRemaining) + "kg";
-				PushStyleColor(ImGuiCol_PlotHistogram, ImVec4(0.4156862745098039f, 0.4274509803921569f, 0.603921568627451f, 1.0f));
-				ProgressBar(propPercentRemaining, ImVec2(-1.0, 30.0), overlay.c_str());
-				PopStyleColor();
-			}
-
-			//RP-1
-			{
-				propMassRemaining = static_cast<int>(floor(static_cast<const FluidTank*>(tanks[Propellants::RP1])->getPropMassValue_tank()));
-				propPercentRemaining = static_cast<float>(static_cast<const FluidTank*>(tanks[Propellants::RP1])->getPercentFull());
-				ss.str(std::string());
-				ss << propPercentRemaining * 100;
-				overlay = "RP-1: " + ss.str() + "% " + std::to_string(propMassRemaining) + "kg";
-				PushStyleColor(ImGuiCol_PlotHistogram, ImVec4(0.5725490196078431f, 0.6313725490196078f, 0.4784313725490196f, 1.0f));
-				ProgressBar(propPercentRemaining, ImVec2(-1.0, 30.0), overlay.c_str());
-				PopStyleColor();
-			}
-
-			//Nitrogen gas
-			{
-				propMassRemaining = static_cast<int>(floor(static_cast<const FluidTank*>(tanks[Propellants::nitrogen])->getPropMassValue_tank()));
-				propPercentRemaining = static_cast<float>(static_cast<const FluidTank*>(tanks[Propellants::nitrogen])->getPercentFull());
-				ss.str(std::string());
-				ss << propPercentRemaining * 100;
-				overlay = "Nitrogen: " + ss.str() + "% " + std::to_string(propMassRemaining) + "kg";
-				PushStyleColor(ImGuiCol_PlotHistogram, ImVec4(0.5f, 0.5f, 0.5f, 1.0f));
-				ProgressBar(propPercentRemaining, ImVec2(-1.0, 30.0), overlay.c_str());
-				PopStyleColor();
-			}
-		}
-		EndChild();
-		End();
-	}
-
-	void UILayer::stage1ExtraInfo() const {
-		using namespace ImGui;
-		
-		Begin("Stage_1 Overview");
-		Text("Motion");
-		BeginChild("Motion", ImVec2(0.0f, verticalSize), true);
-		{
-			float speed = static_cast<float>(glm::length(mDataSource.getStage1().getState().getVelocity_world()));
-			Text("Speed\nm/h: %.3f\nk/h: %.3f\nm/s: %.3f", speed * 2.23694, speed * 3.6, speed); Separator();
-
-			//float 
-			//	angleAttackPitch = mSimulationDataSource.getAngleAttack(true),
-			//	angleAttackAirflow = mSimulationDataSource.getAngleAttack(false);
-			//Text("Angle of attack\nPitch:    %.3f\nAir flow: %.3f", angleAttackPitch, angleAttackAirflow);
-		}
-		EndChild();
-		End();
-	}
-#endif
 
 	void UILayer::simulationControls() const {
 		using namespace Physics;
@@ -243,40 +118,6 @@ namespace Graphics {
 		SameLine();
 		if (Button("50%%")) 
 			mSimSpeedHandle = 0.5f;
-
-		if (Button("Deploy grid fins")) {
-			for (const auto& fin : mDataSource.getStage1().getGridFins().getAllComponents())
-				static_cast<Physics::Hardware::GridFin*>(fin.get())->deploy();
-		}
-		SameLine();
-		if (Button("Stow grid fins")) {
-			for (const auto& fin : mDataSource.getStage1().getGridFins().getAllComponents())
-				static_cast<Physics::Hardware::GridFin*>(fin.get())->stow();
-		}
-
-		if (Button("Deploy landing legs")) {
-			for (const auto& leg : mDataSource.getStage1().getLandingLegs().getAllComponents())
-				static_cast<Physics::Hardware::LandingLeg*>(leg.get())->deploy();
-		}
-		SameLine();
-		if (Button("Stow landing legs")) {
-			for (const auto& leg : mDataSource.getStage1().getLandingLegs().getAllComponents())
-				static_cast<Physics::Hardware::LandingLeg*>(leg.get())->stow_temp();
-		}
-
-		if (Button("Drain all propellant")) {
-			const auto& tanks = mDataSource.getStage1().getPropellantSupplies().getAllComponents();
-			static_cast<Physics::Hardware::FluidTank*>(tanks[Propellants::liquidOxygen].get())->removeAllPropellant();
-			static_cast<Physics::Hardware::FluidTank*>(tanks[Propellants::RP1].get())->removeAllPropellant();
-			static_cast<Physics::Hardware::FluidTank*>(tanks[Propellants::nitrogen].get())->removeAllPropellant();
-		}
-		SameLine();
-		if (Button("Replenish all propellant")) {
-			const auto& tanks = mDataSource.getStage1().getPropellantSupplies().getAllComponents();
-			static_cast<Physics::Hardware::FluidTank*>(tanks[Propellants::liquidOxygen].get())->addPropellant(1000000.0);
-			static_cast<Physics::Hardware::FluidTank*>(tanks[Propellants::RP1].get())->addPropellant(1000000.0);
-			static_cast<Physics::Hardware::FluidTank*>(tanks[Propellants::nitrogen].get())->addPropellant(1000000.0);
-		}
 
 		End();
 		//

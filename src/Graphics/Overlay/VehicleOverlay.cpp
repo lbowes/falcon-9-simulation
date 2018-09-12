@@ -1,32 +1,24 @@
 #include "VehicleOverlay.h"
 #include "Physics/Hardware/Falcon_9/Falcon9.h"
 								  
-#include <GraphicsFramework/Vendor/ImGui/imgui.h>
-#include <GraphicsFramework/Input.h>
-
 namespace Graphics {
 
 	VehicleOverlay::VehicleOverlay(Physics::Hardware::Falcon9& simDataSource, float windowAspect) :
 		mDataSource(simDataSource),
-		mMarker2DOverlay(mResourceContainer, mRenderer)//,
-		//mCoordFrame2DOverlay(mResourceContainer, mRenderer)
+		mMarker2DOverlay(mResourceContainer, mRenderer)
 	{
 		load(windowAspect);
 	}
 
-	void VehicleOverlay::render(glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions) {
+	void VehicleOverlay::render(const Physics::SimState::Falcon9& falcon9, glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions) {
 		mOrthoCam->setAspect(windowAspect);
-
-		//updateAllCoordFrames();
-		//mCoordFrame2DOverlay.render(viewProjection, windowAspect);
 		
-		updateAllMarkers();
+		updateAllMarkers(falcon9);
 		mMarker2DOverlay.render(viewProjection, windowAspect, windowDimensions);
 	}
 
 	void VehicleOverlay::load(float windowAspect) {
 		addAllMarkers();
-		//addAllCoordFrames();
 
 		mOrthoCam = std::make_unique<GF::OrthographicCamera>(glm::vec3(0.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), 1.0f, -1.0f, windowAspect, 1.0f);
 		mRenderer.setCamera(*mOrthoCam);
@@ -76,11 +68,11 @@ namespace Graphics {
 		}
 	}
 
-	void VehicleOverlay::updateAllMarkers() {
+	void VehicleOverlay::updateAllMarkers(const Physics::SimState::Falcon9& falcon9) {
 		//Launch vehicle
 		{
 			const State &vehicleState = mDataSource.immutableState();
-			mMarkedLocations.origin = vehicleState.getObjectSpace().toParentSpace();
+			mMarkedLocations.origin = falcon9.RB.CoMPosition_world;
 			mMarkedLocations.centreMass = vehicleState.getObjectSpace().toParentSpace(vehicleState.getMass_local().getCentre());
 		}
 
@@ -126,83 +118,5 @@ namespace Graphics {
 			mMarkedLocations.S2Origin = stage2State.getObjectSpace().toParentSpace();
 		}
 	}
-
-#if 0
-	void VehicleOverlay::addAllCoordFrames() {
-		//Launch vehicle
-		{
-			mCoordFrame2DOverlay.addCoordFrame(mMarkedLocations.origin, mCoordFrameOrientations.LV, 10.0f);
-		}
-
-		//Stage_1
-		{
-			mCoordFrame2DOverlay.addCoordFrame(mMarkedLocations.S1Origin, mCoordFrameOrientations.S1, 5.0f);
-
-			//Engines
-			for (unsigned char i = 0; i < 9; i++)
-				mCoordFrame2DOverlay.addCoordFrame(mMarkedLocations.enginesOrigins[i], mCoordFrameOrientations.engines[i], 0.5f);
-
-			//Landing_legs and grid fins
-			for (unsigned char i = 0; i < 4; i++) {
-				mCoordFrame2DOverlay.addCoordFrame(mMarkedLocations.legsOrigins[i], mCoordFrameOrientations.legs[i], 1.0f);
-				mCoordFrame2DOverlay.addCoordFrame(mMarkedLocations.gridFinsOrigins[i], mCoordFrameOrientations.gridFins[i], 0.5f);
-			}
-
-			//LOX tank
-			mCoordFrame2DOverlay.addCoordFrame(mMarkedLocations.tanksOrigins[Physics::Propellants::liquidOxygen], mCoordFrameOrientations.tanks[Physics::Propellants::liquidOxygen], 1.0f);
-
-			//RP-1 tank
-			mCoordFrame2DOverlay.addCoordFrame(mMarkedLocations.tanksOrigins[Physics::Propellants::RP1], mCoordFrameOrientations.tanks[Physics::Propellants::RP1], 1.0f);
-		}
-
-		//Stage_2
-		{
-			mCoordFrame2DOverlay.addCoordFrame(mMarkedLocations.S2Origin, mCoordFrameOrientations.S2, 5.0f);
-		}
-	}
-
-	void VehicleOverlay::updateAllCoordFrames() {
-		//Launch vehicle
-		{
-			mCoordFrameOrientations.LV = mDataSource.immutableState().getObjectSpace().getLocalToParent_rotation();
-		}
-
-		//Stage_1
-		{
-			using namespace Physics::Hardware;
-
-			const State &stage1State = mDataSource.getStage1().getState();
-			mCoordFrameOrientations.S1 = stage1State.getObjectSpace().getLocalToParent_rotation();
-
-			//Engines
-			for (unsigned char i = 0; i < 9; i++) {
-				IStageComponent* comp = mDataSource.getStage1().getEngines().getComponent(i);
-				mCoordFrameOrientations.engines[i] = stage1State.getObjectSpace().toParentSpace_rotation(comp->getCompToStageTransform().getLocalToParent_rotation());
-			}
-
-			for (unsigned char i = 0; i < 4; i++) {
-				//Landing_legs
-				IStageComponent* comp = mDataSource.getStage1().getLandingLegs().getComponent(i);
-				mCoordFrameOrientations.legs[i] = stage1State.getObjectSpace().toParentSpace_rotation(comp->getCompToStageTransform().getLocalToParent_rotation());
-
-				//Grid_fins
-				comp = mDataSource.getStage1().getGridFins().getComponent(i);
-				mCoordFrameOrientations.gridFins[i] = stage1State.getObjectSpace().toParentSpace_rotation(comp->getCompToStageTransform().getLocalToParent_rotation());
-			}
-
-			//Tanks
-			for (unsigned char i = 0; i < 2; i++) {
-				IStageComponent* comp = mDataSource.getStage1().getPropellantSupplies().getComponent(i);
-				mCoordFrameOrientations.tanks[i] = stage1State.getObjectSpace().toParentSpace_rotation(comp->getCompToStageTransform().getLocalToParent_rotation());
-			}
-		}
-
-		//Stage_2
-		{
-			const State &stage2State = mDataSource.getStage2().getState();
-			mCoordFrameOrientations.S2 = stage2State.getObjectSpace().getLocalToParent_rotation();
-		}
-	}
-#endif
 
 }

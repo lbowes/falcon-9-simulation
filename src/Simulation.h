@@ -2,9 +2,11 @@
 #define PHYSICS_SIMULATION_H
 
 #include "Physics/Hardware/Falcon_9/Falcon9.h"
+#include "Physics/SimState.h"
 
 #include <string>
 #include <fstream>
+#include <map>
 
 namespace Physics {
 
@@ -22,17 +24,20 @@ namespace Physics {
 			mCurrentTime_s = 0.0,
 			mLastSnapshotTime_s = 0.0;
 
-		static const std::string mDataOuputFile;
+		const std::string mTextOuputFilePath;
 		
-		static std::ofstream mDataOutput;
+		static std::ofstream mTextOutput;
 
 		Physics::Hardware::Falcon9 mFalcon9;
 
+		std::map<double, SimState> mStateHistory;
+
 	public:
-		Simulation();
+		Simulation(const std::string& textOutputFilePath);
 		~Simulation() = default;
 
 		void run();
+		const std::map<double, SimState>& getStateHistory() const { return mStateHistory; }
 
 	private:
 		void load();

@@ -5,14 +5,9 @@
 //testing graphs
 #include "Graph.h"
 //
+#include "Physics/SimState.h"
 
 #include <GraphicsFramework/Vendor/ImGui/imgui.h>
-
-namespace Physics {
-	namespace Hardware {
-		class Falcon9;
-	}
-}
 
 namespace Graphics {
 	
@@ -22,24 +17,19 @@ namespace Graphics {
 			stage1_testGraph,
 			stage2_testGraph;
 		
-		Physics::Hardware::Falcon9& mDataSource;
 		float& mSimSpeedHandle;
 
 		ImDrawList* mTextDrawList = nullptr;
 
 	public:
-		UILayer(Physics::Hardware::Falcon9& simDataSource, float& simSpeedHandle);
+		UILayer(float& playbackSpeedHandle);
 		~UILayer() = default;
 
-		void render(glm::vec2 mainWindowSize);
+		void render(const Physics::SimState::Falcon9::Stage1& stage1, glm::vec2 mainWindowSize);
 
 	private:
 		void load() const;
-		
-		void stage1PhysicsState() const;
-		//void stage1Propellant() const;
-		//void stage1ExtraInfo() const;
-
+		void stage1PhysicsState(const Physics::SimState::Falcon9::Stage1& stage1) const;
 		void simulationControls() const;
 
 	};

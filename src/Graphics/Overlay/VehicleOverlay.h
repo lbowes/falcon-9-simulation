@@ -3,7 +3,7 @@
 #pragma once
 
 #include "Marker2DOverlay.h"
-//#include "CoordFrameOverlay.h"
+#include "Physics/SimState.h"
 
 #include <GraphicsFramework/Renderer.h>
 #include <GraphicsFramework/ResourceSet.h>
@@ -19,7 +19,7 @@ namespace Graphics {
 
 	class VehicleOverlay {
 	private:
-		Physics::Hardware::Falcon9& mDataSource;
+		//Physics::Hardware::Falcon9& mDataSource;
 		
 		struct MarkedLocations {
 			glm::vec3
@@ -42,22 +42,7 @@ namespace Graphics {
 		};
 		MarkedLocations mMarkedLocations;
 		
-		//struct CoordFrameOrientations {
-		//	glm::mat4
-		//		LV,
-		//		S1,
-		//		S2;
-
-		//	std::vector<glm::mat4>
-		//		engines = std::vector<glm::mat4>(9),
-		//		legs = std::vector<glm::mat4>(4),
-		//		gridFins = std::vector<glm::mat4>(4),
-		//		tanks = std::vector<glm::mat4>(2);
-		//};
-		//CoordFrameOrientations mCoordFrameOrientations;
-
 		Marker2DOverlay mMarker2DOverlay;
-		//CoordFrameOverlay mCoordFrame2DOverlay;
 
 		GF::Graphics::Renderer mRenderer;
 		GF::ResourceSet mResourceContainer;
@@ -68,14 +53,12 @@ namespace Graphics {
 		~VehicleOverlay() = default;
 
 	public:
-		void render(glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions);
+		void render(const Physics::SimState::Falcon9& falcon9, glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions);
 
 	private:
 		void load(float windowAspect);
 		void addAllMarkers();
-		void updateAllMarkers();
-		//void addAllCoordFrames();
-		//void updateAllCoordFrames();
+		void updateAllMarkers(const Physics::SimState::Falcon9& falcon9);
 
 	};
 

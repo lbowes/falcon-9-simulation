@@ -40,10 +40,10 @@
         "typeinfo": "cpp",
         "utility": "cpp",
         "algorithm": "cpp",
-        "*.txt": "cpp",
         "string": "cpp",
         "chrono": "cpp",
-        "ratio": "cpp"
+        "ratio": "cpp",
+        "map": "cpp"
     },
     "terminal.integrated.fontSize": 15,
     "editor.formatOnPaste": false,
@@ -55,5 +55,10 @@
     "editor.showFoldingControls": "always",
     "editor.foldingStrategy": "indentation",
     "editor.minimap.renderCharacters": true,
-    "editor.selectionClipboard": false
+    "editor.selectionClipboard": false,
+    "[plaintext]": {
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wrappingIndent": "same",
+        "editor.wordWrapColumn": 130
+    }
 }

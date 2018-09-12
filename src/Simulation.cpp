@@ -4,46 +4,39 @@
 
 namespace Physics {
 
-	const std::string Simulation::mDataOuputFile = "bin/telemetry.dat";
-	std::ofstream Simulation::mDataOutput;
+	std::ofstream Simulation::mTextOutput;
 
-	Simulation::Simulation() {
+	Simulation::Simulation(const std::string& textOutputFilePath) :
+		mTextOuputFilePath(textOutputFilePath)
+	{
 		glm::dvec3 vehiclePosition = { 0.0, 3.0, 0.0 };
 		glm::dmat4 vehicleRotation = glm::rotate(glm::radians(0.0), glm::dvec3(1.0, 0.0, 0.0));
 
 		mFalcon9.mutableState().setObjectToParentTransform({ vehiclePosition, vehicleRotation });
 
-		//Open telemetry output file
-		mDataOutput = std::ofstream(mDataOuputFile);
-		
-		if(!mDataOutput)
-			printf("Error opening data output file: '%s'\n", mDataOuputFile.c_str());
-
-		mDataOutput << std::fixed << std::setprecision(4);
+		//Open telemetry text output file
+		mTextOutput = std::ofstream(textOutputFilePath);
+		if(!mTextOutput)
+			printf("Error opening text output file: '%s'\n", textOutputFilePath.c_str());
+		else
+			mTextOutput << std::fixed << std::setprecision(std::numeric_limits<double>::max_digits10 + 2);
 	}
 	
 	void Simulation::run() {
-		printf("Press enter to begin simulation\n");
-		printf("Simulation STARTED...\n");
-		std::cin.get();
-
+		printf("Started simulation... ");
 
 		while (!stopCondMet()) {
-			//Perfom one state update
 			mFalcon9.update(static_cast<double>(mCurrentTime_s), static_cast<double>(mUpdateStepSize_s));
-
-			//Update the current time after this update
+			
 			mCurrentTime_s += mUpdateStepSize_s;
 			
-			//If the time since the last data snapshot was taken is greater than the interval, take a snapshot and reset.
 			if(mCurrentTime_s - mLastSnapshotTime_s >= mSnapshotInterval_s) {
 				outputAll(mCurrentTime_s, mFalcon9);
 				mLastSnapshotTime_s = mCurrentTime_s;
 			}
 		}
 
-
-		printf("Simulation ENDED.\n");
+		printf("Done.\n");
 	}
 	
 	bool Simulation::stopCondMet() {
@@ -51,46 +44,66 @@ namespace Physics {
 	}
 
 	void Simulation::outputAll(const double currentTime_s, const Hardware::Falcon9& falcon9) {
-		//mDataOutput << "testing this stuff at " << std::fixed << std::setprecision(4) << currentTime_s << "\n";
+		const Hardware::IStage& s1 = mFalcon9.getStage1();
+		const State& s1State = s1.getState();
+		
+		//Create a simulation state for this timestep and populate it
+		SimState snapshot;
 
-		output(currentTime_s);                             //Snapshot time
+		snapshot.mSimulationTime = currentTime_s;
+		output(currentTime_s);
 
 		//Stage 1
 		{
-			//Basic physics state
-			const State& s1 = mFalcon9.getStage1().getState();
-			output(s1.getCMPosition_world());              //position
-			output(s1.getVelocity_world());                //velocity
-			output(mFalcon9.getStage1().getAccel_world()); //acceleration
-			output(s1.getMomentum_world());                //momentum
-			output(s1.getOrientation_world());             //orientation
-			output(s1.getAngularVelocity_world());         //angular velocity
-			output(s1.getAngularMomentum_world());         //angular momentum
-			output(s1.getMass_local().getValue());         //mass
-
-			//
+			//Populate simulation state
+			snapshot.F9.S1.RB.CoMPosition_world = s1State.getCMPosition_world();
+			snapshot.F9.S1.RB.velocity =          s1State.getVelocity_world();
+			snapshot.F9.S1.RB.acceleration =      mFalcon9.getStage1().getAccel_world();
+			snapshot.F9.S1.RB.momentum =          s1State.getMomentum_world();
+			snapshot.F9.S1.RB.orientation =       s1State.getOrientation_world();
+			snapshot.F9.S1.RB.angularVelocity =   s1State.getAngularVelocity_world();
+			snapshot.F9.S1.RB.angularMomentum =   s1State.getAngularMomentum_world();
+			snapshot.F9.S1.RB.mass =              s1State.getMass_local().getValue();
+			snapshot.F9.S1.LOXMass =              static_cast<Hardware::FluidTank*>(s1.getPropellantSupplies().getComponent(Propellants::liquidOxygen))->getPropMassValue_tank();
+			snapshot.F9.S1.RP1Mass =              static_cast<Hardware::FluidTank*>(s1.getPropellantSupplies().getComponent(Propellants::RP1))->getPropMassValue_tank();
+			snapshot.F9.S1.nitrogenMass =         static_cast<Hardware::FluidTank*>(s1.getPropellantSupplies().getComponent(Propellants::nitrogen))->getPropMassValue_tank();
+		
+			//Save results to file
+			output(snapshot.F9.S1.RB.CoMPosition_world);
+			output(snapshot.F9.S1.RB.velocity);
+			output(snapshot.F9.S1.RB.acceleration);
+			output(snapshot.F9.S1.RB.momentum);
+			output(snapshot.F9.S1.RB.orientation);
+			output(snapshot.F9.S1.RB.angularVelocity);
+			output(snapshot.F9.S1.RB.angularMomentum);
+			output(snapshot.F9.S1.RB.mass);
+			output(snapshot.F9.S1.LOXMass);
+			output(snapshot.F9.S1.RP1Mass);
+			output(snapshot.F9.S1.nitrogenMass);
 		}
 
+		//TODO:
+		//Complete the telemetry output with all data coming from the simulation.
 
-
-		mDataOutput << "\n";
+		mStateHistory.insert({ currentTime_s, snapshot });
+		mTextOutput << "\n";
 	}
 
 	void Simulation::output(const glm::dvec3& vec, const char delim) {
-		mDataOutput << vec.x << delim;
-		mDataOutput << vec.y << delim;
-		mDataOutput << vec.z << delim;
+		mTextOutput << vec.x << delim;
+		mTextOutput << vec.y << delim;
+		mTextOutput << vec.z << delim;
 	}
 
 	void Simulation::output(const glm::dquat& quat, const char delim) {
-		mDataOutput << quat.x << delim;
-		mDataOutput << quat.y << delim;
-		mDataOutput << quat.z << delim;
-		mDataOutput << quat.w << delim;
+		mTextOutput << quat.x << delim;
+		mTextOutput << quat.y << delim;
+		mTextOutput << quat.z << delim;
+		mTextOutput << quat.w << delim;
 	}
 
 	void Simulation::output(const double& scalar, const char delim) {
-		mDataOutput << scalar << delim;
+		mTextOutput << scalar << delim;
 	}
 
 }
