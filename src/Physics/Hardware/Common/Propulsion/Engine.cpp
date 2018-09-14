@@ -3,7 +3,7 @@
 namespace Physics {
 	namespace Hardware {
 
-		Engine::Engine(GF::CoordTransform3D engineToStage) :
+		Engine::Engine(CoordTransform3D engineToStage) :
 			IThrustGenerator(engineToStage)
 		{ }
 

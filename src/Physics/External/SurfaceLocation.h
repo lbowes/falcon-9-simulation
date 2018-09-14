@@ -4,7 +4,7 @@
 
 #include "GeoCoordUtils.h"
 
-#include <GraphicsFramework/CoordTransform3D.h>
+#include <PhysicsFramework/CoordTransform3D.h>
 #include <string>
 
 namespace Physics {
@@ -12,17 +12,18 @@ namespace Physics {
 
 		class SurfaceLocation {
 		private:
-			const std::string& mName;
+			std::string& mName;
 			glm::dvec3 mGPSCoordinate_LLH;
-			GF::CoordTransform3D mEUN_to_ECEF;
+			CoordTransform3D mEUN_to_ECEF;
 
 		public:
-			SurfaceLocation(const std::string& name, const glm::dvec3& gpsCoord_LLH = { 0.0, 0.0, 0.0 });
+			SurfaceLocation(const std::string& name = "", const glm::dvec3& gpsCoord_LLH = { 0.0, 0.0, 0.0 });
 			~SurfaceLocation() = default;
 
+			void setName(const std::string& name) { mName = name; }
 			void setGPSPosition(const glm::dvec3& gpsCoord_LLH);
-			
-			const GF::CoordTransform3D& getEUN_to_ECEFTransform() const { return mEUN_to_ECEF; }
+
+			const CoordTransform3D& getEUN_to_ECEFTransform() const { return mEUN_to_ECEF; }
 
 		private:
 			void updateENU_to_ECEFTransform();

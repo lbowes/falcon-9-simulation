@@ -5,6 +5,7 @@
 #include "Physics/External/Earth.h"
 #include "Graphics/Simulation_model/Cameras/AllCameras.h"
 
+#include <PhysicsFramework/CoordTransform3D.h>
 #include <GraphicsFramework/Renderer.h>
 #include <GraphicsFramework/ResourceSet.h>
 #include <GraphicsFramework/Mesh.h>
@@ -74,11 +75,11 @@ namespace Graphics {
 		EarthModel(GF::ResourceSet& resourceBucket);
 		~EarthModel() = default;
 
-		void render(const SimulationCamera& activeSimCam, const GF::CoordTransform3D& eunToEcef);
+		void render(const SimulationCamera& activeSimCam, const CoordTransform3D& eunToEcef);
 
 	private:
 		void loadResources();
-		void updateMeshStructure(glm::dvec3 camPosition_EUN, const GF::CoordTransform3D& eunToEcef);
+		void updateMeshStructure(glm::dvec3 camPosition_EUN, const CoordTransform3D& eunToEcef);
 		void updateTransforms_OGL(glm::dvec3 cameraPosition_EUN);
 		glm::dvec3 getChunkPosition_ecef(glm::dvec2 flooredAxisAngles) const;
 

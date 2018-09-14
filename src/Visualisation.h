@@ -4,7 +4,7 @@
 
 #include "Graphics/Simulation_model/SimulationModelLayer.h"
 #include "Graphics/Overlay/Overlay2D.h"
-#include "Physics/SimState.h"
+#include "Physics/DynamicSimState.h"
 
 #include <GraphicsFramework/Application.h>
 #include <fstream>
@@ -16,14 +16,14 @@ private:
 	const std::string mDataFilePath = "";
 	std::unique_ptr<Graphics::Overlay2D> m2DOverlay;
 	std::unique_ptr<Graphics::SimulationModelLayer> mSimulationModelLayer;
-	const std::map<const double, const Physics::SimState>& mStateHistoryHandle;
+	const std::map<const double, const Physics::DynamicSimState>& mStateHistoryHandle;
 
 	float 
 		mSimTime_s = 0.0,
 		mPlaybackSpeed = 1.0;
 
 public:
-	Visualisation(const std::map<const double, const Physics::SimState>& stateHistoryHandle);
+	Visualisation(const std::map<const double, const Physics::DynamicSimState>& stateHistoryHandle);
 	~Visualisation() = default;
 
 private:

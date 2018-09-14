@@ -1,5 +1,4 @@
 #include "AllCameras.h"
-#include "Physics/Hardware/Falcon_9/Stage_1/Falcon9Stage1.h"
 
 #if CONFIGURE_INTERSTAGE_CAM
 #include <GraphicsFramework/Vendor/ImGui/imgui.h>
@@ -111,23 +110,19 @@ namespace Graphics {
 			mMovementSpeed = 400.0f;
 	}
 
-	InterstageCamera::InterstageCamera(const State& stage1State, float aspect) :
-		SimulationCamera(0.01f, 1000.0f, aspect, mFOV),
-		mStage1State(stage1State)
+	InterstageCamera::InterstageCamera(float aspect) :
+		SimulationCamera(0.01f, 1000.0f, aspect, mFOV)
 	{ 
 		mPosition_stage = glm::rotate(glm::vec3(0.0f, mHeight_stage, mHeightAboveWall), glm::radians(mClockDegree_degs), { 0.0f, 1.0f, 0.0f });
 		mUp_stage = glm::rotate(glm::vec3(0.0f, 0.0f, 1.0f), glm::radians(mClockDegree_degs), { 0.0f, 1.0f, 0.0f });
 		mUp_stage = glm::rotate(mUp_stage, glm::radians(mPitch_degs), glm::cross(normalize(mUp_stage), glm::vec3(0.0f, 1.0f, 0.0f)));
 		mFront_stage = glm::rotate(glm::vec3(0.0f, -1.0f, 0.0f), glm::radians(mPitch_degs), glm::cross(normalize(mUp_stage), glm::vec3(0.0f, 1.0f, 0.0f)));
 
-		mPosition = stage1State.getObjectSpace().toParentSpace(mPosition_stage);
-		mPerspectiveCamera.setFront(stage1State.getObjectSpace().toParentSpace_rotation(mFront_stage));
-		mPerspectiveCamera.setUp(stage1State.getObjectSpace().toParentSpace_rotation(mUp_stage));
 		mPerspectiveCamera.setFOVY(mFOV);
 		mPerspectiveCamera.setAspect(aspect);
 	}
 
-	void InterstageCamera::update(float windowAspect/* , float dt */) {
+	void InterstageCamera::update(const CoordTransform3D& stage1ToWorld, float windowAspect/* , float dt */) {
 		using namespace glm;
 
 #if CONFIGURE_INTERSTAGE_CAM
@@ -177,9 +172,9 @@ namespace Graphics {
 		
 		printf("clockDegree_degs: %f\npitch_degs: %f\nheight_stage: %f\nheightAboveWall: %f\nFOV: %f\n\n\n", clockDegree_degs, pitch_degs, height_stage, heightAboveWall, FOV);
 #else
-		mPosition = mStage1State.getObjectSpace().toParentSpace(mPosition_stage);
-		mPerspectiveCamera.setFront(mStage1State.getObjectSpace().toParentSpace_rotation(mFront_stage));
-		mPerspectiveCamera.setUp(mStage1State.getObjectSpace().toParentSpace_rotation(mUp_stage));
+		mPosition = stage1ToWorld.toParentSpace(mPosition_stage);
+		mPerspectiveCamera.setFront(stage1ToWorld.toParentSpace_rotation(mFront_stage));
+		mPerspectiveCamera.setUp(stage1ToWorld.toParentSpace_rotation(mUp_stage));
 #endif
 
 		mPerspectiveCamera.setAspect(windowAspect);

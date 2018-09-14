@@ -3,7 +3,7 @@
 #pragma once
 
 #include "Marker2DOverlay.h"
-#include "Physics/SimState.h"
+#include "Physics/DynamicSimState.h"
 
 #include <GraphicsFramework/Renderer.h>
 #include <GraphicsFramework/ResourceSet.h>
@@ -53,12 +53,12 @@ namespace Graphics {
 		~VehicleOverlay() = default;
 
 	public:
-		void render(const Physics::SimState::Falcon9& falcon9, glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions);
+		void render(const Physics::DynamicSimState::Falcon9& falcon9, glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions);
 
 	private:
 		void load(float windowAspect);
 		void addAllMarkers();
-		void updateAllMarkers(const Physics::SimState::Falcon9& falcon9);
+		void updateAllMarkers(const Physics::DynamicSimState::Falcon9& falcon9);
 
 	};
 

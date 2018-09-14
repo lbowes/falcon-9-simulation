@@ -7,17 +7,13 @@
 #define GRAPHICS_ALLCAMERAS_H
 #pragma once
 
+#include "PhysicsFramework/CoordTransform3D.h"
+
 #include <GraphicsFramework/PerspectiveCamera.h>
 #include <GraphicsFramework/Input.h>
 #include <PhysicsFramework/State.h>
 
 #define CONFIGURE_INTERSTAGE_CAM 0
-
-namespace Physics {
-	namespace Hardware {
-		class Falcon9Stage1;
-	}
-}
 
 namespace Graphics {
 
@@ -31,8 +27,8 @@ namespace Graphics {
 		~SimulationCamera() = default;
 
 		glm::mat4 getViewProjection_generated() const;
-		const GF::Camera& getInternalCamera_immutable() const { return mPerspectiveCamera; }
-		GF::Camera& getInternalCamera_mutable() { return mPerspectiveCamera; }
+		const GF::Camera& getInternalCamera() const { return mPerspectiveCamera; }
+		GF::Camera& getInternalCamera() { return mPerspectiveCamera; }
 
 		const glm::dvec3& getPosition() const { return mPosition; }
 
@@ -73,8 +69,6 @@ namespace Graphics {
 
 	class InterstageCamera : public SimulationCamera {
 	private:
-		const State& mStage1State;
-
 		const float
 			mClockDegree_degs = 10.882f,
 			mPitch_degs = 2.222f,
@@ -88,10 +82,10 @@ namespace Graphics {
 			mUp_stage;
 
 	public:
-		InterstageCamera(const State& stage1State, float aspect);
+		InterstageCamera(float aspect);
 		~InterstageCamera() = default;
 
-		void update(float windowAspect/* , float dt */);
+		void update(const CoordTransform3D& stage1ToWorld, float windowAspect/* , float dt */);
 
 	};
 

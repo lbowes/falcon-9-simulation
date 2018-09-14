@@ -7,9 +7,9 @@ namespace Graphics {
 		mVehicleOverlay(windowAspect)
 	{ }
 
-	void Overlay2D::render(const Physics::SimState::Falcon9& falcon9, glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions) {
-		mUILayer.render(falcon9.S1, windowDimensions);
-		mVehicleOverlay.render(falcon9, viewProjection, windowAspect, windowDimensions);
+	void Overlay2D::render(const Physics::DynamicSimState& currentState, glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions) {
+		mUILayer.render(currentState.falcon9.S1, windowDimensions);
+		mVehicleOverlay.render(currentState.falcon9, viewProjection, windowAspect, windowDimensions);
 	}
 
 }

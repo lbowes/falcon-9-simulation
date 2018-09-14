@@ -1,20 +1,19 @@
 #include "LandingLegMesh.h"
-#include "Physics/Hardware/Falcon_9/Stage_1/Landing_legs/LandingLeg.h"
 
 namespace Graphics {
 
-	LandingLegMesh::LandingLegMesh(Physics::Hardware::LandingLeg& landingLegData) :
-		mLandingLegData(landingLegData)
+	LandingLegMesh::LandingLegMesh(const Physics::StaticSimState::Falcon9::Stage1::LandingLegs& legs, const Physics::DynamicSimState::Falcon9::Stage1::LandingLeg& dataSource) :
+		mDataSource(dataSource)
 	{
-		mPistonCylinderTransformMap.resize(landingLegData.mPiston->getCylinders().size());
-		std::fill(mPistonCylinderTransformMap.begin(), mPistonCylinderTransformMap.end(), glm::mat4());
+		mPistonCylinderTransformMap.resize(legs.pistonCylinderCount);
+		std::fill(mPistonCylinderTransformMap.begin(), mPistonCylinderTransformMap.end(), glm::mat4(1.0f));
 	}
 
 	void LandingLegMesh::updateTransform_OGL(glm::mat4 stageModelTransform_OGL) {
 		using namespace glm;
 		
 		//A-frame transform
-		mTransform_OGL = stageModelTransform_OGL * mat4(mLandingLegData.mCompToStage.getLocalToParent_total());
+		mTransform_OGL = stageModelTransform_OGL * mat4(mDataSource.legToStage.getLocalToParent_total());
 
 		//Telescoping piston cylinder transforms
 		updateCylinderTransforms_OGL(length(mLandingLegData.mAlongPiston_stage3D), mLandingLegData.mPiston->getAngleFromVertical_stage(), stageModelTransform_OGL);

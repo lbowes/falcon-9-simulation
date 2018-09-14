@@ -1,6 +1,6 @@
 #include "Visualisation.h"
 
-Visualisation::Visualisation(const std::map<const double, const Physics::SimState>& stateHistoryHandle) :
+Visualisation::Visualisation(const std::map<const double, const Physics::DynamicSimState>& stateHistoryHandle) :
 	Application("Falcon 9 Simulation", "res/SpaceXLogo.png"),
 	mStateHistoryHandle(stateHistoryHandle)
 {
@@ -13,7 +13,7 @@ void Visualisation::onLoad() {
 	//std::string line;
 
 	//while(std::getline(dataFile, line)) {
-	//	SimState state(line);
+	//	DynamicSimState state(line);
 	//	mStateHistory.insert({ state.mSimulationTime, state });
 	//}
 
@@ -49,10 +49,10 @@ void Visualisation::onRender() {
 	mSimTime_s += mPlaybackSpeed * mFrameTime;
 
 	//Get an iterator to the previous state in the state history
-	const std::map<const double, const SimState>::const_iterator prevState = mStateHistoryHandle.find(floor(mSimTime_s));
+	const std::map<const double, const DynamicSimState>::const_iterator prevState = mStateHistoryHandle.find(floor(mSimTime_s));
 
 	//Get the previous and next simulation states to interpolate between
-	const SimState& 
+	const DynamicSimState& 
 		previousState = prevState->second,
 		nextState = std::next(prevState, 1)->second;
 
@@ -60,9 +60,9 @@ void Visualisation::onRender() {
 	double timeBetweenStates = (mSimTime_s - previousState.mSimulationTime) / (nextState.mSimulationTime - previousState.mSimulationTime);
 
 	//Interpolate between the previous and next states to get the current state
-	const SimState& currentState = SimState::lerp(previousState, nextState, timeBetweenStates);
+	const DynamicSimState currentState = DynamicSimState::lerp(previousState, nextState, timeBetweenStates);
 
 	//Use the approximation for the current state to render the simulation
-	mSimulationModelLayer->render(mWindow.getAspect(), static_cast<float>(mFrameTime));
-	m2DOverlay->render(currentState.F9, mSimulationModelLayer->getCameraSystem().getCurrentSimCamera().getViewProjection_generated(), mWindow.getAspect(), mWindow.getDimensions());
+	mSimulationModelLayer->render(currentState, mWindow.getAspect(), static_cast<float>(mFrameTime));
+	m2DOverlay->render(currentState, mSimulationModelLayer->getCameraSystem().getCurrentSimCamera().getViewProjection_generated(), mWindow.getAspect(), mWindow.getDimensions());
 }

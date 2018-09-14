@@ -3,7 +3,7 @@
 namespace Physics {
 	namespace Hardware {
 
-		Merlin1DVac::Merlin1DVac(GF::CoordTransform3D merlinToStage) :
+		Merlin1DVac::Merlin1DVac(CoordTransform3D merlinToStage) :
 			Engine(merlinToStage)
 		{
 			setTypeSpecificParams();

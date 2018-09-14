@@ -25,7 +25,7 @@ namespace Physics {
 			double mThrustMagnitude = 0.0; //N
 
 		public:
-			IThrustGenerator(GF::CoordTransform3D thrusterToStage);
+			IThrustGenerator(CoordTransform3D thrusterToStage);
 			virtual ~IThrustGenerator() = default;
 
 			void update(double dt);

@@ -44,7 +44,7 @@ namespace Physics {
 				//mVe_Vac = 311.0,           //s
 
 		public:
-			Engine(GF::CoordTransform3D engineToStage);
+			Engine(CoordTransform3D engineToStage);
 			virtual ~Engine() = default;
 
 			double getThrottle() const { return mThrottle; }

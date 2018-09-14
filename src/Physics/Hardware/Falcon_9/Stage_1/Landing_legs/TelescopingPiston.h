@@ -20,15 +20,17 @@ namespace Physics {
 				mMaxWidth = 1.15,    //m
 				mMinWidth = 0.7;     //m
 			
-			std::vector<PistonCylinder> mCylinders;
-
-			Spring mSpring;
+			static constexpr unsigned char mCylinderCount = 5;
 
 			const glm::dvec3 mMountPoint_stage;
 			
 			const double
 				mClockingDegree_degs = 0.0,     //degs
 				mMinLength = 0.0;               //m
+
+			std::vector<PistonCylinder> mCylinders;
+
+			Spring mSpring;
 
 			double
 				mCurrentLength = 0.0,           //m

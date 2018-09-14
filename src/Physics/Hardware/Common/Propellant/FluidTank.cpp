@@ -3,7 +3,7 @@
 namespace Physics {
 	namespace Hardware {
 		
-		FluidTank::FluidTank(GF::CoordTransform3D tankToStage, Fluid fluid, double height, double diameter, double wallThickness, double materialDensity) :
+		FluidTank::FluidTank(CoordTransform3D tankToStage, Fluid fluid, double height, double diameter, double wallThickness, double materialDensity) :
 			IStageComponent(tankToStage),
 			mFluid(fluid),
 			mHeight(height),

@@ -3,7 +3,7 @@
 namespace Physics {
 	namespace Hardware {
 		
-		IThrustGenerator::IThrustGenerator(GF::CoordTransform3D thrusterToStage) :
+		IThrustGenerator::IThrustGenerator(CoordTransform3D thrusterToStage) :
 			IStageComponent(thrusterToStage)
 		{ }
 		

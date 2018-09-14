@@ -58,14 +58,14 @@ namespace Physics {
 			LandingLeg(double clockingDegree_degs);
 			~LandingLeg() = default;
 
-			void update(const GF::CoordTransform3D& stageToWorld, glm::dvec3 legOriginAccel_world, double dt);
+			void update(const CoordTransform3D& stageToWorld, glm::dvec3 legOriginAccel_world, double dt);
 			void deploy();
 			void stow_temp();
 
 			TelescopingPiston* getPiston() const { return mPiston.get(); }
 
 		private:
-			void updateState(const GF::CoordTransform3D& stageToWorld, glm::dvec3 legOriginAccel_world, double dt);
+			void updateState(const CoordTransform3D& stageToWorld, glm::dvec3 legOriginAccel_world, double dt);
 			void updateCompToStage_rotation();
 			void clampRotationRange(double maxAngle);
 

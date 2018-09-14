@@ -1,5 +1,4 @@
-#include "SimulationModelLayer.h"
-#include "Physics/Hardware/Falcon_9/Falcon9.h"
+#include "Graphics/Simulation_model/SimulationModelLayer.h"
 
 #include <GraphicsFramework/Vendor/ImGui/imgui.h>
 
@@ -7,20 +6,22 @@
 
 namespace Graphics {
 
-	SimulationModelLayer::SimulationModelLayer(Physics::Hardware::Falcon9& simDataSource, float startWindowAspect) :
-		mDataSource(simDataSource),
-		mCameras(simDataSource.getStage1().getState(), startWindowAspect)
+	SimulationModelLayer::SimulationModelLayer(const Physics::StaticSimState& staticSimState, float startWindowAspect) :
+		mStaticSimState(staticSimState),
+		mCameras(startWindowAspect)
 	{ 
 		load();
 	}
 
-	void SimulationModelLayer::render(float windowAspect, float dt) {
+	void SimulationModelLayer::render(const Physics::DynamicSimState& state, float windowAspect, float dt) {
 		using namespace Physics::External;
 		
-		mCameras.update(windowAspect, dt, mDataSource.getStage1().getState().getCMPosition_world());
+		const CoordTransform3D& stage1ToWorld = state.F9.S1.RB.localToWorld;
+
+		mCameras.update(stage1ToWorld, windowAspect, dt);
 		
 		SimulationCamera& currentSimCamera = mCameras.getCurrentSimCamera();
-		GF::Camera& currentCamera = currentSimCamera.getInternalCamera_mutable();
+		GF::Camera& currentCamera = currentSimCamera.getInternalCamera();
 		mSolidRenderer.setCamera(currentCamera);
 		mWireframeRenderer.setCamera(currentCamera);
 
@@ -32,12 +33,11 @@ namespace Graphics {
 		flushRenderers();
 
 		//Render Earth
-		mEarthModel->render(currentSimCamera, mDataSource.getSurfaceLocation().getEUN_to_ECEFTransform());
+		mEarthModel->render(currentSimCamera, mStaticSimState.F9.mInertialPosition.getEUN_to_ECEFTransform());
 
 		//Render exhaust models
-		const State& s1State = mDataSource.getStage1().getState();
-		float airPressure_percent = static_cast<float>(Environment::getAirPressure_Pa(floor(s1State.getCMPosition_world().y))) / Environment::seaLevelStdPressure;
-		glm::vec3 ambientFlow_stage = -s1State.getObjectSpace().toLocalSpace_rotation(s1State.velocityAtLocalPoint_world(glm::vec3(0.0f)));
+		float airPressure_percent = static_cast<float>(Environment::getAirPressure_Pa(floor(state.F9.S1.RB.CoMPosition_world.y))) / Environment::seaLevelStdPressure;
+		glm::vec3 ambientFlow_stage = -stage1ToWorld.toLocalSpace_rotation(state.F9.S1.RB.velocity);
 
 		for (const auto& exhaustJet : mStage1Exhausts) {
 			exhaustJet->update(airPressure_percent, ambientFlow_stage);

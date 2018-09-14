@@ -18,7 +18,7 @@ namespace Graphics {
 		loadResources();
 	}
 
-	void EarthModel::render(const SimulationCamera& activeSimCam, const GF::CoordTransform3D& eunToEcef) {
+	void EarthModel::render(const SimulationCamera& activeSimCam, const CoordTransform3D& eunToEcef) {
 		//Copy the required state of the currently active camera
 		const GF::Camera& cam = activeSimCam.getInternalCamera_immutable();
 		tempCamera.setFront(cam.getFront());
@@ -55,7 +55,7 @@ namespace Graphics {
 		mRenderer.setCamera(tempCamera);
 	}
 
-	void EarthModel::updateMeshStructure(glm::dvec3 camPosition_EUN, const GF::CoordTransform3D& eunToEcef) {
+	void EarthModel::updateMeshStructure(glm::dvec3 camPosition_EUN, const CoordTransform3D& eunToEcef) {
 #if 0
 		using namespace glm;
 		

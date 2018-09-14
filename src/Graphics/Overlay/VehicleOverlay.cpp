@@ -10,7 +10,7 @@ namespace Graphics {
 		load(windowAspect);
 	}
 
-	void VehicleOverlay::render(const Physics::SimState::Falcon9& falcon9, glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions) {
+	void VehicleOverlay::render(const Physics::DynamicSimState::Falcon9& falcon9, glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions) {
 		mOrthoCam->setAspect(windowAspect);
 		
 		updateAllMarkers(falcon9);
@@ -68,7 +68,7 @@ namespace Graphics {
 		}
 	}
 
-	void VehicleOverlay::updateAllMarkers(const Physics::SimState::Falcon9& falcon9) {
+	void VehicleOverlay::updateAllMarkers(const Physics::DynamicSimState::Falcon9& falcon9) {
 		//Launch vehicle
 		{
 			const State &vehicleState = mDataSource.immutableState();

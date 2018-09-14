@@ -21,7 +21,7 @@ namespace Physics {
 				mIsp = 0.0; //TODO - Implement a use for specific impulse
 
 		public:
-			GasThruster(GF::CoordTransform3D engineToStage);
+			GasThruster(CoordTransform3D engineToStage);
 			~GasThruster() = default;
 
 			void attachPropSupplyLine(GasSupplyLine* supplyLine) { mSupplyLine = supplyLine; }

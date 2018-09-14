@@ -4,7 +4,7 @@
 
 #include <PhysicsFramework/Mass.h>
 #include <PhysicsFramework/InertiaTensor.h>
-#include <GraphicsFramework/CoordTransform3D.h>
+#include <PhysicsFramework/CoordTransform3D.h>
 
 namespace Physics {
 	namespace Hardware {
@@ -17,10 +17,10 @@ namespace Physics {
 		protected:
 			Mass mMass_comp;
 			InertiaTensor mCMInertia_comp;
-			GF::CoordTransform3D mCompToStage;
+			CoordTransform3D mCompToStage;
 
 		public:
-			IStageComponent(GF::CoordTransform3D compToStage = GF::CoordTransform3D(), Mass mass_comp = Mass(), InertiaTensor CMInertia_comp = InertiaTensor()) :
+			IStageComponent(CoordTransform3D compToStage = CoordTransform3D(), Mass mass_comp = Mass(), InertiaTensor CMInertia_comp = InertiaTensor()) :
 				mMass_comp(mass_comp),
 				mCMInertia_comp(CMInertia_comp),
 				mCompToStage(compToStage)
@@ -49,7 +49,7 @@ namespace Physics {
 					);
 			}
 
-			const GF::CoordTransform3D& getCompToStageTransform() const { return mCompToStage; }
+			const CoordTransform3D& getCompToStageTransform() const { return mCompToStage; }
 			double getMassValue() const { return mMass_comp.getValue(); }
 
 		};

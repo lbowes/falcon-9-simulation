@@ -40,7 +40,7 @@ namespace Physics {
 				mPropellantInertia_propCoM;
 
 		public:
-			FluidTank(GF::CoordTransform3D tankToStage, Fluid fluid, double height, double diameter, double wallThickness, double materialDensity);
+			FluidTank(CoordTransform3D tankToStage, Fluid fluid, double height, double diameter, double wallThickness, double materialDensity);
 			~FluidTank() = default;
 
 			void addPropellant(double mass_kgs);

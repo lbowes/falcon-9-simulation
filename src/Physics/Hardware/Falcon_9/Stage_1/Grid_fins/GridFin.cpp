@@ -6,7 +6,7 @@ namespace Physics {
 	namespace Hardware {
 
 		GridFin::GridFin(double clockingDegree_degs) :
-			IStageComponent(GF::CoordTransform3D(), 300.0),
+			IStageComponent(CoordTransform3D(), 300.0),
 			mClockingDegree_degs(clockingDegree_degs)
 		{
 			mCompToStage.setLocalToParent_position(rotate(glm::dvec3(0.0, m2DMountPoint_stage.y, -m2DMountPoint_stage.x), glm::radians(clockingDegree_degs), glm::dvec3(0.0, 1.0, 0.0)));

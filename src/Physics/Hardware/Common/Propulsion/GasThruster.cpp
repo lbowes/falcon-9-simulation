@@ -3,7 +3,7 @@
 namespace Physics {
 	namespace Hardware {
 
-		GasThruster::GasThruster(GF::CoordTransform3D engineToStage) :
+		GasThruster::GasThruster(CoordTransform3D engineToStage) :
 			IThrustGenerator(engineToStage)
 		{
 			setTypeSpecificParams();

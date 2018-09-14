@@ -5,7 +5,7 @@
 //testing graphs
 #include "Graph.h"
 //
-#include "Physics/SimState.h"
+#include "Physics/DynamicSimState.h"
 
 #include <GraphicsFramework/Vendor/ImGui/imgui.h>
 
@@ -25,11 +25,11 @@ namespace Graphics {
 		UILayer(float& playbackSpeedHandle);
 		~UILayer() = default;
 
-		void render(const Physics::SimState::Falcon9::Stage1& stage1, glm::vec2 mainWindowSize);
+		void render(const Physics::DynamicSimState::Falcon9::Stage1& stage1, glm::vec2 mainWindowSize);
 
 	private:
 		void load() const;
-		void stage1PhysicsState(const Physics::SimState::Falcon9::Stage1& stage1) const;
+		void stage1PhysicsState(const Physics::DynamicSimState::Falcon9::Stage1& stage1) const;
 		void simulationControls() const;
 
 	};

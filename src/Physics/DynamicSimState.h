@@ -1,8 +1,11 @@
 //This class should contain one instance of every piece of **dynamic** simulation state.
 
-#ifndef PHYSICS_SIMSTATE_H 
-#define PHYSICS_SIMSTATE_H
+#ifndef PHYSICS_DYNAMICSIMSTATE_H 
+#define PHYSICS_DYNAMICSIMSTATE_H
 #pragma once
+
+#include "External/SurfaceLocation.h"
+#include "PhysicsFramework/CoordTransform3D.h"
 
 #include <glm/vec3.hpp>
 #include <glm/gtx/quaternion.hpp>
@@ -26,14 +29,18 @@ namespace Physics {
 		glm::dquat orientation = glm::dquat();
 
 		double mass = 0.0;
+
+		CoordTransform3D localToWorld;
 	};
 
-	class SimState {
+	class DynamicSimState {
 	public:
 		double mSimulationTime = 0.0;
 
 		struct Falcon9 {
 			RigidBodyState RB;
+			
+			CoordTransform3D EUN_to_ECEFTransform;
 
 			struct Stage1 {
 				RigidBodyState RB;
@@ -43,26 +50,35 @@ namespace Physics {
 					RP1Mass = 0.0,
 					nitrogenMass = 0.0;
 
-				//All bools
-				//TODO
-			}; 
-			Stage1 S1;
+				struct LandingLeg {
+					CoordTransform3D legToStage;
+
+				
+				} leg1, leg2, leg3, leg4;
+
+				struct GridFin {
+
+				} fin1, fin2, fin3, fin4;
+			} S1;
 
 			struct Stage2 {
 				RigidBodyState RB;
+				
+				double 
+					LOXMass = 0.0,
+					RP1Mass = 0.0,
+					nitrogenMass = 0.0;
 
 				//TODO
-			};
-			Stage2 S2;
-		};
-		Falcon9 F9;
+			} S2;
+		} F9;
 
 	public:
-		SimState() = default;
-		SimState(const std::string& dataString);
-		~SimState() = default;
+		DynamicSimState() = default;
+		DynamicSimState(const std::string& dataString);
+		~DynamicSimState() = default;
 
-		static SimState lerp(const SimState& a, const SimState& b, double x);
+		static DynamicSimState lerp(const DynamicSimState& a, const DynamicSimState& b, double x);
 		static double lerp(const double& a, const double& b, double x);	
 
 	};

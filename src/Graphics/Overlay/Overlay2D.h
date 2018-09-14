@@ -16,7 +16,7 @@ namespace Graphics {
 		Overlay2D(float& playbackSpeedHandle, float windowAspect);
 		~Overlay2D() = default;
 	
-		void render(const Physics::SimState::Falcon9& falcon9, glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions);
+		void render(const Physics::DynamicSimState& currentState, glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions);
 
 	};
 

@@ -24,7 +24,7 @@ namespace Graphics {
 		//
 	}
 
-	void UILayer::render(const Physics::SimState::Falcon9::Stage1& stage1, glm::vec2 mainWindowSize) {
+	void UILayer::render(const Physics::DynamicSimState::Falcon9::Stage1& stage1, glm::vec2 mainWindowSize) {
 		mTextDrawList = ImGui::GetOverlayDrawList();
 
 		stage1PhysicsState(stage1);
@@ -72,7 +72,7 @@ namespace Graphics {
 		ImGui::PushStyleColor(ImGuiCol_MenuBarBg,        barColourMain);
 	}
 
-	void UILayer::stage1PhysicsState(const Physics::SimState::Falcon9::Stage1& stage1) const {
+	void UILayer::stage1PhysicsState(const Physics::DynamicSimState::Falcon9::Stage1& stage1) const {
 		using namespace std;
 
 		string dataString = "";

@@ -3,8 +3,9 @@
         {
             "name": "Linux",
             "includePath": [
-                "/home/lbowes/dev/Programming/Deps/Includes/",
-                "/home/lbowes/dev/Programming/Projects/F9 Simluation/src/"
+                "${workspaceFolder}/src/",
+                "/home/lbowes/dev/Programming/Projects/F9 Simluation/src/",
+                "/home/lbowes/dev/Programming/Deps/Includes/"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/g++",

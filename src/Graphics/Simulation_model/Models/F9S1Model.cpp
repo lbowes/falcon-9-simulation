@@ -6,8 +6,7 @@
 namespace Graphics {
 
 	F9S1Model::F9S1Model(const Physics::Hardware::Falcon9Stage1& stage1Data, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket) :
-		ISimulationModel(renderer, resourceBucket),
-		mStage1Data(stage1Data)
+		ISimulationModel(renderer, resourceBucket)
 	{
 		loadResources();
 	}
@@ -47,14 +46,12 @@ namespace Graphics {
 		}
 	}
 
-	void F9S1Model::updateAllTransforms_OGL(glm::dvec3 currentCameraPosition) {
+	void F9S1Model::updateAllTransforms_OGL(const Physics::DynamicSimState::Falcon9::Stage1& stage1, glm::dvec3 currentCameraPosition) {
 		using namespace glm;
 
-		const State& state = mStage1Data.getState();
-
 		mat4
-			posTransform_OGL = translate(currentCameraPosition- state.getObjectSpace().toParentSpace()),
-			rotTransform_OGL = toMat4(inverse(state.getOrientation_world()));
+			posTransform_OGL = translate(currentCameraPosition- stage1.RB.localToWorld.toParentSpace()),
+			rotTransform_OGL = toMat4(inverse(stage1.RB.orientation));
 			
 		mTotalTransform_OGL = inverse(rotTransform_OGL * posTransform_OGL);
 

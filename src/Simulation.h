@@ -2,7 +2,7 @@
 #define PHYSICS_SIMULATION_H
 
 #include "Physics/Hardware/Falcon_9/Falcon9.h"
-#include "Physics/SimState.h"
+#include "Physics/DynamicSimState.h"
 
 #include <string>
 #include <fstream>
@@ -30,19 +30,20 @@ namespace Physics {
 
 		Physics::Hardware::Falcon9 mFalcon9;
 
-		std::map<double, SimState> mStateHistory;
+		std::map<double, DynamicSimState> mStateHistory;
 
 	public:
 		Simulation(const std::string& textOutputFilePath);
 		~Simulation() = default;
 
 		void run();
-		const std::map<double, SimState>& getStateHistory() const { return mStateHistory; }
+		const std::map<double, DynamicSimState>& getStateHistory() const { return mStateHistory; }
 
 	private:
 		void load();
 		bool stopCondMet();
 		void outputAll(const double currentTime, const Hardware::Falcon9& falcon9);
+		void outputRBState(const RigidBodyState& RB);
 		void output(const glm::dvec3& vec, const char delim = ',');
 		void output(const glm::dquat& quat, const char delim = ',');
 		void output(const double& scalar, const char delim = ',');

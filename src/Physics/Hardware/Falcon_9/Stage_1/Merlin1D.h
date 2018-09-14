@@ -9,7 +9,7 @@ namespace Physics {
 		
 		class Merlin1D : public Engine {
 		public:
-			Merlin1D(GF::CoordTransform3D merlinToStage);
+			Merlin1D(CoordTransform3D merlinToStage);
 			~Merlin1D() = default;
 
 		private:

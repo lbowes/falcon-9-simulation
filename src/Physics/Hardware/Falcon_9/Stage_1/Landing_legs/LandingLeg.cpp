@@ -4,7 +4,7 @@ namespace Physics {
 	namespace Hardware {
 
 		LandingLeg::LandingLeg(double clockingDegree_degs) :
-			IStageComponent(GF::CoordTransform3D(), 600.0),
+			IStageComponent(CoordTransform3D(), 600.0),
 			mPistonStartPos_stage3D(glm::rotate(glm::dvec3(0.0, mPistonStartPos_stage2D.y, -mPistonStartPos_stage2D.x), glm::radians(clockingDegree_degs), { 0.0, 1.0, 0.0 })),
 			mPusherStartPos_stage3D(mPistonStartPos_stage3D - glm::dvec3(0.0, 0.3, 0.0)),
 			mClockingDegree_degs(clockingDegree_degs)
@@ -26,7 +26,7 @@ namespace Physics {
 			mPusher = std::make_unique<LegDeploymentActuator>(minPusherLength);
 		}
 
-		void LandingLeg::update(const GF::CoordTransform3D& stageToWorld, glm::dvec3 legOriginAccel_world, double dt) {
+		void LandingLeg::update(const CoordTransform3D& stageToWorld, glm::dvec3 legOriginAccel_world, double dt) {
 			mPistonEndPos_stage3D = mCompToStage.toParentSpace({ 0.0, mPistonEndPos_leg2D.y, -mPistonEndPos_leg2D.x });
 			mAlongPiston_stage3D = mPistonEndPos_stage3D - mPistonStartPos_stage3D;
 			mPiston->update(glm::length(mAlongPiston_stage3D), dt);
@@ -51,7 +51,7 @@ namespace Physics {
 			updateCompToStage_rotation();
 		}
 
-		void LandingLeg::updateState(const GF::CoordTransform3D& stageToWorld, glm::dvec3 legOriginAccel_world, double dt) {
+		void LandingLeg::updateState(const CoordTransform3D& stageToWorld, glm::dvec3 legOriginAccel_world, double dt) {
 			using namespace glm;
 			
 			switch (mDeploymentPhase) {

@@ -2,6 +2,10 @@
 #define GRAPHICS_SIMULATIONMODELLAYER_H
 #pragma once
 
+#include "Physics/StaticSimState.h"
+#include "Physics/DynamicSimState.h"
+#include "Physics/External/Environment.h"
+
 #include "Models/F9S1Model.h"
 #include "Models/F9S2Model.h"
 #include "Models/ASDSModel.h"
@@ -21,8 +25,9 @@ namespace Graphics {
 			mWireframeRenderer;
 
 		GF::ResourceSet mResourceBucket;
-		Physics::Hardware::Falcon9& mDataSource;
 		
+		const Physics::StaticSimState& mStaticSimState;
+
 		std::unique_ptr<F9S1Model> mF9S1Model;
 		std::unique_ptr<F9S2Model> mF9S2Model;
 		std::unique_ptr<ASDSModel> mASDSModel;
@@ -33,10 +38,10 @@ namespace Graphics {
 		CameraSystem mCameras;
 
 	public:
-		SimulationModelLayer(Physics::Hardware::Falcon9& simDataSource, float startWindowAspect);
+		SimulationModelLayer(const Physics::StaticSimState& staticSimState, float startWindowAspect);
 		~SimulationModelLayer() = default;
 
-		void render(float windowAspect, float dt);
+		void render(const Physics::DynamicSimState& currentState, float windowAspect, float dt);
 		void checkInput(float dt, glm::vec2 windowDimensions);
 
 		const CameraSystem& getCameraSystem() const { return mCameras; }

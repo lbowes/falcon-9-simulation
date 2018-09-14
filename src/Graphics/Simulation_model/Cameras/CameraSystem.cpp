@@ -1,15 +1,14 @@
 #include "CameraSystem.h"
-#include "Physics/Hardware/Falcon_9/Falcon9.h"
 
 namespace Graphics {
 
-	CameraSystem::CameraSystem(const State& stage1State, float windowAspect) {
-		addAllCameras(stage1State, windowAspect);
+	CameraSystem::CameraSystem(float windowAspect) {
+		addAllCameras(windowAspect);
 	}
 
-	void CameraSystem::update(float windowAspect, float dt, glm::dvec3 stage1CoMPosition_world) {
+	void CameraSystem::update(const CoordTransform3D& stage1ToWorld, float windowAspect, float dt, glm::dvec3 stage1CoMPosition_world) {
 		FPV_CAM->update(windowAspect, dt);
-		INTERSTAGE_CAM->update(windowAspect/* , dt */);
+		INTERSTAGE_CAM->update(stage1ToWorld, windowAspect/* , dt */);
 		CHASER_CAM->update(windowAspect, stage1CoMPosition_world/* , dt */);
 	}
 
@@ -27,7 +26,7 @@ namespace Graphics {
 			CHASER_CAM->handleInput();
 	}
 
-	void CameraSystem::addAllCameras(const State& stage1State, float windowAspect) {
+	void CameraSystem::addAllCameras(float windowAspect) {
 		//temp
 		//Physics::External::SurfaceLocation temp({ "temp", glm::dvec3(53.826687, -2.419171, 0.0) });
 		//glm::dvec3 
@@ -43,9 +42,7 @@ namespace Graphics {
 			windowAspect,
 			45.0f));
 
-		mCameras.push_back(std::make_unique<InterstageCamera>(
-			stage1State,
-			windowAspect));
+		mCameras.push_back(std::make_unique<InterstageCamera>(windowAspect));
 
 		mCameras.push_back(std::make_unique<ChaserCamera>(
 			glm::vec3(1.0, 0.0, 0.0),

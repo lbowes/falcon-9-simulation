@@ -9,7 +9,7 @@ namespace Physics {
 			mClockingDegree_degs(clockingDegree_degs),
 			mMinLength(minimumLength)
 		{ 
-			for (unsigned char i = 0; i < 5; i++)
+			for (unsigned char i = 0; i < mCylinderCount; i++)
 				mCylinders.push_back(PistonCylinder(*this, mMaxWidth - (mMaxWidth - mMinWidth) * static_cast<float>(i) / 4, i));
 		}
 
