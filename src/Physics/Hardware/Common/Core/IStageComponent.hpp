@@ -16,13 +16,13 @@ namespace Physics {
 
 		protected:
 			Mass mMass_comp;
-			InertiaTensor mCMInertia_comp;
+			InertiaTensor mCoMInertia_comp;
 			CoordTransform3D mCompToStage;
 
 		public:
-			IStageComponent(CoordTransform3D compToStage = CoordTransform3D(), Mass mass_comp = Mass(), InertiaTensor CMInertia_comp = InertiaTensor()) :
+			IStageComponent(CoordTransform3D compToStage = CoordTransform3D(), Mass mass_comp = Mass(), InertiaTensor CoMInertia_comp = InertiaTensor()) :
 				mMass_comp(mass_comp),
-				mCMInertia_comp(CMInertia_comp),
+				mCoMInertia_comp(CoMInertia_comp),
 				mCompToStage(compToStage)
 			{ }
 
@@ -39,7 +39,7 @@ namespace Physics {
 
 			//This function is able to return the complete inertia of the component in stage space
 			InertiaTensor getInertia_stage(glm::dvec3 stageCentreMass_stage) {
-				InertiaTensor cmInertia_stageRotation = mCMInertia_comp.afterRotation(mCompToStage.getLocalToParent_rotation());
+				InertiaTensor cmInertia_stageRotation = mCoMInertia_comp.afterRotation(mCompToStage.getLocalToParent_rotation());
 
 				return 
 					InertiaTensor::parallelAxis(

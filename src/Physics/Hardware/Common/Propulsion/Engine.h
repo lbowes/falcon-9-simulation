@@ -4,6 +4,7 @@
 
 #include "IThrustGenerator.h"
 #include "Physics/Hardware/Common/Propellant/SupplyLine.h"
+#include "Physics/DynamicSimState.h"
 
 namespace Graphics {
 	class ExhaustJet;
@@ -15,6 +16,8 @@ namespace Physics {
 		class Engine : public IThrustGenerator {
 			friend class Graphics::ExhaustJet;
 		protected:
+			const CoordTransform3D mEngineToStageNoGimbal;
+			
 			PropSupplyLine* mSupplyLine = nullptr;
 			
 			//TODO: Very few members below are currently used. Remove unnecessary members here and complete
@@ -40,12 +43,15 @@ namespace Physics {
 				mOFMixtureRatio = 0.0,       //oxygen : fuel
 				mThrottleMin = 0.0,	         //Minimum percentage throttle
 				mThrottleMax = 0.0;	         //Maximum percentage throttle
-				//mVe_SL = 282.0,            //s
-				//mVe_Vac = 311.0,           //s
+
+			glm::dvec2 mGimbalXY;
 
 		public:
 			Engine(CoordTransform3D engineToStage);
 			virtual ~Engine() = default;
+
+			void loadDynamicState(const DSS::EngineState& state);
+			void saveDynamicState(DSS::EngineState& toSaveTo) const;
 
 			double getThrottle() const { return mThrottle; }
 			double getThrottleMin() const { return mThrottleMin; }
@@ -53,6 +59,9 @@ namespace Physics {
 			double getNozzleExitDiameter() const { return mNozzleExitDiameter; }
 			void setThrottle(double newThrottle);
 			void attachPropSupplyLine(PropSupplyLine* supplyLine) { mSupplyLine = supplyLine; }
+
+			//TODO:
+			//void setGimbalXY();
 
 		protected:
 			void updateProperties();

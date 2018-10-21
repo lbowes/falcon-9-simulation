@@ -5,8 +5,9 @@
 
 namespace Graphics {
 
-	F9S1Model::F9S1Model(const Physics::Hardware::Falcon9Stage1& stage1Data, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket) :
-		ISimulationModel(renderer, resourceBucket)
+	F9S1Model::F9S1Model(const Physics::Hardware::Falcon9Stage1& dataSource, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket) :
+		ISimulationModel(renderer, resourceBucket),
+		mDataSource(dataSource)
 	{
 		loadResources();
 	}
@@ -27,31 +28,31 @@ namespace Graphics {
 		using namespace Physics::Hardware;
 
 		//Landing leg meshes
-		for (const auto& landingLeg : mStage1Data.getLandingLegs().getAllComponents())
+		for (const auto& landingLeg : mDataSource.getLandingLegs().getAllComponents())
 			mComponentMeshes.push_back(std::make_unique<LandingLegMesh>(*static_cast<LandingLeg*>(landingLeg.get()), mResourceBucket, mModel));
 
 		//Grid fin meshes
-		for (const auto& gridFin : mStage1Data.getGridFins().getAllComponents())
+		for (const auto& gridFin : mDataSource.getGridFins().getAllComponents())
 			mComponentMeshes.push_back(std::make_unique<GridFinMesh>(*static_cast<GridFin*>(gridFin.get()), mResourceBucket, mModel));
 
 		//Gas thruster meshes
-		for (const auto& thruster : mStage1Data.getThrusters().getAllComponents())
+		for (const auto& thruster : mDataSource.getThrusters().getAllComponents())
 			mComponentMeshes.push_back(std::make_unique<GasThrusterMesh>(*static_cast<GasThruster*>(thruster.get()), mResourceBucket, mModel));
 
 		//Engine meshes
 		unsigned char count = 0;
-		for (const auto& engine : mStage1Data.getEngines().getAllComponents()) {
+		for (const auto& engine : mDataSource.getEngines().getAllComponents()) {
 			mComponentMeshes.push_back(std::make_unique<EngineMesh>("Merlin1D" + std::to_string(count), BOX_MODELS ? "res/models/Merlin1D_Box.obj" : "res/models/Merlin1D.obj", *static_cast<Engine*>(engine.get()), mResourceBucket, mModel));
 			count++;
 		}
 	}
 
-	void F9S1Model::updateAllTransforms_OGL(const Physics::DynamicSimState::Falcon9::Stage1& stage1, glm::dvec3 currentCameraPosition) {
+	void F9S1Model::updateAllTransforms_OGL(glm::dvec3 currentCameraPosition) {
 		using namespace glm;
 
 		mat4
-			posTransform_OGL = translate(currentCameraPosition- stage1.RB.localToWorld.toParentSpace()),
-			rotTransform_OGL = toMat4(inverse(stage1.RB.orientation));
+			posTransform_OGL = translate(currentCameraPosition - mDataSource.getState().getObjectSpace().toParentSpace()),
+			rotTransform_OGL = toMat4(inverse(mDataSource.getState().getOrientation_world()));
 			
 		mTotalTransform_OGL = inverse(rotTransform_OGL * posTransform_OGL);
 
@@ -184,7 +185,7 @@ namespace Graphics {
 		
 		mat4 hingeTransform = rotate(static_cast<float>(radians(mDataSource.mRollAngle)), XZDirection_stage);
 		hingeTransform = rotate(hingeTransform, static_cast<float>(radians(mDataSource.mClockingDegree_degs)), { 0.0f, 1.0f, 0.0f });
-		hingeTransform = stageModelTransform_OGL * mat4(mDataSource.mCompToStage.getLocalToParent_position()) * hingeTransform;
+		hingeTransform = stageModelTransform_OGL * mat4(mDataSource.mCompToStage.getLocalToParent_translation()) * hingeTransform;
 		mHingeMesh->setModelTransform(hingeTransform);
 
 		//Fin transform

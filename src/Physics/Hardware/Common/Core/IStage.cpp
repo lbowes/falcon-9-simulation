@@ -4,12 +4,10 @@ namespace Physics {
 	namespace Hardware {
 
 		void IStage::update(double t, double dt) {
-			assert(mInitialised && "Stage must be initialised before it is updated.");
-
 			mEngines.update(dt);
 			mThrusters.update(dt);
 			mPropellantSupplies.update();
-			otherUpdates(t, dt); //Updates any other custom features of a stage (e.g. Grid_fins, landing legs etc)
+			otherUpdates(t, dt); //Updates any other custom features of a stage (e.g. Grid fins, landing legs etc)
 
 			mState.setMass_local(recalcTotalMass_stage());
 			mState.setInertiaTensor_local(recalcCmInertia_stage());
@@ -24,20 +22,13 @@ namespace Physics {
 			//updateAngleAttack();
 		}
 
-		void IStage::initState()
-			//This function must be called by sub classes to set the initial state of the stage before any updates take place. 
-		{
-			mInitialised = true;
-			update(0.0, 0.0);
-		}
-
 		void IStage::addForces(const State &state, double t) {
 #if !STAGE_FORCE_ACTIVE
 			return;
 #endif
 			//Weight
 #if STAGE_WEIGHT_ACTIVE
-			addWorldForceThroughCM(glm::dvec3(0.0, mState.getMass_local().getValue() * -External::Environment::getGravity(static_cast<int>(floor(mState.getCMPosition_world().y))), 0.0));
+			addWorldForceThroughCM(glm::dvec3(0.0, mState.getMass_local().getValue() * -External::Environment::getGravity(static_cast<int>(floor(mState.getCoMPosition_world().y))), 0.0));
 #endif
 			//Engines
 			IThrustGenerator* thrustGenerator = nullptr;
@@ -69,8 +60,6 @@ namespace Physics {
 		}
 
 		InertiaTensor IStage::recalcCmInertia_stage() const {
-			
-
 			glm::dvec3 stageCentreMass_stage = mState.getMass_local().getCentre();
 
 			//Adding the moment of inertia of the all tanks

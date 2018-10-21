@@ -3,17 +3,17 @@
 								  
 namespace Graphics {
 
-	VehicleOverlay::VehicleOverlay(Physics::Hardware::Falcon9& simDataSource, float windowAspect) :
+	VehicleOverlay::VehicleOverlay(const Physics::Hardware::Falcon9& simDataSource, float windowAspect) :
 		mDataSource(simDataSource),
 		mMarker2DOverlay(mResourceContainer, mRenderer)
 	{
 		load(windowAspect);
 	}
 
-	void VehicleOverlay::render(const Physics::DynamicSimState::Falcon9& falcon9, glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions) {
+	void VehicleOverlay::render(glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions) {
 		mOrthoCam->setAspect(windowAspect);
 		
-		updateAllMarkers(falcon9);
+		updateAllMarkers();
 		mMarker2DOverlay.render(viewProjection, windowAspect, windowDimensions);
 	}
 
@@ -68,11 +68,11 @@ namespace Graphics {
 		}
 	}
 
-	void VehicleOverlay::updateAllMarkers(const Physics::DynamicSimState::Falcon9& falcon9) {
+	void VehicleOverlay::updateAllMarkers() {
 		//Launch vehicle
 		{
-			const State &vehicleState = mDataSource.immutableState();
-			mMarkedLocations.origin = falcon9.RB.CoMPosition_world;
+			const State &vehicleState = mDataSource.getState();
+			mMarkedLocations.origin = vehicleState.getCoMPosition_world();
 			mMarkedLocations.centreMass = vehicleState.getObjectSpace().toParentSpace(vehicleState.getMass_local().getCentre());
 		}
 

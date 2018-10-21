@@ -2,7 +2,7 @@
 
 namespace Physics {
 
-	DynamicSimState::DynamicSimState(const std::string& dataString) 
+	DSS::DSS(const std::string& dataString) 
 		//Parses data string to fully populate the member state
 	{
 		//Parse the data string into a vector of items
@@ -17,74 +17,42 @@ namespace Physics {
 				ss.ignore();
 		}
 
-		//Initialise members with the correct data
-		mSimulationTime = dataPoints[0];
-
-		F9.RB.CoMPosition_world = { dataPoints[], dataPoints[], dataPoints[] };
-		F9.RB.velocity =          { dataPoints[], dataPoints[], dataPoints[] };         
-		F9.RB.acceleration =      { dataPoints[], dataPoints[], dataPoints[] };     
-		F9.RB.momentum =          { dataPoints[], dataPoints[], dataPoints[] };         
-		F9.RB.orientation =       { dataPoints[], dataPoints[], dataPoints[], dataPoints[] };      
-		F9.RB.angularVelocity =   { dataPoints[], dataPoints[], dataPoints[] };
-		F9.RB.angularMomentum =   { dataPoints[], dataPoints[], dataPoints[] }; 
-		F9.RB.CoMPosition_local = { dataPoints[], dataPoints[], dataPoints[] };
-		F9.RB.mass =                dataPoints[];
-		F9.RB.localToWorld.setLocalToParent_translation(F9.RB.CoMPosition_world);
-		F9.RB.localToWorld.setLocalToParent_rotation(F9.RB.orientation);
-
-		//F9.S1.RB -> "Falcon 9 Stage 1 Rigid body"
-		F9.S1.RB.CoMPosition_world =  { dataPoints[],  dataPoints[],  dataPoints[] };
-		F9.S1.RB.velocity =           { dataPoints[],  dataPoints[],  dataPoints[] };
-		F9.S1.RB.acceleration =       { dataPoints[],  dataPoints[],  dataPoints[] };
-		F9.S1.RB.momentum =           { dataPoints[], dataPoints[], dataPoints[] };
-		F9.S1.RB.orientation =        { dataPoints[], dataPoints[], dataPoints[], dataPoints[] };
-		F9.S1.RB.angularVelocity =    { dataPoints[], dataPoints[], dataPoints[] };
-		F9.S1.RB.angularMomentum =    { dataPoints[], dataPoints[], dataPoints[] };
-		F9.S1.RB.CoMPosition_local =  { dataPoints[], dataPoints[], dataPoints[] };
-		F9.S1.RB.mass =                 dataPoints[];
-		F9.S1.RB.localToWorld.setLocalToParent_translation(F9.S1.RB.CoMPosition_world);
-		F9.S1.RB.localToWorld.setLocalToParent_rotation(F9.S1.RB.orientation);
-
-		F9.S1.LOXMass =               dataPoints[];
-		F9.S1.RP1Mass =               dataPoints[];
-		F9.S1.nitrogenMass =          dataPoints[];
-
-		//TODO: Complete simulation state for stage 1
-
-		//TODO: Add state for stage 2 (and things like environment?)	
+		//TODO: Fully initialise the dynamic state using the string passed in	
 	}
 
-	DynamicSimState DynamicSimState::lerp(const DynamicSimState& a, const DynamicSimState& b, double x) {
-		DynamicSimState output;
+	void DSS::loadRigidBodyState(const DSS::RigidBodyState& source, State& dest) {
+		dest.setCoMPosition_world(source.CoMPosition_world);
+		dest.setVelocity_world(source.velocity);
+		dest.setMomentum_world(source.momentum);
+		dest.setOrientation_world(source.orientation);
+		dest.setAngularVelocity_world(source.angularVelocity);
+		dest.setAngularMomentum_world(source.angularMomentum);
+		dest.setMass_local(source.mass_local);
+		dest.setInertiaTensor_local(source.inertiaTensor_local);
+		dest.setObjectToParentTransform(source.localToWorld);
+	}
 
-		output.mSimulationTime = (a.mSimulationTime, b.mSimulationTime, x);
+	void DSS::saveRigidBodyState(const RigidBody& source, DSS::RigidBodyState& dest) {
+		const State& rigidBodyState = source.getState();
 
-		output.F9.S1.RB.CoMPosition_world = glm::lerp(a.F9.S1.RB.CoMPosition_world, b.F9.S1.RB.CoMPosition_world, x);    
-		output.F9.S1.RB.velocity =          glm::lerp(a.F9.S1.RB.velocity, b.F9.S1.RB.velocity, x);
-		output.F9.S1.RB.acceleration =      glm::lerp(a.F9.S1.RB.acceleration, b.F9.S1.RB.acceleration, x);
-		output.F9.S1.RB.momentum =          glm::lerp(a.F9.S1.RB.momentum, b.F9.S1.RB.momentum, x);    
-		output.F9.S1.RB.orientation =       glm::lerp(a.F9.S1.RB.orientation, b.F9.S1.RB.orientation, x);
-		output.F9.S1.RB.angularVelocity =   glm::lerp(a.F9.S1.RB.angularVelocity, b.F9.S1.RB.angularVelocity, x);
-		output.F9.S1.RB.angularMomentum =   glm::lerp(a.F9.S1.RB.angularMomentum, b.F9.S1.RB.angularMomentum, x);
-		output.F9.S1.RB.mass =              lerp(a.F9.S1.RB.mass, b.F9.S1.RB.mass, x);
-		output.F9.S1.RB.localToWorld.setLocalToParent_translation(output.F9.S1.RB.CoMPosition_world);
-		output.F9.S1.RB.localToWorld.setLocalToParent_rotation(output.F9.S1.RB.orientation);
+		dest.CoMPosition_world = rigidBodyState.getCoMPosition_world();
+		dest.velocity = rigidBodyState.getVelocity_world();
+		dest.acceleration = source.getAccel_world();
+		dest.momentum = rigidBodyState.getMomentum_world();
+		dest.orientation = rigidBodyState.getOrientation_world();			
+		dest.angularVelocity = rigidBodyState.getAngularVelocity_world();
+		dest.angularMomentum = rigidBodyState.getAngularMomentum_world();
+		dest.mass_local = rigidBodyState.getMass_local();
+		dest.inertiaTensor_local = rigidBodyState.getInertiaTensor_local();
+		dest.localToWorld = rigidBodyState.getObjectSpace();
+	}
 
-		output.F9.S1.LOXMass =              lerp(a.F9.S1.LOXMass, b.F9.S1.LOXMass, x);
-		output.F9.S1.RP1Mass =              lerp(a.F9.S1.RP1Mass, b.F9.S1.RP1Mass, x);
-		output.F9.S1.nitrogenMass =         lerp(a.F9.S1.nitrogenMass, b.F9.S1.nitrogenMass, x);
+	DSS DSS::lerp(const DSS& a, const DSS& b, double x) {
+		DSS output;
 
-		//TODO: Complete simulation state
-
-
-
-
+		//TODO: Linearly interpolate between two states
 
 		return output;
-	}
-
-	double DynamicSimState::lerp(const double& a, const double& b, double x) {
-		return a + (b - a) * x;
 	}
 
 }

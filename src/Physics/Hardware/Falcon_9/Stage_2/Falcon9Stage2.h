@@ -5,6 +5,7 @@
 #include "Physics/Hardware/Common/Core/IStage.h"
 #include "Merlin1DVac.h"
 #include "Physics/Hardware/Common/Propulsion/GasThruster.h"
+#include "Physics/DynamicSimState.h"
 
 namespace Physics {
 	namespace Hardware {
@@ -16,10 +17,13 @@ namespace Physics {
 
 			void preFlight() {
 				//Load correct amounts of propellant into the tanks
-				static_cast<FluidTank*>(mPropellantSupplies[Propellants::liquidOxygen])->addPropellant(75.2_tonnes); //75200.0, LOX
-				static_cast<FluidTank*>(mPropellantSupplies[Propellants::RP1])->addPropellant(32.3_tonnes);          //32300.0, RP-1
-				//static_cast<PropellantTank*>(mThrusterGasSupply[0])->addPropellant(8.0);
+				static_cast<FluidTank*>(mPropellantSupplies[Propellants::liquidOxygen])->addFluid(75.2_tonnes); //75200.0, LOX
+				static_cast<FluidTank*>(mPropellantSupplies[Propellants::RP1])->addFluid(32.3_tonnes);          //32300.0, RP-1
+				//static_cast<PropellantTank*>(mThrusterGasSupply[0])->addFluid(8.0);
 			}
+
+			void loadDynamicState(const DSS::Falcon9::Stage2& state);
+			void saveDynamicState(DSS::Falcon9::Stage2& toSaveTo) const;
 
 		private:
 			void otherUpdates(double t, double dt);

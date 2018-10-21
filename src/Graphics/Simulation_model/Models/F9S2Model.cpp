@@ -3,7 +3,7 @@
 
 namespace Graphics {
 
-	F9S2Model::F9S2Model(Physics::Hardware::Falcon9Stage2& stage2Data, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket) :
+	F9S2Model::F9S2Model(const Physics::Hardware::Falcon9Stage2& stage2Data, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket) :
 		ISimulationModel(renderer, resourceBucket),
 		mStage2Data(stage2Data)
 	{

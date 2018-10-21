@@ -3,24 +3,20 @@
 namespace Physics {
 	namespace Hardware {
 
-		LandingLeg::LandingLeg(double clockingDegree_degs) :
-			IStageComponent(CoordTransform3D(), 600.0),
-			mPistonStartPos_stage3D(glm::rotate(glm::dvec3(0.0, mPistonStartPos_stage2D.y, -mPistonStartPos_stage2D.x), glm::radians(clockingDegree_degs), { 0.0, 1.0, 0.0 })),
+		LandingLeg::LandingLeg(double clockingDegree) :
+			IStageComponent(CoordTransform3D(), recalcMass(), recalcInertia()),
+			mClockingDegree(clockingDegree),
+			mClockingRotation_stage(glm::rotate(glm::radians(clockingDegree), glm::dvec3(0.0, 1.0, 0.0))),
+			mPistonStartPos_stage3D(glm::rotate(glm::dvec3(0.0, mPistonStartPos_stage2D.y, -mPistonStartPos_stage2D.x), glm::radians(clockingDegree), { 0.0, 1.0, 0.0 })),
 			mPusherStartPos_stage3D(mPistonStartPos_stage3D - glm::dvec3(0.0, 0.3, 0.0)),
-			mClockingDegree_degs(clockingDegree_degs)
+			mAboutOrigin(InertiaTensor::parallelAxis(mCoMInertia_comp, mMass_comp.getValue(), -mMass_comp.getCentre()))
 		{
-			using namespace glm;
-
-			//Set up coordinate space
-			mCompToStage.setLocalToParent_position(rotate(dvec3(0.0, mPos_stage2D.y, -mPos_stage2D.x), radians(clockingDegree_degs), { 0.0, 1.0, 0.0 }));
+			//Setup coordinate space
+			mCompToStage.setLocalToParent_translation(glm::rotate(glm::dvec3(0.0, mPos_stage2D.y, -mPos_stage2D.x), glm::radians(clockingDegree), { 0.0, 1.0, 0.0 }));
 			updateCompToStage_rotation();
 
-			//Set up inertial state
-			mMass_comp.setCentre(dvec3(0.0, mCentreMassPos_leg2D.y, -mCentreMassPos_leg2D.x));
-			mCMInertia_comp = InertiaTensor::solidCylinder(mMass_comp.getValue(), 0.8064, 6.943);
-
 			double minPistonLength = length(mCompToStage.toParentSpace({ 0.0, mPistonEndPos_leg2D.y, -mPistonEndPos_leg2D.x }) - mPistonStartPos_stage3D);
-			mPiston = std::make_unique<TelescopingPiston>(mPistonStartPos_stage3D, clockingDegree_degs, minPistonLength);
+			mPiston = std::make_unique<TelescopingPiston>(mPistonStartPos_stage3D, clockingDegree, minPistonLength);
 
 			double minPusherLength = length(mCompToStage.toParentSpace({ 0.0, mPusherEndPos_leg2D.y, -mPusherEndPos_leg2D.x }) - mPusherStartPos_stage3D);
 			mPusher = std::make_unique<LegDeploymentActuator>(minPusherLength);
@@ -36,6 +32,34 @@ namespace Physics {
 			mPusher->update(glm::length(mAlongPusher_stage3D));
 
 			updateState(stageToWorld, legOriginAccel_world, dt);
+		}
+ 
+		void LandingLeg::loadDynamicState(const DSS::Falcon9::Stage1::LandingLegState& state) {
+			mDeploymentPhase = static_cast<Phase>(state.deploymentPhase);
+			mDeploymentAngle_rads = state.deploymentAngle_rads;
+			mDeploymentVelocity_rads = state.deploymentVelocity_rads;
+			mAlongPiston_stage3D = state.alongPiston_stage3D;
+			mPistonEndPos_stage3D = state.pistonEndPos_stage3D;
+			mAlongPusher_stage3D = state.alongPusher_stage3D;
+			mPusherEndPos_stage3D = state.pusherEndPos_stage3D;
+			mCompToStage = state.compToStage;
+			
+			mPiston->loadDynamicState(state.telescopingPiston);
+			mPusher->loadDynamicState(state.pusher);
+		}
+
+		void LandingLeg::saveDynamicState(DSS::Falcon9::Stage1::LandingLegState& toSaveTo) const {
+			toSaveTo.deploymentPhase = static_cast<DSS::Falcon9::Stage1::LandingLegState::Phase>(mDeploymentPhase);
+			toSaveTo.deploymentAngle_rads = mDeploymentAngle_rads;
+			toSaveTo.deploymentVelocity_rads = mDeploymentVelocity_rads;
+			toSaveTo.alongPiston_stage3D = mAlongPiston_stage3D;
+			toSaveTo.pistonEndPos_stage3D = mPistonEndPos_stage3D;
+			toSaveTo.alongPusher_stage3D = mAlongPusher_stage3D;
+			toSaveTo.pusherEndPos_stage3D = mPusherEndPos_stage3D;
+			toSaveTo.compToStage = mCompToStage;
+
+			mPiston->saveDynamicState(toSaveTo.telescopingPiston);
+			mPusher->saveDynamicState(toSaveTo.pusher);
 		}
 
 		void LandingLeg::deploy() {
@@ -84,13 +108,10 @@ namespace Physics {
 					cross(mCompToStage.toLocalSpace(mPusherEndPos_stage3D), pusherForce_leg) + 
 					cross(mCompToStage.toLocalSpace(mPistonEndPos_stage3D), pistonForce_leg);
 			
-				//6. Prepare an inertia tensor of the leg about its origin (rather than centre of mass) using parallel axis theorem.
-				InertiaTensor aboutOrigin = InertiaTensor::parallelAxis(mCMInertia_comp, mass, -mMass_comp.getCentre());
-			
-				//7. Calculate angular acceleration vector about the origin given torque and inertia
-				dvec3 angularAccelOfOrigin = aboutOrigin.inverse().getInternal() * totalTorque_leg;
+				//6. Calculate angular acceleration vector about the origin given torque and inertia
+				dvec3 angularAccelOfOrigin = mAboutOrigin.inverse().getInternal() * totalTorque_leg;
 				
-				//8. Extract the angular acceleration component about the leg's rotation axis and integrate for angular velocity and then position
+				//7. Extract the angular acceleration component about the leg's rotation axis and integrate for angular velocity and then position
 				mDeploymentVelocity_rads += -angularAccelOfOrigin.x * dt;
 				mDeploymentAngle_rads += mDeploymentVelocity_rads * dt;
 			
@@ -113,12 +134,17 @@ namespace Physics {
 			updateCompToStage_rotation();
 		}
 
-		void LandingLeg::updateCompToStage_rotation() {
-			glm::dmat4
-				aroundStage = glm::rotate(glm::radians(mClockingDegree_degs), glm::dvec3(0.0, 1.0, 0.0)),
-				downFromStowed = glm::rotate(mDeploymentAngle_rads, glm::dvec3(-1.0, 0.0, 0.0));
+		Mass LandingLeg::recalcMass() const {
+			return Mass(600.0, { 0.0, mCentreMassPos_leg2D.y, -mCentreMassPos_leg2D.x });
+		}
+		
+		InertiaTensor LandingLeg::recalcInertia() const {
+			return InertiaTensor::solidCylinder(600.0, 0.8064, 6.943);
+		}
 
-			mCompToStage.setLocalToParent_rotation(aroundStage * downFromStowed);
+		void LandingLeg::updateCompToStage_rotation() {
+			glm::dmat4 deploymentRotation = glm::rotate(mDeploymentAngle_rads, glm::dvec3(-1.0, 0.0, 0.0));
+			mCompToStage.setLocalToParent_rotation(mClockingRotation_stage * deploymentRotation);
 		}
 
 		void LandingLeg::clampRotationRange(double maxAngle) {

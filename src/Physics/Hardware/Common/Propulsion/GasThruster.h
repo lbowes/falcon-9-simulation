@@ -21,8 +21,11 @@ namespace Physics {
 				mIsp = 0.0; //TODO - Implement a use for specific impulse
 
 		public:
-			GasThruster(CoordTransform3D engineToStage);
+			GasThruster(CoordTransform3D thrusterToStage);
 			~GasThruster() = default;
+
+			void loadDynamicState(const DSS::GasThrusterState& state);
+			void saveDynamicState(DSS::GasThrusterState& toSaveTo) const;
 
 			void attachPropSupplyLine(GasSupplyLine* supplyLine) { mSupplyLine = supplyLine; }
 

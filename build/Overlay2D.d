@@ -196,45 +196,19 @@ build/Overlay2D.o: src/Graphics/Overlay/Overlay2D.cpp \
  /usr/include/x86_64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /usr/include/c++/7/bits/basic_string.tcc \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/ImGui/imgui.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/ImGui/imconfig.h \
- /usr/lib/gcc/x86_64-linux-gnu/7/include/float.h \
- src/Graphics/Overlay/VehicleOverlay.h \
- src/Graphics/Overlay/Marker2DOverlay.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/ResourceSet.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/IndexBuffer.h \
- /usr/include/GL/glew.h /usr/include/GL/glu.h /usr/include/GL/gl.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Resource.hpp \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexBuffer.h \
- /usr/include/c++/7/memory /usr/include/c++/7/bits/stl_tempbuf.h \
- /usr/include/c++/7/bits/stl_raw_storage_iter.h \
- /usr/include/c++/7/ext/concurrence.h \
- /usr/include/c++/7/bits/uses_allocator.h \
- /usr/include/c++/7/bits/unique_ptr.h /usr/include/c++/7/utility \
- /usr/include/c++/7/bits/stl_relops.h /usr/include/c++/7/tuple \
- /usr/include/c++/7/array /usr/include/c++/7/stdexcept \
- /usr/include/c++/7/bits/invoke.h /usr/include/c++/7/bits/shared_ptr.h \
- /usr/include/c++/7/bits/shared_ptr_base.h \
- /usr/include/c++/7/bits/allocated_ptr.h \
- /usr/include/c++/7/bits/refwrap.h \
- /usr/include/c++/7/ext/aligned_buffer.h \
- /usr/include/c++/7/bits/shared_ptr_atomic.h \
- /usr/include/c++/7/bits/atomic_base.h \
- /usr/include/c++/7/bits/atomic_lockfree_defines.h \
- /usr/include/c++/7/backward/auto_ptr.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexFormat.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/TextureCube.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Texture.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/TextureLoader.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/stb_image/stb_image.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Mesh.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Texture2D.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Shader.h \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/DynamicSimState.h \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/SurfaceLocation.h \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/GeoCoordUtils.h \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/Earth.h \
+ /usr/include/glm/trigonometric.hpp \
+ /usr/include/glm/detail/func_trigonometric.inl \
+ /usr/include/glm/detail/func_trigonometric_simd.inl \
+ /usr/include/glm/vec3.hpp \
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/CoordTransform3D.h \
  /usr/include/glm/mat4x4.hpp /usr/include/glm/detail/type_mat4x4.hpp \
  /usr/include/glm/fwd.hpp /usr/include/glm/detail/type_mat.hpp \
  /usr/include/glm/detail/type_mat4x4.inl /usr/include/glm/matrix.hpp \
- /usr/include/glm/vec3.hpp /usr/include/glm/mat2x2.hpp \
- /usr/include/glm/detail/type_mat2x2.hpp \
+ /usr/include/glm/mat2x2.hpp /usr/include/glm/detail/type_mat2x2.hpp \
  /usr/include/glm/detail/type_mat2x2.inl /usr/include/glm/mat2x3.hpp \
  /usr/include/glm/detail/type_mat2x3.hpp \
  /usr/include/glm/detail/type_mat2x3.inl /usr/include/glm/mat2x4.hpp \
@@ -254,23 +228,8 @@ build/Overlay2D.o: src/Graphics/Overlay/Overlay2D.cpp \
  /usr/include/glm/detail/func_matrix_simd.inl \
  /usr/include/glm/simd/matrix.h \
  /usr/include/glm/detail/type_mat4x4_simd.inl \
- /usr/include/glm/gtc/type_ptr.hpp /usr/include/glm/gtc/quaternion.hpp \
- /usr/include/glm/gtc/constants.hpp /usr/include/glm/detail/setup.hpp \
- /usr/include/glm/gtc/constants.inl /usr/include/glm/gtc/quaternion.inl \
- /usr/include/glm/trigonometric.hpp \
- /usr/include/glm/detail/func_trigonometric.inl \
- /usr/include/glm/detail/func_trigonometric_simd.inl \
- /usr/include/glm/gtc/epsilon.hpp /usr/include/glm/gtc/epsilon.inl \
- /usr/include/glm/gtc/quaternion_simd.inl /usr/include/glm/gtc/vec1.hpp \
- /usr/include/glm/ext/vec1.hpp /usr/include/glm/detail/type_vec1.inl \
- /usr/include/glm/gtc/vec1.inl /usr/include/glm/gtc/type_ptr.inl \
- /usr/include/c++/7/unordered_map /usr/include/c++/7/bits/hashtable.h \
- /usr/include/c++/7/bits/hashtable_policy.h \
- /usr/include/c++/7/bits/unordered_map.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexArray.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Renderer.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Camera.h \
- /usr/include/glm/glm.hpp /usr/include/c++/7/climits \
+ /usr/include/glm/gtx/transform.hpp /usr/include/glm/glm.hpp \
+ /usr/include/c++/7/climits \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
@@ -279,17 +238,91 @@ build/Overlay2D.o: src/Graphics/Overlay/Overlay2D.cpp \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
  /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/7/cfloat \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/float.h \
  /usr/include/glm/packing.hpp /usr/include/glm/detail/func_packing.inl \
  /usr/include/glm/detail/type_half.hpp \
  /usr/include/glm/detail/type_half.inl \
  /usr/include/glm/detail/func_packing_simd.inl \
  /usr/include/glm/integer.hpp /usr/include/glm/detail/func_integer.inl \
+ /usr/include/glm/ext/vec1.hpp /usr/include/glm/detail/type_vec1.inl \
  /usr/include/glm/detail/func_integer_simd.inl \
- /usr/include/glm/simd/integer.h /usr/include/glm/gtx/quaternion.hpp \
- /usr/include/glm/gtx/norm.hpp /usr/include/glm/gtx/norm.inl \
- /usr/include/glm/gtx/quaternion.inl \
+ /usr/include/glm/simd/integer.h \
  /usr/include/glm/gtc/matrix_transform.hpp \
+ /usr/include/glm/gtc/constants.hpp /usr/include/glm/detail/setup.hpp \
+ /usr/include/glm/gtc/constants.inl \
  /usr/include/glm/gtc/matrix_transform.inl \
+ /usr/include/glm/gtx/transform.inl /usr/include/glm/gtx/quaternion.hpp \
+ /usr/include/glm/gtc/quaternion.hpp /usr/include/glm/gtc/quaternion.inl \
+ /usr/include/glm/gtc/epsilon.hpp /usr/include/glm/gtc/epsilon.inl \
+ /usr/include/glm/gtc/quaternion_simd.inl /usr/include/glm/gtx/norm.hpp \
+ /usr/include/glm/gtx/norm.inl /usr/include/glm/gtx/quaternion.inl \
+ /usr/include/glm/gtc/matrix_inverse.hpp \
+ /usr/include/glm/gtc/matrix_inverse.inl \
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/RigidBody.h \
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/State.h \
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/InertiaTensor.h \
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/Mass.h \
+ /usr/include/glm/gtx/compatibility.hpp \
+ /usr/include/glm/gtx/compatibility.inl /usr/include/c++/7/sstream \
+ /usr/include/c++/7/istream /usr/include/c++/7/ios \
+ /usr/include/c++/7/bits/ios_base.h \
+ /usr/include/c++/7/bits/locale_classes.h \
+ /usr/include/c++/7/bits/locale_classes.tcc \
+ /usr/include/c++/7/system_error \
+ /usr/include/x86_64-linux-gnu/c++/7/bits/error_constants.h \
+ /usr/include/c++/7/stdexcept /usr/include/c++/7/streambuf \
+ /usr/include/c++/7/bits/streambuf.tcc \
+ /usr/include/c++/7/bits/basic_ios.h \
+ /usr/include/c++/7/bits/locale_facets.h /usr/include/c++/7/cwctype \
+ /usr/include/wctype.h /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
+ /usr/include/x86_64-linux-gnu/c++/7/bits/ctype_base.h \
+ /usr/include/c++/7/bits/streambuf_iterator.h \
+ /usr/include/x86_64-linux-gnu/c++/7/bits/ctype_inline.h \
+ /usr/include/c++/7/bits/locale_facets.tcc \
+ /usr/include/c++/7/bits/basic_ios.tcc /usr/include/c++/7/ostream \
+ /usr/include/c++/7/bits/ostream.tcc /usr/include/c++/7/bits/istream.tcc \
+ /usr/include/c++/7/bits/sstream.tcc \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/ImGui/imgui.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/ImGui/imconfig.h \
+ src/Graphics/Overlay/VehicleOverlay.h \
+ src/Graphics/Overlay/Marker2DOverlay.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/ResourceSet.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/IndexBuffer.h \
+ /usr/include/GL/glew.h /usr/include/GL/glu.h /usr/include/GL/gl.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Resource.hpp \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexBuffer.h \
+ /usr/include/c++/7/memory /usr/include/c++/7/bits/stl_tempbuf.h \
+ /usr/include/c++/7/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/7/ext/concurrence.h \
+ /usr/include/c++/7/bits/uses_allocator.h \
+ /usr/include/c++/7/bits/unique_ptr.h /usr/include/c++/7/utility \
+ /usr/include/c++/7/bits/stl_relops.h /usr/include/c++/7/tuple \
+ /usr/include/c++/7/array /usr/include/c++/7/bits/invoke.h \
+ /usr/include/c++/7/bits/shared_ptr.h \
+ /usr/include/c++/7/bits/shared_ptr_base.h \
+ /usr/include/c++/7/bits/allocated_ptr.h \
+ /usr/include/c++/7/bits/refwrap.h \
+ /usr/include/c++/7/ext/aligned_buffer.h \
+ /usr/include/c++/7/bits/shared_ptr_atomic.h \
+ /usr/include/c++/7/bits/atomic_base.h \
+ /usr/include/c++/7/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/7/backward/auto_ptr.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexFormat.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/TextureCube.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Texture.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/TextureLoader.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/stb_image/stb_image.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Mesh.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Texture2D.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Shader.h \
+ /usr/include/glm/gtc/type_ptr.hpp /usr/include/glm/gtc/vec1.hpp \
+ /usr/include/glm/gtc/vec1.inl /usr/include/glm/gtc/type_ptr.inl \
+ /usr/include/c++/7/unordered_map /usr/include/c++/7/bits/hashtable.h \
+ /usr/include/c++/7/bits/hashtable_policy.h \
+ /usr/include/c++/7/bits/unordered_map.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexArray.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Renderer.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Camera.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/RenderQueue.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/RenderCommand.hpp \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/OrthographicCamera.h

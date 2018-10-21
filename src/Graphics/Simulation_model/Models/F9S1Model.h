@@ -16,6 +16,14 @@
 
 #define BOX_MODELS 0
 
+namespace Physics {
+	namespace Hardware {
+		class Falcon9Stage1;
+		class LandingLeg;
+		class GridFin;
+	}
+}
+
 namespace Graphics {
 
 	class F9S1Model : public ISimulationModel {
@@ -23,7 +31,7 @@ namespace Graphics {
 		GF::Model3D mModel;
 		GF::Graphics::Shader* mMainShader = nullptr;
 		std::vector<std::unique_ptr<IStageComponentMesh>> mComponentMeshes;
-		//const Physics::Hardware::Falcon9Stage1& mStage1Data;
+		const Physics::Hardware::Falcon9Stage1& mDataSource;
 		glm::dmat4 mTotalTransform_OGL;
 
 	public:
@@ -36,7 +44,7 @@ namespace Graphics {
 		void loadResources();
 		void addComponentModels();
 
-		virtual void updateAllTransforms_OGL(const Physics::DynamicSimState::Falcon9::Stage1& stage1, glm::dvec3 currentCameraPosition);
+		virtual void updateAllTransforms_OGL(glm::dvec3 currentCameraPosition);
 		virtual void makeRenderCalls();
 
 	};

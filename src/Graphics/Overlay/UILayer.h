@@ -9,6 +9,12 @@
 
 #include <GraphicsFramework/Vendor/ImGui/imgui.h>
 
+namespace Physics {
+	namespace Hardware {
+		class Falcon9;
+	}
+}
+
 namespace Graphics {
 	
 	class UILayer {
@@ -17,19 +23,20 @@ namespace Graphics {
 			stage1_testGraph,
 			stage2_testGraph;
 		
+		const Physics::Hardware::Falcon9& mDataSource;
 		float& mSimSpeedHandle;
 
 		ImDrawList* mTextDrawList = nullptr;
 
 	public:
-		UILayer(float& playbackSpeedHandle);
+		UILayer(const Physics::Hardware::Falcon9& simDataSource, float& playbackSpeedHandle);
 		~UILayer() = default;
 
-		void render(const Physics::DynamicSimState::Falcon9::Stage1& stage1, glm::vec2 mainWindowSize);
+		void render(glm::vec2 mainWindowSize);
 
 	private:
 		void load() const;
-		void stage1PhysicsState(const Physics::DynamicSimState::Falcon9::Stage1& stage1) const;
+		void stage1PhysicsState() const;
 		void simulationControls() const;
 
 	};

@@ -10,150 +10,53 @@ namespace Physics {
 			addEngines();
 			addThrusters();
 			addTanks();
-			addPropellantLines();
+			addFluidLines();
 
 			preFlight_temp();
-
-			initState();
 		}
 
-		void Falcon9Stage1::checkInput_temp(double dt) 
-			//All stage 1 input is currently done manually.
-			//Eventually, lots of this code will be removed with the introduction of the flight computer.
-		{
-			using namespace GF;
+		void Falcon9Stage1::loadDynamicState(const DSS::Falcon9::Stage1& state) {
+			//Rigid body state
+			DSS::loadRigidBodyState(state.RB, mState);
+
+			//Propellant supplies
+			static_cast<FluidTank*>(mPropellantSupplies[Propellants::liquidOxygen])->loadDynamicState(state.LOXTank);
+			static_cast<FluidTank*>(mPropellantSupplies[Propellants::RP1])->loadDynamicState(state.RP1Tank);
+			static_cast<FluidTank*>(mPropellantSupplies[Propellants::nitrogen])->loadDynamicState(state.nitrogenTank);
 
 			//Engines
-			{
-				if (Input::isKeyPressed(GLFW_KEY_L)) {
-					for (const auto& e : mEngines.getAllComponents())
-						static_cast<Engine*>(e.get())->setActive(true);
-				}
-				else if (Input::isKeyPressed(GLFW_KEY_3)) {
-					static_cast<Engine*>(mEngines.getAllComponents()[0].get())->setActive(true);
-					static_cast<Engine*>(mEngines.getAllComponents()[1].get())->setActive(true);
-					static_cast<Engine*>(mEngines.getAllComponents()[5].get())->setActive(true);
-				}
-				else if (Input::isKeyPressed(GLFW_KEY_1)) {
-					static_cast<Engine*>(mEngines.getAllComponents()[0].get())->setActive(true);
-				}
-
-				if (Input::isKeyPressed(GLFW_KEY_P)) {
-					for (const auto& e : mEngines.getAllComponents())
-						static_cast<Engine*>(e.get())->setActive(false);
-				}
-
-				//Numpad
-				if (Input::isKeyPressed(GLFW_KEY_KP_5))
-					static_cast<Engine*>(mEngines.getAllComponents()[0].get())->setActive(true);
-				if (Input::isKeyPressed(GLFW_KEY_KP_4))
-					static_cast<Engine*>(mEngines.getAllComponents()[1].get())->setActive(true);
-				if (Input::isKeyPressed(GLFW_KEY_KP_6))
-					static_cast<Engine*>(mEngines.getAllComponents()[5].get())->setActive(true);
-				if (Input::isKeyPressed(GLFW_KEY_KP_2))
-					static_cast<Engine*>(mEngines.getAllComponents()[3].get())->setActive(true);
-				if (Input::isKeyPressed(GLFW_KEY_KP_8))
-					static_cast<Engine*>(mEngines.getAllComponents()[7].get())->setActive(true);
-				if (Input::isKeyPressed(GLFW_KEY_KP_1))
-					static_cast<Engine*>(mEngines.getAllComponents()[2].get())->setActive(true);
-				if (Input::isKeyPressed(GLFW_KEY_KP_7))
-					static_cast<Engine*>(mEngines.getAllComponents()[4].get())->setActive(true);
-				if (Input::isKeyPressed(GLFW_KEY_KP_9))
-					static_cast<Engine*>(mEngines.getAllComponents()[6].get())->setActive(true);
-				if (Input::isKeyPressed(GLFW_KEY_KP_3))
-					static_cast<Engine*>(mEngines.getAllComponents()[8].get())->setActive(true);
-			}
+			for(unsigned char i = 0; i < mEngines.getCount(); i++)
+				static_cast<Engine*>(mEngines[i])->loadDynamicState(state.engines[i]);
 
 			//Gas thrusters
-			{
-				IThrustGenerator* temp = nullptr;
-				for (unsigned char i = 0; i < mThrusters.getAllComponents().size(); i++) {
-					temp = static_cast<GasThruster*>(mThrusters[i]);
-					temp->setActive(false);
-				}
+			for(unsigned char i = 0; i < mThrusters.getCount(); i++)
+				static_cast<GasThruster*>(mThrusters[i])->loadDynamicState(state.thrusters[i]);
 
-#if THRUSTER_SPIN_CONFIG
-				//Induces spin about vertical axis
-				if (Input::isKeyPressed(GLFW_KEY_UP)) {
-					static_cast<GasThruster*>(mThrusters[1])->setActive(true);
-					static_cast<GasThruster*>(mThrusters[6])->setActive(true);
-				}
+			//Landing legs and grid fins
+			mLandingLegs.loadDynamicState(state);
+			mGridFins.loadDynamicState(state);
+		}
 
-				if (Input::isKeyPressed(GLFW_KEY_DOWN)) {
-					static_cast<GasThruster*>(mThrusters[2])->setActive(true);
-					static_cast<GasThruster*>(mThrusters[5])->setActive(true);
-				}
-#else
-				//Thrusters activated individually using arrow keys for debugging. Will be controlled by flight code eventually.
-				if (Input::isKeyPressed(GLFW_KEY_UP)) 
-					static_cast<GasThruster*>(mThrusters[0])->setActive(true);
-				if (Input::isKeyPressed(GLFW_KEY_DOWN)) 
-					static_cast<GasThruster*>(mThrusters[3])->setActive(true);
-				if (Input::isKeyPressed(GLFW_KEY_LEFT)) 
-					static_cast<GasThruster*>(mThrusters[1])->setActive(true);
-				if (Input::isKeyPressed(GLFW_KEY_RIGHT)) 
-					static_cast<GasThruster*>(mThrusters[2])->setActive(true);
-				if (Input::isKeyPressed(GLFW_KEY_U)) 
-					static_cast<GasThruster*>(mThrusters[4])->setActive(true);
-				if (Input::isKeyPressed(GLFW_KEY_K)) 
-					static_cast<GasThruster*>(mThrusters[5])->setActive(true);
-				if (Input::isKeyPressed(GLFW_KEY_H)) 
-					static_cast<GasThruster*>(mThrusters[6])->setActive(true);
-				if (Input::isKeyPressed(GLFW_KEY_J)) 
-				static_cast<GasThruster*>(mThrusters[7])->setActive(true);
-#endif					
-			}
+		void Falcon9Stage1::saveDynamicState(DSS::Falcon9::Stage1& toSaveTo) const {
+			//Rigid body state
+			DSS::saveRigidBodyState(*this, toSaveTo.RB);
+			
+			//Propellant supplies
+			static_cast<FluidTank*>(mPropellantSupplies[Propellants::liquidOxygen])->saveDynamicState(toSaveTo.LOXTank);
+			static_cast<FluidTank*>(mPropellantSupplies[Propellants::RP1])->saveDynamicState(toSaveTo.RP1Tank);
+			static_cast<FluidTank*>(mPropellantSupplies[Propellants::nitrogen])->saveDynamicState(toSaveTo.nitrogenTank);
 
-			if (Input::isKeyReleased(GLFW_KEY_HOME))
-				mState.setAngularVelocity_world(glm::dvec3(0.0));
+			//Engines
+			for(unsigned char i = 0; i < mEngines.getCount(); i++)
+				static_cast<Engine*>(mEngines[i])->saveDynamicState(toSaveTo.engines[i]);
 
-			//Grid_fins
-			{
-				double rotationSpeed = 200.0;
-				static double tempForInput = 0.0;
+			//Gas thrusters
+			for(unsigned char i = 0; i < mThrusters.getCount(); i++)
+				static_cast<GasThruster*>(mThrusters[i])->saveDynamicState(toSaveTo.thrusters[i]);
 
-				if (Input::isKeyPressed(GLFW_KEY_Q)) {
-					for (const auto& g : mGridFins.getAllComponents())
-						static_cast<GridFin*>(g.get())->deploy();
-				}
-				if (Input::isKeyPressed(GLFW_KEY_V)) {
-					for (const auto& l : mLandingLegs.getAllComponents())
-						static_cast<LandingLeg*>(l.get())->deploy();
-				}
-
-				if (Input::isKeyPressed(GLFW_KEY_LEFT)) {
-					tempForInput += rotationSpeed * dt;
-					if (tempForInput > 45.0) tempForInput = 45.0;
-
-					for (const auto& g : mGridFins.getAllComponents())
-						static_cast<GridFin*>(g.get())->setRoll(tempForInput);
-				}
-				if (Input::isKeyPressed(GLFW_KEY_RIGHT)) {
-					tempForInput -= rotationSpeed * dt;
-					if (tempForInput < -45.0) tempForInput = -45.0;
-
-					for (const auto& g : mGridFins.getAllComponents())
-						static_cast<GridFin*>(g.get())->setRoll(tempForInput);
-				}
-			}
-
-			if (Input::isKeyPressed(GLFW_KEY_G)) {
-				//mState.reset();
-				mState.setPosition_world({ 0.0, 0.0, 0.0 });
-			}
-
-			if (Input::isKeyPressed(GLFW_KEY_R)) {
-				mState.reset();
-				mState.setPosition_world({ 0.0, 2'800.0, -900.0 });
-				mState.setVelocity_world({ 0.0, 0.0, 40.0 });
-				mState.setOrientation_world(rotate(mState.getOrientation_world(), glm::radians(-80.0), { 1.0, 0.0, 0.0 }));
-				
-				static_cast<FluidTank*>(mPropellantSupplies.getComponent(Propellants::liquidOxygen))->removeAllPropellant();
-				static_cast<FluidTank*>(mPropellantSupplies.getComponent(Propellants::liquidOxygen))->addPropellant(287.430_tonnes * 0.048);
-
-				static_cast<FluidTank*>(mPropellantSupplies.getComponent(Propellants::RP1))->removeAllPropellant();
-				static_cast<FluidTank*>(mPropellantSupplies.getComponent(Propellants::RP1))->addPropellant(123.570_tonnes * 0.048);
-			}
+			//Landing legs and grid fins
+			mLandingLegs.saveDynamicState(toSaveTo);
+			mGridFins.saveDynamicState(toSaveTo);
 		}
 
 		void Falcon9Stage1::preFlight_temp() 
@@ -161,10 +64,10 @@ namespace Physics {
 		{
 			//Load correct amounts of propellant into the tanks
 #if LOAD_ENGINE_PROPELLANT
-			static_cast<FluidTank*>(mPropellantSupplies[Propellants::liquidOxygen])->addPropellant(287.430_tonnes); //287430.0
-			static_cast<FluidTank*>(mPropellantSupplies[Propellants::RP1])->addPropellant(123.570_tonnes); //123570.0
+			static_cast<FluidTank*>(mPropellantSupplies[Propellants::liquidOxygen])->addFluid(287.430_tonnes); //287430.0
+			static_cast<FluidTank*>(mPropellantSupplies[Propellants::RP1])->addFluid(123.570_tonnes); //123570.0
 #endif
-			static_cast<FluidTank*>(mPropellantSupplies[Propellants::nitrogen])->addPropellant(8.0);
+			static_cast<FluidTank*>(mPropellantSupplies[Propellants::nitrogen])->addFluid(8.0);
 		}
 
 		void Falcon9Stage1::otherUpdates(double t, double dt) {
@@ -260,7 +163,7 @@ namespace Physics {
 				));
 		}
 
-		void Falcon9Stage1::addPropellantLines() {
+		void Falcon9Stage1::addFluidLines() {
 			//Connects the propellant tanks to the engines
 			{
 				FluidTank& oxidiserTank = *static_cast<FluidTank*>(mPropellantSupplies[Propellants::liquidOxygen]);

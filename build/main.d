@@ -157,7 +157,7 @@ build/main.o: src/main.cpp /usr/include/stdc-predef.h src/Simulation.h \
  /usr/include/glm/simd/matrix.h /usr/include/glm/gtc/matrix_inverse.hpp \
  /usr/include/glm/detail/setup.hpp \
  /usr/include/glm/gtc/matrix_inverse.inl \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/CoordTransform3D.h \
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/CoordTransform3D.h \
  /usr/include/glm/gtx/transform.hpp /usr/include/glm/glm.hpp \
  /usr/include/c++/7/climits \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
@@ -281,18 +281,37 @@ build/main.o: src/main.cpp /usr/include/stdc-predef.h src/Simulation.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propellant/SupplyLine.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propellant/FluidTank.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propellant/Fluid.h \
- /usr/include/c++/7/math.h /usr/include/c++/7/algorithm \
- /usr/include/c++/7/bits/stl_algo.h \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/DynamicSimState.h \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/SurfaceLocation.h \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/GeoCoordUtils.h \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/Earth.h \
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/RigidBody.h \
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/State.h \
+ /usr/include/glm/gtx/compatibility.hpp \
+ /usr/include/glm/gtx/compatibility.inl /usr/include/c++/7/sstream \
+ /usr/include/c++/7/istream /usr/include/c++/7/ios \
+ /usr/include/c++/7/bits/ios_base.h \
+ /usr/include/c++/7/bits/locale_classes.h \
+ /usr/include/c++/7/bits/locale_classes.tcc \
+ /usr/include/c++/7/system_error \
+ /usr/include/x86_64-linux-gnu/c++/7/bits/error_constants.h \
+ /usr/include/c++/7/streambuf /usr/include/c++/7/bits/streambuf.tcc \
+ /usr/include/c++/7/bits/basic_ios.h \
+ /usr/include/c++/7/bits/locale_facets.h /usr/include/c++/7/cwctype \
+ /usr/include/wctype.h /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
+ /usr/include/x86_64-linux-gnu/c++/7/bits/ctype_base.h \
+ /usr/include/c++/7/bits/streambuf_iterator.h \
+ /usr/include/x86_64-linux-gnu/c++/7/bits/ctype_inline.h \
+ /usr/include/c++/7/bits/locale_facets.tcc \
+ /usr/include/c++/7/bits/basic_ios.tcc /usr/include/c++/7/ostream \
+ /usr/include/c++/7/bits/ostream.tcc /usr/include/c++/7/bits/istream.tcc \
+ /usr/include/c++/7/bits/sstream.tcc /usr/include/c++/7/math.h \
+ /usr/include/c++/7/algorithm /usr/include/c++/7/bits/stl_algo.h \
  /usr/include/c++/7/bits/algorithmfwd.h \
  /usr/include/c++/7/bits/stl_heap.h \
  /usr/include/c++/7/bits/uniform_int_dist.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propellant/FluidTankGroup.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/Environment.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/Earth.h \
- /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/RigidBody.h \
- /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/State.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/SurfaceLocation.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/GeoCoordUtils.h \
  /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/RigidBodyGroup.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Falcon9Stage1.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Merlin1D.h \
@@ -311,29 +330,15 @@ build/main.o: src/main.cpp /usr/include/stdc-predef.h src/Simulation.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Window.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/stb_image/stb_image.h \
  /usr/include/GL/glew.h /usr/include/GL/glu.h /usr/include/GL/gl.h \
- /usr/include/c++/7/iostream /usr/include/c++/7/ostream \
- /usr/include/c++/7/ios /usr/include/c++/7/bits/ios_base.h \
- /usr/include/c++/7/bits/locale_classes.h \
- /usr/include/c++/7/bits/locale_classes.tcc \
- /usr/include/c++/7/system_error \
- /usr/include/x86_64-linux-gnu/c++/7/bits/error_constants.h \
- /usr/include/c++/7/streambuf /usr/include/c++/7/bits/streambuf.tcc \
- /usr/include/c++/7/bits/basic_ios.h \
- /usr/include/c++/7/bits/locale_facets.h /usr/include/c++/7/cwctype \
- /usr/include/wctype.h /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
- /usr/include/x86_64-linux-gnu/c++/7/bits/ctype_base.h \
- /usr/include/c++/7/bits/streambuf_iterator.h \
- /usr/include/x86_64-linux-gnu/c++/7/bits/ctype_inline.h \
- /usr/include/c++/7/bits/locale_facets.tcc \
- /usr/include/c++/7/bits/basic_ios.tcc \
- /usr/include/c++/7/bits/ostream.tcc /usr/include/c++/7/istream \
- /usr/include/c++/7/bits/istream.tcc /usr/local/include/GLFW/glfw3.h \
+ /usr/include/c++/7/iostream /usr/local/include/GLFW/glfw3.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_2/Falcon9Stage2.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_2/Merlin1DVac.h \
  /usr/include/c++/7/fstream /usr/include/c++/7/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++io.h \
- /usr/include/c++/7/bits/fstream.tcc src/Visualisation.h \
+ /usr/include/c++/7/bits/fstream.tcc /usr/include/c++/7/map \
+ /usr/include/c++/7/bits/stl_tree.h /usr/include/c++/7/bits/stl_map.h \
+ /usr/include/c++/7/bits/stl_multimap.h src/Visualisation.h \
  src/Graphics/Simulation_model/SimulationModelLayer.h \
  src/Graphics/Simulation_model/Models/F9S1Model.h \
  src/Graphics/Simulation_model/Models/EngineMesh.h \
@@ -378,15 +383,4 @@ build/main.o: src/main.cpp /usr/include/stdc-predef.h src/Simulation.h \
  src/Graphics/Overlay/Marker2DOverlay.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/OrthographicCamera.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Application.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/ImGui/imgui_impl_glfw_gl3.h \
- src/SimulationState.hpp /usr/include/c++/7/sstream \
- /usr/include/c++/7/bits/sstream.tcc /usr/include/c++/7/iomanip \
- /usr/include/c++/7/locale /usr/include/c++/7/bits/locale_facets_nonio.h \
- /usr/include/c++/7/ctime \
- /usr/include/x86_64-linux-gnu/c++/7/bits/time_members.h \
- /usr/include/x86_64-linux-gnu/c++/7/bits/messages_members.h \
- /usr/include/libintl.h /usr/include/c++/7/bits/locale_facets_nonio.tcc \
- /usr/include/c++/7/bits/locale_conv.h \
- /usr/include/c++/7/bits/stringfwd.h /usr/include/c++/7/bits/allocator.h \
- /usr/include/c++/7/bits/codecvt.h /usr/include/c++/7/bits/unique_ptr.h \
- /usr/include/c++/7/bits/quoted_string.h
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/ImGui/imgui_impl_glfw_gl3.h

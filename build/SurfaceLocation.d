@@ -82,7 +82,7 @@ build/SurfaceLocation.o: src/Physics/External/SurfaceLocation.cpp \
  /usr/include/glm/detail/type_vec4_simd.inl \
  /usr/include/glm/detail/func_trigonometric_simd.inl \
  /usr/include/glm/vec3.hpp \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/CoordTransform3D.h \
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/CoordTransform3D.h \
  /usr/include/glm/mat4x4.hpp /usr/include/glm/detail/type_mat4x4.hpp \
  /usr/include/glm/fwd.hpp /usr/include/glm/detail/type_float.hpp \
  /usr/include/glm/detail/type_mat.hpp \

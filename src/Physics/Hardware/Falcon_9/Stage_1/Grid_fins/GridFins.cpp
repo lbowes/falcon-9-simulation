@@ -8,10 +8,10 @@ namespace Physics {
 		}
 
 		void GridFins::addFins() {
-			addComponent(std::make_unique<GridFin>(45));
-			addComponent(std::make_unique<GridFin>(135));
-			addComponent(std::make_unique<GridFin>(225));
-			addComponent(std::make_unique<GridFin>(315));
+			addComponent(std::make_unique<GridFin>(45.0));
+			addComponent(std::make_unique<GridFin>(135.0));
+			addComponent(std::make_unique<GridFin>(225.0));
+			addComponent(std::make_unique<GridFin>(315.0));
 		}
 
 		void GridFins::update(double dt/* , double fluidDensity, glm::dvec3 flowVelocity_stage */) {
@@ -21,13 +21,19 @@ namespace Physics {
 
 				//updateArea();
 				//updateCentrePressure_stage();
-				//updateTotalMass_stage();
-				//updateTotalForce_world();
-				//updateTotalTorque_stage();
-				//updateTotalCmInertia_stage();
 
 				updateAllGroupProperties();
 			}
+		}
+
+		void GridFins::loadDynamicState(const DSS::Falcon9::Stage1& stage1State) {
+			for(unsigned char i = 0; i < 4; i++)
+				static_cast<GridFin*>(mComponents[i].get())->loadDynamicState(stage1State.gridFins[i]);
+		}
+
+		void GridFins::saveDynamicState(DSS::Falcon9::Stage1& toSaveTo) const {
+			for(unsigned char i = 0; i < 4; i++)
+				static_cast<GridFin*>(mComponents[i].get())->saveDynamicState(toSaveTo.gridFins[i]);
 		}
 
 		void GridFins::updateAllFins(double dt/* , double fluidDensity, glm::dvec3 flowVelocity_stage */) const {

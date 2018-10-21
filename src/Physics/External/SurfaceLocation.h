@@ -12,12 +12,13 @@ namespace Physics {
 
 		class SurfaceLocation {
 		private:
-			std::string& mName;
+			std::string mName;
 			glm::dvec3 mGPSCoordinate_LLH;
 			CoordTransform3D mEUN_to_ECEF;
 
 		public:
 			SurfaceLocation(const std::string& name = "", const glm::dvec3& gpsCoord_LLH = { 0.0, 0.0, 0.0 });
+			void operator=(const SurfaceLocation& other);
 			~SurfaceLocation() = default;
 
 			void setName(const std::string& name) { mName = name; }

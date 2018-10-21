@@ -10,6 +10,12 @@ namespace Physics {
 			updateENU_to_ECEFTransform();
 		}
 
+		void SurfaceLocation::operator=(const SurfaceLocation& other) {
+			this->mEUN_to_ECEF = other.mEUN_to_ECEF;
+			this->mGPSCoordinate_LLH = other.mGPSCoordinate_LLH;
+			this->mName = other.mName;
+		}
+
 		void SurfaceLocation::setGPSPosition(const glm::dvec3& gpsCoord_LLH) {
 			mGPSCoordinate_LLH = gpsCoord_LLH;
 			updateENU_to_ECEFTransform();
@@ -20,7 +26,7 @@ namespace Physics {
 		{
 			using namespace glm;
 
-			mEUN_to_ECEF.setLocalToParent_position(::External::GeoCoordUtils::toECEF(mGPSCoordinate_LLH));
+			mEUN_to_ECEF.setLocalToParent_translation(::External::GeoCoordUtils::toECEF(mGPSCoordinate_LLH));
 
 			double latitudeRotation_degs = ::External::Earth::geocentricToGeodeticLat(mGPSCoordinate_LLH.x) - 90.0;
 			

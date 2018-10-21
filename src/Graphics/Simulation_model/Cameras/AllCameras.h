@@ -12,6 +12,7 @@
 #include <GraphicsFramework/PerspectiveCamera.h>
 #include <GraphicsFramework/Input.h>
 #include <PhysicsFramework/State.h>
+#include <glm/gtx/vector_angle.hpp>
 
 #define CONFIGURE_INTERSTAGE_CAM 0
 

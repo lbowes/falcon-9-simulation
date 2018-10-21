@@ -6,6 +6,7 @@
 #include "TelescopingPiston.h"
 #include "LegDeploymentActuator.hpp"
 #include "Physics/External/Environment.h"
+#include "Physics/DynamicSimState.h"
 
 #include <glm/vec2.hpp>
 #include <glm/gtx/rotate_vector.hpp>
@@ -23,6 +24,8 @@ namespace Physics {
 		class LandingLeg : public IStageComponent {
 			friend class Graphics::LandingLegMesh;
 		private:
+			static constexpr double mRestitutionCoeff = 0.2;
+
 			static constexpr glm::dvec2
 				mPos_stage2D = { 1.43521, 0.90617 },        //m
 				mPistonStartPos_stage2D = { 2.0, 5.41417 }, //m
@@ -30,41 +33,47 @@ namespace Physics {
 				mCentreMassPos_leg2D = { 0.4476, 4.52721 }, //m
 				mPusherEndPos_leg2D = { 0.88117, 3.80921 }; //m
 			
-			static constexpr double mRestitutionCoeff = 0.2;
-			
-			enum class Phase { stowed, deploying, locked };
-			Phase mDeploymentPhase = Phase::stowed;
+			const double mClockingDegree = 0.0;
+
+			const glm::dmat4 mClockingRotation_stage = glm::dmat4(1.0);
+
+			const glm::dvec3
+				mPistonStartPos_stage3D,
+				mPusherStartPos_stage3D;
+
+			const InertiaTensor mAboutOrigin;
 
 			std::unique_ptr<TelescopingPiston> mPiston;
 			std::unique_ptr<LegDeploymentActuator> mPusher;
 			
-			const glm::dvec3
-				mPistonStartPos_stage3D,
-				mPusherStartPos_stage3D;
+			enum class Phase : unsigned char { stowed, deploying, locked };
+			Phase mDeploymentPhase = Phase::stowed;
+
+			double
+				mDeploymentAngle_rads = 0.0,
+				mDeploymentVelocity_rads = 0.0;
 
 			glm::dvec3
 				mAlongPiston_stage3D,
 				mPistonEndPos_stage3D,
 				mAlongPusher_stage3D,
 				mPusherEndPos_stage3D;
-												 
-			const double mClockingDegree_degs = 0.0;
-			
-			double
-				mDeploymentAngle_rads = 0.0,
-				mDeploymentVelocity_rads = 0.0;	 
 
 		public:
-			LandingLeg(double clockingDegree_degs);
+			LandingLeg(double clockingDegree);
 			~LandingLeg() = default;
 
 			void update(const CoordTransform3D& stageToWorld, glm::dvec3 legOriginAccel_world, double dt);
+			void loadDynamicState(const DSS::Falcon9::Stage1::LandingLegState& state);
+			void saveDynamicState(DSS::Falcon9::Stage1::LandingLegState& toSaveTo) const;
 			void deploy();
 			void stow_temp();
 
 			TelescopingPiston* getPiston() const { return mPiston.get(); }
 
 		private:
+			Mass recalcMass() const;
+			InertiaTensor recalcInertia() const;
 			void updateState(const CoordTransform3D& stageToWorld, glm::dvec3 legOriginAccel_world, double dt);
 			void updateCompToStage_rotation();
 			void clampRotationRange(double maxAngle);

@@ -3,26 +3,10 @@
 namespace Physics {
 	namespace Hardware {
 
-		ILaunchVehicle::ILaunchVehicle(const Physics::External::SurfaceLocation& surfaceLocation) :
+		ILaunchVehicle::ILaunchVehicle(const Physics::External::SurfaceLocation& inertialPosition) :
 			RigidBodyGroup(Integrator::rungeKutta4, SubUpdateDepth::deep),
-			mSurfaceLocation(surfaceLocation)
-		{ 
-			//TODO: -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-			//Using the GPS coordinate and the ENU orientation passed in, we need to initialise the inertial transform of the launch vehicle.
-
-
-			//Consider creating a 'LaunchSite' class, or 'SurfaceLocation'/'EarthLocation' (to accommodate landing sites) and passing in an instance of one of these
-			//into the launch vehicle instead of a raw GPS position.
-			//The SurfaceLocation can be created with a name and a raw GPS position. It can contain it's own CoordTransform3D representing the ENU frame that can
-			//be calculated independently.
-			//Then this is passed into this function, as well as used as the earth model camera origin etc.
-			//We could then have a separate transform to move the launch vehicle around the launch site perhaps.
-
-			//For example:
-			//		External::SurfaceLocation mLC_39A = { "Historic Pad 39A", External::GPSCoord(blah, blah, blah)};
-
-			//We could then have LaunchSite classes full of ground equipment
-		}
+			mInertialPosition(inertialPosition)
+		{ }
 
 		void ILaunchVehicle::update(double t, double dt) {
 			RigidBodyGroup::update(t, dt);

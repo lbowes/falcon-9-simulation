@@ -4,8 +4,27 @@ namespace Physics {
 	namespace Hardware {
 
 		Engine::Engine(CoordTransform3D engineToStage) :
-			IThrustGenerator(engineToStage)
+			IThrustGenerator(engineToStage),
+			mEngineToStageNoGimbal(engineToStage)
 		{ }
+
+		void Engine::loadDynamicState(const DSS::EngineState& state) {
+			mThrustMagnitude = state.thrustMagnitude;
+			mThrust_stage = state.thrust_stage;
+			mActive = state.active;
+			mThrottle = state.throttle;
+			mCurrentMassFlowRate = state.currentMassFlowRate;
+			mGimbalXY = state.gimbalXY;
+		}
+
+		void Engine::saveDynamicState(DSS::EngineState& toSaveTo) const {
+			toSaveTo.thrustMagnitude = mThrustMagnitude;
+			toSaveTo.thrust_stage = mThrust_stage;
+			toSaveTo.active = mActive;
+			toSaveTo.throttle = mThrottle;
+			toSaveTo.currentMassFlowRate = mCurrentMassFlowRate;
+			toSaveTo.gimbalXY = mGimbalXY;
+		}
 
 		void Engine::setThrottle(double newThrottle) {
 			if (newThrottle <= mThrottleMax && newThrottle >= mThrottleMin)

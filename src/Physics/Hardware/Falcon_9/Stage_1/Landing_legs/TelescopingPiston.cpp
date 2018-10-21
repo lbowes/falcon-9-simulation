@@ -13,21 +13,34 @@ namespace Physics {
 				mCylinders.push_back(PistonCylinder(*this, mMaxWidth - (mMaxWidth - mMinWidth) * static_cast<float>(i) / 4, i));
 		}
 
+		void TelescopingPiston::update(double newLength, double dt) {
+			mLastLength = mCurrentLength;
+			mCurrentLength = newLength;
+			clampLength();
+			
+			mExtensionRate = dt == 0.0 ? 0.0 : (mCurrentLength - mLastLength) / dt;
+			mSpring.update(std::max(mCurrentLength - (mMaxLength - 1.2), 0.0), mExtensionRate);
+		}
+
+		void TelescopingPiston::loadDynamicState(const DSS::Falcon9::Stage1::LandingLegState::TelescopingPistonState& state) {
+			mCurrentLength = state.currentLength;
+			mLastLength = state.lastLength;
+			mExtensionRate = state.extensionRate;
+
+			mSpring.update(std::max(mCurrentLength - (mMaxLength - 1.2), 0.0), mExtensionRate);
+		}
+
+		void TelescopingPiston::saveDynamicState(DSS::Falcon9::Stage1::LandingLegState::TelescopingPistonState& toSaveTo) const {
+			toSaveTo.currentLength = mCurrentLength;
+			toSaveTo.lastLength = mLastLength;
+			toSaveTo.extensionRate = mExtensionRate;
+		}
+
 		PistonCylinder* TelescopingPiston::getCylinder(unsigned char index) {
 			if (index < mCylinders.size())
 				return &mCylinders[index];
 			else
 				return nullptr;
-		}
-
-		void TelescopingPiston::update(double newLength, double dt) {
-			mLastLength = mCurrentLength;
-			mCurrentLength = newLength;
-			clampLength();
-
-			mExtensionRate = dt == 0.0 ? 0.0 : (mCurrentLength - mLastLength) / dt;
-																	  
-			mSpring.update(std::max(mCurrentLength - (mMaxLength - 1.2), 0.0), mExtensionRate);
 		}
 
 		void TelescopingPiston::clampLength() {

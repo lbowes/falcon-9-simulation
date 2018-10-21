@@ -20,7 +20,7 @@ namespace Physics {
 		class IThrustGenerator : public IStageComponent {
 			friend class ThrustGeneratorGroup;
 		protected:
-			glm::dvec3 mThrust_stage;			//thrust produced in stage space
+			glm::dvec3 mThrust_stage;	   //thrust produced in stage space
 			bool mActive = false;	    
 			double mThrustMagnitude = 0.0; //N
 

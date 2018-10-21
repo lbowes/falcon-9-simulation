@@ -4,6 +4,7 @@
 
 #include "GridFin.h"
 #include "Physics/Hardware/Common/Core/StageComponentGroup.h"
+#include "Physics/DynamicSimState.h"
 
 namespace Physics {
 	namespace Hardware {
@@ -22,6 +23,8 @@ namespace Physics {
 			~GridFins() = default;
 
 			void update(double dt/* , double fluidDensity, glm::dvec3 flowVelocity_stage */);
+			void loadDynamicState(const DSS::Falcon9::Stage1& stage1State);
+			void saveDynamicState(DSS::Falcon9::Stage1& toSaveTo) const;
 
 			double getTotalArea() const { return mTotalArea; }
 			glm::dvec3 getCentrePressure_stage() const { return mTotalCentrePressure_stage; }

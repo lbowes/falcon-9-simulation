@@ -44,9 +44,6 @@ namespace Physics {
 				mFlowVelocity_world,
 				mFlowVelocity_local;     //Movement of air relative to stage (as if stage was stationary, in inertial position)
 
-		private:
-			bool mInitialised = false;
-
 		public:
 			IStage() = default;
 			virtual ~IStage() = default;
@@ -61,13 +58,10 @@ namespace Physics {
 			const ThrustGeneratorGroup& getEngines() const { return mEngines; }
 			ThrustGeneratorGroup& getThrusters() { return mThrusters; }
 			const ThrustGeneratorGroup& getThrusters() const { return mThrusters; }
-			
+				
 			//double getDynamicPressure() const { return mDynamicPressure; }
 			//glm::dvec3 getFlowVelocity(CoordSpace space) const { return space == CoordSpace::STAGE ? mFlowVelocity_stage : mFlowVelocity_world; }
 			//double getAngleAttack(bool pitch) const { return pitch ? mAoADegs_pitch : mAoADegs_flow; }
-
-		protected:
-			void initState();
 
 		private:
 			void addForces(const State &state, double t);

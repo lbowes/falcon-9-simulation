@@ -30,20 +30,20 @@ namespace Physics {
 
 		Physics::Hardware::Falcon9 mFalcon9;
 
-		std::map<double, DynamicSimState> mStateHistory;
+		std::map<const double, const DSS> mStateHistory;
 
 	public:
 		Simulation(const std::string& textOutputFilePath);
 		~Simulation() = default;
 
 		void run();
-		const std::map<double, DynamicSimState>& getStateHistory() const { return mStateHistory; }
+		const std::map<const double, const DSS>& getStateHistory() const { return mStateHistory; }
 
 	private:
 		void load();
 		bool stopCondMet();
-		void outputAll(const double currentTime, const Hardware::Falcon9& falcon9);
-		void outputRBState(const RigidBodyState& RB);
+		void saveAllDynamicState(const double currentTime, const Hardware::Falcon9& falcon9);
+		void outputRBState(const DSS::RigidBodyState& RB);
 		void output(const glm::dvec3& vec, const char delim = ',');
 		void output(const glm::dquat& quat, const char delim = ',');
 		void output(const double& scalar, const char delim = ',');

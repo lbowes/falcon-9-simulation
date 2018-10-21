@@ -89,7 +89,7 @@ namespace Graphics {
 		angle = asin(direction.z / length(direction));
 		transform_OGL = rotate(transform_OGL, angle, vec3(-1.0f, 0.0f, 0.0f));
 
-		transform_OGL = stageModelTransform_OGL * mat4(mDataSource.mCompToStage.getLocalToParent_position()) * transform_OGL;
+		transform_OGL = stageModelTransform_OGL * mat4(mDataSource.mCompToStage.getLocalToParent_translation()) * transform_OGL;
 
 		mGasMesh->setVisibility(true);
 		mGasMesh->setModelTransform(transform_OGL);

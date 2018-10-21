@@ -1,11 +1,12 @@
 #include "LandingLegMesh.h"
+#include "Physics/Hardware/Falcon_9/Stage_1/Landing_legs/LandingLeg.h"
 
 namespace Graphics {
 
-	LandingLegMesh::LandingLegMesh(const Physics::StaticSimState::Falcon9::Stage1::LandingLegs& legs, const Physics::DynamicSimState::Falcon9::Stage1::LandingLeg& dataSource) :
+	LandingLegMesh::LandingLegMesh(const Physics::Hardware::LandingLeg& dataSource) :
 		mDataSource(dataSource)
 	{
-		mPistonCylinderTransformMap.resize(legs.pistonCylinderCount);
+		mPistonCylinderTransformMap.resize(dataSource.mPiston->getCylinders().size());
 		std::fill(mPistonCylinderTransformMap.begin(), mPistonCylinderTransformMap.end(), glm::mat4(1.0f));
 	}
 
@@ -13,10 +14,10 @@ namespace Graphics {
 		using namespace glm;
 		
 		//A-frame transform
-		mTransform_OGL = stageModelTransform_OGL * mat4(mDataSource.legToStage.getLocalToParent_total());
+		mTransform_OGL = stageModelTransform_OGL * mat4(mDataSource.mCompToStage.getLocalToParent_total());
 
 		//Telescoping piston cylinder transforms
-		updateCylinderTransforms_OGL(length(mLandingLegData.mAlongPiston_stage3D), mLandingLegData.mPiston->getAngleFromVertical_stage(), stageModelTransform_OGL);
+		updateCylinderTransforms_OGL(length(mDataSource.mAlongPiston_stage3D), 0.0f/* mDataSource.mPiston->getAngleFromVertical_stage() */, stageModelTransform_OGL);
 	}
 
 	glm::mat4 LandingLegMesh::getCylinderTransform(unsigned char cylinderNumber) {
@@ -37,7 +38,7 @@ namespace Graphics {
 
 		mat4 scaledModel;
 
-		Physics::Hardware::TelescopingPiston* piston = mLandingLegData.mPiston.get();
+		Physics::Hardware::TelescopingPiston* piston = mDataSource.mPiston.get();
 		Physics::Hardware::PistonCylinder* cylinder = nullptr;
 
 		for (unsigned char i = 0; i < mPistonCylinderTransformMap.size(); i++) {

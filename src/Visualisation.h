@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Graphics/Simulation_model/SimulationModelLayer.h"
+#include "Physics/Hardware/Falcon_9/Falcon9.h"
 #include "Graphics/Overlay/Overlay2D.h"
 #include "Physics/DynamicSimState.h"
 
@@ -16,14 +17,17 @@ private:
 	const std::string mDataFilePath = "";
 	std::unique_ptr<Graphics::Overlay2D> m2DOverlay;
 	std::unique_ptr<Graphics::SimulationModelLayer> mSimulationModelLayer;
-	const std::map<const double, const Physics::DynamicSimState>& mStateHistoryHandle;
+	const std::map<const double, const Physics::DSS>& mStateHistoryHandle;
+
+	//This Falcon9 instance is updated using the dynamic simulation state history, rather than integration.
+	Physics::Hardware::Falcon9 mDataSource;
 
 	float 
 		mSimTime_s = 0.0,
 		mPlaybackSpeed = 1.0;
 
 public:
-	Visualisation(const std::map<const double, const Physics::DynamicSimState>& stateHistoryHandle);
+	Visualisation(const std::map<const double, const Physics::DSS>& stateHistoryHandle);
 	~Visualisation() = default;
 
 private:

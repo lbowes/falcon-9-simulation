@@ -17,7 +17,7 @@ namespace Physics {
 			static constexpr double mLength = 2.85;       //m, 2.85
 			const TelescopingPiston& mParent;
 			const unsigned char mNumberInPiston = 0; //0 is connected to the stage mount point, 1 is next along etc
-			double mWidthScale = 0.0;
+			const double mWidthScale = 0.0;
 			
 		public:
 			PistonCylinder(const TelescopingPiston& parent, double widthScale, unsigned char numberInPiston);

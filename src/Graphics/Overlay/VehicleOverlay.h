@@ -19,7 +19,7 @@ namespace Graphics {
 
 	class VehicleOverlay {
 	private:
-		//Physics::Hardware::Falcon9& mDataSource;
+		const Physics::Hardware::Falcon9& mDataSource;
 		
 		struct MarkedLocations {
 			glm::vec3
@@ -49,16 +49,16 @@ namespace Graphics {
 		std::unique_ptr<GF::OrthographicCamera> mOrthoCam;
 
 	public:
-		VehicleOverlay(Physics::Hardware::Falcon9& simDataSource, float windowAspect);
+		VehicleOverlay(const Physics::Hardware::Falcon9& simDataSource, float windowAspect);
 		~VehicleOverlay() = default;
 
 	public:
-		void render(const Physics::DynamicSimState::Falcon9& falcon9, glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions);
+		void render(glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions);
 
 	private:
 		void load(float windowAspect);
 		void addAllMarkers();
-		void updateAllMarkers(const Physics::DynamicSimState::Falcon9& falcon9);
+		void updateAllMarkers();
 
 	};
 

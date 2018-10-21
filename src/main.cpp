@@ -6,11 +6,9 @@
 //unsigned int fp_control_state = _controlfp(_EM_INEXACT, _MCW_EM);
 
 int main() {
-	const std::string dataFilePath = "bin/telemetry.txt";
-
-	Physics::Simulation sim(dataFilePath);
+	Physics::Simulation sim("telemetry.txt");
 	sim.run();
 
-	Visualisation visualisation(dataFilePath);
+	Visualisation visualisation(sim.getStateHistory());
 	visualisation.run();
 }

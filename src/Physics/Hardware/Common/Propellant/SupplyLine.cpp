@@ -8,8 +8,8 @@ namespace Physics {
 		{ }
 
 		double GasSupplyLine::transferGas(double massDemand) {
-			double gasSupply = mGasSource.getPropMassValue_tank();
-			mGasSource.removePropellant(massDemand);
+			double gasSupply = mGasSource.getFluidMassValue_tank();
+			mGasSource.removeFluid(massDemand);
 
 			return massDemand <= gasSupply ? massDemand : gasSupply;
 		}
@@ -20,15 +20,15 @@ namespace Physics {
 		{ }
 
 		double PropSupplyLine::transferOxidiser(double massDemand) {
-			double oxidiserSupply = mOxidiserSource.getPropMassValue_tank();
-			mOxidiserSource.removePropellant(massDemand);
+			double oxidiserSupply = mOxidiserSource.getFluidMassValue_tank();
+			mOxidiserSource.removeFluid(massDemand);
 			
 			return massDemand <= oxidiserSupply ? massDemand : oxidiserSupply;
 		}
 
 		double PropSupplyLine::transferFuel(double massDemand) {
-			double fuelSupply = mFuelSource.getPropMassValue_tank();
-			mFuelSource.removePropellant(massDemand);
+			double fuelSupply = mFuelSource.getFluidMassValue_tank();
+			mFuelSource.removeFluid(massDemand);
 
 			return massDemand <= fuelSupply ? massDemand : fuelSupply;
 		}

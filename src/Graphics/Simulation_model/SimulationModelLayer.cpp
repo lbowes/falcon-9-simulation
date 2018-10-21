@@ -1,4 +1,5 @@
 #include "Graphics/Simulation_model/SimulationModelLayer.h"
+#include "Physics/Hardware/Falcon_9/Falcon9.h"
 
 #include <GraphicsFramework/Vendor/ImGui/imgui.h>
 
@@ -6,19 +7,20 @@
 
 namespace Graphics {
 
-	SimulationModelLayer::SimulationModelLayer(const Physics::StaticSimState& staticSimState, float startWindowAspect) :
-		mStaticSimState(staticSimState),
+	SimulationModelLayer::SimulationModelLayer(const Physics::Hardware::Falcon9& dataSource, float startWindowAspect) :
+		mDataSource(dataSource),
 		mCameras(startWindowAspect)
 	{ 
 		load();
 	}
 
-	void SimulationModelLayer::render(const Physics::DynamicSimState& state, float windowAspect, float dt) {
+	void SimulationModelLayer::render(float windowAspect, float dt) {
 		using namespace Physics::External;
 		
-		const CoordTransform3D& stage1ToWorld = state.F9.S1.RB.localToWorld;
+		const State& s1State = mDataSource.getStage1().getState();
+		const CoordTransform3D& stage1ToWorld = s1State.getObjectSpace();
 
-		mCameras.update(stage1ToWorld, windowAspect, dt);
+		mCameras.update(stage1ToWorld, windowAspect, dt, s1State.getCoMPosition_world());
 		
 		SimulationCamera& currentSimCamera = mCameras.getCurrentSimCamera();
 		GF::Camera& currentCamera = currentSimCamera.getInternalCamera();
@@ -33,11 +35,11 @@ namespace Graphics {
 		flushRenderers();
 
 		//Render Earth
-		mEarthModel->render(currentSimCamera, mStaticSimState.F9.mInertialPosition.getEUN_to_ECEFTransform());
+		mEarthModel->render(currentSimCamera, mDataSource.getInertialPosition().getEUN_to_ECEFTransform());
 
 		//Render exhaust models
-		float airPressure_percent = static_cast<float>(Environment::getAirPressure_Pa(floor(state.F9.S1.RB.CoMPosition_world.y))) / Environment::seaLevelStdPressure;
-		glm::vec3 ambientFlow_stage = -stage1ToWorld.toLocalSpace_rotation(state.F9.S1.RB.velocity);
+		float airPressure_percent = static_cast<float>(Environment::getAirPressure_Pa(floor(s1State.getCoMPosition_world().y))) / Environment::seaLevelStdPressure;
+		glm::vec3 ambientFlow_stage = -stage1ToWorld.toLocalSpace_rotation(s1State.getVelocity_world());
 
 		for (const auto& exhaustJet : mStage1Exhausts) {
 			exhaustJet->update(airPressure_percent, ambientFlow_stage);
@@ -80,7 +82,7 @@ namespace Graphics {
 		for (const auto& engine : S1Engines.getAllComponents())
 			mStage1Exhausts.push_back(std::make_unique<ExhaustJet>(*static_cast<Physics::Hardware::Engine*>(engine.get()), S1Engines, mResourceBucket));
 
-		GF::Camera& currentCamera = mCameras.getCurrentSimCamera().getInternalCamera_mutable();
+		GF::Camera& currentCamera = mCameras.getCurrentSimCamera().getInternalCamera();
 		mSolidRenderer.setCamera(currentCamera);
 		mWireframeRenderer.setCamera(currentCamera);
 	}

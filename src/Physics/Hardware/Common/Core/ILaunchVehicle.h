@@ -18,15 +18,16 @@ namespace Physics {
 		
 		class ILaunchVehicle : public RigidBodyGroup {
 		protected:
-			Physics::External::SurfaceLocation mSurfaceLocation;
+			Physics::External::SurfaceLocation mInertialPosition;
 
 		public:
-			ILaunchVehicle(const Physics::External::SurfaceLocation& surfaceLocation);
+			ILaunchVehicle(const Physics::External::SurfaceLocation& inertialPosition);
 			virtual ~ILaunchVehicle() = default;
 
 			void update(double t, double dt);
 			
-			Physics::External::SurfaceLocation& getSurfaceLocation() { return mSurfaceLocation; } 
+			Physics::External::SurfaceLocation& getInertialPosition() { return mInertialPosition; } 
+			const Physics::External::SurfaceLocation& getInertialPosition() const { return mInertialPosition; } 
 
 		private:
 			virtual void assemble() = 0;

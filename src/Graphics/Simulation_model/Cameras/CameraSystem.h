@@ -31,7 +31,7 @@ namespace Graphics {
 		CameraSystem(float windowAspect);
 		~CameraSystem() = default;
 
-		void update(const CoordTransform3D& stage1ToWorld, float windowAspect, float dt);
+		void update(const CoordTransform3D& stage1ToWorld, float windowAspect, float dt, glm::dvec3 stage1CoMPosition_world);
 		void checkInput(float dt);
 		
 		bool hasFocus() const { return mHasFocus; }

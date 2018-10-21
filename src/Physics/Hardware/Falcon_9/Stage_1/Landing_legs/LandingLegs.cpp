@@ -12,6 +12,16 @@ namespace Physics {
 			updateAllGroupProperties();
 		}
 
+		void LandingLegs::loadDynamicState(const DSS::Falcon9::Stage1& stage1State) {
+			for(unsigned char i = 0; i < 4; i++)
+				static_cast<LandingLeg*>(mComponents[i].get())->loadDynamicState(stage1State.landingLegs[i]);
+		}
+
+		void LandingLegs::saveDynamicState(DSS::Falcon9::Stage1& toSaveTo) const {
+			for(unsigned char i = 0; i < 4; i++)
+				static_cast<LandingLeg*>(mComponents[i].get())->saveDynamicState(toSaveTo.landingLegs[i]);
+		}
+
 		void LandingLegs::addLegs() {
 			for (unsigned char i = 0; i < 4; i++)
 				addComponent(std::make_unique<LandingLeg>(45.0 + i * 90.0));
@@ -19,8 +29,8 @@ namespace Physics {
 
 		void LandingLegs::updateAllLegs(const RigidBody& stage, double dt) const {
 			for (const auto& c : mComponents) {
-				glm::dvec3 legOriginAccel_world = stage.getAccelAtLocalPoint_world(c->getCompToStageTransform().toParentSpace_position());
-				static_cast<LandingLeg*>(c.get())->update(stage.immutableState().getObjectSpace(), legOriginAccel_world, dt);
+				glm::dvec3 legOriginAccel_world = stage.getAccelAtLocalPoint_world(c->getCompToStageTransform().toParentSpace_translation());
+				static_cast<LandingLeg*>(c.get())->update(stage.getState().getObjectSpace(), legOriginAccel_world, dt);
 			}
 		}
 

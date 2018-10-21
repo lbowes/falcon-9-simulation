@@ -35,7 +35,7 @@ namespace Graphics {
 		//
 
 		mCameras.push_back(std::make_unique<FPVCamera>(
-			glm::dvec3(-70.0, -30.0, 0.0), //glm::dvec3(-85.0, 30.0, 0.0)
+			glm::dvec3(-85.0, 30.0, 0.0),
 			glm::dvec3(1.0, 0.0, 0.0),
 			0.1f,
 			10000.0f,

@@ -1,6 +1,6 @@
 #include "Visualisation.h"
 
-Visualisation::Visualisation(const std::map<const double, const Physics::DynamicSimState>& stateHistoryHandle) :
+Visualisation::Visualisation(const std::map<const double, const Physics::DSS>& stateHistoryHandle) :
 	Application("Falcon 9 Simulation", "res/SpaceXLogo.png"),
 	mStateHistoryHandle(stateHistoryHandle)
 {
@@ -8,19 +8,11 @@ Visualisation::Visualisation(const std::map<const double, const Physics::Dynamic
 }
 
 void Visualisation::onLoad() {
-	//Generate the state history using the data file
-	//std::ifstream dataFile(mDataFilePath);
-	//std::string line;
+	float windowAspect = mWindow.getAspect();
+	m2DOverlay = std::make_unique<Graphics::Overlay2D>(mDataSource, mPlaybackSpeed, windowAspect);
+	mSimulationModelLayer = std::make_unique<Graphics::SimulationModelLayer>(mDataSource, windowAspect);
 
-	//while(std::getline(dataFile, line)) {
-	//	DynamicSimState state(line);
-	//	mStateHistory.insert({ state.mSimulationTime, state });
-	//}
-
-	m2DOverlay = std::make_unique<Graphics::Overlay2D>(mPlaybackSpeed, mWindow.getAspect());
-	mSimulationModelLayer = std::make_unique<Graphics::SimulationModelLayer>();
-
-	mWindow.setClearColour(glm::vec4(0.259f, 0.435f, 0.588f, 1.0f));
+	mWindow.setClearColour({ 0.0f, 0.0f, 0.0f, 1.0f });
 }
 
 void Visualisation::onInputCheck() {
@@ -46,23 +38,23 @@ void Visualisation::onRender() {
 	using namespace Physics;
 	
 	//Update the simulation time to a new point
-	mSimTime_s += mPlaybackSpeed * mFrameTime;
-
-	//Get an iterator to the previous state in the state history
-	const std::map<const double, const DynamicSimState>::const_iterator prevState = mStateHistoryHandle.find(floor(mSimTime_s));
-
-	//Get the previous and next simulation states to interpolate between
-	const DynamicSimState& 
-		previousState = prevState->second,
-		nextState = std::next(prevState, 1)->second;
-
-	//Work out what the simulation state should be at this new point
-	double timeBetweenStates = (mSimTime_s - previousState.mSimulationTime) / (nextState.mSimulationTime - previousState.mSimulationTime);
-
-	//Interpolate between the previous and next states to get the current state
-	const DynamicSimState currentState = DynamicSimState::lerp(previousState, nextState, timeBetweenStates);
+//	mSimTime_s += mPlaybackSpeed * mFrameTime;
+//
+//	//Get an iterator to the previous state in the state history
+//	const std::map<const double, const DSS>::const_iterator prevState = mStateHistoryHandle.find(floor(mSimTime_s));
+//
+//	//Get the previous and next simulation states to interpolate between
+//	const DSS& 
+//		previousState = prevState->second,
+//		nextState = std::next(prevState, 1)->second;
+//
+//	//Work out what the simulation state should be at this new point
+//	double timeBetweenStates = (mSimTime_s - previousState.simulationTime) / (nextState.simulationTime - previousState.simulationTime);
+//
+//	//Interpolate between the previous and next states to get the current state
+//	const DSS currentState = DSS::lerp(previousState, nextState, timeBetweenStates);
 
 	//Use the approximation for the current state to render the simulation
-	mSimulationModelLayer->render(currentState, mWindow.getAspect(), static_cast<float>(mFrameTime));
-	m2DOverlay->render(currentState, mSimulationModelLayer->getCameraSystem().getCurrentSimCamera().getViewProjection_generated(), mWindow.getAspect(), mWindow.getDimensions());
+	mSimulationModelLayer->render(mWindow.getAspect(), static_cast<float>(mFrameTime));
+	m2DOverlay->render(mSimulationModelLayer->getCameraSystem().getCurrentSimCamera().getViewProjection_generated(), mWindow.getAspect(), mWindow.getDimensions());
 }

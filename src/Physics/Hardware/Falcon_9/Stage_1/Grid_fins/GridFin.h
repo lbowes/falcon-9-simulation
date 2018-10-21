@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Physics/Hardware/Common/Core/IStageComponent.hpp"
+#include "Physics/DynamicSimState.h"
 
 #include <glm/gtx/vector_angle.hpp>
 #include <glm/gtx/rotate_vector.hpp>
@@ -27,10 +28,10 @@ namespace Physics {
 				mMinPitch_degs = -90.0,
 				mCmDistFromTop = 0.4064; //m
 
+			const double mClockingDegree_degs = 0.0;
+			
 			enum class Phase { stowed, deploying, deployed, stowing };
 			Phase mCurrentPhase = Phase::stowed;
-
-			const double mClockingDegree_degs = 0.0;
 
 			double
 				mRollAngle = 0.0,	     //vertical = 0, upper bound (local right) = 45, lower bound (local left) = -45, rotational range therefore = 90
@@ -42,6 +43,8 @@ namespace Physics {
 			~GridFin() = default;
 
 			void update(double dt/* , double fluidDensity, glm::dvec3 flowVelocity_stage */);
+			void loadDynamicState(const DSS::Falcon9::Stage1::GridFinState& state);
+			void saveDynamicState(DSS::Falcon9::Stage1::GridFinState& toSaveTo) const;
 			void setRoll(double newRollValue);
 			void deploy();
 			void stow();
@@ -49,7 +52,7 @@ namespace Physics {
 			Phase getCurrentPhase() const { return mCurrentPhase; }
 
 		private:
-			void updateComponentSpace3D();
+			void updateCompToStage_rotation();
 
 		};
 

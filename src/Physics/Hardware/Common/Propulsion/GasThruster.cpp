@@ -3,10 +3,24 @@
 namespace Physics {
 	namespace Hardware {
 
-		GasThruster::GasThruster(CoordTransform3D engineToStage) :
-			IThrustGenerator(engineToStage)
+		GasThruster::GasThruster(CoordTransform3D thrusterToStage) :
+			IThrustGenerator(thrusterToStage)
 		{
 			setTypeSpecificParams();
+		}
+
+		void GasThruster::loadDynamicState(const DSS::GasThrusterState& state) {
+			mThrustMagnitude = state.thrustMagnitude;
+			mThrust_stage = state.thrust_stage;
+			mActive = state.active;
+			mCurrentMassFlowRate = state.currentMassFlowRate;
+		}	
+
+		void GasThruster::saveDynamicState(DSS::GasThrusterState& toSaveTo) const {
+			toSaveTo.thrustMagnitude = mThrustMagnitude;
+			toSaveTo.thrust_stage = mThrust_stage;
+			toSaveTo.active = mActive;
+			toSaveTo.currentMassFlowRate = mCurrentMassFlowRate;
 		}
 
 		void GasThruster::setTypeSpecificParams() {

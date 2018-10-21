@@ -1,10 +1,9 @@
 build/AllCameras.o: src/Graphics/Simulation_model/Cameras/AllCameras.cpp \
  /usr/include/stdc-predef.h \
  src/Graphics/Simulation_model/Cameras/AllCameras.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/PerspectiveCamera.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Camera.h \
- /usr/include/glm/glm.hpp /usr/include/glm/detail/_fixes.hpp \
- /usr/include/c++/7/cmath \
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/CoordTransform3D.h \
+ /usr/include/glm/mat4x4.hpp /usr/include/glm/detail/setup.hpp \
+ /usr/include/c++/7/cassert \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -13,28 +12,25 @@ build/AllCameras.o: src/Graphics/Simulation_model/Cameras/AllCameras.cpp \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/cpu_defines.h \
- /usr/include/c++/7/bits/cpp_type_traits.h \
- /usr/include/c++/7/ext/type_traits.h /usr/include/math.h \
- /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
- /usr/include/x86_64-linux-gnu/bits/types.h \
- /usr/include/x86_64-linux-gnu/bits/typesizes.h \
- /usr/include/x86_64-linux-gnu/bits/math-vector.h \
- /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
- /usr/include/x86_64-linux-gnu/bits/floatn.h \
- /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
- /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
- /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
- /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
- /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /usr/include/c++/7/bits/std_abs.h /usr/include/stdlib.h \
+ /usr/include/assert.h /usr/include/c++/7/cstddef \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h \
+ /usr/include/glm/simd/platform.h \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/mmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/mm_malloc.h \
+ /usr/include/c++/7/stdlib.h /usr/include/c++/7/cstdlib \
+ /usr/include/stdlib.h \
+ /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
+ /usr/include/x86_64-linux-gnu/bits/floatn.h \
+ /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
  /usr/include/x86_64-linux-gnu/sys/types.h \
+ /usr/include/x86_64-linux-gnu/bits/types.h \
+ /usr/include/x86_64-linux-gnu/bits/typesizes.h \
  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
@@ -56,25 +52,8 @@ build/AllCameras.o: src/Graphics/Simulation_model/Cameras/AllCameras.cpp \
  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
  /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /usr/include/glm/detail/setup.hpp /usr/include/c++/7/cassert \
- /usr/include/assert.h /usr/include/c++/7/cstddef \
- /usr/include/glm/simd/platform.h \
- /usr/lib/gcc/x86_64-linux-gnu/7/include/emmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/7/include/xmmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/7/include/mmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/7/include/mm_malloc.h \
- /usr/include/c++/7/stdlib.h /usr/include/c++/7/cstdlib \
- /usr/include/c++/7/climits \
- /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h \
- /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
- /usr/include/x86_64-linux-gnu/bits/local_lim.h \
- /usr/include/linux/limits.h \
- /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
- /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
- /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/7/cfloat \
- /usr/lib/gcc/x86_64-linux-gnu/7/include/float.h \
- /usr/include/c++/7/limits /usr/include/glm/fwd.hpp \
+ /usr/include/c++/7/bits/std_abs.h \
+ /usr/include/glm/detail/type_mat4x4.hpp /usr/include/glm/fwd.hpp \
  /usr/include/glm/detail/type_int.hpp /usr/include/glm/detail/setup.hpp \
  /usr/include/c++/7/type_traits /usr/include/c++/7/cstdint \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h \
@@ -85,17 +64,18 @@ build/AllCameras.o: src/Graphics/Simulation_model/Cameras/AllCameras.cpp \
  /usr/include/glm/detail/qualifier.hpp \
  /usr/include/glm/detail/compute_vector_relational.hpp \
  /usr/include/c++/7/cstring /usr/include/string.h /usr/include/strings.h \
- /usr/include/glm/detail/type_mat.hpp /usr/include/glm/vec2.hpp \
- /usr/include/glm/detail/type_vec2.hpp \
+ /usr/include/c++/7/limits /usr/include/glm/detail/type_mat.hpp \
+ /usr/include/glm/detail/type_vec4.hpp \
+ /usr/include/glm/detail/type_vec4.inl \
+ /usr/include/glm/detail/type_vec4_simd.inl \
+ /usr/include/glm/detail/type_mat4x4.inl /usr/include/glm/matrix.hpp \
+ /usr/include/glm/vec2.hpp /usr/include/glm/detail/type_vec2.hpp \
  /usr/include/glm/detail/type_vec2.inl /usr/include/glm/vec3.hpp \
  /usr/include/glm/detail/type_vec3.hpp \
  /usr/include/glm/detail/type_vec3.inl /usr/include/glm/vec4.hpp \
- /usr/include/glm/detail/type_vec4.hpp \
- /usr/include/glm/detail/type_vec4.inl \
- /usr/include/glm/detail/type_vec4_simd.inl /usr/include/glm/mat2x2.hpp \
- /usr/include/glm/detail/type_mat2x2.hpp \
- /usr/include/glm/detail/type_mat2x2.inl /usr/include/glm/matrix.hpp \
- /usr/include/glm/mat2x3.hpp /usr/include/glm/detail/type_mat2x3.hpp \
+ /usr/include/glm/mat2x2.hpp /usr/include/glm/detail/type_mat2x2.hpp \
+ /usr/include/glm/detail/type_mat2x2.inl /usr/include/glm/mat2x3.hpp \
+ /usr/include/glm/detail/type_mat2x3.hpp \
  /usr/include/glm/detail/type_mat2x3.inl /usr/include/glm/mat2x4.hpp \
  /usr/include/glm/detail/type_mat2x4.hpp \
  /usr/include/glm/detail/type_mat2x4.inl /usr/include/glm/mat3x2.hpp \
@@ -108,13 +88,20 @@ build/AllCameras.o: src/Graphics/Simulation_model/Cameras/AllCameras.cpp \
  /usr/include/glm/detail/type_mat4x2.hpp \
  /usr/include/glm/detail/type_mat4x2.inl /usr/include/glm/mat4x3.hpp \
  /usr/include/glm/detail/type_mat4x3.hpp \
- /usr/include/glm/detail/type_mat4x3.inl /usr/include/glm/mat4x4.hpp \
- /usr/include/glm/detail/type_mat4x4.hpp \
- /usr/include/glm/detail/type_mat4x4.inl \
- /usr/include/glm/detail/type_mat4x4_simd.inl \
+ /usr/include/glm/detail/type_mat4x3.inl \
  /usr/include/glm/detail/func_matrix.inl /usr/include/glm/geometric.hpp \
  /usr/include/glm/detail/func_geometric.inl \
  /usr/include/glm/exponential.hpp /usr/include/glm/detail/type_vec1.hpp \
+ /usr/include/c++/7/cmath /usr/include/c++/7/bits/cpp_type_traits.h \
+ /usr/include/c++/7/ext/type_traits.h /usr/include/math.h \
+ /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+ /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
+ /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+ /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+ /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
+ /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
  /usr/include/glm/detail/func_exponential.inl \
  /usr/include/glm/vector_relational.hpp \
  /usr/include/glm/detail/func_vector_relational.inl \
@@ -123,6 +110,7 @@ build/AllCameras.o: src/Graphics/Simulation_model/Cameras/AllCameras.cpp \
  /usr/include/glm/detail/type_vec1.hpp \
  /usr/include/glm/detail/func_exponential_simd.inl \
  /usr/include/glm/simd/exponential.h /usr/include/glm/common.hpp \
+ /usr/include/glm/detail/_fixes.hpp \
  /usr/include/glm/detail/func_common.inl \
  /usr/include/glm/detail/func_common_simd.inl \
  /usr/include/glm/simd/common.h \
@@ -161,7 +149,20 @@ build/AllCameras.o: src/Graphics/Simulation_model/Cameras/AllCameras.cpp \
  /usr/include/glm/detail/func_geometric_simd.inl \
  /usr/include/glm/simd/geometric.h \
  /usr/include/glm/detail/func_matrix_simd.inl \
- /usr/include/glm/simd/matrix.h /usr/include/glm/trigonometric.hpp \
+ /usr/include/glm/simd/matrix.h \
+ /usr/include/glm/detail/type_mat4x4_simd.inl \
+ /usr/include/glm/gtx/transform.hpp /usr/include/glm/glm.hpp \
+ /usr/include/c++/7/climits \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h \
+ /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+ /usr/include/linux/limits.h \
+ /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/7/cfloat \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/float.h \
+ /usr/include/glm/trigonometric.hpp \
  /usr/include/glm/detail/func_trigonometric.inl \
  /usr/include/glm/detail/func_trigonometric_simd.inl \
  /usr/include/glm/packing.hpp /usr/include/glm/detail/func_packing.inl \
@@ -171,16 +172,21 @@ build/AllCameras.o: src/Graphics/Simulation_model/Cameras/AllCameras.cpp \
  /usr/include/glm/integer.hpp /usr/include/glm/detail/func_integer.inl \
  /usr/include/glm/ext/vec1.hpp /usr/include/glm/detail/type_vec1.inl \
  /usr/include/glm/detail/func_integer_simd.inl \
- /usr/include/glm/simd/integer.h /usr/include/glm/gtx/quaternion.hpp \
+ /usr/include/glm/simd/integer.h \
+ /usr/include/glm/gtc/matrix_transform.hpp \
  /usr/include/glm/gtc/constants.hpp /usr/include/glm/detail/setup.hpp \
- /usr/include/glm/gtc/constants.inl /usr/include/glm/gtc/quaternion.hpp \
- /usr/include/glm/gtc/quaternion.inl /usr/include/glm/gtc/epsilon.hpp \
- /usr/include/glm/gtc/epsilon.inl \
+ /usr/include/glm/gtc/constants.inl \
+ /usr/include/glm/gtc/matrix_transform.inl \
+ /usr/include/glm/gtx/transform.inl /usr/include/glm/gtx/quaternion.hpp \
+ /usr/include/glm/gtc/quaternion.hpp /usr/include/glm/gtc/quaternion.inl \
+ /usr/include/glm/gtc/epsilon.hpp /usr/include/glm/gtc/epsilon.inl \
  /usr/include/glm/gtc/quaternion_simd.inl /usr/include/glm/gtx/norm.hpp \
  /usr/include/glm/gtx/norm.inl /usr/include/glm/gtx/quaternion.inl \
- /usr/include/glm/gtc/matrix_transform.hpp \
- /usr/include/glm/gtc/matrix_transform.inl /usr/include/c++/7/memory \
- /usr/include/c++/7/bits/stl_algobase.h \
+ /usr/include/glm/gtc/matrix_inverse.hpp \
+ /usr/include/glm/gtc/matrix_inverse.inl \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/PerspectiveCamera.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Camera.h \
+ /usr/include/c++/7/memory /usr/include/c++/7/bits/stl_algobase.h \
  /usr/include/c++/7/bits/functexcept.h \
  /usr/include/c++/7/bits/exception_defines.h \
  /usr/include/c++/7/ext/numeric_traits.h \
@@ -287,43 +293,8 @@ build/AllCameras.o: src/Graphics/Simulation_model/Cameras/AllCameras.cpp \
  /usr/include/c++/7/bits/istream.tcc /usr/local/include/GLFW/glfw3.h \
  /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/State.h \
  /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/InertiaTensor.h \
- /usr/include/glm/gtc/matrix_inverse.hpp \
- /usr/include/glm/gtc/matrix_inverse.inl \
  /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/Mass.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/CoordTransform3D.h \
- /usr/include/glm/gtx/transform.hpp /usr/include/glm/gtx/transform.inl \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Falcon9Stage1.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Core/IStage.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propulsion/ThrustGeneratorGroup.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propulsion/IThrustGenerator.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Core/IStageComponent.hpp \
+ /usr/include/glm/gtx/vector_angle.hpp \
  /usr/include/glm/gtx/rotate_vector.hpp \
  /usr/include/glm/gtx/rotate_vector.inl \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Core/StageComponentGroup.h \
- /usr/include/c++/7/vector /usr/include/c++/7/bits/stl_vector.h \
- /usr/include/c++/7/bits/stl_bvector.h /usr/include/c++/7/bits/vector.tcc \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propulsion/GasThruster.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propellant/SupplyLine.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propellant/FluidTank.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propellant/Fluid.h \
- /usr/include/c++/7/math.h /usr/include/c++/7/algorithm \
- /usr/include/c++/7/bits/stl_algo.h \
- /usr/include/c++/7/bits/algorithmfwd.h \
- /usr/include/c++/7/bits/stl_heap.h \
- /usr/include/c++/7/bits/uniform_int_dist.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propellant/FluidTankGroup.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/Environment.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/Earth.h \
- /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/RigidBody.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Merlin1D.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propulsion/Engine.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Grid_fins/GridFins.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Grid_fins/GridFin.h \
- /usr/include/glm/gtx/vector_angle.hpp \
- /usr/include/glm/gtx/vector_angle.inl \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Landing_legs/LandingLegs.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Landing_legs/LandingLeg.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Landing_legs/TelescopingPiston.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Landing_legs/PistonCylinder.h \
- /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/Spring.hpp \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Landing_legs/LegDeploymentActuator.hpp
+ /usr/include/glm/gtx/vector_angle.inl

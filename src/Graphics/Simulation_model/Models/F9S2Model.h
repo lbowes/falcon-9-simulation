@@ -21,10 +21,10 @@ namespace Graphics {
 	private:
 		GF::Model3D mModel;
 		std::vector<std::unique_ptr<IStageComponentMesh>> mComponentModels;
-		Physics::Hardware::Falcon9Stage2& mStage2Data;
+		const Physics::Hardware::Falcon9Stage2& mStage2Data;
 
 	public:
-		F9S2Model(Physics::Hardware::Falcon9Stage2& stage2Data, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket);
+		F9S2Model(const Physics::Hardware::Falcon9Stage2& stage2Data, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket);
 		~F9S2Model() = default;
 
 	private:

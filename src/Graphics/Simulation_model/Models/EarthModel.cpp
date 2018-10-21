@@ -20,7 +20,7 @@ namespace Graphics {
 
 	void EarthModel::render(const SimulationCamera& activeSimCam, const CoordTransform3D& eunToEcef) {
 		//Copy the required state of the currently active camera
-		const GF::Camera& cam = activeSimCam.getInternalCamera_immutable();
+		const GF::Camera& cam = activeSimCam.getInternalCamera();
 		tempCamera.setFront(cam.getFront());
 		tempCamera.setUp(cam.getUp());
 		tempCamera.setFOVY(cam.getFOVY());

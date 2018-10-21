@@ -7,6 +7,7 @@
 #include "Physics/Hardware/Common/Propulsion/GasThruster.h"
 #include "Physics/Hardware/Falcon_9/Stage_1/Grid_fins/GridFins.h"
 #include "Physics/Hardware/Falcon_9/Stage_1/Landing_legs/LandingLegs.h"
+#include "Physics/DynamicSimState.h"
 
 #define THRUSTER_SPIN_CONFIG 0
 #define LOAD_ENGINE_PROPELLANT 1
@@ -23,8 +24,9 @@ namespace Physics {
 			Falcon9Stage1();
 			~Falcon9Stage1() = default;
 
-			void checkInput_temp(double dt);
-			
+			void loadDynamicState(const DSS::Falcon9::Stage1& state);
+			void saveDynamicState(DSS::Falcon9::Stage1& toSaveTo) const;
+
 			GridFins& getGridFins() { return mGridFins; }
 			const GridFins& getGridFins() const { return mGridFins; }
 			LandingLegs& getLandingLegs() { return mLandingLegs; }
@@ -38,7 +40,7 @@ namespace Physics {
 			void addEngines();
 			void addThrusters();
 			void addTanks();
-			void addPropellantLines();
+			void addFluidLines();
 			void setStageSpecificParams();
 			Mass otherMass_stage() const;
 			InertiaTensor otherCmInertia_stage() const;

@@ -83,25 +83,16 @@ build/EarthModel.o: src/Graphics/Simulation_model/Models/EarthModel.cpp \
  /usr/include/glm/detail/type_vec4_simd.inl \
  /usr/include/glm/detail/func_trigonometric_simd.inl \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Graphics/Simulation_model/Cameras/AllCameras.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/PerspectiveCamera.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Camera.h \
- /usr/include/glm/glm.hpp /usr/include/glm/detail/_fixes.hpp \
- /usr/include/c++/7/climits \
- /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h \
- /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
- /usr/include/x86_64-linux-gnu/bits/local_lim.h \
- /usr/include/linux/limits.h \
- /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
- /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
- /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/7/cfloat \
- /usr/lib/gcc/x86_64-linux-gnu/7/include/float.h /usr/include/glm/fwd.hpp \
- /usr/include/glm/detail/type_float.hpp \
- /usr/include/glm/detail/type_mat.hpp /usr/include/glm/vec2.hpp \
- /usr/include/glm/vec3.hpp /usr/include/glm/vec4.hpp \
- /usr/include/glm/mat2x2.hpp /usr/include/glm/detail/type_mat2x2.hpp \
- /usr/include/glm/detail/type_mat2x2.inl /usr/include/glm/matrix.hpp \
- /usr/include/glm/mat2x3.hpp /usr/include/glm/detail/type_mat2x3.hpp \
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/CoordTransform3D.h \
+ /usr/include/glm/mat4x4.hpp /usr/include/glm/detail/type_mat4x4.hpp \
+ /usr/include/glm/fwd.hpp /usr/include/glm/detail/type_float.hpp \
+ /usr/include/glm/detail/type_mat.hpp \
+ /usr/include/glm/detail/type_mat4x4.inl /usr/include/glm/matrix.hpp \
+ /usr/include/glm/vec2.hpp /usr/include/glm/vec3.hpp \
+ /usr/include/glm/vec4.hpp /usr/include/glm/mat2x2.hpp \
+ /usr/include/glm/detail/type_mat2x2.hpp \
+ /usr/include/glm/detail/type_mat2x2.inl /usr/include/glm/mat2x3.hpp \
+ /usr/include/glm/detail/type_mat2x3.hpp \
  /usr/include/glm/detail/type_mat2x3.inl /usr/include/glm/mat2x4.hpp \
  /usr/include/glm/detail/type_mat2x4.hpp \
  /usr/include/glm/detail/type_mat2x4.inl /usr/include/glm/mat3x2.hpp \
@@ -114,10 +105,7 @@ build/EarthModel.o: src/Graphics/Simulation_model/Models/EarthModel.cpp \
  /usr/include/glm/detail/type_mat4x2.hpp \
  /usr/include/glm/detail/type_mat4x2.inl /usr/include/glm/mat4x3.hpp \
  /usr/include/glm/detail/type_mat4x3.hpp \
- /usr/include/glm/detail/type_mat4x3.inl /usr/include/glm/mat4x4.hpp \
- /usr/include/glm/detail/type_mat4x4.hpp \
- /usr/include/glm/detail/type_mat4x4.inl \
- /usr/include/glm/detail/type_mat4x4_simd.inl \
+ /usr/include/glm/detail/type_mat4x3.inl \
  /usr/include/glm/detail/func_matrix.inl /usr/include/glm/geometric.hpp \
  /usr/include/glm/detail/func_geometric.inl \
  /usr/include/glm/exponential.hpp /usr/include/glm/detail/type_vec1.hpp \
@@ -127,6 +115,7 @@ build/EarthModel.o: src/Graphics/Simulation_model/Models/EarthModel.cpp \
  /usr/include/glm/detail/func_vector_relational_simd.inl \
  /usr/include/glm/detail/func_exponential_simd.inl \
  /usr/include/glm/simd/exponential.h /usr/include/glm/common.hpp \
+ /usr/include/glm/detail/_fixes.hpp \
  /usr/include/glm/detail/func_common.inl \
  /usr/include/glm/detail/func_common_simd.inl \
  /usr/include/glm/simd/common.h \
@@ -165,24 +154,41 @@ build/EarthModel.o: src/Graphics/Simulation_model/Models/EarthModel.cpp \
  /usr/include/glm/detail/func_geometric_simd.inl \
  /usr/include/glm/simd/geometric.h \
  /usr/include/glm/detail/func_matrix_simd.inl \
- /usr/include/glm/simd/matrix.h /usr/include/glm/packing.hpp \
- /usr/include/glm/detail/func_packing.inl \
+ /usr/include/glm/simd/matrix.h \
+ /usr/include/glm/detail/type_mat4x4_simd.inl \
+ /usr/include/glm/gtx/transform.hpp /usr/include/glm/glm.hpp \
+ /usr/include/c++/7/climits \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h \
+ /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+ /usr/include/linux/limits.h \
+ /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/7/cfloat \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/float.h \
+ /usr/include/glm/packing.hpp /usr/include/glm/detail/func_packing.inl \
  /usr/include/glm/detail/type_half.hpp \
  /usr/include/glm/detail/type_half.inl \
  /usr/include/glm/detail/func_packing_simd.inl \
  /usr/include/glm/integer.hpp /usr/include/glm/detail/func_integer.inl \
  /usr/include/glm/ext/vec1.hpp /usr/include/glm/detail/type_vec1.inl \
  /usr/include/glm/detail/func_integer_simd.inl \
- /usr/include/glm/simd/integer.h /usr/include/glm/gtx/quaternion.hpp \
+ /usr/include/glm/simd/integer.h \
+ /usr/include/glm/gtc/matrix_transform.hpp \
  /usr/include/glm/gtc/constants.hpp /usr/include/glm/detail/setup.hpp \
- /usr/include/glm/gtc/constants.inl /usr/include/glm/gtc/quaternion.hpp \
- /usr/include/glm/gtc/quaternion.inl /usr/include/glm/gtc/epsilon.hpp \
- /usr/include/glm/gtc/epsilon.inl \
+ /usr/include/glm/gtc/constants.inl \
+ /usr/include/glm/gtc/matrix_transform.inl \
+ /usr/include/glm/gtx/transform.inl /usr/include/glm/gtx/quaternion.hpp \
+ /usr/include/glm/gtc/quaternion.hpp /usr/include/glm/gtc/quaternion.inl \
+ /usr/include/glm/gtc/epsilon.hpp /usr/include/glm/gtc/epsilon.inl \
  /usr/include/glm/gtc/quaternion_simd.inl /usr/include/glm/gtx/norm.hpp \
  /usr/include/glm/gtx/norm.inl /usr/include/glm/gtx/quaternion.inl \
- /usr/include/glm/gtc/matrix_transform.hpp \
- /usr/include/glm/gtc/matrix_transform.inl /usr/include/c++/7/memory \
- /usr/include/c++/7/bits/stl_algobase.h \
+ /usr/include/glm/gtc/matrix_inverse.hpp \
+ /usr/include/glm/gtc/matrix_inverse.inl \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/PerspectiveCamera.h \
+ /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Camera.h \
+ /usr/include/c++/7/memory /usr/include/c++/7/bits/stl_algobase.h \
  /usr/include/c++/7/bits/functexcept.h \
  /usr/include/c++/7/bits/exception_defines.h \
  /usr/include/c++/7/ext/numeric_traits.h \
@@ -289,11 +295,11 @@ build/EarthModel.o: src/Graphics/Simulation_model/Models/EarthModel.cpp \
  /usr/include/c++/7/bits/istream.tcc /usr/local/include/GLFW/glfw3.h \
  /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/State.h \
  /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/InertiaTensor.h \
- /usr/include/glm/gtc/matrix_inverse.hpp \
- /usr/include/glm/gtc/matrix_inverse.inl \
  /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/Mass.h \
- /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/CoordTransform3D.h \
- /usr/include/glm/gtx/transform.hpp /usr/include/glm/gtx/transform.inl \
+ /usr/include/glm/gtx/vector_angle.hpp \
+ /usr/include/glm/gtx/rotate_vector.hpp \
+ /usr/include/glm/gtx/rotate_vector.inl \
+ /usr/include/glm/gtx/vector_angle.inl \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Renderer.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/RenderQueue.h \
  /usr/include/c++/7/vector /usr/include/c++/7/bits/stl_vector.h \
@@ -316,9 +322,5 @@ build/EarthModel.o: src/Graphics/Simulation_model/Models/EarthModel.cpp \
  /usr/include/c++/7/bits/hashtable_policy.h \
  /usr/include/c++/7/bits/unordered_map.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexArray.h \
- /usr/include/glm/gtx/vector_angle.hpp \
- /usr/include/glm/gtx/rotate_vector.hpp \
- /usr/include/glm/gtx/rotate_vector.inl \
- /usr/include/glm/gtx/vector_angle.inl \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/ImGui/imgui.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/ImGui/imconfig.h

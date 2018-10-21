@@ -6,7 +6,8 @@
 
 namespace Graphics {
 	
-	UILayer::UILayer(float& playbackSpeedHandle) :
+	UILayer::UILayer(const Physics::Hardware::Falcon9& simDataSource, float& playbackSpeedHandle) :
+		mDataSource(simDataSource),
 		mSimSpeedHandle(playbackSpeedHandle)
 	{
 		load();
@@ -24,21 +25,22 @@ namespace Graphics {
 		//
 	}
 
-	void UILayer::render(const Physics::DynamicSimState::Falcon9::Stage1& stage1, glm::vec2 mainWindowSize) {
+	void UILayer::render(glm::vec2 mainWindowSize) {
 		mTextDrawList = ImGui::GetOverlayDrawList();
 
-		stage1PhysicsState(stage1);
+		stage1PhysicsState();
 		simulationControls();
 
+		const glm::dvec3 s1Position = mDataSource.getStage1().getState().getCoMPosition_world();
 		static double lastTime = 0.0;
-		if (stage1.mPosition.y > 0.0) {
+		if (s1Position.y > 100.0) {
 			double
 				currentTime = glfwGetTime(),
 				delta = currentTime - lastTime;
 
 			if (delta > 0.5) {
-				stage1_testGraph.addDataPoint({ static_cast<float>(stage1.mPosition.z), static_cast<float>(stage1.mPosition.y) });
-				stage2_testGraph.addDataPoint({ static_cast<float>(stage1.mPosition.z), static_cast<float>(stage1.mPosition.y) });
+				stage1_testGraph.addDataPoint({ static_cast<float>(s1Position.z), static_cast<float>(s1Position.y) });
+				stage2_testGraph.addDataPoint({ static_cast<float>(s1Position.z), static_cast<float>(s1Position.y) });
 
 				delta = 0.0;
 				lastTime = currentTime;
@@ -72,30 +74,33 @@ namespace Graphics {
 		ImGui::PushStyleColor(ImGuiCol_MenuBarBg,        barColourMain);
 	}
 
-	void UILayer::stage1PhysicsState(const Physics::DynamicSimState::Falcon9::Stage1& stage1) const {
+	void UILayer::stage1PhysicsState() const {
 		using namespace std;
 
+		const Physics::Hardware::Falcon9Stage1& s1 = mDataSource.getStage1();
+		const State& s1State = s1.getState();
+
 		string dataString = "";
-		
-		glm::dvec3 vec = stage1.mPosition;
+
+		glm::dvec3 vec = s1State.getCoMPosition_world();
 		dataString += "Position:            " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
 
-		vec = stage1.mVelocity;
+		vec = s1State.getVelocity_world();
 		dataString += "Velocity:            " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
 
-		vec = stage1.mAcceleration;
+		vec = s1.getAccel_world();
 		dataString += "Linear acceleration: " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
 		
-		vec = stage1.mMomentum;
+		vec = s1State.getMomentum_world();
 		dataString += "Momentum:            " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
 
-		vec = stage1.mAngularVelocity;
+		vec = s1State.getAngularVelocity_world();
 		dataString += "Angular velocity:    " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
 
-		vec = stage1.mAngularMomentum;
+		vec = s1State.getAngularMomentum_world();
 		dataString += "Angular momentum:    " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
 
-		dataString += "Total mass:          " + to_string(stage1.mTotalMass);
+		dataString += "Total mass:          " + to_string(s1State.getMass_local().getValue());
 
 		mTextDrawList->AddText(ImVec2(0, 0), ImColor(1.0f, 1.0f, 1.0f), dataString.c_str());
 	}
