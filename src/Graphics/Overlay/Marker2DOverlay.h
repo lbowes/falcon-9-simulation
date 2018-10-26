@@ -59,7 +59,8 @@ namespace Graphics {
 		std::vector<Marker2D> mMarkers;
 
 		GF::ResourceSet& mResourceContainer;
-		
+		//GF::ResourceSet mResourceContainer;
+
 		GF::Graphics::Renderer& mRenderer;
 
 		GF::Graphics::Mesh* mMesh = nullptr;

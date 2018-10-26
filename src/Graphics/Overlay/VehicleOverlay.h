@@ -21,6 +21,10 @@ namespace Graphics {
 	private:
 		const Physics::Hardware::Falcon9& mDataSource;
 		
+		GF::Graphics::Renderer mRenderer;
+		GF::ResourceSet mResourceContainer;
+		std::unique_ptr<GF::OrthographicCamera> mOrthoCam;
+
 		struct MarkedLocations {
 			glm::vec3
 				origin,
@@ -43,10 +47,6 @@ namespace Graphics {
 		MarkedLocations mMarkedLocations;
 		
 		Marker2DOverlay mMarker2DOverlay;
-
-		GF::Graphics::Renderer mRenderer;
-		GF::ResourceSet mResourceContainer;
-		std::unique_ptr<GF::OrthographicCamera> mOrthoCam;
 
 	public:
 		VehicleOverlay(const Physics::Hardware::Falcon9& simDataSource, float windowAspect);

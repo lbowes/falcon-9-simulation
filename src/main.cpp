@@ -7,7 +7,7 @@
 
 int main() {
 	Physics::Simulation sim("telemetry.txt");
-	sim.run();
+	//sim.run();
 
 	Visualisation visualisation(sim.getStateHistory());
 	visualisation.run();

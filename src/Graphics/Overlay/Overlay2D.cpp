@@ -3,7 +3,7 @@
 namespace Graphics {
 
 	Overlay2D::Overlay2D(Physics::Hardware::Falcon9& simDataSource, float& playbackSpeedHandle, float windowAspect) :
-		mUILayer(simDataSource, playbackSpeedHandle)//,
+		mUILayer(simDataSource, playbackSpeedHandle),
 		mVehicleOverlay(simDataSource, windowAspect)
 	{ }
 
