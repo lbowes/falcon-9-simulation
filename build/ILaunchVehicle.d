@@ -313,4 +313,5 @@ build/ILaunchVehicle.o: \
  /usr/include/c++/7/bits/uniform_int_dist.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propellant/FluidTankGroup.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/Environment.h \
- /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/RigidBodyGroup.h
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/RigidBodyGroup.h \
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/RigidBodyGroupMember.h

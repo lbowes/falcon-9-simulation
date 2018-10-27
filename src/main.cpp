@@ -5,6 +5,11 @@
 //#include <float.h>
 //unsigned int fp_control_state = _controlfp(_EM_INEXACT, _MCW_EM);
 
+//Catch the NaNs
+#include <fenv.h>
+#include <float.h>
+unsigned int test = feenableexcept(FE_INVALID | FE_OVERFLOW);
+
 int main() {
 	Physics::Simulation sim("telemetry.txt");
 	//sim.run();

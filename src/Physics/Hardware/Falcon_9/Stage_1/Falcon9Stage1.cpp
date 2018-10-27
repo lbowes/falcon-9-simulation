@@ -111,9 +111,9 @@ namespace Physics {
 		void Falcon9Stage1::addThrusters() {
 			using namespace glm;
 
-			double clustersHeight = 40.3;
+			const double clustersHeight = 40.225;
 
-			dvec3
+			const dvec3
 				leftGroupPos_stage = dvec3(0.0, clustersHeight, 1.88),
 				rightGroupPos_stage = dvec3(0.0, clustersHeight, -1.88);
 

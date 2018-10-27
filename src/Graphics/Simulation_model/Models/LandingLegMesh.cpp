@@ -3,66 +3,84 @@
 
 namespace Graphics {
 
-	LandingLegMesh::LandingLegMesh(const Physics::Hardware::LandingLeg& dataSource) :
+	unsigned char LandingLegMesh::mNumInstances = 0;
+
+	LandingLegMesh::LandingLegMesh(const Physics::Hardware::LandingLeg& dataSource, GF::ResourceSet& resourceBucket, GF::Model3D& parentModel) :
+		IStageComponentMesh(resourceBucket, parentModel),
 		mDataSource(dataSource)
 	{
-		mPistonCylinderTransformMap.resize(dataSource.mPiston->getCylinders().size());
-		std::fill(mPistonCylinderTransformMap.begin(), mPistonCylinderTransformMap.end(), glm::mat4(1.0f));
+		loadResources();
+		mNumInstances++;
 	}
 
-	void LandingLegMesh::updateTransform_OGL(glm::mat4 stageModelTransform_OGL) {
+	void LandingLegMesh::loadResources() 
+		//Responsible for adding whatever is needed to the mResourceBucket
+	{
+		GF::Graphics::Shader* shader = mResourceBucket.getResource<GF::Graphics::Shader>("bodyShader");
+
+		std::string id = std::to_string(mNumInstances);
+
+		//A-frame																		 
+		mAFrameMesh = mResourceBucket.addOBJMesh("landingLeg" + id, BOX_MODELS ? "res/models/LandingLeg_Box.obj" : "res/models/LandingLeg.obj", GL_TRIANGLES, nullptr, shader);
+		mParentModel.addMesh(mAFrameMesh);
+
+		//Telescoping piston cylinders
+		Physics::Hardware::TelescopingPiston* piston = mDataSource.getPiston();
+		for (unsigned char i = 0; i < piston->getCylinders().size(); i++) {
+			mPistonCylinderMeshes.push_back(mResourceBucket.addOBJMesh("piston" + std::to_string(i) + "leg" + id, BOX_MODELS ? "res/models/PistonCylinder_Box.obj" : "res/models/PistonCylinder.obj", GL_TRIANGLES, nullptr, shader));
+			mParentModel.addMesh(mPistonCylinderMeshes.back());
+		}
+	}
+
+	void LandingLegMesh::updateResources(glm::mat4 stageModelTransform_OGL) 
+		//Responsible for recalculating the mesh transforms of the A frame and piston cylinders based on the mDataSource and 
+		//stageModelTransform_OGL, and updating the meshes with this transform
+	{
 		using namespace glm;
+
+		//A-Frame mesh updates
+		{
+			mat4 AFrameTransform = stageModelTransform_OGL * mat4(mDataSource.getCompToStageTransform().getLocalToParent_total());
+			mAFrameMesh->setModelTransform(AFrameTransform);
+		}
+
+		//Piston cylinder mesh updates
+		{
+			//Using the information about mParent, this function needs to update the OpenGL transform of the cylinders along the telescoping piston.
+			Physics::Hardware::TelescopingPiston* piston = mDataSource.getPiston();
 		
-		//A-frame transform
-		mTransform_OGL = stageModelTransform_OGL * mat4(mDataSource.mCompToStage.getLocalToParent_total());
+			for (unsigned char i = 0; i < piston->getCylinders().size(); i++) {
+				Physics::Hardware::PistonCylinder* cylinder = piston->getCylinder(i);
+				
+				float 
+					cylinderLength = static_cast<float>(cylinder->getLength()),
+					pistonLength = piston->getLength(),
+					alongPiston = 0.0;
+				
+				mat4 pistonScale = scale(vec3(cylinder->getWidthScale(), cylinderLength, cylinder->getWidthScale()));
 
-		//Telescoping piston cylinder transforms
-		updateCylinderTransforms_OGL(length(mDataSource.mAlongPiston_stage3D), 0.0f/* mDataSource.mPiston->getAngleFromVertical_stage() */, stageModelTransform_OGL);
-	}
-
-	glm::mat4 LandingLegMesh::getCylinderTransform(unsigned char cylinderNumber) {
-		if (cylinderNumber < mPistonCylinderTransformMap.size())
-			return mPistonCylinderTransformMap[cylinderNumber];
-		else
-			return glm::mat4();
-	}
-
-	void LandingLegMesh::updateCylinderTransforms_OGL(float pistonLength, float angleDownFromVertical, glm::mat4 stageModelTransform_OGL) {
-		using namespace glm;
-
-		//Using the information about mParent, this function needs to update the OpenGL transform of the
-		//cylinders along the telescoping piston.
-		float
-			alongPiston = 0.0,
-			cylinderLength = 0.0;
-
-		mat4 scaledModel;
-
-		Physics::Hardware::TelescopingPiston* piston = mDataSource.mPiston.get();
-		Physics::Hardware::PistonCylinder* cylinder = nullptr;
-
-		for (unsigned char i = 0; i < mPistonCylinderTransformMap.size(); i++) {
-			cylinder = piston->getCylinder(i);
-			cylinderLength = cylinder->getLength();
-			scaledModel = scale(vec3(cylinder->getWidthScale(), cylinderLength, cylinder->getWidthScale()));
-
-			if ((i + 1) * cylinderLength < pistonLength)
-				alongPiston = i * cylinderLength;
-			else
-				alongPiston = (i * cylinderLength) - (((i + 1) * cylinderLength) - pistonLength);
-
-			//Rotate the cylinder around the stage
-			mPistonCylinderTransformMap[i] = rotate(static_cast<float>(radians(piston->getClockingDegree_degs())), vec3(0.0f, 1.0f, 0.0f));
-
-			//Rotate the cylinder downwards to line up with the piston centre line
-			mPistonCylinderTransformMap[i] = rotate(mPistonCylinderTransformMap[i], static_cast<float>(radians(angleDownFromVertical)), vec3(-1.0f, 0.0f, 0.0f));
-
-			//Slide the cylinder into the correct position along the piston centre line
-			mPistonCylinderTransformMap[i] = translate(mPistonCylinderTransformMap[i], vec3(0.0f, alongPiston, 0.0f));
-
-			//Translate the cylinder upwards to the mounting point on the stage
-			mat4 translation = translate(vec3(piston->getMountPoint_stage()));
-			mPistonCylinderTransformMap[i] = stageModelTransform_OGL * translation * mPistonCylinderTransformMap[i] * scaledModel;
+				if ((i + 1) * cylinderLength < pistonLength)
+					alongPiston = i * cylinderLength;
+				else
+					alongPiston = (i * cylinderLength) - (((i + 1) * cylinderLength) - pistonLength);
+		
+				//Rotate the cylinder around the stage
+				mat4 pistonFinalTransform = rotate(static_cast<float>(radians(piston->getClockingDegree_degs())), vec3(0.0f, 1.0f, 0.0f));
+		
+				//Rotate the cylinder downwards to line up with the piston centre line
+				float angleFromVertical = glm::angle(normalize(mDataSource.mAlongPiston_stage3D), { 0.0, 1.0, 0.0 });
+				pistonFinalTransform = rotate(pistonFinalTransform, static_cast<float>(angleFromVertical), vec3(-1.0f, 0.0f, 0.0f));
+		
+				//Slide the cylinder into the correct position along the piston centre line
+				pistonFinalTransform = translate(pistonFinalTransform, vec3(0.0f, alongPiston, 0.0f));
+		
+				//Translate the cylinder upwards to the mounting point on the stage
+				mat4 pistonTranslation = translate(vec3(piston->getMountPoint_stage()));
+				pistonFinalTransform = stageModelTransform_OGL * pistonTranslation * pistonFinalTransform * pistonScale;
+		
+				//Apply this newly-calculated transform to the piston mesh
+				mPistonCylinderMeshes[i]->setModelTransform(pistonFinalTransform);
+			}
 		}
 	}
 

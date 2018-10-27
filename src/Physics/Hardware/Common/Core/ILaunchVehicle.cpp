@@ -4,7 +4,7 @@ namespace Physics {
 	namespace Hardware {
 
 		ILaunchVehicle::ILaunchVehicle(const Physics::External::SurfaceLocation& inertialPosition) :
-			RigidBodyGroup(Integrator::rungeKutta4, SubUpdateDepth::deep),
+			RigidBodyGroup(Integrator::rungeKutta4, MemberUpdateDepth::deep),
 			mInertialPosition(inertialPosition)
 		{ }
 

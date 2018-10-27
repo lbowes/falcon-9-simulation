@@ -23,8 +23,9 @@ namespace Physics {
 	}
 	
 	void Simulation::run() {
-		printf("Started simulation... ");
+		printf("Started simulation...\n");
 
+		unsigned epoch = 0;
 		while (!stopCondMet()) {
 			mFalcon9.update(static_cast<double>(mCurrentTime_s), static_cast<double>(mUpdateStepSize_s));
 			
@@ -34,9 +35,13 @@ namespace Physics {
 				saveAllDynamicState(mCurrentTime_s, mFalcon9);
 				mLastSnapshotTime_s = mCurrentTime_s;
 			}
+
+			printf("\rEpoch %i...", epoch);
+    		fflush(stdout);
+			epoch++;
 		}
 
-		printf("Done.\n");
+		printf("\nDone.\n");
 	}
 	
 	bool Simulation::stopCondMet() {

@@ -23,9 +23,9 @@ namespace Physics {
 				mDiameter = 0.0,        //m
 				mWallThickness = 0.0,   //m
 				mMaterialDensity = 0.0, //kg/m^3
-				mMaxFluidMass = 0.0,    //kgs
 				mInternalHeight = 0.0,  //m
-				mInternalVolume = 0.0;  //m^3
+				mInternalVolume = 0.0,  //m^3
+				mMaxFluidMass = 0.0;    //kgs
 
 			const Mass mTankMass_tank;
 			

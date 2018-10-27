@@ -2,7 +2,8 @@
 #define GRAPHICS_LANDINGLEGMESH_H
 #pragma once
 
-#include "Physics/DynamicSimState.h"
+#include "Graphics/Simulation_model/Models/IStageComponentMesh.hpp"
+#include "definitions.h"
 
 #include <glm/mat4x4.hpp>
 #include <vector>
@@ -16,27 +17,21 @@ namespace Physics {
 
 namespace Graphics {
 	
-	class LandingLegMesh {
+	class LandingLegMesh : public IStageComponentMesh {
 	private:
-		const Physics::Hardware::LandingLeg& mDataSource;		
-		
-		glm::mat4 mTransform_OGL;
-
-		//The first transform in this vector maps onto the first cylinder in the piston (at the stage mount end) etc.
-		std::vector<glm::mat4> mPistonCylinderTransformMap;
+		static unsigned char mNumInstances;
+		const Physics::Hardware::LandingLeg& mDataSource;
+		GF::Graphics::Mesh* mAFrameMesh = nullptr;
+		std::vector<GF::Graphics::Mesh*> mPistonCylinderMeshes;
 
 	public:
-		LandingLegMesh(const Physics::Hardware::LandingLeg& dataSource);
+		LandingLegMesh(const Physics::Hardware::LandingLeg& dataSource, GF::ResourceSet& resourceBucket, GF::Model3D& parentModel);
 		~LandingLegMesh() = default;
-
-		void updateTransform_OGL(glm::mat4 stageModelTransform_OGL);
-		glm::mat4 getCylinderTransform(unsigned char cylinderNumber);
-
-		glm::mat4 getTransform_OGL() const { return mTransform_OGL; }
-
+	
 	private:
-		void updateCylinderTransforms_OGL(float pistonLength, float angleDownFromVertical, glm::mat4 stageModelTransform_OGL);
-
+		virtual void loadResources();
+		virtual void updateResources(glm::mat4 stageModelTransform_OGL);
+	
 	};
 
 }

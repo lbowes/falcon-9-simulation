@@ -313,6 +313,7 @@ build/Falcon9.o: src/Physics/Hardware/Falcon_9/Falcon9.cpp \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propellant/FluidTankGroup.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/Environment.h \
  /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/RigidBodyGroup.h \
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/RigidBodyGroupMember.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Falcon9Stage1.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Merlin1D.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Propulsion/Engine.h \

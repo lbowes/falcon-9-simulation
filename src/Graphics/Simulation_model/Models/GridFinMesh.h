@@ -9,6 +9,9 @@
 #define GRAPHICS_GRIDFINMESH_H
 #pragma once
 
+#include "Graphics/Simulation_model/Models/IStageComponentMesh.hpp"
+#include "definitions.h"
+
 #include <glm/mat4x4.hpp>
 #include <vector>
 #include <algorithm>
@@ -21,23 +24,22 @@ namespace Physics {
 
 namespace Graphics {
 	
-	class GridFinMesh {
+	class GridFinMesh : public IStageComponentMesh {
 	private:
-		Physics::Hardware::GridFin &mDataSource;
-
-		glm::mat4
-		  mHingeTransform_OGL,
-		  mFinTransform_OGL;
+		static unsigned char mNumInstances;
+		const Physics::Hardware::GridFin& mDataSource;
+		
+		GF::Graphics::Mesh
+			*mHingeMesh = nullptr,
+			*mFinMesh = nullptr;
 
 	public:
-	  	GridFinMesh(Physics::Hardware::GridFin &dataSource);
-	  	~GridFinMesh() = default;
+		GridFinMesh(const Physics::Hardware::GridFin& dataSource, GF::ResourceSet& resourceBucket, GF::Model3D& parentModel);
+		~GridFinMesh() = default;
 
-	  	void updateTransforms_OGL(glm::mat4 stageModelTransform_OGL);
-
-	  	glm::mat4 getFinTransform_OGL() const { return mFinTransform_OGL; }
-	  	glm::mat4 getHingeTransform_OGL() const { return mHingeTransform_OGL; }
-
+	private:
+		virtual void loadResources();
+		virtual void updateResources(glm::mat4 stageModelTransform_OGL);
 	};
 
 }

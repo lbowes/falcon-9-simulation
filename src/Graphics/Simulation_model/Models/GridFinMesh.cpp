@@ -3,23 +3,43 @@
 
 namespace Graphics {
 
-	GridFinMesh::GridFinMesh(Physics::Hardware::GridFin& dataSource) : 
-		mDataSource(dataSource)
-	{ }
+	unsigned char GridFinMesh::mNumInstances = 0;
 
-	void GridFinMesh::updateTransforms_OGL(glm::mat4 stageModelTransform_OGL) {
+	GridFinMesh::GridFinMesh(const Physics::Hardware::GridFin& dataSource, GF::ResourceSet& resourceBucket, GF::Model3D& parentModel) :
+		IStageComponentMesh(resourceBucket, parentModel),
+		mDataSource(dataSource)
+	{
+		loadResources();
+		mNumInstances++;
+	}
+
+	void GridFinMesh::loadResources() 
+		//Responsible for adding whatever is needed to the mResourceBucket
+	{
+		GF::Graphics::Shader* shader = mResourceBucket.getResource<GF::Graphics::Shader>("bodyShader");
+
+		//Hinge
+		mHingeMesh = mResourceBucket.addOBJMesh("gridFinHinge" + std::to_string(mNumInstances), BOX_MODELS ? "res/models/GridFinHinge_Box.obj" : "res/models/GridFinHinge.obj", GL_TRIANGLES, nullptr, shader);
+		mParentModel.addMesh(mHingeMesh);
+
+		//Fin
+		mFinMesh = mResourceBucket.addOBJMesh("gridFin" + std::to_string(mNumInstances), BOX_MODELS ? "res/models/GridFin_Box.obj" : "res/models/GridFin_JonRoss.obj", GL_TRIANGLES, nullptr, shader);
+		mParentModel.addMesh(mFinMesh);
+	}
+
+	void GridFinMesh::updateResources(glm::mat4 stageModelTransform_OGL) {
 		using namespace glm;
-	
-		//Simply moves/rotates BOTH the hinge and fin with the stage
-		mat4 mainTransform = stageModelTransform_OGL * translate(vec3(mDataSource.mCompToStage.toParentSpace()));
-	
+		
 		//Hinge transform
-		mHingeTransform_OGL = rotate(static_cast<float>(radians(mDataSource.mRollAngle)), vec3(rotate(glm::vec3(0.0f, 0.0f, 1.0f), static_cast<float>(mDataSource.mClockingDegree_degs), glm::vec3(0.0f, 1.0f, 0.0f))));
-		mHingeTransform_OGL = rotate(mHingeTransform_OGL, static_cast<float>(radians(mDataSource.mClockingDegree_degs)), vec3(0.0f, 1.0f, 0.0f));
-		mHingeTransform_OGL = mainTransform * mHingeTransform_OGL;
-	
+		vec3 XZDirection_stage = rotate(dvec3(0.0, 0.0, -1.0), glm::radians(mDataSource.mClockingDegree_degs), glm::dvec3(0.0, 1.0, 0.0));
+		
+		mat4 hingeTransform = rotate(static_cast<float>(radians(mDataSource.mRollAngle)), XZDirection_stage);
+		hingeTransform = rotate(hingeTransform, static_cast<float>(radians(mDataSource.mClockingDegree_degs)), { 0.0f, 1.0f, 0.0f });
+		hingeTransform = stageModelTransform_OGL * mat4(mDataSource.mCompToStage.getLocalToParent_translation()) * hingeTransform;
+		mHingeMesh->setModelTransform(hingeTransform);
+
 		//Fin transform
-		mFinTransform_OGL = stageModelTransform_OGL * mat4(mDataSource.mCompToStage.getLocalToParent_total());
+		mFinMesh->setModelTransform(stageModelTransform_OGL * mat4(mDataSource.mCompToStage.getLocalToParent_total()));
 	}
 
 }

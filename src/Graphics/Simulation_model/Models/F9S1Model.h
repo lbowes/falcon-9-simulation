@@ -6,21 +6,19 @@
 #define GRAPHICS_F9S1MODEL_H
 #pragma once
 
+#include "Graphics/Simulation_model/ISimulationModel.hpp"
 #include "EngineMesh.h"
 #include "GasThrusterMesh.h"
-#include "Graphics/Simulation_model/ISimulationModel.hpp"
-#include "Physics/DynamicSimState.h"
+#include "LandingLegMesh.h"
+#include "GridFinMesh.h"
+#include "definitions.h"
 
 #include <GraphicsFramework/Renderer.h>
 #include <GraphicsFramework/Model3D.h>
 
-#define BOX_MODELS 0
-
 namespace Physics {
 	namespace Hardware {
 		class Falcon9Stage1;
-		class LandingLeg;
-		class GridFin;
 	}
 }
 
@@ -49,40 +47,7 @@ namespace Graphics {
 
 	};
 
-	class LandingLegMesh : public IStageComponentMesh {
-	private:
-		static unsigned char mNumInstances;
-		const Physics::Hardware::LandingLeg& mDataSource;
-		GF::Graphics::Mesh* mAFrameMesh = nullptr;
-		std::vector<GF::Graphics::Mesh*> mPistonCylinderMeshes;
-
-	public:
-		LandingLegMesh(const Physics::Hardware::LandingLeg& dataSource, GF::ResourceSet& resourceBucket, GF::Model3D& parentModel);
-		~LandingLegMesh() = default;
 	
-	private:
-		virtual void loadResources();
-		virtual void updateResources(glm::mat4 stageModelTransform_OGL);
-	
-	};
-
-	class GridFinMesh : public IStageComponentMesh {
-	private:
-		static unsigned char mNumInstances;
-		const Physics::Hardware::GridFin& mDataSource;
-		
-		GF::Graphics::Mesh
-			*mHingeMesh = nullptr,
-			*mFinMesh = nullptr;
-
-	public:
-		GridFinMesh(const Physics::Hardware::GridFin& dataSource, GF::ResourceSet& resourceBucket, GF::Model3D& parentModel);
-		~GridFinMesh() = default;
-
-	private:
-		virtual void loadResources();
-		virtual void updateResources(glm::mat4 stageModelTransform_OGL);
-	};
 
 }
 

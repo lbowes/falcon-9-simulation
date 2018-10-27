@@ -60,9 +60,9 @@ namespace Physics {
 
 			glm::dvec3 thrust_stage = glm::dvec3(0.0);
 			
-			bool active = false;
-
 			glm::dvec2 gimbalXY = glm::dvec2(0.0);	    
+
+			bool active = false;
 		};
 
 		struct GasThrusterState {
