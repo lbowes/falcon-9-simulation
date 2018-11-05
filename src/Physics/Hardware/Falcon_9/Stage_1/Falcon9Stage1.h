@@ -8,9 +8,7 @@
 #include "Physics/Hardware/Falcon_9/Stage_1/Grid_fins/GridFins.h"
 #include "Physics/Hardware/Falcon_9/Stage_1/Landing_legs/LandingLegs.h"
 #include "Physics/DynamicSimState.h"
-
-#define THRUSTER_SPIN_CONFIG 0
-#define LOAD_ENGINE_PROPELLANT 1
+#include "definitions.h"
 
 namespace Physics {
 	namespace Hardware {

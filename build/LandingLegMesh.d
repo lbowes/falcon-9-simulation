@@ -48,8 +48,9 @@ build/LandingLegMesh.o: \
  /usr/include/c++/7/bits/stl_construct.h \
  /usr/include/c++/7/ext/alloc_traits.h \
  /usr/include/c++/7/bits/alloc_traits.h \
- /usr/include/c++/7/bits/stl_uninitialized.h \
- /usr/include/c++/7/bits/stl_vector.h /usr/include/c++/7/initializer_list \
+ /usr/include/c++/7/bits/stl_uninitialized.h /usr/include/c++/7/utility \
+ /usr/include/c++/7/bits/stl_relops.h /usr/include/c++/7/initializer_list \
+ /usr/include/c++/7/bits/stl_vector.h \
  /usr/include/c++/7/bits/stl_bvector.h \
  /usr/include/c++/7/bits/functional_hash.h \
  /usr/include/c++/7/bits/range_access.h \
@@ -103,6 +104,8 @@ build/LandingLegMesh.o: \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/atomic_word.h \
+ /usr/include/c++/7/string_view /usr/include/c++/7/limits \
+ /usr/include/c++/7/bits/string_view.tcc \
  /usr/include/c++/7/ext/string_conversions.h /usr/include/c++/7/cstdlib \
  /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
@@ -129,8 +132,7 @@ build/LandingLegMesh.o: \
  /usr/include/c++/7/bits/stl_raw_storage_iter.h \
  /usr/include/c++/7/ext/concurrence.h \
  /usr/include/c++/7/bits/uses_allocator.h \
- /usr/include/c++/7/bits/unique_ptr.h /usr/include/c++/7/utility \
- /usr/include/c++/7/bits/stl_relops.h /usr/include/c++/7/tuple \
+ /usr/include/c++/7/bits/unique_ptr.h /usr/include/c++/7/tuple \
  /usr/include/c++/7/array /usr/include/c++/7/stdexcept \
  /usr/include/c++/7/bits/invoke.h /usr/include/c++/7/bits/shared_ptr.h \
  /usr/include/c++/7/bits/shared_ptr_base.h \
@@ -162,9 +164,9 @@ build/LandingLegMesh.o: \
  /usr/include/glm/detail/type_int.hpp \
  /usr/include/glm/detail/compute_vector_relational.hpp \
  /usr/include/c++/7/cstring /usr/include/string.h /usr/include/strings.h \
- /usr/include/c++/7/limits /usr/include/glm/detail/type_vec2.inl \
- /usr/include/glm/mat4x4.hpp /usr/include/glm/detail/type_mat4x4.hpp \
- /usr/include/glm/fwd.hpp /usr/include/glm/detail/type_float.hpp \
+ /usr/include/glm/detail/type_vec2.inl /usr/include/glm/mat4x4.hpp \
+ /usr/include/glm/detail/type_mat4x4.hpp /usr/include/glm/fwd.hpp \
+ /usr/include/glm/detail/type_float.hpp \
  /usr/include/glm/detail/type_mat.hpp \
  /usr/include/glm/detail/type_vec4.hpp \
  /usr/include/glm/detail/type_vec4.inl \
@@ -200,6 +202,19 @@ build/LandingLegMesh.o: \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
+ /usr/include/c++/7/bits/specfun.h /usr/include/c++/7/tr1/gamma.tcc \
+ /usr/include/c++/7/tr1/special_function_util.h \
+ /usr/include/c++/7/tr1/bessel_function.tcc \
+ /usr/include/c++/7/tr1/special_function_util.h \
+ /usr/include/c++/7/tr1/beta_function.tcc \
+ /usr/include/c++/7/tr1/ell_integral.tcc \
+ /usr/include/c++/7/tr1/exp_integral.tcc \
+ /usr/include/c++/7/tr1/hypergeometric.tcc \
+ /usr/include/c++/7/tr1/legendre_function.tcc \
+ /usr/include/c++/7/tr1/modified_bessel_func.tcc \
+ /usr/include/c++/7/tr1/poly_hermite.tcc \
+ /usr/include/c++/7/tr1/poly_laguerre.tcc \
+ /usr/include/c++/7/tr1/riemann_zeta.tcc \
  /usr/include/glm/detail/func_exponential.inl \
  /usr/include/glm/vector_relational.hpp \
  /usr/include/glm/detail/func_vector_relational.inl \
@@ -261,6 +276,8 @@ build/LandingLegMesh.o: \
  /usr/include/glm/gtc/vec1.inl /usr/include/glm/gtc/type_ptr.inl \
  /usr/include/c++/7/unordered_map /usr/include/c++/7/bits/hashtable.h \
  /usr/include/c++/7/bits/hashtable_policy.h \
+ /usr/include/c++/7/bits/node_handle.h /usr/include/c++/7/optional \
+ /usr/include/c++/7/bits/enable_special_members.h \
  /usr/include/c++/7/bits/unordered_map.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexArray.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Model3D.h \
@@ -272,11 +289,7 @@ build/LandingLegMesh.o: \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Landing_legs/LandingLeg.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Common/Core/IStageComponent.hpp \
  /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/Mass.h \
- /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/InertiaTensor.h \
- /usr/include/glm/gtc/matrix_inverse.hpp \
- /usr/include/glm/gtc/matrix_inverse.inl \
- /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/CoordTransform3D.h \
- /usr/include/glm/gtx/transform.hpp /usr/include/glm/glm.hpp \
+ /usr/include/glm/gtx/compatibility.hpp /usr/include/glm/glm.hpp \
  /usr/include/c++/7/climits \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h \
@@ -293,12 +306,19 @@ build/LandingLegMesh.o: \
  /usr/include/glm/detail/func_packing_simd.inl \
  /usr/include/glm/integer.hpp /usr/include/glm/detail/func_integer.inl \
  /usr/include/glm/detail/func_integer_simd.inl \
- /usr/include/glm/simd/integer.h \
+ /usr/include/glm/simd/integer.h /usr/include/glm/gtx/compatibility.inl \
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/InertiaTensor.h \
+ /usr/include/glm/gtc/matrix_inverse.hpp \
+ /usr/include/glm/gtc/matrix_inverse.inl \
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/CoordTransform3D.h \
+ /usr/include/glm/gtx/transform.hpp \
  /usr/include/glm/gtc/matrix_transform.hpp \
  /usr/include/glm/gtc/matrix_transform.inl \
- /usr/include/glm/gtx/transform.inl /usr/include/glm/gtx/quaternion.hpp \
- /usr/include/glm/gtx/norm.hpp /usr/include/glm/gtx/norm.inl \
- /usr/include/glm/gtx/quaternion.inl \
+ /usr/include/glm/gtx/transform.inl \
+ /usr/include/glm/gtx/matrix_interpolation.hpp \
+ /usr/include/glm/gtx/matrix_interpolation.inl \
+ /usr/include/glm/gtx/quaternion.hpp /usr/include/glm/gtx/norm.hpp \
+ /usr/include/glm/gtx/norm.inl /usr/include/glm/gtx/quaternion.inl \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Landing_legs/TelescopingPiston.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_1/Landing_legs/PistonCylinder.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/DynamicSimState.h \
@@ -307,10 +327,8 @@ build/LandingLegMesh.o: \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/Earth.h \
  /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/RigidBody.h \
  /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/State.h \
- /usr/include/glm/gtx/compatibility.hpp \
- /usr/include/glm/gtx/compatibility.inl /usr/include/c++/7/sstream \
- /usr/include/c++/7/istream /usr/include/c++/7/ios \
- /usr/include/c++/7/bits/ios_base.h \
+ /usr/include/c++/7/sstream /usr/include/c++/7/istream \
+ /usr/include/c++/7/ios /usr/include/c++/7/bits/ios_base.h \
  /usr/include/c++/7/bits/locale_classes.h \
  /usr/include/c++/7/bits/locale_classes.tcc \
  /usr/include/c++/7/system_error \

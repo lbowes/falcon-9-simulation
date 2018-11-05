@@ -33,26 +33,39 @@ namespace Physics {
 	}
 
 	void DSS::saveRigidBodyState(const RigidBody& source, DSS::RigidBodyState& dest) {
-		const State& rigidBodyState = source.getState();
+		const State& s = source.getState();
 
-		dest.CoMPosition_world = rigidBodyState.getCoMPosition_world();
-		dest.velocity = rigidBodyState.getVelocity_world();
+		dest.CoMPosition_world = s.getCoMPosition_world();
+		dest.velocity = s.getVelocity_world();
 		dest.acceleration = source.getAccel_world();
-		dest.momentum = rigidBodyState.getMomentum_world();
-		dest.orientation = rigidBodyState.getOrientation_world();			
-		dest.angularVelocity = rigidBodyState.getAngularVelocity_world();
-		dest.angularMomentum = rigidBodyState.getAngularMomentum_world();
-		dest.mass_local = rigidBodyState.getMass_local();
-		dest.inertiaTensor_local = rigidBodyState.getInertiaTensor_local();
-		dest.localToWorld = rigidBodyState.getObjectSpace();
+		dest.momentum = s.getMomentum_world();
+		dest.orientation = s.getOrientation_world();			
+		dest.angularVelocity = s.getAngularVelocity_world();
+		dest.angularMomentum = s.getAngularMomentum_world();
+		dest.mass_local = s.getMass_local();
+		dest.inertiaTensor_local = s.getInertiaTensor_local();
+		dest.localToWorld = s.getObjectSpace();
 	}
 
-	DSS DSS::lerp(const DSS& a, const DSS& b, double x) {
-		DSS output;
+	void DSS::lerpRigidBodyState(const DSS::RigidBodyState& a, const DSS::RigidBodyState& b, double x, DSS::RigidBodyState& dest) {
+		dest.CoMPosition_world = glm::lerp(a.CoMPosition_world, b.CoMPosition_world, x);
+		dest.velocity = glm::lerp(a.velocity, b.velocity, x);
+		dest.acceleration = glm::lerp(a.acceleration, b.acceleration, x);
+		dest.momentum = glm::lerp(a.momentum, b.momentum, x);
+		dest.orientation = glm::slerp(a.orientation, b.orientation, x);
+		dest.angularVelocity = glm::lerp(a.angularVelocity, b.angularVelocity, x);
+		dest.angularMomentum = glm::lerp(a.angularMomentum, b.angularMomentum, x);
+		dest.mass_local = ::lerp(a.mass_local, b.mass_local, x);
+		dest.localToWorld = ::lerp(a.localToWorld, b.localToWorld, x);
 
-		//TODO: Linearly interpolate between two states
+		//TODO-----------
+		dest.inertiaTensor_local = a.inertiaTensor_local;
+	}
 
-		return output;
+	void DSS::lerp(const DSS& a, const DSS& b, double x, DSS& dest) {
+		lerpRigidBodyState(a.F9.RB, b.F9.RB, x, dest.F9.RB);
+		lerpRigidBodyState(a.F9.S1.RB, b.F9.S1.RB, x, dest.F9.S1.RB);
+		lerpRigidBodyState(a.F9.S2.RB, b.F9.S2.RB, x, dest.F9.S2.RB);
 	}
 
 }

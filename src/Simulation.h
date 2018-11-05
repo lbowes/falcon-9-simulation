@@ -13,16 +13,12 @@ namespace Physics {
 	class Simulation {
 	private:
 		static constexpr unsigned short 
-			mUpdatesPerSecond = 1000,
-			mDataSnapsPerSecond = 4;
+			mUpdatesPerSecond = 200,
+			mDataSnapsPerSecond = 1; //100
 
-		static constexpr long double 
-			mUpdateStepSize_s = 1.0 / mUpdatesPerSecond,
-			mSnapshotInterval_s = 1.0 / mDataSnapsPerSecond;
+		static constexpr double mUpdateStepSize_s = 1.0 / mUpdatesPerSecond;
 
-		long double 
-			mCurrentTime_s = 0.0,
-			mLastSnapshotTime_s = 0.0;
+		double mCurrentTime_s = 0.0;
 
 		const std::string mTextOuputFilePath;
 		
@@ -30,19 +26,20 @@ namespace Physics {
 
 		Physics::Hardware::Falcon9 mFalcon9;
 
-		std::map<const double, const DSS> mStateHistory;
+		std::map<const unsigned, const DSS> mStateHistory;
 
 	public:
 		Simulation(const std::string& textOutputFilePath);
 		~Simulation() = default;
 
 		void run();
-		const std::map<const double, const DSS>& getStateHistory() const { return mStateHistory; }
+		const std::map<const unsigned, const DSS>& getStateHistory() const { return mStateHistory; }
+		double getSnapshotInterval() const { return 1.0 / mDataSnapsPerSecond; }
 
 	private:
 		void load();
 		bool stopCondMet();
-		void saveAllDynamicState(const double currentTime, const Hardware::Falcon9& falcon9);
+		void saveAllDynamicState(const unsigned snapshotNumber, const Hardware::Falcon9& falcon9);
 		void outputRBState(const DSS::RigidBodyState& RB);
 		void output(const glm::dvec3& vec, const char delim = ',');
 		void output(const glm::dquat& quat, const char delim = ',');

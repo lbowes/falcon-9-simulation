@@ -24,20 +24,23 @@ namespace Graphics {
 			stage2_testGraph;
 		
 		const Physics::Hardware::Falcon9& mDataSource;
-		float& mSimSpeedHandle;
+		
+		float
+			&mPlaybackSpeedHandle,
+			&mTimeHandle;
 
 		ImDrawList* mTextDrawList = nullptr;
 
 	public:
-		UILayer(const Physics::Hardware::Falcon9& simDataSource, float& playbackSpeedHandle);
+		UILayer(const Physics::Hardware::Falcon9& simDataSource, float& playbackSpeedHandle, float& timeHandle);
 		~UILayer() = default;
 
-		void render(glm::vec2 mainWindowSize);
+		void render(glm::vec2 mainWindowSize, float simulatedTime_s);
 
 	private:
 		void load() const;
 		void stage1PhysicsState() const;
-		void simulationControls() const;
+		void simulationControls(float simulatedTime_s) const;
 
 	};
 

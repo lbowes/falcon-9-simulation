@@ -45,8 +45,9 @@ build/Marker2DOverlay.o: src/Graphics/Overlay/Marker2DOverlay.cpp \
  /usr/include/c++/7/bits/stl_construct.h \
  /usr/include/c++/7/ext/alloc_traits.h \
  /usr/include/c++/7/bits/alloc_traits.h \
- /usr/include/c++/7/bits/stl_uninitialized.h \
- /usr/include/c++/7/bits/stl_vector.h /usr/include/c++/7/initializer_list \
+ /usr/include/c++/7/bits/stl_uninitialized.h /usr/include/c++/7/utility \
+ /usr/include/c++/7/bits/stl_relops.h /usr/include/c++/7/initializer_list \
+ /usr/include/c++/7/bits/stl_vector.h \
  /usr/include/c++/7/bits/stl_bvector.h \
  /usr/include/c++/7/bits/functional_hash.h \
  /usr/include/c++/7/bits/range_access.h \
@@ -100,6 +101,8 @@ build/Marker2DOverlay.o: src/Graphics/Overlay/Marker2DOverlay.cpp \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/atomic_word.h \
+ /usr/include/c++/7/string_view /usr/include/c++/7/limits \
+ /usr/include/c++/7/bits/string_view.tcc \
  /usr/include/c++/7/ext/string_conversions.h /usr/include/c++/7/cstdlib \
  /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
@@ -126,8 +129,7 @@ build/Marker2DOverlay.o: src/Graphics/Overlay/Marker2DOverlay.cpp \
  /usr/include/c++/7/bits/stl_raw_storage_iter.h \
  /usr/include/c++/7/ext/concurrence.h \
  /usr/include/c++/7/bits/uses_allocator.h \
- /usr/include/c++/7/bits/unique_ptr.h /usr/include/c++/7/utility \
- /usr/include/c++/7/bits/stl_relops.h /usr/include/c++/7/tuple \
+ /usr/include/c++/7/bits/unique_ptr.h /usr/include/c++/7/tuple \
  /usr/include/c++/7/array /usr/include/c++/7/stdexcept \
  /usr/include/c++/7/bits/invoke.h /usr/include/c++/7/bits/shared_ptr.h \
  /usr/include/c++/7/bits/shared_ptr_base.h \
@@ -159,9 +161,9 @@ build/Marker2DOverlay.o: src/Graphics/Overlay/Marker2DOverlay.cpp \
  /usr/include/glm/detail/type_int.hpp \
  /usr/include/glm/detail/compute_vector_relational.hpp \
  /usr/include/c++/7/cstring /usr/include/string.h /usr/include/strings.h \
- /usr/include/c++/7/limits /usr/include/glm/detail/type_vec2.inl \
- /usr/include/glm/mat4x4.hpp /usr/include/glm/detail/type_mat4x4.hpp \
- /usr/include/glm/fwd.hpp /usr/include/glm/detail/type_float.hpp \
+ /usr/include/glm/detail/type_vec2.inl /usr/include/glm/mat4x4.hpp \
+ /usr/include/glm/detail/type_mat4x4.hpp /usr/include/glm/fwd.hpp \
+ /usr/include/glm/detail/type_float.hpp \
  /usr/include/glm/detail/type_mat.hpp \
  /usr/include/glm/detail/type_vec4.hpp \
  /usr/include/glm/detail/type_vec4.inl \
@@ -197,6 +199,19 @@ build/Marker2DOverlay.o: src/Graphics/Overlay/Marker2DOverlay.cpp \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
+ /usr/include/c++/7/bits/specfun.h /usr/include/c++/7/tr1/gamma.tcc \
+ /usr/include/c++/7/tr1/special_function_util.h \
+ /usr/include/c++/7/tr1/bessel_function.tcc \
+ /usr/include/c++/7/tr1/special_function_util.h \
+ /usr/include/c++/7/tr1/beta_function.tcc \
+ /usr/include/c++/7/tr1/ell_integral.tcc \
+ /usr/include/c++/7/tr1/exp_integral.tcc \
+ /usr/include/c++/7/tr1/hypergeometric.tcc \
+ /usr/include/c++/7/tr1/legendre_function.tcc \
+ /usr/include/c++/7/tr1/modified_bessel_func.tcc \
+ /usr/include/c++/7/tr1/poly_hermite.tcc \
+ /usr/include/c++/7/tr1/poly_laguerre.tcc \
+ /usr/include/c++/7/tr1/riemann_zeta.tcc \
  /usr/include/glm/detail/func_exponential.inl \
  /usr/include/glm/vector_relational.hpp \
  /usr/include/glm/detail/func_vector_relational.inl \
@@ -258,6 +273,8 @@ build/Marker2DOverlay.o: src/Graphics/Overlay/Marker2DOverlay.cpp \
  /usr/include/glm/gtc/vec1.inl /usr/include/glm/gtc/type_ptr.inl \
  /usr/include/c++/7/unordered_map /usr/include/c++/7/bits/hashtable.h \
  /usr/include/c++/7/bits/hashtable_policy.h \
+ /usr/include/c++/7/bits/node_handle.h /usr/include/c++/7/optional \
+ /usr/include/c++/7/bits/enable_special_members.h \
  /usr/include/c++/7/bits/unordered_map.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexArray.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Renderer.h \

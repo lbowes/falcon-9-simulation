@@ -36,8 +36,9 @@ build/UILayer.o: src/Graphics/Overlay/UILayer.cpp \
  /usr/include/c++/7/bits/stl_construct.h \
  /usr/include/c++/7/ext/alloc_traits.h \
  /usr/include/c++/7/bits/alloc_traits.h \
- /usr/include/c++/7/bits/stl_uninitialized.h \
- /usr/include/c++/7/bits/stl_vector.h /usr/include/c++/7/initializer_list \
+ /usr/include/c++/7/bits/stl_uninitialized.h /usr/include/c++/7/utility \
+ /usr/include/c++/7/bits/stl_relops.h /usr/include/c++/7/initializer_list \
+ /usr/include/c++/7/bits/stl_vector.h \
  /usr/include/c++/7/bits/stl_bvector.h \
  /usr/include/c++/7/bits/functional_hash.h \
  /usr/include/c++/7/bits/range_access.h \
@@ -108,6 +109,19 @@ build/UILayer.o: src/Graphics/Overlay/UILayer.cpp \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
+ /usr/include/c++/7/bits/specfun.h /usr/include/c++/7/tr1/gamma.tcc \
+ /usr/include/c++/7/tr1/special_function_util.h \
+ /usr/include/c++/7/tr1/bessel_function.tcc \
+ /usr/include/c++/7/tr1/special_function_util.h \
+ /usr/include/c++/7/tr1/beta_function.tcc \
+ /usr/include/c++/7/tr1/ell_integral.tcc \
+ /usr/include/c++/7/tr1/exp_integral.tcc \
+ /usr/include/c++/7/tr1/hypergeometric.tcc \
+ /usr/include/c++/7/tr1/legendre_function.tcc \
+ /usr/include/c++/7/tr1/modified_bessel_func.tcc \
+ /usr/include/c++/7/tr1/poly_hermite.tcc \
+ /usr/include/c++/7/tr1/poly_laguerre.tcc \
+ /usr/include/c++/7/tr1/riemann_zeta.tcc \
  /usr/include/glm/detail/func_exponential.inl \
  /usr/include/glm/vector_relational.hpp \
  /usr/include/glm/detail/func_vector_relational.inl \
@@ -186,6 +200,7 @@ build/UILayer.o: src/Graphics/Overlay/UILayer.cpp \
  /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/atomic_word.h \
+ /usr/include/c++/7/string_view /usr/include/c++/7/bits/string_view.tcc \
  /usr/include/c++/7/ext/string_conversions.h /usr/include/c++/7/cstdio \
  /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/libio.h \
  /usr/include/x86_64-linux-gnu/bits/_G_config.h \
@@ -251,9 +266,12 @@ build/UILayer.o: src/Graphics/Overlay/UILayer.cpp \
  /usr/include/glm/gtc/constants.hpp /usr/include/glm/detail/setup.hpp \
  /usr/include/glm/gtc/constants.inl \
  /usr/include/glm/gtc/matrix_transform.inl \
- /usr/include/glm/gtx/transform.inl /usr/include/glm/gtx/quaternion.hpp \
- /usr/include/glm/gtc/quaternion.hpp /usr/include/glm/gtc/quaternion.inl \
- /usr/include/glm/gtc/epsilon.hpp /usr/include/glm/gtc/epsilon.inl \
+ /usr/include/glm/gtx/transform.inl \
+ /usr/include/glm/gtx/matrix_interpolation.hpp \
+ /usr/include/glm/gtx/matrix_interpolation.inl \
+ /usr/include/glm/gtx/quaternion.hpp /usr/include/glm/gtc/quaternion.hpp \
+ /usr/include/glm/gtc/quaternion.inl /usr/include/glm/gtc/epsilon.hpp \
+ /usr/include/glm/gtc/epsilon.inl \
  /usr/include/glm/gtc/quaternion_simd.inl /usr/include/glm/gtx/norm.hpp \
  /usr/include/glm/gtx/norm.inl /usr/include/glm/gtx/quaternion.inl \
  /usr/include/glm/gtc/matrix_inverse.hpp \
@@ -297,8 +315,7 @@ build/UILayer.o: src/Graphics/Overlay/UILayer.cpp \
  /usr/include/c++/7/bits/stl_raw_storage_iter.h \
  /usr/include/c++/7/ext/concurrence.h \
  /usr/include/c++/7/bits/uses_allocator.h \
- /usr/include/c++/7/bits/unique_ptr.h /usr/include/c++/7/utility \
- /usr/include/c++/7/bits/stl_relops.h /usr/include/c++/7/tuple \
+ /usr/include/c++/7/bits/unique_ptr.h /usr/include/c++/7/tuple \
  /usr/include/c++/7/array /usr/include/c++/7/bits/invoke.h \
  /usr/include/c++/7/bits/shared_ptr.h \
  /usr/include/c++/7/bits/shared_ptr_base.h \
@@ -340,6 +357,7 @@ build/UILayer.o: src/Graphics/Overlay/UILayer.cpp \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/Vendor/stb_image/stb_image.h \
  /usr/include/GL/glew.h /usr/include/GL/glu.h /usr/include/GL/gl.h \
  /usr/include/c++/7/iostream /usr/local/include/GLFW/glfw3.h \
+ /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/definitions.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_2/Falcon9Stage2.h \
  /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/Hardware/Falcon_9/Stage_2/Merlin1DVac.h \
  /usr/include/c++/7/iomanip /usr/include/c++/7/locale \

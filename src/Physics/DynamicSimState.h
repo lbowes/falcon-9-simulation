@@ -75,7 +75,7 @@ namespace Physics {
 			bool active = false;
 		};
 
-		double simulationTime = 0.0;
+		unsigned int number = 0;
 
 		struct Falcon9 {
 			RigidBodyState RB;
@@ -159,8 +159,9 @@ namespace Physics {
 		//Therefore loadRigidBodyState() only requires a State instance, not a RigidBody.
 		static void loadRigidBodyState(const DSS::RigidBodyState& source, State& dest);
 		static void saveRigidBodyState(const RigidBody& source, DSS::RigidBodyState& dest);
+		static void lerpRigidBodyState(const DSS::RigidBodyState& a, const DSS::RigidBodyState& b, double x, DSS::RigidBodyState& dest);
 
-		static DSS lerp(const DSS& a, const DSS& b, double x);
+		static void lerp(const DSS& a, const DSS& b, double x, DSS& dest);
 
 	};
 

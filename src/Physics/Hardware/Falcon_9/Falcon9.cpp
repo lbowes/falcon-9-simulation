@@ -6,28 +6,42 @@ namespace Physics {
 		Falcon9::Falcon9() :
 			ILaunchVehicle({ "LC-39A", { 0.0, 0.0, 0.0 } })
 		{
-			//glm::dmat4 transform = mStage1.getState().getObjectSpace().getLocalToParent_total();
-			//printf("-----stage 1 local to world space transform-----\n");
-			//printf("%f, %f, %f, %f\n", transform[0][0], transform[0][1], transform[0][2], transform[0][3]);
-			//printf("%f, %f, %f, %f\n", transform[1][0], transform[1][1], transform[1][2], transform[1][3]);
-			//printf("%f, %f, %f, %f\n", transform[2][0], transform[2][1], transform[2][2], transform[2][3]);
-			//printf("%f, %f, %f, %f\n", transform[3][0], transform[3][1], transform[3][2], transform[3][3]);
-
 			assemble();
-			
-			//glm::dvec3 pos = mStage1.getState().getCoMPosition_world();
-			//printf("(Falcon9 ctor) Stage 1 centre of mass position (world space): %f, %f, %f\n", pos.x, pos.y, pos.z);
-			//
-			//pos = mStage2.getState().getCoMPosition_world();
-			//printf("(Falcon9 ctor) Stage 2 centre of mass position (world space): %f, %f, %f\n", pos.x, pos.y, pos.z);
-			//
-			//std::cin.get();
 		}
 
 		void Falcon9::update(double t, double dt) {
+			//temp - added to add some pseudo control code to the simulation to make it interesting for debugging
+			
+			if(t > 10.0) {
+				for(unsigned char i = 0; i < mStage1.getEngines().getCount(); i++) {
+					static_cast<Physics::Hardware::Engine*>(mStage1.getEngines()[i])->setActive(true);
+					static_cast<Physics::Hardware::Engine*>(mStage1.getEngines()[i])->setThrottle(1.0);
+				}
+			}
+
+			static_cast<GasThruster*>(mStage1.getThrusters()[0])->setActive(false);
+			const double kickDuration = 0.3;
+			if(mState.getCoMPosition_world().y > 50.0) {
+				static_cast<GasThruster*>(mStage1.getThrusters()[0])->setActive(true);
+				static double pitchKickTime = t;
+
+				if(t - pitchKickTime > kickDuration)
+					static_cast<GasThruster*>(mStage1.getThrusters()[0])->setActive(false);
+			}
+
+			static_cast<GasThruster*>(mStage1.getThrusters()[4])->setActive(false);
+			if(t - 15.0 > 2.0) {
+				static_cast<GasThruster*>(mStage1.getThrusters()[4])->setActive(true);
+				static double pitchCorrectionTime = t;
+
+				if(t - pitchCorrectionTime > kickDuration - 0.2)
+					static_cast<GasThruster*>(mStage1.getThrusters()[4])->setActive(false);
+			}
+			//
+
 			mStage1.update(t, dt);
 			mStage2.update(t, dt);
-			
+
 			ILaunchVehicle::update(t, dt);
 		}
 

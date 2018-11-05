@@ -6,9 +6,10 @@
 
 namespace Graphics {
 	
-	UILayer::UILayer(const Physics::Hardware::Falcon9& simDataSource, float& playbackSpeedHandle) :
+	UILayer::UILayer(const Physics::Hardware::Falcon9& simDataSource, float& playbackSpeedHandle, float& timeHandle) :
 		mDataSource(simDataSource),
-		mSimSpeedHandle(playbackSpeedHandle)
+		mPlaybackSpeedHandle(playbackSpeedHandle),
+		mTimeHandle(timeHandle)
 	{
 		load();
 		
@@ -25,11 +26,11 @@ namespace Graphics {
 		//
 	}
 
-	void UILayer::render(glm::vec2 mainWindowSize) {
+	void UILayer::render(glm::vec2 mainWindowSize, float simulatedTime_s) {
 		mTextDrawList = ImGui::GetOverlayDrawList();
 
 		stage1PhysicsState();
-		simulationControls();
+		simulationControls(simulatedTime_s);
 
 		const glm::dvec3 s1Position = mDataSource.getStage1().getState().getCoMPosition_world();
 		static double lastTime = 0.0;
@@ -105,24 +106,26 @@ namespace Graphics {
 		mTextDrawList->AddText(ImVec2(0, 0), ImColor(1.0f, 1.0f, 1.0f), dataString.c_str());
 	}
 
-	void UILayer::simulationControls() const {
+	void UILayer::simulationControls(float simulatedTime_s) const {
 		using namespace Physics;
 		using namespace ImGui;
 
 		//temp
 		Begin("Simulation controls", 0, ImGuiWindowFlags_AlwaysAutoResize);
-		SliderFloat("Speed", &mSimSpeedHandle, 0.0f, 10.0f);
+		SliderFloat("Speed", &mPlaybackSpeedHandle, 0.0f, 10.0f);
 		
 		if (Button("Pause")) 
-			mSimSpeedHandle = 0.0f; 
+			mPlaybackSpeedHandle = 0.0f; 
 		
 		SameLine();
 		if (Button("Resume")) 
-			mSimSpeedHandle = 1.0f; 
+			mPlaybackSpeedHandle = 1.0f; 
 		
 		SameLine();
 		if (Button("50%%")) 
-			mSimSpeedHandle = 0.5f;
+			mPlaybackSpeedHandle = 0.5f;
+
+		SliderFloat("Time", &mTimeHandle, 0.0f, simulatedTime_s);
 
 		End();
 		//

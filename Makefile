@@ -12,7 +12,7 @@ SOURCE_FILES = $(shell find . -name "*.cpp")
 VPATH := $(sort $(dir $(SOURCE_FILES))) 
 OBJECTS = $(patsubst %.cpp, $(BUILD_DIR)%.o, $(notdir $(SOURCE_FILES)))
 
-CXXFLAGS = -Wall -Wextra $(INCLUDE_DIRS) -MD -g
+CXXFLAGS = -Wall -Wextra $(INCLUDE_DIRS) -MD -g --std=c++17
 LDFLAGS = $(LIB_DIRS) -lGraphicsFramework -lPhysicsFramework $(shell pkg-config --libs --static glfw3) $(shell pkg-config --libs --static glew)
 
 print-%  : ; @echo $* = $($*)

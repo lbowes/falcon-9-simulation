@@ -19,10 +19,10 @@ namespace Graphics {
 		VehicleOverlay mVehicleOverlay;
 
 	public:
-		Overlay2D(Physics::Hardware::Falcon9& simDataSource, float& playbackSpeedHandle, float windowAspect);
+		Overlay2D(Physics::Hardware::Falcon9& simDataSource, float& playbackSpeedHandle, float& timeHandle, float windowAspect);
 		~Overlay2D() = default;
 	
-		void render(glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions);
+		void render(glm::mat4 viewProjection, float windowAspect, glm::vec2 windowDimensions, float simulatedTime_s);
 
 	};
 

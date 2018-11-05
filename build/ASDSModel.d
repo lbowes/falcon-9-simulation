@@ -57,6 +57,31 @@ build/ASDSModel.o: src/Graphics/Simulation_model/Models/ASDSModel.cpp \
  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
  /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+ /usr/include/c++/7/bits/specfun.h /usr/include/c++/7/bits/stl_algobase.h \
+ /usr/include/c++/7/bits/functexcept.h \
+ /usr/include/c++/7/bits/exception_defines.h \
+ /usr/include/c++/7/ext/numeric_traits.h \
+ /usr/include/c++/7/bits/stl_pair.h /usr/include/c++/7/bits/move.h \
+ /usr/include/c++/7/bits/concept_check.h /usr/include/c++/7/type_traits \
+ /usr/include/c++/7/bits/stl_iterator_base_types.h \
+ /usr/include/c++/7/bits/stl_iterator_base_funcs.h \
+ /usr/include/c++/7/debug/assertions.h \
+ /usr/include/c++/7/bits/stl_iterator.h \
+ /usr/include/c++/7/bits/ptr_traits.h /usr/include/c++/7/debug/debug.h \
+ /usr/include/c++/7/bits/predefined_ops.h /usr/include/c++/7/limits \
+ /usr/include/c++/7/tr1/gamma.tcc \
+ /usr/include/c++/7/tr1/special_function_util.h \
+ /usr/include/c++/7/tr1/bessel_function.tcc \
+ /usr/include/c++/7/tr1/special_function_util.h \
+ /usr/include/c++/7/tr1/beta_function.tcc \
+ /usr/include/c++/7/tr1/ell_integral.tcc \
+ /usr/include/c++/7/tr1/exp_integral.tcc \
+ /usr/include/c++/7/tr1/hypergeometric.tcc \
+ /usr/include/c++/7/tr1/legendre_function.tcc \
+ /usr/include/c++/7/tr1/modified_bessel_func.tcc \
+ /usr/include/c++/7/tr1/poly_hermite.tcc \
+ /usr/include/c++/7/tr1/poly_laguerre.tcc \
+ /usr/include/c++/7/tr1/riemann_zeta.tcc \
  /usr/include/glm/detail/setup.hpp /usr/include/c++/7/cassert \
  /usr/include/assert.h /usr/include/c++/7/cstddef \
  /usr/include/glm/simd/platform.h \
@@ -74,10 +99,9 @@ build/ASDSModel.o: src/Graphics/Simulation_model/Models/ASDSModel.cpp \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
  /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/7/cfloat \
- /usr/lib/gcc/x86_64-linux-gnu/7/include/float.h \
- /usr/include/c++/7/limits /usr/include/glm/fwd.hpp \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/float.h /usr/include/glm/fwd.hpp \
  /usr/include/glm/detail/type_int.hpp /usr/include/glm/detail/setup.hpp \
- /usr/include/c++/7/type_traits /usr/include/c++/7/cstdint \
+ /usr/include/c++/7/cstdint \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
@@ -181,18 +205,6 @@ build/ASDSModel.o: src/Graphics/Simulation_model/Models/ASDSModel.cpp \
  /usr/include/glm/gtx/norm.inl /usr/include/glm/gtx/quaternion.inl \
  /usr/include/glm/gtc/matrix_transform.hpp \
  /usr/include/glm/gtc/matrix_transform.inl /usr/include/c++/7/memory \
- /usr/include/c++/7/bits/stl_algobase.h \
- /usr/include/c++/7/bits/functexcept.h \
- /usr/include/c++/7/bits/exception_defines.h \
- /usr/include/c++/7/ext/numeric_traits.h \
- /usr/include/c++/7/bits/stl_pair.h /usr/include/c++/7/bits/move.h \
- /usr/include/c++/7/bits/concept_check.h \
- /usr/include/c++/7/bits/stl_iterator_base_types.h \
- /usr/include/c++/7/bits/stl_iterator_base_funcs.h \
- /usr/include/c++/7/debug/assertions.h \
- /usr/include/c++/7/bits/stl_iterator.h \
- /usr/include/c++/7/bits/ptr_traits.h /usr/include/c++/7/debug/debug.h \
- /usr/include/c++/7/bits/predefined_ops.h \
  /usr/include/c++/7/bits/allocator.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++allocator.h \
  /usr/include/c++/7/ext/new_allocator.h /usr/include/c++/7/new \
@@ -205,7 +217,8 @@ build/ASDSModel.o: src/Graphics/Simulation_model/Models/ASDSModel.cpp \
  /usr/include/c++/7/bits/stl_construct.h \
  /usr/include/c++/7/ext/alloc_traits.h \
  /usr/include/c++/7/bits/alloc_traits.h \
- /usr/include/c++/7/bits/stl_uninitialized.h \
+ /usr/include/c++/7/bits/stl_uninitialized.h /usr/include/c++/7/utility \
+ /usr/include/c++/7/bits/stl_relops.h /usr/include/c++/7/initializer_list \
  /usr/include/c++/7/bits/stl_tempbuf.h \
  /usr/include/c++/7/bits/stl_raw_storage_iter.h /usr/include/c++/7/iosfwd \
  /usr/include/c++/7/bits/stringfwd.h /usr/include/c++/7/bits/postypes.h \
@@ -232,11 +245,9 @@ build/ASDSModel.o: src/Graphics/Simulation_model/Models/ASDSModel.cpp \
  /usr/include/c++/7/bits/stl_function.h \
  /usr/include/c++/7/backward/binders.h \
  /usr/include/c++/7/bits/uses_allocator.h \
- /usr/include/c++/7/bits/unique_ptr.h /usr/include/c++/7/utility \
- /usr/include/c++/7/bits/stl_relops.h /usr/include/c++/7/initializer_list \
- /usr/include/c++/7/tuple /usr/include/c++/7/array \
- /usr/include/c++/7/stdexcept /usr/include/c++/7/string \
- /usr/include/c++/7/bits/char_traits.h \
+ /usr/include/c++/7/bits/unique_ptr.h /usr/include/c++/7/tuple \
+ /usr/include/c++/7/array /usr/include/c++/7/stdexcept \
+ /usr/include/c++/7/string /usr/include/c++/7/bits/char_traits.h \
  /usr/include/c++/7/bits/localefwd.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++locale.h \
  /usr/include/c++/7/clocale /usr/include/locale.h \
@@ -244,7 +255,9 @@ build/ASDSModel.o: src/Graphics/Simulation_model/Models/ASDSModel.cpp \
  /usr/include/ctype.h /usr/include/c++/7/bits/ostream_insert.h \
  /usr/include/c++/7/bits/cxxabi_forced.h \
  /usr/include/c++/7/bits/range_access.h \
- /usr/include/c++/7/bits/basic_string.h \
+ /usr/include/c++/7/bits/basic_string.h /usr/include/c++/7/string_view \
+ /usr/include/c++/7/bits/functional_hash.h \
+ /usr/include/c++/7/bits/string_view.tcc \
  /usr/include/c++/7/ext/string_conversions.h /usr/include/c++/7/cstdio \
  /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/libio.h \
  /usr/include/x86_64-linux-gnu/bits/_G_config.h \
@@ -254,7 +267,6 @@ build/ASDSModel.o: src/Graphics/Simulation_model/Models/ASDSModel.cpp \
  /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
  /usr/include/x86_64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /usr/include/c++/7/bits/functional_hash.h \
  /usr/include/c++/7/bits/basic_string.tcc \
  /usr/include/c++/7/bits/invoke.h /usr/include/c++/7/bits/shared_ptr.h \
  /usr/include/c++/7/bits/shared_ptr_base.h \
@@ -286,6 +298,8 @@ build/ASDSModel.o: src/Graphics/Simulation_model/Models/ASDSModel.cpp \
  /usr/include/glm/gtc/vec1.inl /usr/include/glm/gtc/type_ptr.inl \
  /usr/include/c++/7/unordered_map /usr/include/c++/7/bits/hashtable.h \
  /usr/include/c++/7/bits/hashtable_policy.h \
+ /usr/include/c++/7/bits/node_handle.h /usr/include/c++/7/optional \
+ /usr/include/c++/7/bits/enable_special_members.h \
  /usr/include/c++/7/bits/unordered_map.h \
  /home/lbowes/dev/Programming/Deps/Includes/GraphicsFramework/VertexArray.h \
  /usr/include/glm/gtx/transform.hpp /usr/include/glm/gtx/transform.inl

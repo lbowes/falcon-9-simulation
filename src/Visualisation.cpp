@@ -1,15 +1,18 @@
 #include "Visualisation.h"
 
-Visualisation::Visualisation(const std::map<const double, const Physics::DSS>& stateHistoryHandle) :
+#include <GraphicsFramework/Vendor/ImGui/imgui.h>
+
+Visualisation::Visualisation(const std::map<const unsigned, const Physics::DSS>& stateHistoryHandle, double snapshotInterval_s) :
 	Application("Falcon 9 Simulation", "res/SpaceXLogo.png"),
-	mStateHistoryHandle(stateHistoryHandle)
+	mStateHistory(stateHistoryHandle),
+	mSnapshotInterval_s(snapshotInterval_s)
 {
 	onLoad();
 }
 
 void Visualisation::onLoad() {
 	float windowAspect = mWindow.getAspect();
-	m2DOverlay = std::make_unique<Graphics::Overlay2D>(mDataSource, mPlaybackSpeed, windowAspect);
+	m2DOverlay = std::make_unique<Graphics::Overlay2D>(mDataSource, mPlaybackSpeed, mSimTime_s, windowAspect);
 	mSimulationModelLayer = std::make_unique<Graphics::SimulationModelLayer>(mDataSource, windowAspect);
 
 	mDataSource.getState().setPosition_world({0.0, 0.0, 0.0});
@@ -38,33 +41,37 @@ void Visualisation::onInputCheck() {
 void Visualisation::onUpdate() { }
 
 void Visualisation::onRender() {
-	using namespace Physics;
-
-#if 0
+	//Advance the simulation time correctly according to the frame time...
 	mSimTime_s += mPlaybackSpeed * mFrameTime;
 
-	const std::map<const double, const DSS>::const_iterator prevState = mStateHistoryHandle.find(floor(mSimTime_s));
+	//Localise the current time within the snapshot history...
+	double 
+		s = floor(mSimTime_s / mSnapshotInterval_s),
+		betweenSnapshots = mSimTime_s - s;
 
-	const DSS
-		&previousState = prevState->second,
-		&nextState = std::next(prevState, 1)->second;
+	//Find the index of the the most recent snapshot to have been recorded...
+	unsigned 
+		snapshotCount = mStateHistory.size(),
+		recentSnapshotNum = std::clamp(static_cast<unsigned>(s), 0U, static_cast<unsigned int>(snapshotCount - 2));
 
-	double timeBetweenStates = (mSimTime_s - previousState.simulationTime) / (nextState.simulationTime - previousState.simulationTime);
-
-	const DSS currentState = DSS::lerp(previousState, nextState, timeBetweenStates);
-#endif
-
-	//DSS currentState = mStateHistoryHandle.at(0.25);
-	DSS currentState;
-	currentState.F9.S1.thrusters[0].active = true;
-	currentState.F9.S1.thrusters[1].active = true;
+	//Find the a) most recent snapshot, b) the next snapshot to come and c) a linear interpolation between the two...
+	Physics::DSS 
+		mostRecentState = mStateHistory.at(recentSnapshotNum),
+		nextState = mStateHistory.at(recentSnapshotNum + 1),
+		interpolated = mostRecentState;
 	
-	//currentState.F9.S1.engines[0].throttle = 1.0;
-	//currentState.F9.S1.engines[0].active = true;
+	Physics::DSS::lerp(mostRecentState, nextState, betweenSnapshots, interpolated);
 
-	mDataSource.loadDynamicState(currentState.F9);
+	//THIS SHOWS THAT INTERPOLATION IS OCCURING CORRECTLY
+	glm::dvec3 interpolatedPosition = interpolated.F9.RB.CoMPosition_world;
+	printf("interpolatedPosition: %f, %f, %f\n", interpolatedPosition.x, interpolatedPosition.y, interpolatedPosition.z);
 
-	//Use the approximation for the current state to render the simulation
+	//Load the dummy Falcon9 object with this interpolated state ready for rendering...
+	mDataSource.getState().setCoMPosition_world(interpolatedPosition);
+	mDataSource.loadDynamicState(interpolated.F9);
+
+
+	//Render the dummy Falcon9 object 
 	mSimulationModelLayer->render(mWindow.getAspect(), static_cast<float>(mFrameTime));
-	//m2DOverlay->render(mSimulationModelLayer->getCameraSystem().getCurrentSimCamera().getViewProjection_generated(), mWindow.getAspect(), mWindow.getDimensions());
+	m2DOverlay->render(mSimulationModelLayer->getCameraSystem().getCurrentSimCamera().getViewProjection_generated(), mWindow.getAspect(), mWindow.getDimensions(), mSnapshotInterval_s * snapshotCount);
 }

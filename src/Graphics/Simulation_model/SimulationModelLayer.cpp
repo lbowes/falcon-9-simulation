@@ -3,8 +3,6 @@
 
 #include <GraphicsFramework/Vendor/ImGui/imgui.h>
 
-#define WIREFRAME_RENDERING 0
-
 namespace Graphics {
 
 	SimulationModelLayer::SimulationModelLayer(const Physics::Hardware::Falcon9& dataSource, float startWindowAspect) :

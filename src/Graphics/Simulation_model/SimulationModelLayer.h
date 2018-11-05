@@ -2,8 +2,8 @@
 #define GRAPHICS_SIMULATIONMODELLAYER_H
 #pragma once
 
-#include "Physics/DynamicSimState.h"
 #include "Physics/External/Environment.h"
+#include "definitions.h"
 
 #include "Models/F9S1Model.h"
 #include "Models/F9S2Model.h"
