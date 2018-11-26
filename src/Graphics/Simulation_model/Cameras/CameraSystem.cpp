@@ -14,7 +14,7 @@ namespace Graphics {
 
 	void CameraSystem::checkInput(float dt) {
 		//Cycle through different cameras
-		if (GF::Input::isKeyReleased(GLFW_KEY_C)) 
+		if (GF::Input::isKeyClicked(GLFW_KEY_C)) 
 			mCurrentCamera = mCurrentCamera + 1 > chaser ? FPV : mCurrentCamera + 1;
 		
 		if (!mHasFocus) 

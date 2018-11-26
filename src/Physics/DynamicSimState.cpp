@@ -1,5 +1,7 @@
 #include "DynamicSimState.h"
 
+#include <iostream>
+
 namespace Physics {
 
 	DSS::DSS(const std::string& dataString) 
@@ -58,9 +60,15 @@ namespace Physics {
 		dest.mass_local = ::lerp(a.mass_local, b.mass_local, x);
 		dest.localToWorld = ::lerp(a.localToWorld, b.localToWorld, x);
 
-		//TODO-----------
+		//The inertia tensor cannot be interpolated without first interpolating all components that influence it,
+		//so the most recent snapshot is used
 		dest.inertiaTensor_local = a.inertiaTensor_local;
 	}
+
+	//TODO:
+	//Work on fully interpolating the state of the vehicle (not just rigid body state).
+	//Landing legs, grid fins, propellant, engines
+	//Look at how state is propagated down with loading and saving and mirror this passing-down of data in the interpolation
 
 	void DSS::lerp(const DSS& a, const DSS& b, double x, DSS& dest) {
 		lerpRigidBodyState(a.F9.RB, b.F9.RB, x, dest.F9.RB);

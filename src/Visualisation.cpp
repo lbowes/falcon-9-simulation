@@ -15,17 +15,17 @@ void Visualisation::onLoad() {
 	m2DOverlay = std::make_unique<Graphics::Overlay2D>(mDataSource, mPlaybackSpeed, mSimTime_s, windowAspect);
 	mSimulationModelLayer = std::make_unique<Graphics::SimulationModelLayer>(mDataSource, windowAspect);
 
-	mDataSource.getState().setPosition_world({0.0, 0.0, 0.0});
+	mDataSource.getState().setPosition_world({ 0.0, 0.0, 0.0 });
 	mDataSource.update(0.0, 0.0);
 
 	mWindow.setClearColour({ 0.0f, 0.0f, 0.0f, 1.0f });
 }
 
 void Visualisation::onInputCheck() {
-	if (GF::Input::isKeyReleased(GLFW_KEY_ESCAPE)) 
+	if (GF::Input::isKeyClicked(GLFW_KEY_ESCAPE)) 
 		mRunning = false;
 	
-	if (GF::Input::isKeyReleased(GLFW_KEY_PAUSE)) {
+	if (GF::Input::isKeyClicked(GLFW_KEY_PAUSE)) {
 		static float savedPlaybackSpeed = mPlaybackSpeed;
 		if (mPlaybackSpeed != 0.0) {
 			savedPlaybackSpeed = mPlaybackSpeed;
@@ -47,29 +47,23 @@ void Visualisation::onRender() {
 	//Localise the current time within the snapshot history...
 	double 
 		s = floor(mSimTime_s / mSnapshotInterval_s),
-		betweenSnapshots = mSimTime_s - s;
+		betweenSnapshots = fmod(mSimTime_s, mSnapshotInterval_s) / mSnapshotInterval_s;
 
 	//Find the index of the the most recent snapshot to have been recorded...
 	unsigned 
 		snapshotCount = mStateHistory.size(),
-		recentSnapshotNum = std::clamp(static_cast<unsigned>(s), 0U, static_cast<unsigned int>(snapshotCount - 2));
+		recentSnapshotNum = std::clamp(static_cast<unsigned>(s), 0U, static_cast<unsigned int>(snapshotCount - 1));
 
 	//Find the a) most recent snapshot, b) the next snapshot to come and c) a linear interpolation between the two...
 	Physics::DSS 
 		mostRecentState = mStateHistory.at(recentSnapshotNum),
-		nextState = mStateHistory.at(recentSnapshotNum + 1),
-		interpolated = mostRecentState;
-	
+		nextState = mStateHistory.at(std::clamp(recentSnapshotNum + 1, 0U, static_cast<unsigned int>(snapshotCount - 1))),
+		interpolated;
+
 	Physics::DSS::lerp(mostRecentState, nextState, betweenSnapshots, interpolated);
 
-	//THIS SHOWS THAT INTERPOLATION IS OCCURING CORRECTLY
-	glm::dvec3 interpolatedPosition = interpolated.F9.RB.CoMPosition_world;
-	printf("interpolatedPosition: %f, %f, %f\n", interpolatedPosition.x, interpolatedPosition.y, interpolatedPosition.z);
-
 	//Load the dummy Falcon9 object with this interpolated state ready for rendering...
-	mDataSource.getState().setCoMPosition_world(interpolatedPosition);
 	mDataSource.loadDynamicState(interpolated.F9);
-
 
 	//Render the dummy Falcon9 object 
 	mSimulationModelLayer->render(mWindow.getAspect(), static_cast<float>(mFrameTime));

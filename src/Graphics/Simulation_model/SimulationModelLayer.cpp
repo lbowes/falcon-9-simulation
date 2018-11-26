@@ -50,12 +50,12 @@ namespace Graphics {
 		using namespace GF;
 
 		//Hide/show cursor for menu interaction/camera focus respectively 
-		if (Input::isMouseButtonReleased(GLFW_MOUSE_BUTTON_RIGHT) && mCameras.hasFocus()) {
+		if (Input::isMouseButtonClicked(GLFW_MOUSE_BUTTON_RIGHT) && mCameras.hasFocus()) {
 			Input::showCursor();
 			Input::setMousePosition(windowDimensions / 2.0f);
 			mCameras.shouldHaveFocus(false);
 		}
-		if (Input::isMouseButtonReleased(GLFW_MOUSE_BUTTON_LEFT) && !ImGui::GetIO().WantCaptureMouse) {
+		if (Input::isMouseButtonClicked(GLFW_MOUSE_BUTTON_LEFT) && !ImGui::GetIO().WantCaptureMouse) {
 			Input::hideCursor();
 			mCameras.shouldHaveFocus(true);
 		}

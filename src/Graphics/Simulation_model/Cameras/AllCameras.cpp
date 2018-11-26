@@ -106,7 +106,7 @@ namespace Graphics {
 		if(mMovementSpeed < mMinMovementSpeed)
 			mMovementSpeed = mMinMovementSpeed;
 
-		if (Input::isMouseButtonReleased(GLFW_MOUSE_BUTTON_MIDDLE) || Input::isMouseButtonReleased(GLFW_MOUSE_BUTTON_4))
+		if (Input::isMouseButtonClicked(GLFW_MOUSE_BUTTON_MIDDLE) || Input::isMouseButtonClicked(GLFW_MOUSE_BUTTON_4))
 			mMovementSpeed = 400.0f;
 	}
 

@@ -12,7 +12,7 @@ namespace Physics {
 		void Falcon9::update(double t, double dt) {
 			//temp - added to add some pseudo control code to the simulation to make it interesting for debugging
 			
-			if(t > 10.0) {
+			if(t > 5.0) {
 				for(unsigned char i = 0; i < mStage1.getEngines().getCount(); i++) {
 					static_cast<Physics::Hardware::Engine*>(mStage1.getEngines()[i])->setActive(true);
 					static_cast<Physics::Hardware::Engine*>(mStage1.getEngines()[i])->setThrottle(1.0);

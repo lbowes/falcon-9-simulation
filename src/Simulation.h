@@ -14,7 +14,7 @@ namespace Physics {
 	private:
 		static constexpr unsigned short 
 			mUpdatesPerSecond = 200,
-			mDataSnapsPerSecond = 1; //100
+			mDataSnapsPerSecond = 5;
 
 		static constexpr double mUpdateStepSize_s = 1.0 / mUpdatesPerSecond;
 
