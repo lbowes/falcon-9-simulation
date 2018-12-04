@@ -23,4 +23,8 @@ Thank-you to:
 * [ZLSA Design](https://zlsadesign.com/) for a great [block 5 grid fin model](https://sketchfab.com/models/a800195f7a654c33b52a3f59773d2632).
 * [Ed Kyle](https://forum.nasaspaceflight.com/index.php?topic=41947.msg1669723#msg1669723) for a diagram of the Falcon 9's dimensions.
 
-![alt-text](https://github.com/lbowes/Falcon-9-Simulation/blob/master/screenshots/Launch2.gif "Launch") ![alt-text](https://github.com/lbowes/Falcon-9-Simulation/blob/master/screenshots/LegDeploy.gif "Landing leg deployment") ![alt-text](https://github.com/lbowes/Falcon-9-Simulation/blob/master/screenshots/Landing.gif "Stage 1 landing")
+<p align="center">
+   <img src="https://github.com/lbowes/Falcon-9-Simulation/blob/master/screenshots/Launch2.gif">
+   <img src="https://github.com/lbowes/Falcon-9-Simulation/blob/master/screenshots/LegDeploy.gif">
+   <img src="https://github.com/lbowes/Falcon-9-Simulation/blob/master/screenshots/Landing.gif">
+</p>
