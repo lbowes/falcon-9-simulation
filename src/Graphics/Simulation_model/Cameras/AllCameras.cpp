@@ -111,7 +111,7 @@ namespace Graphics {
 	}
 
 	InterstageCamera::InterstageCamera(float aspect) :
-		SimulationCamera(0.01f, 1000.0f, aspect, mFOV)
+		SimulationCamera(0.1f, 10000.0f, aspect, mFOV) //0.1f, 10000.0f
 	{ 
 		mPosition_stage = glm::rotate(glm::vec3(0.0f, mHeight_stage, mHeightAboveWall), glm::radians(mClockDegree_degs), { 0.0f, 1.0f, 0.0f });
 		mUp_stage = glm::rotate(glm::vec3(0.0f, 0.0f, 1.0f), glm::radians(mClockDegree_degs), { 0.0f, 1.0f, 0.0f });

@@ -53,26 +53,9 @@ namespace Graphics {
 			
 			float throttleInRange_percent = (mSourceEngine.getThrottle() - mSourceEngine.getThrottleMin()) / (mSourceEngine.getThrottleMax() - mSourceEngine.getThrottleMin());
 
-			static float 
-				variableAirPressure,
-				variableThrottleInRange;
-
-			ImGui::Begin("Exhaust debug");
-			static bool environmentInfluence = true;
-			ImGui::Checkbox("Environmental influence", &environmentInfluence);
-			if(!environmentInfluence) {
-				ImGui::SliderFloat("airPressure_percent", &variableAirPressure, 0.0f, 1.0f);
-				ImGui::SliderFloat("throttleInRange_percent", &variableThrottleInRange, 0.0f, 1.0f);
-			}
-			else {
-				variableAirPressure = airPressure_percent;
-				variableThrottleInRange = throttleInRange_percent;
-			}
-			ImGui::End();
-
 			mShader->bind();
-			mShader->setUniform("u_throttleInRange_percent", variableThrottleInRange);
-			mShader->setUniform("u_airPressure_percent", variableAirPressure);
+			mShader->setUniform("u_throttleInRange_percent", throttleInRange_percent);
+			mShader->setUniform("u_airPressure_percent", airPressure_percent);
 			mShader->setUniform("u_time", static_cast<float>(glfwGetTime()));
 			mShader->setUniform("u_ambientFlowDir", -ambientFlowDir_stage);
 			mShader->setUniform("u_ambientPressureDir", recalcAmbPressureDir_stage());
@@ -156,10 +139,6 @@ namespace Graphics {
 			output = vec3(0.0, 1.0, 0.0);
 		else
 			output = normalize(averageActiveEnginePos_stage - sourceEnginePosition);
-
-		ImGui::Text("averageActiveEnginePos_stage: %f, %f, %f\n", averageActiveEnginePos_stage.x, averageActiveEnginePos_stage.y, averageActiveEnginePos_stage.z);
-		ImGui::Text("sourceEnginePosition: %f, %f, %f\n", sourceEnginePosition.x, sourceEnginePosition.y, sourceEnginePosition.z);
-		ImGui::Text("output: %f, %f, %f\n", output.x, output.y, output.z);
 
 		return output;
 	}

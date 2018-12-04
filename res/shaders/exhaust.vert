@@ -24,26 +24,26 @@ out vec4 colour;
 
 vec3 mod289(vec3 x)
 {
-  return x - floor(x * (1.0 / 289.0)) * 289.0;
+  	return x - floor(x * (1.0 / 289.0)) * 289.0;
 }
 
 vec4 mod289(vec4 x)
 {
-  return x - floor(x * (1.0 / 289.0)) * 289.0;
+  	return x - floor(x * (1.0 / 289.0)) * 289.0;
 }
 
 vec4 permute(vec4 x)
 {
-  return mod289(((x*34.0)+1.0)*x);
+  	return mod289(((x*34.0)+1.0)*x);
 }
 
 vec4 taylorInvSqrt(vec4 r)
 {
-  return 1.79284291400159 - 0.85373472095314 * r;
+  	return 1.79284291400159 - 0.85373472095314 * r;
 }
 
 vec3 fade(vec3 t) {
-  return t*t*t*(t*(t*6.0-15.0)+10.0);
+  	return t*t*t*(t*(t*6.0-15.0)+10.0);
 }
 
 // Classic Perlin noise
@@ -136,7 +136,7 @@ vec4 getColour(vec3 position, float alongFlame_percent)
 	//'uniqueSeed' must be unique for each vertex at a given layer (x or z position)
 {
 	const vec3 
-		start = vec3(0.992f, 1.0f, 0.996f),
+		start = vec3(1.0f, 0.0f, 0.26f),//vec3(0.992f, 1.0f, 0.996f),
 		end = vec3(0.919f, 0.844f, 0.983f);
 
 	float 
@@ -151,8 +151,8 @@ vec4 getColour(vec3 position, float alongFlame_percent)
 
 float getLength() {
 	const float 
-		minLength = 45.0f,
-		maxLength = 80.0f;
+		minLength = 45.0f, //45.0f
+		maxLength = 80.0f; //80.0f
 	
 	//The throttle should not have a visual effect on the plume in a vacuum, it should be very large regardless.
 	//At lower altitudes the throttle's effect is most visible.

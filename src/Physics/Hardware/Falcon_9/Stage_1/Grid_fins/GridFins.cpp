@@ -26,16 +26,6 @@ namespace Physics {
 			}
 		}
 
-		void GridFins::loadDynamicState(const DSS::Falcon9::Stage1& stage1State) {
-			for(unsigned char i = 0; i < 4; i++)
-				static_cast<GridFin*>(mComponents[i].get())->loadDynamicState(stage1State.gridFins[i]);
-		}
-
-		void GridFins::saveDynamicState(DSS::Falcon9::Stage1& toSaveTo) const {
-			for(unsigned char i = 0; i < 4; i++)
-				static_cast<GridFin*>(mComponents[i].get())->saveDynamicState(toSaveTo.gridFins[i]);
-		}
-
 		void GridFins::updateAllFins(double dt/* , double fluidDensity, glm::dvec3 flowVelocity_stage */) const {
 			for (const auto& c : mComponents)
 				static_cast<GridFin*>(c.get())->update(dt/* , fluidDensity, flowVelocity_stage */);

@@ -15,50 +15,6 @@ namespace Physics {
 			preFlight_temp();
 		}
 
-		void Falcon9Stage1::loadDynamicState(const DSS::Falcon9::Stage1& state) {
-			//Rigid body state
-			DSS::loadRigidBodyState(state.RB, mState);
-
-			//Propellant supplies
-			static_cast<FluidTank*>(mPropellantSupplies[Propellants::liquidOxygen])->loadDynamicState(state.LOXTank);
-			static_cast<FluidTank*>(mPropellantSupplies[Propellants::RP1])->loadDynamicState(state.RP1Tank);
-			static_cast<FluidTank*>(mPropellantSupplies[Propellants::nitrogen])->loadDynamicState(state.nitrogenTank);
-
-			//Engines
-			for(unsigned char i = 0; i < mEngines.getCount(); i++)
-				static_cast<Engine*>(mEngines[i])->loadDynamicState(state.engines[i]);
-
-			//Gas thrusters
-			for(unsigned char i = 0; i < mThrusters.getCount(); i++)
-				static_cast<GasThruster*>(mThrusters[i])->loadDynamicState(state.thrusters[i]);
-
-			//Landing legs and grid fins
-			mLandingLegs.loadDynamicState(state);
-			mGridFins.loadDynamicState(state);
-		}
-
-		void Falcon9Stage1::saveDynamicState(DSS::Falcon9::Stage1& toSaveTo) const {
-			//Rigid body state
-			DSS::saveRigidBodyState(*this, toSaveTo.RB);
-			
-			//Propellant supplies
-			static_cast<FluidTank*>(mPropellantSupplies[Propellants::liquidOxygen])->saveDynamicState(toSaveTo.LOXTank);
-			static_cast<FluidTank*>(mPropellantSupplies[Propellants::RP1])->saveDynamicState(toSaveTo.RP1Tank);
-			static_cast<FluidTank*>(mPropellantSupplies[Propellants::nitrogen])->saveDynamicState(toSaveTo.nitrogenTank);
-
-			//Engines
-			for(unsigned char i = 0; i < mEngines.getCount(); i++)
-				static_cast<Engine*>(mEngines[i])->saveDynamicState(toSaveTo.engines[i]);
-
-			//Gas thrusters
-			for(unsigned char i = 0; i < mThrusters.getCount(); i++)
-				static_cast<GasThruster*>(mThrusters[i])->saveDynamicState(toSaveTo.thrusters[i]);
-
-			//Landing legs and grid fins
-			mLandingLegs.saveDynamicState(toSaveTo);
-			mGridFins.saveDynamicState(toSaveTo);
-		}
-
 		void Falcon9Stage1::preFlight_temp() 
 			//temp - All operations will be handled autonomously eventually.
 		{

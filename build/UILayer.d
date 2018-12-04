@@ -281,9 +281,10 @@ build/UILayer.o: src/Graphics/Overlay/UILayer.cpp \
  /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/InertiaTensor.h \
  /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/Mass.h \
  /usr/include/glm/gtx/compatibility.hpp \
- /usr/include/glm/gtx/compatibility.inl /usr/include/c++/7/sstream \
- /usr/include/c++/7/istream /usr/include/c++/7/ios \
- /usr/include/c++/7/bits/ios_base.h \
+ /usr/include/glm/gtx/compatibility.inl \
+ /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/RigidBodyStateSnapshot.h \
+ /usr/include/c++/7/sstream /usr/include/c++/7/istream \
+ /usr/include/c++/7/ios /usr/include/c++/7/bits/ios_base.h \
  /usr/include/c++/7/bits/locale_classes.h \
  /usr/include/c++/7/bits/locale_classes.tcc \
  /usr/include/c++/7/system_error \

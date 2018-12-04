@@ -34,34 +34,6 @@ namespace Physics {
 			updateState(stageToWorld, legOriginAccel_world, dt);
 		}
  
-		void LandingLeg::loadDynamicState(const DSS::Falcon9::Stage1::LandingLegState& state) {
-			mDeploymentPhase = static_cast<Phase>(state.deploymentPhase);
-			mDeploymentAngle_rads = state.deploymentAngle_rads;
-			mDeploymentVelocity_rads = state.deploymentVelocity_rads;
-			mAlongPiston_stage3D = state.alongPiston_stage3D;
-			mPistonEndPos_stage3D = state.pistonEndPos_stage3D;
-			mAlongPusher_stage3D = state.alongPusher_stage3D;
-			mPusherEndPos_stage3D = state.pusherEndPos_stage3D;
-			mCompToStage = state.compToStage;
-			
-			mPiston->loadDynamicState(state.telescopingPiston);
-			mPusher->loadDynamicState(state.pusher);
-		}
-
-		void LandingLeg::saveDynamicState(DSS::Falcon9::Stage1::LandingLegState& toSaveTo) const {
-			toSaveTo.deploymentPhase = static_cast<DSS::Falcon9::Stage1::LandingLegState::Phase>(mDeploymentPhase);
-			toSaveTo.deploymentAngle_rads = mDeploymentAngle_rads;
-			toSaveTo.deploymentVelocity_rads = mDeploymentVelocity_rads;
-			toSaveTo.alongPiston_stage3D = mAlongPiston_stage3D;
-			toSaveTo.pistonEndPos_stage3D = mPistonEndPos_stage3D;
-			toSaveTo.alongPusher_stage3D = mAlongPusher_stage3D;
-			toSaveTo.pusherEndPos_stage3D = mPusherEndPos_stage3D;
-			toSaveTo.compToStage = mCompToStage;
-
-			mPiston->saveDynamicState(toSaveTo.telescopingPiston);
-			mPusher->saveDynamicState(toSaveTo.pusher);
-		}
-
 		void LandingLeg::deploy() {
 			if (mDeploymentPhase == Phase::stowed)
 				mDeploymentPhase = Phase::deploying;

@@ -14,15 +14,18 @@ namespace Graphics {
 		load();
 		
 		//temp testing graphs
-		stage1_testGraph.setBackgroundColour({ 0.0f, 0.0f, 0.0f, 0.06f });
+		stage1_testGraph.setBackgroundColour({ 1.0f, 1.0f, 1.0f, 0.06f });
 		stage1_testGraph.setDataColour({1.0f, 1.0f, 1.0f, 0.3f});
-		stage1_testGraph.setLowerLimit({ -900.0f, 0.0f });
-		stage1_testGraph.setUpperLimit({ 150'000.0f, 150'000.0f });
+		stage1_testGraph.setLowerLimit({ -10'000.0f, 0.0f });
+		stage1_testGraph.setUpperLimit({ 0.0f, 10'000.0f });
 		
-		stage2_testGraph.setBackgroundColour({ 0.0f, 0.0f, 0.0f, 0.06f });
+		stage2_testGraph.setBackgroundColour({ 1.0f, 1.0f, 1.0f, 0.06f });
 		stage2_testGraph.setDataColour({ 1.0f, 1.0f, 1.0f, 0.3f });
-		stage2_testGraph.setLowerLimit({ -900.0f, 0.0f });
-		stage2_testGraph.setUpperLimit({ 150'000.0f, 150'000.0f });
+		stage2_testGraph.setLowerLimit({ -10'000.0f, 0.0f });
+		stage2_testGraph.setUpperLimit({ 0.0f, 10'000.0f });
+
+		stage2_testGraph.addDataPoint({0.0f, 10.0f});
+		stage2_testGraph.addDataPoint({0.0f, 0.0f});
 		//
 	}
 
@@ -34,7 +37,7 @@ namespace Graphics {
 
 		const glm::dvec3 s1Position = mDataSource.getStage1().getState().getCoMPosition_world();
 		static double lastTime = 0.0;
-		if (s1Position.y > 100.0) {
+		if (s1Position.y > 30.0) {
 			double
 				currentTime = glfwGetTime(),
 				delta = currentTime - lastTime;
@@ -111,7 +114,7 @@ namespace Graphics {
 		using namespace ImGui;
 
 		//temp
-		Begin("Simulation controls", 0, ImGuiWindowFlags_AlwaysAutoResize);
+		Begin("Simulation controls", 0); //ImGuiWindowFlags_AlwaysAutoResize
 		SliderFloat("Speed", &mPlaybackSpeedHandle, 0.0f, 10.0f);
 		
 		if (Button("Pause")) 

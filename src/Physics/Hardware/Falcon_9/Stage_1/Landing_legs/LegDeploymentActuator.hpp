@@ -2,14 +2,17 @@
 #define LEGDEPLOYMENTACTUATOR_HPP
 #pragma once
 
-#include "Physics/DynamicSimState.h"
-
 #include <PhysicsFramework/Spring.hpp>
+
+namespace Physics {
+	class DSS;
+}
 
 namespace Physics {
 	namespace Hardware {
 
 		class LegDeploymentActuator {
+			friend class Physics::DSS;
 		private:
 			const double
 				mRetractedLength = 0.0,
@@ -27,15 +30,6 @@ namespace Physics {
 
 			void update(double availableExtensionSpace) {
 				mSpring.update(std::min(availableExtensionSpace, mExtensionDistance), 0.0);
-			}
-
-			void loadDynamicState(const DSS::Falcon9::Stage1::LandingLegState::LegDeploymentActuatorState& state) {
-				mSpring.update(state.springLength, state.springCompressionRate);
-			}
-
-			void saveDynamicState(DSS::Falcon9::Stage1::LandingLegState::LegDeploymentActuatorState& toSaveTo) const {
-				toSaveTo.springLength = mSpring.getCurrentLength();
-				toSaveTo.springCompressionRate = mSpring.getCompressionRate();
 			}
 
 			double getForceMagnitude() {

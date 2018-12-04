@@ -5,9 +5,10 @@
 #pragma once
 
 #include "External/SurfaceLocation.h"
-#include "PhysicsFramework/CoordTransform3D.h"
-#include "PhysicsFramework/RigidBody.h"
 
+#include <PhysicsFramework/CoordTransform3D.h>
+#include <PhysicsFramework/RigidBody.h>
+#include <PhysicsFramework/RigidBodyStateSnapshot.h>
 #include <glm/vec3.hpp>
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtx/compatibility.hpp>
@@ -16,27 +17,24 @@
 #include <vector>
 
 namespace Physics {
+	namespace Hardware {
+		class Falcon9;
+		class FluidTank;
+		class Engine;
+		class GasThruster;
+		class LandingLeg;
+		class GridFin;
+		class TelescopingPiston;
+		class LegDeploymentActuator;
+	}
+}
+
+namespace Physics {
+
+	double lerp(const double a, const double b, const double x);
 
 	class DSS {
 	public:
-		struct RigidBodyState {
-			glm::dvec3
-				CoMPosition_world = glm::dvec3(0.0),
-				velocity = glm::dvec3(0.0),
-				acceleration = glm::dvec3(0.0),
-				momentum = glm::dvec3(0.0),
-				angularVelocity = glm::dvec3(0.0),
-				angularMomentum = glm::dvec3(0.0);
-
-			glm::dquat orientation = glm::dquat();
-
-			Mass mass_local;
-			
-			InertiaTensor inertiaTensor_local;
-
-			CoordTransform3D localToWorld;
-		};
-
 		struct FluidTankState {
 			double
 				fluidVolume = 0.0,
@@ -78,12 +76,10 @@ namespace Physics {
 		unsigned int number = 0;
 
 		struct Falcon9 {
-			RigidBodyState RB;
+			RigidBodyStateSnapshot RB;
 			
-			External::SurfaceLocation inertialPosition;
-
 			struct Stage1 {
-				RigidBodyState RB;
+				RigidBodyStateSnapshot RB;
 
 				FluidTankState 
 					LOXTank,
@@ -140,7 +136,7 @@ namespace Physics {
 			} S1;
 
 			struct Stage2 {
-				RigidBodyState RB;
+				RigidBodyStateSnapshot RB;
 				
 				FluidTankState 
 					LOXTank,
@@ -153,15 +149,50 @@ namespace Physics {
 	public:
 		DSS() = default;
 		DSS(const std::string& dataString);
+		DSS(const unsigned snapshotNumber, const Hardware::Falcon9& falcon9);
 		~DSS() = default;
-
-		//Note: The two functions below do not contain the same parameters, because rigid body acceleration is implicit: it can be saved, but not loaded.
-		//Therefore loadRigidBodyState() only requires a State instance, not a RigidBody.
-		static void loadRigidBodyState(const DSS::RigidBodyState& source, State& dest);
-		static void saveRigidBodyState(const RigidBody& source, DSS::RigidBodyState& dest);
-		static void lerpRigidBodyState(const DSS::RigidBodyState& a, const DSS::RigidBodyState& b, double x, DSS::RigidBodyState& dest);
-
+ 
+		static void save(const Physics::Hardware::Falcon9& source, DSS& dest);
+		static void load(const DSS& source, Physics::Hardware::Falcon9& dest);
 		static void lerp(const DSS& a, const DSS& b, double x, DSS& dest);
+
+		static void saveFluidTankState(const Physics::Hardware::FluidTank& source, DSS::FluidTankState& dest);
+		static void loadFluidTankState(const DSS::FluidTankState& source, Physics::Hardware::FluidTank& dest);
+		static void lerpFluidTankState(const DSS::FluidTankState& a, const DSS::FluidTankState& b, double x, DSS::FluidTankState& dest);
+
+		static void saveEngineState(const Physics::Hardware::Engine& source, DSS::EngineState& dest);
+		static void loadEngineState(const DSS::EngineState& source, Physics::Hardware::Engine& dest);
+		static void lerpEngineState(const DSS::EngineState& a, const DSS::EngineState& b, double x, DSS::EngineState& dest);
+
+		static void saveGasThrusterState(const Physics::Hardware::GasThruster& source, DSS::GasThrusterState& dest);
+		static void loadGasThrusterState(const DSS::GasThrusterState& source, Physics::Hardware::GasThruster& dest);
+		static void lerpGasThrusterState(const DSS::GasThrusterState& a, const DSS::GasThrusterState& b, double x, DSS::GasThrusterState& dest);
+
+		static void saveLandingLegState(const Physics::Hardware::LandingLeg& source, DSS::Falcon9::Stage1::LandingLegState& dest);
+		static void loadLandingLegState(const DSS::Falcon9::Stage1::LandingLegState& source, Physics::Hardware::LandingLeg& dest);
+		static void lerpLandingLegState(const DSS::Falcon9::Stage1::LandingLegState& a, const DSS::Falcon9::Stage1::LandingLegState& b, double x, DSS::Falcon9::Stage1::LandingLegState& dest);
+
+		static void saveGridFinState(const Physics::Hardware::GridFin& source, DSS::Falcon9::Stage1::GridFinState& dest);
+		static void loadGridFinState(const DSS::Falcon9::Stage1::GridFinState& source, Physics::Hardware::GridFin& dest);
+		static void lerpGridFinState(const DSS::Falcon9::Stage1::GridFinState& a, const DSS::Falcon9::Stage1::GridFinState& b, double x, DSS::Falcon9::Stage1::GridFinState& dest);
+
+		static void saveLegPistonState(const Physics::Hardware::TelescopingPiston& source, DSS::Falcon9::Stage1::LandingLegState::TelescopingPistonState& dest);
+		static void loadLegPistonState(const DSS::Falcon9::Stage1::LandingLegState::TelescopingPistonState& source, Physics::Hardware::TelescopingPiston& dest);
+		static void lerpLegPistonState(
+			const DSS::Falcon9::Stage1::LandingLegState::TelescopingPistonState& a,
+			const DSS::Falcon9::Stage1::LandingLegState::TelescopingPistonState& b,
+			double x, 
+			DSS::Falcon9::Stage1::LandingLegState::TelescopingPistonState& dest
+		);
+
+		static void saveLegPusherState(const Physics::Hardware::LegDeploymentActuator& source, DSS::Falcon9::Stage1::LandingLegState::LegDeploymentActuatorState& dest);
+		static void loadLegPusherState(const DSS::Falcon9::Stage1::LandingLegState::LegDeploymentActuatorState& source, Physics::Hardware::LegDeploymentActuator& dest);
+		static void lerpLegPusherState(
+			const DSS::Falcon9::Stage1::LandingLegState::LegDeploymentActuatorState& a, 
+			const DSS::Falcon9::Stage1::LandingLegState::LegDeploymentActuatorState& b, 
+			double x,
+			DSS::Falcon9::Stage1::LandingLegState::LegDeploymentActuatorState& dest
+		);
 
 	};
 

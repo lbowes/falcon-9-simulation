@@ -27,6 +27,11 @@ namespace Physics {
 
 			IStageComponent* operator[](const unsigned index) const { return getComponent(index); }
 			IStageComponent* getComponent(const unsigned index) const { return index < mComponents.size() ? mComponents[index].get() : (IStageComponent*)nullptr; }
+			
+			//TODO:
+			template <class T>
+			T* getComponent(const unsigned index) const { return index < mComponents.size() ? static_cast<T*>(mComponents[index].get()) : (T*)nullptr; }
+
 			std::vector<std::unique_ptr<IStageComponent>>& getAllComponents() { return mComponents; }
 			const std::vector<std::unique_ptr<IStageComponent>>& getAllComponents() const { return mComponents; }
 			unsigned getCount() const { return static_cast<unsigned>(mComponents.size()); }

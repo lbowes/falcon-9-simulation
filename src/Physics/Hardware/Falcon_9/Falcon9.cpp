@@ -10,33 +10,8 @@ namespace Physics {
 		}
 
 		void Falcon9::update(double t, double dt) {
-			//temp - added to add some pseudo control code to the simulation to make it interesting for debugging
-			
-			if(t > 5.0) {
-				for(unsigned char i = 0; i < mStage1.getEngines().getCount(); i++) {
-					static_cast<Physics::Hardware::Engine*>(mStage1.getEngines()[i])->setActive(true);
-					static_cast<Physics::Hardware::Engine*>(mStage1.getEngines()[i])->setThrottle(1.0);
-				}
-			}
-
-			static_cast<GasThruster*>(mStage1.getThrusters()[0])->setActive(false);
-			const double kickDuration = 0.3;
-			if(mState.getCoMPosition_world().y > 50.0) {
-				static_cast<GasThruster*>(mStage1.getThrusters()[0])->setActive(true);
-				static double pitchKickTime = t;
-
-				if(t - pitchKickTime > kickDuration)
-					static_cast<GasThruster*>(mStage1.getThrusters()[0])->setActive(false);
-			}
-
-			static_cast<GasThruster*>(mStage1.getThrusters()[4])->setActive(false);
-			if(t - 15.0 > 2.0) {
-				static_cast<GasThruster*>(mStage1.getThrusters()[4])->setActive(true);
-				static double pitchCorrectionTime = t;
-
-				if(t - pitchCorrectionTime > kickDuration - 0.2)
-					static_cast<GasThruster*>(mStage1.getThrusters()[4])->setActive(false);
-			}
+			//temp
+			debugControlCode(t, dt);
 			//
 
 			mStage1.update(t, dt);
@@ -45,22 +20,46 @@ namespace Physics {
 			ILaunchVehicle::update(t, dt);
 		}
 
-		void Falcon9::loadDynamicState(const DSS::Falcon9& state) {
-			DSS::loadRigidBodyState(state.RB, mState);
-			
-			mInertialPosition = state.inertialPosition;
-
-			mStage1.loadDynamicState(state.S1);
-			mStage2.loadDynamicState(state.S2);
+		void Falcon9::separateStages() {
+			mMembers[0].disconnect();
+			mMembers[1].disconnect();
 		}
 
-		void Falcon9::saveDynamicState(DSS::Falcon9& toSaveTo) const {
-			DSS::saveRigidBodyState(*this, toSaveTo.RB);
-			
-			toSaveTo.inertialPosition = mInertialPosition;
+		void Falcon9::debugControlCode(double t, double dt) {
+			//temp - added to add some pseudo control code to the simulation to make it interesting for debugging
 
-			mStage1.saveDynamicState(toSaveTo.S1);
-			mStage2.saveDynamicState(toSaveTo.S2);
+#define LANDING 0
+#define LAUNCH  1
+
+#if LANDING
+			mStage1.getEngines().getComponent<Engine>(0)->setActive(true);
+
+			for(unsigned char i = 0; i < mStage1.getGridFins().getCount(); i++)
+				mStage1.getGridFins().getComponent<GridFin>(i)->deploy();
+
+			if(mStage1.getState().getCoMPosition_world().y < 250.0 && t > 10.0) {
+				for(unsigned char i = 0; i < mStage1.getLandingLegs().getCount(); i++)
+					mStage1.getLandingLegs().getComponent<LandingLeg>(i)->deploy();
+			}
+
+			const double 
+				activeTime = 17.6,
+				duration = 0.01;
+
+			static_cast<GasThruster*>(mStage1.getThrusters()[0])->setActive(t > activeTime && t < activeTime + duration);
+			static_cast<GasThruster*>(mStage1.getThrusters()[4])->setActive(t > activeTime + 2.4 && t < activeTime + 2.4 + duration);
+
+			if(abs(mStage1.getState().getVelocity_world().y) <= 0.1) {
+				mStage1.getState().setVelocity_world({});
+				mStage1.getState().setOrientation_world({});
+				mStage1.getEngines().getComponent<Engine>(0)->setActive(false);
+			}
+#elif LAUNCH
+			if(t > 5.0) {
+				for(unsigned char i = 0; i < 9; i++)
+					mStage1.getEngines().getComponent<Engine>(i)->setActive(true);
+			}
+#endif
 		}
 
 		void Falcon9::assemble() {

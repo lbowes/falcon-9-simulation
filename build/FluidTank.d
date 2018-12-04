@@ -213,41 +213,37 @@ build/FluidTank.o: src/Physics/Hardware/Common/Propellant/FluidTank.cpp \
  /usr/include/glm/gtx/matrix_interpolation.inl \
  /usr/include/glm/gtx/quaternion.hpp /usr/include/glm/gtx/norm.hpp \
  /usr/include/glm/gtx/norm.inl /usr/include/glm/gtx/quaternion.inl \
- src/Physics/Hardware/Common/Propellant/Fluid.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/DynamicSimState.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/SurfaceLocation.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/GeoCoordUtils.h \
- /home/lbowes/dev/Programming/Projects/F9\ Simulation/src/Physics/External/Earth.h \
- /usr/include/c++/7/string /usr/include/c++/7/bits/stringfwd.h \
- /usr/include/c++/7/bits/memoryfwd.h \
- /usr/include/c++/7/bits/char_traits.h /usr/include/c++/7/bits/postypes.h \
- /usr/include/c++/7/cwchar /usr/include/wchar.h \
- /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h \
- /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
- /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
- /usr/include/c++/7/bits/allocator.h \
- /usr/include/x86_64-linux-gnu/c++/7/bits/c++allocator.h \
- /usr/include/c++/7/ext/new_allocator.h /usr/include/c++/7/new \
+ src/Physics/Hardware/Common/Propellant/Fluid.h /usr/include/c++/7/math.h \
+ /usr/include/c++/7/algorithm /usr/include/c++/7/utility \
+ /usr/include/c++/7/bits/stl_relops.h /usr/include/c++/7/initializer_list \
+ /usr/include/c++/7/bits/stl_algo.h \
+ /usr/include/c++/7/bits/algorithmfwd.h \
+ /usr/include/c++/7/bits/stl_heap.h /usr/include/c++/7/bits/stl_tempbuf.h \
+ /usr/include/c++/7/bits/stl_construct.h /usr/include/c++/7/new \
  /usr/include/c++/7/exception /usr/include/c++/7/bits/exception.h \
  /usr/include/c++/7/bits/exception_ptr.h \
  /usr/include/c++/7/bits/cxxabi_init_exception.h \
  /usr/include/c++/7/typeinfo /usr/include/c++/7/bits/hash_bytes.h \
  /usr/include/c++/7/bits/nested_exception.h \
+ /usr/include/c++/7/ext/alloc_traits.h \
+ /usr/include/c++/7/bits/alloc_traits.h \
+ /usr/include/c++/7/bits/memoryfwd.h \
+ /usr/include/c++/7/bits/uniform_int_dist.h /usr/include/c++/7/iostream \
+ /usr/include/c++/7/ostream /usr/include/c++/7/ios \
+ /usr/include/c++/7/iosfwd /usr/include/c++/7/bits/stringfwd.h \
+ /usr/include/c++/7/bits/postypes.h /usr/include/c++/7/cwchar \
+ /usr/include/wchar.h /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h \
+ /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
+ /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
+ /usr/include/c++/7/bits/char_traits.h \
  /usr/include/c++/7/bits/localefwd.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++locale.h \
  /usr/include/c++/7/clocale /usr/include/locale.h \
- /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/c++/7/iosfwd \
- /usr/include/c++/7/cctype /usr/include/ctype.h \
- /usr/include/c++/7/bits/ostream_insert.h \
- /usr/include/c++/7/bits/cxxabi_forced.h \
- /usr/include/c++/7/bits/stl_function.h \
- /usr/include/c++/7/backward/binders.h \
- /usr/include/c++/7/bits/range_access.h \
- /usr/include/c++/7/initializer_list \
- /usr/include/c++/7/bits/basic_string.h \
+ /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/c++/7/cctype \
+ /usr/include/ctype.h /usr/include/c++/7/bits/ios_base.h \
  /usr/include/c++/7/ext/atomicity.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/gthr.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/gthr-default.h \
@@ -260,8 +256,16 @@ build/FluidTank.o: src/Physics/Hardware/Common/Propellant/FluidTank.cpp \
  /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/atomic_word.h \
- /usr/include/c++/7/ext/alloc_traits.h \
- /usr/include/c++/7/bits/alloc_traits.h /usr/include/c++/7/string_view \
+ /usr/include/c++/7/bits/locale_classes.h /usr/include/c++/7/string \
+ /usr/include/c++/7/bits/allocator.h \
+ /usr/include/x86_64-linux-gnu/c++/7/bits/c++allocator.h \
+ /usr/include/c++/7/ext/new_allocator.h \
+ /usr/include/c++/7/bits/ostream_insert.h \
+ /usr/include/c++/7/bits/cxxabi_forced.h \
+ /usr/include/c++/7/bits/stl_function.h \
+ /usr/include/c++/7/backward/binders.h \
+ /usr/include/c++/7/bits/range_access.h \
+ /usr/include/c++/7/bits/basic_string.h /usr/include/c++/7/string_view \
  /usr/include/c++/7/bits/functional_hash.h \
  /usr/include/c++/7/bits/string_view.tcc \
  /usr/include/c++/7/ext/string_conversions.h /usr/include/c++/7/cstdio \
@@ -274,16 +278,6 @@ build/FluidTank.o: src/Physics/Hardware/Common/Propellant/FluidTank.cpp \
  /usr/include/x86_64-linux-gnu/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /usr/include/c++/7/bits/basic_string.tcc \
- /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/RigidBody.h \
- /home/lbowes/dev/Programming/Deps/Includes/PhysicsFramework/State.h \
- /usr/include/c++/7/vector /usr/include/c++/7/bits/stl_construct.h \
- /usr/include/c++/7/bits/stl_uninitialized.h /usr/include/c++/7/utility \
- /usr/include/c++/7/bits/stl_relops.h \
- /usr/include/c++/7/bits/stl_vector.h \
- /usr/include/c++/7/bits/stl_bvector.h /usr/include/c++/7/bits/vector.tcc \
- /usr/include/c++/7/sstream /usr/include/c++/7/istream \
- /usr/include/c++/7/ios /usr/include/c++/7/bits/ios_base.h \
- /usr/include/c++/7/bits/locale_classes.h \
  /usr/include/c++/7/bits/locale_classes.tcc \
  /usr/include/c++/7/system_error \
  /usr/include/x86_64-linux-gnu/c++/7/bits/error_constants.h \
@@ -296,10 +290,6 @@ build/FluidTank.o: src/Physics/Hardware/Common/Propellant/FluidTank.cpp \
  /usr/include/c++/7/bits/streambuf_iterator.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/ctype_inline.h \
  /usr/include/c++/7/bits/locale_facets.tcc \
- /usr/include/c++/7/bits/basic_ios.tcc /usr/include/c++/7/ostream \
- /usr/include/c++/7/bits/ostream.tcc /usr/include/c++/7/bits/istream.tcc \
- /usr/include/c++/7/bits/sstream.tcc /usr/include/c++/7/math.h \
- /usr/include/c++/7/algorithm /usr/include/c++/7/bits/stl_algo.h \
- /usr/include/c++/7/bits/algorithmfwd.h \
- /usr/include/c++/7/bits/stl_heap.h /usr/include/c++/7/bits/stl_tempbuf.h \
- /usr/include/c++/7/bits/uniform_int_dist.h /usr/include/c++/7/iostream
+ /usr/include/c++/7/bits/basic_ios.tcc \
+ /usr/include/c++/7/bits/ostream.tcc /usr/include/c++/7/istream \
+ /usr/include/c++/7/bits/istream.tcc

@@ -42,26 +42,6 @@ namespace Physics {
 			onFluidMassChange();
 		}
 
-		void FluidTank::loadDynamicState(const DSS::FluidTankState& state) {
-			mFluidVolume = state.fluidVolume;
-			mFluidLevel = state.fluidLevel;
-			mPercentFull = state.percentFull;
-			mMass_comp = state.mass_comp;
-			mFluidMass_tank = state.fluidMass_tank;
-			mCoMInertia_comp = state.CoMInertia_comp;
-			mFluidInertia_fluidCoM = state.fluidInertia_fluidCoM;
-		}
-
-		void FluidTank::saveDynamicState(DSS::FluidTankState& toSaveTo) const {
-			toSaveTo.fluidVolume = mFluidVolume;
-			toSaveTo.fluidLevel = mFluidLevel;
-			toSaveTo.percentFull = mPercentFull;
-			toSaveTo.mass_comp = mMass_comp;
-			toSaveTo.fluidMass_tank = mFluidMass_tank;
-			toSaveTo.CoMInertia_comp = mCoMInertia_comp;
-			toSaveTo.fluidInertia_fluidCoM = mFluidInertia_fluidCoM;
-		}
-
 		void FluidTank::onFluidMassChange() 
 			//Responsible for updating various tank properties after the fluid mass has changed.
 		{

@@ -13,8 +13,8 @@ namespace Physics {
 	class Simulation {
 	private:
 		static constexpr unsigned short 
-			mUpdatesPerSecond = 200,
-			mDataSnapsPerSecond = 5;
+			mUpdatesPerSecond = 60, //200
+			mDataSnapsPerSecond = 60;
 
 		static constexpr double mUpdateStepSize_s = 1.0 / mUpdatesPerSecond;
 
@@ -37,10 +37,13 @@ namespace Physics {
 		double getSnapshotInterval() const { return 1.0 / mDataSnapsPerSecond; }
 
 	private:
+		//temp
+		void setupInitialVehicleState();
+		//
+		
 		void load();
 		bool stopCondMet();
-		void saveAllDynamicState(const unsigned snapshotNumber, const Hardware::Falcon9& falcon9);
-		void outputRBState(const DSS::RigidBodyState& RB);
+		void saveAllDSSToHistory(const unsigned snapshotNumber, const Hardware::Falcon9& falcon9);
 		void output(const glm::dvec3& vec, const char delim = ',');
 		void output(const glm::dquat& quat, const char delim = ',');
 		void output(const double& scalar, const char delim = ',');

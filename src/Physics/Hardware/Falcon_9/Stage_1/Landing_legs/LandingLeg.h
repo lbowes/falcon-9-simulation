@@ -6,7 +6,6 @@
 #include "TelescopingPiston.h"
 #include "LegDeploymentActuator.hpp"
 #include "Physics/External/Environment.h"
-#include "Physics/DynamicSimState.h"
 
 #include <glm/vec2.hpp>
 #include <glm/gtx/rotate_vector.hpp>
@@ -19,12 +18,17 @@ namespace Graphics {
 }
 
 namespace Physics {
+	class DSS;
+}
+
+namespace Physics {
 	namespace Hardware {
 
 		class LandingLeg : public IStageComponent {
 			friend class Graphics::LandingLegMesh;
+			friend class Physics::DSS;
 		private:
-			static constexpr double mRestitutionCoeff = 0.2;
+			static constexpr double mRestitutionCoeff = 0.24; //0.2
 
 			static constexpr glm::dvec2
 				mPos_stage2D = { 1.43521, 0.90617 },        //m
@@ -64,8 +68,6 @@ namespace Physics {
 			~LandingLeg() = default;
 
 			void update(const CoordTransform3D& stageToWorld, glm::dvec3 legOriginAccel_world, double dt);
-			void loadDynamicState(const DSS::Falcon9::Stage1::LandingLegState& state);
-			void saveDynamicState(DSS::Falcon9::Stage1::LandingLegState& toSaveTo) const;
 			void deploy();
 			void stow_temp();
 

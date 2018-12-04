@@ -3,7 +3,6 @@
 
 #include "Physics/Hardware/Common/Core/IStageComponent.hpp"
 #include "Fluid.h"
-#include "Physics/DynamicSimState.h"
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -11,10 +10,15 @@
 #include <glm/gtx/transform.hpp>
 
 namespace Physics {
+	class DSS;
+}
+
+namespace Physics {
 	namespace Hardware {
 		
 		class FluidTank : public IStageComponent {
 			friend class FluidTankGroup;
+			friend class Physics::DSS;
 		private:
 			const Fluid mFluid;
 
@@ -47,8 +51,6 @@ namespace Physics {
 			void addFluid(double mass);
 			void removeFluid(double mass);
 			void removeAllFluid();
-			void loadDynamicState(const DSS::FluidTankState& state);
-			void saveDynamicState(DSS::FluidTankState& toSaveTo) const;
 
 			bool isEmpty() const { return mFluidMass_tank.getValue() <= 0.0; }
 			double getFluidMassValue_tank() const { return mFluidMass_tank.getValue(); }

@@ -3,7 +3,6 @@
 #pragma once
 
 #include "PistonCylinder.h"
-#include "Physics/DynamicSimState.h"
 
 #include <PhysicsFramework/Spring.hpp>
 #include <glm/vec3.hpp>
@@ -11,10 +10,15 @@
 #include <algorithm>
 
 namespace Physics {
+	class DSS;
+}
+
+namespace Physics {
 	namespace Hardware {
 		
 		class TelescopingPiston {
 			friend class LandingLeg;
+			friend class Physics::DSS;
 		private:
 			static constexpr double
 				mMaxLength = 10.917,            //m
@@ -43,8 +47,6 @@ namespace Physics {
 			~TelescopingPiston() = default;
 
 			void update(double newLength, double dt);
-			void loadDynamicState(const DSS::Falcon9::Stage1::LandingLegState::TelescopingPistonState& state);
-			void saveDynamicState(DSS::Falcon9::Stage1::LandingLegState::TelescopingPistonState& toSaveTo) const;
 
 			PistonCylinder* getCylinder(unsigned char index);
 			double getClockingDegree_degs() const { return mClockingDegree_degs; }

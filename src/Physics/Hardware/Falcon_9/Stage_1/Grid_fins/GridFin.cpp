@@ -58,22 +58,6 @@ namespace Physics {
 			updateCompToStage_rotation();
 		}
 
-		void GridFin::loadDynamicState(const DSS::Falcon9::Stage1::GridFinState& state) {
-			mCurrentPhase = static_cast<Phase>(state.currentPhase);
-			mRollAngle = state.rollAngle;
-			mPitchAngle = state.pitchAngle;
-			mPercentDeployed = state.percentDeployed;
-			mCompToStage = state.compToStage;
-		}
-
-		void GridFin::saveDynamicState(DSS::Falcon9::Stage1::GridFinState& toSaveTo) const {
-			toSaveTo.currentPhase = static_cast<DSS::Falcon9::Stage1::GridFinState::Phase>(mCurrentPhase);
-			toSaveTo.rollAngle = mRollAngle;
-			toSaveTo.pitchAngle = mPitchAngle;
-			toSaveTo.percentDeployed = mPercentDeployed;
-			toSaveTo.compToStage = mCompToStage;
-		}
-
 		void GridFin::setRoll(double newRollValue) {
 			bool finCanRotate = (mCurrentPhase == Phase::deployed && newRollValue >= -(mRollRange_degs * 0.5) && newRollValue <= (mRollRange_degs * 0.5));
 			if (finCanRotate)

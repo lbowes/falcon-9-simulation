@@ -7,7 +7,6 @@
 #include "Physics/Hardware/Common/Propulsion/GasThruster.h"
 #include "Physics/Hardware/Falcon_9/Stage_1/Grid_fins/GridFins.h"
 #include "Physics/Hardware/Falcon_9/Stage_1/Landing_legs/LandingLegs.h"
-#include "Physics/DynamicSimState.h"
 #include "definitions.h"
 
 namespace Physics {
@@ -21,9 +20,6 @@ namespace Physics {
 		public:
 			Falcon9Stage1();
 			~Falcon9Stage1() = default;
-
-			void loadDynamicState(const DSS::Falcon9::Stage1& state);
-			void saveDynamicState(DSS::Falcon9::Stage1& toSaveTo) const;
 
 			GridFins& getGridFins() { return mGridFins; }
 			const GridFins& getGridFins() const { return mGridFins; }

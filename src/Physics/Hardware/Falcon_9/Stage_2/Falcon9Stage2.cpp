@@ -15,32 +15,6 @@ namespace Physics {
 			preFlight();
 		}
 
-		void Falcon9Stage2::loadDynamicState(const DSS::Falcon9::Stage2& state) {
-			//Rigid body state
-			DSS::loadRigidBodyState(state.RB, mState);
-
-			//Propellant supplies
-			static_cast<FluidTank*>(mPropellantSupplies[Propellants::liquidOxygen])->loadDynamicState(state.LOXTank);
-			static_cast<FluidTank*>(mPropellantSupplies[Propellants::RP1])->loadDynamicState(state.RP1Tank);
-
-			//Engines
-			for(unsigned char i = 0; i < mEngines.getCount(); i++)
-				static_cast<Engine*>(mEngines[i])->loadDynamicState(state.engine);
-		}
-
-		void Falcon9Stage2::saveDynamicState(DSS::Falcon9::Stage2& toSaveTo) const {
-			//Rigid body state
-			DSS::saveRigidBodyState(*this, toSaveTo.RB);
-
-			//Propellant supplies
-			static_cast<FluidTank*>(mPropellantSupplies[Propellants::liquidOxygen])->saveDynamicState(toSaveTo.LOXTank);
-			static_cast<FluidTank*>(mPropellantSupplies[Propellants::RP1])->saveDynamicState(toSaveTo.RP1Tank);
-
-			//Engines
-			for(unsigned char i = 0; i < mEngines.getCount(); i++)
-				static_cast<Engine*>(mEngines[i])->saveDynamicState(toSaveTo.engine);
-		}		
-
 		void Falcon9Stage2::otherUpdates(double t, double dt) { }
 
 		std::vector<Force_world> Falcon9Stage2::otherForces_world() const {

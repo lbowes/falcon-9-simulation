@@ -1,5 +1,5 @@
-#ifndef GASTHRUSTER_H
-#define GASTHRUSTER_H
+#ifndef PHYSICS_HARDWARE_GASTHRUSTER_H
+#define PHYSICS_HARDWARE_GASTHRUSTER_H
 #pragma once
 
 #include "IThrustGenerator.h"
@@ -11,8 +11,10 @@ namespace Graphics {
 
 namespace Physics {
 	namespace Hardware {
+
 		class GasThruster : public IThrustGenerator {
 			friend class Graphics::GasThrusterMesh;
+			friend class Physics::DSS;
 		private:
 			GasSupplyLine* mSupplyLine = nullptr;
 			
@@ -24,9 +26,6 @@ namespace Physics {
 			GasThruster(CoordTransform3D thrusterToStage);
 			~GasThruster() = default;
 
-			void loadDynamicState(const DSS::GasThrusterState& state);
-			void saveDynamicState(DSS::GasThrusterState& toSaveTo) const;
-
 			void attachPropSupplyLine(GasSupplyLine* supplyLine) { mSupplyLine = supplyLine; }
 
 		private:
@@ -34,6 +33,7 @@ namespace Physics {
 			void updateDeviceSpecific(double dt);
 
 		};
+		
 	}
 }
 

@@ -4,10 +4,13 @@
 
 #include "IThrustGenerator.h"
 #include "Physics/Hardware/Common/Propellant/SupplyLine.h"
-#include "Physics/DynamicSimState.h"
 
 namespace Graphics {
 	class ExhaustJet;
+}
+
+namespace Physics{
+	class DSS;
 }
 
 namespace Physics {
@@ -15,6 +18,7 @@ namespace Physics {
 		
 		class Engine : public IThrustGenerator {
 			friend class Graphics::ExhaustJet;
+			friend class Physics::DSS;
 		protected:
 			const CoordTransform3D mEngineToStageNoGimbal;
 			
@@ -49,9 +53,6 @@ namespace Physics {
 		public:
 			Engine(CoordTransform3D engineToStage);
 			virtual ~Engine() = default;
-
-			void loadDynamicState(const DSS::EngineState& state);
-			void saveDynamicState(DSS::EngineState& toSaveTo) const;
 
 			double getThrottle() const { return mThrottle; }
 			double getThrottleMin() const { return mThrottleMin; }

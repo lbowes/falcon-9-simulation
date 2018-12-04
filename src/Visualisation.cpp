@@ -18,7 +18,7 @@ void Visualisation::onLoad() {
 	mDataSource.getState().setPosition_world({ 0.0, 0.0, 0.0 });
 	mDataSource.update(0.0, 0.0);
 
-	mWindow.setClearColour({ 0.0f, 0.0f, 0.0f, 1.0f });
+	mWindow.setClearColour({ 1.0f, 1.0f, 1.0f, 1.0f });
 }
 
 void Visualisation::onInputCheck() {
@@ -63,8 +63,8 @@ void Visualisation::onRender() {
 	Physics::DSS::lerp(mostRecentState, nextState, betweenSnapshots, interpolated);
 
 	//Load the dummy Falcon9 object with this interpolated state ready for rendering...
-	mDataSource.loadDynamicState(interpolated.F9);
-
+	Physics::DSS::load(interpolated, mDataSource);
+	
 	//Render the dummy Falcon9 object 
 	mSimulationModelLayer->render(mWindow.getAspect(), static_cast<float>(mFrameTime));
 	m2DOverlay->render(mSimulationModelLayer->getCameraSystem().getCurrentSimCamera().getViewProjection_generated(), mWindow.getAspect(), mWindow.getDimensions(), mSnapshotInterval_s * snapshotCount);

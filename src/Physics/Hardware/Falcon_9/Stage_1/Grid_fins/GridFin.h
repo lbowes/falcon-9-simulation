@@ -3,7 +3,6 @@
 #pragma once
 
 #include "Physics/Hardware/Common/Core/IStageComponent.hpp"
-#include "Physics/DynamicSimState.h"
 
 #include <glm/gtx/vector_angle.hpp>
 #include <glm/gtx/rotate_vector.hpp>
@@ -13,10 +12,15 @@ namespace Graphics {
 }
 
 namespace Physics {
+	class DSS;
+}
+
+namespace Physics {
 	namespace Hardware {
 		
 		class GridFin : public IStageComponent {
 			friend class Graphics::GridFinMesh;
+			friend class Physics::DSS;
 		private:
 			static constexpr glm::dvec2 m2DMountPoint_stage = glm::dvec2(1.97, 40.3);
 
@@ -43,8 +47,6 @@ namespace Physics {
 			~GridFin() = default;
 
 			void update(double dt/* , double fluidDensity, glm::dvec3 flowVelocity_stage */);
-			void loadDynamicState(const DSS::Falcon9::Stage1::GridFinState& state);
-			void saveDynamicState(DSS::Falcon9::Stage1::GridFinState& toSaveTo) const;
 			void setRoll(double newRollValue);
 			void deploy();
 			void stow();
