@@ -10,7 +10,7 @@
 #include <PhysicsFramework/RigidBody.h>
 
 #define STAGE_FORCE_ACTIVE 1
-#define STAGE_WEIGHT_ACTIVE 1
+#define STAGE_WEIGHT_ACTIVE 0
 
 namespace Physics {
 	namespace Hardware {
@@ -63,11 +63,13 @@ namespace Physics {
 			//glm::dvec3 getFlowVelocity(CoordSpace space) const { return space == CoordSpace::STAGE ? mFlowVelocity_stage : mFlowVelocity_world; }
 			//double getAngleAttack(bool pitch) const { return pitch ? mAoADegs_pitch : mAoADegs_flow; }
 
+		public:
+			void mergeTotalMass_stage();
+			void mergeTotalInertia_stage();
+
 		private:
 			void addForces(const State &state, double t);
 			void addTorques(const State &state, double t);
-			Mass recalcTotalMass_stage() const;
-			InertiaTensor recalcCmInertia_stage() const;
 			//void updateAngleAttack();
 			void basicCollision();
 

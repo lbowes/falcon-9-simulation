@@ -14,7 +14,7 @@ namespace Graphics {
 		mOrthoCam->setAspect(windowAspect);
 		
 		updateAllMarkers();
-		//mMarker2DOverlay.render(viewProjection, windowAspect, windowDimensions);
+		mMarker2DOverlay.render(viewProjection, windowAspect, windowDimensions);
 	}
 
 	void VehicleOverlay::load(float windowAspect) {

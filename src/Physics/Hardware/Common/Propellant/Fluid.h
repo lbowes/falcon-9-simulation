@@ -18,7 +18,7 @@ namespace Physics {
 
 	class Propellants {
 	public:
-		enum Names { liquidOxygen, RP1, nitrogen };
+		enum Names : unsigned char { liquidOxygen, RP1, nitrogen };
 		static Fluid mFluids[3];
 	};
 	

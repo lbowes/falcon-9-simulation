@@ -19,7 +19,32 @@ namespace Physics {
 			mTextOutput << std::fixed << std::setprecision(std::numeric_limits<double>::max_digits10 + 2);
 	}
 	
-	void Simulation::setupInitialVehicleState() {
+	void Simulation::setupInitialVehicleState() 
+		//A temporary function designed to provide some interesting simulation behaviour during development.
+		//Initialisation of the vehicle will take place elsewhere in the final version.
+	{
+#define SPIN_DEMO 1
+#if SPIN_DEMO
+		mFalcon9.separateStages();
+		mFalcon9.getStage2().getState().setPosition_world({ 0.0f, 0.0f, 2'000.0f });
+		State& s = mFalcon9.getStage1().getState();
+		
+		//Hardware::GridFins& fins = mFalcon9.getStage1().getGridFins();
+		//for(unsigned char i = 0; i < fins.getCount(); i++)
+			//fins.getComponent<Hardware::GridFin>(i)->deploy();
+
+		//fins.getComponent<Hardware::GridFin>(2)->setRoll(26.0);
+		//fins.getComponent<Hardware::GridFin>(1)->setRoll(30.0);
+
+		//mFalcon9.getStage1().update(0.0, 0.0);
+
+		s.setOrientation_world(glm::toQuat(glm::rotate(glm::radians(90.0), glm::dvec3(1.0, 0.0, 0.0))));
+		s.setPosition_world({0.0, 0.0, 0.0});
+
+		//mFalcon9.getStage1().getPropellantSupplies().getComponent<Hardware::FluidTank>(Propellants::liquidOxygen)->removeAllFluid(),
+		//mFalcon9.getStage1().getPropellantSupplies().getComponent<Hardware::FluidTank>(Propellants::RP1)->removeAllFluid();
+#endif
+		
 		//mFalcon9.separateStages();
 		//mFalcon9.getStage2().getState().setPosition_world({ 0.0f, 0.0f, 2000.0f});
 //

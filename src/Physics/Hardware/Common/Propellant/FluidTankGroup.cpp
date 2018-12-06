@@ -4,11 +4,16 @@ namespace Physics {
 	namespace Hardware {
 
 		void FluidTankGroup::update() {
-			if (mComponents.empty()) return;
+			if (mComponents.empty()) 
+				return;
 			
 			updatePropellantTanks();
 			updateTotalMass_stage();
 			updateTotalCmInertia_stage();
+		}
+
+		void FluidTankGroup::addToTank(unsigned char tankIdx, double mass) {
+			static_cast<FluidTank*>(mComponents[tankIdx].get())->addFluid(mass);
 		}
 
 		PropSupplyLine& FluidTankGroup::addPropSupplyLine(FluidTank& oxidiserSource, FluidTank& fuelSource) {

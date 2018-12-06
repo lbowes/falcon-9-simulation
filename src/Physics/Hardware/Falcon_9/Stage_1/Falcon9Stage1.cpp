@@ -6,13 +6,14 @@ namespace Physics {
 
 		Falcon9Stage1::Falcon9Stage1() {
 			setStageSpecificParams();
-
 			addEngines();
 			addThrusters();
 			addTanks();
 			addFluidLines();
-
 			preFlight_temp();
+
+			mergeTotalMass_stage();
+			mergeTotalInertia_stage();			
 		}
 
 		void Falcon9Stage1::preFlight_temp() 
@@ -20,10 +21,10 @@ namespace Physics {
 		{
 			//Load correct amounts of propellant into the tanks
 #if LOAD_ENGINE_PROPELLANT
-			static_cast<FluidTank*>(mPropellantSupplies[Propellants::liquidOxygen])->addFluid(287.430_tonnes); //287430.0
-			static_cast<FluidTank*>(mPropellantSupplies[Propellants::RP1])->addFluid(123.570_tonnes); //123570.0
+			mPropellantSupplies.addToTank(Propellants::liquidOxygen, 287.430_tonnes);
+			mPropellantSupplies.addToTank(Propellants::RP1, 123.570_tonnes);
 #endif
-			static_cast<FluidTank*>(mPropellantSupplies[Propellants::nitrogen])->addFluid(8.0);
+			mPropellantSupplies.addToTank(Propellants::nitrogen, 8.0);
 		}
 
 		void Falcon9Stage1::otherUpdates(double t, double dt) {
@@ -83,12 +84,12 @@ namespace Physics {
 			mThrusters.addComponent(std::make_unique<GasThruster>(CoordTransform3D(rightGroupPos_stage + dvec3(0.0, 0.05, 0.0), rotate(radians(90.0), dvec3(1.0, 0.0, 0.0)))));  //outward
 			mThrusters.addComponent(std::make_unique<GasThruster>(CoordTransform3D(rightGroupPos_stage, rotate(radians(90.0), dvec3(0.0, 0.0, -1.0)))));                         //left
 			mThrusters.addComponent(std::make_unique<GasThruster>(CoordTransform3D(rightGroupPos_stage, rotate(radians(90.0), dvec3(0.0, 0.0, 1.0)))));                          //right
-			mThrusters.addComponent(std::make_unique<GasThruster>(CoordTransform3D(rightGroupPos_stage)));                                                                               //ullage
+			mThrusters.addComponent(std::make_unique<GasThruster>(CoordTransform3D(rightGroupPos_stage)));                                                                       //ullage
 		}
 
 		void Falcon9Stage1::addTanks() {
 			const double
-				tankWallDensity = 2'550.0,
+				tankWallDensity = 2'550.0, //2'550.0
 				mainPropTankWallThickness = 0.012;
 
 			mPropellantSupplies.addComponent(std::make_unique<FluidTank>(
@@ -143,7 +144,7 @@ namespace Physics {
 		void Falcon9Stage1::setStageSpecificParams() {
 			mHeight = 47.0;
 			mDiameter = 3.66;
-			mMiscInertMass = 9.420438_tonnes;
+			mMiscInertMass = 0.0; //9.420438_tonnes
 		}
 
 		Mass Falcon9Stage1::otherMass_stage() const {

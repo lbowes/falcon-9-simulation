@@ -6,13 +6,20 @@ namespace Physics {
 
 		Falcon9Stage2::Falcon9Stage2() {
 			setStageSpecificParams();
-
 			addEngine();
 			addThrusters();
 			addTanks();
+			preFlight_temp();
 
-			//temp - this function will a) not be used as it is (the control module would handle preflight operations) b) not be called here.
-			preFlight();
+			mergeTotalMass_stage();
+			mergeTotalInertia_stage();
+		}
+
+		void Falcon9Stage2::preFlight_temp() {
+				//Load correct amounts of propellant into the tanks
+				mPropellantSupplies.addToTank(Propellants::liquidOxygen, 75.2_tonnes);
+				mPropellantSupplies.addToTank(Propellants::RP1, 32.3_tonnes);
+				//static_cast<PropellantTank*>(mThrusterGasSupply[0])->addFluid(8.0);
 		}
 
 		void Falcon9Stage2::otherUpdates(double t, double dt) { }

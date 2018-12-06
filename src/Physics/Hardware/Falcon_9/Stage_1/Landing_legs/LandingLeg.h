@@ -74,8 +74,8 @@ namespace Physics {
 			TelescopingPiston* getPiston() const { return mPiston.get(); }
 
 		private:
-			Mass recalcMass() const;
-			InertiaTensor recalcInertia() const;
+			Mass recalcMass_local() const;
+			InertiaTensor recalcInertia_local() const;
 			void updateState(const CoordTransform3D& stageToWorld, glm::dvec3 legOriginAccel_world, double dt);
 			void updateCompToStage_rotation();
 			void clampRotationRange(double maxAngle);

@@ -20,16 +20,29 @@ namespace Physics {
 			ILaunchVehicle::update(t, dt);
 		}
 
-		void Falcon9::separateStages() {
+		void Falcon9::separateStages() 
+			//Temporary function, will not be done like this in final version
+		{
 			mMembers[0].disconnect();
 			mMembers[1].disconnect();
 		}
 
-		void Falcon9::debugControlCode(double t, double dt) {
-			//temp - added to add some pseudo control code to the simulation to make it interesting for debugging
+		void Falcon9::debugControlCode(double t, double dt) 
+			//A temporary function added to provide some primitive control code during development.
+			//Control code will be handled elsewhere in the final version, and this class (Falcon9) should not have any knowledge of it.
+		{
+			//temp - added to add some fake control code to the simulation to make it interesting for debugging
+			//if(t > 5.0) {
+				//for(unsigned char i = 0; i < mStage1.getLandingLegs().getCount(); i++)
+					//mStage1.getLandingLegs().getComponent<LandingLeg>(i)->deploy();
+			//}
+			
+			//for(unsigned char i = 0; i < mStage1.getThrusters().getCount(); i++)
+			//mStage1.getThrusters().getComponent<GasThruster>(2)->setActive(true);
+			//mStage1.getThrusters().getComponent<GasThruster>(5)->setActive(true);
 
 #define LANDING 0
-#define LAUNCH  1
+#define LAUNCH  0
 
 #if LANDING
 			mStage1.getEngines().getComponent<Engine>(0)->setActive(true);

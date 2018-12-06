@@ -11,7 +11,7 @@ namespace Physics {
 
 		void GasThruster::setTypeSpecificParams() {
 			//TODO - The thrust of these gas thrusters is not this value. This is a placeholder value for testing.
-			mThrustMagnitude = /*7'000.0*//*2'000'000.0*/500'000.0;  //7000.0 might be close to actual
+			mThrustMagnitude = 7'000.0; //7000.0 might be close to actual //500'000.0 can be used for testing stage rotation quickly
 			mCurrentMassFlowRate = 0.018;
 			mMass_comp = 0.174;
 		}

@@ -1,5 +1,7 @@
 #include "IStage.h"
 
+#include <iostream>
+
 namespace Physics {
 	namespace Hardware {
 
@@ -9,8 +11,8 @@ namespace Physics {
 			mPropellantSupplies.update();
 			otherUpdates(t, dt); //Updates any other custom features of a stage (e.g. Grid fins, landing legs etc)
 
-			mState.setMass_local(recalcTotalMass_stage());
-			mState.setInertiaTensor_local(recalcCmInertia_stage());
+			mergeTotalMass_stage();
+			mergeTotalInertia_stage();
 
 			integrate(t, dt);
 
@@ -50,39 +52,41 @@ namespace Physics {
 
 		void IStage::addTorques(const State &state, double t) { }
 
-		Mass IStage::recalcTotalMass_stage() const {
-			return
+		void IStage::mergeTotalMass_stage() {
+			Mass total = 
 				mPropellantSupplies.getTotalMass_stage() +
 				mEngines.getTotalMass_stage() +
 				mThrusters.getTotalMass_stage() +
 				mMiscInertMass +
 				otherMass_stage();
+
+			mState.setMass_local(total);
 		}
 
-		InertiaTensor IStage::recalcCmInertia_stage() const {
+		void IStage::mergeTotalInertia_stage() {
 			glm::dvec3 stageCentreMass_stage = mState.getMass_local().getCentre();
 
-			//Adding the moment of inertia of the all tanks
+			//Inertia of the all tanks
 			glm::dvec3 displacement = mPropellantSupplies.getTotalMass_stage().getCentre() - stageCentreMass_stage;
 			double mass = mPropellantSupplies.getTotalMass_stage().getValue();
-			InertiaTensor output = InertiaTensor::parallelAxis(mPropellantSupplies.getTotalCmInertia_stage(), mass, displacement);
+			InertiaTensor total = InertiaTensor::parallelAxis(mPropellantSupplies.getTotalCmInertia_stage(), mass, displacement);
 
-			//Adding the moment of inertia of the engines
+			//Inertia of the engines
 			displacement = mEngines.getTotalMass_stage().getCentre() - stageCentreMass_stage;
 			mass = mEngines.getTotalMass_stage().getValue();
-			output += InertiaTensor::parallelAxis(mEngines.getTotalCmInertia_stage(), mass, displacement);
+			total += InertiaTensor::parallelAxis(mEngines.getTotalCmInertia_stage(), mass, displacement);
 
-			//Adding the moment of inertia of the thrusters
+			//Inertia of the thrusters
 			displacement = mThrusters.getTotalMass_stage().getCentre() - stageCentreMass_stage;
 			mass = mThrusters.getTotalMass_stage().getValue();
-			output += InertiaTensor::parallelAxis(mThrusters.getTotalCmInertia_stage(), mass, displacement);
+			total += InertiaTensor::parallelAxis(mThrusters.getTotalCmInertia_stage(), mass, displacement);
 
-			//Adding the moment of any custom objects (e.g. landing legs, grid fins) that come from specific stages
+			//Inertia of any custom objects (e.g. landing legs, grid fins) that come with specific stages
 			displacement = otherMass_stage().getCentre() - stageCentreMass_stage;
 			mass = otherMass_stage().getValue();
-			output += InertiaTensor::parallelAxis(otherCmInertia_stage(), mass, displacement);
+			total += InertiaTensor::parallelAxis(otherCmInertia_stage(), mass, displacement);
 
-			return output;
+			mState.setInertiaTensor_local(total);
 		}
 
 		//void IStage::updateAngleAttack() {

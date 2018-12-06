@@ -4,7 +4,7 @@ namespace Physics {
 	namespace Hardware {
 
 		LandingLeg::LandingLeg(double clockingDegree) :
-			IStageComponent(CoordTransform3D(), recalcMass(), recalcInertia()),
+			IStageComponent(CoordTransform3D(), recalcMass_local(), recalcInertia_local()),
 			mClockingDegree(clockingDegree),
 			mClockingRotation_stage(glm::rotate(glm::radians(clockingDegree), glm::dvec3(0.0, 1.0, 0.0))),
 			mPistonStartPos_stage3D(glm::rotate(glm::dvec3(0.0, mPistonStartPos_stage2D.y, -mPistonStartPos_stage2D.x), glm::radians(clockingDegree), { 0.0, 1.0, 0.0 })),
@@ -106,11 +106,11 @@ namespace Physics {
 			updateCompToStage_rotation();
 		}
 
-		Mass LandingLeg::recalcMass() const {
+		Mass LandingLeg::recalcMass_local() const {
 			return Mass(600.0, { 0.0, mCentreMassPos_leg2D.y, -mCentreMassPos_leg2D.x });
 		}
 		
-		InertiaTensor LandingLeg::recalcInertia() const {
+		InertiaTensor LandingLeg::recalcInertia_local() const {
 			return InertiaTensor::solidCylinder(600.0, 0.8064, 6.943);
 		}
 

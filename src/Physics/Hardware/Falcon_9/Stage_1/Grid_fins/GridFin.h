@@ -39,8 +39,8 @@ namespace Physics {
 
 			double
 				mRollAngle = 0.0,	     //vertical = 0, upper bound (local right) = 45, lower bound (local left) = -45, rotational range therefore = 90
-				mPitchAngle = -90.0,     //horizontal is 0, upper bound is 0, lower bound is -90, rotational range is therefore 90
-				mPercentDeployed = 0.0;  //0.0 = stowed, 1.0 = deployed and locked in place
+				mPitchAngle = -90.0,     //horizontal is 0, upper bound is 0, lower bound is -90, rotational range is therefore 90                                  
+				mPercentDeployed = 0.0;  //0.0 = stowed, 1.0 = deployed and locked in place                                                                        
 
 		public:
 			GridFin(double clockingDegree_degs);

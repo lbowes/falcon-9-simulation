@@ -25,10 +25,9 @@ namespace Physics {
 
 			void addComponent(std::unique_ptr<IStageComponent> component);
 
-			IStageComponent* operator[](const unsigned index) const { return getComponent(index); }
-			IStageComponent* getComponent(const unsigned index) const { return index < mComponents.size() ? mComponents[index].get() : (IStageComponent*)nullptr; }
+			IStageComponent* operator[](unsigned index) const { return getComponent(index); }
+			IStageComponent* getComponent(unsigned index) const { return index < mComponents.size() ? mComponents[index].get() : (IStageComponent*)nullptr; }
 			
-			//TODO:
 			template <class T>
 			T* getComponent(const unsigned index) const { return index < mComponents.size() ? static_cast<T*>(mComponents[index].get()) : (T*)nullptr; }
 

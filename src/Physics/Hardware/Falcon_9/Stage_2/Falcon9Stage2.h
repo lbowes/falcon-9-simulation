@@ -14,12 +14,7 @@ namespace Physics {
 			Falcon9Stage2();
 			~Falcon9Stage2() = default;
 
-			void preFlight() {
-				//Load correct amounts of propellant into the tanks
-				static_cast<FluidTank*>(mPropellantSupplies[Propellants::liquidOxygen])->addFluid(75.2_tonnes); //75200.0, LOX
-				static_cast<FluidTank*>(mPropellantSupplies[Propellants::RP1])->addFluid(32.3_tonnes);          //32300.0, RP-1
-				//static_cast<PropellantTank*>(mThrusterGasSupply[0])->addFluid(8.0);
-			}
+			void preFlight_temp();
 
 		private:
 			void otherUpdates(double t, double dt);

@@ -54,8 +54,8 @@ namespace Graphics {
 		ImGui::SetNextWindowSize(ImVec2(800, 800 + 22));
 		ImGui::Begin("Flight profile", NULL, ImGuiWindowFlags_NoResize);
 		
-		stage1_testGraph.render("Flight profile", mainWindowSize);
-		stage2_testGraph.render("Flight profile", mainWindowSize);
+		//stage1_testGraph.render("Flight profile", mainWindowSize);
+		//stage2_testGraph.render("Flight profile", mainWindowSize);
 		
 		ImGui::End();
 		//

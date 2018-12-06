@@ -21,6 +21,7 @@ namespace Physics {
 			~FluidTankGroup() = default;
 
 			void update();
+			void addToTank(unsigned char tankIdx, double mass);
 			PropSupplyLine& addPropSupplyLine(FluidTank& oxidiserSource, FluidTank& fuelSource);
 			GasSupplyLine& addGasSupplyLine(FluidTank& gasSource);
 

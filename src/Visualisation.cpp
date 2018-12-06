@@ -3,7 +3,7 @@
 #include <GraphicsFramework/Vendor/ImGui/imgui.h>
 
 Visualisation::Visualisation(const std::map<const unsigned, const Physics::DSS>& stateHistoryHandle, double snapshotInterval_s) :
-	Application("Falcon 9 Simulation", "res/SpaceXLogo.png"),
+	Application("Falcon 9 Simulation", "res/SpaceXLogo.png", { 935, 519 }),
 	mStateHistory(stateHistoryHandle),
 	mSnapshotInterval_s(snapshotInterval_s)
 {
@@ -18,7 +18,7 @@ void Visualisation::onLoad() {
 	mDataSource.getState().setPosition_world({ 0.0, 0.0, 0.0 });
 	mDataSource.update(0.0, 0.0);
 
-	mWindow.setClearColour({ 1.0f, 1.0f, 1.0f, 1.0f });
+	mWindow.setClearColour({ 0.0f, 0.0f, 0.0f, 1.0f });
 }
 
 void Visualisation::onInputCheck() {
@@ -43,7 +43,7 @@ void Visualisation::onUpdate() { }
 void Visualisation::onRender() {
 	//Advance the simulation time correctly according to the frame time...
 	mSimTime_s += mPlaybackSpeed * mFrameTime;
-
+	
 	//Localise the current time within the snapshot history...
 	double 
 		s = floor(mSimTime_s / mSnapshotInterval_s),
