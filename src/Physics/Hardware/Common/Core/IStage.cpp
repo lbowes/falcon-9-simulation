@@ -16,7 +16,7 @@ namespace Physics {
 
 			integrate(t, dt);
 
-			basicCollision();
+			//basicCollision();
 
 			mFlowVelocity_world = External::Environment::windVelocity_m_per_s - mState.getVelocity_world();
 			mFlowVelocity_local = glm::inverse(mState.getOrientation_world()) * mFlowVelocity_world;

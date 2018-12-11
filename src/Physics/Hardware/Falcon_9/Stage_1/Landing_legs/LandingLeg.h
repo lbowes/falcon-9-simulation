@@ -32,8 +32,9 @@ namespace Physics {
 
 			static constexpr glm::dvec2
 				mPos_stage2D = { 1.43521, 0.90617 },        //m
-				mPistonStartPos_stage2D = { 2.0, 5.41417 }, //m
-				mPistonEndPos_leg2D = { 0.56479, 8.7 },     //m
+				mPistonStartPos_stage2D = { 2.04213, 5.30092 },     //m (2.0, 5.41417)
+				mPusherStartPos_stage2D = { 1.80105, 5.20809 },
+				mPistonEndPos_leg2D = { 0.575, 8.7 },     //m (0.56479, 8.7)
 				mCentreMassPos_leg2D = { 0.4476, 4.52721 }, //m
 				mPusherEndPos_leg2D = { 0.88117, 3.80921 }; //m
 			
@@ -70,8 +71,11 @@ namespace Physics {
 			void update(const CoordTransform3D& stageToWorld, glm::dvec3 legOriginAccel_world, double dt);
 			void deploy();
 			void stow_temp();
-
+			
+			glm::dvec3 getPistonStartPoint_stage() const { return mPistonStartPos_stage3D; }
+			glm::dvec3 getPusherStartPoint_stage() const { return mPusherStartPos_stage3D; }
 			TelescopingPiston* getPiston() const { return mPiston.get(); }
+			LegDeploymentActuator* getDeploymentActuator() const { return mPusher.get(); }
 
 		private:
 			Mass recalcMass_local() const;

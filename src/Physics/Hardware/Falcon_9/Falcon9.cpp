@@ -32,10 +32,10 @@ namespace Physics {
 			//Control code will be handled elsewhere in the final version, and this class (Falcon9) should not have any knowledge of it.
 		{
 			//temp - added to add some fake control code to the simulation to make it interesting for debugging
-			//if(t > 5.0) {
-				//for(unsigned char i = 0; i < mStage1.getLandingLegs().getCount(); i++)
-					//mStage1.getLandingLegs().getComponent<LandingLeg>(i)->deploy();
-			//}
+			if(t > 5.0) {
+				for(unsigned char i = 0; i < mStage1.getLandingLegs().getCount(); i++)
+					mStage1.getLandingLegs().getComponent<LandingLeg>(i)->deploy();
+			}
 			
 			//for(unsigned char i = 0; i < mStage1.getThrusters().getCount(); i++)
 			//mStage1.getThrusters().getComponent<GasThruster>(2)->setActive(true);

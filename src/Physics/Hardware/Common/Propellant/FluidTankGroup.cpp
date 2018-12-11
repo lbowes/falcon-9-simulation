@@ -14,6 +14,12 @@ namespace Physics {
 
 		void FluidTankGroup::addToTank(unsigned char tankIdx, double mass) {
 			static_cast<FluidTank*>(mComponents[tankIdx].get())->addFluid(mass);
+			update();
+		}
+
+		void FluidTankGroup::emptyTank(unsigned char tankIdx) {
+			static_cast<FluidTank*>(mComponents[tankIdx].get())->removeAllFluid();
+			update();
 		}
 
 		PropSupplyLine& FluidTankGroup::addPropSupplyLine(FluidTank& oxidiserSource, FluidTank& fuelSource) {

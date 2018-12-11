@@ -20,8 +20,13 @@ namespace Graphics {
 	class LandingLegMesh : public IStageComponentMesh {
 	private:
 		static unsigned char mNumInstances;
+		
 		const Physics::Hardware::LandingLeg& mDataSource;
-		GF::Graphics::Mesh* mAFrameMesh = nullptr;
+
+		GF::Graphics::Mesh
+			*mAFrameMesh = nullptr,
+			*mPusherMesh = nullptr;
+		
 		std::vector<GF::Graphics::Mesh*> mPistonCylinderMeshes;
 
 	public:

@@ -1,5 +1,9 @@
 #include "LandingLeg.h"	 
 
+//temp
+#include <iostream>
+//
+
 namespace Physics {
 	namespace Hardware {
 
@@ -8,7 +12,7 @@ namespace Physics {
 			mClockingDegree(clockingDegree),
 			mClockingRotation_stage(glm::rotate(glm::radians(clockingDegree), glm::dvec3(0.0, 1.0, 0.0))),
 			mPistonStartPos_stage3D(glm::rotate(glm::dvec3(0.0, mPistonStartPos_stage2D.y, -mPistonStartPos_stage2D.x), glm::radians(clockingDegree), { 0.0, 1.0, 0.0 })),
-			mPusherStartPos_stage3D(mPistonStartPos_stage3D - glm::dvec3(0.0, 0.3, 0.0)),
+			mPusherStartPos_stage3D(glm::rotate(glm::dvec3(0.0, mPusherStartPos_stage2D.y, -mPusherStartPos_stage2D.x), glm::radians(clockingDegree), { 0.0, 1.0, 0.0 })),
 			mAboutOrigin(InertiaTensor::parallelAxis(mCoMInertia_comp, mMass_comp.getValue(), -mMass_comp.getCentre()))
 		{
 			//Setup coordinate space
@@ -16,7 +20,7 @@ namespace Physics {
 			updateCompToStage_rotation();
 
 			double minPistonLength = length(mCompToStage.toParentSpace({ 0.0, mPistonEndPos_leg2D.y, -mPistonEndPos_leg2D.x }) - mPistonStartPos_stage3D);
-			mPiston = std::make_unique<TelescopingPiston>(mPistonStartPos_stage3D, clockingDegree, minPistonLength);
+			mPiston = std::make_unique<TelescopingPiston>(minPistonLength);
 
 			double minPusherLength = length(mCompToStage.toParentSpace({ 0.0, mPusherEndPos_leg2D.y, -mPusherEndPos_leg2D.x }) - mPusherStartPos_stage3D);
 			mPusher = std::make_unique<LegDeploymentActuator>(minPusherLength);
@@ -26,9 +30,30 @@ namespace Physics {
 			mPistonEndPos_stage3D = mCompToStage.toParentSpace({ 0.0, mPistonEndPos_leg2D.y, -mPistonEndPos_leg2D.x });
 			mAlongPiston_stage3D = mPistonEndPos_stage3D - mPistonStartPos_stage3D;
 			mPiston->update(glm::length(mAlongPiston_stage3D), dt);
+			
+			//mPusherEndPos_stage3D = mCompToStage.toParentSpace({ 0.0, mPusherEndPos_leg2D.y, -mPusherEndPos_leg2D.x });
+			//mAlongPusher_stage3D = mPusherEndPos_stage3D - mPusherStartPos_stage3D;
 
-			mPusherEndPos_stage3D = mCompToStage.toParentSpace({ 0.0, mPusherEndPos_leg2D.y, -mPusherEndPos_leg2D.x });
-			mAlongPusher_stage3D = mPusherEndPos_stage3D - mPusherStartPos_stage3D;
+			if(mPusher->getForceMagnitude() != 0.0) {
+				mPusherEndPos_stage3D = mCompToStage.toParentSpace({ 0.0, mPusherEndPos_leg2D.y, -mPusherEndPos_leg2D.x });
+				mAlongPusher_stage3D = mPusherEndPos_stage3D - mPusherStartPos_stage3D;
+			}
+			//else {
+			//	const float 
+			//		pistonAngleFromVertical_degs = glm::degrees(glm::angle(normalize(mAlongPiston_stage3D), { 0.0, 1.0, 0.0 })),
+			//		pusherAngleFromVertical_degs = glm::degrees(glm::angle(normalize(mAlongPusher_stage3D), { 0.0, 1.0, 0.0 }));
+
+			//	if(pistonAngleFromVertical_degs + 10.0 > pusherAngleFromVertical_degs) {
+			//		const double angle_rads = glm::radians(pistonAngleFromVertical_degs + 10.0); 
+			//		
+			//		const glm::dvec3 
+			//			rotationAxis = glm::normalize(glm::cross(glm::normalize(mAlongPiston_stage3D), glm::dvec3(0.0, 1.0, 0.0))),
+			//			direction_stage = glm::rotate(glm::normalize(mAlongPiston_stage3D), angle_rads, rotationAxis);
+
+			//		mAlongPusher_stage3D = direction_stage * mPusher->getLength();
+			//	}
+			//}
+
 			mPusher->update(glm::length(mAlongPusher_stage3D));
 
 			updateState(stageToWorld, legOriginAccel_world, dt);
@@ -81,10 +106,10 @@ namespace Physics {
 					cross(mCompToStage.toLocalSpace(mPistonEndPos_stage3D), pistonForce_leg);
 			
 				//6. Calculate angular acceleration vector about the origin given torque and inertia
-				dvec3 angularAccelOfOrigin = mAboutOrigin.inverse().getInternal() * totalTorque_leg;
+				dvec3 angularAccelAtOrigin = mAboutOrigin.inverse().getInternal() * totalTorque_leg;
 				
 				//7. Extract the angular acceleration component about the leg's rotation axis and integrate for angular velocity and then position
-				mDeploymentVelocity_rads += -angularAccelOfOrigin.x * dt;
+				mDeploymentVelocity_rads += -angularAccelAtOrigin.x * dt;
 				mDeploymentAngle_rads += mDeploymentVelocity_rads * dt;
 			
 				clampRotationRange(mPiston->isFullyExtended() ? mDeploymentAngle_rads - mDeploymentVelocity_rads * dt : mDeploymentAngle_rads + 1.0);
@@ -111,6 +136,8 @@ namespace Physics {
 		}
 		
 		InertiaTensor LandingLeg::recalcInertia_local() const {
+			//The inertia of a landing leg is represented very roughly with a cyclinder of diameter 0.8064m and height 6.943m
+			//TODO: This approximation could be improved
 			return InertiaTensor::solidCylinder(600.0, 0.8064, 6.943);
 		}
 

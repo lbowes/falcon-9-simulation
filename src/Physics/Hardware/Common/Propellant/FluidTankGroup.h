@@ -22,6 +22,7 @@ namespace Physics {
 
 			void update();
 			void addToTank(unsigned char tankIdx, double mass);
+			void emptyTank(unsigned char tankIdx);
 			PropSupplyLine& addPropSupplyLine(FluidTank& oxidiserSource, FluidTank& fuelSource);
 			GasSupplyLine& addGasSupplyLine(FluidTank& gasSource);
 

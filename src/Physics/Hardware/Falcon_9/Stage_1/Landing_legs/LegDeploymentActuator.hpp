@@ -1,5 +1,5 @@
-#ifndef LEGDEPLOYMENTACTUATOR_HPP
-#define LEGDEPLOYMENTACTUATOR_HPP
+#ifndef PHYSICS_HARDWARE_LEGDEPLOYMENTACTUATOR_HPP
+#define PHYSICS_HARDWARE_LEGDEPLOYMENTACTUATOR_HPP
 #pragma once
 
 #include <PhysicsFramework/Spring.hpp>
@@ -16,7 +16,7 @@ namespace Physics {
 		private:
 			const double
 				mRetractedLength = 0.0,
-				mExtensionDistance = 1.0;
+				mExtensionDistance = 1.47; //1.47
 			
 			Spring mSpring;
 
@@ -27,6 +27,8 @@ namespace Physics {
 			{ }
 
 			~LegDeploymentActuator() = default;
+
+			double getLength() const { return mSpring.getCurrentLength(); }
 
 			void update(double availableExtensionSpace) {
 				mSpring.update(std::min(availableExtensionSpace, mExtensionDistance), 0.0);

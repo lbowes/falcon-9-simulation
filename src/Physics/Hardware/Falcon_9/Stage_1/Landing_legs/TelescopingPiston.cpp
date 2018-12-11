@@ -3,14 +3,15 @@
 namespace Physics {
 	namespace Hardware {
 
-		TelescopingPiston::TelescopingPiston(glm::dvec3 mountPoint_stage, double clockingDegree_degs, double minimumLength) :
+		TelescopingPiston::TelescopingPiston(double minLength) :
 			mSpring(4000.0, 0.0, 1300.0), //4000.0, 0.0, 1300.0
-			mMountPoint_stage(mountPoint_stage),
-			mClockingDegree_degs(clockingDegree_degs),
-			mMinLength(minimumLength)
+			mMinLength(minLength)
 		{ 
-			for (unsigned char i = 0; i < mCylinderCount; i++)
-				mCylinders.push_back(PistonCylinder(*this, mMaxWidth - (mMaxWidth - mMinWidth) * static_cast<float>(i) / 4, i));
+			mSubCylinderLengths.push_back(3.286285711); //0.304285714 * totalLength
+			mSubCylinderLengths.push_back(2.283428567); //0.211428571 * totalLength
+			mSubCylinderLengths.push_back(2.350285718); //0.217619048 * totalLength
+			mSubCylinderLengths.push_back(2.386285715); //0.220952381 * totalLength
+			mSubCylinderLengths.push_back(0.493714289); //0.045714286 * totalLength
 		}
 
 		void TelescopingPiston::update(double newLength, double dt) {
@@ -20,13 +21,6 @@ namespace Physics {
 			
 			mExtensionRate = dt == 0.0 ? 0.0 : (mCurrentLength - mLastLength) / dt;
 			mSpring.update(std::max(mCurrentLength - (mMaxLength - 1.2), 0.0), mExtensionRate);
-		}
-
-		PistonCylinder* TelescopingPiston::getCylinder(unsigned char index) {
-			if (index < mCylinders.size())
-				return &mCylinders[index];
-			else
-				return nullptr;
 		}
 
 		void TelescopingPiston::clampLength() {

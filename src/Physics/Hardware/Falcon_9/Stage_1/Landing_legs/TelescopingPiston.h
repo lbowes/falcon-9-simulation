@@ -2,8 +2,6 @@
 #define PHYSICS_HARDWARE_TELESCOPINGPISTON_H
 #pragma once
 
-#include "PistonCylinder.h"
-
 #include <PhysicsFramework/Spring.hpp>
 #include <glm/vec3.hpp>
 #include <vector>
@@ -20,20 +18,13 @@ namespace Physics {
 			friend class LandingLeg;
 			friend class Physics::DSS;
 		private:
-			static constexpr double
-				mMaxLength = 10.917,            //m
-				mMaxWidth = 1.15,               //m
-				mMinWidth = 0.7;                //m
+			static constexpr double mMaxLength = 10.8;            //m 10.917
 			
 			static constexpr unsigned char mCylinderCount = 5;
-
-			const glm::dvec3 mMountPoint_stage;
 			
-			const double
-				mClockingDegree_degs = 0.0,     //degs
-				mMinLength = 0.0;               //m
+			const double mMinLength = 0.0;               //m
 
-			std::vector<PistonCylinder> mCylinders;
+			std::vector<double> mSubCylinderLengths;
 
 			Spring mSpring;
 
@@ -43,18 +34,15 @@ namespace Physics {
 				mExtensionRate = 0.0;           //ms^-1
 
 		public:
-			TelescopingPiston(glm::dvec3 mountPoint_stage, double clockingDegree_degs, double minLength);
+			TelescopingPiston(double minLength);
 			~TelescopingPiston() = default;
 
 			void update(double newLength, double dt);
 
-			PistonCylinder* getCylinder(unsigned char index);
-			double getClockingDegree_degs() const { return mClockingDegree_degs; }
 			double getLength() const { return mCurrentLength; }
 			bool isFullyExtended() const { return mCurrentLength >= mMaxLength; }
 			double getForceMagnitude() const { return mSpring.getForce(); }
-			const std::vector<PistonCylinder>& getCylinders() const { return mCylinders; }
-			glm::dvec3 getMountPoint_stage() const { return mMountPoint_stage; }
+			const std::vector<double>& getSubCylinderLengths() const { return mSubCylinderLengths; }
 
 		private:
 			void clampLength();

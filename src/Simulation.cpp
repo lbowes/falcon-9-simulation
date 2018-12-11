@@ -38,11 +38,10 @@ namespace Physics {
 
 		//mFalcon9.getStage1().update(0.0, 0.0);
 
-		s.setOrientation_world(glm::toQuat(glm::rotate(glm::radians(90.0), glm::dvec3(1.0, 0.0, 0.0))));
+		//s.setOrientation_world(glm::toQuat(glm::rotate(glm::radians(90.0), glm::dvec3(1.0, 0.0, 0.0))));
 		s.setPosition_world({0.0, 0.0, 0.0});
+		//s.setCoMPosition_world({0.0, 0.0, 0.0});
 
-		//mFalcon9.getStage1().getPropellantSupplies().getComponent<Hardware::FluidTank>(Propellants::liquidOxygen)->removeAllFluid(),
-		//mFalcon9.getStage1().getPropellantSupplies().getComponent<Hardware::FluidTank>(Propellants::RP1)->removeAllFluid();
 #endif
 		
 		//mFalcon9.separateStages();
@@ -90,7 +89,7 @@ namespace Physics {
 	}
 	
 	bool Simulation::stopCondMet() {
-		return mCurrentTime_s >= 100.0; //100.0
+		return mCurrentTime_s >= 10.0; //100.0
 	}
 
 	void Simulation::saveAllDSSToHistory(const unsigned snapshotNumber, const Hardware::Falcon9& falcon9) {

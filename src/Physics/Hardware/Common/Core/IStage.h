@@ -63,7 +63,7 @@ namespace Physics {
 			//glm::dvec3 getFlowVelocity(CoordSpace space) const { return space == CoordSpace::STAGE ? mFlowVelocity_stage : mFlowVelocity_world; }
 			//double getAngleAttack(bool pitch) const { return pitch ? mAoADegs_pitch : mAoADegs_flow; }
 
-		public:
+		protected:
 			void mergeTotalMass_stage();
 			void mergeTotalInertia_stage();
 
