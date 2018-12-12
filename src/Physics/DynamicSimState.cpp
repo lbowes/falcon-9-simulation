@@ -273,7 +273,7 @@ namespace Physics {
 		dest.deploymentPhase = static_cast<DSS::Falcon9::Stage1::LandingLegState::Phase>(source.mDeploymentPhase);
 		dest.deploymentAngle_rads = source.mDeploymentAngle_rads;
 		dest.deploymentVelocity_rads = source.mDeploymentVelocity_rads;
-		dest.alongPiston_stage3D = source.mAlongPiston_stage3D;
+		dest.alongPiston_stage3D = source.mAlongTPiston_stage3D;
 		dest.pistonEndPos_stage3D = source.mPistonEndPos_stage3D;
 		dest.alongPusher_stage3D = source.mAlongPusher_stage3D;
 		dest.pusherEndPos_stage3D = source.mPusherEndPos_stage3D;
@@ -287,7 +287,7 @@ namespace Physics {
 		dest.mDeploymentPhase = static_cast<Hardware::LandingLeg::Phase>(source.deploymentPhase);
 		dest.mDeploymentAngle_rads = source.deploymentAngle_rads;
 		dest.mDeploymentVelocity_rads = source.deploymentVelocity_rads;
-		dest.mAlongPiston_stage3D = source.alongPiston_stage3D;
+		dest.mAlongTPiston_stage3D = source.alongPiston_stage3D;
 		dest.mPistonEndPos_stage3D = source.pistonEndPos_stage3D;
 		dest.mAlongPusher_stage3D = source.alongPusher_stage3D;
 		dest.mPusherEndPos_stage3D = source.pusherEndPos_stage3D;

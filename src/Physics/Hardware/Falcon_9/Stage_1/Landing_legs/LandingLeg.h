@@ -28,15 +28,15 @@ namespace Physics {
 			friend class Graphics::LandingLegMesh;
 			friend class Physics::DSS;
 		private:
-			static constexpr double mRestitutionCoeff = 0.24; //0.2
+			static constexpr double mRestitutionCoeff = 0.24;   //0.2
 
 			static constexpr glm::dvec2
-				mPos_stage2D = { 1.43521, 0.90617 },        //m
-				mPistonStartPos_stage2D = { 2.04213, 5.30092 },     //m (2.0, 5.41417)
+				mPos_stage2D = { 1.43521, 0.90617 },            //m
+				mPistonStartPos_stage2D = { 2.04213, 5.30092 }, //m (2.0, 5.41417)
 				mPusherStartPos_stage2D = { 1.80105, 5.20809 },
-				mPistonEndPos_leg2D = { 0.575, 8.7 },     //m (0.56479, 8.7)
-				mCentreMassPos_leg2D = { 0.4476, 4.52721 }, //m
-				mPusherEndPos_leg2D = { 0.88117, 3.80921 }; //m
+				mPistonEndPos_leg2D = { 0.575, 8.7 },           //m (0.56479, 8.7)
+				mCentreMassPos_leg2D = { 0.4476, 4.52721 },     //m
+				mPusherEndPos_leg2D = { 0.85, 3.9 };     //m (0.88117, 3.80921)
 			
 			const double mClockingDegree = 0.0;
 
@@ -59,7 +59,7 @@ namespace Physics {
 				mDeploymentVelocity_rads = 0.0;
 
 			glm::dvec3
-				mAlongPiston_stage3D,
+				mAlongTPiston_stage3D,
 				mPistonEndPos_stage3D,
 				mAlongPusher_stage3D,
 				mPusherEndPos_stage3D;

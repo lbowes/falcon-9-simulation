@@ -20,17 +20,24 @@ namespace Physics {
 			
 			Spring mSpring;
 
+			bool mLegFrameContact = true;
+
 		public:
 			LegDeploymentActuator(double retractedLength) :
 				mRetractedLength(retractedLength),
-				mSpring(100000.0, mExtensionDistance, 0.0)
+				mSpring(18000.0, mExtensionDistance, 0.0)
 			{ }
 
 			~LegDeploymentActuator() = default;
 
 			double getLength() const { return mSpring.getCurrentLength(); }
+			
+			bool contactWithLeg() const { return mLegFrameContact; }
 
 			void update(double availableExtensionSpace) {
+				if(availableExtensionSpace > mExtensionDistance)
+					mLegFrameContact = false;
+				
 				mSpring.update(std::min(availableExtensionSpace, mExtensionDistance), 0.0);
 			}
 

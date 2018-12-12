@@ -63,18 +63,18 @@ namespace Graphics {
 					pistonLength = piston->getLength(),
 					alongPiston = 0.0;
 				
-				if(lengthCovered + cylinderLengths[i] < pistonLength) {
+				if(lengthCovered + cylinderLengths[i] < pistonLength)
 					alongPiston = lengthCovered;
-					lengthCovered += cylinderLengths[i];
-				}
 				else
-					alongPiston = lengthCovered - ((lengthCovered + cylinderLengths[i]) - pistonLength);
+					alongPiston = pistonLength - cylinderLengths[i];
+
+				lengthCovered += cylinderLengths[i];
 
 				//Rotate the cylinder around the stage
 				mat4 pistonFinalTransform = rotate(clockDegree_rads, vec3(0.0f, 1.0f, 0.0f));
 		
 				//Rotate the cylinder downwards to line up with the piston centre line
-				const float angleFromVertical = glm::angle(normalize(mDataSource.mAlongPiston_stage3D), { 0.0, 1.0, 0.0 });
+				const float angleFromVertical = glm::angle(normalize(mDataSource.mAlongTPiston_stage3D), { 0.0, 1.0, 0.0 });
 				pistonFinalTransform = rotate(pistonFinalTransform, angleFromVertical, vec3(-1.0f, 0.0f, 0.0f));
 		
 				//Slide the cylinder into the correct position along the piston centre line

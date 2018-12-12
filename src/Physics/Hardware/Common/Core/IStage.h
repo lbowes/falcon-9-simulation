@@ -10,7 +10,7 @@
 #include <PhysicsFramework/RigidBody.h>
 
 #define STAGE_FORCE_ACTIVE 1
-#define STAGE_WEIGHT_ACTIVE 0
+#define STAGE_WEIGHT_ACTIVE 1
 
 namespace Physics {
 	namespace Hardware {
