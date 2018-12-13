@@ -50,7 +50,7 @@ namespace Physics {
 				fluidInertia_fluidCoM;
 		};
 
-		struct EngineState {
+		struct MerlinEngineState {
 			double 
 				throttle = 0.0,
 				thrustMagnitude = 0.0,
@@ -58,9 +58,17 @@ namespace Physics {
 
 			glm::dvec3 thrust_stage = glm::dvec3(0.0);
 			
-			glm::dvec2 gimbalXY = glm::dvec2(0.0);	    
-
 			bool active = false;
+
+			struct TVCActuatorState {
+				glm::dvec2 enginePoint_engine;
+											       
+				double							       
+					resultantAngle = 0.0,
+					percentExtension = 0.0,
+					currentLength = 0.0;
+			}; 
+			std::vector<TVCActuatorState> TVCActuators = std::vector<TVCActuatorState>(2);
 		};
 
 		struct GasThrusterState {
@@ -86,7 +94,7 @@ namespace Physics {
 					RP1Tank,
 					nitrogenTank;
 
-				std::vector<EngineState> engines = std::vector<EngineState>(9);
+				std::vector<MerlinEngineState> engines = std::vector<MerlinEngineState>(9);
 				
 				std::vector<GasThrusterState> thrusters = std::vector<GasThrusterState>(8);
 
@@ -142,7 +150,7 @@ namespace Physics {
 					LOXTank,
 					RP1Tank;
 
-				EngineState engine;
+				MerlinEngineState engine;
 			} S2;
 		} F9;
 
@@ -160,9 +168,9 @@ namespace Physics {
 		static void loadFluidTankState(const DSS::FluidTankState& source, Physics::Hardware::FluidTank& dest);
 		static void lerpFluidTankState(const DSS::FluidTankState& a, const DSS::FluidTankState& b, double x, DSS::FluidTankState& dest);
 
-		static void saveEngineState(const Physics::Hardware::Engine& source, DSS::EngineState& dest);
-		static void loadEngineState(const DSS::EngineState& source, Physics::Hardware::Engine& dest);
-		static void lerpEngineState(const DSS::EngineState& a, const DSS::EngineState& b, double x, DSS::EngineState& dest);
+		static void saveEngineState(const Physics::Hardware::Engine& source, DSS::MerlinEngineState& dest);
+		static void loadEngineState(const DSS::MerlinEngineState& source, Physics::Hardware::Engine& dest);
+		static void lerpEngineState(const DSS::MerlinEngineState& a, const DSS::MerlinEngineState& b, double x, DSS::MerlinEngineState& dest);
 
 		static void saveGasThrusterState(const Physics::Hardware::GasThruster& source, DSS::GasThrusterState& dest);
 		static void loadGasThrusterState(const DSS::GasThrusterState& source, Physics::Hardware::GasThruster& dest);

@@ -36,7 +36,7 @@ namespace Physics {
 				mPusherStartPos_stage2D = { 1.80105, 5.20809 },
 				mPistonEndPos_leg2D = { 0.575, 8.7 },           //m (0.56479, 8.7)
 				mCentreMassPos_leg2D = { 0.4476, 4.52721 },     //m
-				mPusherEndPos_leg2D = { 0.85, 3.9 };     //m (0.88117, 3.80921)
+				mPusherEndPos_leg2D = { 0.85, 3.9 };            //m (0.88117, 3.80921)
 			
 			const double mClockingDegree = 0.0;
 
@@ -70,7 +70,6 @@ namespace Physics {
 
 			void update(const CoordTransform3D& stageToWorld, glm::dvec3 legOriginAccel_world, double dt);
 			void deploy();
-			void stow_temp();
 			
 			glm::dvec3 getPistonStartPoint_stage() const { return mPistonStartPos_stage3D; }
 			glm::dvec3 getPusherStartPoint_stage() const { return mPusherStartPos_stage3D; }
@@ -81,6 +80,7 @@ namespace Physics {
 			Mass recalcMass_local() const;
 			InertiaTensor recalcInertia_local() const;
 			void updateState(const CoordTransform3D& stageToWorld, glm::dvec3 legOriginAccel_world, double dt);
+			void updateDeploymentActuator();
 			void updateCompToStage_rotation();
 			void clampRotationRange(double maxAngle);
 

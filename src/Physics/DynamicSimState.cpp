@@ -25,9 +25,7 @@ namespace Physics {
 		//TODO: Fully initialise the dynamic state using the string passed in	
 	}
 
-	DSS::DSS(const unsigned snapshotNumber, const Hardware::Falcon9& falcon9) 
-		//TODO: Initialise all members of the snapshot with data from the falcon 9
-	{
+	DSS::DSS(const unsigned snapshotNumber, const Hardware::Falcon9& falcon9) {
 		using namespace Hardware;
 
 		number = snapshotNumber;
@@ -82,9 +80,7 @@ namespace Physics {
 		}
 	}
 
-	void DSS::load(const DSS& source, Physics::Hardware::Falcon9& dest) 
-		//TODO: Initialise all members of the falcon 9 with data from the snapshot
-	{
+	void DSS::load(const DSS& source, Physics::Hardware::Falcon9& dest) {
 		using namespace Hardware;
 
 		//Falcon 9
@@ -221,31 +217,33 @@ namespace Physics {
 		dest.fluidInertia_fluidCoM = a.fluidInertia_fluidCoM;
 	}
 
-	void DSS::saveEngineState(const Physics::Hardware::Engine& source, DSS::EngineState& dest) {
+	void DSS::saveEngineState(const Physics::Hardware::Engine& source, DSS::MerlinEngineState& dest) {
 		dest.thrustMagnitude = source.mThrustMagnitude;
 		dest.thrust_stage = source.mThrust_stage;
 		dest.active = source.mActive;
 		dest.throttle = source.mThrottle;
 		dest.currentMassFlowRate = source.mCurrentMassFlowRate;
-		dest.gimbalXY = source.mGimbalXY;
+
+		//TODO: Decide how to save, load and linearly interpolate TVC actuator state, given that Engine is a base class and not all subclasses will have TVC actuators
 	}
 
-	void DSS::loadEngineState(const DSS::EngineState& source, Physics::Hardware::Engine& dest) {
+	void DSS::loadEngineState(const DSS::MerlinEngineState& source, Physics::Hardware::Engine& dest) {
 		dest.mThrustMagnitude = source.thrustMagnitude;
 		dest.mThrust_stage = source.thrust_stage;
 		dest.mActive = source.active;
 		dest.mThrottle = source.throttle;
 		dest.mCurrentMassFlowRate = source.currentMassFlowRate;
-		dest.mGimbalXY = source.gimbalXY;
+		
 	}
 
-	void DSS::lerpEngineState(const DSS::EngineState& a, const DSS::EngineState& b, double x, DSS::EngineState& dest) {
+	void DSS::lerpEngineState(const DSS::MerlinEngineState& a, const DSS::MerlinEngineState& b, double x, DSS::MerlinEngineState& dest) {
 		dest.thrustMagnitude = Physics::lerp(a.thrustMagnitude, b.thrustMagnitude, x);
 		dest.thrust_stage = glm::lerp(a.thrust_stage, b.thrust_stage, x);
 		dest.active = a.active;
 		dest.throttle = Physics::lerp(a.throttle, b.throttle, x);
 		dest.currentMassFlowRate = Physics::lerp(a.currentMassFlowRate, b.currentMassFlowRate, x);
-		dest.gimbalXY = glm::lerp(a.gimbalXY, b.gimbalXY, x);
+		
+		
 	}
 
 	void DSS::saveGasThrusterState(const Physics::Hardware::GasThruster& source, DSS::GasThrusterState& dest) {

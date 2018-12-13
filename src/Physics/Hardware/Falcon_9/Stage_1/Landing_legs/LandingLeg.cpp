@@ -1,7 +1,5 @@
 #include "LandingLeg.h"	 
 
-#include <iostream>
-
 namespace Physics {
 	namespace Hardware {
 
@@ -25,47 +23,18 @@ namespace Physics {
 		}
 
 		void LandingLeg::update(const CoordTransform3D& stageToWorld, glm::dvec3 legOriginAccel_world, double dt) {
+			updateState(stageToWorld, legOriginAccel_world, dt);
+			
 			mPistonEndPos_stage3D = mCompToStage.toParentSpace({ 0.0, mPistonEndPos_leg2D.y, -mPistonEndPos_leg2D.x });
 			mAlongTPiston_stage3D = mPistonEndPos_stage3D - mPistonStartPos_stage3D;
 			mPiston->update(glm::length(mAlongTPiston_stage3D), dt);
 			
-			//TODO:
-			mPusherEndPos_stage3D = mCompToStage.toParentSpace({ 0.0, mPusherEndPos_leg2D.y, -mPusherEndPos_leg2D.x });
-
-			const glm::dvec3 rotationAxis = glm::normalize(glm::cross(glm::normalize(mAlongTPiston_stage3D), { 0.0, 1.0, 0.0 }));
-			const double pistonAngleFromVertical_degs = glm::degrees(glm::orientedAngle(normalize(mAlongTPiston_stage3D), { 0.0, 1.0, 0.0 }, rotationAxis));
-			double pusherAngleFromVertical_degs = glm::degrees(glm::orientedAngle(normalize(mAlongPusher_stage3D), { 0.0, 1.0, 0.0 }, rotationAxis));
-
-			if(mPusher->contactWithLeg()) {
-				mAlongPusher_stage3D = mPusherEndPos_stage3D - mPusherStartPos_stage3D;
-				pusherAngleFromVertical_degs = glm::degrees(glm::orientedAngle(normalize(mAlongTPiston_stage3D), { 0.0, 1.0, 0.0 }, rotationAxis));
-			}
-			else {
-				if(pistonAngleFromVertical_degs + 0.0 > pusherAngleFromVertical_degs) {
-					pusherAngleFromVertical_degs += pistonAngleFromVertical_degs + 0.0 - pusherAngleFromVertical_degs;
-					
-					const glm::dvec3 direction_stage = glm::rotate(glm::dvec3(0.0, 1.0, 0.0), glm::radians(pusherAngleFromVertical_degs), rotationAxis);
-
-					mAlongPusher_stage3D = direction_stage * mPusher->getLength();
-				}
-			}
-
-			mPusher->update(glm::length(mAlongPusher_stage3D));
-
-			updateState(stageToWorld, legOriginAccel_world, dt);
+			updateDeploymentActuator();
 		}
  
 		void LandingLeg::deploy() {
 			if (mDeploymentPhase == Phase::stowed)
 				mDeploymentPhase = Phase::deploying;
-		}
-
-		void LandingLeg::stow_temp() {
-			mDeploymentPhase = Phase::stowed;
-			mDeploymentAngle_rads = 0.0;
-			mDeploymentVelocity_rads = 0.0;
-
-			updateCompToStage_rotation();
 		}
 
 		void LandingLeg::updateState(const CoordTransform3D& stageToWorld, glm::dvec3 legOriginAccel_world, double dt) {
@@ -125,6 +94,33 @@ namespace Physics {
 			}
 			
 			updateCompToStage_rotation();
+		}
+
+		void LandingLeg::updateDeploymentActuator() {
+			using namespace glm;
+
+			//TODO: Fix the deployment actuator graphical glitch
+			mPusherEndPos_stage3D = mCompToStage.toParentSpace({ 0.0, mPusherEndPos_leg2D.y, -mPusherEndPos_leg2D.x });
+
+			const dvec3 rotationAxis = normalize(cross(normalize(mAlongTPiston_stage3D), { 0.0, 1.0, 0.0 }));
+			const double pistonAngleFromVertical_degs = degrees(orientedAngle(normalize(mAlongTPiston_stage3D), { 0.0, 1.0, 0.0 }, rotationAxis));
+			double pusherAngleFromVertical_degs = degrees(orientedAngle(normalize(mAlongPusher_stage3D), { 0.0, 1.0, 0.0 }, rotationAxis));
+
+			if(mPusher->contactWithLeg()) {
+				mAlongPusher_stage3D = mPusherEndPos_stage3D - mPusherStartPos_stage3D;
+				pusherAngleFromVertical_degs = degrees(orientedAngle(normalize(mAlongTPiston_stage3D), { 0.0, 1.0, 0.0 }, rotationAxis));
+			}
+			else {
+				if(pistonAngleFromVertical_degs + 8.0 > pusherAngleFromVertical_degs) {
+					pusherAngleFromVertical_degs += pistonAngleFromVertical_degs + 8.0 - pusherAngleFromVertical_degs;
+					
+					const dvec3 direction_stage = rotate(dvec3(0.0, 1.0, 0.0), radians(pusherAngleFromVertical_degs), rotationAxis);
+
+					mAlongPusher_stage3D = direction_stage * mPusher->getLength();
+				}
+			}
+
+			mPusher->update(length(mAlongPusher_stage3D));
 		}
 
 		Mass LandingLeg::recalcMass_local() const {

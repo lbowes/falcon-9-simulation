@@ -3,6 +3,7 @@
 
 #include "Physics/Hardware/Falcon_9/Falcon9.h"
 #include "Physics/DynamicSimState.h"
+#include "definitions.h"
 
 #include <string>
 #include <fstream>

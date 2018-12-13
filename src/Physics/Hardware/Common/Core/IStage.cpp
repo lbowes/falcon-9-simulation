@@ -1,7 +1,5 @@
 #include "IStage.h"
 
-#include <iostream>
-
 namespace Physics {
 	namespace Hardware {
 
@@ -17,11 +15,6 @@ namespace Physics {
 			integrate(t, dt);
 
 			basicCollision();
-
-			mFlowVelocity_world = External::Environment::windVelocity_m_per_s - mState.getVelocity_world();
-			mFlowVelocity_local = glm::inverse(mState.getOrientation_world()) * mFlowVelocity_world;
-			//mDynamicPressure = 0.5 * External::Environment::getAirDensity(floor(mState.getPosition_world().y)) * pow(glm::length(mFlowVelocity_local), 2.0);
-			//updateAngleAttack();
 		}
 
 		void IStage::addForces(const State &state, double t) {
@@ -88,18 +81,6 @@ namespace Physics {
 
 			mState.setInertiaTensor_local(total);
 		}
-
-		//void IStage::updateAngleAttack() {
-		//	using namespace glm;
-		//
-		//	mAoADegs_pitch = degrees(angle(normalize(mState.getOrientation_world() * mStartDirection_world), normalize(mState.getVelocity_world())));
-		//	if (mAoADegs_pitch > 90.0)
-		//		mAoADegs_pitch = 90.0 - (mAoADegs_pitch - 90.0);
-		//
-		//	mAoADegs_flow = degrees(angle(mStartDirection_world, normalize(mFlowVelocity_stage)));
-		//	if (mAoADegs_flow > 90.0)
-		//		mAoADegs_flow = 90.0 - (mAoADegs_flow - 90.0);
-		//}
 
 		void IStage::basicCollision() {
 			glm::dvec3 currentPosition = mState.getObjectSpace().toParentSpace();

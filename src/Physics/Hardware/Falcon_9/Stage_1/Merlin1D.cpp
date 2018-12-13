@@ -29,6 +29,15 @@ namespace Physics {
 			mExpansionRatio = 16.0;          //16.0
 
 			updateProperties();
+
+			addTVCActuator(glm::dvec2(0.4, 0.0), glm::dvec2(0.16, -0.4), 180.0);
+			addTVCActuator(glm::dvec2(0.4, 0.0), glm::dvec2(0.16, -0.4), 90.0);
+		}
+
+		void Merlin1D::gimbalTo(double clockDirAngle, double angle) 
+			//Responsible for taking in gimbal parameters and converting these into correct TVC actuator lengths 
+		{
+			
 		}
 
 	}

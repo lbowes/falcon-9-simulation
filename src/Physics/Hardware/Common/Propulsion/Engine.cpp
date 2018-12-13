@@ -20,8 +20,13 @@ namespace Physics {
 			mNozzleThroatArea = mNozzleExitArea / mExpansionRatio;
 		}
 
+		void Engine::addTVCActuator(glm::dvec2 fixedPoint_engine, glm::dvec2 engineConnectPoint_engine, double clockingDegree_degs) {
+			mTVCActuators.push_back(TVCActuator(mMaxGimbalAngle, fixedPoint_engine, engineConnectPoint_engine, clockingDegree_degs));
+		}
+
 		void Engine::updateDeviceSpecific(double dt) {
-			updateGimbalAngle();
+			if(!mTVCActuators.empty())
+				updateGimbalRotation();
 
 			bool propDemandMet = false;
 
@@ -49,15 +54,31 @@ namespace Physics {
 			mCurrentMassFlowRate = mPeakMassFlowRate * mThrottle;
 		}
 
-		void Engine::updateGimbalAngle() {
-			//TODO:
-			//mCompToStage.setLocalToParent_rotation();
+		void Engine::updateGimbalRotation() 
+			//Responsible for updating the mCompToStage for gimballing rotation, given the current state of all the mTVCActuators
+		{
+			using namespace glm;
 
+			//This transform is in 'neutral engine' space, ie engine space without any gimballing
+			dmat4 gimbalTransform_engine;
+			for (const auto& t : mTVCActuators) {
+				gimbalTransform_engine = 
+				rotate(
+					gimbalTransform_engine, 
+					radians(t.mResultantAngle), 
+					cross(
+						{0.0, 1.0, 0.0}, 
+						rotate(
+							{0.0, 0.0, -1.0}, 
+							radians(t.mClockingDegree), 
+							dvec3(0.0, 1.0, 0.0)
+						)
+					)
+				);
+			}
 
-
-
-
-
+			//Update the component to stage transform
+			mCompToStage.setLocalToParent_rotation(gimbalTransform_engine * mEngineToStageNoGimbal.getLocalToParent_rotation());
 		}
 
 	}

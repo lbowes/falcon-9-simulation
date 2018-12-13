@@ -13,7 +13,7 @@ namespace Physics {
 			preFlight_temp();
 
 			mergeTotalMass_stage();
-			mergeTotalInertia_stage();			
+			mergeTotalInertia_stage();	
 		}
 
 		void Falcon9Stage1::preFlight_temp() 
@@ -144,7 +144,7 @@ namespace Physics {
 		void Falcon9Stage1::setStageSpecificParams() {
 			mHeight = 47.0;
 			mDiameter = 3.66;
-			mMiscInertMass = 0.0; //9.420438_tonnes
+			mMiscInertMass = 9.420438_tonnes; //9.420438_tonnes
 		}
 
 		Mass Falcon9Stage1::otherMass_stage() const {

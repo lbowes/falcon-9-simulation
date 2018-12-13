@@ -36,13 +36,6 @@ namespace Physics {
 				mMiscInertMass = 0.0,     //The other mass not accounted for within member components
 				mHeight = 0.0,
 				mDiameter = 0.0;
-				//mAoADegs_pitch = 0.0,   //pitch angle of attack, considering stage direction and velocity
-				//mAoADegs_flow = 0.0,    //flow angle of attack, considering stage direction and local air flow velocity
-				//mDynamicPressure = 0.0;
-
-			glm::dvec3
-				mFlowVelocity_world,
-				mFlowVelocity_local;     //Movement of air relative to stage (as if stage was stationary, in inertial position)
 
 		public:
 			IStage() = default;
@@ -59,10 +52,6 @@ namespace Physics {
 			ThrustGeneratorGroup& getThrusters() { return mThrusters; }
 			const ThrustGeneratorGroup& getThrusters() const { return mThrusters; }
 				
-			//double getDynamicPressure() const { return mDynamicPressure; }
-			//glm::dvec3 getFlowVelocity(CoordSpace space) const { return space == CoordSpace::STAGE ? mFlowVelocity_stage : mFlowVelocity_world; }
-			//double getAngleAttack(bool pitch) const { return pitch ? mAoADegs_pitch : mAoADegs_flow; }
-
 		protected:
 			void mergeTotalMass_stage();
 			void mergeTotalInertia_stage();
@@ -70,7 +59,6 @@ namespace Physics {
 		private:
 			void addForces(const State &state, double t);
 			void addTorques(const State &state, double t);
-			//void updateAngleAttack();
 			void basicCollision();
 
 			//------------------------------------------------------------------------
@@ -78,7 +66,7 @@ namespace Physics {
 			virtual void setStageSpecificParams() = 0;
 			virtual void otherUpdates(double t, double dt) = 0;
 			virtual std::vector<Force_world> otherForces_world() const = 0;
-			virtual glm::dvec3 otherTorques_world() const = 0;                            //TODO: Should this really be a glm::dvec3?
+			virtual glm::dvec3 otherTorques_world() const = 0; //TODO: Should this really be a glm::dvec3?
 			virtual Mass otherMass_stage() const = 0;
 			virtual InertiaTensor otherCmInertia_stage() const = 0;
 

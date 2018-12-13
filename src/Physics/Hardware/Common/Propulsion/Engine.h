@@ -2,8 +2,11 @@
 #define PHYSICS_HARDWARE_ENGINE_H
 #pragma once
 
+#include <vector>
+
 #include "IThrustGenerator.h"
 #include "Physics/Hardware/Common/Propellant/SupplyLine.h"
+#include "TVCActuator.h"
 
 namespace Graphics {
 	class ExhaustJet;
@@ -21,8 +24,10 @@ namespace Physics {
 			friend class Physics::DSS;
 		protected:
 			const CoordTransform3D mEngineToStageNoGimbal;
-			
+
 			PropSupplyLine* mSupplyLine = nullptr;
+
+			std::vector<TVCActuator> mTVCActuators;
 			
 			//TODO: Very few members below are currently used. Remove unnecessary members here and complete
 
@@ -48,28 +53,24 @@ namespace Physics {
 				mThrottleMin = 0.0,	         //Minimum percentage throttle
 				mThrottleMax = 0.0;	         //Maximum percentage throttle
 
-			glm::dvec2 mGimbalXY;
-
 		public:
 			Engine(CoordTransform3D engineToStage);
 			virtual ~Engine() = default;
 
+			void setThrottle(double newThrottle);
 			double getThrottle() const { return mThrottle; }
 			double getThrottleMin() const { return mThrottleMin; }
 			double getThrottleMax() const { return mThrottleMax; }
 			double getNozzleExitDiameter() const { return mNozzleExitDiameter; }
-			void setThrottle(double newThrottle);
 			void attachPropSupplyLine(PropSupplyLine* supplyLine) { mSupplyLine = supplyLine; }
-
-			//TODO:
-			//void setGimbalXY();
 
 		protected:
 			void updateProperties();
+			void addTVCActuator(glm::dvec2 fixedPoint_engine, glm::dvec2 engineConnectPoint_engine, double clockingDegree_degs);
 
 		private:
 			void updateDeviceSpecific(double dt);
-			void updateGimbalAngle();
+			void updateGimbalRotation();
 			virtual void setTypeSpecificParams() = 0;
 
 		};
