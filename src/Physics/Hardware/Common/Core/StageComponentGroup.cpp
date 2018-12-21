@@ -3,7 +3,7 @@
 namespace Physics {
 	namespace Hardware {
 
-		void StageComponentGroup::addComponent(std::unique_ptr<IStageComponent> component) {
+		void StageComponentGroup::addComponent(std::unique_ptr<StageComponent> component) {
 			mComponents.push_back(std::move(component));
 			updateAllGroupProperties();
 		}
@@ -13,7 +13,7 @@ namespace Physics {
 				return;
 			
 			updateTotalMass_stage();
-			updateTotalCmInertia_stage();
+			updateTotalCoMInertia_stage();
 		}
 
 		void StageComponentGroup::updateTotalMass_stage() {
@@ -21,15 +21,15 @@ namespace Physics {
 			mTotalMass_stage.reset();
 
 			for (const auto& c : mComponents)
-				mTotalMass_stage += c->getMass(IStageComponent::CoordSpace::stage);
+				mTotalMass_stage += c->getMass(StageComponent::CoordSpace::stage);
 		}
 
-		void StageComponentGroup::updateTotalCmInertia_stage() {
+		void StageComponentGroup::updateTotalCoMInertia_stage() {
 			//Reset the group moment of inertia before recalculation
-			mTotalCmInertia_stage.reset();
+			mTotalCoMInertia_stage.reset();
 
 			for (const auto& c : mComponents)
-				mTotalCmInertia_stage += c->getInertia_stage(mTotalMass_stage.getCentre());
+				mTotalCoMInertia_stage += c->getInertia_stage(mTotalMass_stage.getCentre());
 		}
 
 	}

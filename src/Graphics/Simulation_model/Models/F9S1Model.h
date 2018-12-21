@@ -7,11 +7,7 @@
 #pragma once
 
 #include "Graphics/Simulation_model/ISimulationModel.hpp"
-#include "EngineMesh.h"
-#include "GasThrusterMesh.h"
-#include "LandingLegMesh.h"
-#include "GridFinMesh.h"
-#include "definitions.h"
+#include "Graphics/Simulation_model/Models/AllComponentMeshes.h"
 
 #include <GraphicsFramework/Renderer.h>
 #include <GraphicsFramework/Model3D.h>
@@ -26,14 +22,18 @@ namespace Graphics {
 
 	class F9S1Model : public ISimulationModel {
 	private:
-		GF::Model3D mModel;
-		GF::Graphics::Shader* mMainShader = nullptr;
-		std::vector<std::unique_ptr<IStageComponentMesh>> mComponentMeshes;
 		const Physics::Hardware::Falcon9Stage1& mDataSource;
+		
+		GF::Model3D mModel;
+		
+		GF::Graphics::Shader* mMainShader = nullptr;
+		
+		std::vector<std::unique_ptr<IStageComponentMesh>> mComponentMeshes;
+		
 		glm::dmat4 mTotalTransform_OGL;
 
 	public:
-		F9S1Model(const Physics::Hardware::Falcon9Stage1& stage1Data, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket);
+		F9S1Model(const Physics::Hardware::Falcon9Stage1& dataSource, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket);
 		~F9S1Model() = default;
 
 		glm::dmat4 getTotalTransform_OGL() const { return mTotalTransform_OGL; }

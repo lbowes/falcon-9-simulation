@@ -2,7 +2,7 @@
 #define PHYSICS_HARDWARE_THRUSTGENERATOR_H
 #pragma once
 
-#include "Physics/Hardware/Common/Core/IStageComponent.hpp"
+#include "Physics/Hardware/Common/Core/StageComponent.hpp"
 
 #include <glm/vec3.hpp>
 #include <glm/geometric.hpp>
@@ -17,7 +17,7 @@
 namespace Physics {
 	namespace Hardware {
 
-		class IThrustGenerator : public IStageComponent {
+		class IThrustGenerator : public StageComponent {
 			friend class ThrustGeneratorGroup;
 		protected:
 			glm::dvec3 mThrust_stage;	   //thrust produced in stage space

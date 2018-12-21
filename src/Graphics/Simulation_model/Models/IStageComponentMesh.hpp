@@ -10,6 +10,7 @@ namespace Graphics {
 	class IStageComponentMesh {
 	protected:
 		GF::ResourceSet& mResourceBucket;
+		
 		GF::Model3D& mParentModel;
 
 	public:

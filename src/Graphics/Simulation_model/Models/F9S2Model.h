@@ -2,9 +2,8 @@
 #define GRAPHICS_F9S2MODEL_H
 #pragma once
 
-#include "EngineMesh.h"
-#include "GasThrusterMesh.h"
 #include "Graphics/Simulation_model/ISimulationModel.hpp"
+#include "Graphics/Simulation_model/Models/AllComponentMeshes.h"
 
 #include <GraphicsFramework/Renderer.h>
 #include <GraphicsFramework/Model3D.h>
@@ -20,19 +19,22 @@ namespace Graphics {
 	class F9S2Model : public ISimulationModel {
 	private:
 		GF::Model3D mModel;
-		std::vector<std::unique_ptr<IStageComponentMesh>> mComponentModels;
-		const Physics::Hardware::Falcon9Stage2& mStage2Data;
+		
+		std::unique_ptr<IStageComponentMesh> mEngineMesh;
+		
+		std::pair<std::unique_ptr<FairingHalfMesh>, std::unique_ptr<FairingHalfMesh>> mFairingHalfMeshes;
+
+		const Physics::Hardware::Falcon9Stage2& mDataSource;
 
 	public:
-		F9S2Model(const Physics::Hardware::Falcon9Stage2& stage2Data, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket);
+		F9S2Model(const Physics::Hardware::Falcon9Stage2& dataSource, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket);
 		~F9S2Model() = default;
 
 	private:
 		void loadResources();
 		void addComponentModels();
-		void update(glm::mat4 totalStageTransform_OGL);
 
-		virtual void updateAllTransforms_OGL(glm::dvec3 currentCameraPosition);
+		virtual void updateAllTransforms_OGL(glm::dvec3 currentCameraPos_world);
 		virtual void makeRenderCalls();
 
 	};

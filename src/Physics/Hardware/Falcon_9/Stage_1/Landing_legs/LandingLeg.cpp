@@ -4,7 +4,7 @@ namespace Physics {
 	namespace Hardware {
 
 		LandingLeg::LandingLeg(double clockingDegree) :
-			IStageComponent(CoordTransform3D(), recalcMass_local(), recalcInertia_local()),
+			StageComponent(CoordTransform3D(), recalcMass_local(), recalcInertia_local()),
 			mClockingDegree(clockingDegree),
 			mClockingRotation_stage(glm::rotate(glm::radians(clockingDegree), glm::dvec3(0.0, 1.0, 0.0))),
 			mPistonStartPos_stage3D(glm::rotate(glm::dvec3(0.0, mPistonStartPos_stage2D.y, -mPistonStartPos_stage2D.x), glm::radians(clockingDegree), { 0.0, 1.0, 0.0 })),

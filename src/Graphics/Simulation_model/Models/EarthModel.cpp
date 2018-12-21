@@ -5,15 +5,18 @@
 namespace Graphics {
 
 	constexpr unsigned EarthModel::mSegments;
+	
 	constexpr double EarthModel::mChunkAngle_degs;  
+	
 	constexpr double EarthModel::mRadius;
+	
 	constexpr glm::dvec3 
 			EarthModel::mHorizontalRefAxis,
 			EarthModel::mVerticalRefAxis; 
 
 	EarthModel::EarthModel(GF::ResourceSet& resourceBucket) :
 		mResourceBucket(resourceBucket),
-		tempCamera(glm::vec3(0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.1f, 6378137.0, 0.0f, 45.0f)  
+		tempCamera(glm::vec3(0.0f), glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), 0.1f, 6378137.0f, 0.0f, 45.0f)  
 	{	
 		loadResources();
 	}
@@ -28,7 +31,7 @@ namespace Graphics {
 
 		//This is where the lat-lon earth mesh is generated based purely on the EUN position of the camera.
 		glm::dvec3 cameraPos_EUN = activeSimCam.getPosition();		
-		//updateMeshStructure(cameraPos_EUN, eunToEcef);
+		updateMeshStructure(cameraPos_EUN, eunToEcef);
 		
 		updateTransforms_OGL(cameraPos_EUN);
 

@@ -11,7 +11,7 @@ namespace Physics {
 				updateAllDevices(dt);
 				updateTotalForce_stage();
 				updateTotalMass_stage();
-				updateTotalCmInertia_stage();
+				updateTotalCoMInertia_stage();
 			}
 		}
 

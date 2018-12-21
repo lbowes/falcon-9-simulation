@@ -2,7 +2,7 @@
 #define PHYSICS_HARDWARE_STAGECOMPONENTGROUP_H
 #pragma once
 
-#include "Physics/Hardware/Common/Core/IStageComponent.hpp"
+#include "Physics/Hardware/Common/Core/StageComponent.hpp"
 
 #include <vector>
 #include <memory>
@@ -12,35 +12,35 @@ namespace Physics {
 		
 		class StageComponentGroup {
 		protected:
-			std::vector<std::unique_ptr<IStageComponent>> mComponents;
+			std::vector<std::unique_ptr<StageComponent>> mComponents;
 		
 		private:
 			glm::dvec3 mAvgPosition_stage;
 			Mass mTotalMass_stage;
-			InertiaTensor mTotalCmInertia_stage;
+			InertiaTensor mTotalCoMInertia_stage;
 
 		public:
 			StageComponentGroup() = default;
 			virtual ~StageComponentGroup() = default;
 
-			void addComponent(std::unique_ptr<IStageComponent> component);
+			void addComponent(std::unique_ptr<StageComponent> component);
 
-			IStageComponent* operator[](unsigned index) const { return getComponent(index); }
-			IStageComponent* getComponent(unsigned index) const { return index < mComponents.size() ? mComponents[index].get() : (IStageComponent*)nullptr; }
+			StageComponent* operator[](unsigned index) const { return getComponent(index); }
+			StageComponent* getComponent(unsigned index) const { return index < mComponents.size() ? mComponents[index].get() : (StageComponent*)nullptr; }
 			
 			template <class T>
 			T* getComponent(const unsigned index) const { return index < mComponents.size() ? static_cast<T*>(mComponents[index].get()) : (T*)nullptr; }
 
-			std::vector<std::unique_ptr<IStageComponent>>& getAllComponents() { return mComponents; }
-			const std::vector<std::unique_ptr<IStageComponent>>& getAllComponents() const { return mComponents; }
+			std::vector<std::unique_ptr<StageComponent>>& getAllComponents() { return mComponents; }
+			const std::vector<std::unique_ptr<StageComponent>>& getAllComponents() const { return mComponents; }
 			unsigned getCount() const { return static_cast<unsigned>(mComponents.size()); }
 			const Mass& getTotalMass_stage() const { return mTotalMass_stage; }
-			const InertiaTensor& getTotalCmInertia_stage() const { return mTotalCmInertia_stage; }
+			const InertiaTensor& getTotalCoMInertia_stage() const { return mTotalCoMInertia_stage; }
 
 		protected: 
 			void updateAllGroupProperties();
 			void updateTotalMass_stage();
-			void updateTotalCmInertia_stage();
+			void updateTotalCoMInertia_stage();
 
 		};
 

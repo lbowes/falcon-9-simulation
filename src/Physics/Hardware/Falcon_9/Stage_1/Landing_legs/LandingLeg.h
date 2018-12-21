@@ -2,7 +2,7 @@
 #define PHYSICS_HARDWARE_LANDINGLEG_H
 #pragma once
 
-#include "Physics/Hardware/Common/Core/IStageComponent.hpp"
+#include "Physics/Hardware/Common/Core/StageComponent.hpp"
 #include "TelescopingPiston.h"
 #include "LegDeploymentActuator.hpp"
 #include "Physics/External/Environment.h"
@@ -24,7 +24,7 @@ namespace Physics {
 namespace Physics {
 	namespace Hardware {
 
-		class LandingLeg : public IStageComponent {
+		class LandingLeg : public StageComponent {
 			friend class Graphics::LandingLegMesh;
 			friend class Physics::DSS;
 		private:

@@ -13,8 +13,11 @@ namespace Graphics {
 	class ASDSModel : public ISimulationModel {
 	private:
 		GF::Graphics::Shader& mShader;
+		
 		GF::Graphics::Mesh* mMeshHandle = nullptr;
+		
 		const double mHeight = 3.0;
+		
 		const glm::dvec3 mPosition = { 0.0, -mHeight, 0.0 };		
 
 	public:

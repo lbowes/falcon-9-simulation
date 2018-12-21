@@ -4,7 +4,7 @@ namespace Physics {
 	namespace Hardware {
 
 		Falcon9::Falcon9() :
-			ILaunchVehicle({ "LC-39A", { 0.0, 0.0, 0.0 } })
+			ILaunchVehicle({ "LC-39A", {0.0, 0.0, 0.0}})
 		{
 			assemble();
 		}

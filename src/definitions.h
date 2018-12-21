@@ -6,3 +6,6 @@
 #define LOAD_ENGINE_PROPELLANT 1
 #define MOCK_LANDING           0
 #define MOCK_LAUNCH            0
+
+#define STAGE_FORCE_ACTIVE     1
+#define STAGE_WEIGHT_ACTIVE    1

@@ -22,19 +22,19 @@ namespace Physics {
 				//static_cast<PropellantTank*>(mThrusterGasSupply[0])->addFluid(8.0);
 		}
 
-		void Falcon9Stage2::otherUpdates(double t, double dt) { }
+		void Falcon9Stage2::stageSpecificUpdates(double t, double dt) { }
 
-		std::vector<Force_world> Falcon9Stage2::otherForces_world() const {
+		std::vector<Force_world> Falcon9Stage2::stageSpecificForces_world() const {
 			//Not returning any other forces at the moment.
-			std::vector<Force_world> otherForces_world;
+			std::vector<Force_world> stageSpecificForces_world;
 
 			//push_back forces in here
-			//otherForces_world.push_back(Force_world(someForce, someApplicationPointOnF9S1))
+			//stageSpecificForces_world.push_back(Force_world(someForce, someApplicationPointOnF9S1))
 
-			return otherForces_world;
+			return stageSpecificForces_world;
 		}
 
-		glm::dvec3 Falcon9Stage2::otherTorques_world() const {
+		glm::dvec3 Falcon9Stage2::stageSpecificTorques_world() const {
 			return glm::dvec3(0.0);
 		}
 
@@ -78,11 +78,11 @@ namespace Physics {
 			mMiscInertMass = 3.9_tonnes;
 		}
 		
-		Mass Falcon9Stage2::otherMass_stage() const {
+		Mass Falcon9Stage2::stageSpecificMass_stage() const {
 			return 0.0;
 		}
 
-		InertiaTensor Falcon9Stage2::otherCmInertia_stage() const {
+		InertiaTensor Falcon9Stage2::stageSpecificCoMInertia_stage() const {
 			return InertiaTensor();
 		}
 

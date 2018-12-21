@@ -2,7 +2,7 @@
 #define PHYSICS_HARDWARE_GRIDFIN_H
 #pragma once
 
-#include "Physics/Hardware/Common/Core/IStageComponent.hpp"
+#include "Physics/Hardware/Common/Core/StageComponent.hpp"
 
 #include <glm/gtx/vector_angle.hpp>
 #include <glm/gtx/rotate_vector.hpp>
@@ -18,7 +18,7 @@ namespace Physics {
 namespace Physics {
 	namespace Hardware {
 		
-		class GridFin : public IStageComponent {
+		class GridFin : public StageComponent {
 			friend class Graphics::GridFinMesh;
 			friend class Physics::DSS;
 		private:

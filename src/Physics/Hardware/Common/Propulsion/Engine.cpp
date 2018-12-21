@@ -1,11 +1,5 @@
 #include "Engine.h"
 
-//temp
-#include <iostream>
-//
-
-#include <glm/gtx/vector_angle.hpp>
-
 namespace Physics {
 	namespace Hardware {
 
@@ -81,12 +75,6 @@ namespace Physics {
 
 			//Update the component to stage transform
 			mCompToStage.setLocalToParent_rotation(mEngineToStageNoGimbal.getLocalToParent_rotation() * gimbalTransform_engine);
-
-			//temp - testing the angle between the engine's new rotation and the down axis
-			//glm::dvec3 pointer = mCompToStage.toParentSpace_rotation(glm::dvec3(0.0, -1.0, 0.0));
-			//const double angle = glm::degrees(glm::angle(pointer, glm::dvec3(0.0, -1.0, 0.0)));
-			//printf("angle: %f\n", angle);
-			//
 		}
 
 	}

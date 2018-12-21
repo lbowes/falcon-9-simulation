@@ -2,10 +2,10 @@
 #define PHYSICS_HARDWARE_ENGINE_H
 #pragma once
 
-#include <vector>
-
 #include "IThrustGenerator.h"
 #include "Physics/Hardware/Common/Propellant/SupplyLine.h"
+
+#include <vector>
 
 namespace Graphics {
 	class ExhaustJet;
@@ -34,11 +34,6 @@ namespace Physics {
 			std::vector<TVCActuator> mTVCActuators;
 			
 			//TODO: Very few members below are currently used. Remove unnecessary members here and complete
-
-			glm::dvec3
-				mVe_SL,		                 //EFFECTIVE exhaust velocity at sea level
-				mVe_Vac;		             //EFFECTIVE exhaust velocity in vacuum
-
 			double
 				mMaxGimbalAngle = 0.0,       //degrees
 				mChamberPressure = 0.0,      //Pa

@@ -10,10 +10,10 @@ namespace Physics {
 
 		void ILaunchVehicle::update(double t, double dt) {
 			RigidBodyGroup::update(t, dt);
-			basicCollision();
+			basicCollision_temp();
 		}
 
-		void ILaunchVehicle::basicCollision() {
+		void ILaunchVehicle::basicCollision_temp() {
 			glm::dvec3 currentPos_world = mState.getObjectSpace().toParentSpace();
 			
 			const double groundHeight = 0.0; //3.0

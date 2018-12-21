@@ -3,9 +3,9 @@
 
 namespace Graphics {
 
-	F9S2Model::F9S2Model(const Physics::Hardware::Falcon9Stage2& stage2Data, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket) :
+	F9S2Model::F9S2Model(const Physics::Hardware::Falcon9Stage2& dataSource, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket) :
 		ISimulationModel(renderer, resourceBucket),
-		mStage2Data(stage2Data)
+		mDataSource(dataSource)
 	{
 		loadResources();
 	}
@@ -21,31 +21,33 @@ namespace Graphics {
 	void F9S2Model::addComponentModels() {
 		using namespace Physics::Hardware;
 
-		//Engines
-		mComponentModels.push_back(std::make_unique<EngineMesh>("Merlin1DVac", "res/models/Merlin1DVac.obj", *mStage2Data.getEngines().getComponent<Engine>(0), mResourceBucket, mModel));
+		//Engine
+		mEngineMesh = std::make_unique<EngineMesh>("Merlin1DVac", "res/models/Merlin1DVac.obj", *mDataSource.getEngines().getComponent<Engine>(0), mResourceBucket, mModel);
+
+		//Fairing halves
+		mFairingHalfMeshes.first = std::make_unique<FairingHalfMesh>(mDataSource.getFairings().first, mResourceBucket, mModel);
+		mFairingHalfMeshes.second = std::make_unique<FairingHalfMesh>(mDataSource.getFairings().second, mResourceBucket, mModel);
 	}
 
-	void F9S2Model::update(glm::mat4 totalStageTransform_OGL) {
-		//Updates the mesh representing the fuselage
-		mModel.getMesh(0)->setModelTransform(totalStageTransform_OGL);
-
-		//Updates all the component models (that, in turn, update the meshes
-		//representing the landing legs, grid fins, engines etc).
-		for (const auto& componentModel : mComponentModels)
-			componentModel->updateResources(totalStageTransform_OGL);
-	}
-
-	void F9S2Model::updateAllTransforms_OGL(glm::dvec3 currentCameraPosition) {
+	void F9S2Model::updateAllTransforms_OGL(glm::dvec3 currentCameraPos_world) {
 		using namespace glm;
 
-		const State& state = mStage2Data.getState();
+		const State& state = mDataSource.getState();
 
 		mat4
-			posTransform_OGL = translate(currentCameraPosition - state.getObjectSpace().toParentSpace()),
+			posTransform_OGL = translate(currentCameraPos_world - state.getObjectSpace().toParentSpace()),
 			rotTransform_OGL = toMat4(inverse(state.getOrientation_world())),
 			totalTransform_OGL = inverse(rotTransform_OGL * posTransform_OGL);
 
-		update(totalTransform_OGL);
+		//Updates the mesh representing the fuselage
+		mModel.getMesh(0)->setModelTransform(totalTransform_OGL);
+
+		//Updates the engine mesh (that inherit from IStageComponentMesh)
+		mEngineMesh->updateResources(totalTransform_OGL);
+
+		//Updates the two fairing halves (that DO NOT inherit from IStageComponentMesh)
+		mFairingHalfMeshes.first->updateTransform_OGL(currentCameraPos_world);
+		mFairingHalfMeshes.second->updateTransform_OGL(currentCameraPos_world);
 	}
 
 	void F9S2Model::makeRenderCalls() {

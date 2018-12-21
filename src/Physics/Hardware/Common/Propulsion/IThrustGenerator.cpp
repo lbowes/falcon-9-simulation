@@ -4,7 +4,7 @@ namespace Physics {
 	namespace Hardware {
 		
 		IThrustGenerator::IThrustGenerator(CoordTransform3D thrusterToStage) :
-			IStageComponent(thrusterToStage)
+			StageComponent(thrusterToStage)
 		{ }
 		
 		void IThrustGenerator::update(double dt) {

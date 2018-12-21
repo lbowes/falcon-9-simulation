@@ -7,14 +7,14 @@ namespace Physics {
 			mEngines.update(dt);
 			mThrusters.update(dt);
 			mPropellantSupplies.update();
-			otherUpdates(t, dt); //Updates any other custom features of a stage (e.g. Grid fins, landing legs etc)
+			stageSpecificUpdates(t, dt);   //Updates any other custom features of a stage (e.g. Grid fins, landing legs etc)
 
 			mergeTotalMass_stage();
 			mergeTotalInertia_stage();
 
 			integrate(t, dt);
 
-			basicCollision();
+			basicCollision_temp();
 		}
 
 		void IStage::addForces(const State &state, double t) {
@@ -39,7 +39,7 @@ namespace Physics {
 			}
 
 			//Extra forces
-			for (const Force_world& force : otherForces_world())
+			for (const Force_world& force : stageSpecificForces_world())
 				addForce(force);
 		}
 
@@ -51,7 +51,7 @@ namespace Physics {
 				mEngines.getTotalMass_stage() +
 				mThrusters.getTotalMass_stage() +
 				mMiscInertMass +
-				otherMass_stage();
+				stageSpecificMass_stage();
 
 			mState.setMass_local(total);
 		}
@@ -62,30 +62,30 @@ namespace Physics {
 			//Inertia of the all tanks
 			glm::dvec3 displacement = mPropellantSupplies.getTotalMass_stage().getCentre() - stageCentreMass_stage;
 			double mass = mPropellantSupplies.getTotalMass_stage().getValue();
-			InertiaTensor total = InertiaTensor::parallelAxis(mPropellantSupplies.getTotalCmInertia_stage(), mass, displacement);
+			InertiaTensor total = InertiaTensor::parallelAxis(mPropellantSupplies.getTotalCoMInertia_stage(), mass, displacement);
 
 			//Inertia of the engines
 			displacement = mEngines.getTotalMass_stage().getCentre() - stageCentreMass_stage;
 			mass = mEngines.getTotalMass_stage().getValue();
-			total += InertiaTensor::parallelAxis(mEngines.getTotalCmInertia_stage(), mass, displacement);
+			total += InertiaTensor::parallelAxis(mEngines.getTotalCoMInertia_stage(), mass, displacement);
 
 			//Inertia of the thrusters
 			displacement = mThrusters.getTotalMass_stage().getCentre() - stageCentreMass_stage;
 			mass = mThrusters.getTotalMass_stage().getValue();
-			total += InertiaTensor::parallelAxis(mThrusters.getTotalCmInertia_stage(), mass, displacement);
+			total += InertiaTensor::parallelAxis(mThrusters.getTotalCoMInertia_stage(), mass, displacement);
 
 			//Inertia of any custom objects (e.g. landing legs, grid fins) that come with specific stages
-			displacement = otherMass_stage().getCentre() - stageCentreMass_stage;
-			mass = otherMass_stage().getValue();
-			total += InertiaTensor::parallelAxis(otherCmInertia_stage(), mass, displacement);
+			displacement = stageSpecificMass_stage().getCentre() - stageCentreMass_stage;
+			mass = stageSpecificMass_stage().getValue();
+			total += InertiaTensor::parallelAxis(stageSpecificCoMInertia_stage(), mass, displacement);
 
 			mState.setInertiaTensor_local(total);
 		}
 
-		void IStage::basicCollision() {
+		void IStage::basicCollision_temp() {
 			glm::dvec3 currentPosition = mState.getObjectSpace().toParentSpace();
 
-			double groundHeight = 0.0; //3.0
+			double groundHeight = 0.0;
 
 			if (currentPosition.y < groundHeight) {
 				currentPosition.y += groundHeight - currentPosition.y;

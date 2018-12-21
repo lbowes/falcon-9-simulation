@@ -31,7 +31,7 @@ namespace Physics {
 
 		private:
 			virtual void assemble() = 0;
-			void basicCollision();
+			void basicCollision_temp();
 
 		};
 

@@ -9,7 +9,7 @@ namespace Physics {
 			
 			updatePropellantTanks();
 			updateTotalMass_stage();
-			updateTotalCmInertia_stage();
+			updateTotalCoMInertia_stage();
 		}
 
 		void FluidTankGroup::addToTank(unsigned char tankIdx, double mass) {

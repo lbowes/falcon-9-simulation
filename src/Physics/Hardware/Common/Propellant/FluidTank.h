@@ -1,7 +1,7 @@
 #ifndef PHYSICS_HARDWARE_FLUIDTANK_H
 #define PHYSICS_HARDWARE_FLUIDTANK_H
 
-#include "Physics/Hardware/Common/Core/IStageComponent.hpp"
+#include "Physics/Hardware/Common/Core/StageComponent.hpp"
 #include "Fluid.h"
 
 #define _USE_MATH_DEFINES
@@ -16,7 +16,7 @@ namespace Physics {
 namespace Physics {
 	namespace Hardware {
 		
-		class FluidTank : public IStageComponent {
+		class FluidTank : public StageComponent {
 			friend class FluidTankGroup;
 			friend class Physics::DSS;
 		private:

@@ -28,16 +28,16 @@ namespace Physics {
 
 		private:
 			void preFlight_temp();
-			void otherUpdates(double t, double dt);
-			std::vector<Force_world> otherForces_world() const;
-			glm::dvec3 otherTorques_world() const;
+			void stageSpecificUpdates(double t, double dt);
+			std::vector<Force_world> stageSpecificForces_world() const;
+			glm::dvec3 stageSpecificTorques_world() const;
 			void addEngines();
 			void addThrusters();
 			void addTanks();
 			void addFluidLines();
 			void setStageSpecificParams();
-			Mass otherMass_stage() const;
-			InertiaTensor otherCmInertia_stage() const;
+			Mass stageSpecificMass_stage() const;
+			InertiaTensor stageSpecificCoMInertia_stage() const;
 
 		};
 

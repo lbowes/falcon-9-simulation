@@ -39,9 +39,6 @@ namespace Graphics {
 
 		void shouldHaveFocus(bool shouldHaveFocus) { mHasFocus = shouldHaveFocus; }
 
-	private:
-		void addAllCameras(float windowAspect);
-
 	};
 
 }

@@ -33,7 +33,7 @@ namespace Graphics {
 		flushRenderers();
 
 		//Render Earth
-		mEarthModel->render(currentSimCamera, mDataSource.getInertialPosition().getEUN_to_ECEFTransform());
+		//mEarthModel->render(currentSimCamera, mDataSource.getInertialPosition().getEUN_to_ECEFTransform());
 
 		//Render exhaust models
 		float airPressure_percent = static_cast<float>(Environment::getAirPressure_Pa(floor(s1State.getCoMPosition_world().y))) / Environment::seaLevelStdPressure;
