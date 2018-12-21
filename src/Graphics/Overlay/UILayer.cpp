@@ -125,7 +125,7 @@ namespace Graphics {
 			mPlaybackSpeedHandle = 1.0f; 
 		
 		SameLine();
-		if (Button("50%%")) 
+		if (Button("50%")) 
 			mPlaybackSpeedHandle = 0.5f;
 
 		SliderFloat("Time", &mTimeHandle, 0.0f, simulatedTime_s);

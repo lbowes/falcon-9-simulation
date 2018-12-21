@@ -39,7 +39,7 @@ namespace Graphics {
 	}
 
 	void ExhaustJet::updateTransform(glm::mat4 totalStageTransform_OGL) {
-		glm::mat4 engineTransform_OGL = totalStageTransform_OGL * glm::mat4(mSourceEngine.getCompToStageTransform().getLocalToParent_translation());
+		glm::mat4 engineTransform_OGL = totalStageTransform_OGL * glm::mat4(mSourceEngine.getCompToStageTransform().getLocalToParent_total());
 		mMesh->setModelTransform(engineTransform_OGL * glm::translate(glm::vec3(0.0f, -mSourceEngine.mTotalLength, 0.0f)));
 	}
 

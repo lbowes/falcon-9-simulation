@@ -1,5 +1,11 @@
 #include "Engine.h"
 
+//temp
+#include <iostream>
+//
+
+#include <glm/gtx/vector_angle.hpp>
+
 namespace Physics {
 	namespace Hardware {
 
@@ -18,10 +24,6 @@ namespace Physics {
 		{
 			mNozzleExitArea = glm::pi<double>() * pow(mNozzleExitDiameter / 2.0, 2);
 			mNozzleThroatArea = mNozzleExitArea / mExpansionRatio;
-		}
-
-		void Engine::addTVCActuator(glm::dvec2 fixedPoint_engine, glm::dvec2 engineConnectPoint_engine, double clockingDegree_degs) {
-			mTVCActuators.push_back(TVCActuator(mMaxGimbalAngle, fixedPoint_engine, engineConnectPoint_engine, clockingDegree_degs));
 		}
 
 		void Engine::updateDeviceSpecific(double dt) {
@@ -60,12 +62,12 @@ namespace Physics {
 			using namespace glm;
 
 			//This transform is in 'neutral engine' space, ie engine space without any gimballing
-			dmat4 gimbalTransform_engine;
+			dmat4 gimbalTransform_engine = dmat4(1.0);
 			for (const auto& t : mTVCActuators) {
 				gimbalTransform_engine = 
 				rotate(
 					gimbalTransform_engine, 
-					radians(t.mResultantAngle), 
+					radians(t.mGimbalAngle),
 					cross(
 						{0.0, 1.0, 0.0}, 
 						rotate(
@@ -78,7 +80,13 @@ namespace Physics {
 			}
 
 			//Update the component to stage transform
-			mCompToStage.setLocalToParent_rotation(gimbalTransform_engine * mEngineToStageNoGimbal.getLocalToParent_rotation());
+			mCompToStage.setLocalToParent_rotation(mEngineToStageNoGimbal.getLocalToParent_rotation() * gimbalTransform_engine);
+
+			//temp - testing the angle between the engine's new rotation and the down axis
+			//glm::dvec3 pointer = mCompToStage.toParentSpace_rotation(glm::dvec3(0.0, -1.0, 0.0));
+			//const double angle = glm::degrees(glm::angle(pointer, glm::dvec3(0.0, -1.0, 0.0)));
+			//printf("angle: %f\n", angle);
+			//
 		}
 
 	}

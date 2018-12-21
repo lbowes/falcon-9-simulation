@@ -60,15 +60,9 @@ namespace Physics {
 			
 			bool active = false;
 
-			struct TVCActuatorState {
-				glm::dvec2 enginePoint_engine;
-											       
-				double							       
-					resultantAngle = 0.0,
-					percentExtension = 0.0,
-					currentLength = 0.0;
-			}; 
-			std::vector<TVCActuatorState> TVCActuators = std::vector<TVCActuatorState>(2);
+			CoordTransform3D compToStage;
+
+			std::vector<double> TVCActuatorAngles = std::vector<double>(2);
 		};
 
 		struct GasThrusterState {

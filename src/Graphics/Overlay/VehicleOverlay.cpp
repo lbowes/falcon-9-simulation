@@ -37,17 +37,22 @@ namespace Graphics {
 			mMarker2DOverlay.addMarker(mMarkedLocations.S1CentreMass, Marker2D::Type::centreMass, "F9 Stage_1");
 
 			//Engines
-			for (unsigned char i = 0; i < 9; i++) {
+			for (unsigned char i = 0; i < mDataSource.getStage1().getEngines().getCount(); i++) {
 				std::string id = std::to_string(i);
 				mMarker2DOverlay.addMarker(mMarkedLocations.enginesOrigins[i], Marker2D::Type::origin, "F9 merlin 1D No." + id);
 				mMarker2DOverlay.addMarker(mMarkedLocations.enginesCoM[i], Marker2D::Type::centreMass, "F9 merlin 1D No." + id);
 			}
 
-			//Landing_legs and grid fins
-			for (unsigned char i = 0; i < 4; i++) {
+			//Landing_legs
+			for (unsigned char i = 0; i < mDataSource.getStage1().getLandingLegs().getCount(); i++) {
 				std::string id = std::to_string(i);
 				mMarker2DOverlay.addMarker(mMarkedLocations.legsOrigins[i], Marker2D::Type::origin, "F9 landing leg No." + id);
 				mMarker2DOverlay.addMarker(mMarkedLocations.legsCoM[i], Marker2D::Type::centreMass, "F9 landing leg No." + id);
+			}
+
+			//Grid fins
+			for (unsigned char i = 0; i < mDataSource.getStage1().getGridFins().getCount(); i++) {
+				std::string id = std::to_string(i);
 				mMarker2DOverlay.addMarker(mMarkedLocations.gridFinsOrigins[i], Marker2D::Type::origin, "F9 grid fin No." + id);
 				mMarker2DOverlay.addMarker(mMarkedLocations.gridFinsCoM[i], Marker2D::Type::centreMass, "F9 grid fin No." + id);
 			}

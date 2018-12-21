@@ -30,6 +30,13 @@ namespace Physics {
 		void Falcon9Stage1::otherUpdates(double t, double dt) {
 			mGridFins.update(dt/* , External::Environment::getAirDensity_kg_per_m3(static_cast<int>(floor(mState.getCMPosition_world().y))), mFlowVelocity_local */);
 			mLandingLegs.update(*this, dt);
+
+			//Rotate all engines
+			for(unsigned char i = 0; i < mEngines.getCount(); i++) {
+				//mEngines.getComponent<Merlin1D>(i)->gimbalTo(t * 360.0, 6.0);
+				mEngines.getComponent<Merlin1D>(i)->gimbalTo(0.0, (sin(t) + 1.0) / 2.0 * 6.0);
+				mEngines.getComponent<Merlin1D>(i)->setActive(true);
+			}
 		}
 
 		std::vector<Force_world> Falcon9Stage1::otherForces_world() const 
@@ -123,8 +130,8 @@ namespace Physics {
 		void Falcon9Stage1::addFluidLines() {
 			//Connects the propellant tanks to the engines
 			{
-				FluidTank& oxidiserTank = *static_cast<FluidTank*>(mPropellantSupplies[Propellants::liquidOxygen]);
-				FluidTank& fuelTank = *static_cast<FluidTank*>(mPropellantSupplies[Propellants::RP1]);
+				FluidTank& oxidiserTank = *mPropellantSupplies.getComponent<FluidTank>(Propellants::liquidOxygen);
+				FluidTank& fuelTank = *mPropellantSupplies.getComponent<FluidTank>(Propellants::RP1);
 				PropSupplyLine& engineSupplyLine = mPropellantSupplies.addPropSupplyLine(oxidiserTank, fuelTank);
 
 				for (const auto& e : mEngines.getAllComponents())
@@ -133,7 +140,7 @@ namespace Physics {
 
 			//Connects the nitrogen gas tank to the thrusters
 			{
-				FluidTank& nitrogenTank = *static_cast<FluidTank*>(mPropellantSupplies[Propellants::nitrogen]);
+				FluidTank& nitrogenTank = *mPropellantSupplies.getComponent<FluidTank>(Propellants::nitrogen);
 				GasSupplyLine& gasThrusterSupplyLine = mPropellantSupplies.addGasSupplyLine(nitrogenTank);
 
 				for (const auto& g : mThrusters.getAllComponents())

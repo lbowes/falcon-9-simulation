@@ -223,8 +223,10 @@ namespace Physics {
 		dest.active = source.mActive;
 		dest.throttle = source.mThrottle;
 		dest.currentMassFlowRate = source.mCurrentMassFlowRate;
+		dest.compToStage = source.mCompToStage;
 
-		//TODO: Decide how to save, load and linearly interpolate TVC actuator state, given that Engine is a base class and not all subclasses will have TVC actuators
+		for(unsigned char i = 0; i < source.mTVCActuators.size(); i++)
+			dest.TVCActuatorAngles[i] = source.mTVCActuators[i].mGimbalAngle;
 	}
 
 	void DSS::loadEngineState(const DSS::MerlinEngineState& source, Physics::Hardware::Engine& dest) {
@@ -233,7 +235,10 @@ namespace Physics {
 		dest.mActive = source.active;
 		dest.mThrottle = source.throttle;
 		dest.mCurrentMassFlowRate = source.currentMassFlowRate;
+		dest.mCompToStage = source.compToStage;
 		
+		for(unsigned char i = 0; i < dest.mTVCActuators.size(); i++)
+			dest.mTVCActuators[i].mGimbalAngle = source.TVCActuatorAngles[i];
 	}
 
 	void DSS::lerpEngineState(const DSS::MerlinEngineState& a, const DSS::MerlinEngineState& b, double x, DSS::MerlinEngineState& dest) {
@@ -242,8 +247,10 @@ namespace Physics {
 		dest.active = a.active;
 		dest.throttle = Physics::lerp(a.throttle, b.throttle, x);
 		dest.currentMassFlowRate = Physics::lerp(a.currentMassFlowRate, b.currentMassFlowRate, x);
-		
-		
+		dest.compToStage = ::lerp(a.compToStage, b.compToStage, x);
+
+		for(unsigned char i = 0; i < a.TVCActuatorAngles.size(); i++)
+			dest.TVCActuatorAngles[i] = Physics::lerp(a.TVCActuatorAngles[i], b.TVCActuatorAngles[i], x);
 	}
 
 	void DSS::saveGasThrusterState(const Physics::Hardware::GasThruster& source, DSS::GasThrusterState& dest) {

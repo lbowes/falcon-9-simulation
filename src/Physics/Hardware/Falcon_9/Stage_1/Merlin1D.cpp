@@ -1,5 +1,9 @@
 #include "Merlin1D.h"
 
+//temp
+#include <iostream>
+//
+
 namespace Physics {
 	namespace Hardware {
 		
@@ -30,14 +34,25 @@ namespace Physics {
 
 			updateProperties();
 
-			addTVCActuator(glm::dvec2(0.4, 0.0), glm::dvec2(0.16, -0.4), 180.0);
-			addTVCActuator(glm::dvec2(0.4, 0.0), glm::dvec2(0.16, -0.4), 90.0);
+			//addTVCActuator(glm::dvec2(0.4, 0.0), glm::dvec2(0.16, -0.4), 180.0);
+			//addTVCActuator(glm::dvec2(0.4, 0.0), glm::dvec2(0.16, -0.4), 90.0);
+			mTVCActuators.push_back({180.0});
+			mTVCActuators.push_back({90.0});
 		}
 
-		void Merlin1D::gimbalTo(double clockDirAngle, double angle) 
-			//Responsible for taking in gimbal parameters and converting these into correct TVC actuator lengths 
+		void Merlin1D::gimbalTo(double clockDirAngle_degs, double angle_degs) 
+			//Responsible for taking in gimbal parameters and converting these into correct TVC actuator commands 
 		{
-			
+			const double 
+				angle_rads = std::clamp<double>(glm::radians(angle_degs), 0.0, glm::radians(mMaxGimbalAngle)),
+				clockDirAngle_rads = glm::radians(clockDirAngle_degs);
+
+			double 
+				x_rads = asin(sin(angle_rads) * sin(glm::half_pi<double>() - clockDirAngle_rads)),
+				z_rads = asin(sin(angle_rads) * sin(clockDirAngle_rads));       
+
+			mTVCActuators[0].mGimbalAngle = glm::degrees(x_rads);
+			mTVCActuators[1].mGimbalAngle = glm::degrees(z_rads);
 		}
 
 	}

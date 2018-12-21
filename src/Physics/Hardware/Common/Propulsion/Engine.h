@@ -6,7 +6,6 @@
 
 #include "IThrustGenerator.h"
 #include "Physics/Hardware/Common/Propellant/SupplyLine.h"
-#include "TVCActuator.h"
 
 namespace Graphics {
 	class ExhaustJet;
@@ -19,6 +18,11 @@ namespace Physics{
 namespace Physics {
 	namespace Hardware {
 		
+		struct TVCActuator {
+			const double mClockingDegree = 0.0;
+			double mGimbalAngle = 0.0;
+		};
+
 		class Engine : public IThrustGenerator {
 			friend class Graphics::ExhaustJet;
 			friend class Physics::DSS;
@@ -66,7 +70,6 @@ namespace Physics {
 
 		protected:
 			void updateProperties();
-			void addTVCActuator(glm::dvec2 fixedPoint_engine, glm::dvec2 engineConnectPoint_engine, double clockingDegree_degs);
 
 		private:
 			void updateDeviceSpecific(double dt);

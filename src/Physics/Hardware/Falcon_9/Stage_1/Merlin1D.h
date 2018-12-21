@@ -12,7 +12,7 @@ namespace Physics {
 			Merlin1D(CoordTransform3D merlinToStage);
 			~Merlin1D() = default;
 
-			void gimbalTo(double clockDirAngle, double angle);
+			void gimbalTo(double clockDirAngle_degs, double angle_degs);
 
 		private:
 			void setTypeSpecificParams();

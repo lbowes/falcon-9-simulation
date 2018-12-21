@@ -19,7 +19,6 @@ namespace Graphics {
 		mMainShader->addUniform("projectionMatrix");
 																 
 		mModel.addMesh(mResourceBucket.addOBJMesh("F9S1Fuselage", BOX_MODELS ? "res/models/Falcon9Stage1_Box.obj" : "res/models/F9S1Fuselage.obj", GL_TRIANGLES, nullptr, mMainShader));
-		//mModel.getMesh(0)->setVisibility(false);
 
 		addComponentModels();
 	}
