@@ -15,14 +15,14 @@ namespace Graphics {
 		
 		//temp testing graphs
 		stage1_testGraph.setBackgroundColour({ 1.0f, 1.0f, 1.0f, 0.06f });
-		stage1_testGraph.setDataColour({1.0f, 1.0f, 1.0f, 0.3f});
-		stage1_testGraph.setLowerLimit({ -10'000.0f, 0.0f });
-		stage1_testGraph.setUpperLimit({ 0.0f, 10'000.0f });
+		stage1_testGraph.setDataColour({1.0f, 0.0f, 0.0f, 0.3f});
+		stage1_testGraph.setLowerLimit({ 0.0f, 0.0f });
+		stage1_testGraph.setUpperLimit({ 30000.0f, 30000.0f });
 		
 		stage2_testGraph.setBackgroundColour({ 1.0f, 1.0f, 1.0f, 0.06f });
-		stage2_testGraph.setDataColour({ 1.0f, 1.0f, 1.0f, 0.3f });
-		stage2_testGraph.setLowerLimit({ -10'000.0f, 0.0f });
-		stage2_testGraph.setUpperLimit({ 0.0f, 10'000.0f });
+		stage2_testGraph.setDataColour({ 0.0f, 1.0f, 0.0f, 0.3f });
+		stage2_testGraph.setLowerLimit({ 0.0f, 0.0f });
+		stage2_testGraph.setUpperLimit({ 30000.0f, 30000.0f });
 
 		stage2_testGraph.addDataPoint({0.0f, 10.0f});
 		stage2_testGraph.addDataPoint({0.0f, 0.0f});
@@ -35,7 +35,9 @@ namespace Graphics {
 		stage1PhysicsState();
 		simulationControls(simulatedTime_s);
 
-		const glm::dvec3 s1Position = mDataSource.getStage1().getState().getCoMPosition_world();
+		const glm::dvec3 
+			s1Position = mDataSource.getStage1().getState().getCoMPosition_world(),
+			s2Position = mDataSource.getStage2().getCore().getState().getCoMPosition_world();
 		static double lastTime = 0.0;
 		if (s1Position.y > 30.0) {
 			double
@@ -44,7 +46,7 @@ namespace Graphics {
 
 			if (delta > 0.5) {
 				stage1_testGraph.addDataPoint({ static_cast<float>(s1Position.z), static_cast<float>(s1Position.y) });
-				stage2_testGraph.addDataPoint({ static_cast<float>(s1Position.z), static_cast<float>(s1Position.y) });
+				stage2_testGraph.addDataPoint({ static_cast<float>(s2Position.z), static_cast<float>(s2Position.y) });
 
 				delta = 0.0;
 				lastTime = currentTime;
@@ -54,8 +56,8 @@ namespace Graphics {
 		ImGui::SetNextWindowSize(ImVec2(800, 800 + 22));
 		ImGui::Begin("Flight profile", NULL, ImGuiWindowFlags_NoResize);
 		
-		//stage1_testGraph.render("Flight profile", mainWindowSize);
-		//stage2_testGraph.render("Flight profile", mainWindowSize);
+		stage1_testGraph.render("Flight profile", mainWindowSize);
+		stage2_testGraph.render("Flight profile", mainWindowSize);
 		
 		ImGui::End();
 		//
@@ -82,29 +84,63 @@ namespace Graphics {
 		using namespace std;
 
 		const Physics::Hardware::Falcon9Stage1& s1 = mDataSource.getStage1();
-		const State& s1State = s1.getState();
+		const Physics::Hardware::Falcon9Stage2& s2 = mDataSource.getStage2().getCore();
+		
+		const State& 
+			s1State = s1.getState(),
+			s2State = s2.getState();
 
 		string dataString = "";
 
-		glm::dvec3 vec = s1State.getCoMPosition_world();
-		dataString += "Position:            " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
+		//Stage 1
+		{
+			dataString += "------------------------Stage 1------------------------\n";
+			
+			glm::dvec3 vec = s1State.getCoMPosition_world();
+			dataString += "Position:            " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
 
-		vec = s1State.getVelocity_world();
-		dataString += "Velocity:            " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
+			vec = s1State.getVelocity_world();
+			dataString += "Velocity:            " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
 
-		vec = s1.getAccel_world();
-		dataString += "Linear acceleration: " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
-		
-		vec = s1State.getMomentum_world();
-		dataString += "Momentum:            " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
+			vec = s1.getAccel_world();
+			dataString += "Linear acceleration: " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
 
-		vec = s1State.getAngularVelocity_world();
-		dataString += "Angular velocity:    " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
+			vec = s1State.getMomentum_world();
+			dataString += "Momentum:            " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
 
-		vec = s1State.getAngularMomentum_world();
-		dataString += "Angular momentum:    " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
+			vec = s1State.getAngularVelocity_world();
+			dataString += "Angular velocity:    " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
 
-		dataString += "Total mass:          " + to_string(s1State.getMass_local().getValue());
+			vec = s1State.getAngularMomentum_world();
+			dataString += "Angular momentum:    " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
+
+			dataString += "Total mass:          " + to_string(s1State.getMass_local().getValue()) + "\n\n";
+		}
+
+		//Stage 2
+		{
+			dataString += "------------------------Stage 2------------------------\n";
+
+			glm::dvec3 vec = s2State.getCoMPosition_world();
+			dataString += "Position:            " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
+
+			vec = s2State.getVelocity_world();
+			dataString += "Velocity:            " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
+
+			vec = s2.getAccel_world();
+			dataString += "Linear acceleration: " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
+			
+			vec = s2State.getMomentum_world();
+			dataString += "Momentum:            " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
+
+			vec = s2State.getAngularVelocity_world();
+			dataString += "Angular velocity:    " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
+
+			vec = s2State.getAngularMomentum_world();
+			dataString += "Angular momentum:    " + to_string(vec.x) + " " + to_string(vec.y) + " " + to_string(vec.z) + "\n";
+
+			dataString += "Total mass:          " + to_string(s2State.getMass_local().getValue());
+		}
 
 		mTextDrawList->AddText(ImVec2(0, 0), ImColor(1.0f, 1.0f, 1.0f), dataString.c_str());
 	}

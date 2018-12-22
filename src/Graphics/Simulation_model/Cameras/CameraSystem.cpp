@@ -9,8 +9,8 @@ namespace Graphics {
 			0.1f,
 			10000.0f,
 			windowAspect,
-			45.0f) //45.0f
-		); 
+			45.0f //45.0f
+		)); 
 
 		mCameras.push_back(std::make_unique<InterstageCamera>(windowAspect));
 
@@ -19,8 +19,8 @@ namespace Graphics {
 			0.1f,
 			10000.0f,
 			windowAspect,
-			45.0f)
-		);
+			45.0f
+		));
 	}
 
 	void CameraSystem::update(const CoordTransform3D& stage1ToWorld, float windowAspect, float dt, glm::dvec3 stage1CoMPosition_world) {

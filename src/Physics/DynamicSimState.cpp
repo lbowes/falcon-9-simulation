@@ -40,42 +40,47 @@ namespace Physics {
 
 				//Propellant tanks
 				const FluidTankGroup& s1Props = falcon9.mStage1.getPropellantSupplies();
-				saveFluidTankState(*s1Props.getComponent<FluidTank>(Propellants::liquidOxygen), F9.S1.LOXTank);
-				saveFluidTankState(*s1Props.getComponent<FluidTank>(Propellants::RP1), F9.S1.RP1Tank);
-				saveFluidTankState(*s1Props.getComponent<FluidTank>(Propellants::nitrogen), F9.S1.nitrogenTank);
+				saveFluidTankState(*s1Props.get<FluidTank>(Propellants::liquidOxygen), F9.S1.LOXTank);
+				saveFluidTankState(*s1Props.get<FluidTank>(Propellants::RP1), F9.S1.RP1Tank);
+				saveFluidTankState(*s1Props.get<FluidTank>(Propellants::nitrogen), F9.S1.nitrogenTank);
 
 				//Engines
 				const ThrustGeneratorGroup& octawebEngines = falcon9.mStage1.getEngines();
 				for(unsigned char i = 0; i < octawebEngines.getCount(); i++)
-					saveEngineState(*octawebEngines.getComponent<Engine>(i), F9.S1.engines[i]);
+					saveEngineState(*octawebEngines.get<Engine>(i), F9.S1.engines[i]);
 
 				//Gas thrusters
 				const ThrustGeneratorGroup& gasThrusters = falcon9.mStage1.getThrusters();
 				for(unsigned char i = 0; i < gasThrusters.getCount(); i++)
-					saveGasThrusterState(*gasThrusters.getComponent<GasThruster>(i), F9.S1.thrusters[i]);
+					saveGasThrusterState(*gasThrusters.get<GasThruster>(i), F9.S1.thrusters[i]);
 
 				//Landing legs
 				const LandingLegs& landingLegs = falcon9.mStage1.getLandingLegs();
 				for(unsigned char i = 0; i < landingLegs.getCount(); i++)
-					saveLandingLegState(*landingLegs.getComponent<LandingLeg>(i), F9.S1.landingLegs[i]);
+					saveLandingLegState(*landingLegs.get<LandingLeg>(i), F9.S1.landingLegs[i]);
 
 				//Grid fins
 				const GridFins& gridFins = falcon9.mStage1.getGridFins();
 				for(unsigned char i = 0; i < gridFins.getCount(); i++)
-					saveGridFinState(*gridFins.getComponent<GridFin>(i), F9.S1.gridFins[i]);
+					saveGridFinState(*gridFins.get<GridFin>(i), F9.S1.gridFins[i]);
 			}
 
-			//Stage 2
+			//Stage 2 (composite with fairings, payload etc)
 			{
-				RigidBodyStateSnapshot::save(falcon9.mStage2, F9.S2.RB);
+				RigidBodyStateSnapshot::save(falcon9.mStage2, F9.S2.compositeRB);
+				RigidBodyStateSnapshot::save(falcon9.mStage2.getCore(), F9.S2.coreRB);
 
 				//Propellant tanks
 				const FluidTankGroup& s2Props = falcon9.mStage1.getPropellantSupplies();
-				saveFluidTankState(*s2Props.getComponent<FluidTank>(Propellants::liquidOxygen), F9.S2.LOXTank);
-				saveFluidTankState(*s2Props.getComponent<FluidTank>(Propellants::RP1), F9.S2.RP1Tank);
+				saveFluidTankState(*s2Props.get<FluidTank>(Propellants::liquidOxygen), F9.S2.LOXTank);
+				saveFluidTankState(*s2Props.get<FluidTank>(Propellants::RP1), F9.S2.RP1Tank);
 
 				//Engines
-				saveEngineState(*falcon9.mStage2.getEngines().getComponent<Engine>(0), F9.S2.engine);
+				saveEngineState(*falcon9.mStage2.getCore().getEngines().get<Engine>(0), F9.S2.engine);
+
+				//Fairing halves
+				RigidBodyStateSnapshot::save(falcon9.mStage2.getFairings().first, F9.S2.FairingsRBs.first);
+				RigidBodyStateSnapshot::save(falcon9.mStage2.getFairings().second, F9.S2.FairingsRBs.second);
 			}
 		}
 	}
@@ -93,42 +98,47 @@ namespace Physics {
 
 				//Propellant tanks
 				const FluidTankGroup& s1Props = dest.mStage1.getPropellantSupplies();
-				loadFluidTankState(source.F9.S1.LOXTank, *s1Props.getComponent<FluidTank>(Propellants::liquidOxygen));
-				loadFluidTankState(source.F9.S1.RP1Tank, *s1Props.getComponent<FluidTank>(Propellants::RP1));
-				loadFluidTankState(source.F9.S1.nitrogenTank, *s1Props.getComponent<FluidTank>(Propellants::nitrogen));
+				loadFluidTankState(source.F9.S1.LOXTank, *s1Props.get<FluidTank>(Propellants::liquidOxygen));
+				loadFluidTankState(source.F9.S1.RP1Tank, *s1Props.get<FluidTank>(Propellants::RP1));
+				loadFluidTankState(source.F9.S1.nitrogenTank, *s1Props.get<FluidTank>(Propellants::nitrogen));
 
 				//Engines
 				const ThrustGeneratorGroup& octawebEngines = dest.mStage1.getEngines();
 				for(unsigned char i = 0; i < octawebEngines.getCount(); i++)
-					loadEngineState(source.F9.S1.engines[i], *octawebEngines.getComponent<Engine>(i));
+					loadEngineState(source.F9.S1.engines[i], *octawebEngines.get<Engine>(i));
 
 				//Gas thrusters
 				const ThrustGeneratorGroup& gasThrusters = dest.mStage1.getThrusters();
 				for(unsigned char i = 0; i < gasThrusters.getCount(); i++)
-					loadGasThrusterState(source.F9.S1.thrusters[i], *gasThrusters.getComponent<GasThruster>(i));
+					loadGasThrusterState(source.F9.S1.thrusters[i], *gasThrusters.get<GasThruster>(i));
 
 				//Landing legs
 				const LandingLegs& landingLegs = dest.mStage1.getLandingLegs();
 				for(unsigned char i = 0; i < landingLegs.getCount(); i++)
-					loadLandingLegState(source.F9.S1.landingLegs[i], *landingLegs.getComponent<LandingLeg>(i));
+					loadLandingLegState(source.F9.S1.landingLegs[i], *landingLegs.get<LandingLeg>(i));
 
 				//Grid fins
 				const GridFins& gridFins = dest.mStage1.getGridFins();
 				for(unsigned char i = 0; i < gridFins.getCount(); i++)
-					loadGridFinState(source.F9.S1.gridFins[i], *gridFins.getComponent<GridFin>(i));
+					loadGridFinState(source.F9.S1.gridFins[i], *gridFins.get<GridFin>(i));
 			}
 
 			//Stage 2
 			{
-				RigidBodyStateSnapshot::load(source.F9.S2.RB, dest.mStage2.getState());
+				RigidBodyStateSnapshot::load(source.F9.S2.compositeRB, dest.mStage2.getState());
+				RigidBodyStateSnapshot::load(source.F9.S2.coreRB, dest.mStage2.getCore().getState());
 
 				//Propellant tanks
 				const FluidTankGroup& s2Props = dest.mStage1.getPropellantSupplies();
-				loadFluidTankState(source.F9.S2.LOXTank, *s2Props.getComponent<FluidTank>(Propellants::liquidOxygen));
-				loadFluidTankState(source.F9.S2.RP1Tank, *s2Props.getComponent<FluidTank>(Propellants::RP1));
+				loadFluidTankState(source.F9.S2.LOXTank, *s2Props.get<FluidTank>(Propellants::liquidOxygen));
+				loadFluidTankState(source.F9.S2.RP1Tank, *s2Props.get<FluidTank>(Propellants::RP1));
 
 				//Engines
-				loadEngineState(source.F9.S2.engine, *dest.mStage2.getEngines().getComponent<Engine>(0));
+				loadEngineState(source.F9.S2.engine, *dest.mStage2.getCore().getEngines().get<Engine>(0));
+
+				//Fairing halves
+				RigidBodyStateSnapshot::load(source.F9.S2.FairingsRBs.first, dest.mStage2.getFairings().first.getState());
+				RigidBodyStateSnapshot::load(source.F9.S2.FairingsRBs.second, dest.mStage2.getFairings().second.getState());
 			}
 		}
 	}
@@ -170,7 +180,8 @@ namespace Physics {
 
 			//Stage 2
 			{
-				RigidBodyStateSnapshot::lerp(a.F9.S2.RB, b.F9.S2.RB, x, dest.F9.S2.RB);
+				RigidBodyStateSnapshot::lerp(a.F9.S2.compositeRB, b.F9.S2.compositeRB, x, dest.F9.S2.compositeRB);
+				RigidBodyStateSnapshot::lerp(a.F9.S2.coreRB, b.F9.S2.coreRB, x, dest.F9.S2.coreRB);
 
 				//Propellant tanks
 				lerpFluidTankState(a.F9.S2.LOXTank, b.F9.S2.LOXTank, x, dest.F9.S2.LOXTank);
@@ -178,6 +189,10 @@ namespace Physics {
 
 				//Engines
 				lerpEngineState(a.F9.S2.engine, b.F9.S2.engine, x, dest.F9.S2.engine);
+
+				//Fairing halves
+				RigidBodyStateSnapshot::lerp(a.F9.S2.FairingsRBs.first, b.F9.S2.FairingsRBs.first, x, dest.F9.S2.FairingsRBs.first);
+				RigidBodyStateSnapshot::lerp(a.F9.S2.FairingsRBs.second, b.F9.S2.FairingsRBs.second, x, dest.F9.S2.FairingsRBs.second);
 			}
 		}	
 	}

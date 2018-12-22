@@ -91,26 +91,26 @@ namespace Graphics {
 
 			//Engines
 			for (unsigned char i = 0; i < 9; i++) {
-				StageComponent* comp = mDataSource.getStage1().getEngines().getComponent(i);
+				StageComponent* comp = mDataSource.getStage1().getEngines().get(i);
 				mMarkedLocations.enginesCoM[i] = stage1State.getObjectSpace().toParentSpace(comp->getMass(StageComponent::CoordSpace::stage).getCentre());
 				mMarkedLocations.enginesOrigins[i] = stage1State.getObjectSpace().toParentSpace(comp->getCompToStageTransform().toParentSpace());
 			}
 
 			for (unsigned char i = 0; i < 4; i++) {
 				//Landing_legs
-				StageComponent* comp = mDataSource.getStage1().getLandingLegs().getComponent(i);
+				StageComponent* comp = mDataSource.getStage1().getLandingLegs().get(i);
 				mMarkedLocations.legsCoM[i] = stage1State.getObjectSpace().toParentSpace(comp->getMass(StageComponent::CoordSpace::stage).getCentre());
 				mMarkedLocations.legsOrigins[i] = stage1State.getObjectSpace().toParentSpace(comp->getCompToStageTransform().toParentSpace());
 
 				//Grid_fins
-				comp = mDataSource.getStage1().getGridFins().getComponent(i);
+				comp = mDataSource.getStage1().getGridFins().get(i);
 				mMarkedLocations.gridFinsCoM[i] = stage1State.getObjectSpace().toParentSpace(comp->getMass(StageComponent::CoordSpace::stage).getCentre());
 				mMarkedLocations.gridFinsOrigins[i] = stage1State.getObjectSpace().toParentSpace(comp->getCompToStageTransform().toParentSpace());
 			}
 
 			//Tanks
 			for (unsigned char i = 0; i < 2; i++) {
-				StageComponent* comp = mDataSource.getStage1().getPropellantSupplies().getComponent(i);
+				StageComponent* comp = mDataSource.getStage1().getPropellantSupplies().get(i);
 				mMarkedLocations.tanksCoM[i] = stage1State.getObjectSpace().toParentSpace(comp->getMass(StageComponent::CoordSpace::stage).getCentre());
 				mMarkedLocations.tanksOrigins[i] = stage1State.getObjectSpace().toParentSpace(comp->getCompToStageTransform().toParentSpace());
 			}

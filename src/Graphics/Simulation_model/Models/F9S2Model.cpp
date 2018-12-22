@@ -1,9 +1,9 @@
 #include "F9S2Model.h"
-#include "Physics/Hardware/Falcon_9/Stage_2/Falcon9Stage2.h"
+#include "Physics/Hardware/Falcon_9/Stage_2/Falcon9Stage2Composite.h"
 
 namespace Graphics {
 
-	F9S2Model::F9S2Model(const Physics::Hardware::Falcon9Stage2& dataSource, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket) :
+	F9S2Model::F9S2Model(const Physics::Hardware::Falcon9Stage2Composite& dataSource, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket) :
 		ISimulationModel(renderer, resourceBucket),
 		mDataSource(dataSource)
 	{
@@ -22,7 +22,7 @@ namespace Graphics {
 		using namespace Physics::Hardware;
 
 		//Engine
-		mEngineMesh = std::make_unique<EngineMesh>("Merlin1DVac", "res/models/Merlin1DVac.obj", *mDataSource.getEngines().getComponent<Engine>(0), mResourceBucket, mModel);
+		mEngineMesh = std::make_unique<EngineMesh>("Merlin1DVac", "res/models/Merlin1DVac.obj", *mDataSource.getCore().getEngines().get<Engine>(0), mResourceBucket, mModel);
 
 		//Fairing halves
 		mFairingHalfMeshes.first = std::make_unique<FairingHalfMesh>(mDataSource.getFairings().first, mResourceBucket, mModel);
@@ -32,7 +32,7 @@ namespace Graphics {
 	void F9S2Model::updateAllTransforms_OGL(glm::dvec3 currentCameraPos_world) {
 		using namespace glm;
 
-		const State& state = mDataSource.getState();
+		const State& state = mDataSource.getCore().getState();
 
 		mat4
 			posTransform_OGL = translate(currentCameraPos_world - state.getObjectSpace().toParentSpace()),

@@ -13,6 +13,9 @@ namespace Physics {
 			mStage1.update(t, dt);
 			mStage2.update(t, dt);
 
+			if(t > 60.0)
+				mMembers[1].disconnect();
+
 			ILaunchVehicle::update(t, dt);
 		}
 

@@ -31,8 +31,8 @@ namespace Physics {
 		s.setOrientation_world(glm::toQuat(glm::rotate(glm::radians(7.07), glm::dvec3(1.0, 0.0, 0.0))));
 
 		Hardware::FluidTank
-			*s1Lox = mFalcon9.getStage1().getPropellantSupplies().getComponent<Hardware::FluidTank>(Propellants::liquidOxygen),
-			*s1RP1 = mFalcon9.getStage1().getPropellantSupplies().getComponent<Hardware::FluidTank>(Propellants::RP1);
+			*s1Lox = mFalcon9.getStage1().getPropellantSupplies().get<Hardware::FluidTank>(Propellants::liquidOxygen),
+			*s1RP1 = mFalcon9.getStage1().getPropellantSupplies().get<Hardware::FluidTank>(Propellants::RP1);
 		
 		const double scale = 0.90748;
 		s1Lox->removeAllFluid();

@@ -36,13 +36,17 @@ namespace Graphics {
 	}
 
 	void Graph::addDataPoint(glm::vec2 point) {
-		//X
-		//if (point.x < mLowerLimit.x) mLowerLimit.x = point.x;
-		//else if (point.x > mUpperLimit.x) mUpperLimit.x = point.x;
+		////X
+		//if (point.x < mLowerLimit.x) 
+		//	mLowerLimit.x = point.x;
+		//else if (point.x > mUpperLimit.x) 
+		//	mUpperLimit.x = point.x;
 		//
 		////Y
-		//if (point.y < mLowerLimit.y) mLowerLimit.y = point.y;
-		//else if (point.y > mUpperLimit.y) mUpperLimit.y = point.y;
+		//if (point.y < mLowerLimit.y) 
+		//	mLowerLimit.y = point.y;
+		//else if (point.y > mUpperLimit.y) 
+		//	mUpperLimit.y = point.y;
 
 		mData.push_back(point);
 	}

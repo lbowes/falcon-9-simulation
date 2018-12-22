@@ -137,14 +137,18 @@ namespace Physics {
 				std::vector<GridFinState> gridFins = std::vector<GridFinState>(4);
 			} S1;
 
-			struct Stage2 {
-				RigidBodyStateSnapshot RB;
+			struct Stage2Composite {
+				RigidBodyStateSnapshot 
+					compositeRB,
+					coreRB;
 				
 				FluidTankState 
 					LOXTank,
 					RP1Tank;
 
 				MerlinEngineState engine;
+
+				std::pair<RigidBodyStateSnapshot, RigidBodyStateSnapshot> FairingsRBs;
 			} S2;
 		} F9;
 

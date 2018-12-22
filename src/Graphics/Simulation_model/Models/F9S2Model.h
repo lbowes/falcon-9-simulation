@@ -10,7 +10,7 @@
 
 namespace Physics {
 	namespace Hardware {
-		class Falcon9Stage2;
+		class Falcon9Stage2Composite;
 	}
 }
 
@@ -24,10 +24,10 @@ namespace Graphics {
 		
 		std::pair<std::unique_ptr<FairingHalfMesh>, std::unique_ptr<FairingHalfMesh>> mFairingHalfMeshes;
 
-		const Physics::Hardware::Falcon9Stage2& mDataSource;
+		const Physics::Hardware::Falcon9Stage2Composite& mDataSource;
 
 	public:
-		F9S2Model(const Physics::Hardware::Falcon9Stage2& dataSource, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket);
+		F9S2Model(const Physics::Hardware::Falcon9Stage2Composite& dataSource, GF::Graphics::Renderer& renderer, GF::ResourceSet& resourceBucket);
 		~F9S2Model() = default;
 
 	private:

@@ -9,6 +9,7 @@ namespace Physics {
 			addEngine();
 			addThrusters();
 			addTanks();
+			addFluidLines();
 			preFlight_temp();
 
 			mergeTotalMass_stage();
@@ -16,10 +17,10 @@ namespace Physics {
 		}
 
 		void Falcon9Stage2::preFlight_temp() {
-				//Load correct amounts of propellant into the tanks
-				mPropellantSupplies.addToTank(Propellants::liquidOxygen, 75.2_tonnes);
-				mPropellantSupplies.addToTank(Propellants::RP1, 32.3_tonnes);
-				//static_cast<PropellantTank*>(mThrusterGasSupply[0])->addFluid(8.0);
+			//Load correct amounts of propellant into the tanks
+			mPropellantSupplies.addToTank(Propellants::liquidOxygen, 75.2_tonnes);
+			mPropellantSupplies.addToTank(Propellants::RP1, 32.3_tonnes);
+			//static_cast<PropellantTank*>(mThrusterGasSupply[0])->addFluid(8.0);
 		}
 
 		void Falcon9Stage2::stageSpecificUpdates(double t, double dt) { }
@@ -67,6 +68,17 @@ namespace Physics {
 			));
 			
 			//mFuelSupplies.addComponent(std::make_unique<PropellantTank>(glm::dvec3(0.0, 40.0, 0.0), 0.36, 0.36, 2550.0, 0.0042, 280.0, Propellant::State::gas)); //N2
+		}
+
+		void Falcon9Stage2::addFluidLines() {
+			//Connects the propellant tanks to the engine
+			{
+				FluidTank& oxidiserTank = *mPropellantSupplies.get<FluidTank>(Propellants::liquidOxygen);
+				FluidTank& fuelTank = *mPropellantSupplies.get<FluidTank>(Propellants::RP1);
+				PropSupplyLine& engineSupplyLine = mPropellantSupplies.addPropSupplyLine(oxidiserTank, fuelTank);
+
+				mEngines.get<Merlin1DVac>(0)->attachPropSupplyLine(&engineSupplyLine);
+			}
 		}
 
 		void Falcon9Stage2::setStageSpecificParams() {

@@ -4,7 +4,7 @@
 
 #include "Physics/Hardware/Common/Core/ILaunchVehicle.h"
 #include "Physics/Hardware/Falcon_9/Stage_1/Falcon9Stage1.h"
-#include "Physics/Hardware/Falcon_9/Stage_2/Falcon9Stage2.h"
+#include "Physics/Hardware/Falcon_9/Stage_2/Falcon9Stage2Composite.h"
 #include "definitions.h"
 
 namespace Physics {
@@ -18,7 +18,7 @@ namespace Physics {
 			friend Physics::DSS;
 		private:
 			Falcon9Stage1 mStage1;
-			Falcon9Stage2 mStage2;
+			Falcon9Stage2Composite mStage2;
 
 		public:
 			Falcon9();
@@ -28,8 +28,8 @@ namespace Physics {
 			
 			Falcon9Stage1& getStage1() { return mStage1; }
 			const Falcon9Stage1& getStage1() const { return mStage1; }
-			Falcon9Stage2& getStage2() { return mStage2; }
-			const Falcon9Stage2& getStage2() const { return mStage2; }
+			Falcon9Stage2Composite& getStage2() { return mStage2; }
+			const Falcon9Stage2Composite& getStage2() const { return mStage2; }
 
 		private:
 			virtual void assemble();

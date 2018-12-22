@@ -21,7 +21,9 @@ namespace Physics {
 			friend class ThrustGeneratorGroup;
 		protected:
 			glm::dvec3 mThrust_stage;	   //thrust produced in stage space
+			
 			bool mActive = false;	    
+			
 			double mThrustMagnitude = 0.0; //N
 
 		public:

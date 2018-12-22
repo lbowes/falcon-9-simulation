@@ -16,9 +16,7 @@ namespace Physics {
 			mergeTotalInertia_stage();	
 		}
 
-		void Falcon9Stage1::preFlight_temp() 
-			//temp - All operations will be handled autonomously eventually.
-		{
+		void Falcon9Stage1::preFlight_temp() {
 			//Load correct amounts of propellant into the tanks
 #if LOAD_ENGINE_PROPELLANT
 			mPropellantSupplies.addToTank(Propellants::liquidOxygen, 287.430_tonnes);
@@ -31,11 +29,14 @@ namespace Physics {
 			mGridFins.update(dt/* , External::Environment::getAirDensity_kg_per_m3(static_cast<int>(floor(mState.getCMPosition_world().y))), mFlowVelocity_local */);
 			mLandingLegs.update(*this, dt);
 
+			if(t < 70.0)
+				mEngines.get<Merlin1D>(0)->gimbalTo(0.0, 0.1); //(sin(t) + 1.0) / 2.0 * 6.0
+			else
+				mEngines.get<Merlin1D>(0)->gimbalTo(0.0, 0.0); //(sin(t) + 1.0) / 2.0 * 6.0
+
 			//Rotate all engines
-			for(unsigned char i = 0; i < mEngines.getCount(); i++) {
-				//mEngines.getComponent<Merlin1D>(i)->gimbalTo(0.0, (sin(t) + 1.0) / 2.0 * 6.0);
-				mEngines.getComponent<Merlin1D>(i)->setActive(true);
-			}
+			for(unsigned char i = 0; i < mEngines.getCount(); i++)
+				mEngines.get<Merlin1D>(i)->setActive(true);
 		}
 
 		std::vector<Force_world> Falcon9Stage1::stageSpecificForces_world() const 
@@ -130,8 +131,8 @@ namespace Physics {
 		void Falcon9Stage1::addFluidLines() {
 			//Connects the propellant tanks to the engines
 			{
-				FluidTank& oxidiserTank = *mPropellantSupplies.getComponent<FluidTank>(Propellants::liquidOxygen);
-				FluidTank& fuelTank = *mPropellantSupplies.getComponent<FluidTank>(Propellants::RP1);
+				FluidTank& oxidiserTank = *mPropellantSupplies.get<FluidTank>(Propellants::liquidOxygen);
+				FluidTank& fuelTank = *mPropellantSupplies.get<FluidTank>(Propellants::RP1);
 				PropSupplyLine& engineSupplyLine = mPropellantSupplies.addPropSupplyLine(oxidiserTank, fuelTank);
 
 				for (const auto& e : mEngines.getAllComponents())
@@ -140,7 +141,7 @@ namespace Physics {
 
 			//Connects the nitrogen gas tank to the thrusters
 			{
-				FluidTank& nitrogenTank = *mPropellantSupplies.getComponent<FluidTank>(Propellants::nitrogen);
+				FluidTank& nitrogenTank = *mPropellantSupplies.get<FluidTank>(Propellants::nitrogen);
 				GasSupplyLine& gasThrusterSupplyLine = mPropellantSupplies.addGasSupplyLine(nitrogenTank);
 
 				for (const auto& g : mThrusters.getAllComponents())
