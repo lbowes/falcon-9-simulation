@@ -29,7 +29,6 @@ namespace Physics {
 			glm::dvec3 getTotalTorque_stage() const { return mTotalTorque_stage; }
 
 		private:
-			void addFins();
 			void updateAllFins(double dt/* , double fluidDensity, glm::dvec3 flowVelocity_stage */) const;
 			void updateTotalForce_world();
 			void updateTotalTorque_stage();

@@ -19,7 +19,6 @@ namespace Physics {
 			void update(const RigidBody& stage, double dt);
 
 		private:
-			void addLegs();
 			void updateAllLegs(const RigidBody& stage, double dt) const;
 
 		};

@@ -14,7 +14,7 @@ namespace Graphics {
 		mOrthoCam->setAspect(windowAspect);
 		
 		updateAllMarkers();
-		//mMarker2DOverlay.render(viewProjection, windowAspect, windowDimensions);
+		mMarker2DOverlay.render(viewProjection, windowAspect, windowDimensions);
 	}
 
 	void VehicleOverlay::load(float windowAspect) {
@@ -33,8 +33,8 @@ namespace Graphics {
 
 		//Stage_1
 		{
-			mMarker2DOverlay.addMarker(mMarkedLocations.S1Origin, Marker2D::Type::origin, "F9 Stage_1");
-			mMarker2DOverlay.addMarker(mMarkedLocations.S1CentreMass, Marker2D::Type::centreMass, "F9 Stage_1");
+			mMarker2DOverlay.addMarker(mMarkedLocations.S1Origin, Marker2D::Type::origin, "F9 Stage 1");
+			mMarker2DOverlay.addMarker(mMarkedLocations.S1CentreMass, Marker2D::Type::centreMass, "F9 Stage 1");
 
 			//Engines
 			for (unsigned char i = 0; i < mDataSource.getStage1().getEngines().getCount(); i++) {
@@ -68,8 +68,8 @@ namespace Graphics {
 
 		//Stage_2
 		{
-			mMarker2DOverlay.addMarker(mMarkedLocations.S2Origin, Marker2D::Type::origin);
-			mMarker2DOverlay.addMarker(mMarkedLocations.S2CentreMass, Marker2D::Type::centreMass);
+			mMarker2DOverlay.addMarker(mMarkedLocations.S2Origin, Marker2D::Type::origin, "F9 Stage 2");
+			mMarker2DOverlay.addMarker(mMarkedLocations.S2CentreMass, Marker2D::Type::centreMass, "F9 Stage 2");
 		}
 	}
 
@@ -77,7 +77,7 @@ namespace Graphics {
 		//Launch vehicle
 		{
 			const State &vehicleState = mDataSource.getState();
-			mMarkedLocations.origin = vehicleState.getCoMPosition_world();
+			mMarkedLocations.origin = vehicleState.getObjectSpace().toParentSpace();
 			mMarkedLocations.centreMass = vehicleState.getObjectSpace().toParentSpace(vehicleState.getMass_local().getCentre());
 		}
 
@@ -86,41 +86,41 @@ namespace Graphics {
 			using namespace Physics::Hardware;
 
 			const State &stage1State = mDataSource.getStage1().getState();
-			mMarkedLocations.S1CentreMass = stage1State.getObjectSpace().toParentSpace(stage1State.getMass_local().getCentre());
 			mMarkedLocations.S1Origin = stage1State.getObjectSpace().toParentSpace();
+			mMarkedLocations.S1CentreMass = stage1State.getObjectSpace().toParentSpace(stage1State.getMass_local().getCentre());
 
 			//Engines
 			for (unsigned char i = 0; i < 9; i++) {
 				StageComponent* comp = mDataSource.getStage1().getEngines().get(i);
-				mMarkedLocations.enginesCoM[i] = stage1State.getObjectSpace().toParentSpace(comp->getMass(StageComponent::CoordSpace::stage).getCentre());
 				mMarkedLocations.enginesOrigins[i] = stage1State.getObjectSpace().toParentSpace(comp->getCompToStageTransform().toParentSpace());
+				mMarkedLocations.enginesCoM[i] = stage1State.getObjectSpace().toParentSpace(comp->getMass(StageComponent::CoordSpace::stage).getCentre());
 			}
 
 			for (unsigned char i = 0; i < 4; i++) {
 				//Landing_legs
 				StageComponent* comp = mDataSource.getStage1().getLandingLegs().get(i);
-				mMarkedLocations.legsCoM[i] = stage1State.getObjectSpace().toParentSpace(comp->getMass(StageComponent::CoordSpace::stage).getCentre());
 				mMarkedLocations.legsOrigins[i] = stage1State.getObjectSpace().toParentSpace(comp->getCompToStageTransform().toParentSpace());
+				mMarkedLocations.legsCoM[i] = stage1State.getObjectSpace().toParentSpace(comp->getMass(StageComponent::CoordSpace::stage).getCentre());
 
 				//Grid_fins
 				comp = mDataSource.getStage1().getGridFins().get(i);
-				mMarkedLocations.gridFinsCoM[i] = stage1State.getObjectSpace().toParentSpace(comp->getMass(StageComponent::CoordSpace::stage).getCentre());
 				mMarkedLocations.gridFinsOrigins[i] = stage1State.getObjectSpace().toParentSpace(comp->getCompToStageTransform().toParentSpace());
+				mMarkedLocations.gridFinsCoM[i] = stage1State.getObjectSpace().toParentSpace(comp->getMass(StageComponent::CoordSpace::stage).getCentre());
 			}
 
 			//Tanks
 			for (unsigned char i = 0; i < 2; i++) {
 				StageComponent* comp = mDataSource.getStage1().getPropellantSupplies().get(i);
-				mMarkedLocations.tanksCoM[i] = stage1State.getObjectSpace().toParentSpace(comp->getMass(StageComponent::CoordSpace::stage).getCentre());
 				mMarkedLocations.tanksOrigins[i] = stage1State.getObjectSpace().toParentSpace(comp->getCompToStageTransform().toParentSpace());
+				mMarkedLocations.tanksCoM[i] = stage1State.getObjectSpace().toParentSpace(comp->getMass(StageComponent::CoordSpace::stage).getCentre());
 			}
 		}
 
 		//Stage_2
 		{
-			const State &stage2State = mDataSource.getStage2().getState();
-			mMarkedLocations.S2CentreMass = stage2State.getObjectSpace().toParentSpace(stage2State.getMass_local().getCentre());
+			const State &stage2State = mDataSource.getStage2().getCore().getState();
 			mMarkedLocations.S2Origin = stage2State.getObjectSpace().toParentSpace();
+			mMarkedLocations.S2CentreMass = stage2State.getObjectSpace().toParentSpace(stage2State.getMass_local().getCentre());
 		}
 	}
 

@@ -13,8 +13,10 @@ namespace Physics {
 			mStage1.update(t, dt);
 			mStage2.update(t, dt);
 
-			if(t > 60.0)
-				mMembers[1].disconnect();
+			//if(t > 60.0)
+				//mMembers[1].disconnect();
+
+			//mState.setPosition_world({0.0, 0.0, 0.0});
 
 			ILaunchVehicle::update(t, dt);
 		}

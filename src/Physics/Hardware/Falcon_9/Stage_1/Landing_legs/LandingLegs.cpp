@@ -4,17 +4,13 @@ namespace Physics {
 	namespace Hardware {
 
 		LandingLegs::LandingLegs() {
-			addLegs();
+			for (unsigned char i = 0; i < 4; i++)
+				addComponent(std::make_unique<LandingLeg>(45.0 + i * 90.0));
 		}
 
 		void LandingLegs::update(const RigidBody& stage, double dt) {
 			updateAllLegs(stage, dt);
 			updateAllGroupProperties();
-		}
-
-		void LandingLegs::addLegs() {
-			for (unsigned char i = 0; i < 4; i++)
-				addComponent(std::make_unique<LandingLeg>(45.0 + i * 90.0));
 		}
 
 		void LandingLegs::updateAllLegs(const RigidBody& stage, double dt) const {

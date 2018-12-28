@@ -67,7 +67,7 @@ namespace Physics {
 	}
 	
 	bool Simulation::stopCondMet() {
-		return mCurrentTime_s >= 100.0; //100.0
+		return mCurrentTime_s >= 200.0; //100.0
 	}
 
 	void Simulation::saveAllDSSToHistory(const unsigned snapshotNumber, const Hardware::Falcon9& falcon9) {

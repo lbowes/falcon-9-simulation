@@ -4,10 +4,6 @@ namespace Physics {
 	namespace Hardware {
 
 		GridFins::GridFins() { 
-			addFins();
-		}
-
-		void GridFins::addFins() {
 			addComponent(std::make_unique<GridFin>(45.0));
 			addComponent(std::make_unique<GridFin>(135.0));
 			addComponent(std::make_unique<GridFin>(225.0));

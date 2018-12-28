@@ -6,11 +6,11 @@ namespace Physics {
 		Falcon9Stage2Composite::Falcon9Stage2Composite() :
 			RigidBodyGroup(Integrator::rungeKutta4, MemberUpdateDepth::deep)
 		{
-			addBody(mStageCore);
+			//addBody(mStageCore);
 			
 			const glm::dvec3 fairingPos_stage { 0.0, 12.6, 0.0 };
-			addBody(mFairingHalves.first, {fairingPos_stage, glm::rotate(glm::radians(0.0), glm::dvec3(0.0, 1.0, 0.0))});
-			addBody(mFairingHalves.second, {fairingPos_stage, glm::rotate(glm::radians(180.0), glm::dvec3(0.0, 1.0, 0.0))});
+			//addBody(mFairingHalves.first, {fairingPos_stage, glm::rotate(glm::radians(0.0), glm::dvec3(0.0, 1.0, 0.0))});
+			//addBody(mFairingHalves.second, {fairingPos_stage, glm::rotate(glm::radians(180.0), glm::dvec3(0.0, 1.0, 0.0))});
 		}
 
 		void Falcon9Stage2Composite::update(double t, double dt) {
@@ -18,13 +18,13 @@ namespace Physics {
 			mFairingHalves.first.update(t, dt);
 			mFairingHalves.second.update(t, dt);
 
-			if(t > 35.0)
-				mStageCore.getEngines().get<Merlin1DVac>(0)->setActive(true);
+			//if(t > 35.0)
+			//	mStageCore.getEngines().get<Merlin1DVac>(0)->setActive(true);
 
-			if(t > 40.0) {
-				mMembers[1].disconnect();
-				mMembers[2].disconnect();
-			}
+			//if(t > 40.0) {
+			//	mMembers[1].disconnect();
+			//	mMembers[2].disconnect();
+			//}
 
 			RigidBodyGroup::update(t, dt);
 			basicCollision_temp();

@@ -34,6 +34,11 @@ namespace Graphics {
 
 		const State& state = mDataSource.getCore().getState();
 
+		//
+		glm::dvec3 stage2Pos_LV = state.getObjectSpace().toParentSpace();
+		printf("%f, %f, %f\n", stage2Pos_LV.x, stage2Pos_LV.y, stage2Pos_LV.z);
+		//
+
 		mat4
 			posTransform_OGL = translate(currentCameraPos_world - state.getObjectSpace().toParentSpace()),
 			rotTransform_OGL = toMat4(inverse(state.getOrientation_world())),

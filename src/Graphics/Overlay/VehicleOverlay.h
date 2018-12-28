@@ -22,7 +22,9 @@ namespace Graphics {
 		const Physics::Hardware::Falcon9& mDataSource;
 		
 		GF::Graphics::Renderer mRenderer;
+		
 		GF::ResourceSet mResourceContainer;
+		
 		std::unique_ptr<GF::OrthographicCamera> mOrthoCam;
 
 		struct MarkedLocations {

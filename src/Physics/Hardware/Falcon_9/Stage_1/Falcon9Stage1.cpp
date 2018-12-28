@@ -29,10 +29,10 @@ namespace Physics {
 			mGridFins.update(dt/* , External::Environment::getAirDensity_kg_per_m3(static_cast<int>(floor(mState.getCMPosition_world().y))), mFlowVelocity_local */);
 			mLandingLegs.update(*this, dt);
 
-			if(t < 70.0)
-				mEngines.get<Merlin1D>(0)->gimbalTo(0.0, 0.1); //(sin(t) + 1.0) / 2.0 * 6.0
-			else
-				mEngines.get<Merlin1D>(0)->gimbalTo(0.0, 0.0); //(sin(t) + 1.0) / 2.0 * 6.0
+			//if(t < 70.0)
+			//	mEngines.get<Merlin1D>(0)->gimbalTo(0.0, 0.1); //(sin(t) + 1.0) / 2.0 * 6.0
+			//else
+			//	mEngines.get<Merlin1D>(0)->gimbalTo(0.0, 0.0); //(sin(t) + 1.0) / 2.0 * 6.0
 
 			//Rotate all engines
 			for(unsigned char i = 0; i < mEngines.getCount(); i++)
