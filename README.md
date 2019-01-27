@@ -8,11 +8,9 @@ I started this project with the aim of simulating the [landing](https://www.yout
 The project has evolved to include the entire flight as well as support for additional vehicles in the future.
 
 ## Dependencies
-* [Graphics Framework](https://github.com/lbowes/Game-Framework/tree/master/Core/Graphics)
-    * [GLEW](http://glew.sourceforge.net/)
-    * [GLFW](http://www.glfw.org/)
-* [Physics Framework](https://github.com/lbowes/Game-Framework/tree/master/Core/Physics)
-* [GLM](https://glm.g-truc.net/0.9.9/index.html)
+* [Irrlicht](http://irrlicht.sourceforge.net/)
+* [Project Chrono](https://projectchrono.org/)
+* [IrrIMGUI](https://github.com/ZahlGraf/IrrIMGUI)
 * [ImGui](https://github.com/ocornut/imgui)
 
 ## Acknowledgements
