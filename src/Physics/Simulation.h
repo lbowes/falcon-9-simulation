@@ -2,9 +2,9 @@
 #define PHYSICS_SIMULATION_H
 #pragma once
 
-#include "chrono/physics/ChSystemNSC.h"
 #include "Internal/Hardware/Falcon_9/F9.h"
 
+#include <chrono/physics/ChSystemNSC.h>
 #include <map>
 
 /*
@@ -18,6 +18,8 @@ namespace Physics {
 
 	class Simulation {
 	private:
+		const double mDuration;
+
 		const unsigned short 
 			mUpdatesPerSec,
 			mDataSnapsPerSec;
@@ -34,6 +36,7 @@ namespace Physics {
 		void run();
 		const std::map<const unsigned, const F9_DSS>& getStateHistory() const { return mStateHistory; }
 		double getSnapshotInterval_s() const { return 1.0 / mDataSnapsPerSec; }
+		double getDuration() const { return mDuration; }
 
 	private:
 		bool terminationCondMet();

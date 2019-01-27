@@ -1,10 +1,15 @@
 #include "GUILayer.h"
+#include "../Visualisation.h"
+
 #include <IMGUI/imgui.h>
 
 namespace Graphics {
 	namespace GUI {
 
-		GUILayer::GUILayer() {
+		GUILayer::GUILayer(PlaybackConfig& playbackConfigHandle, double simDuration) :
+			mPlaybackHandle(playbackConfigHandle),
+			mSimDuration(simDuration)
+		{
 			loadImGuiStyle();
 		}
 
@@ -12,6 +17,8 @@ namespace Graphics {
 			ImGui::Begin("test window");
 			ImGui::Text("Hello world!");
 			ImGui::End();
+
+			playbackControlPanel();
 		}
 
 		void GUILayer::loadImGuiStyle() {
@@ -81,6 +88,53 @@ namespace Graphics {
 			colors[ImGuiCol_NavWindowingHighlight] = {1.00f, 1.00f, 1.00f, 0.70f};
 			colors[ImGuiCol_NavWindowingDimBg] =     {0.80f, 0.80f, 0.80f, 0.20f};
 			colors[ImGuiCol_ModalWindowDimBg] =      {0.80f, 0.80f, 0.80f, 0.35f};
+		}
+
+		void GUILayer::playbackControlPanel() {
+			ImGuiWindowFlags winFlags =
+				ImGuiWindowFlags_NoResize |
+				ImGuiWindowFlags_NoMove |
+				ImGuiWindowFlags_NoCollapse;
+
+			ImGui::SetNextWindowPos({5, 5});
+			ImGui::SetNextWindowSize({300, -1});
+
+			ImGui::Begin("Playback settings", (bool*)NULL, winFlags);
+
+			// Time slider
+			ImGui::Text("Time ");
+			ImGui::SameLine();
+			ImGui::PushItemWidth(ImGui::GetContentRegionAvailWidth());
+			ImGui::SliderFloat("##time", &mPlaybackHandle.mTime_s, 0.0f, mSimDuration);
+			ImGui::PopItemWidth();
+
+			// Speed slider
+			ImGui::Text("Speed");
+			ImGui::SameLine();
+			ImGui::PushItemWidth(ImGui::GetContentRegionAvailWidth());
+			ImGui::SliderFloat("##speed", &mPlaybackHandle.mSpeed, 0.0f, 5.0f);
+			ImGui::PopItemWidth();
+
+			// Pause button
+			if(ImGui::SmallButton("Pause") && !mPlaybackHandle.mPaused) {
+				mPlaybackHandle.mLastSpeed = mPlaybackHandle.mSpeed;
+				mPlaybackHandle.mSpeed = 0.0f;
+				mPlaybackHandle.mPaused = true;
+			}
+
+			ImGui::SameLine();
+
+			// Resume button
+			if(ImGui::SmallButton("Resume") && mPlaybackHandle.mPaused) {
+				mPlaybackHandle.mSpeed = mPlaybackHandle.mLastSpeed;
+				mPlaybackHandle.mPaused = false;
+			}
+
+			// Reset time speed buttons
+			if(ImGui::SmallButton("Reset"))
+				mPlaybackHandle.mSpeed = 1.0f;
+
+			ImGui::End();
 		}
 
 	}

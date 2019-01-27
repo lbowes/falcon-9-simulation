@@ -3,19 +3,26 @@
 #pragma once
 
 namespace Graphics {
+	struct PlaybackConfig;
+}
+
+namespace Graphics {
 	namespace GUI {
 
 		class GUILayer {
 		private:
+			PlaybackConfig& mPlaybackHandle;
+			const double mSimDuration;
 
 		public:
-			GUILayer();
+			GUILayer(PlaybackConfig& playbackConfigHandle, double simDuration);
 			~GUILayer() = default;
 
 			void render();
 
 		private:
 			void loadImGuiStyle();
+			void playbackControlPanel();
 
 		};
 

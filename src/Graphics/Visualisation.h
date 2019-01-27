@@ -7,13 +7,10 @@
 #include "GUI/GUILayer.h"
 #include "Simulation_model/Cameras/CameraSystem.h"
 #include "Simulation_model/SimulationModelLayer.h"
+#include "../Physics/Internal/Hardware/Falcon_9/F9.h"
 
 #include <IrrIMGUI/IrrIMGUI.h>
 #include <map>
-
-//temp
-#include "../Physics/Internal/Hardware/Falcon_9/F9.h"
-//
 
 namespace irr {
 	class IrrlichtDevice;
@@ -27,11 +24,19 @@ namespace irr {
 	}
 }
 
-//namespace Physics {
-//	class F9_DSS;
-//}
-
 namespace Graphics {
+
+	struct PlaybackConfig {
+		float 
+			mTime_s,
+			mSpeed,
+			mLastSpeed;
+
+		bool mPaused;
+
+		PlaybackConfig();
+		~PlaybackConfig() = default;
+	};
 
 	class Visualisation {
 	private:
@@ -50,18 +55,18 @@ namespace Graphics {
 
 		const std::map<const unsigned, const Physics::F9_DSS>& mStateHistory;
 
-		float 
-			mSimTime_s,
-			mPlaybackSpeed;
+		const double 
+			mSnapshotInterval_s,
+			mSimDuration;
 
-		const double mSnapshotInterval_s;
+		PlaybackConfig mPlayback;
 
 		//temp
 		Physics::F9_DSS mLiveSnapshot_temp;
 		//
 
 	public:
-		Visualisation(const std::map<const unsigned, const Physics::F9_DSS>& stateHistoryHandle, double snapshotInterval_s);
+		Visualisation(const std::map<const unsigned, const Physics::F9_DSS>& stateHistoryHandle, double snapshotInterval_s, double simDuration);
 		~Visualisation();
 
 		void run();

@@ -10,11 +10,17 @@
 
 namespace Graphics {
 
-	Visualisation::Visualisation(const std::map<const unsigned, const Physics::F9_DSS>& stateHistoryHandle, double snapshotInterval_s) :
+	PlaybackConfig::PlaybackConfig() :
+		mTime_s(0),
+		mSpeed(1),
+		mLastSpeed(1),
+		mPaused(false)
+	{ }
+
+	Visualisation::Visualisation(const std::map<const unsigned, const Physics::F9_DSS>& stateHistoryHandle, double snapshotInterval_s, double simDuration) :
 		mStateHistory(stateHistoryHandle),
-		mSimTime_s(0),
-		mPlaybackSpeed(1),
-		mSnapshotInterval_s(snapshotInterval_s)
+		mSnapshotInterval_s(snapshotInterval_s),
+		mSimDuration(simDuration)
 	{
 		using namespace irr;
 		
@@ -87,7 +93,7 @@ namespace Graphics {
 
 		mCameraSystem = std::make_unique<CameraSystem>(*mDevice, *mSceneMgr, mHWinput, aspectRatio);
 		mModelLayer = std::make_unique<SimulationModelLayer>(*mVidDriver, *mSceneMgr, aspectRatio);
-		mGUILayer = std::make_unique<GUI::GUILayer>();
+		mGUILayer = std::make_unique<GUI::GUILayer>(mPlayback, mSimDuration);
 	}
 
 	void Visualisation::handleInput(const float frameTime_s) {
@@ -126,12 +132,12 @@ namespace Graphics {
 
 	void Visualisation::handleTimeSelection(float frameTime_s) {
 		//Advance the simulation time correctly according to the frame time...
-		mSimTime_s += mPlaybackSpeed * frameTime_s;
+		mPlayback.mTime_s = std::min((float)mSimDuration, mPlayback.mTime_s + mPlayback.mSpeed * frameTime_s);
 		
 		//Localise the current time within the snapshot history...
 		double 
-			s = floor(mSimTime_s / mSnapshotInterval_s),
-			betweenSnapshots = fmod(mSimTime_s, mSnapshotInterval_s) / mSnapshotInterval_s;
+			s = floor(mPlayback.mTime_s / mSnapshotInterval_s),
+			betweenSnapshots = fmod(mPlayback.mTime_s, mSnapshotInterval_s) / mSnapshotInterval_s;
 	
 		//Find the index of the the most recent snapshot to have been recorded...
 		unsigned 

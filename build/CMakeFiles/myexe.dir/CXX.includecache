@@ -1720,6 +1720,56 @@ chrono/core/ChCoordsys.h
 chrono/serialization/ChArchive.h
 /home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/chrono/serialization/ChArchive.h
 
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/ChBoxShape.h
+chrono/assets/ChVisualization.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/chrono/assets/ChVisualization.h
+chrono/geometry/ChBox.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/chrono/geometry/ChBox.h
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/ChColor.h
+chrono/core/ChClassFactory.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/chrono/core/ChClassFactory.h
+chrono/core/ChStream.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/chrono/core/ChStream.h
+chrono/serialization/ChArchive.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/chrono/serialization/ChArchive.h
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/ChCylinderShape.h
+chrono/assets/ChVisualization.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/chrono/assets/ChVisualization.h
+chrono/geometry/ChCylinder.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/chrono/geometry/ChCylinder.h
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/ChEllipsoidShape.h
+chrono/assets/ChVisualization.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/chrono/assets/ChVisualization.h
+chrono/geometry/ChEllipsoid.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/chrono/geometry/ChEllipsoid.h
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/ChObjShapeFile.h
+chrono/assets/ChVisualization.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/chrono/assets/ChVisualization.h
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/ChSphereShape.h
+chrono/assets/ChVisualization.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/chrono/assets/ChVisualization.h
+chrono/geometry/ChSphere.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/chrono/geometry/ChSphere.h
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/ChTriangleMeshShape.h
+chrono/assets/ChVisualization.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/chrono/assets/ChVisualization.h
+chrono/geometry/ChTriangleMeshConnected.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/chrono/geometry/ChTriangleMeshConnected.h
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/ChVisualization.h
+chrono/assets/ChAsset.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/chrono/assets/ChAsset.h
+chrono/assets/ChColor.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/chrono/assets/ChColor.h
+chrono/core/ChMath.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/assets/chrono/core/ChMath.h
+
 /home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/ChCCollisionInfo.h
 chrono/collision/ChCCollisionModel.h
 /home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/chrono/collision/ChCCollisionModel.h
@@ -1751,6 +1801,76 @@ chrono/core/ChApiCE.h
 /home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/chrono/core/ChApiCE.h
 chrono/core/ChFrame.h
 /home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/chrono/core/ChFrame.h
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/ChCCollisionUtils.h
+chrono/collision/bullet/LinearMath/btConvexHull.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/chrono/collision/bullet/LinearMath/btConvexHull.h
+chrono/geometry/ChTriangleMeshConnected.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/chrono/geometry/ChTriangleMeshConnected.h
+chrono/physics/ChBody.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/chrono/physics/ChBody.h
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/bullet/LinearMath/btAlignedAllocator.h
+btScalar.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/bullet/LinearMath/btScalar.h
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/bullet/LinearMath/btAlignedObjectArray.h
+btScalar.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/bullet/LinearMath/btScalar.h
+btAlignedAllocator.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/bullet/LinearMath/btAlignedAllocator.h
+memory.h
+-
+string.h
+-
+new
+-
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/bullet/LinearMath/btConvexHull.h
+btVector3.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/bullet/LinearMath/btVector3.h
+btAlignedObjectArray.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/bullet/LinearMath/btAlignedObjectArray.h
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/bullet/LinearMath/btMinMax.h
+LinearMath/btScalar.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/bullet/LinearMath/LinearMath/btScalar.h
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/bullet/LinearMath/btScalar.h
+cmath
+-
+stdlib.h
+-
+cstdlib
+-
+cfloat
+-
+float.h
+-
+ppcintrinsics.h
+-
+emmintrin.h
+-
+assert.h
+-
+assert.h
+-
+spu_printf.h
+-
+assert.h
+-
+emmintrin.h
+-
+assert.h
+-
+assert.h
+-
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/bullet/LinearMath/btVector3.h
+btScalar.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/bullet/LinearMath/btScalar.h
+btMinMax.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/bullet/LinearMath/btMinMax.h
 
 /home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/core/ChApiCE.h
 cstddef
@@ -2046,6 +2166,20 @@ chrono/fea/ChElementBase.h
 chrono/physics/ChNodeBase.h
 /home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/fea/chrono/physics/ChNodeBase.h
 
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/geometry/ChBox.h
+cmath
+-
+chrono/geometry/ChVolume.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/geometry/chrono/geometry/ChVolume.h
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/geometry/ChCylinder.h
+chrono/geometry/ChGeometry.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/geometry/chrono/geometry/ChGeometry.h
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/geometry/ChEllipsoid.h
+chrono/geometry/ChGeometry.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/geometry/chrono/geometry/ChGeometry.h
+
 /home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/geometry/ChGeometry.h
 memory
 -
@@ -2068,6 +2202,10 @@ cmath
 chrono/geometry/ChLine.h
 /home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/geometry/chrono/geometry/ChLine.h
 
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/geometry/ChSphere.h
+chrono/geometry/ChGeometry.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/geometry/chrono/geometry/ChGeometry.h
+
 /home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/geometry/ChTriangle.h
 cmath
 -
@@ -2079,6 +2217,24 @@ cmath
 -
 chrono/geometry/ChTriangle.h
 /home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/geometry/chrono/geometry/ChTriangle.h
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/geometry/ChTriangleMeshConnected.h
+array
+-
+cmath
+-
+map
+-
+chrono/geometry/ChTriangleMesh.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/geometry/chrono/geometry/ChTriangleMesh.h
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/geometry/ChVolume.h
+cmath
+-
+chrono/core/ChFilePS.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/geometry/chrono/core/ChFilePS.h
+chrono/geometry/ChGeometry.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/geometry/chrono/geometry/ChGeometry.h
 
 /home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/motion_functions/ChFunction.h
 chrono/motion_functions/ChFunction_Const.h
@@ -2297,6 +2453,26 @@ chrono/solver/ChVariablesBodyOwnMass.h
 /home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/physics/ChBodyAuxRef.h
 chrono/physics/ChBody.h
 /home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/physics/chrono/physics/ChBody.h
+
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/physics/ChBodyEasy.h
+chrono/assets/ChBoxShape.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/physics/chrono/assets/ChBoxShape.h
+chrono/assets/ChCylinderShape.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/physics/chrono/assets/ChCylinderShape.h
+chrono/assets/ChEllipsoidShape.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/physics/chrono/assets/ChEllipsoidShape.h
+chrono/assets/ChObjShapeFile.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/physics/chrono/assets/ChObjShapeFile.h
+chrono/assets/ChSphereShape.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/physics/chrono/assets/ChSphereShape.h
+chrono/assets/ChTriangleMeshShape.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/physics/chrono/assets/ChTriangleMeshShape.h
+chrono/collision/ChCCollisionUtils.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/physics/chrono/collision/ChCCollisionUtils.h
+chrono/physics/ChBody.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/physics/chrono/physics/ChBody.h
+chrono/physics/ChBodyAuxRef.h
+/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/physics/chrono/physics/ChBodyAuxRef.h
 
 /home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/physics/ChBodyFrame.h
 chrono/core/ChFrameMoving.h
@@ -2987,6 +3163,8 @@ chrono_irrlicht/ChIrrCamera.h
 /home/lbowes/dev/Programming/Projects/F9 Simulation/src/Graphics/GUI/GUILayer.cpp
 GUILayer.h
 /home/lbowes/dev/Programming/Projects/F9 Simulation/src/Graphics/GUI/GUILayer.h
+../Visualisation.h
+/home/lbowes/dev/Programming/Projects/F9 Simulation/src/Graphics/Visualisation.h
 IMGUI/imgui.h
 -
 
@@ -3159,12 +3337,12 @@ Simulation_model/Cameras/CameraSystem.h
 /home/lbowes/dev/Programming/Projects/F9 Simulation/src/Graphics/Simulation_model/Cameras/CameraSystem.h
 Simulation_model/SimulationModelLayer.h
 /home/lbowes/dev/Programming/Projects/F9 Simulation/src/Graphics/Simulation_model/SimulationModelLayer.h
+../Physics/Internal/Hardware/Falcon_9/F9.h
+/home/lbowes/dev/Programming/Projects/F9 Simulation/src/Physics/Internal/Hardware/Falcon_9/F9.h
 IrrIMGUI/IrrIMGUI.h
 -
 map
 -
-../Physics/Internal/Hardware/Falcon_9/F9.h
-/home/lbowes/dev/Programming/Projects/F9 Simulation/src/Physics/Internal/Hardware/Falcon_9/F9.h
 
 /home/lbowes/dev/Programming/Projects/F9 Simulation/src/Input/HWEventReceiver.cpp
 HWEventReceiver.h
@@ -3235,6 +3413,8 @@ IStage.h
 /home/lbowes/dev/Programming/Projects/F9 Simulation/src/Physics/Internal/Hardware/Common/Structural/IStage.h
 physics/ChSystemNSC.h
 -
+chrono/physics/ChBodyEasy.h
+-
 
 /home/lbowes/dev/Programming/Projects/F9 Simulation/src/Physics/Internal/Hardware/Common/Structural/IStage.h
 ../Propellant/CylinderFluidTankGroup.h
@@ -3279,6 +3459,10 @@ F9S1.h
 /home/lbowes/dev/Programming/Projects/F9 Simulation/src/Physics/Internal/Hardware/Common/Propellant/CylinderFluidTank.h
 core/ChFrame.h
 -
+collision/ChCCollisionModel.h
+-
+chrono/physics/ChSystemNSC.h
+-
 
 /home/lbowes/dev/Programming/Projects/F9 Simulation/src/Physics/Internal/Hardware/Falcon_9/Stage_1/F9S1.h
 ../../Common/Structural/IStage.h
@@ -3297,10 +3481,10 @@ Simulation.h
 /home/lbowes/dev/Programming/Projects/F9 Simulation/src/Physics/Simulation.h
 
 /home/lbowes/dev/Programming/Projects/F9 Simulation/src/Physics/Simulation.h
-chrono/physics/ChSystemNSC.h
-/home/lbowes/dev/Programming/Projects/F9 Simulation/src/Physics/chrono/physics/ChSystemNSC.h
 Internal/Hardware/Falcon_9/F9.h
 /home/lbowes/dev/Programming/Projects/F9 Simulation/src/Physics/Internal/Hardware/Falcon_9/F9.h
+chrono/physics/ChSystemNSC.h
+-
 map
 -
 

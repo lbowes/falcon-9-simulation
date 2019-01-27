@@ -3,9 +3,10 @@
 namespace Physics {
 
 	Simulation::Simulation() :
-		mFalcon9(mSystem),
+		mDuration(10.0),
 		mUpdatesPerSec(60),
-		mDataSnapsPerSec(60)
+		mDataSnapsPerSec(60),
+		mFalcon9(mSystem)
 	{ }
 
 	void Simulation::run() {

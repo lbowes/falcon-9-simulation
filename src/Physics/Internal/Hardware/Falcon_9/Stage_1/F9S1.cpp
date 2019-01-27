@@ -4,15 +4,38 @@
 
 #include <core/ChFrame.h>
 
+//temp
+#include <collision/ChCCollisionModel.h>
+#include <chrono/physics/ChSystemNSC.h>
+//
+
 namespace Physics {
 	namespace Hardware {
 
 		F9S1::F9S1(chrono::ChSystemNSC& sys) :
 			IStage(sys)
 		{
-			// mBody->SetMass(1.0);
-			// mBody->SetFrame_COG_to_REF({0, 20, 0});
-			// mBody->SetPos({0, 100, 0});	
+			mBody->SetMass(100000.0);
+			mBody->SetFrame_COG_to_REF({0, 20, 0});
+
+			mBody->GetCollisionModel()->ClearModel();
+			mBody->GetCollisionModel()->AddCapsule(1.83, 47.0);
+			mBody->GetCollisionModel()->BuildModel();
+
+			mBody->SetCollide(true);
+
+			//std::shared_ptr<chrono::collision::ChCollisionModel>();
+			//mBody->SetCollisionModel();
+			mBody->SetPos({0, 60.0, 0});
+			//mBody->SetBodyFixed(true);
+
+			chrono::Quaternion rot = chrono::Q_from_Euler123({0 * chrono::CH_C_DEG_TO_RAD, 0, 0}).GetNormalized();
+			mBody->SetRot(rot);
+			
+			chrono::Quaternion spin = chrono::Q_from_Euler123({0, 180 * chrono::CH_C_DEG_TO_RAD, 0}).GetNormalized();
+			mBody->SetRot_dt(spin);
+
+			mSystemHandle.AddBody(mBody);
 
 			addTanks();
 		}

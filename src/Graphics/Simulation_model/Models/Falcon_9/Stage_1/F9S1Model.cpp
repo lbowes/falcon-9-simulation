@@ -19,15 +19,19 @@ namespace Graphics {
 	}
 
 	void F9S1Model::update(const chrono::Vector& currentCamPos_world, const Physics::F9S1_DSS& f9s1, float dt) {
-		const chrono::ChFrame<> f9s1Frame = f9s1.getS1ToWorldTransform();
+		chrono::ChFrame<> f9s1Frame = f9s1.getS1ToWorldTransform();
 
 		//This high (double) precision vector is used to eliminate floating point errors with normal low precision (float)
 		//vectors. If we keep the 'internal OpenGL' camera at the origin, and calculate a high precision displacement
 		//between the object's and camera's imaginary positions, then floating point errors only occur on objects very far 
 		//away from the camera (where they are not noticeable anyway).
-		const chrono::Vector displacement_world = f9s1Frame.GetPos() - currentCamPos_world;
-		
-		mMesh->setPosition(irr::core::vector3df(displacement_world.x(), displacement_world.y(), displacement_world.z()));
+
+		const chrono::Vector pos_world = f9s1Frame.GetPos() - currentCamPos_world;
+		mMesh->setPosition({pos_world.x(), pos_world.y(), pos_world.z()});
+
+		const chrono::Vector rot_world = f9s1Frame.GetRot().Q_to_Euler123() * chrono::CH_C_RAD_TO_DEG;
+		mMesh->setRotation({rot_world.x(), rot_world.y(), rot_world.z()});
+		//mMesh->setRotation({0, 45.0, 0});
 	}
 
 }
