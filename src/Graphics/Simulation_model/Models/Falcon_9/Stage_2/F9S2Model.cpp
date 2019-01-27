@@ -19,7 +19,7 @@ namespace Graphics {
 	void F9S2Model::update(const chrono::ChVector<double>& currentCamPos_world, float dt) {
 		//See F9S1Model::update() for explanation
 		const chrono::Vector
-			objectPosition_world = {0, 45.76182, 0}, //TODO: eventually source position from data source rigid body in simulation
+			objectPosition_world = {10, 0, 0}, //TODO: eventually source position from data source rigid body in simulation
 			displacement_world = objectPosition_world - currentCamPos_world;
 		
 		mMesh->setPosition(irr::core::vector3df(displacement_world.x(), displacement_world.y(), displacement_world.z()));

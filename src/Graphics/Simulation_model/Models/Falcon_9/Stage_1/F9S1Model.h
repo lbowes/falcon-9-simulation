@@ -12,6 +12,10 @@ namespace irr {
 	}
 }
 
+namespace Physics {
+	class F9S1_DSS;
+}
+
 namespace Graphics {
 	
 	class F9S1Model {
@@ -24,7 +28,7 @@ namespace Graphics {
 		F9S1Model(irr::scene::ISceneManager& sceneManager, irr::scene::ISceneNode& f9ModelSceneNode);
 		~F9S1Model() = default;
 
-		void update(const chrono::ChVector<double>& currentCamPos_world, float dt);
+		void update(const chrono::ChVector<double>& currentCamPos_world, const Physics::F9S1_DSS& f9s1, float dt);
 
 	};
 

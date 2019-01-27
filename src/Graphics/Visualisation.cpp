@@ -1,5 +1,5 @@
 #include "Visualisation.h"
-#include "../Physics/DynamicSimState.h"
+#include "../Physics/Internal/Hardware/Falcon_9/F9.h"
 
 #include <chrono_irrlicht/ChIrrWizard.h>
 #include <chrono_irrlicht/ChIrrTools.h>
@@ -10,7 +10,7 @@
 
 namespace Graphics {
 
-	Visualisation::Visualisation(const std::map<const unsigned, const Physics::DSS>& stateHistoryHandle, double snapshotInterval_s) :
+	Visualisation::Visualisation(const std::map<const unsigned, const Physics::F9_DSS>& stateHistoryHandle, double snapshotInterval_s) :
 		mStateHistory(stateHistoryHandle),
 		mSimTime_s(0),
 		mPlaybackSpeed(1),
@@ -111,7 +111,7 @@ namespace Graphics {
 		handleTimeSelection(frameTime_s);
 
 		//Pass in the required camera position so that models can update their own positions
-		mModelLayer->update(mCameraSystem->getCurrentSimCamera().getPosition_world(), frameTime_s);
+		mModelLayer->update(mCameraSystem->getCurrentSimCamera().getPosition_world(), mLiveSnapshot_temp, frameTime_s);
 	}
 	
 	void Visualisation::render() {
@@ -136,12 +136,16 @@ namespace Graphics {
 		//Find the index of the the most recent snapshot to have been recorded...
 		unsigned 
 			snapshotCount = mStateHistory.size(),
-			recentSnapshotNum = std::clamp(static_cast<unsigned>(s), 0U, static_cast<unsigned int>(snapshotCount - 1));
+			recentSnapshotNum = std::clamp(static_cast<unsigned>(s), 0U, static_cast<unsigned>(snapshotCount - 1));
 
-		Physics::DSS 
+		Physics::F9_DSS 
 			mostRecentState = mStateHistory.at(recentSnapshotNum),
-			nextState = mStateHistory.at(std::clamp(recentSnapshotNum + 1, 0U, static_cast<unsigned int>(snapshotCount - 1))),
-			interpolated;
+			nextState = mStateHistory.at(std::clamp(recentSnapshotNum + 1, 0U, static_cast<unsigned>(snapshotCount - 1)));//,
+			//interpolated;
+
+		//temp
+		mLiveSnapshot_temp = mostRecentState;
+		//
 	}
 
 }

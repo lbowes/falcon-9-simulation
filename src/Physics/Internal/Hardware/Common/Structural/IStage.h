@@ -13,9 +13,7 @@ namespace chrono {
 namespace Physics {
 	namespace Hardware {
 
-		/*
-		Provides an interface used to aid in the creation of launch vehicle stages.
-		*/
+		// Provides an interface used to aid in the creation of launch vehicle stages.
 		class IStage {
 		protected:
 			chrono::ChSystemNSC& mSystemHandle;

@@ -13,19 +13,23 @@ namespace irr {
 	}
 }
 
+namespace Physics {
+	class F9_DSS;
+}
+
 namespace Graphics {
 	
 	class F9Model {
 	private:
 		irr::scene::ISceneManager& mSceneManager;
 		std::unique_ptr<F9S1Model> mS1Model;
-		std::unique_ptr<F9S2Model> mS2Model;
+		//std::unique_ptr<F9S2Model> mS2Model;
 
 	public:
 		F9Model(irr::scene::ISceneManager& sceneManager);
 		~F9Model() = default;
 
-		void update(const chrono::ChVector<double>& currentCamPos_world, float dt);
+		void update(const chrono::ChVector<double>& currentCamPos_world, const Physics::F9_DSS& f9, float dt);
 		void render();
 
 	};

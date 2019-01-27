@@ -17,8 +17,8 @@ namespace Graphics {
 		mF9Model = std::make_unique<F9Model>(sceneManager);
 	}
 
-	void SimulationModelLayer::update(const chrono::Vector& currentCamPos_world, float dt) {
-		mF9Model->update(currentCamPos_world, dt);
+	void SimulationModelLayer::update(const chrono::Vector& currentCamPos_world, const Physics::F9_DSS& f9, float dt) {
+		mF9Model->update(currentCamPos_world, f9, dt);
 		mLightSystem->update(currentCamPos_world);
 	}
 

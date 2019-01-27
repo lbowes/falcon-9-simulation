@@ -134,14 +134,13 @@ SET(SOURCE_FILES
 	Graphics/Simulation_model/Models/Falcon_9/Stage_2/F9S2Model.cpp
 	Graphics/GUI/GUILayer.cpp
     Physics/Simulation.cpp
-    Physics/DynamicSimState.cpp
 	Physics/Internal/Hardware/Common/Propellant/CylinderFluidTank.cpp
 	Physics/Internal/Hardware/Common/Propellant/Fluid.cpp
 	Physics/Internal/Hardware/Common/Structural/ILaunchVehicle.cpp
 	Physics/Internal/Hardware/Common/Structural/IStage.cpp
-	Physics/Internal/Hardware/Falcon_9/Falcon9.cpp
-	Physics/Internal/Hardware/Falcon_9/Stage_1/Falcon9Stage1.cpp
-	Physics/Internal/Hardware/Falcon_9/Stage_2/Falcon9Stage2.cpp
+	Physics/Internal/Hardware/Falcon_9/F9.cpp
+	Physics/Internal/Hardware/Falcon_9/Stage_1/F9S1.cpp
+	Physics/Internal/Hardware/Falcon_9/Stage_2/F9S2.cpp
 )
 
 add_executable(myexe ${SOURCE_FILES})

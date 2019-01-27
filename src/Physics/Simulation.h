@@ -3,8 +3,7 @@
 #pragma once
 
 #include "chrono/physics/ChSystemNSC.h"
-#include "Internal/Hardware/Falcon_9/Falcon9.h"
-#include "DynamicSimState.h"
+#include "Internal/Hardware/Falcon_9/F9.h"
 
 #include <map>
 
@@ -24,21 +23,21 @@ namespace Physics {
 			mDataSnapsPerSec;
 
 		chrono::ChSystemNSC mSystem;
-		Hardware::Falcon9 mFalcon9;
+		Hardware::F9 mFalcon9;
 
-		std::map<const unsigned, const DSS> mStateHistory;
+		std::map<const unsigned, const F9_DSS> mStateHistory;
 
 	public:
 		Simulation();
 		~Simulation() = default;
 
 		void run();
-		const std::map<const unsigned, const DSS>& getStateHistory() const { return mStateHistory; }
+		const std::map<const unsigned, const F9_DSS>& getStateHistory() const { return mStateHistory; }
 		double getSnapshotInterval_s() const { return 1.0 / mDataSnapsPerSec; }
 
 	private:
 		bool terminationCondMet();
-		void serialiseSnapshot(const Hardware::Falcon9& f9s1, unsigned long snapshotNumber);
+		void serialiseSnapshot(unsigned long snapshotNumber);
 
 	};
 

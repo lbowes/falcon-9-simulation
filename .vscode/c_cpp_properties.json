@@ -3,12 +3,18 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/src/",
-                "/home/lbowes/dev/Programming/Projects/F9 Simluation/src/",
-                "/home/lbowes/dev/Programming/Deps/Includes/"
+				"/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src",
+				"/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono",
+				"/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/bullet",
+				"/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/gimpact",
+				"/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/chrono/src/chrono/collision/convexdecomposition/HACD",
+				"/home/lbowes/dev/Programming/Deps/Projects/ProjectChrono/build",
+				"/home/lbowes/dev/Programming/Deps/Projects/Irrlicht/irrlicht-1.8.4/include",
+				"/home/lbowes/dev/Programming/Deps/Projects/IrrIMGUI/IrrIMGUI-0.3.1/includes",
+				"/home/lbowes/dev/Programming/Deps/Projects/IrrIMGUI/IrrIMGUI-0.3.1/dependency"
             ],
             "defines": [],
-            "compilerPath": "/usr/bin/g++",
+            "compilerPath": "/usr/bin/gcc",
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "clang-x64"

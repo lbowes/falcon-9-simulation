@@ -1,5 +1,4 @@
 #include "Simulation.h"
-#include "DynamicSimState.h"
 
 namespace Physics {
 
@@ -23,7 +22,7 @@ namespace Physics {
 			mSystem.DoStepDynamics(dt);
 			
 			if((updateCount + 1) % (mUpdatesPerSec / mDataSnapsPerSec) == 0)
-				serialiseSnapshot(mFalcon9, snapshotCount++);
+				serialiseSnapshot(snapshotCount++);
 
 			printf("\rTime: %.2f", mSystem.GetChTime());
 			fflush(stdout);
@@ -37,8 +36,8 @@ namespace Physics {
 		return mSystem.GetChTime() >= 10;
 	}
 
-	void Simulation::serialiseSnapshot(const Hardware::Falcon9& f9, unsigned long snapshotNumber) {
-		DSS snapshot(f9, snapshotNumber);
+	void Simulation::serialiseSnapshot(unsigned long snapshotNumber) {
+		F9_DSS snapshot = F9_DSS(mFalcon9);
 		mStateHistory.insert({snapshotNumber, snapshot});
 	}
 

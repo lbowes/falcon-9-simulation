@@ -1,9 +1,11 @@
-#ifndef PHYSICS_HARDWARE_ISTAGECOMPONENT_H
-#define PHYSICS_HARDWARE_ISTAGECOMPONENT_H
-#pragma once
+#ifndef PHYSICS_HARDWARE_ISTAGECOMPONENT_HPP
+#define PHYSICS_HARDWARE_ISTAGECOMPONENT_HPP
 
 #include <core/ChFrame.h>
 #include <physics/ChInertiaUtils.h>
+
+//#include <core/ChFrame.h>
+//#include <physics/ChInertiaUtils.h>
 
 namespace Physics {
 	namespace Hardware {

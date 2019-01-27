@@ -1,4 +1,4 @@
-# Install script for directory: /home/lbowes/dev/Programming/Projects/F9 Sim/src
+# Install script for directory: /home/lbowes/dev/Programming/Projects/F9 Simulation/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/lbowes/dev/Programming/Projects/F9 Sim/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/lbowes/dev/Programming/Projects/F9 Simulation/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

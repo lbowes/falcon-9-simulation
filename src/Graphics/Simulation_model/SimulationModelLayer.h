@@ -17,6 +17,10 @@ namespace irr {
 	}
 }
 
+namespace Physics {
+	class F9_DSS;
+}
+
 namespace Graphics {
 
 	/*
@@ -33,7 +37,7 @@ namespace Graphics {
 		SimulationModelLayer(irr::video::IVideoDriver& vidDriver, irr::scene::ISceneManager& sceneManager, float windowAspect);
 		~SimulationModelLayer() = default;
 
-		void update(const chrono::Vector& currentCamPos_world, float dt);
+		void update(const chrono::Vector& currentCamPos_world, const Physics::F9_DSS& f9, float dt);
 		void render(const chrono::Vector& currentCamPos_world);
 
 	private:
