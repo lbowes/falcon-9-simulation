@@ -1,115 +1,117 @@
-/* The position of SimulationCamera will always be fixed at (0, 0, 0). It will *always* be on the origin.
- * The direction of this camera (including the front and up vectors) will change, as this does not have
- * any effect on precision. 
-*/
-
 #ifndef GRAPHICS_ALLCAMERAS_H
 #define GRAPHICS_ALLCAMERAS_H
 #pragma once
 
-#include "PhysicsFramework/CoordTransform3D.h"
+#include <core/ChVector.h>
+#include <vector3d.h>
 
-#include <GraphicsFramework/PerspectiveCamera.h>
-#include <GraphicsFramework/Input.h>
-#include <PhysicsFramework/State.h>
-#include <glm/gtx/vector_angle.hpp>
+namespace Input {
+	class HWEventReceiver;
+}
 
-#define CONFIGURE_INTERSTAGE_CAM 0
+namespace irr {
+	namespace scene {
+		class ISceneManager;
+		class ICameraSceneNode;
+	}
+}
 
 namespace Graphics {
 
+	/*
+	- A camera with a high precision position.
+	- In terms of OpenGL, the mInternalCamera's position remains fixed at the origin.
+	*/
 	class SimulationCamera {
 	protected:
-		glm::dvec3 mPosition;
-		GF::PerspectiveCamera mPerspectiveCamera;
+		chrono::Vector mPosition_world; //High precision
+		
+		irr::core::vector3df mLookAtDir_world; //Low precision
+		
+		irr::scene::ICameraSceneNode* mInternalCamera;
 
 	public:
-		SimulationCamera(float near, float far, float aspect, float FOV);
-		~SimulationCamera() = default;
+		SimulationCamera(
+			irr::scene::ISceneManager& sceneManager, 
+			chrono::ChVector<> position_world = {0, 0, 0},
+			irr::core::vector3df lookAtDir_world = {0, 0, -1}, 
+			float near = 0.1f, 
+			float far = 1000.0f, 
+			float aspect = 1920.0f / 1080.0f, 
+			float FOVY_degs = 45.0f
+		);
 
-		glm::mat4 getViewProjection_generated() const;
-		const GF::Camera& getInternalCamera() const { return mPerspectiveCamera; }
-		GF::Camera& getInternalCamera() { return mPerspectiveCamera; }
+		virtual ~SimulationCamera() = default;
 
-		const glm::dvec3& getPosition() const { return mPosition; }
+		void setPosition_world(chrono::Vector newPosition_world) { mPosition_world = newPosition_world; }
+		chrono::Vector getPosition_world() const { return mPosition_world; }
+		irr::scene::ICameraSceneNode& getInternalCamera() { return *mInternalCamera; }
+		const irr::scene::ICameraSceneNode& getInternalCamera() const { return *mInternalCamera; }
 
 	};
 
 	class FPVCamera : public SimulationCamera {
 	private:
 		const float
-			mMinMovementSpeed = 25.0f,        //10.0f
-			mMaxMovementSpeed = 20000.0f,     //20000.0f
-			mSpeedAdjustSensitivity = 200.0f, //200.0f
-			mMovementFriction = 7.0f,         //7.0f
-			mZoomSensitivity = 0.1f,          //0.1f
-			mLookAroundSensitivity = 0.05f;   //0.05f
+			mMinMovementSpeed,
+			mMaxMovementSpeed,
+			mSpeedAdjustSensitivity,
+			mMovementFriction,
+			mZoomSensitivity,
+			mLookAroundSensitivity;
 
 		float
-			mMovementSpeed = 400.0f,          //400.0f  
-			mFOV = 45.0f,
-			mPitch = 0.0f,
-			mYaw = 0.0f;
+			mMovementSpeed, 
+			mPitch,
+			mYaw;
 
-		glm::dvec3 mVelocity;
+		Input::HWEventReceiver& mHWInput;
 		
-		glm::vec3 mDirection;
+		chrono::ChVector<> mVelocity_world;
 
 	public:
-		FPVCamera(glm::dvec3 position, glm::vec3 direction, float near, float far, float aspect, float FOV);
+		FPVCamera(
+			irr::scene::ISceneManager& sceneManager, 
+			Input::HWEventReceiver& input, 
+			chrono::ChVector<> position_world = {0, 0, 0}, 
+			irr::core::vector3df lookAtDir_world = {0, 0, -1}, 
+			float near = 0.1f, 
+			float far = 1000.0f, 
+			float aspect = 1920.0f / 1080.0f, 
+			float FOVY_degs = 45.0f
+		);
+
 		~FPVCamera() = default;
 
 		void update(float windowAspect, float dt);
 		void handleInput(float dt);
 
 	private:
-		void handleDirectionInput();
+		void handleDirectionInput(float dt);
 		void handleMovementInput(float dt);
+		void handleZoomInput(float dt);
 
 	};
 
 	class InterstageCamera : public SimulationCamera {
 	private:
 		const float
-			mClockDegree_degs = 10.882f,
-			mPitch_degs = 2.222f,
-			mHeight_stage = 45.89f,
-			mHeightAboveWall = 1.951f,
-			mFOV = 44.712002f;
+			mClockDegree_degs,
+			mPitch_degs,
+			mHeight_stage,
+			mHeightAboveWall,
+			mFOV;
 
-		glm::vec3
+		chrono::ChVector<float>
 			mPosition_stage,
-			mFront_stage,
+			mLookAt_stage,
 			mUp_stage;
 
 	public:
-		InterstageCamera(float aspect);
+		InterstageCamera(irr::scene::ISceneManager& sceneManager, float aspect);
 		~InterstageCamera() = default;
 
-		void update(const CoordTransform3D& stage1ToWorld, float windowAspect/* , float dt */);
-
-	};
-
-	class ChaserCamera : public SimulationCamera {
-	private:
-		const glm::vec3 mPosition_stage = glm::vec3(-0.401277f, 44.73737f, -1.850528f);
-
-		const float
-			mZoomSensitivity = 0.1f,        //0.1f
-			mLookAroundSensitivity = 0.05f; //0.05f
-
-		glm::vec3 mDirection;
-
-		float
-			mPitch = 0.0f,
-			mYaw = 0.0f;
-
-	public:
-		ChaserCamera(glm::vec3 direction, float near, float far, float aspect, float FOV);
-		~ChaserCamera() = default;
-
-		void update(float windowAspect, glm::dvec3 stage1CoMPosition_world/* , float dt */);
-		void handleInput();
+		void update(float windowAspect);
 
 	};
 

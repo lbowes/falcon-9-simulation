@@ -1,0 +1,31 @@
+#include "F9S1Model.h"
+#include "../../../Cameras/AllCameras.h"
+#include <ISceneManager.h>
+#include <IMeshSceneNode.h>
+
+namespace Graphics {
+
+	F9S1Model::F9S1Model(irr::scene::ISceneManager& sceneManager, irr::scene::ISceneNode& f9ModelSceneNode) :
+		mSceneManager(sceneManager),
+		mParentSceneNode(f9ModelSceneNode)
+	{
+		using namespace irr;
+		
+		scene::IAnimatedMesh* m = mSceneManager.getMesh("../res/models/F9S1FuselageFull.obj");
+    	mMesh = mSceneManager.addMeshSceneNode(m, &mParentSceneNode);
+		mMesh->setMaterialFlag(video::EMF_BACK_FACE_CULLING, false);
+	}
+
+	void F9S1Model::update(const chrono::Vector& currentCamPos_world, float dt) {
+		const chrono::Vector objectPosition_world = {0, 0, 0}; //TODO: eventually source position from data source rigid body in simulation
+
+		//This high (double) precision vector is used to eliminate floating point errors with normal low precision (float)
+		//vectors. If we keep the 'internal OpenGL' camera at the origin, and calculate a high precision displacement
+		//between the object's and camera's imaginary positions, then floating point errors only occur on objects very far 
+		//away from the camera (where they are not noticeable anyway).
+		const chrono::Vector displacement_world = objectPosition_world - currentCamPos_world;
+		
+		mMesh->setPosition(irr::core::vector3df(displacement_world.x(), displacement_world.y(), displacement_world.z()));
+	}
+
+}

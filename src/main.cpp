@@ -1,15 +1,12 @@
-#include "Simulation.h"
-#include "Visualisation.h"
-
-//Catch the NaNs
-//#include <fenv.h>
-//#include <float.h>
-//unsigned int test = feenableexcept(FE_INVALID | FE_OVERFLOW);
+#include "Physics/Simulation.h"
+#include "Graphics/Visualisation.h"
 
 int main() {
-	Physics::Simulation sim("telemetry.txt");
+	Physics::Simulation sim;
 	sim.run();
 
-	Visualisation visualisation(sim.getStateHistory(), sim.getSnapshotInterval());
-	visualisation.run();
+	Graphics::Visualisation vis(sim.getStateHistory(), sim.getSnapshotInterval_s());
+	vis.run();
+
+	return 0;
 }
