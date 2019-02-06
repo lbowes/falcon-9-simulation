@@ -5,6 +5,10 @@
 #include <ISceneManager.h>
 #include <IMeshSceneNode.h>
 
+//temp
+#include <IrrIMGUI/IrrIMGUI.h>
+//
+
 namespace Graphics {
 
 	F9S1Model::F9S1Model(irr::scene::ISceneManager& sceneManager, irr::scene::ISceneNode& f9ModelSceneNode) :
@@ -31,7 +35,6 @@ namespace Graphics {
 
 		const chrono::Vector rot_world = f9s1Frame.GetRot().Q_to_Euler123() * chrono::CH_C_RAD_TO_DEG;
 		mMesh->setRotation({rot_world.x(), rot_world.y(), rot_world.z()});
-		//mMesh->setRotation({0, 45.0, 0});
 	}
 
 }

@@ -15,8 +15,8 @@ namespace Graphics {
 		mCameras.push_back(std::make_unique<FPVCamera>(
 			sceneManager,
 			input,
-			chrono::Vector(-85.0, 30.0, 0.0),    //-20.0, 3.0, 0.0 //-85.0, 30.0, 0.0
-			irr::core::vector3df(1.0, 0.0, 0.0), //1.0, 0.0, 0.0
+			chrono::Vector(-20, 3, 0),    //-20.0, 3.0, 0.0 //-85.0, 30.0, 0.0
+			irr::core::vector3df(1, 0, 0), //1.0, 0.0, 0.0
 			0.1f,
 			10000.0f,
 			windowAspect,

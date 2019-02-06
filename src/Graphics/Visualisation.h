@@ -12,6 +12,11 @@
 #include <IrrIMGUI/IrrIMGUI.h>
 #include <map>
 
+//temp
+#include <physics/ChBodyEasy.h>
+//
+
+
 namespace irr {
 	class IrrlichtDevice;
 

@@ -2,11 +2,12 @@
 #include "../../Common/Propellant/Fluid.h"
 #include "../../Common/Propellant/CylinderFluidTank.h"
 
+#include <chrono/physics/ChSystemNSC.h>
 #include <core/ChFrame.h>
 
 //temp
-#include <collision/ChCCollisionModel.h>
-#include <chrono/physics/ChSystemNSC.h>
+#include <chrono/utils/ChUtilsGeometry.h>
+#include <chrono/collision/ChCCollisionModel.h>
 //
 
 namespace Physics {
@@ -15,35 +16,37 @@ namespace Physics {
 		F9S1::F9S1(chrono::ChSystemNSC& sys) :
 			IStage(sys)
 		{
-			mBody->SetMass(100000.0);
-			mBody->SetFrame_COG_to_REF({0, 20, 0});
+			chrono::collision::ChCollisionModel::SetDefaultSuggestedEnvelope(1.0);
+			chrono::collision::ChCollisionModel::SetDefaultSuggestedMargin(0.05);
+			
+			mSystemHandle.AddBody(mBody);
+			
+			mBody->SetMass(1000.0);
+			mBody->SetInertia(chrono::utils::CalcCylinderGyration(1.83, 23.5));
+			mBody->GetMaterialSurfaceNSC()->SetRestitution(0);
+			mBody->GetMaterialSurfaceNSC()->SetFriction(1);
 
 			mBody->GetCollisionModel()->ClearModel();
-			mBody->GetCollisionModel()->AddCapsule(1.83, 47.0);
+			//mBody->GetCollisionModel()->AddBox(1.83, 23.5, 1.83, {0, 23.5, 0});
+			mBody->GetCollisionModel()->AddCylinder(1.83, 1.83, 23.5, {0, 23.5, 0});
+			//mBody->GetCollisionModel()->AddCapsule(1.83, 23.5);
 			mBody->GetCollisionModel()->BuildModel();
-
 			mBody->SetCollide(true);
 
-			//std::shared_ptr<chrono::collision::ChCollisionModel>();
-			//mBody->SetCollisionModel();
-			mBody->SetPos({0, 60.0, 0});
-			//mBody->SetBodyFixed(true);
-
-			chrono::Quaternion rot = chrono::Q_from_Euler123({0 * chrono::CH_C_DEG_TO_RAD, 0, 0}).GetNormalized();
+			chrono::Quaternion rot = chrono::Q_from_AngAxis(0 * chrono::CH_C_DEG_TO_RAD, {1, 0, 0});
 			mBody->SetRot(rot);
-			
-			chrono::Quaternion spin = chrono::Q_from_Euler123({0, 180 * chrono::CH_C_DEG_TO_RAD, 0}).GetNormalized();
-			mBody->SetRot_dt(spin);
 
-			mSystemHandle.AddBody(mBody);
+			//THESE ARE THE LINES THAT CAUSE THE PROBLEM---------------------------
+			//What is going on here?
+			mBody->SetFrame_COG_to_REF(chrono::ChFrame<>(chrono::Vector(0, 20, 0), chrono::ChQuaternion<>(1, 0, 0, 0)));
+			mBody->SetFrame_REF_to_abs(chrono::ChFrame<>(chrono::Vector(6, 40, 0), rot));
+			//---------------------------------------------------------------------
 
 			addTanks();
 		}
 
 		void F9S1::stageSpecificUpdates(double dt) {
-			// TODO
-			// Update grid fins
-			// Update grid fins
+			//TODO: 
 		}
 
 		void F9S1::addTanks() {

@@ -46,8 +46,8 @@ namespace Graphics {
 		mPosition_world += mVelocity_world * static_cast<double>(dt);
 		mVelocity_world *= 1.0 / (1.0 + (dt * mMovementFriction));
 
-		if(mPosition_world.y() < 1.76)
-			mPosition_world.y() = 1.76;
+		//if(mPosition_world.y() < 1.76)
+			//mPosition_world.y() = 1.76;
 
 		mInternalCamera->setTarget(mLookAtDir_world);
 	}

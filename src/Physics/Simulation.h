@@ -7,12 +7,9 @@
 #include <chrono/physics/ChSystemNSC.h>
 #include <map>
 
-/*
-Currently working on finding out how to store the state of the simulation each timestep.
-Stuff found so far that might be useful are:
-- ChState class
-- ChVariablesBody class
-*/
+//temp
+#include <physics/ChBodyEasy.h>
+//
 
 namespace Physics {
 
@@ -28,6 +25,11 @@ namespace Physics {
 		Hardware::F9 mFalcon9;
 
 		std::map<const unsigned, const F9_DSS> mStateHistory;
+		
+		//temp
+		std::shared_ptr<chrono::ChBody> rigidFloor;
+		std::shared_ptr<chrono::ChBodyAuxRef> box;
+		//
 
 	public:
 		Simulation();

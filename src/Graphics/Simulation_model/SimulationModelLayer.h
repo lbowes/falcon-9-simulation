@@ -4,6 +4,7 @@
 
 #include "Lighting/LightSystem.h"
 #include "Models/Falcon_9/F9Model.h"
+
 #include <memory>
 
 namespace irr {
@@ -23,9 +24,7 @@ namespace Physics {
 
 namespace Graphics {
 
-	/*
-	- Only concerned with managing models of entities in the simulation
-	*/
+	// Only concerned with managing models of entities in the simulation
 	class SimulationModelLayer {
 	private:
 		irr::video::IVideoDriver& mVidDriver;

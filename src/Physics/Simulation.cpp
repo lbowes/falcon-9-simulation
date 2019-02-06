@@ -1,13 +1,40 @@
 #include "Simulation.h"
 
+//temp
+#include <core/ChQuaternion.h>
+//
+
 namespace Physics {
 
 	Simulation::Simulation() :
-		mDuration(10.0),
-		mUpdatesPerSec(60),
+		mDuration(50.0),
+		mUpdatesPerSec(500),
 		mDataSnapsPerSec(60),
 		mFalcon9(mSystem)
-	{ }
+	{ 
+		chrono::collision::ChCollisionModel::SetDefaultSuggestedEnvelope(1.0);
+		chrono::collision::ChCollisionModel::SetDefaultSuggestedMargin(0.05);
+		
+		// temp
+		mSystem.SetSolverType(chrono::ChSolver::Type::APGD);
+		mSystem.SetMaxPenetrationRecoverySpeed(3);
+		mSystem.SetMaxItersSolverSpeed(30);
+
+		// FLOOR
+		rigidFloor = std::make_shared<chrono::ChBody>();
+    	mSystem.Add(rigidFloor);
+
+		rigidFloor->GetCollisionModel()->ClearModel();
+		rigidFloor->GetCollisionModel()->AddBox(25, 3, 25);
+		rigidFloor->GetCollisionModel()->BuildModel();
+		rigidFloor->SetCollide(true);
+		rigidFloor->SetBodyFixed(true);
+		rigidFloor->SetPos({0, -3, 0});
+		rigidFloor->SetMass(1000.0);
+		rigidFloor->GetMaterialSurfaceNSC()->SetRestitution(0);
+		rigidFloor->GetMaterialSurfaceNSC()->SetFriction(1);
+		//
+	}
 
 	void Simulation::run() {
 		unsigned short 
@@ -21,7 +48,7 @@ namespace Physics {
 			
 			mFalcon9.update(dt);
 			mSystem.DoStepDynamics(dt);
-			
+
 			if((updateCount + 1) % (mUpdatesPerSec / mDataSnapsPerSec) == 0)
 				serialiseSnapshot(snapshotCount++);
 
@@ -34,7 +61,7 @@ namespace Physics {
 	}
 
 	bool Simulation::terminationCondMet() {
-		return mSystem.GetChTime() >= 10;
+		return mSystem.GetChTime() >= mDuration;
 	}
 
 	void Simulation::serialiseSnapshot(unsigned long snapshotNumber) {

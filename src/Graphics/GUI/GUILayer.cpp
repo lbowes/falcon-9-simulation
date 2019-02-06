@@ -14,10 +14,6 @@ namespace Graphics {
 		}
 
 		void GUILayer::render() {
-			ImGui::Begin("test window");
-			ImGui::Text("Hello world!");
-			ImGui::End();
-
 			playbackControlPanel();
 		}
 
