@@ -4,15 +4,10 @@
 #include <core/ChFrame.h>
 #include <physics/ChInertiaUtils.h>
 
-//#include <core/ChFrame.h>
-//#include <physics/ChInertiaUtils.h>
-
 namespace Physics {
 	namespace Hardware {
 
-		/*
-	    A StageComponent is any component that cannot be detached from an IStage
-		*/
+	    // A StageComponent is any component that cannot be detached from an IStage
 		class IStageComponent {
 		public:
 			IStageComponent() = default;

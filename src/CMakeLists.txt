@@ -136,10 +136,15 @@ SET(SOURCE_FILES
     Physics/Simulation.cpp
 	Physics/Internal/Hardware/Common/Propellant/CylinderFluidTank.cpp
 	Physics/Internal/Hardware/Common/Propellant/Fluid.cpp
+	Physics/Internal/Hardware/Common/Propulsion/Engine.cpp
 	Physics/Internal/Hardware/Common/Structural/ILaunchVehicle.cpp
 	Physics/Internal/Hardware/Common/Structural/IStage.cpp
 	Physics/Internal/Hardware/Falcon_9/F9.cpp
 	Physics/Internal/Hardware/Falcon_9/Stage_1/F9S1.cpp
+	Physics/Internal/Hardware/Falcon_9/Stage_1/LandingLeg.cpp
+	Physics/Internal/Hardware/Falcon_9/Stage_1/GridFin.cpp
+	Physics/Internal/Hardware/Falcon_9/Stage_1/Merlin1D.cpp
+	Physics/Internal/Hardware/Falcon_9/Stage_1/GridFin.cpp
 	Physics/Internal/Hardware/Falcon_9/Stage_2/F9S2.cpp
 )
 

@@ -18,22 +18,22 @@ namespace Physics {
 		class LandingLeg {
 		private:
 			// Position (m) of the A-frame joint, w.r.t the stage's origin, in 2D.
-			static constexpr chrono::ChVector2 sPos_stage2D = {1.43521, 0.90617};
+			static const chrono::ChVector2<> sPos_stage2D;
 				
 			// Position (m) of the telescoping piston joint (roughly half way up the RP-1 tank), w.r.t the stage's origin in 2D.
-			static constexpr chrono::ChVector2 sPistonStartPos_stage2D = {2.04213, 5.30092};
+			static const chrono::ChVector2<> sPistonStartPos_stage2D;
 			
 			// Position (m) of the deployment actuator joint (just beneath sPistonStartPos_stage2D), w.r.t the stage's origin in 2D.
-			static constexpr chrono::ChVector2 sPusherStartPos_stage2D = {1.80105, 5.20809};
+			static const chrono::ChVector2<> sPusherStartPos_stage2D;
 
 			// Position (m) of the telescoping piston's connection point at the tip of the A-frame, w.r.t the A-Frame's origin in 2D.
-			static constexpr chrono::ChVector2 sPistonEndPos_AFrame2D = {0.575, 8.7};
+			static const chrono::ChVector2<> sPistonEndPos_AFrame2D;
 
 			// Position (m) of the A-frame CoM, w.r.t the A-Frame's origin in 2D.
-			static constexpr chrono::ChVector2 sCoMPos_AFrame2D = {0.4476, 4.52721};
+			static const chrono::ChVector2<> sCoMPos_AFrame2D;
 
 			// Position (m) of the deployment actuator's contact point on the A-frame, w.r.t the A-Frame's origin in 2D.
-			static constexpr chrono::ChVector2 sPusherEndPos_AFrame2D = {0.85, 3.9};
+			static const chrono::ChVector2<> sPusherEndPos_AFrame2D;
 
 			// Mass (kg) of the A-frame
 			static constexpr double sAFrameMass = 600.0;
@@ -50,7 +50,7 @@ namespace Physics {
 
 			std::shared_ptr<chrono::ChBodyAuxRef> mAFrameBody;
 
-			std::shared_ptr<chrono::ChLinkLockRevolute> mAFrameJoint;
+			//std::shared_ptr<chrono::ChLinkLockRevolute> mAFrameJoint;
 
 			enum class Phase : unsigned char { stowed, deploying, locked };
 			Phase mDeploymentPhase = Phase::stowed;

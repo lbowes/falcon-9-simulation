@@ -5,10 +5,6 @@
 #include <ISceneManager.h>
 #include <IMeshSceneNode.h>
 
-//temp
-#include <IrrIMGUI/IrrIMGUI.h>
-//
-
 namespace Graphics {
 
 	F9S1Model::F9S1Model(irr::scene::ISceneManager& sceneManager, irr::scene::ISceneNode& f9ModelSceneNode) :
