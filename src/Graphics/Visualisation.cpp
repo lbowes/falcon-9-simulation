@@ -131,28 +131,27 @@ namespace Graphics {
 	}
 
 	void Visualisation::handleTimeSelection(float frameTime_s) {
-		//Advance the simulation time correctly according to the frame time...
-		mPlayback.mTime_s = std::min((float)mSimDuration, mPlayback.mTime_s + mPlayback.mSpeed * frameTime_s);
+		// Advance the simulation time correctly according to the frame time...
+		mPlayback.mTime_s = std::min(static_cast<float>(mSimDuration), mPlayback.mTime_s + mPlayback.mSpeed * frameTime_s);
 		
-		//Localise the current time within the snapshot history...
+		// Localise the current time within the snapshot history...
 		double 
 			s = floor(mPlayback.mTime_s / mSnapshotInterval_s),
 			betweenSnapshots = fmod(mPlayback.mTime_s, mSnapshotInterval_s) / mSnapshotInterval_s;
 	
-		//Find the index of the the most recent snapshot to have been recorded...
+		// Find the index of the the most recent snapshot to have been recorded...
 		unsigned 
 			snapshotCount = mStateHistory.size(),
 			recentSnapshotNum = std::clamp(static_cast<unsigned>(s), 0U, static_cast<unsigned>(snapshotCount - 1));
 
 		Physics::F9_DSS 
 			mostRecentState = mStateHistory.at(recentSnapshotNum),
-			nextState = mStateHistory.at(std::clamp(recentSnapshotNum + 1, 0U, static_cast<unsigned>(snapshotCount - 1)));//,
-			//interpolated;
+			nextState = mStateHistory.at(std::clamp(recentSnapshotNum + 1, 0U, static_cast<unsigned>(snapshotCount - 1)));
 
 		//temp
 		// At the moment this is stored as a member variable so it can be passed to the mModelLayer in Visualisation::update()
 		// This should not be the final implementation.
-		mLiveSnapshot_temp = mostRecentState;
+		mLiveSnapshot_temp = Physics::F9_DSS::lerp(mostRecentState, nextState, betweenSnapshots);;
 		//
 	}
 

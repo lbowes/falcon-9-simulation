@@ -41,6 +41,8 @@ namespace Physics {
 		void operator=(const F9S1_DSS& other);
 		~F9S1_DSS() = default;
 
+		static F9S1_DSS lerp(const F9S1_DSS& a, const F9S1_DSS& b, float x);
+
 		const chrono::ChFrame<>& getS1ToWorldTransform() const { return mS1ToWorldTransform; }
 
 	};	

@@ -4,6 +4,7 @@
 
 #include <chrono/physics/ChSystemNSC.h>
 #include <core/ChFrame.h>
+#include <core/ChMatrix33.h>
 
 //temp
 #include <chrono/utils/ChUtilsGeometry.h>
@@ -91,6 +92,27 @@ namespace Physics {
 
 	void F9S1_DSS::operator=(const F9S1_DSS& other) {
 		this->mS1ToWorldTransform = other.mS1ToWorldTransform;
+	}
+
+	F9S1_DSS F9S1_DSS::lerp(const F9S1_DSS& a, const F9S1_DSS& b, float x) {
+		F9S1_DSS result;
+		
+		const chrono::Vector 
+			pos_a = a.mS1ToWorldTransform.GetPos(),
+			pos_b = b.mS1ToWorldTransform.GetPos(),
+			lerpPos = pos_a + (pos_b - pos_a) * x;
+
+	 	result.mS1ToWorldTransform.SetPos(lerpPos);
+
+		chrono::Quaternion
+			rot_a = a.mS1ToWorldTransform.GetRot(),
+			rot_b = b.mS1ToWorldTransform.GetRot(),
+			difference = rot_b - rot_a,
+			lerpRot_world = rot_a + difference * x;
+
+		result.mS1ToWorldTransform.SetRot(lerpRot_world);
+
+		return result;
 	}
 
 }

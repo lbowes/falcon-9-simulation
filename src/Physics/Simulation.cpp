@@ -8,8 +8,8 @@ namespace Physics {
 
 	Simulation::Simulation() :
 		mDuration(50.0),
-		mUpdatesPerSec(100),
-		mDataSnapsPerSec(60),
+		mUpdatesPerSec(200),
+		mDataSnapsPerSec(10),
 		mFalcon9(mSystem)
 	{ 
 		chrono::collision::ChCollisionModel::SetDefaultSuggestedEnvelope(1.0);
@@ -30,7 +30,6 @@ namespace Physics {
 		rigidFloor->SetCollide(true);
 		rigidFloor->SetBodyFixed(true);
 		rigidFloor->SetPos({0, -3, 0});
-		rigidFloor->SetMass(1000.0);
 		rigidFloor->GetMaterialSurfaceNSC()->SetRestitution(0);
 		rigidFloor->GetMaterialSurfaceNSC()->SetFriction(1);
 		//

@@ -27,4 +27,10 @@ namespace Physics {
 		this->mF9S1_dss = other.mF9S1_dss;
 	}
 
+	F9_DSS F9_DSS::lerp(const F9_DSS& a, const F9_DSS& b, float x) {
+		F9_DSS result;
+		result.mF9S1_dss = F9S1_DSS::lerp(a.mF9S1_dss, b.mF9S1_dss, x);
+		return result;
+	}
+
 }

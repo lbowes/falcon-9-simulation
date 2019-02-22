@@ -3465,6 +3465,8 @@ chrono/physics/ChSystemNSC.h
 -
 core/ChFrame.h
 -
+core/ChMatrix33.h
+-
 chrono/utils/ChUtilsGeometry.h
 -
 chrono/collision/ChCCollisionModel.h

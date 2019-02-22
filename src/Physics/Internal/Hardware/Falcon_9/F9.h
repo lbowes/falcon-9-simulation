@@ -42,6 +42,8 @@ namespace Physics {
 		F9_DSS(const Hardware::F9& f9);
 		~F9_DSS() = default;
 
+		static F9_DSS lerp(const F9_DSS& a, const F9_DSS& b, float x);
+
 		const F9S1_DSS& getF9S1_DSS() const { return mF9S1_dss; }
 
 	};
