@@ -32,7 +32,7 @@
 *.app
 
 #Misc files
-Makefile
+build/
 TODO
 imgui.ini
 res/SpaceXLogo.png
