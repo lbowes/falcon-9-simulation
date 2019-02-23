@@ -14,7 +14,7 @@ namespace Physics {
 			virtual ~IStageComponent() = default;
 
 			chrono::ChMatrix33<> getInertia_stage() const {
-				chrono::ChFrame compToStage = calcTransform_toStage();
+			    chrono::ChFrame compToStage = calcTransform_toStage();
 				chrono::ChMatrix33<> result = calcInertia_comp();
 				chrono::ChInertiaUtils::RotateInertia(result, compToStage.GetA(), result);
 				chrono::ChInertiaUtils::TranslateInertia(result, compToStage.GetPos(), calcMass(), result);

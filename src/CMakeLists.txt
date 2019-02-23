@@ -96,8 +96,8 @@ endif()
 #--------------------------------------------------------------
 
 SET(IRRIMGUI_INCLUDES
-	"/home/lbowes/dev/Programming/Deps/Projects/IrrIMGUI/IrrIMGUI-0.3.1/includes"
-	"/home/lbowes/dev/Programming/Deps/Projects/IrrIMGUI/IrrIMGUI-0.3.1/dependency"
+	"/home/userfs/l/lmb573/Documents/Personal/Programming/Deps/Projects/IrrIMGUI/IrrIMGUI-0.3.1/includes"
+	"/home/userfs/l/lmb573/Documents/Personal/Programming/Deps/Projects/IrrIMGUI/IrrIMGUI-0.3.1/dependency"
 )
 
 include_directories(${CHRONO_INCLUDE_DIRS} ${IRRIMGUI_INCLUDES})
@@ -168,7 +168,7 @@ set_target_properties(myexe PROPERTIES
 # Link to Chrono libraries and dependency libraries
 #--------------------------------------------------------------
 
-target_link_libraries(myexe ${CHRONO_LIBRARIES} "/home/lbowes/dev/Programming/Deps/Projects/IrrIMGUI/build/libIrrIMGUI.a")
+target_link_libraries(myexe ${CHRONO_LIBRARIES} "/home/userfs/l/lmb573/Documents/Personal/Programming/Deps/Projects/IrrIMGUI/build/libIrrIMGUI.a")
 
 #--------------------------------------------------------------
 # === 4 (OPTIONAL) ===

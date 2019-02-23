@@ -140,11 +140,11 @@ namespace Graphics {
 			betweenSnapshots = fmod(mPlayback.mTime_s, mSnapshotInterval_s) / mSnapshotInterval_s;
 	
 		// Find the index of the the most recent snapshot to have been recorded...
-		unsigned 
+		const unsigned
 			snapshotCount = mStateHistory.size(),
 			recentSnapshotNum = std::clamp(static_cast<unsigned>(s), 0U, static_cast<unsigned>(snapshotCount - 1));
 
-		Physics::F9_DSS 
+		Physics::F9_DSS
 			mostRecentState = mStateHistory.at(recentSnapshotNum),
 			nextState = mStateHistory.at(std::clamp(recentSnapshotNum + 1, 0U, static_cast<unsigned>(snapshotCount - 1)));
 
