@@ -34,6 +34,7 @@
 #Misc files
 build/
 .vscode/
+.idea/
 TODO
 imgui.ini
 res/SpaceXLogo.png
