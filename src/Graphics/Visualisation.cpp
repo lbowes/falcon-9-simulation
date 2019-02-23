@@ -117,7 +117,7 @@ namespace Graphics {
 		handleTimeSelection(frameTime_s);
 
 		//Pass in the required camera position so that models can update their own positions
-		mModelLayer->update(mCameraSystem->getCurrentSimCamera().getPosition_world(), mLiveSnapshot_temp, frameTime_s);
+		mModelLayer->update(mCameraSystem->getCurrentSimCamera().getPosition_world(), mLiveSnapshot, frameTime_s);
 	}
 	
 	void Visualisation::render() {
@@ -148,11 +148,7 @@ namespace Graphics {
 			mostRecentState = mStateHistory.at(recentSnapshotNum),
 			nextState = mStateHistory.at(std::clamp(recentSnapshotNum + 1, 0U, static_cast<unsigned>(snapshotCount - 1)));
 
-		//temp
-		// At the moment this is stored as a member variable so it can be passed to the mModelLayer in Visualisation::update()
-		// This should not be the final implementation.
-		mLiveSnapshot_temp = Physics::F9_DSS::lerp(mostRecentState, nextState, betweenSnapshots);;
-		//
+		mLiveSnapshot = Physics::F9_DSS::lerp(mostRecentState, nextState, betweenSnapshots);;
 	}
 
 }

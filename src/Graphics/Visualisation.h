@@ -12,11 +12,6 @@
 #include <IrrIMGUI/IrrIMGUI.h>
 #include <map>
 
-//temp
-#include <physics/ChBodyEasy.h>
-//
-
-
 namespace irr {
 	class IrrlichtDevice;
 
@@ -66,9 +61,7 @@ namespace Graphics {
 
 		PlaybackConfig mPlayback;
 
-		//temp
-		Physics::F9_DSS mLiveSnapshot_temp;
-		//
+		Physics::F9_DSS mLiveSnapshot;
 
 	public:
 		Visualisation(const std::map<const unsigned, const Physics::F9_DSS>& stateHistoryHandle, double snapshotInterval_s, double simDuration);

@@ -21,27 +21,28 @@ namespace Physics {
 			chrono::collision::ChCollisionModel::SetDefaultSuggestedMargin(0.05);
 			
 			mSystemHandle.AddBody(mBody);
-			
-			mBody->SetMass(1000.0);
-			mBody->SetInertia(chrono::utils::CalcCylinderGyration(1.83, 23.5));
+			mSystemHandle.Set_G_acc(chrono::Vector(0, 0, 0));
+
+			mBody->SetMass(100.0);
+			mBody->SetInertia(chrono::utils::CalcCylinderGyration(1.83, 14.0));
 			mBody->GetMaterialSurfaceNSC()->SetRestitution(0);
 			mBody->GetMaterialSurfaceNSC()->SetFriction(1);
 
 			mBody->GetCollisionModel()->ClearModel();
-			//mBody->GetCollisionModel()->AddBox(1.83, 23.5, 1.83, {0, 23.5, 0});
 			mBody->GetCollisionModel()->AddCylinder(1.83, 1.83, 23.5, {0, 23.5, 0});
-			//mBody->GetCollisionModel()->AddCapsule(1.83, 23.5);
 			mBody->GetCollisionModel()->BuildModel();
 			mBody->SetCollide(true);
+			mBody->SetCollide(false);
 
-			chrono::Quaternion rot = chrono::Q_from_AngAxis(0 * chrono::CH_C_DEG_TO_RAD, {1, 0, 0});
-			mBody->SetRot(rot);
+			//chrono::Quaternion rot = chrono::Q_from_AngAxis(-2 * chrono::CH_C_DEG_TO_RAD, {1, 0, 0});
+			//mBody->SetRot(rot);
 
-			//THESE ARE THE LINES THAT CAUSE THE PROBLEM---------------------------
-			//What is going on here?
-			mBody->SetFrame_COG_to_REF(chrono::ChFrame<>(chrono::Vector(0, 20, 0), chrono::ChQuaternion<>(1, 0, 0, 0)));
-			mBody->SetFrame_REF_to_abs(chrono::ChFrame<>(chrono::Vector(6, 40, 0), rot));
-			//---------------------------------------------------------------------
+			//mBody->SetPos_dt(chrono::Vector(0, 10, 0));
+			//mBody->SetRot_dt(chrono::Qdt_from_AngAxis(chrono::Q_from_AngY(10), 10.0, chrono::Vector(0, 1, 0)));
+
+			mBody->SetFrame_COG_to_REF(chrono::ChFrame<>(chrono::Vector(0, 47, 0)));
+			mBody->SetFrame_REF_to_abs(chrono::ChFrame<>(chrono::Vector(0, 2, -10)));
+			mBody->SetRot_dt(chrono::Q_from_AngAxis(10.0, chrono::Vector(1, 0, 1).GetNormalized()));
 
 			addTanks();
 		}

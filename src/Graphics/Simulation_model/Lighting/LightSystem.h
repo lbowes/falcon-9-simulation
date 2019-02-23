@@ -34,9 +34,6 @@ namespace Graphics {
 
 	};
 
-	/*
-	- Responsible for all lighting
-	*/
 	class LightSystem {
 	private:
 		irr::video::IVideoDriver& mVidDriver;
