@@ -39,7 +39,7 @@ namespace Physics {
 
 			mBody->SetFrame_COG_to_REF(chrono::ChFrame<>(chrono::Vector(0, 20, 0), chrono::ChQuaternion<>(1, 0, 0, 0)));
 			mBody->SetFrame_REF_to_abs(chrono::ChFrame<>(chrono::Vector(0, 10, 0), rot));
-			mBody->SetRot_dt(chrono::Q_from_AngAxis(10.0, chrono::Vector(1, 0, 1).GetNormalized()));
+			mBody->SetRot_dt(chrono::Q_from_AngAxis(10.0, chrono::Vector(1, 0, 0).GetNormalized()));
 
 			addTanks();
 		}

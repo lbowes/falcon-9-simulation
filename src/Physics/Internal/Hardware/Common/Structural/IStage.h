@@ -18,8 +18,16 @@ namespace Physics {
 		protected:
 			chrono::ChSystemNSC& mSystemHandle;
 			std::shared_ptr<chrono::ChBodyAuxRef> mBody;
-			chrono::ChFrame<> mStage_to_LV;
+
+			// TODO: could the stage be built up of multiple subsystems?
+			// Subsystems could act independently of one another and the stage object (base or subclass) could be
+			// responsible for messaging between subsystems and combining their state (calculating combined mass,
+			// inertia etc). Examples could include EngineSystem, PropellantSystem, ReactionControlSystem.
+			// Each subsystem would be responsible for defining its own properties and owning its own rigid bodies or
+			// fixed components and would need access to the main stage mBody (above).
 			CylinderFluidTankGroup mPropSupplies;
+
+			chrono::ChFrame<> mStage_to_LV;
 
 		public:
 			IStage(chrono::ChSystemNSC& sys, const chrono::ChFrame<> stage_to_LV = chrono::ChFrame<>());
@@ -30,7 +38,10 @@ namespace Physics {
 			virtual void stageSpecificUpdates(double dt) = 0;
 
 		protected:
+			void assemble();
 
+			virtual void addEngines() = 0;
+			virtual void addPropellantSupplies() = 0;
 
 		};
 
