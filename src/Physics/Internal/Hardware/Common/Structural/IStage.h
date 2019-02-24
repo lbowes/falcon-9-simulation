@@ -30,18 +30,17 @@ namespace Physics {
 			chrono::ChFrame<> mStage_to_LV;
 
 		public:
-			IStage(chrono::ChSystemNSC& sys, const chrono::ChFrame<> stage_to_LV = chrono::ChFrame<>());
+			IStage(chrono::ChSystemNSC& sys, chrono::ChFrame<> stage_to_LV = chrono::ChFrame<>());
 			virtual ~IStage() = default;
 
 			void update(double dt);
 
-			virtual void stageSpecificUpdates(double dt) = 0;
-
 		protected:
 			void assemble();
+			virtual void stageSpecificUpdates(double dt) = 0;
 
-			virtual void addEngines() = 0;
 			virtual void addPropellantSupplies() = 0;
+			//virtual void addEngines() = 0;
 
 		};
 

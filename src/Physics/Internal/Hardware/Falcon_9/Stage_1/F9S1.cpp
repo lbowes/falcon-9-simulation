@@ -17,38 +17,14 @@ namespace Physics {
 		F9S1::F9S1(chrono::ChSystemNSC& sys) :
 			IStage(sys)
 		{
-			chrono::collision::ChCollisionModel::SetDefaultSuggestedEnvelope(1.0);
-			chrono::collision::ChCollisionModel::SetDefaultSuggestedMargin(0.05);
-			
-			mSystemHandle.AddBody(mBody);
-			mSystemHandle.Set_G_acc(chrono::Vector(0, 0, 0));
-
-			mBody->SetMass(100.0);
-			mBody->SetInertia(chrono::utils::CalcCylinderGyration(1.83, 23.5));
-			mBody->GetMaterialSurfaceNSC()->SetRestitution(0);
-			mBody->GetMaterialSurfaceNSC()->SetFriction(1);
-
-			mBody->GetCollisionModel()->ClearModel();
-			mBody->GetCollisionModel()->AddCylinder(1.83, 1.83, 23.5, {0, 23.5, 0});
-			mBody->GetCollisionModel()->BuildModel();
-			mBody->SetCollide(true);
-			mBody->SetCollide(false);
-
-			chrono::Quaternion rot = chrono::Q_from_AngAxis(0 * chrono::CH_C_DEG_TO_RAD, {1, 0, 0});
-			mBody->SetRot(rot);
-
-			mBody->SetFrame_COG_to_REF(chrono::ChFrame<>(chrono::Vector(0, 20, 0), chrono::ChQuaternion<>(1, 0, 0, 0)));
-			mBody->SetFrame_REF_to_abs(chrono::ChFrame<>(chrono::Vector(0, 10, 0), rot));
-			mBody->SetRot_dt(chrono::Q_from_AngAxis(10.0, chrono::Vector(1, 0, 0).GetNormalized()));
-
-			addTanks();
+			assemble();
 		}
 
 		void F9S1::stageSpecificUpdates(double dt) {
 			//TODO: 
 		}
 
-		void F9S1::addTanks() {
+		void F9S1::addPropellantSupplies() {
 			const double
 				tankWallDensity = 2550.0, // 2550.0
 				tankWallThickness = 0.012,

@@ -6,11 +6,12 @@
 namespace Physics {
 	namespace Hardware {
 		
-		IStage::IStage(chrono::ChSystemNSC& sys, const chrono::ChFrame<> stage_to_LV) :
+		IStage::IStage(chrono::ChSystemNSC& sys, chrono::ChFrame<> stage_to_LV) :
 			mSystemHandle(sys),
+			mBody(std::make_shared<chrono::ChBodyAuxRef>()),
 			mStage_to_LV(stage_to_LV)
 		{
-			mBody = std::make_shared<chrono::ChBodyAuxRef>();
+			mSystemHandle.AddBody(mBody);
 		}
 
 		void IStage::update(double dt) {
@@ -22,6 +23,13 @@ namespace Physics {
 			
 			// 2. Calculate and set rigid body properties
 			// 
+		}
+
+		void IStage::assemble() {
+			addPropellantSupplies();
+			// TODO:
+			// addEngines()
+			// addSomethingElse()
 		}
 
 	}
