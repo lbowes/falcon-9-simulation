@@ -10,8 +10,6 @@ namespace Physics {
 
 		class CylinderFluidTank : public IStageComponent {
 		private:
-			chrono::ChFrame<> mTank_to_Stage;
-			
 			const Fluid mFluid;
 			
 			const double
@@ -21,26 +19,25 @@ namespace Physics {
 				mMaterialDensity, //kg/m^3
 				mInternalHeight,  //m
 				mVolume_internal, //m^3 volume inside tank excluding tank walls
-				mVolume_external, //m^3 volume including tank walls
-				mMaxFluidMass,    //kgs
-				mTankMass;        //kgs
+				mMaxFluidMass,    //kg
+				mTankMass;        //kg
 
-			const chrono::ChVector<> mTankCoM_tank;
+			const chrono::Vector mTankCoM_tank;
 
 			const chrono::ChMatrix33<> mTankInertia_tank;
 
 			double
 				mFluidVolume,     //m^3
 				mFluidLevel,      //m, measured from the top of the lower wall of the tank (= 0.0) 
-				mPercentFull,     //0->1
-				mFluidMass;       //kgs
+				mPercentFull,     //0 -> 1
+				mFluidMass;       //kg
 
 			chrono::ChVector<> mFluidCoM_tank;
 
 			chrono::ChMatrix33<> mFluidInertia_tank;
 
 		public:
-			CylinderFluidTank(const chrono::ChFrame<>& tank_to_Stage, Fluid fluid, double height, double radius, double wallThickness, double materialDensity);
+			CylinderFluidTank(chrono::ChSystemNSC& sys, chrono::ChBodyAuxRef& stageBody, const chrono::ChFrame<>& tank_to_Stage, Fluid f, double height, double radius, double thickness, double density);
 			~CylinderFluidTank() = default;
 
 			void addFluid(double mass);
@@ -52,10 +49,12 @@ namespace Physics {
 			double getPercentFull() const { return mPercentFull; }
 
 		private:
-			chrono::ChFrame<> calcTransform_toStage() const override;
-			chrono::ChMatrix33<> calcInertia_comp() const override;
-			double calcMass() const override;
-			chrono::ChVector<> calcCoM_comp() const override;
+			virtual void assemble() override;
+			virtual void attachToStage() override;
+
+			double combinedMass() const;
+			chrono::ChFrame<> combinedCoM_tank() const;
+			chrono::ChMatrix33<> combinedInertia_tank() const;
 			chrono::ChMatrix33<> tankInertia_tank() const;
 			void onFluidMassChange();
 

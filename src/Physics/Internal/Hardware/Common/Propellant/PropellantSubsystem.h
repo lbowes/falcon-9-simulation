@@ -1,26 +1,28 @@
-#ifndef PHYSICS_HARDWARE_CYLINDERFLUIDTANKGROUP_H
-#define PHYSICS_HARDWARE_CYLINDERFLUIDTANKGROUP_H
+#ifndef PHYSICS_HARDWARE_PROPELLANTSUBSYSTEM_H
+#define PHYSICS_HARDWARE_PROPELLANTSUBSYSTEM_H
 #pragma once
 
-#include "../Structural/StageComponentGroup.hpp"
 #include "SupplyLine.h"
 
 #include <vector>
+#include <memory>
 
 namespace Physics {
 	namespace Hardware {
 
 		class CylinderFluidTank;
 
-		class CylinderFluidTankGroup : public StageComponentGroup {
+		class PropellantSubsystem {
 		private:
-			std::vector<BipropSupplyLine> mPropSupplyLines;
+			std::vector<BipropSupplyLine> mBipropSupplyLines;
 			std::vector<GasSupplyLine> mGasSupplyLines;
+			std::vector<std::unique_ptr<CylinderFluidTank>> mTanks;
 
 		public:
-			CylinderFluidTankGroup() = default;
-			~CylinderFluidTankGroup() = default;
+			PropellantSubsystem() = default;
+			~PropellantSubsystem() = default;
 
+			void addTank(std::unique_ptr<CylinderFluidTank> tank);
 			void addToTank(unsigned char tankIdx, double mass);
 			void emptyTank(unsigned char tankIdx);
 			BipropSupplyLine& addPropSupplyLine(CylinderFluidTank& oxygenSource, CylinderFluidTank& fuelSource);

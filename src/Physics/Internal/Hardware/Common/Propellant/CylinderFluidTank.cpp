@@ -6,23 +6,24 @@
 namespace Physics {
 	namespace Hardware {
 
-		CylinderFluidTank::CylinderFluidTank(const chrono::ChFrame<>& tank_to_Stage, Fluid fluid, double height, double radius, double wallThickness, double materialDensity) :
-			mTank_to_Stage(tank_to_Stage),
-			mFluid(fluid),
+		CylinderFluidTank::CylinderFluidTank(chrono::ChSystemNSC& sys, chrono::ChBodyAuxRef& stageBody, const chrono::ChFrame<>& tank_to_Stage, Fluid f, double height, double radius, double thickness, double density) :
+			IStageComponent(sys, stageBody, tank_to_Stage),
+			mFluid(f),
 			mHeight(height),
 			mRadius(radius),
-			mWallThickness(wallThickness),
-			mMaterialDensity(materialDensity),
+			mWallThickness(thickness),
+			mMaterialDensity(density),
 			mInternalHeight(mHeight - 2.0 * mWallThickness),
-			mVolume_internal(chrono::utils::CalcCylinderVolume(radius - wallThickness, mInternalHeight * 0.5)),
-			mVolume_external(chrono::utils::CalcCylinderVolume(radius, mHeight * 0.5)),
+			mVolume_internal(chrono::utils::CalcCylinderVolume(radius - thickness, mInternalHeight * 0.5)),
 			mMaxFluidMass(mFluid.mDensity * mVolume_internal),
-			mTankMass(mMaterialDensity * (mVolume_external - mVolume_internal)),
+			mTankMass(mMaterialDensity * (chrono::utils::CalcCylinderVolume(radius, mHeight * 0.5) - mVolume_internal)),
 			mTankCoM_tank({0, height * 0.5, 0}),
 			mTankInertia_tank(tankInertia_tank())
-		{ }
+		{ 
+			assemble();
+			attachToStage();
+		}
 
-		// Could these two functions be combined into one 'changeFluidMass()' function with positive or negative arguments and std::clamp??
 		void CylinderFluidTank::addFluid(double mass) {
 			mFluidMass = std::min(mFluidMass + mass, mMaxFluidMass);
 			onFluidMassChange();
@@ -32,30 +33,34 @@ namespace Physics {
 			mFluidMass = std::max(mFluidMass - mass, 0.0);
 			onFluidMassChange();
 		}
-		//
 
 		void CylinderFluidTank::removeAllFluid() {
 			mFluidMass = 0.0;
 			onFluidMassChange();
 		}
 
-		chrono::ChFrame<> CylinderFluidTank::calcTransform_toStage() const {
-			return mTank_to_Stage;
+		void CylinderFluidTank::assemble() {
+			mBody->SetMass(combinedMass());
+			mBody->SetInertia(combinedInertia_tank());
+			mBody->SetCollide(false);
+			mBody->SetFrame_COG_to_REF(combinedCoM_tank());
 		}
 
-		chrono::ChMatrix33<> CylinderFluidTank::calcInertia_comp() const {
-			// Fluid inertia in tank space
-			return mTankInertia_tank + mFluidInertia_tank;
+		void CylinderFluidTank::attachToStage() {
+
 		}
 
-		double CylinderFluidTank::calcMass() const {
-			// Total mass of tank structure and fluid
+		double CylinderFluidTank::combinedMass() const {
 			return mTankMass + mFluidMass;
 		}
 
-		chrono::ChVector<> CylinderFluidTank::calcCoM_comp() const {
-			// Combined CoM of the tank structure and (very simply modelled) fluid within
-			return (mTankMass * mTankCoM_tank + mFluidMass * mFluidCoM_tank) / (mTankMass + mFluidMass);
+		chrono::ChFrame<> CylinderFluidTank::combinedCoM_tank() const {
+			const chrono::Vector CoM_tank = (mTankMass * mTankCoM_tank + mFluidMass * mFluidCoM_tank) / (mTankMass + mFluidMass);
+			return chrono::ChFrame(CoM_tank);
+		}
+
+		chrono::ChMatrix33<> CylinderFluidTank::combinedInertia_tank() const {
+			return mTankInertia_tank + mFluidInertia_tank;
 		}
 
 		chrono::ChMatrix33<> CylinderFluidTank::tankInertia_tank() const {
@@ -100,6 +105,11 @@ namespace Physics {
 
 			// After the fluid level has changed, its inertia must be updated (in tank space) 
 			mFluidInertia_tank = chrono::utils::CalcCylinderGyration(mRadius - mWallThickness, mHeight * 0.5 - mWallThickness, mFluidCoM_tank);
+			
+			// Update mBody properties
+			mBody->SetMass(combinedMass());
+			mBody->SetInertia(combinedInertia_tank());
+			mBody->SetFrame_COG_to_REF(combinedCoM_tank());
 		}
 
 	}

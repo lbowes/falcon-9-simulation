@@ -3,6 +3,11 @@
 
 #include <core/ChFrame.h>
 #include <collision/ChCCollisionModel.h>
+#include <chrono/physics/ChSystemNSC.h>
+
+namespace chrono {
+	class ChBodyAuxRef;
+}
 
 namespace Physics {
 	namespace Hardware {
@@ -12,12 +17,15 @@ namespace Physics {
 		class IStageComponent {
 		protected:
 			chrono::ChSystemNSC& mSystemHandle;
-			chrono::ChBodyAuxRef& mStageBody;
+			chrono::ChBodyAuxRef& mStageBodyHandle;
+			chrono::ChFrame<> mComp_to_stage;
 			std::shared_ptr<chrono::ChBodyAuxRef> mBody;
 
 		public:
 			IStageComponent(chrono::ChSystemNSC& sys, chrono::ChBodyAuxRef& stageBody, chrono::ChFrame<> comp_to_stage = chrono::ChFrame<>()) :
 				mSystemHandle(sys),
+				mStageBodyHandle(stageBody),
+				mComp_to_stage(comp_to_stage),
 				mBody(std::make_shared<chrono::ChBodyAuxRef>())
 			{ 
 				sys.AddBody(mBody);
@@ -26,22 +34,10 @@ namespace Physics {
 			virtual ~IStageComponent() = default;
 			
 		protected:
-			void assemble() {
-				mBody->SetMass(calcMass());
-				mBody->SetInertia(calcInertia_comp());
-				mBody->SetFrame_COG_to_REF(calcCoM_comp());
-				initCollision();
-				mBody->SetCollisionModel(calcCollisionModel_comp());
-			}
+			// Fully initialises mBody (mass, inertia, collision)
+			virtual void assemble() = 0;
 
-			virtual chrono::ChFrame<> calcTransform_toStage() const = 0;
-			virtual chrono::ChMatrix33<> calcInertia_comp() const = 0;
-			virtual double calcMass() const = 0;
-			virtual chrono::ChFrame<> calcCoM_comp() const = 0;
-			virtual void initCollision() = 0;
-			virtual chrono::ChCollisionModel calcCollisionModel_comp() const = 0;
-			
-			// Uses links and joints to attach the component to the stage
+			// Uses links/joints/any elaborate setups to attach mBody to the stage
 			virtual void attachToStage() = 0;
 
 		};

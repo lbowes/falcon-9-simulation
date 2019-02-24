@@ -1,8 +1,7 @@
-//These classes are the intermediaries between the Engines/GasThrusters and their propellant tanks. The aim is to keep these classes separate.
-//This class manages the communication between the two. 
+// These classes are the intermediaries between the Engines/GasThrusters and their propellant tanks. The aim is to keep these classes separate.
+// This class manages the communication between the two. 
 
-//In the future, it would be possible to place ButterflyValve objects in the PropellantLines to adjust 
-//propellant mass flow rate.
+// In the future, it would be possible to place ButterflyValve objects in the PropellantLines to adjust propellant mass flow rate.
 #ifndef PHYSICS_HARDWARE_SUPPLYLINE_H
 #define PHYSICS_HARDWARE_SUPPLYLINE_H
 #pragma once

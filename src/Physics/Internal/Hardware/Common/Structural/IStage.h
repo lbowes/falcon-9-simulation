@@ -25,7 +25,7 @@ namespace Physics {
 			// inertia etc). Examples could include EngineSystem, PropellantSystem, ReactionControlSystem.
 			// Each subsystem would be responsible for defining its own properties and owning its own rigid bodies or
 			// fixed components and would need access to the main stage mBody (above).
-			CylinderFluidTankGroup mPropSupplies;
+			PropellantSubsystem mPropSupplies;
 
 			chrono::ChFrame<> mStage_to_LV;
 
