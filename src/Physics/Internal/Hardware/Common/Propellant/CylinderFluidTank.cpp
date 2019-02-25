@@ -6,7 +6,7 @@
 namespace Physics {
 	namespace Hardware {
 
-		CylinderFluidTank::CylinderFluidTank(chrono::ChSystemNSC& sys, chrono::ChBodyAuxRef& stageBody, const chrono::ChFrame<>& tank_to_Stage, Fluid f, double height, double radius, double thickness, double density) :
+		CylinderFluidTank::CylinderFluidTank(chrono::ChSystemNSC& sys, std::shared_ptr<chrono::ChBodyAuxRef>& stageBody, const chrono::ChFrame<>& tank_to_Stage, Fluid f, double height, double radius, double thickness, double density) :
 			IStageComponent(sys, stageBody, tank_to_Stage),
 			mFluid(f),
 			mHeight(height),
@@ -40,14 +40,22 @@ namespace Physics {
 		}
 
 		void CylinderFluidTank::assemble() {
-			mBody->SetMass(combinedMass());
-			mBody->SetInertia(combinedInertia_tank());
+			//mBody->SetMass(combinedMass());
+			//mBody->SetInertia(combinedInertia_tank());
 			mBody->SetCollide(false);
-			mBody->SetFrame_COG_to_REF(combinedCoM_tank());
+			//mBody->SetFrame_COG_to_REF(combinedCoM_tank());
 		}
 
 		void CylinderFluidTank::attachToStage() {
+			mStageLink = std::make_shared<chrono::ChLinkLockLock>();
+			mSystemHandle.AddLink(mStageLink);
+			
+			// test that this is working as expected
+			//mStageLink->Initialize(mBody, mStageBodyHandle, mComp_to_stage.GetCoord());
+			mStageLink->Initialize(mBody, mStageBodyHandle, chrono::ChCoordsys(chrono::Vector(0, 100, 0)));
 
+			// Why is this a) causing the simulation to take so long and b) the stage to disappear because of a nan position?
+			// --------------------------------------------------------------------------------------------------------------
 		}
 
 		double CylinderFluidTank::combinedMass() const {

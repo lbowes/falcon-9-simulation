@@ -35,9 +35,11 @@ namespace Physics {
 			chrono::ChVector<> mFluidCoM_tank;
 
 			chrono::ChMatrix33<> mFluidInertia_tank;
+			
+			std::shared_ptr<chrono::ChLinkLockLock> mStageLink;
 
 		public:
-			CylinderFluidTank(chrono::ChSystemNSC& sys, chrono::ChBodyAuxRef& stageBody, const chrono::ChFrame<>& tank_to_Stage, Fluid f, double height, double radius, double thickness, double density);
+			CylinderFluidTank(chrono::ChSystemNSC& sys, std::shared_ptr<chrono::ChBodyAuxRef>& stageBody, const chrono::ChFrame<>& tank_to_Stage, Fluid f, double height, double radius, double thickness, double density);
 			~CylinderFluidTank() = default;
 
 			void addFluid(double mass);

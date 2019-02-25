@@ -2,7 +2,7 @@
 #define PHYSICS_HARDWARE_ISTAGE_H
 #pragma once
 
-#include "../Propellant/CylinderFluidTankGroup.h"
+#include "../Propellant/PropellantSubsystem.h"
 
 #include <physics/ChBodyAuxRef.h>
 
@@ -18,16 +18,12 @@ namespace Physics {
 		protected:
 			chrono::ChSystemNSC& mSystemHandle;
 			std::shared_ptr<chrono::ChBodyAuxRef> mBody;
-
-			// TODO: could the stage be built up of multiple subsystems?
-			// Subsystems could act independently of one another and the stage object (base or subclass) could be
-			// responsible for messaging between subsystems and combining their state (calculating combined mass,
-			// inertia etc). Examples could include EngineSystem, PropellantSystem, ReactionControlSystem.
-			// Each subsystem would be responsible for defining its own properties and owning its own rigid bodies or
-			// fixed components and would need access to the main stage mBody (above).
-			PropellantSubsystem mPropSupplies;
-
 			chrono::ChFrame<> mStage_to_LV;
+
+			PropellantSubsystem mPropSupplies;
+			// EngineSubsystem mEngines;
+			// ReactionControlSystem mRCS;
+			// AvionicsSubsystem mAvionics;
 
 		public:
 			IStage(chrono::ChSystemNSC& sys, chrono::ChFrame<> stage_to_LV = chrono::ChFrame<>());

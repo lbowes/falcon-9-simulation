@@ -6,11 +6,6 @@
 #include <core/ChFrame.h>
 #include <core/ChMatrix33.h>
 
-//temp
-#include <chrono/utils/ChUtilsGeometry.h>
-#include <chrono/collision/ChCCollisionModel.h>
-//
-
 namespace Physics {
 	namespace Hardware {
 
@@ -30,17 +25,21 @@ namespace Physics {
 				tankWallThickness = 0.012,
 				radius = 1.83;
 
-			mPropSupplies.addComponent(std::make_unique<CylinderFluidTank>(
-				chrono::ChFrame<>(chrono::ChVector<>(0.0, 16.38, 0.0)), 
+			mPropSupplies.addTank(std::make_unique<CylinderFluidTank>(
+				mSystemHandle,
+				mBody,
+				chrono::ChFrame(chrono::Vector(0.0, 16.38, 0.0)), 
 				Propellants::mFluids[Propellants::liquidOxygen],
 				22.8, 
 				radius, 
 				tankWallThickness, 
 				tankWallDensity
 			));
-			
-			mPropSupplies.addComponent(std::make_unique<CylinderFluidTank>(
-				chrono::ChFrame<>(chrono::ChVector<>(0.0, 2.3, 0.0)), 
+
+			mPropSupplies.addTank(std::make_unique<CylinderFluidTank>(
+				mSystemHandle,
+				mBody,
+				chrono::ChFrame(chrono::Vector(0.0, 2.3, 0.0)), 
 				Propellants::mFluids[Propellants::RP1],
 				14.0, 
 				radius,
@@ -48,8 +47,10 @@ namespace Physics {
 				tankWallDensity 
 			));
 			
-			mPropSupplies.addComponent(std::make_unique<CylinderFluidTank>(
-				chrono::ChFrame<>(chrono::ChVector<>(0.0, 40.0, 0.0)), 
+			mPropSupplies.addTank(std::make_unique<CylinderFluidTank>(
+				mSystemHandle,
+				mBody,
+				chrono::ChFrame(chrono::Vector(0.0, 40.0, 0.0)), 
 				Propellants::mFluids[Propellants::nitrogen],
 				0.36, 
 				0.36, 

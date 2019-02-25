@@ -13,5 +13,7 @@ namespace Physics {
 
 		}
 
+		void F9S2::addPropellantSupplies() { }
+
 	}
 }

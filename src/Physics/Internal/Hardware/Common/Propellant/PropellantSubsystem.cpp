@@ -1,12 +1,7 @@
 #include "PropellantSubsystem.h"
-#include "CylinderFluidTank.h"
 
 namespace Physics {
 	namespace Hardware {
-
-		void PropellantSubsystem::addTank(std::unique_ptr<CylinderFluidTank> tank) {
-			mTanks.push_back(std::move(tank));
-		}
 
 		void PropellantSubsystem::addToTank(unsigned char tankIdx, double mass) {
 			if(tankIdx < mTanks.size())

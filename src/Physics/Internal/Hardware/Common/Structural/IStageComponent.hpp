@@ -17,12 +17,12 @@ namespace Physics {
 		class IStageComponent {
 		protected:
 			chrono::ChSystemNSC& mSystemHandle;
-			chrono::ChBodyAuxRef& mStageBodyHandle;
+			std::shared_ptr<chrono::ChBodyAuxRef>& mStageBodyHandle;
 			chrono::ChFrame<> mComp_to_stage;
 			std::shared_ptr<chrono::ChBodyAuxRef> mBody;
 
 		public:
-			IStageComponent(chrono::ChSystemNSC& sys, chrono::ChBodyAuxRef& stageBody, chrono::ChFrame<> comp_to_stage = chrono::ChFrame<>()) :
+			IStageComponent(chrono::ChSystemNSC& sys, std::shared_ptr<chrono::ChBodyAuxRef>& stageBody, chrono::ChFrame<> comp_to_stage = chrono::ChFrame<>()) :
 				mSystemHandle(sys),
 				mStageBodyHandle(stageBody),
 				mComp_to_stage(comp_to_stage),

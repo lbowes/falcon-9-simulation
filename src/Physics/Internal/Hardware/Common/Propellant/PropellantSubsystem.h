@@ -3,14 +3,13 @@
 #pragma once
 
 #include "SupplyLine.h"
+#include "CylinderFluidTank.h"
 
 #include <vector>
 #include <memory>
 
 namespace Physics {
 	namespace Hardware {
-
-		class CylinderFluidTank;
 
 		class PropellantSubsystem {
 		private:
@@ -22,15 +21,18 @@ namespace Physics {
 			PropellantSubsystem() = default;
 			~PropellantSubsystem() = default;
 
-			void addTank(std::unique_ptr<CylinderFluidTank> tank);
+			void addTank(std::unique_ptr<CylinderFluidTank> tank) {
+				mTanks.push_back(std::move(tank));
+			}
+
 			void addToTank(unsigned char tankIdx, double mass);
 			void emptyTank(unsigned char tankIdx);
 			BipropSupplyLine& addPropSupplyLine(CylinderFluidTank& oxygenSource, CylinderFluidTank& fuelSource);
 			GasSupplyLine& addGasSupplyLine(CylinderFluidTank& gasSource);
 
 		};
-	}
 
+	}
 }
 
 #endif
