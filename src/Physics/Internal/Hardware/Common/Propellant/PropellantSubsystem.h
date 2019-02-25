@@ -25,6 +25,8 @@ namespace Physics {
 				mTanks.push_back(std::move(tank));
 			}
 
+			const CylinderFluidTank& getTank(unsigned char tankIdx) const { return *mTanks[tankIdx].get(); }
+
 			void addToTank(unsigned char tankIdx, double mass);
 			void emptyTank(unsigned char tankIdx);
 			BipropSupplyLine& addPropSupplyLine(CylinderFluidTank& oxygenSource, CylinderFluidTank& fuelSource);

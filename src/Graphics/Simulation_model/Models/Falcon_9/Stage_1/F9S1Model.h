@@ -4,6 +4,10 @@
 
 #include <core/ChVector.h>
 
+//temp
+#include "../../TankModel_temp.hpp"
+//
+
 namespace irr {
 	namespace scene {
 		class ISceneManager;
@@ -23,6 +27,10 @@ namespace Graphics {
 		irr::scene::ISceneManager& mSceneManager;
 		irr::scene::ISceneNode& mParentSceneNode;
 		irr::scene::IMeshSceneNode* mMesh;
+
+		// temp
+		std::unique_ptr<TankModel_temp> mTankModel_temp;
+		//
 
 	public:
 		F9S1Model(irr::scene::ISceneManager& sceneManager, irr::scene::ISceneNode& f9ModelSceneNode);

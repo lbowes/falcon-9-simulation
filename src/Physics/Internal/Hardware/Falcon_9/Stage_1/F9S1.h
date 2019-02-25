@@ -33,7 +33,9 @@ namespace Physics {
 	class F9S1_DSS {
 	private:
 		//TODO: Add all dynamic state owned by F9S1
-		chrono::ChFrame<> mS1ToWorldTransform;
+		chrono::ChFrame<> 
+			mS1ToWorldTransform,
+			mTankToWorldTransform;
 
 	public:
 		F9S1_DSS() = default;
@@ -44,6 +46,7 @@ namespace Physics {
 		static F9S1_DSS lerp(const F9S1_DSS& a, const F9S1_DSS& b, float x);
 
 		const chrono::ChFrame<>& getS1ToWorldTransform() const { return mS1ToWorldTransform; }
+		const chrono::ChFrame<>& getTankToWorldTransform() const { return mTankToWorldTransform; }
 
 	};	
 

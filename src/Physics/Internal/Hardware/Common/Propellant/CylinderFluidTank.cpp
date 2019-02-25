@@ -40,22 +40,33 @@ namespace Physics {
 		}
 
 		void CylinderFluidTank::assemble() {
-			//mBody->SetMass(combinedMass());
-			//mBody->SetInertia(combinedInertia_tank());
-			mBody->SetCollide(false);
-			//mBody->SetFrame_COG_to_REF(combinedCoM_tank());
+			mBody->SetMass(combinedMass()); // Mass this large causes tank to disappear when colliding with floor
+			mBody->SetInertia(combinedInertia_tank());
+			
+			mBody->GetCollisionModel()->ClearModel();
+			mBody->GetCollisionModel()->AddCylinder(mRadius, mRadius, mHeight * 0.5, mTankCoM_tank);
+			mBody->GetCollisionModel()->BuildModel();
+			
+			mBody->SetCollide(true);
+			//mBody->SetBodyFixed(true);
+			mBody->SetFrame_COG_to_REF(combinedCoM_tank());
+			mBody->SetFrame_REF_to_abs(mComp_to_stage);
 		}
 
-		void CylinderFluidTank::attachToStage() {
-			mStageLink = std::make_shared<chrono::ChLinkLockLock>();
-			mSystemHandle.AddLink(mStageLink);
-			
-			// test that this is working as expected
-			//mStageLink->Initialize(mBody, mStageBodyHandle, mComp_to_stage.GetCoord());
-			mStageLink->Initialize(mBody, mStageBodyHandle, chrono::ChCoordsys(chrono::Vector(0, 100, 0)));
+		// Links seem to be working so far
+		// If the stage body is fixed and the tank is not, but the tank is linked to the stage body
+		// then the tank does not move.
 
-			// Why is this a) causing the simulation to take so long and b) the stage to disappear because of a nan position?
-			// --------------------------------------------------------------------------------------------------------------
+		void CylinderFluidTank::attachToStage() {
+			//mStageLink = std::make_shared<chrono::ChLinkLockLock>();
+
+			//// test that this is working as expected
+			//mStageLink->Initialize(mBody, mStageBodyHandle, mComp_to_stage.GetCoord());
+
+
+			//// Why is this a) causing the simulation to take so long and b) the stage to disappear because of a nan position?
+			//// --------------------------------------------------------------------------------------------------------------
+			//mSystemHandle.AddLink(mStageLink);
 		}
 
 		double CylinderFluidTank::combinedMass() const {
@@ -87,10 +98,11 @@ namespace Physics {
 
 			// Calculate the (local) inertia of a void cylinder with the inner dimensions of the tank, around it's CoM
 			// This will 'hollow out' the tank
-			ChMatrix33<> tankInertiaVoid_tankCoM = utils::CalcCylinderGyration(mRadius - mWallThickness, mHeight * 0.5 - mWallThickness * 2);
+			ChMatrix33<> tankInertiaVoid_tankCoM = utils::CalcCylinderGyration(mRadius - mWallThickness, mHeight * 0.5 - mWallThickness);
 			
 			// Place this inertia at the tank's CoM (relative to the tank's origin) and make it a void material
-			tankInertia_tank.AddComponent(mTankCoM, mTankMass, tankInertiaSolid_tankCoM, true);
+			const double voidMass = mVolume_internal * mMaterialDensity;
+			tankInertia_tank.AddComponent(mTankCoM, voidMass, tankInertiaVoid_tankCoM, true);
 
 			// The final result should contain the inertia of a thick-walled but hollow cylinder, about the origin of the tank (ie. base of cylinder)
 			// For a stage component, this is the correct form and space for the inertia to be in

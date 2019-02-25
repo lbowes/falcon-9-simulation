@@ -33,6 +33,8 @@ namespace Physics {
 
 			virtual ~IStageComponent() = default;
 			
+			const chrono::ChFrame<>& getFrame_world() const { return mBody->GetFrame_REF_to_abs(); }
+
 		protected:
 			// Fully initialises mBody (mass, inertia, collision)
 			virtual void assemble() = 0;

@@ -5,6 +5,8 @@
 #include <ISceneManager.h>
 #include <IMeshSceneNode.h>
 
+
+
 namespace Graphics {
 
 	F9S1Model::F9S1Model(irr::scene::ISceneManager& sceneManager, irr::scene::ISceneNode& f9ModelSceneNode) :
@@ -16,6 +18,8 @@ namespace Graphics {
 		scene::IAnimatedMesh* m = mSceneManager.getMesh("../res/models/F9S1Fuselage.obj");
     	mMesh = mSceneManager.addMeshSceneNode(m, &mParentSceneNode);
 		mMesh->setMaterialFlag(video::EMF_BACK_FACE_CULLING, false);
+
+		mTankModel_temp = std::make_unique<TankModel_temp>(sceneManager);
 	}
 
 	void F9S1Model::update(const chrono::Vector& currentCamPos_world, const Physics::F9S1_DSS& f9s1, float dt) {
@@ -31,6 +35,10 @@ namespace Graphics {
 
 		const chrono::Vector rot_world = f9s1Frame.GetRot().Q_to_Euler123() * chrono::CH_C_RAD_TO_DEG;
 		mMesh->setRotation({rot_world.x(), rot_world.y(), rot_world.z()});
+
+		// temp
+		mTankModel_temp->update(currentCamPos_world, f9s1, dt);
+		//
 	}
 
 }

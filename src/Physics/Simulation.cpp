@@ -16,9 +16,10 @@ namespace Physics {
 		chrono::collision::ChCollisionModel::SetDefaultSuggestedMargin(0.05);
 		
 		// temp
-		mSystem.SetSolverType(chrono::ChSolver::Type::APGD);
-		mSystem.SetMaxPenetrationRecoverySpeed(3);
-		mSystem.SetMaxItersSolverSpeed(30);
+		//mSystem.SetSolverType(chrono::ChSolver::Type::BARZILAIBORWEIN);
+		//mSystem.SetTimestepperType(chrono::ChTimestepper::Type::EULER_IMPLICIT_LINEARIZED);
+		//mSystem.SetMaxPenetrationRecoverySpeed(3);
+		//mSystem.SetMaxItersSolverSpeed(15);
 
 		// FLOOR
 		rigidFloor = std::make_shared<chrono::ChBody>();
