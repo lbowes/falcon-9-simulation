@@ -101,7 +101,7 @@ namespace Physics {
 
 		rot_a = a.mTankToWorldTransform.GetRot(),
 		rot_b = b.mTankToWorldTransform.GetRot(),
-		difference = rot_a - rot_b,
+		difference = rot_b - rot_a,
 		lerpRot_world = rot_a + difference * x;
 
 		result.mTankToWorldTransform.SetRot(lerpRot_world);

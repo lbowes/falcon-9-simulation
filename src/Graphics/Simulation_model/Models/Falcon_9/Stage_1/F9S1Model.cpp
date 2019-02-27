@@ -4,8 +4,7 @@
 
 #include <ISceneManager.h>
 #include <IMeshSceneNode.h>
-
-
+#include <IMGUI/imgui.h>
 
 namespace Graphics {
 
@@ -30,14 +29,21 @@ namespace Graphics {
 		//between the object's and camera's imaginary positions, then floating point errors only occur on objects very far 
 		//away from the camera (where they are not noticeable anyway).
 
-		const chrono::Vector pos_world = f9s1Frame.GetPos() - currentCamPos_world;
-		mMesh->setPosition({pos_world.x(), pos_world.y(), pos_world.z()});
+		const chrono::Vector pos_ogl = f9s1Frame.GetPos() - currentCamPos_world;
+		mMesh->setPosition({pos_ogl.x(), pos_ogl.y(), pos_ogl.z()});
 
-		const chrono::Vector rot_world = f9s1Frame.GetRot().Q_to_Euler123() * chrono::CH_C_RAD_TO_DEG;
-		mMesh->setRotation({rot_world.x(), rot_world.y(), rot_world.z()});
+		const chrono::Vector rot_ogl = f9s1Frame.GetRot().Q_to_Euler123() * chrono::CH_C_RAD_TO_DEG;
+		mMesh->setRotation({rot_ogl.x(), rot_ogl.y(), rot_ogl.z()});
 
 		// temp
 		mTankModel_temp->update(currentCamPos_world, f9s1, dt);
+		//
+
+		//temp
+		ImGui::Begin("F9S1Model info");
+		ImGui::Text("abs pos: %.3f, %.3f, %.3f\n", f9s1Frame.GetPos().x(), f9s1Frame.GetPos().y(), f9s1Frame.GetPos().z());
+		ImGui::Text("rot    : %.3f, %.3f, %.3f\n", rot_ogl.x(), rot_ogl.y(), rot_ogl.z());
+		ImGui::End();
 		//
 	}
 

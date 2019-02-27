@@ -27,8 +27,7 @@ namespace Physics {
 		std::map<const unsigned, const F9_DSS> mStateHistory;
 		
 		//temp
-		std::shared_ptr<chrono::ChBody> rigidFloor;
-		std::shared_ptr<chrono::ChBodyAuxRef> box;
+		std::shared_ptr<chrono::ChBody> floor;
 		//
 
 	public:

@@ -16,23 +16,29 @@ namespace Physics {
 		chrono::collision::ChCollisionModel::SetDefaultSuggestedMargin(0.05);
 		
 		// temp
-		//mSystem.SetSolverType(chrono::ChSolver::Type::BARZILAIBORWEIN);
+		mSystem.SetSolverType(chrono::ChSolver::Type::BARZILAIBORWEIN);
 		//mSystem.SetTimestepperType(chrono::ChTimestepper::Type::EULER_IMPLICIT_LINEARIZED);
 		//mSystem.SetMaxPenetrationRecoverySpeed(3);
 		//mSystem.SetMaxItersSolverSpeed(15);
 
 		// FLOOR
-		rigidFloor = std::make_shared<chrono::ChBody>();
-    	mSystem.Add(rigidFloor);
+		floor = std::make_shared<chrono::ChBody>();
+    	mSystem.Add(floor);
 
-		rigidFloor->GetCollisionModel()->ClearModel();
-		rigidFloor->GetCollisionModel()->AddBox(25, 3, 25);
-		rigidFloor->GetCollisionModel()->BuildModel();
-		rigidFloor->SetCollide(true);
-		rigidFloor->SetBodyFixed(true);
-		rigidFloor->SetPos({0, -3, 0});
-		rigidFloor->GetMaterialSurfaceNSC()->SetRestitution(0);
-		rigidFloor->GetMaterialSurfaceNSC()->SetFriction(1);
+		floor->GetCollisionModel()->SetEnvelope(2.0);
+		floor->GetCollisionModel()->SetSafeMargin(2.0);
+		floor->GetCollisionModel()->ClearModel();
+		floor->GetCollisionModel()->AddBox(25, 3, 25);
+		floor->GetCollisionModel()->BuildModel();
+		floor->SetCollide(true);
+		floor->SetMass(8000);
+		floor->SetBodyFixed(true);
+		floor->SetPos({0, -3, 0});
+		floor->GetMaterialSurfaceNSC()->SetRestitution(0);
+		floor->GetMaterialSurfaceNSC()->SetFriction(1);
+		floor->GetMaterialSurfaceNSC()->SetFriction(1);
+		floor->GetMaterialSurfaceNSC()->SetRollingFriction(1);
+		floor->GetMaterialSurfaceNSC()->SetSpinningFriction(1);
 		//
 	}
 

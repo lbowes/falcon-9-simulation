@@ -40,14 +40,22 @@ namespace Physics {
 		}
 
 		void CylinderFluidTank::assemble() {
-			mBody->SetMass(combinedMass()); // Mass this large causes tank to disappear when colliding with floor
+			mBody->SetMass(1); // - Mass this large causes tank to disappear when colliding with floor
 			mBody->SetInertia(combinedInertia_tank());
+			//mBody->SetInertia(chrono::utils::CalcCylinderGyration(mRadius, mHeight * 0.5f, chrono::Vector(0.0f, mHeight * 0.5f, 0.0f)));
+			//mBody->SetInertia(chrono::ChMatrix33(100.0f));
 			
+
+			mBody->GetMaterialSurfaceNSC()->SetFriction(1);
+			mBody->GetMaterialSurfaceNSC()->SetSpinningFriction(1);
+
+			mBody->GetCollisionModel()->SetEnvelope(2.0);
+			mBody->GetCollisionModel()->SetSafeMargin(2.0);
 			mBody->GetCollisionModel()->ClearModel();
 			mBody->GetCollisionModel()->AddCylinder(mRadius, mRadius, mHeight * 0.5, mTankCoM_tank);
 			mBody->GetCollisionModel()->BuildModel();
-			
 			mBody->SetCollide(true);
+
 			//mBody->SetBodyFixed(true);
 			mBody->SetFrame_COG_to_REF(combinedCoM_tank());
 			mBody->SetFrame_REF_to_abs(mComp_to_stage);
@@ -67,6 +75,8 @@ namespace Physics {
 			//// Why is this a) causing the simulation to take so long and b) the stage to disappear because of a nan position?
 			//// --------------------------------------------------------------------------------------------------------------
 			//mSystemHandle.AddLink(mStageLink);
+
+			mBody->SetFrame_REF_to_abs(chrono::ChFrame(chrono::Vector(0, 20, 10)));
 		}
 
 		double CylinderFluidTank::combinedMass() const {
@@ -106,7 +116,7 @@ namespace Physics {
 
 			// The final result should contain the inertia of a thick-walled but hollow cylinder, about the origin of the tank (ie. base of cylinder)
 			// For a stage component, this is the correct form and space for the inertia to be in
-			return tankInertia_tank.GetInertiaReference();
+			return tankInertia_tank.GetInertia();
 		}
 
 		void CylinderFluidTank::onFluidMassChange() 

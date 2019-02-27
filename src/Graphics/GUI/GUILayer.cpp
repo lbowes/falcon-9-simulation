@@ -126,6 +126,8 @@ namespace Graphics {
 				mPlaybackHandle.mPaused = false;
 			}
 
+			ImGui::SameLine();
+
 			// Reset time speed buttons
 			if(ImGui::SmallButton("Reset"))
 				mPlaybackHandle.mSpeed = 1.0f;
