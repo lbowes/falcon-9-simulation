@@ -40,15 +40,15 @@ namespace Physics {
 		}
 
 		void CylinderFluidTank::assemble() {
-			mBody->SetMass(1); // - Mass this large causes tank to disappear when colliding with floor
-			mBody->SetInertia(combinedInertia_tank());
+			mBody->SetMass(combinedMass()); // - Mass this large causes tank to disappear when colliding with floor
+			mBody->SetInertia(combinedInertia_tank() * combinedMass());
 			//mBody->SetInertia(chrono::utils::CalcCylinderGyration(mRadius, mHeight * 0.5f, chrono::Vector(0.0f, mHeight * 0.5f, 0.0f)));
 			//mBody->SetInertia(chrono::ChMatrix33(100.0f));
 			
 
 			mBody->GetMaterialSurfaceNSC()->SetFriction(1);
 			mBody->GetMaterialSurfaceNSC()->SetSpinningFriction(1);
-
+			
 			mBody->GetCollisionModel()->SetEnvelope(2.0);
 			mBody->GetCollisionModel()->SetSafeMargin(2.0);
 			mBody->GetCollisionModel()->ClearModel();
@@ -58,7 +58,10 @@ namespace Physics {
 
 			//mBody->SetBodyFixed(true);
 			mBody->SetFrame_COG_to_REF(combinedCoM_tank());
-			mBody->SetFrame_REF_to_abs(mComp_to_stage);
+			//mBody->SetFrame_REF_to_abs(mComp_to_stage);
+			const chrono::Vector pos = {0, 20, 10};
+			const chrono::Quaternion rot = chrono::Q_from_AngX(0.4);
+			mBody->SetFrame_REF_to_abs(chrono::ChFrame(pos, rot));
 		}
 
 		// Links seem to be working so far
@@ -75,8 +78,6 @@ namespace Physics {
 			//// Why is this a) causing the simulation to take so long and b) the stage to disappear because of a nan position?
 			//// --------------------------------------------------------------------------------------------------------------
 			//mSystemHandle.AddLink(mStageLink);
-
-			mBody->SetFrame_REF_to_abs(chrono::ChFrame(chrono::Vector(0, 20, 10)));
 		}
 
 		double CylinderFluidTank::combinedMass() const {
