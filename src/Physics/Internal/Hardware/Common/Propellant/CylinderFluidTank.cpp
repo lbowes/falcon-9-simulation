@@ -40,44 +40,34 @@ namespace Physics {
 		}
 
 		void CylinderFluidTank::assemble() {
-			mBody->SetMass(combinedMass()); // - Mass this large causes tank to disappear when colliding with floor
-			mBody->SetInertia(combinedInertia_tank() * combinedMass());
-			//mBody->SetInertia(chrono::utils::CalcCylinderGyration(mRadius, mHeight * 0.5f, chrono::Vector(0.0f, mHeight * 0.5f, 0.0f)));
-			//mBody->SetInertia(chrono::ChMatrix33(100.0f));
-			
+			// Mass/inertia properties
+			mBody->SetMass(combinedMass());
+			mBody->SetInertia(combinedInertia_tank());
 
+            // Material properties
 			mBody->GetMaterialSurfaceNSC()->SetFriction(1);
 			mBody->GetMaterialSurfaceNSC()->SetSpinningFriction(1);
-			
+
+			// Collision properties
 			mBody->GetCollisionModel()->SetEnvelope(2.0);
 			mBody->GetCollisionModel()->SetSafeMargin(2.0);
 			mBody->GetCollisionModel()->ClearModel();
 			mBody->GetCollisionModel()->AddCylinder(mRadius, mRadius, mHeight * 0.5, mTankCoM_tank);
 			mBody->GetCollisionModel()->BuildModel();
 			mBody->SetCollide(true);
+            mBody->GetCollisionModel()->SetFamily(3);
+            mBody->GetCollisionModel()->SetFamilyMaskNoCollisionWithFamily(2);
 
-			//mBody->SetBodyFixed(true);
+            // Reference frame configuration
 			mBody->SetFrame_COG_to_REF(combinedCoM_tank());
-			//mBody->SetFrame_REF_to_abs(mComp_to_stage);
-			const chrono::Vector pos = {0, 20, 10};
-			const chrono::Quaternion rot = chrono::Q_from_AngX(0.4);
-			mBody->SetFrame_REF_to_abs(chrono::ChFrame(pos, rot));
+			mBody->SetFrame_REF_to_abs(mComp_to_stage);
 		}
 
-		// Links seem to be working so far
-		// If the stage body is fixed and the tank is not, but the tank is linked to the stage body
-		// then the tank does not move.
-
 		void CylinderFluidTank::attachToStage() {
-			//mStageLink = std::make_shared<chrono::ChLinkLockLock>();
+			mStageLink = std::make_shared<chrono::ChLinkLockLock>();
+    		mStageLink->Initialize(mBody, mStageBodyHandle, mComp_to_stage.GetCoord());
 
-			//// test that this is working as expected
-			//mStageLink->Initialize(mBody, mStageBodyHandle, mComp_to_stage.GetCoord());
-
-
-			//// Why is this a) causing the simulation to take so long and b) the stage to disappear because of a nan position?
-			//// --------------------------------------------------------------------------------------------------------------
-			//mSystemHandle.AddLink(mStageLink);
+			mSystemHandle.AddLink(mStageLink);
 		}
 
 		double CylinderFluidTank::combinedMass() const {
@@ -117,7 +107,7 @@ namespace Physics {
 
 			// The final result should contain the inertia of a thick-walled but hollow cylinder, about the origin of the tank (ie. base of cylinder)
 			// For a stage component, this is the correct form and space for the inertia to be in
-			return tankInertia_tank.GetInertia();
+			return tankInertia_tank.GetInertia() * mTankMass;
 		}
 
 		void CylinderFluidTank::onFluidMassChange() 

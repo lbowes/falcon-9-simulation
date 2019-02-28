@@ -17,6 +17,7 @@ namespace Graphics {
 		scene::IAnimatedMesh* m = mSceneManager.getMesh("../res/models/F9S1Fuselage.obj");
     	mMesh = mSceneManager.addMeshSceneNode(m, &mParentSceneNode);
 		mMesh->setMaterialFlag(video::EMF_BACK_FACE_CULLING, false);
+		mMesh->setMaterialFlag(video::EMF_WIREFRAME, true);
 
 		mTankModel_temp = std::make_unique<TankModel_temp>(sceneManager);
 	}

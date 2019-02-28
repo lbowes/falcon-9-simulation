@@ -33,10 +33,8 @@ namespace Graphics {
 		
 		//See F9S1Model::update() for explanation
 		const chrono::Vector 
-			upperGridPos_world = {0, 0, 0},
-			lowerGridPos_world = {0, -3, 0},
-			upperDisplacement_world = upperGridPos_world - currentCamPos_world,
-			lowerDisplacement_world = lowerGridPos_world - currentCamPos_world;
+			gridPos_world = {0, 0, 0},
+			displacement_world = gridPos_world - currentCamPos_world;
 
 		irrlicht::ChIrrTools::drawGrid(
 			&mVidDriver, 
@@ -44,18 +42,7 @@ namespace Graphics {
 			1, 
 			50, 
 			50,
-			ChCoordsys<>(upperDisplacement_world, Q_from_AngAxis(CH_C_PI / 2, VECT_X)),
-            irr::video::SColor(70, 100, 100, 100), 
-			true
-		);
-
-		irrlicht::ChIrrTools::drawGrid(
-			&mVidDriver, 
-			1, 
-			1, 
-			50, 
-			50,
-			ChCoordsys<>(lowerDisplacement_world, Q_from_AngAxis(CH_C_PI / 2, VECT_X)),
+			ChCoordsys<>(displacement_world, Q_from_AngAxis(CH_C_PI / 2, VECT_X)),
             irr::video::SColor(70, 100, 100, 100), 
 			true
 		);
