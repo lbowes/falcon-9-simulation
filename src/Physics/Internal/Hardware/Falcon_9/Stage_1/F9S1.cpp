@@ -33,8 +33,8 @@ namespace Physics {
 			// ground truth mass values given online. The stage should reach the correct mass value.
 			
 			// temp - this is not accurate, just used to allow debugging other features
-			mBody->SetMass(1000);
-            mBody->SetInertia(chrono::utils::CalcCylinderGyration(1.83, 23.5, chrono::Vector(0, 23.5, 0)) * 1000);
+			mBody->SetMass(10);
+            mBody->SetInertia(chrono::utils::CalcCylinderGyration(1.83, 23.5, chrono::Vector(0, 23.5, 0)) * 10);
 		}
 
 		void F9S1::addPropellantSupplies() {
