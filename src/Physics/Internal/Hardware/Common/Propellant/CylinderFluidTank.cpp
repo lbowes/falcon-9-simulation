@@ -97,11 +97,11 @@ namespace Physics {
 
 			// Calculate the (local) inertia of a void cylinder with the inner dimensions of the tank, around it's CoM
 			// This will 'hollow out' the tank
-			//ChMatrix33<> tankInertiaVoid_tankCoM = utils::CalcCylinderGyration(mRadius - mWallThickness, mHeight * 0.5 - mWallThickness);
+			ChMatrix33<> tankInertiaVoid_tankCoM = utils::CalcCylinderGyration(mRadius - mWallThickness, mHeight * 0.5 - mWallThickness);
 			
 			// Place this inertia at the tank's CoM (relative to the tank's origin) and make it a void material
-			//const double voidMass = mVolume_internal * mMaterialDensity;
-			//tankInertia_tank.AddComponent(mTankCoM, voidMass, tankInertiaVoid_tankCoM, true);
+			const double voidMass = mVolume_internal * mMaterialDensity;
+			tankInertia_tank.AddComponent(mTankCoM, voidMass, tankInertiaVoid_tankCoM, true);
 
 			// The final result should contain the inertia of a thick-walled but hollow cylinder, about the origin of the tank (ie. base of cylinder)
 			// For a stage component, this is the correct form and space for the inertia to be in

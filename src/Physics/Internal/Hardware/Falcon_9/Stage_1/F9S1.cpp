@@ -15,12 +15,8 @@ namespace Physics {
 		F9S1::F9S1(chrono::ChSystemNSC& sys) :
 			IStage(sys)
 		{
-			mBody->SetFrame_REF_to_abs(chrono::ChFrame(chrono::Vector(0, 10, -10), chrono::Q_from_AngX(0.2)));
+			mBody->SetFrame_REF_to_abs(chrono::ChFrame(chrono::Vector(0, 10, 10), chrono::Q_from_AngX(0.2)));
 			assemble();
-
-			mBody->GetCollisionModel()->SetFamily(2);
-			mBody->GetCollisionModel()->SetFamilyMaskNoCollisionWithFamily(3);
-
 		}
 
 		void F9S1::stageSpecificUpdates(double dt) {
@@ -54,13 +50,10 @@ namespace Physics {
 				tankWallDensity
 			));
 
-			// A second propellant tank can be added without any simulation-explosion issues, as long as the mass of the stage body is similarly large.
-			// Consider how this can be solved - could a more limited number of rigid bodies be used, each containing CompositeInertia?
-			//----------------------------------------------------
 			mPropSupplies.addTank(std::make_unique<CylinderFluidTank>(
 				mSystemHandle,
 				mBody,
-				chrono::ChFrame(chrono::Vector(0.0, 2.3, 0.0)),
+				chrono::ChFrame(chrono::Vector(0.0, 0.0, 0.0)), //2.3
 				Propellants::mFluids[Propellants::RP1],
 				14.0,
 				radius,

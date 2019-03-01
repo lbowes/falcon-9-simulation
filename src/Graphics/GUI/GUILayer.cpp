@@ -111,20 +111,19 @@ namespace Graphics {
 			ImGui::SliderFloat("##speed", &mPlaybackHandle.mSpeed, 0.0f, 5.0f);
 			ImGui::PopItemWidth();
 
-			// Pause button
-			if(ImGui::SmallButton("Pause") && !mPlaybackHandle.mPaused) {
-				mPlaybackHandle.mLastSpeed = mPlaybackHandle.mSpeed;
-				mPlaybackHandle.mSpeed = 0.0f;
-				mPlaybackHandle.mPaused = true;
-			}
+            const std::string buttonText = mPlaybackHandle.mPaused ? "Resume" : "Pause";
 
-			ImGui::SameLine();
-
-			// Resume button
-			if(ImGui::SmallButton("Resume") && mPlaybackHandle.mPaused) {
-				mPlaybackHandle.mSpeed = mPlaybackHandle.mLastSpeed;
+            if(ImGui::Button(buttonText.c_str())) {
+                if(mPlaybackHandle.mPaused) {
+                    mPlaybackHandle.mSpeed = mPlaybackHandle.mLastSpeed;
 				mPlaybackHandle.mPaused = false;
-			}
+                }
+                else {
+                    mPlaybackHandle.mLastSpeed = mPlaybackHandle.mSpeed;
+				    mPlaybackHandle.mSpeed = 0.0f;
+				    mPlaybackHandle.mPaused = true;
+                }
+            }
 
 			ImGui::SameLine();
 

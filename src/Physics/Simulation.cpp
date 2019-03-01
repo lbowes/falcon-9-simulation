@@ -8,7 +8,7 @@ namespace Physics {
 
 	Simulation::Simulation() :
 		mDuration(20.0),
-		mUpdatesPerSec(100),
+		mUpdatesPerSec(200),
 		mDataSnapsPerSec(10),
 		mFalcon9(mSystem)
 	{ 
@@ -18,9 +18,8 @@ namespace Physics {
 		// temp
 		mSystem.SetSolverType(chrono::ChSolver::Type::BARZILAIBORWEIN);
 		mSystem.SetTimestepperType(chrono::ChTimestepper::Type::EULER_IMPLICIT_PROJECTED);
-		//mSystem.SetMaxPenetrationRecoverySpeed(3);
 		mSystem.SetSolverWarmStarting(true);
-		mSystem.SetMaxItersSolverSpeed(60);
+		mSystem.SetMaxItersSolverSpeed(200);
 
 		// FLOOR
 		floor = std::make_shared<chrono::ChBody>();
