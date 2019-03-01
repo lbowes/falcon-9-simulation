@@ -29,6 +29,9 @@ namespace Physics {
 				mBody(std::make_shared<chrono::ChBodyAuxRef>())
 			{ 
 				sys.AddBody(mBody);
+ 
+				mBody->GetCollisionModel()->SetFamily(3);
+				mBody->GetCollisionModel()->SetFamilyMaskNoCollisionWithFamily(2);
 			}
 
 			virtual ~IStageComponent() = default;

@@ -12,6 +12,9 @@ namespace Physics {
 			mStage_to_LV(stage_to_LV)
 		{
 			mSystemHandle.AddBody(mBody);
+
+			mBody->GetCollisionModel()->SetFamily(2);
+			mBody->GetCollisionModel()->SetFamilyMaskNoCollisionWithFamily(3);
 		}
 
 		void IStage::update(double dt) {
@@ -26,7 +29,9 @@ namespace Physics {
 		}
 
 		void IStage::assemble() {
+			addMiscMass();
 			addPropellantSupplies();
+			addEngines();
 			// TODO:
 			// addEngines()
 			// addSomethingElse()

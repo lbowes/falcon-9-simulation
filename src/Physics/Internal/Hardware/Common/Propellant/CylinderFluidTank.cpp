@@ -55,17 +55,15 @@ namespace Physics {
 			mBody->GetCollisionModel()->AddCylinder(mRadius, mRadius, mHeight * 0.5, mTankCoM_tank);
 			mBody->GetCollisionModel()->BuildModel();
 			mBody->SetCollide(true);
-            mBody->GetCollisionModel()->SetFamily(3);
-            mBody->GetCollisionModel()->SetFamilyMaskNoCollisionWithFamily(2);
 
             // Reference frame configuration
 			mBody->SetFrame_COG_to_REF(combinedCoM_tank());
-			mBody->SetFrame_REF_to_abs(mComp_to_stage);
+			mBody->SetFrame_REF_to_abs(mStageBodyHandle->GetFrame_REF_to_abs() * mComp_to_stage);
 		}
 
 		void CylinderFluidTank::attachToStage() {
 			mStageLink = std::make_shared<chrono::ChLinkLockLock>();
-    		mStageLink->Initialize(mBody, mStageBodyHandle, mComp_to_stage.GetCoord());
+    		mStageLink->Initialize(mStageBodyHandle, mBody, mComp_to_stage.GetCoord());
 
 			mSystemHandle.AddLink(mStageLink);
 		}
@@ -99,11 +97,11 @@ namespace Physics {
 
 			// Calculate the (local) inertia of a void cylinder with the inner dimensions of the tank, around it's CoM
 			// This will 'hollow out' the tank
-			ChMatrix33<> tankInertiaVoid_tankCoM = utils::CalcCylinderGyration(mRadius - mWallThickness, mHeight * 0.5 - mWallThickness);
+			//ChMatrix33<> tankInertiaVoid_tankCoM = utils::CalcCylinderGyration(mRadius - mWallThickness, mHeight * 0.5 - mWallThickness);
 			
 			// Place this inertia at the tank's CoM (relative to the tank's origin) and make it a void material
-			const double voidMass = mVolume_internal * mMaterialDensity;
-			tankInertia_tank.AddComponent(mTankCoM, voidMass, tankInertiaVoid_tankCoM, true);
+			//const double voidMass = mVolume_internal * mMaterialDensity;
+			//tankInertia_tank.AddComponent(mTankCoM, voidMass, tankInertiaVoid_tankCoM, true);
 
 			// The final result should contain the inertia of a thick-walled but hollow cylinder, about the origin of the tank (ie. base of cylinder)
 			// For a stage component, this is the correct form and space for the inertia to be in

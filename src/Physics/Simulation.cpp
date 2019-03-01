@@ -8,7 +8,7 @@ namespace Physics {
 
 	Simulation::Simulation() :
 		mDuration(50.0),
-		mUpdatesPerSec(500),
+		mUpdatesPerSec(250),
 		mDataSnapsPerSec(10),
 		mFalcon9(mSystem)
 	{ 

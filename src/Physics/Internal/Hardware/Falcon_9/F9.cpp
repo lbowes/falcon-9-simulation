@@ -6,15 +6,15 @@ namespace Physics {
 
 		F9::F9(chrono::ChSystemNSC& sys) :
 			ILaunchVehicle(sys),
-			mStage1(sys),
-			mStage2(sys)
+			mStage1(sys)//,
+			//mStage2(sys)
 		{
 			assemble();
 		}
 
 		void F9::assemble() {
 			addStage(mStage1);
-			addStage(mStage2, chrono::ChFrame<>());
+			//addStage(mStage2, chrono::ChFrame<>());
 		}
 
 	}

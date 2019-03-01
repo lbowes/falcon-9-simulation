@@ -24,7 +24,9 @@ namespace Physics {
 			void stageSpecificUpdates(double dt) override;
 
 		private:
+			void addMiscMass() override;
 			void addPropellantSupplies() override;
+			void addEngines() override;
 
 		};
 

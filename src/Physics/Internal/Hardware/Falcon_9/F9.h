@@ -19,7 +19,7 @@ namespace Physics {
 			friend class Physics::F9_DSS;
 		private:
 			F9S1 mStage1;
-			F9S2 mStage2;
+			// F9S2 mStage2;
 
 		public:
 			F9(chrono::ChSystemNSC& sys);

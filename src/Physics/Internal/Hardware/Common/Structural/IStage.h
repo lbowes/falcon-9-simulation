@@ -35,8 +35,10 @@ namespace Physics {
 			void assemble();
 			virtual void stageSpecificUpdates(double dt) = 0;
 
+			// Mass that is not accounted for later with sub components
+			virtual void addMiscMass() = 0;
 			virtual void addPropellantSupplies() = 0;
-			//virtual void addEngines() = 0;
+			virtual void addEngines() = 0;
 
 		};
 
