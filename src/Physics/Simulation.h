@@ -3,13 +3,10 @@
 #pragma once
 
 #include "Internal/Hardware/Falcon_9/F9.h"
+#include "External/GroundPlane.h"
 
 #include <chrono/physics/ChSystemNSC.h>
 #include <map>
-
-//temp
-#include <physics/ChBodyEasy.h>
-//
 
 namespace Physics {
 
@@ -23,13 +20,10 @@ namespace Physics {
 
 		chrono::ChSystemNSC mSystem;
 		Hardware::F9 mFalcon9;
+		External::GroundPlane mGround;
 
 		std::map<const unsigned, const F9_DSS> mStateHistory;
 		
-		//temp
-		std::shared_ptr<chrono::ChBody> floor;
-		//
-
 	public:
 		Simulation();
 		~Simulation() = default;

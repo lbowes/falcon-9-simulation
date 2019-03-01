@@ -3,7 +3,7 @@
 
 #include <core/ChFrame.h>
 #include <collision/ChCCollisionModel.h>
-#include <chrono/physics/ChSystemNSC.h>
+#include <physics/ChSystemNSC.h>
 
 namespace chrono {
 	class ChBodyAuxRef;

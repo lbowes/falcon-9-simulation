@@ -111,6 +111,7 @@ namespace Graphics {
 			ImGui::SliderFloat("##speed", &mPlaybackHandle.mSpeed, 0.0f, 5.0f);
 			ImGui::PopItemWidth();
 
+            // Pause/resume button
             const std::string buttonText = mPlaybackHandle.mPaused ? "Resume" : "Pause";
 
             if(ImGui::Button(buttonText.c_str())) {
@@ -128,7 +129,7 @@ namespace Graphics {
 			ImGui::SameLine();
 
 			// Reset time speed buttons
-			if(ImGui::SmallButton("Reset"))
+			if(ImGui::Button("Reset"))
 				mPlaybackHandle.mSpeed = 1.0f;
 
 			ImGui::End();

@@ -5,7 +5,6 @@
 #include <chrono/physics/ChSystemNSC.h>
 #include <core/ChFrame.h>
 #include <core/ChMatrix33.h>
-
 #include <chrono/utils/ChCompositeInertia.h>
 #include <chrono/utils/ChUtilsGeometry.h>
 
