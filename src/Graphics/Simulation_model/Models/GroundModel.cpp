@@ -1,4 +1,4 @@
-#include "GroundModel.cpp
+#include "GroundModel.h"
 #include "../../../Physics/External/GroundPlane.h"
 
 #include <chrono_irrlicht/ChIrrTools.h>
@@ -6,18 +6,18 @@
 
 namespace Graphics {
 
-    GroundModel::GroundModel(const Internal::GroundPlane& plane) :
-        mDataSource(plane)
+    GroundModel::GroundModel(irr::video::IVideoDriver& vidDriver) :
+        mVidDriver(&vidDriver)
     { }
 
-    void GroundModel::render(const chrono::Vector& currentCamPos_world) {
+    void GroundModel::render(const chrono::Vector& currentCamPos_world) const {
         using namespace chrono;
 
 		//See F9S1Model::update() for explanation
-		const chrono::Vector displacement_world = mDataSource.getPos_world() - currentCamPos_world;
+		const chrono::Vector displacement_world = Physics::External::GroundPlane::getPos_world() - currentCamPos_world;
 
 		irrlicht::ChIrrTools::drawGrid(
-			&mVidDriver,
+			mVidDriver,
 			1,
 			1,
 			50,

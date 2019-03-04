@@ -1,6 +1,8 @@
-#ifndef FALCON_9_SIMULATION_GROUNDMODEL_H
-#define FALCON_9_SIMULATION_GROUNDMODEL_H
+#ifndef GRAPHICS_GROUNDMODEL_H
+#define GRAPHICS_GROUNDMODEL_H
 #pragma once
+
+#include <chrono/core/ChVector.h>
 
 namespace Physics {
     namespace External {
@@ -8,15 +10,21 @@ namespace Physics {
     }
 }
 
+namespace irr {
+	namespace video {
+		class IVideoDriver;
+    }
+}
+
 namespace Graphics {
 
     class GroundModel {
     private:
-        const Physics::External::GroundPlane& mDataSource;
+        irr::video::IVideoDriver* mVidDriver;
 
     public:
-        GroundModel(const Physics::External::GroundPlane& plane);
-        GroundModel() = default;
+        GroundModel(irr::video::IVideoDriver& vidDriver);
+        ~GroundModel() = default;
 
         void render(const chrono::Vector& currentCamPos_world) const;
 
@@ -24,4 +32,4 @@ namespace Graphics {
 
 }
 
-#endif //FALCON_9_SIMULATION_GROUNDMODEL_H
+#endif // GRAPHICS_GROUNDMODEL_H

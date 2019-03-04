@@ -9,14 +9,10 @@
 
 namespace Graphics {
 
-	// TODO: Think about the best way to pass the GroundPlane data into the Visualisation
-	// This is currently broken.
-	// ----------------------------------------------------------------------------------
-
-	SimulationModelLayer::SimulationModelLayer(irr::video::IVideoDriver& vidDriver, irr::scene::ISceneManager& sceneManager, const Physics::External::GroundPlane& ground, float windowAspect) :
+	SimulationModelLayer::SimulationModelLayer(irr::video::IVideoDriver& vidDriver, irr::scene::ISceneManager& sceneManager, float windowAspect) :
 		mVidDriver(vidDriver),
 		mSceneManager(sceneManager),
-		mGroundModel(ground)
+		mGroundModel(vidDriver)
 	{ 
 		mLightSystem = std::make_unique<LightSystem>(vidDriver, sceneManager);
 		mF9Model = std::make_unique<F9Model>(sceneManager);

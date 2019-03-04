@@ -6,6 +6,10 @@
 namespace Physics {
     namespace External {
 
+		const chrono::Vector GroundPlane::mPos_world = chrono::Vector(0.0f, -20.0f, 0.0f);
+
+		const float GroundPlane::mThickness = 3.0f;
+
         GroundPlane::GroundPlane(chrono::ChSystemNSC& systemHandle) :
             mSystemHandle(systemHandle)
         {
@@ -17,7 +21,7 @@ namespace Physics {
             mBody->GetCollisionModel()->SetEnvelope(2.0);
 		    mBody->GetCollisionModel()->SetSafeMargin(2.0);
 		    mBody->GetCollisionModel()->ClearModel();
-		    mBody->GetCollisionModel()->AddBox(25, 3, 25);
+		    mBody->GetCollisionModel()->AddBox(25, mThickness, 25);
 		    mBody->GetCollisionModel()->BuildModel();
 		    mBody->SetBodyFixed(true);
 			mBody->SetCollide(true);
@@ -30,10 +34,10 @@ namespace Physics {
     		mBody->GetMaterialSurfaceNSC()->SetSpinningFriction(1);
 
     		// Positioning in world
-    		mBody->SetPos({0, -3, 0});
+    		mBody->SetPos(mPos_world - chrono::Vector(0, mThickness, 0));
         }
 
-		const chrono::Vector& GroundPlane::getPos_world() const { return mBody->GetPos(); }
+		const chrono::Vector& GroundPlane::getPos_world() { return mPos_world; }
 
     }
 }
