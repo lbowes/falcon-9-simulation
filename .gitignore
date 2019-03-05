@@ -35,7 +35,6 @@
 build/
 .vscode/
 .idea/
-src/CMakeLists.txt
 TODO
 imgui.ini
 res/SpaceXLogo.png

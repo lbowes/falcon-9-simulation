@@ -98,6 +98,8 @@ endif()
 SET(IRRIMGUI_INCLUDES
 	"/home/lbowes/dev/Programming/Deps/Projects/IrrIMGUI/IrrIMGUI-0.3.1/includes"
 	"/home/lbowes/dev/Programming/Deps/Projects/IrrIMGUI/IrrIMGUI-0.3.1/dependency"
+	"/home/userfs/l/lmb573/Documents/Personal/Programming/Deps/Projects/IrrIMGUI/IrrIMGUI-0.3.1/includes"
+	"/home/userfs/l/lmb573/Documents/Personal/Programming/Deps/Projects/IrrIMGUI/IrrIMGUI-0.3.1/dependency"
 )
 
 include_directories(${CHRONO_INCLUDE_DIRS} ${IRRIMGUI_INCLUDES})
@@ -109,9 +111,9 @@ if(MSVC)
     add_definitions("-D_CRT_SECURE_NO_DEPRECATE")  # avoids deprecation warnings
     add_definitions("-D_SCL_SECURE_NO_DEPRECATE")  # avoids deprecation warnings
     add_definitions( "-DNOMINMAX" )                # do not use MSVC's min/max macros
-    set(EXTRA_COMPILE_FLAGS "/wd4275")             # disable warnings triggered by Irrlicht
+    set(EXTRA_COMPILE_FLAGS "/wd4275 -std=c++17")             # disable warnings triggered by Irrlicht
 else()
-    set(EXTRA_COMPILE_FLAGS "")
+    set(EXTRA_COMPILE_FLAGS "-std=c++17")
 endif()
 
 #--------------------------------------------------------------
@@ -170,7 +172,12 @@ set_target_properties(myexe PROPERTIES
 # Link to Chrono libraries and dependency libraries
 #--------------------------------------------------------------
 
-target_link_libraries(myexe ${CHRONO_LIBRARIES} "/home/lbowes/dev/Programming/Deps/Projects/IrrIMGUI/build/libIrrIMGUI.a")
+SET(IRRLICHT_LIBS
+	-L/home/lbowes/dev/Programming/Deps/Projects/IrrIMGUI/build/libIrrIMGUI.a
+	-L/home/userfs/l/lmb573/Documents/Personal/Programming/Deps/Projects/IrrIMGUI/build/libIrrIMGUI.a
+)
+
+target_link_libraries(myexe ${CHRONO_LIBRARIES} ${IRRLICHT_LIBS})
 
 #--------------------------------------------------------------
 # === 4 (OPTIONAL) ===
