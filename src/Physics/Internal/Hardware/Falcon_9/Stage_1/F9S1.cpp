@@ -14,7 +14,7 @@ namespace Physics {
 		F9S1::F9S1(chrono::ChSystemNSC& sys) :
 			IStage(sys)
 		{
-			mBody->SetFrame_REF_to_abs(chrono::ChFrame(chrono::Vector(0, 10, 10), chrono::Q_from_AngX(0.2)));
+			//mBody->SetFrame_REF_to_abs(chrono::ChFrame(chrono::Vector(0, 10, 10), chrono::Q_from_AngX(0.2)));
 			assemble();
 		}
 
