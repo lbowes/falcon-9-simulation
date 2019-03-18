@@ -59,7 +59,7 @@ namespace Physics {
 
 	void Simulation::printASCIIProgressBar(double progress_0_1) {
 		// The maximum width of the progress bar in characters
-		const unsigned char maxWidth = 200;
+		const unsigned char maxWidth = 80;
 
 		std::string bar = std::string(maxWidth, '.');
 
