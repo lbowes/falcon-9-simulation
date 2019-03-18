@@ -50,6 +50,11 @@ namespace Physics {
 	void Simulation::serialiseSnapshot(unsigned long snapshotNumber) {
 		F9_DSS snapshot = F9_DSS(mFalcon9);
 		mStateHistory.insert({snapshotNumber, snapshot});
+
+		// TODO: Consider outputting the entire state of the simulation to a file.
+		// How large would this be if all state was saved at 1000 Hz?
+		// This would then be useful for reloading the visualisation quickly. A check would be required to
+		// see if the simulation had changed and therefore whether or not it would have to be re-run.
 	}
 
 	void Simulation::printASCIIProgressBar(double progress_0_1) {

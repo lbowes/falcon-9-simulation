@@ -31,7 +31,8 @@ namespace Graphics {
 	Visualisation::Visualisation(const std::map<const unsigned, const Physics::F9_DSS>& stateHistoryHandle, double snapshotInterval_s, double simDuration) :
 		mStateHistory(stateHistoryHandle),
 		mSnapshotInterval_s(snapshotInterval_s),
-		mSimDuration(simDuration)
+		mSimDuration(simDuration),
+		mIniSaveFile_imgui("../dat/imgui.ini")
 	{
 		using namespace irr;
 		
@@ -76,6 +77,8 @@ namespace Graphics {
 
 	Visualisation::~Visualisation() {
 		mDevice->drop();
+
+		ImGui::SaveIniSettingsToDisk(mIniSaveFile_imgui.c_str());
 		mImGuiHandle->drop();
 	}
 
@@ -94,6 +97,9 @@ namespace Graphics {
 		}
 	}
 
+    // TODO: Consider implementing application state saving similar to SNSS (window position/size)
+    // This could all be done with two new methods in here: save() and load()
+
 	void Visualisation::init() {
 		using namespace irr;
 		
@@ -105,6 +111,8 @@ namespace Graphics {
 		mCameraSystem = std::make_unique<CameraSystem>(*mDevice, *mSceneMgr, mHWinput, aspectRatio);
 		mModelLayer = std::make_unique<SimulationModelLayer>(*mVidDriver, *mSceneMgr, aspectRatio);
 		mGUILayer = std::make_unique<GUI::GUILayer>(mPlayback, mSimDuration);
+
+		ImGui::LoadIniSettingsFromDisk(mIniSaveFile_imgui.c_str());
 	}
 
 	void Visualisation::handleInput(const float frameTime_s) {

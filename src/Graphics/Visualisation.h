@@ -57,9 +57,11 @@ namespace Graphics {
 
 		const std::map<const unsigned, const Physics::F9_DSS>& mStateHistory;
 
-		const double 
+		const double
 			mSnapshotInterval_s,
 			mSimDuration;
+
+		const std::string mIniSaveFile_imgui;
 
 		PlaybackConfig mPlayback;
 
