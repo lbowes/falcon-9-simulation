@@ -114,17 +114,8 @@ namespace Graphics {
             // Pause/resume button
             const std::string buttonText = mPlaybackHandle.mPaused ? "Resume" : "Pause";
 
-            if(ImGui::Button(buttonText.c_str())) {
-                if(mPlaybackHandle.mPaused) {
-                    mPlaybackHandle.mSpeed = mPlaybackHandle.mLastSpeed;
-				mPlaybackHandle.mPaused = false;
-                }
-                else {
-                    mPlaybackHandle.mLastSpeed = mPlaybackHandle.mSpeed;
-				    mPlaybackHandle.mSpeed = 0.0f;
-				    mPlaybackHandle.mPaused = true;
-                }
-            }
+            if(ImGui::Button(buttonText.c_str()))
+                mPlaybackHandle.togglePauseState();
 
 			ImGui::SameLine();
 

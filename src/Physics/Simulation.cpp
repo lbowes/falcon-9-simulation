@@ -3,9 +3,9 @@
 namespace Physics {
 
 	Simulation::Simulation() :
-		mDuration(20.0),
-		mUpdatesPerSec(100),
-		mDataSnapsPerSec(10),
+		mDuration(5.0),        // 20.0 - todo: should eventually be removed in favour of simulation-termination condition checking
+		mUpdatesPerSec(1000),  // 1000
+		mDataSnapsPerSec(10),  // 10
 		mFalcon9(mSystem),
 		mGround(mSystem)
 	{ 
@@ -16,7 +16,7 @@ namespace Physics {
 		mSystem.SetSolverType(chrono::ChSolver::Type::BARZILAIBORWEIN);
 		mSystem.SetTimestepperType(chrono::ChTimestepper::Type::EULER_IMPLICIT_PROJECTED);
 		mSystem.SetSolverWarmStarting(true);
-		mSystem.SetMaxItersSolverSpeed(200);
+		mSystem.SetMaxItersSolverSpeed(200); // 200
 		//
 	}
 

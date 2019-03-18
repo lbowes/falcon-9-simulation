@@ -36,6 +36,8 @@ namespace Graphics {
 
 		PlaybackConfig();
 		~PlaybackConfig() = default;
+
+		void togglePauseState();
 	};
 
 	class Visualisation {

@@ -17,6 +17,18 @@ namespace Graphics {
 		mPaused(false)
 	{ }
 
+    void PlaybackConfig::togglePauseState() {
+		if(mPaused) {
+			mSpeed = mLastSpeed;
+			mPaused = false;
+		}
+		else {
+			mLastSpeed = mSpeed;
+			mSpeed = 0.0f;
+			mPaused = true;
+		}
+	}
+
 	Visualisation::Visualisation(const std::map<const unsigned, const Physics::F9_DSS>& stateHistoryHandle, double snapshotInterval_s, double simDuration) :
 		mStateHistory(stateHistoryHandle),
 		mSnapshotInterval_s(snapshotInterval_s),
@@ -97,8 +109,13 @@ namespace Graphics {
 	}
 
 	void Visualisation::handleInput(const float frameTime_s) {
+		// Quit app with Esc
 		if(mHWinput.isKeyPressed(irr::KEY_ESCAPE))
 			mDevice->closeDevice();
+
+        // Pause/resume with keyboard
+		if(mHWinput.isKeyReleased(irr::KEY_PAUSE))
+			mPlayback.togglePauseState();
 
 		const irr::core::recti dims = mVidDriver->getViewPort();
 		irr::core::vector2di centreScreen = irr::core::vector2di(dims.getWidth() / 2, dims.getHeight() / 2);
