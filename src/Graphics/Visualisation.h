@@ -83,4 +83,4 @@ namespace Graphics {
 
 }
 
-#endif
+#endif // GRAPHICS_VISUALISATION_H

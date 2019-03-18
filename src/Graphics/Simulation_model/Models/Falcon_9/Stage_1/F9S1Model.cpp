@@ -1,6 +1,7 @@
 #include "F9S1Model.h"
 #include "../../../Cameras/AllCameras.h"
 #include "../../../../../Physics/Internal/Hardware/Falcon_9/Stage_1/F9S1.h"
+#include "../../../../GUI/UIUtils.hpp"
 
 #include <ISceneManager.h>
 #include <IMeshSceneNode.h>
@@ -44,6 +45,7 @@ namespace Graphics {
 		ImGui::Begin("F9S1Model info");
 		ImGui::Text("abs pos: %.3f, %.3f, %.3f\n", f9s1Frame.GetPos().x(), f9s1Frame.GetPos().y(), f9s1Frame.GetPos().z());
 		ImGui::Text("rot    : %.3f, %.3f, %.3f\n", rot_ogl.x(), rot_ogl.y(), rot_ogl.z());
+		fixWinInViewport_imgui();
 		ImGui::End();
 		//
 	}

@@ -1,4 +1,5 @@
 #include "GUILayer.h"
+#include "UIUtils.hpp"
 #include "../Visualisation.h"
 
 #include <IMGUI/imgui.h>
@@ -19,20 +20,20 @@ namespace Graphics {
 
 		void GUILayer::loadImGuiStyle() {
 			using namespace ImGui;
-		
+
 			//Style
 			ImGuiStyle* s = &ImGui::GetStyle();
 			s->FrameBorderSize = 1.0f;
 			s->FramePadding = {4.0f,2.0f};
-			s->ItemSpacing = {8.0f,2.0f};
+			s->ItemSpacing = {8.0f,5.0f};
 			s->WindowBorderSize = 1.0f;
 			s->TabBorderSize = 1.0f;
-			s->WindowRounding = 1.0f;
-			s->ChildRounding = 1.0f;
-			s->FrameRounding = 1.0f;
-			s->ScrollbarRounding = 1.0f;
-			s->GrabRounding = 1.0f;
-			s->TabRounding = 1.0f;
+			s->WindowRounding = 6.0f;
+			s->ChildRounding = 3.9f;
+			s->FrameRounding = 3.0f;
+			s->ScrollbarRounding = 3.0f;
+			s->GrabRounding = 3.0f;
+			s->TabRounding = 3.0f;
 
 			//Colours
     		ImVec4* colors = s->Colors;
@@ -123,6 +124,7 @@ namespace Graphics {
 			if(ImGui::Button("Reset"))
 				mPlaybackHandle.mSpeed = 1.0f;
 
+            fixWinInViewport_imgui();
 			ImGui::End();
 		}
 

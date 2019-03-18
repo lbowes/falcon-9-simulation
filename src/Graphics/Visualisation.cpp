@@ -5,7 +5,6 @@
 #include <chrono_irrlicht/ChIrrTools.h>
 #include <algorithm>
 #include <core/ChVector.h>
-
 #include <IMGUI/imgui.h>
 
 namespace Graphics {
@@ -63,7 +62,7 @@ namespace Graphics {
 
 		mDevice->setWindowCaption(L"Falcon 9 Simulation");
 
-		//Done to prevent IrrIMGUI from hiding the OS cursor during initialisation and forcing a new rendered cursor
+		// Done to prevent IrrIMGUI from hiding the OS cursor during initialisation and forcing a new rendered cursor
 		IrrIMGUI::SIMGUISettings settings;
 		settings.mIsGUIMouseCursorEnabled = false;
 
@@ -127,13 +126,13 @@ namespace Graphics {
 		irr::core::vector2di centreScreen = irr::core::vector2di(dims.getWidth() / 2, dims.getHeight() / 2);
 		mHWinput.update(centreScreen);
 
-		//Fix window aspect ratio with resizing
+		// Fix window aspect ratio with resizing
 		const float aspectRatio = static_cast<float>(dims.getWidth()) / dims.getHeight();
 		mCameraSystem->update(aspectRatio, frameTime_s);
 		
 		handleTimeSelection(frameTime_s);
 
-		//Pass in the required camera position so that models can update their own positions
+		// Pass in the required camera position so that models can update their own positions
 		mModelLayer->update(mCameraSystem->getCurrentSimCamera().getPosition_world(), mLiveSnapshot, frameTime_s);
 	}
 	

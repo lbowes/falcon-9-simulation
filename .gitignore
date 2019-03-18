@@ -35,8 +35,6 @@
 build/
 .vscode/
 .idea/
-TODO
-imgui.ini
 res/SpaceXLogo.png
 res/HighResLogo.xcf
 res/textures/*

@@ -4,6 +4,7 @@
 
 #include "../Cameras/AllCameras.h"
 #include "../../../Physics/Internal/Hardware/Falcon_9/Stage_1/F9S1.h"
+#include "../../GUI/UIUtils.hpp"
 
 #include <ISceneManager.h>
 #include <IMeshSceneNode.h>
@@ -41,6 +42,7 @@ namespace Graphics {
 			ImGui::Begin("TankMode_temp info");
 			ImGui::Text("abs pos: %.3f, %.3f, %.3f\n", tankFrame.GetPos().x(), tankFrame.GetPos().y(), tankFrame.GetPos().z());
 			ImGui::Text("rot    : %.3f, %.3f, %.3f\n", rot_ogl.x(), rot_ogl.y(), rot_ogl.z());
+			fixWinInViewport_imgui();
 			ImGui::End();
 		}
 

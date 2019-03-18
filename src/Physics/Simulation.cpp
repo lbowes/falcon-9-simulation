@@ -36,8 +36,7 @@ namespace Physics {
 			if((updateCount + 1) % (mUpdatesPerSec / mDataSnapsPerSec) == 0)
 				serialiseSnapshot(snapshotCount++);
 
-			printf("\rTime: %.2f", mSystem.GetChTime());
-			fflush(stdout);
+			printASCIIProgressBar(mSystem.GetChTime() / mDuration);
 			updateCount++;
 		}
 
@@ -51,6 +50,25 @@ namespace Physics {
 	void Simulation::serialiseSnapshot(unsigned long snapshotNumber) {
 		F9_DSS snapshot = F9_DSS(mFalcon9);
 		mStateHistory.insert({snapshotNumber, snapshot});
+	}
+
+	void Simulation::printASCIIProgressBar(double progress_0_1) {
+		// The maximum width of the progress bar in characters
+		const unsigned char maxWidth = 200;
+
+		std::string bar = std::string(maxWidth, '.');
+
+		for(unsigned char i = 0; i < static_cast<size_t>(progress_0_1 * maxWidth); i++)
+		    bar[i] = '=';
+
+		bar += "|";
+
+        // Set bold green colour
+        printf("\033[1;32m");
+		printf("\rTime: %.2f / %.2f s (%.2f %%): %s", mSystem.GetChTime(), mDuration, progress_0_1 * 100.0f, bar.c_str());
+		fflush(stdout);
+		// Reset to default colour
+		printf("\033[0m");
 	}
 
 }

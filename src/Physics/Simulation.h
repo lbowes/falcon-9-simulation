@@ -36,9 +36,10 @@ namespace Physics {
 	private:
 		bool terminationCondMet();
 		void serialiseSnapshot(unsigned long snapshotNumber);
+		void printASCIIProgressBar(double progress_0_1);
 
 	};
 
 }
 
-#endif
+#endif // PHYSICS_SIMULATION_H

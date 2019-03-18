@@ -30,4 +30,4 @@ namespace Physics {
     }
 }
 
-#endif
+#endif // PHYSICS_EXTERNAL_GROUNDPLANE_H
