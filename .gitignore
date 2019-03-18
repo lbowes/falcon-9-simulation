@@ -33,6 +33,7 @@
 
 #Misc files
 build/
+!build/imgui.ini
 .vscode/
 .idea/
 res/SpaceXLogo.png
