@@ -3,8 +3,12 @@ A simulation of the launch and landing of one of SpaceX's vehicles. Development 
 
 ![alt-text](https://github.com/lbowes/Falcon-9-Simulation/blob/master/screenshots/GridFinDeploy.gif "Grid fin deployment")
 
+## Status
+(Apr 19)
+Project is midway through a conversion from personal physics/graphics libraries (GameFramework) to 3rd party libraries (ProjectChrono, Irrlicht etc). The GIFs here reflect the **old state** of the application, but the current build does not.
+
 ## Aim
-I started this project with the aim of simulating the [landing](https://www.youtube.com/watch?v=ANv5UfZsvZQ) of the first stage of [SpaceX](https://www.spacex.com/)'s Falcon 9 launch vehicle. The company made history with this feat on the 22nd December 2015.
+I started this project with the aim of simulating the [landing](https://www.youtube.com/watch?v=ANv5UfZsvZQ) of the first stage of [SpaceX](https://www.spacex.com/)'s Falcon 9 launch vehicle. The company made history with this feat in December 2015.
 The project has evolved to include the entire flight as well as support for additional vehicles in the future.
 
 ## Dependencies
