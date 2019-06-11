@@ -34,8 +34,6 @@ namespace Physics {
 		protected:
 			void assemble();
 			virtual void stageSpecificUpdates(double dt) = 0;
-
-			// Mass that is not accounted for later with sub components
 			virtual void addMiscMass() = 0;
 			virtual void addPropellantSupplies() = 0;
 			virtual void addEngines() = 0;
@@ -45,4 +43,4 @@ namespace Physics {
 	}
 }
 
-#endif
+#endif // PHYSICS_HARDWARE_ISTAGE_H

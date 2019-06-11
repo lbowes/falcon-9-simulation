@@ -21,9 +21,8 @@ namespace Physics {
 			F9S1(chrono::ChSystemNSC& sys);
 			~F9S1() = default;
 
-			void stageSpecificUpdates(double dt) override;
-
 		private:
+			void stageSpecificUpdates(double dt) override;
 			void addMiscMass() override;
 			void addPropellantSupplies() override;
 			void addEngines() override;
@@ -36,8 +35,8 @@ namespace Physics {
 	private:
 		//TODO: Add all dynamic state owned by F9S1
 		chrono::ChFrame<> 
-			mS1ToWorldTransform,
-			mTankToWorldTransform;
+			mS1ToWorldTransform;//,
+			//mTankToWorldTransform;
 
 	public:
 		F9S1_DSS() = default;
@@ -48,7 +47,7 @@ namespace Physics {
 		static F9S1_DSS lerp(const F9S1_DSS& a, const F9S1_DSS& b, float x);
 
 		const chrono::ChFrame<>& getS1ToWorldTransform() const { return mS1ToWorldTransform; }
-		const chrono::ChFrame<>& getTankToWorldTransform() const { return mTankToWorldTransform; }
+		//const chrono::ChFrame<>& getTankToWorldTransform() const { return mTankToWorldTransform; }
 
 	};	
 

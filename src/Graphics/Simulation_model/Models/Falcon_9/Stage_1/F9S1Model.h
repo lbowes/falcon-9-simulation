@@ -29,7 +29,7 @@ namespace Graphics {
 		irr::scene::IMeshSceneNode* mMesh;
 
 		// temp
-		std::unique_ptr<TankModel_temp> mTankModel_temp;
+		//std::unique_ptr<TankModel_temp> mTankModel_temp;
 		//
 
 	public:

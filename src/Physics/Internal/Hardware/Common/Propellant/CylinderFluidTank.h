@@ -5,41 +5,49 @@
 #include "../Structural/IStageComponent.hpp"
 #include "Fluid.h"
 
+namespace chrono {
+    class ChSystemNSC;
+}
+
 namespace Physics {
 	namespace Hardware {
 
 		class CylinderFluidTank : public IStageComponent {
 		private:
-			const Fluid mFluid;
+            chrono::ChFrame<> mTransform_stage;
 			
+			const Fluid mFluid;
+
 			const double
-				mHeight,          //m
-				mRadius,          //m
-				mWallThickness,   //m
-				mMaterialDensity, //kg/m^3
-				mInternalHeight,  //m
-				mVolume_internal, //m^3 volume inside tank excluding tank walls
-				mMaxFluidMass,    //kg
-				mTankMass;        //kg
+				mHeight,          // m
+				mRadius,          // m
+				mWallThickness,   // m
+				mMaterialDensity, // kg/m^3
+				mInternalHeight,  // m
+				mVolume_internal, // m^3 volume inside tank excluding tank walls
+				mMaxFluidMass,    // kg
+				mTankMass;        // kg
 
 			const chrono::Vector mTankCoM_tank;
 
 			const chrono::ChMatrix33<> mTankInertia_tank;
 
 			double
-				mFluidVolume,     //m^3
-				mFluidLevel,      //m, measured from the top of the lower wall of the tank (= 0.0) 
-				mPercentFull,     //0 -> 1
-				mFluidMass;       //kg
+				mFluidVolume,     // m^3
+				mFluidLevel,      // m, measured from the top of the lower wall of the tank (= 0.0) 
+				mPercentFull,     // 0 -> 1
+				mFluidMass;       // kg
 
-			chrono::ChVector<> mFluidCoM_tank;
+			chrono::Vector mFluidCoM_tank;
 
 			chrono::ChMatrix33<> mFluidInertia_tank;
 			
-			std::shared_ptr<chrono::ChLinkLockLock> mStageLink;
+			std::shared_ptr<chrono::ChLinkLockLock> 
+                mStageLink1,
+                mStageLink2;
 
 		public:
-			CylinderFluidTank(chrono::ChSystemNSC& sys, std::shared_ptr<chrono::ChBodyAuxRef>& stageBody, const chrono::ChFrame<>& tank_to_Stage, Fluid f, double height, double radius, double thickness, double density);
+			CylinderFluidTank(std::shared_ptr<chrono::ChBodyAuxRef>& stageBody, const chrono::ChFrame<>& transform_stage, Fluid f, double height, double radius, double thickness, double density);
 			~CylinderFluidTank() = default;
 
 			void addFluid(double mass);
@@ -65,4 +73,4 @@ namespace Physics {
 	}
 }
 
-#endif
+#endif // PHYSICS_HARDWARE_CYLINDERFLUIDTANK_H

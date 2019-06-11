@@ -1,11 +1,12 @@
 #include "Simulation.h"
+#include <chrono>
 
 namespace Physics {
 
 	Simulation::Simulation() :
-		mDuration(5.0),        // 20.0 - todo: should eventually be removed in favour of simulation-termination condition checking
-		mUpdatesPerSec(1000),  // 1000
-		mDataSnapsPerSec(10),  // 10
+		mDuration(10.0),       // 20.0 - todo: should eventually be removed in favour of simulation-termination condition checking
+		mUpdatesPerSec(100),  // 1000
+		mDataSnapsPerSec(10), // 10 - sample the state of the simulation every 1/10th of a second
 		mFalcon9(mSystem),
 		mGround(mSystem)
 	{ 
@@ -18,6 +19,8 @@ namespace Physics {
 		mSystem.SetSolverWarmStarting(true);
 		mSystem.SetMaxItersSolverSpeed(200); // 200
 		//
+        
+        mSystem.Set_G_acc({0, 0, 0});
 	}
 
 	void Simulation::run() {
@@ -26,6 +29,8 @@ namespace Physics {
 			snapshotCount = 0;
 
 		printf("Simulation started...\n");
+
+        const auto startTime = std::chrono::high_resolution_clock::now();
 
 		while(!terminationCondMet()) {
 			const double dt = 1.0 / mUpdatesPerSec;
@@ -36,7 +41,9 @@ namespace Physics {
 			if((updateCount + 1) % (mUpdatesPerSec / mDataSnapsPerSec) == 0)
 				serialiseSnapshot(snapshotCount++);
 
-			printASCIIProgressBar(mSystem.GetChTime() / mDuration);
+            const auto currentTime = std::chrono::high_resolution_clock::now();
+			const double timeTaken_s = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - startTime).count() / 1000.0;
+            printProgress(timeTaken_s, mSystem.GetChTime() / mDuration);
 			updateCount++;
 		}
 
@@ -57,20 +64,11 @@ namespace Physics {
 		// see if the simulation had changed and therefore whether or not it would have to be re-run.
 	}
 
-	void Simulation::printASCIIProgressBar(double progress_0_1) {
+	void Simulation::printProgress(double timeTaken_s, double progress_0_1) {
 		// The maximum width of the progress bar in characters
-		const unsigned char maxWidth = 80;
-
-		std::string bar = std::string(maxWidth, '.');
-
-		for(unsigned char i = 0; i < static_cast<size_t>(progress_0_1 * maxWidth); i++)
-		    bar[i] = '=';
-
-		bar += "|";
-
         // Set bold green colour
         printf("\033[1;32m");
-		printf("\rTime: %.2f / %.2f s (%.2f %%): %s", mSystem.GetChTime(), mDuration, progress_0_1 * 100.0f, bar.c_str());
+		printf("\r%.2f s Simulated: %.2f / %.2f s (%.2f %%)", timeTaken_s, mSystem.GetChTime(), mDuration, progress_0_1 * 100.0f);
 		fflush(stdout);
 		// Reset to default colour
 		printf("\033[0m");

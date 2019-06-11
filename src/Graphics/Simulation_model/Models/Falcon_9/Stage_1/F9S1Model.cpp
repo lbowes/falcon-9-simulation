@@ -20,7 +20,7 @@ namespace Graphics {
 		mMesh->setMaterialFlag(video::EMF_BACK_FACE_CULLING, false);
 		//mMesh->setMaterialFlag(video::EMF_WIREFRAME, true);
 
-		mTankModel_temp = std::make_unique<TankModel_temp>(sceneManager);
+		//mTankModel_temp = std::make_unique<TankModel_temp>(sceneManager);
 	}
 
 	void F9S1Model::update(const chrono::Vector& currentCamPos_world, const Physics::F9S1_DSS& f9s1, float dt) {
@@ -38,7 +38,7 @@ namespace Graphics {
 		mMesh->setRotation({rot_ogl.x(), rot_ogl.y(), rot_ogl.z()});
 
 		// temp
-		mTankModel_temp->update(currentCamPos_world, f9s1, dt);
+		//mTankModel_temp->update(currentCamPos_world, f9s1, dt);
 		//
 
 		//temp

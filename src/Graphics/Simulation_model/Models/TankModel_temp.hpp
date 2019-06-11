@@ -31,23 +31,23 @@ namespace Graphics {
 		~TankModel_temp() = default;
 
 		void update(const chrono::ChVector<double>& currentCamPos_world, const Physics::F9S1_DSS& f9s1, float dt) {
-			chrono::ChFrame<> tankFrame = f9s1.getTankToWorldTransform();
-
-			const chrono::Vector pos_ogl = tankFrame.GetPos() - currentCamPos_world;
-			mMesh->setPosition({pos_ogl.x(), pos_ogl.y(), pos_ogl.z()});
-
-			const chrono::Vector rot_ogl = tankFrame.GetRot().Q_to_Euler123() * chrono::CH_C_RAD_TO_DEG;
-			mMesh->setRotation({rot_ogl.x(), rot_ogl.y(), rot_ogl.z()});
-
-			ImGui::Begin("TankMode_temp info");
-			ImGui::Text("abs pos: %.3f, %.3f, %.3f\n", tankFrame.GetPos().x(), tankFrame.GetPos().y(), tankFrame.GetPos().z());
-			ImGui::Text("rot    : %.3f, %.3f, %.3f\n", rot_ogl.x(), rot_ogl.y(), rot_ogl.z());
-			fixWinInViewport_imgui();
-			ImGui::End();
+			//chrono::ChFrame<> tankFrame = f9s1.getTankToWorldTransform();
+//
+			//const chrono::Vector pos_ogl = tankFrame.GetPos() - currentCamPos_world;
+			//mMesh->setPosition({pos_ogl.x(), pos_ogl.y(), pos_ogl.z()});
+//
+			//const chrono::Vector rot_ogl = tankFrame.GetRot().Q_to_Euler123() * chrono::CH_C_RAD_TO_DEG;
+			//mMesh->setRotation({rot_ogl.x(), rot_ogl.y(), rot_ogl.z()});
+//
+			//ImGui::Begin("TankMode_temp info");
+			//ImGui::Text("abs pos: %.3f, %.3f, %.3f\n", tankFrame.GetPos().x(), tankFrame.GetPos().y(), tankFrame.GetPos().z());
+			//ImGui::Text("rot    : %.3f, %.3f, %.3f\n", rot_ogl.x(), rot_ogl.y(), rot_ogl.z());
+			//fixWinInViewport_imgui();
+			//ImGui::End();
 		}
 
 	};
 
 }
 
-#endif
+#endif // GRAPHICS_TANKMODELTEMP_H

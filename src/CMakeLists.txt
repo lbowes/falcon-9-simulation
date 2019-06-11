@@ -62,7 +62,8 @@ project(F9Sim)
 LIST(APPEND CMAKE_PREFIX_PATH "${CMAKE_INSTALL_PREFIX}/../Chrono/lib")
 find_package(Chrono
              COMPONENTS Irrlicht
-             CONFIG)
+             CONFIG
+)
 
 #--------------------------------------------------------------
 # Return now if Chrono or a required component was not found.

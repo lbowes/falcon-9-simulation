@@ -15,6 +15,7 @@ namespace Physics {
 
 			mBody->GetCollisionModel()->SetFamily(2);
 			mBody->GetCollisionModel()->SetFamilyMaskNoCollisionWithFamily(3);
+            mBody->SetCollide(true);
 		}
 
 		void IStage::update(double dt) {
@@ -32,9 +33,6 @@ namespace Physics {
 			addMiscMass();
 			addPropellantSupplies();
 			addEngines();
-			// TODO:
-			// addEngines()
-			// addSomethingElse()
 		}
 
 	}

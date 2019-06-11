@@ -36,7 +36,7 @@ namespace Physics {
 	private:
 		bool terminationCondMet();
 		void serialiseSnapshot(unsigned long snapshotNumber);
-		void printASCIIProgressBar(double progress_0_1);
+		void printProgress(double startTime_s, double progress_0_1);
 
 	};
 
