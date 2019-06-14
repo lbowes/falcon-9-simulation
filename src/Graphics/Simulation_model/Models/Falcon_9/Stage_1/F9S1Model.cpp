@@ -9,6 +9,9 @@
 
 namespace Graphics {
 
+    // -------- CURRENTLY WORKING ON ---------
+    // Fix rendering issue with spinning
+
 	F9S1Model::F9S1Model(irr::scene::ISceneManager& sceneManager, irr::scene::ISceneNode& f9ModelSceneNode) :
 		mSceneManager(sceneManager),
 		mParentSceneNode(f9ModelSceneNode)
@@ -24,18 +27,26 @@ namespace Graphics {
 	}
 
 	void F9S1Model::update(const chrono::Vector& currentCamPos_world, const Physics::F9S1_DSS& f9s1, float dt) {
-		chrono::ChFrame<> f9s1Frame = f9s1.getS1ToWorldTransform();
+		chrono::ChCoordsys<double> f9s1Frame = f9s1.getS1ToWorldTransform().GetCoord();
 
 		//This high (double) precision vector is used to eliminate floating point errors with normal low precision (float)
 		//vectors. If we keep the 'internal OpenGL' camera at the origin, and calculate a high precision displacement
 		//between the object's and camera's imaginary positions, then floating point errors only occur on objects very far 
 		//away from the camera (where they are not noticeable anyway).
 
-		const chrono::Vector pos_ogl = f9s1Frame.GetPos() - currentCamPos_world;
+		const chrono::Vector pos_ogl = f9s1Frame.pos - currentCamPos_world;
 		mMesh->setPosition({pos_ogl.x(), pos_ogl.y(), pos_ogl.z()});
 
-		const chrono::Vector rot_ogl = f9s1Frame.GetRot().Q_to_Euler123() * chrono::CH_C_RAD_TO_DEG;
-		mMesh->setRotation({rot_ogl.x(), rot_ogl.y(), rot_ogl.z()});
+		const chrono::Vector rot_ogl = f9s1Frame.rot.Q_to_Euler123() * chrono::CH_C_RAD_TO_DEG;
+
+        static float rot[3];
+        ImGui::Begin("Model rotation");
+        ImGui::SliderFloat3("", rot, 0.0f, 360.0f);
+        ImGui::Text("Rot: %.2f, %.2f, %.2f", rot_ogl.x(), rot_ogl.y(), rot_ogl.z());
+        ImGui::End();
+
+        mMesh->setRotation({rot_ogl.x(), rot_ogl.y(), rot_ogl.z()});
+        //mMesh->setRotation({rot[0], rot[1], rot[2]});
 
 		// temp
 		//mTankModel_temp->update(currentCamPos_world, f9s1, dt);
@@ -43,7 +54,7 @@ namespace Graphics {
 
 		//temp
 		ImGui::Begin("F9S1Model info");
-		ImGui::Text("abs pos: %.3f, %.3f, %.3f\n", f9s1Frame.GetPos().x(), f9s1Frame.GetPos().y(), f9s1Frame.GetPos().z());
+		ImGui::Text("abs pos: %.3f, %.3f, %.3f\n", f9s1Frame.pos.x(), f9s1Frame.pos.y(), f9s1Frame.pos.z());
 		ImGui::Text("rot    : %.3f, %.3f, %.3f\n", rot_ogl.x(), rot_ogl.y(), rot_ogl.z());
 		fixWinInViewport_imgui();
 		ImGui::End();

@@ -3,9 +3,10 @@
 
 #include <chrono_irrlicht/ChIrrWizard.h>
 #include <chrono_irrlicht/ChIrrTools.h>
-#include <algorithm>
 #include <core/ChVector.h>
+#include <core/ChFrame.h>
 #include <IMGUI/imgui.h>
+#include <algorithm>
 
 namespace Graphics {
 
@@ -136,7 +137,7 @@ namespace Graphics {
 
 		// Fix window aspect ratio with resizing
 		const float aspectRatio = static_cast<float>(dims.getWidth()) / dims.getHeight();
-		mCameraSystem->update(aspectRatio, frameTime_s);
+		mCameraSystem->update(mLiveSnapshot.getF9S1_DSS().getS1ToWorldTransform().GetCoord(), aspectRatio, frameTime_s);
 		
 		handleTimeSelection(frameTime_s);
 

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "AllCameras.h"
+
 #include <vector2d.h>
 #include <vector>
 
@@ -36,7 +37,7 @@ namespace Graphics {
 		CameraSystem(irr::IrrlichtDevice& device, irr::scene::ISceneManager& sceneManager, Input::HWEventReceiver& input, float windowAspect);
 		~CameraSystem() = default;
 
-		void update(float windowAspect, float dt);
+		void update(chrono::ChCoordsys<double> stage1Transform_world, float windowAspect, float dt);
 		void handleInput(irr::core::vector2di centreScreenPos_scr, float dt);
 		
 		bool hasFocus() const { return mHasFocus; }
@@ -48,4 +49,4 @@ namespace Graphics {
 
 }
 
-#endif
+#endif // GRAPHICS_CAMERASYSTEM_H

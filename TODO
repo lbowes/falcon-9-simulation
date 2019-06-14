@@ -1,0 +1,9 @@
+ _____ ___  ___   ___  
+|_   _/ _ \|   \ / _ \ 
+  | || (_) | |) | (_) |
+  |_| \___/|___/ \___/ 
+__________________________________________________________________________________________________________________________________
+
+1. Fix the issue of linking multiple tanks to the stage. Fine with 1, explodes with any more.
+
+2. Look into saving the state of the simulation (time/speed controls, camera position) with json file (see NeuralNetwork project)

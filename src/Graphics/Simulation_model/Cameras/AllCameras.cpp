@@ -1,8 +1,11 @@
 #include "AllCameras.h"
 #include "../../../Input/HWEventReceiver.h"
+
+#include <core/ChQuaternion.h>
+#include <core/ChVector.h>
+#include <core/ChCoordsys.h>
 #include <ISceneManager.h>
 #include <ICameraSceneNode.h>
-#include <chrono/core/ChQuaternion.h>
 #include <IMGUI/imgui.h>
 
 namespace Graphics {
@@ -20,12 +23,11 @@ namespace Graphics {
 		mInternalCamera->setFarValue(far);
 		mInternalCamera->setAspectRatio(aspect);
 		mInternalCamera->setFOV(FOVY_degs * chrono::CH_C_DEG_TO_RAD);
-		mInternalCamera->bindTargetAndRotation(true);
 	}
 
 	FPVCamera::FPVCamera(irr::scene::ISceneManager& sceneManager, Input::HWEventReceiver& input, chrono::ChVector<> position_world, irr::core::vector3df lookAtDir_world, float near, float far, float aspect, float FOVY_degs) :
 		SimulationCamera(sceneManager, position_world, lookAtDir_world, near, far, aspect, FOVY_degs),
-		mMinMovementSpeed(6.4f),        //25.0f
+		mMinMovementSpeed(6.4f),         //25.0f
 		mMaxMovementSpeed(20000.0f),     //20000.0f
 		mSpeedAdjustSensitivity(200.0f), //200.0f
 		mMovementFriction(7.0f),         //7.0f
@@ -46,8 +48,8 @@ namespace Graphics {
 		mPosition_world += mVelocity_world * static_cast<double>(dt);
 		mVelocity_world *= 1.0 / (1.0 + (dt * mMovementFriction));
 
-		//if(mPosition_world.y() < 1.76)
-			//mPosition_world.y() = 1.76;
+		if(mPosition_world.y() < 1.78)
+			mPosition_world.y() = 1.78;
 
 		mInternalCamera->setTarget(mLookAtDir_world);
 	}
@@ -153,7 +155,7 @@ namespace Graphics {
 		mPosition_world = mPosition_stage;
 	}
 
-	void InterstageCamera::update(float windowAspect) {
+	void InterstageCamera::update(chrono::ChCoordsys<double> stageTransform_world, float windowAspect) {
 		//using namespace glm;
 
 #if CONFIGURE_INTERSTAGE_CAM
@@ -203,9 +205,15 @@ namespace Graphics {
 		
 		printf("clockDegree_degs: %f\npitch_degs: %f\nheight_stage: %f\nheightAboveWall: %f\nFOV: %f\n\n\n", clockDegree_degs, pitch_degs, height_stage, heightAboveWall, FOV);
 #else
-		//mPosition = stage1ToWorld.toParentSpace(mPosition_stage);
-		//mPerspectiveCamera.setFront(stage1ToWorld.toParentSpace_rotation(mFront_stage));
-		//mPerspectiveCamera.setUp(stage1ToWorld.toParentSpace_rotation(mUp_stage));
+		// Transform the interstage camera's position into world space
+        mPosition_world = stageTransform_world.TransformPointLocalToParent(mPosition_stage);
+        
+        // Transform its direction (look at) vector into world space
+        chrono::Vector lookAt_world = stageTransform_world.TransformDirectionLocalToParent(mLookAt_stage);
+        mInternalCamera->setTarget(irr::core::vector3df(float(lookAt_world.x()), float(lookAt_world.y()), float(lookAt_world.z())));
+        
+        chrono::Vector up_world = stageTransform_world.TransformDirectionLocalToParent(mUp_stage);
+        mInternalCamera->setUpVector(irr::core::vector3df(float(up_world.x()), float(up_world.y()), float(up_world.z())));
 #endif
 
 		mInternalCamera->setAspectRatio(windowAspect);

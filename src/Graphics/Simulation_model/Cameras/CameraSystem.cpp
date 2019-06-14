@@ -15,8 +15,8 @@ namespace Graphics {
 		mCameras.push_back(std::make_unique<FPVCamera>(
 			sceneManager,
 			input,
-			chrono::Vector(-20, 3, 0),    //-20.0, 3.0, 0.0 //-85.0, 30.0, 0.0
-			irr::core::vector3df(1, 0, 0), //1.0, 0.0, 0.0
+			chrono::Vector(0, 3, 20),       //-20.0, 3.0, 0.0 //-85.0, 30.0, 0.0
+			irr::core::vector3df(0, 0, -1), //1.0, 0.0, 0.0
 			0.1f,
 			10000.0f,
 			windowAspect,
@@ -37,9 +37,9 @@ namespace Graphics {
 		//));
 	}
 
-	void CameraSystem::update(float windowAspect, float dt) {
+	void CameraSystem::update(chrono::ChCoordsys<double> stage1Transform_world, float windowAspect, float dt) {
 		static_cast<FPVCamera*>(mCameras[FPV].get())->update(windowAspect, dt);
-		static_cast<InterstageCamera*>(mCameras[interstage].get())->update(windowAspect);
+		static_cast<InterstageCamera*>(mCameras[interstage].get())->update(stage1Transform_world, windowAspect);
 		//CHASER_CAM->update(windowAspect, stage1CoMPosition_world/* , dt */);
 	}
 

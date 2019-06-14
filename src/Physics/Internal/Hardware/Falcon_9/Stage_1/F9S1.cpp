@@ -15,8 +15,9 @@ namespace Physics {
 			IStage(sys)
 		{
             // temp: positioning the vehicle in the world (should be done via the launch vehicle eventually)
-        	//mBody->SetFrame_REF_to_abs(chrono::ChFrame(chrono::Vector(0, 10, 10), chrono::Q_from_AngX(0.2)));
-			mBody->SetWvel_loc(chrono::Vector(0, 10, 0));
+        	mBody->SetFrame_REF_to_abs(chrono::ChFrame(chrono::Vector(0, 10, 10), chrono::Q_from_AngX(0.6)));
+			//mBody->SetRot(chrono::Q_from_AngY(chrono::CH_C_PI));
+			//mBody->SetRot_dt(chrono::Q_from_AngAxis(1.0, {0, 1, 0}));
             //mBody->SetFrame_REF_to_abs(chrono::ChFrame(chrono::Vector(0, 0, 0)));
 
         	assemble();
@@ -42,25 +43,25 @@ namespace Physics {
 				tankWallThickness = 0.012,
 				radius = 1.83;
 
-			//mPropSupplies.addTank(std::make_unique<CylinderFluidTank>(
-			//	mBody,
-			//	chrono::ChFrame(chrono::Vector(0, 17, 0)), 
-			//	Propellants::mFluids[Propellants::liquidOxygen],
-			//	22.8, 
-			//	radius, 
-			//	tankWallThickness, 
-			//	tankWallDensity
-			//));
-//
-			//mPropSupplies.addTank(std::make_unique<CylinderFluidTank>(
-			//	mBody,
-			//	chrono::ChFrame(chrono::Vector(0, 0, 0)), //2.3
-			//	Propellants::mFluids[Propellants::RP1],
-			//	14,
-			//	radius,
-			//	tankWallThickness,
-			//	tankWallDensity 
-			//));
+			mPropSupplies.addTank(std::make_unique<CylinderFluidTank>(
+				mBody,
+				chrono::ChFrame(chrono::Vector(0, 17, 0)), 
+				Propellants::mFluids[Propellants::liquidOxygen],
+				22.8, 
+				radius, 
+				tankWallThickness, 
+				tankWallDensity
+			));
+
+			mPropSupplies.addTank(std::make_unique<CylinderFluidTank>(
+			    mBody,
+			    chrono::ChFrame(chrono::Vector(0, 0, 0)), //2.3
+			    Propellants::mFluids[Propellants::RP1],
+			    14,
+			    radius,
+			    tankWallThickness,
+			    tankWallDensity 
+			));
 			
 			//mPropSupplies.addTank(std::make_unique<CylinderFluidTank>(
 			//	mSystemHandle,

@@ -20,7 +20,7 @@ namespace Physics {
 		mSystem.SetMaxItersSolverSpeed(200); // 200
 		//
         
-        mSystem.Set_G_acc({0, 0, 0});
+        //mSystem.Set_G_acc({0, 0, 0});
 	}
 
 	void Simulation::run() {

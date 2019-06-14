@@ -2,8 +2,9 @@
 #define GRAPHICS_ALLCAMERAS_H
 #pragma once
 
-#include <core/ChVector.h>
 #include <vector3d.h>
+#include <core/ChVector.h>
+#include <core/ChFrame.h>
 
 namespace Input {
 	class HWEventReceiver;
@@ -24,10 +25,8 @@ namespace Graphics {
 	*/
 	class SimulationCamera {
 	protected:
-		chrono::Vector mPosition_world; //High precision
-		
-		irr::core::vector3df mLookAtDir_world; //Low precision
-		
+		chrono::Vector mPosition_world;                //High precision
+		irr::core::vector3df mLookAtDir_world;         //Low precision
 		irr::scene::ICameraSceneNode* mInternalCamera;
 
 	public:
@@ -107,14 +106,14 @@ namespace Graphics {
 			mLookAt_stage,
 			mUp_stage;
 
-	public:
+	public: 
 		InterstageCamera(irr::scene::ISceneManager& sceneManager, float aspect);
 		~InterstageCamera() = default;
 
-		void update(float windowAspect);
+		void update(chrono::ChCoordsys<double> stageTransform_world, float windowAspect);
 
 	};
 
 }
 
-#endif
+#endif // GRAPHICS_ALLCAMERAS_H
