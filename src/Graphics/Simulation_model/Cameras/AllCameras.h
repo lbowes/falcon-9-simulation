@@ -89,6 +89,8 @@ namespace Graphics {
 		void handleDirectionInput(float dt);
 		void handleMovementInput(float dt);
 		void handleZoomInput(float dt);
+        irr::core::vector3df recalcLookAtVec(float pitch, float yaw) const;
+        void clampPitchYaw();
 
 	};
 

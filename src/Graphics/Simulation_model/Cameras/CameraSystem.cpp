@@ -10,13 +10,15 @@ namespace Graphics {
 	CameraSystem::CameraSystem(irr::IrrlichtDevice& device, irr::scene::ISceneManager& sceneManager, Input::HWEventReceiver& input, float windowAspect) :
 		mDevice(device),
 		mSceneManager(sceneManager),
-		mHWInput(input)
+		mHWInput(input),
+        mCurrentCamera(FPV),
+        mHasFocus(false)
 	{
 		mCameras.push_back(std::make_unique<FPVCamera>(
 			sceneManager,
 			input,
-			chrono::Vector(0, 3, 20),       //-20.0, 3.0, 0.0 //-85.0, 30.0, 0.0
-			irr::core::vector3df(0, 0, -1), //1.0, 0.0, 0.0
+			chrono::Vector(0, 80, 0),       //-20.0, 3.0, 0.0 //-85.0, 30.0, 0.0
+			irr::core::vector3df(-1, -10, 0).normalize(), //1.0, 0.0, 0.0
 			0.1f,
 			10000.0f,
 			windowAspect,

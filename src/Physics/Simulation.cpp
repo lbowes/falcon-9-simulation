@@ -4,7 +4,7 @@
 namespace Physics {
 
 	Simulation::Simulation() :
-		mDuration(10.0),       // 20.0 - todo: should eventually be removed in favour of simulation-termination condition checking
+		mDuration(1.0),       // 20.0 - todo: should eventually be removed in favour of simulation-termination condition checking
 		mUpdatesPerSec(100),  // 1000
 		mDataSnapsPerSec(10), // 10 - sample the state of the simulation every 1/10th of a second
 		mFalcon9(mSystem),
@@ -20,7 +20,7 @@ namespace Physics {
 		mSystem.SetMaxItersSolverSpeed(200); // 200
 		//
         
-        //mSystem.Set_G_acc({0, 0, 0});
+        mSystem.Set_G_acc({0, 0, 0});
 	}
 
 	void Simulation::run() {

@@ -6,9 +6,9 @@
 namespace Physics {
     namespace External {
 
-		const chrono::Vector GroundPlane::mPos_world = chrono::Vector(0.0f, -20.0f, 0.0f);
+		const chrono::Vector GroundPlane::mPos_world = chrono::Vector(0, -20, 0);
 
-		const float GroundPlane::mThickness = 3.0f;
+		const float GroundPlane::mThickness = 3;
 
         GroundPlane::GroundPlane(chrono::ChSystemNSC& systemHandle) :
             mSystemHandle(systemHandle)
@@ -41,6 +41,3 @@ namespace Physics {
 
     }
 }
-
-
-

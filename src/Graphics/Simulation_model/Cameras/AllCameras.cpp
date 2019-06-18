@@ -15,32 +15,34 @@ namespace Graphics {
 		mLookAtDir_world(lookAtDir_world)
 	{
 		mInternalCamera = sceneManager.addCameraSceneNode();
-		mInternalCamera->setNearValue(near);
-		mInternalCamera->setUpVector({0, 1, 0});
 		
-		irr::core::vector3df targetPos = irr::core::vector3df(position_world.x(), position_world.y(), position_world.z()) + lookAtDir_world;
-		mInternalCamera->setTarget(targetPos);
+        mInternalCamera->setPosition({0, 0, 0});
+		mInternalCamera->setUpVector({0, 1, 0});
+        mInternalCamera->setTarget(lookAtDir_world);
+		
+        mInternalCamera->setNearValue(near);
 		mInternalCamera->setFarValue(far);
 		mInternalCamera->setAspectRatio(aspect);
-		mInternalCamera->setFOV(FOVY_degs * chrono::CH_C_DEG_TO_RAD);
+		mInternalCamera->setFOV(irr::core::degToRad(FOVY_degs));
 	}
 
 	FPVCamera::FPVCamera(irr::scene::ISceneManager& sceneManager, Input::HWEventReceiver& input, chrono::ChVector<> position_world, irr::core::vector3df lookAtDir_world, float near, float far, float aspect, float FOVY_degs) :
 		SimulationCamera(sceneManager, position_world, lookAtDir_world, near, far, aspect, FOVY_degs),
-		mMinMovementSpeed(6.4f),         //25.0f
-		mMaxMovementSpeed(20000.0f),     //20000.0f
-		mSpeedAdjustSensitivity(200.0f), //200.0f
-		mMovementFriction(7.0f),         //7.0f
-		mZoomSensitivity(0.1f),          //0.1f
-		mLookAroundSensitivity(0.05f),   //0.05f
-		mMovementSpeed(200.0f),          //400.0f  
-		mPitch(0.0f),
-		mYaw(0.0f),
+		mMinMovementSpeed(6.4f),         // 25.0f
+		mMaxMovementSpeed(20000.0f),     // 20000.0f
+		mSpeedAdjustSensitivity(200.0f), // 200.0f
+		mMovementFriction(7.0f),         // 7.0f
+		mZoomSensitivity(0.1f),          // 0.1f
+		mLookAroundSensitivity(0.05f),   // 0.05f
+		mMovementSpeed(200.0f),          // 400.0f  
+		mPitch(-lookAtDir_world.getHorizontalAngle().X),
+		mYaw(lookAtDir_world.getHorizontalAngle().Y + 90),
 		mHWInput(input),
 		mVelocity_world(0, 0, 0)
 	{ 
-		mInternalCamera->setPosition({0, 0, 0});
-	}
+        //clampPitchYaw();
+        mLookAtDir_world = recalcLookAtVec(mPitch, mYaw);
+    }
 
 	void FPVCamera::update(float windowAspect, float dt) {
 		mInternalCamera->setAspectRatio(windowAspect);
@@ -48,10 +50,16 @@ namespace Graphics {
 		mPosition_world += mVelocity_world * static_cast<double>(dt);
 		mVelocity_world *= 1.0 / (1.0 + (dt * mMovementFriction));
 
-		if(mPosition_world.y() < 1.78)
-			mPosition_world.y() = 1.78;
+		//if(mPosition_world.y() < 1.78)
+			//mPosition_world.y() = 1.78;
 
 		mInternalCamera->setTarget(mLookAtDir_world);
+
+        // temp
+        ImGui::Begin("Camera data");
+        ImGui::Text("pitch1: %.3f, yaw1: %.3f", mPitch, mYaw);
+        ImGui::Text("pitch2: %.3f, yaw2: %.3f", mLookAtDir_world.getHorizontalAngle().X, mLookAtDir_world.getHorizontalAngle().Y);
+        ImGui::End();
 	}
 
 	void FPVCamera::handleInput(float dt) {
@@ -66,17 +74,15 @@ namespace Graphics {
 		vector2di mouseDelta = mHWInput.getMouse().getDelta_scr();
 
 		mYaw -= mouseDelta.X * mLookAroundSensitivity;
-		mPitch -= mouseDelta.Y * mLookAroundSensitivity;
+        mPitch -= mouseDelta.Y * mLookAroundSensitivity;
 
-		if (mPitch > 89.0f) 
-			mPitch = 89.0f;
-		if (mPitch < -89.0f) 
-			mPitch = -89.0f;
+        // --------- TODO ------------
+        // Consider creating a big debug screen for all the visualisation stuff, like camera properties (position/lookAt vectors, FOV etc.) Include everything
+        // in one clean debug screen.
 
-		mLookAtDir_world.X = cos(degToRad(mPitch)) * cos(degToRad(mYaw));
-		mLookAtDir_world.Y = sin(degToRad(mPitch));
-		mLookAtDir_world.Z = cos(degToRad(mPitch)) * sin(degToRad(mYaw));
-		mLookAtDir_world.normalize();
+        clampPitchYaw();
+
+		mLookAtDir_world = recalcLookAtVec(mPitch, mYaw);
 	}
 
 	void FPVCamera::handleMovementInput(float dt) {
@@ -123,10 +129,28 @@ namespace Graphics {
 		mMovementSpeed = std::clamp(mMovementSpeed, mMinMovementSpeed, mMaxMovementSpeed);
 	}
 
+    irr::core::vector3df FPVCamera::recalcLookAtVec(float pitch, float yaw) const {
+        using namespace irr::core;
+
+        vector3df result;
+
+        result.X = cos(degToRad(pitch)) * -cos(degToRad(yaw));
+		result.Y = sin(degToRad(pitch));
+		result.Z = cos(degToRad(pitch)) * -sin(degToRad(yaw));
+		result.normalize();
+
+        return result;
+    }
+
+    void FPVCamera::clampPitchYaw() {
+        mYaw -= 360.0f * floor(mYaw / 360.0f);
+        mPitch = std::clamp(mPitch, -89.9f, 89.9f);
+    }
+
 	InterstageCamera::InterstageCamera(irr::scene::ISceneManager& sceneManager, float aspect) :
 		mClockDegree_degs(45.0 + 10.882f), //45.0 + 10.882f, 45.0 to account for model rotation in blender
 		mPitch_degs(2.222f),        //2.222f
-		mHeight_stage(45.89f),      //45.89f
+		mHeight_stage(10.0f),      //45.89f
 		mHeightAboveWall(1.951f),   //1.951f
 		mFOV(44.712002f),           //44.712002f
 		SimulationCamera(sceneManager, chrono::Vector(0), irr::core::vector3df(0), 0.1f, 1000.0f, aspect, mFOV)
@@ -205,9 +229,21 @@ namespace Graphics {
 		
 		printf("clockDegree_degs: %f\npitch_degs: %f\nheight_stage: %f\nheightAboveWall: %f\nFOV: %f\n\n\n", clockDegree_degs, pitch_degs, height_stage, heightAboveWall, FOV);
 #else
-		// Transform the interstage camera's position into world space
-        mPosition_world = stageTransform_world.TransformPointLocalToParent(mPosition_stage);
-        
+        // Transform the interstage camera's position into world space
+        mPosition_world = stageTransform_world.TransformLocalToParent(mPosition_stage);
+        //                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    
+
+        // --------- CURRENTLY WORKING ON ------------
+        // Look into line 209 above - why is this transformation causing the camera to bob up and down as it rotates with the stage?
+        // If we just print stageTransform_world.pos, we see that the stage remains positioned at (0, 0, 0). So surely the transform
+        // should not move the camera at all relative to the stage. It should just rotate exactly as the stage moves, but for some reason
+        // the camera's vertical position changes
+
+
+        ImGui::Begin("Interstage cam info");
+		ImGui::Text("abs pos: %.3f, %.3f, %.3f\n", mPosition_world.x(), mPosition_world.y(), mPosition_world.z());
+		ImGui::End();
+
         // Transform its direction (look at) vector into world space
         chrono::Vector lookAt_world = stageTransform_world.TransformDirectionLocalToParent(mLookAt_stage);
         mInternalCamera->setTarget(irr::core::vector3df(float(lookAt_world.x()), float(lookAt_world.y()), float(lookAt_world.z())));

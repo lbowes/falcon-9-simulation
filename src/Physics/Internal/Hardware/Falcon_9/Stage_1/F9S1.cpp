@@ -15,10 +15,11 @@ namespace Physics {
 			IStage(sys)
 		{
             // temp: positioning the vehicle in the world (should be done via the launch vehicle eventually)
-        	mBody->SetFrame_REF_to_abs(chrono::ChFrame(chrono::Vector(0, 10, 10), chrono::Q_from_AngX(0.6)));
+        	//mBody->SetFrame_REF_to_abs(chrono::ChFrame(chrono::Vector(0, 10, 10), chrono::Q_from_AngX(0.6)));
 			//mBody->SetRot(chrono::Q_from_AngY(chrono::CH_C_PI));
-			//mBody->SetRot_dt(chrono::Q_from_AngAxis(1.0, {0, 1, 0}));
-            //mBody->SetFrame_REF_to_abs(chrono::ChFrame(chrono::Vector(0, 0, 0)));
+			//mBody->SetRot_dt(chrono::Q_from_AngAxis(90.0, {0, 1, 0}));
+            mBody->SetWvel_loc(chrono::Vector(0, 100, 0));
+            mBody->SetFrame_REF_to_abs(chrono::ChFrame(chrono::Vector(-30, 0, 0)));
 
         	assemble();
 		}
@@ -33,7 +34,7 @@ namespace Physics {
 			// ground truth mass values given online. The stage should reach the correct mass value.
 			
 			// temp - this is not accurate, just used to allow debugging other features
-			mBody->SetMass(200);
+			mBody->SetMass(20);
             mBody->SetInertia(chrono::utils::CalcCylinderGyration(1.83, 23.5, chrono::Vector(0, 23.5, 0)) * 10);
 		}
 

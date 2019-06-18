@@ -30,8 +30,8 @@ namespace Graphics {
 		irr::scene::ISceneManager& mSceneManager;
 		const Input::HWEventReceiver& mHWInput;
 		std::vector<std::unique_ptr<SimulationCamera>> mCameras;
-		unsigned mCurrentCamera = FPV;
-		bool mHasFocus = false;
+		unsigned mCurrentCamera;
+		bool mHasFocus;
 
 	public:
 		CameraSystem(irr::IrrlichtDevice& device, irr::scene::ISceneManager& sceneManager, Input::HWEventReceiver& input, float windowAspect);

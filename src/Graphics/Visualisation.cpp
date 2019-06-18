@@ -83,6 +83,7 @@ namespace Graphics {
 		mImGuiHandle->drop();
 	}
 
+
 	void Visualisation::run() {
 		unsigned lastTime = mDevice->getTimer()->getRealTime();
 
@@ -135,23 +136,23 @@ namespace Graphics {
 		irr::core::vector2di centreScreen = irr::core::vector2di(dims.getWidth() / 2, dims.getHeight() / 2);
 		mHWinput.update(centreScreen);
 
-		// Fix window aspect ratio with resizing
+        handleTimeSelection(frameTime_s);
+
+        // Fix window aspect ratio with resizing
 		const float aspectRatio = static_cast<float>(dims.getWidth()) / dims.getHeight();
 		mCameraSystem->update(mLiveSnapshot.getF9S1_DSS().getS1ToWorldTransform().GetCoord(), aspectRatio, frameTime_s);
 		
-		handleTimeSelection(frameTime_s);
-
-		// Pass in the required camera position so that models can update their own positions
+        // Pass in the required camera position so that models can update their own positions
 		mModelLayer->update(mCameraSystem->getCurrentSimCamera().getPosition_world(), mLiveSnapshot, frameTime_s);
 	}
 	
 	void Visualisation::render() {
 		mVidDriver->beginScene(true, true, irr::video::SColor(255, 0, 0, 0));
+		
 		mGUILayer->render();
-		
 		mModelLayer->render(mCameraSystem->getCurrentSimCamera().getPosition_world());
-		
 		mImGuiHandle->drawAll();
+		
 		mVidDriver->endScene();
 	}
 

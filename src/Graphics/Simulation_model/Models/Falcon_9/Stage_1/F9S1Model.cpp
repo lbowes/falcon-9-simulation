@@ -39,11 +39,11 @@ namespace Graphics {
 
 		const chrono::Vector rot_ogl = f9s1Frame.rot.Q_to_Euler123() * chrono::CH_C_RAD_TO_DEG;
 
-        static float rot[3];
-        ImGui::Begin("Model rotation");
-        ImGui::SliderFloat3("", rot, 0.0f, 360.0f);
-        ImGui::Text("Rot: %.2f, %.2f, %.2f", rot_ogl.x(), rot_ogl.y(), rot_ogl.z());
-        ImGui::End();
+        //static float rot[3];
+        //ImGui::Begin("Model rotation");
+        //ImGui::SliderFloat3("", rot, 0.0f, 360.0f);
+        //ImGui::Text("Rot: %.2f, %.2f, %.2f", rot_ogl.x(), rot_ogl.y(), rot_ogl.z());
+        //ImGui::End();
 
         mMesh->setRotation({rot_ogl.x(), rot_ogl.y(), rot_ogl.z()});
         //mMesh->setRotation({rot[0], rot[1], rot[2]});
