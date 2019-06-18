@@ -32,6 +32,8 @@
 *.app
 
 #Misc files
+Notes
+Notes.odt
 build/
 .vscode/
 .idea/
