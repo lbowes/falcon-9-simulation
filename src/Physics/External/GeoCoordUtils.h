@@ -19,4 +19,4 @@ namespace External {
 
 }
 
-#endif
+#endif // EXTERNAL_GEOCOORDUTILS_H

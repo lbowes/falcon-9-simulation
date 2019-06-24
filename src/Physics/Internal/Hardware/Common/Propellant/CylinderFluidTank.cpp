@@ -7,9 +7,7 @@
 namespace Physics {
 	namespace Hardware {
 
-		CylinderFluidTank::CylinderFluidTank(std::shared_ptr<chrono::ChBodyAuxRef>& stageBody, const chrono::ChFrame<>& transform_stage, Fluid f, double height, double radius, double thickness, double density) :
-			IStageComponent(stageBody),
-            mTransform_stage(transform_stage),
+		CylinderFluidTank::CylinderFluidTank(Fluid f, double height, double radius, double thickness, double density) :
 			mFluid(f),
 			mHeight(height),
 			mRadius(radius),
@@ -23,7 +21,6 @@ namespace Physics {
 			mTankInertia_tank(tankInertia_tank())
 		{ 
 			assemble();
-			attachToStage();
 		}
 
 		void CylinderFluidTank::addFluid(double mass) {
@@ -42,7 +39,7 @@ namespace Physics {
 		}
 
 		void CylinderFluidTank::assemble() {
-			// Mass/inertia properties
+            // Mass/inertia properties
 			mBody->SetMass(combinedMass());
 			mBody->SetInertia(combinedInertia_tank());
 
@@ -62,18 +59,18 @@ namespace Physics {
 			mBody->SetFrame_COG_to_REF(combinedCoM_tank());
 		}
 
-		void CylinderFluidTank::attachToStage() {
-            // Move the tank into the correct position/orientation on the stage   
-            mBody->SetFrame_REF_to_abs(mTransform_stage >> mStageBodyHandle->GetFrame_REF_to_abs());
+		// void CylinderFluidTank::attachToStage() {
+        //     // Move the tank into the correct position/orientation on the stage   
+        //     mBody->SetFrame_REF_to_abs(mTransform_stage >> mStageBodyHandle->GetFrame_REF_to_abs());
             
-            mStageLink1 = std::make_shared<chrono::ChLinkLockLock>();
-    		mStageLink1->Initialize(mStageBodyHandle, mBody, chrono::ChCoordsys(chrono::Vector(0, 0, 0)));
-			mStageBodyHandle->GetSystem()->AddLink(mStageLink1);
+        //     mStageLink1 = std::make_shared<chrono::ChLinkLockLock>();
+    	// 	mStageLink1->Initialize(mStageBodyHandle, mBody, chrono::ChCoordsys(chrono::Vector(0, 0, 0)));
+		// 	mStageBodyHandle->GetSystem()->AddLink(mStageLink1);
 
-            mStageLink2 = std::make_shared<chrono::ChLinkLockLock>();
-    		mStageLink2->Initialize(mStageBodyHandle, mBody, chrono::ChCoordsys(chrono::Vector(0, 30, 0)));
-			mStageBodyHandle->GetSystem()->AddLink(mStageLink2);
-		}
+        //     mStageLink2 = std::make_shared<chrono::ChLinkLockLock>();
+    	// 	mStageLink2->Initialize(mStageBodyHandle, mBody, chrono::ChCoordsys(chrono::Vector(0, 30, 0)));
+		// 	mStageBodyHandle->GetSystem()->AddLink(mStageLink2);
+		// }
 
 		double CylinderFluidTank::combinedMass() const {
 			return mTankMass + mFluidMass;
@@ -119,7 +116,7 @@ namespace Physics {
 			// Responsible for updating various tank properties after the fluid mass has changed
 		{
 			mFluidVolume = mFluidMass / mFluid.mDensity;
-			mFluidLevel = (mFluidVolume / mVolume_internal) * mInternalHeight;
+			mFluidLevel = (mFluidVolume / mVolume_internal) * mInternmTankCoM_tankalHeight;
 			mPercentFull = mFluidMass / mMaxFluidMass;
 
 			// addFluid() and removeFluid() handle the change of value of the fluid mass,
@@ -136,7 +133,6 @@ namespace Physics {
 			mBody->SetMass(combinedMass());
 			mBody->SetInertia(combinedInertia_tank());
 			mBody->SetFrame_COG_to_REF(combinedCoM_tank());
-    		mStageLink1->Initialize(mStageBodyHandle, mBody, chrono::ChCoordsys(mTankCoM_tank));
 		}
 
 	}

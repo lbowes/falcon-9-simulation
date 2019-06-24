@@ -2,8 +2,8 @@
 #define PHYSICS_HARDWARE_CYLINDERFLUIDTANK_H
 #pragma once
 
-#include "../Structural/IStageComponent.hpp"
 #include "Fluid.h"
+#include <chrono/physics/ChBodyAuxRef.h>
 
 namespace chrono {
     class ChSystemNSC;
@@ -12,8 +12,10 @@ namespace chrono {
 namespace Physics {
 	namespace Hardware {
 
-		class CylinderFluidTank : public IStageComponent {
+		class CylinderFluidTank {
 		private:
+            std::shared_ptr<chrono::ChBodyAuxRef> mBody;
+            
             chrono::ChFrame<> mTransform_stage;
 			
 			const Fluid mFluid;
@@ -41,15 +43,12 @@ namespace Physics {
 			chrono::Vector mFluidCoM_tank;
 
 			chrono::ChMatrix33<> mFluidInertia_tank;
-			
-			std::shared_ptr<chrono::ChLinkLockLock> 
-                mStageLink1,
-                mStageLink2;
 
 		public:
-			CylinderFluidTank(std::shared_ptr<chrono::ChBodyAuxRef>& stageBody, const chrono::ChFrame<>& transform_stage, Fluid f, double height, double radius, double thickness, double density);
+			CylinderFluidTank(Fluid f, double height, double radius, double thickness, double density);
 			~CylinderFluidTank() = default;
 
+            //void attachToStage();
 			void addFluid(double mass);
 			void removeFluid(double mass);
 			void removeAllFluid();
@@ -59,10 +58,8 @@ namespace Physics {
 			double getPercentFull() const { return mPercentFull; }
 
 		private:
-			virtual void assemble() override;
-			virtual void attachToStage() override;
-
-			double combinedMass() const;
+			void assemble();
+            double combinedMass() const;
 			chrono::ChFrame<> combinedCoM_tank() const;
 			chrono::ChMatrix33<> combinedInertia_tank() const;
 			chrono::ChMatrix33<> tankInertia_tank() const;

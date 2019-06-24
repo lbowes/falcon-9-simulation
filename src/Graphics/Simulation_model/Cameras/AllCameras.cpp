@@ -35,12 +35,14 @@ namespace Graphics {
 		mZoomSensitivity(0.1f),          // 0.1f
 		mLookAroundSensitivity(0.05f),   // 0.05f
 		mMovementSpeed(200.0f),          // 400.0f  
-		mPitch(-lookAtDir_world.getHorizontalAngle().X),
-		mYaw(lookAtDir_world.getHorizontalAngle().Y + 90),
+		//mPitch(-lookAtDir_world.getHorizontalAngle().X),
+		//mYaw(lookAtDir_world.getHorizontalAngle().Y),
+		mPitch(-lookAtDir_world.getSphericalCoordinateAngles().X),
+		mYaw(lookAtDir_world.getSphericalCoordinateAngles().Y),
 		mHWInput(input),
 		mVelocity_world(0, 0, 0)
 	{ 
-        //clampPitchYaw();
+        clampPitchYaw();
         mLookAtDir_world = recalcLookAtVec(mPitch, mYaw);
     }
 
@@ -60,6 +62,20 @@ namespace Graphics {
         ImGui::Text("pitch1: %.3f, yaw1: %.3f", mPitch, mYaw);
         ImGui::Text("pitch2: %.3f, yaw2: %.3f", mLookAtDir_world.getHorizontalAngle().X, mLookAtDir_world.getHorizontalAngle().Y);
         ImGui::End();
+
+        ImGui::Begin("Relation");
+        static float dirVecArr[3];
+        irr::core::vector3df dirVec = irr::core::vector3df(dirVecArr[0], dirVecArr[1], dirVecArr[2]).normalize();
+
+        dirVecArr[0] = dirVec.X;
+        dirVecArr[1] = dirVec.Y;
+        dirVecArr[2] = dirVec.Z;
+
+        ImGui::SliderFloat3("Direction vector", dirVecArr, 0.0f, 1.0f);
+        irr::core::vector3df angles = dirVec.getHorizontalAngle();
+        ImGui::Text("x: %.3f, y: %.3f, z: %.3f", angles.X, angles.Y, angles.Z);
+        ImGui::End();
+        //
 	}
 
 	void FPVCamera::handleInput(float dt) {
@@ -134,9 +150,9 @@ namespace Graphics {
 
         vector3df result;
 
-        result.X = cos(degToRad(pitch)) * -cos(degToRad(yaw));
+        result.X = cos(degToRad(pitch)) * cos(degToRad(yaw));
 		result.Y = sin(degToRad(pitch));
-		result.Z = cos(degToRad(pitch)) * -sin(degToRad(yaw));
+		result.Z = cos(degToRad(pitch)) * sin(degToRad(yaw));
 		result.normalize();
 
         return result;
@@ -148,12 +164,12 @@ namespace Graphics {
     }
 
 	InterstageCamera::InterstageCamera(irr::scene::ISceneManager& sceneManager, float aspect) :
+		mFOV(44.712002f),           //44.712002f
+		SimulationCamera(sceneManager, chrono::Vector(0), irr::core::vector3df(0), 0.1f, 1000.0f, aspect, mFOV),
 		mClockDegree_degs(45.0 + 10.882f), //45.0 + 10.882f, 45.0 to account for model rotation in blender
 		mPitch_degs(2.222f),        //2.222f
 		mHeight_stage(10.0f),      //45.89f
-		mHeightAboveWall(1.951f),   //1.951f
-		mFOV(44.712002f),           //44.712002f
-		SimulationCamera(sceneManager, chrono::Vector(0), irr::core::vector3df(0), 0.1f, 1000.0f, aspect, mFOV)
+		mHeightAboveWall(1.951f)   //1.951f
 	{
 		using namespace chrono;
 
@@ -172,16 +188,12 @@ namespace Graphics {
 		mLookAt_stage = pitchRotation.Rotate(-VECT_Y);
 		mLookAt_stage = clockingRotation.Rotate(mLookAt_stage);
 
-		mInternalCamera->setFOV(mFOV);
-		mInternalCamera->setAspectRatio(aspect);
 		mInternalCamera->setTarget({mLookAt_stage.x(), mLookAt_stage.y(), mLookAt_stage.z()});
 		
 		mPosition_world = mPosition_stage;
 	}
 
 	void InterstageCamera::update(chrono::ChCoordsys<double> stageTransform_world, float windowAspect) {
-		//using namespace glm;
-
 #if CONFIGURE_INTERSTAGE_CAM
 		static float
 			clockDegree_degs = mClockDegree_degs,

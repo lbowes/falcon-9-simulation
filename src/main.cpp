@@ -2,11 +2,8 @@
 #include "Graphics/Visualisation.h"
 
 int main() {
-	Physics::Simulation sim;
-	sim.run();
-
-	Graphics::Visualisation vis(sim.getStateHistory(), sim.getSnapshotInterval_s(), sim.getDuration());
-	vis.run();
+    Physics::Simulation sim(dataFile);
+    Graphics::Visualisation vis(sim.getStateHistory(), sim.getSnapshotInterval_s(), sim.getDuration());
 
 	return 0;
 }

@@ -1,4 +1,5 @@
 #include "Simulation.h"
+
 #include <chrono>
 
 namespace Physics {
@@ -18,9 +19,11 @@ namespace Physics {
 		mSystem.SetTimestepperType(chrono::ChTimestepper::Type::EULER_IMPLICIT_PROJECTED);
 		mSystem.SetSolverWarmStarting(true);
 		mSystem.SetMaxItersSolverSpeed(200); // 200
-		//
-        
         mSystem.Set_G_acc({0, 0, 0});
+		//
+
+        // Look at whether or not the simulation actually needs to be re-run everytime the application runs
+        run();
 	}
 
 	void Simulation::run() {
@@ -32,7 +35,7 @@ namespace Physics {
 
         const auto startTime = std::chrono::high_resolution_clock::now();
 
-		while(!terminationCondMet()) {
+		while(!terminateCondMet()) {
 			const double dt = 1.0 / mUpdatesPerSec;
 			
 			mFalcon9.update(dt);
@@ -50,27 +53,23 @@ namespace Physics {
 		printf("\nSimulation terminated.\n");
 	}
 
-	bool Simulation::terminationCondMet() {
+	bool Simulation::terminateCondMet() {
 		return mSystem.GetChTime() >= mDuration;
 	}
 
 	void Simulation::serialiseSnapshot(unsigned long snapshotNumber) {
 		F9_DSS snapshot = F9_DSS(mFalcon9);
 		mStateHistory.insert({snapshotNumber, snapshot});
-
-		// TODO: Consider outputting the entire state of the simulation to a file.
-		// How large would this be if all state was saved at 1000 Hz?
-		// This would then be useful for reloading the visualisation quickly. A check would be required to
-		// see if the simulation had changed and therefore whether or not it would have to be re-run.
 	}
 
 	void Simulation::printProgress(double timeTaken_s, double progress_0_1) {
-		// The maximum width of the progress bar in characters
-        // Set bold green colour
+        // Bold green colour
         printf("\033[1;32m");
+
 		printf("\r%.2f s Simulated: %.2f / %.2f s (%.2f %%)", timeTaken_s, mSystem.GetChTime(), mDuration, progress_0_1 * 100.0f);
 		fflush(stdout);
-		// Reset to default colour
+
+		// Default colour
 		printf("\033[0m");
 	}
 

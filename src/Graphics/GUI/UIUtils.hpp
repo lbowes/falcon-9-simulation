@@ -1,5 +1,5 @@
-#ifndef GRAPHICS_GUI_UIUTILS_HPP
-#define GRAPHICS_GUI_UIUTILS_HPP
+#ifndef GRAPHICS_UIUTILS_HPP
+#define GRAPHICS_UIUTILS_HPP
 #pragma once
 
 #include <IMGUI/imgui.h>
@@ -25,5 +25,5 @@ namespace Graphics {
 
 }
 
-#endif // GRAPHICS_GUI_UIUTILS_HPP
+#endif // GRAPHICS_UIUTILS_HPP
 

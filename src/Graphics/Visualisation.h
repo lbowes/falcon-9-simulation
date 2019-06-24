@@ -71,9 +71,8 @@ namespace Graphics {
 		Visualisation(const std::map<const unsigned, const Physics::F9_DSS>& stateHistoryHandle, double snapshotInterval_s, double simDuration);
 		~Visualisation();
 
-		void run();
-
 	private:
+		void run();
 		void init();
 		void loadImGuiStyle();
 		void handleInput(float frameTime_s);

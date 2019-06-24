@@ -33,7 +33,7 @@ namespace Graphics {
 		mStateHistory(stateHistoryHandle),
 		mSnapshotInterval_s(snapshotInterval_s),
 		mSimDuration(simDuration),
-		mIniSaveFile_imgui("../dat/imgui.ini")
+		mIniSaveFile_imgui("../dat/Visualisation/imgui.ini")
 	{
 		using namespace irr;
 		
@@ -64,7 +64,7 @@ namespace Graphics {
 
 		mDevice->setWindowCaption(L"Falcon 9 Simulation");
 
-		// Done to prevent IrrIMGUI from hiding the OS cursor during initialisation and forcing a new rendered cursor
+		// Prevents IrrIMGUI from hiding the OS cursor during initialisation and forcing a new rendered cursor
 		IrrIMGUI::SIMGUISettings settings;
 		settings.mIsGUIMouseCursorEnabled = false;
 
@@ -74,11 +74,11 @@ namespace Graphics {
 		mSceneMgr = mDevice->getSceneManager();
 		
 		init();
+        run();
 	}
 
 	Visualisation::~Visualisation() {
 		mDevice->drop();
-
 		ImGui::SaveIniSettingsToDisk(mIniSaveFile_imgui.c_str());
 		mImGuiHandle->drop();
 	}
@@ -126,6 +126,7 @@ namespace Graphics {
 		if(mHWinput.isKeyReleased(irr::KEY_PAUSE))
 			mPlayback.togglePauseState();
 
+        // Camera control input
 		const irr::core::recti dims = mVidDriver->getViewPort();
 		irr::core::vector2di centreScreen = irr::core::vector2di(dims.getWidth() / 2, dims.getHeight() / 2);
 		mCameraSystem->handleInput(centreScreen, frameTime_s);
@@ -168,11 +169,11 @@ namespace Graphics {
 		// Find the index of the the most recent snapshot to have been recorded...
 		const unsigned
 			snapshotCount = mStateHistory.size(),
-			recentSnapshotNum = std::clamp(static_cast<unsigned>(s), 0U, static_cast<unsigned>(snapshotCount - 1));
+			recentSnapshotIdx = std::clamp(static_cast<unsigned>(s), 0U, static_cast<unsigned>(snapshotCount - 1));
 
 		Physics::F9_DSS
-			mostRecentState = mStateHistory.at(recentSnapshotNum),
-			nextState = mStateHistory.at(std::clamp(recentSnapshotNum + 1, 0U, static_cast<unsigned>(snapshotCount - 1)));
+			mostRecentState = mStateHistory.at(recentSnapshotIdx),
+			nextState = mStateHistory.at(std::clamp(recentSnapshotIdx + 1, 0U, static_cast<unsigned>(snapshotCount - 1)));
 
 		mLiveSnapshot = Physics::F9_DSS::lerp(mostRecentState, nextState, betweenSnapshots);;
 	}

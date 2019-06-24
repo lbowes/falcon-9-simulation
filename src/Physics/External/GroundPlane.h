@@ -21,10 +21,10 @@ namespace Physics {
 
         public:
             GroundPlane(chrono::ChSystemNSC& systemHandle);
-            GroundPlane() = default;
+            ~GroundPlane() = default;
 
             static const chrono::Vector& getPos_world();
-
+        
         };
 
     }

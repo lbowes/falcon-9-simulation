@@ -1,7 +1,6 @@
 #ifndef PHYSICS_HARDWARE_LANDINGLEG_H
 #define PHYSICS_HARDWARE_LANDINGLEG_H
-
-#include "../../Common/Structural/IStageComponent.hpp"
+#pragma once
 
 #include <core/ChVector2.h>
 #include <chrono/physics/ChBodyAuxRef.h>
@@ -41,26 +40,21 @@ namespace Physics {
 			// Number of landing legs currently instantiated
 			static unsigned char sInstanceCount;
 
-			// The angle (degs) of a leg system around the stage, taken from the +X axis. 
-			const double mClockingDegree;
-
-			chrono::ChBodyAuxRef& mStage1Body;
-
-			chrono::ChSystem* mSystemHandle;
+            chrono::ChSystemNSC* mSystemHandle;
 
 			std::shared_ptr<chrono::ChBodyAuxRef> mAFrameBody;
 
-			//std::shared_ptr<chrono::ChLinkLockRevolute> mAFrameJoint;
+			std::shared_ptr<chrono::ChLinkRevolute> mAFrameJoint;
 
 			enum class Phase : unsigned char { stowed, deploying, locked };
 			Phase mDeploymentPhase = Phase::stowed;
 
 		public:
-			LandingLeg(chrono::ChBodyAuxRef& stage1Body, double clockingDegree);
+			LandingLeg(chrono::ChSystemNSC* systemHandle);
 			~LandingLeg() = default;
 
 		private:
-			void attachToStage();
+			void attachToStage(std::shared_ptr<chrono::ChBody> mount, double clockingDegree);
 			chrono::ChMatrix33<> calcInertia_AFrame() const;	
 
 		};

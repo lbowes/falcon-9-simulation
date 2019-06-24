@@ -2,7 +2,7 @@
 #define PHYSICS_SIMULATION_H
 #pragma once
 
-#include "Internal/Hardware/Falcon_9/F9.h"
+#include "Internal/Hardware/Falcon_9/Falcon9.h"
 #include "External/GroundPlane.h"
 
 #include <chrono/physics/ChSystemNSC.h>
@@ -19,22 +19,22 @@ namespace Physics {
 			mDataSnapsPerSec;
 
 		chrono::ChSystemNSC mSystem;
-		Hardware::F9 mFalcon9;
+		Hardware::Falcon9 mFalcon9;
 		External::GroundPlane mGround;
 
 		std::map<const unsigned, const F9_DSS> mStateHistory;
-		
+
 	public:
 		Simulation();
 		~Simulation() = default;
 
-		void run();
 		const std::map<const unsigned, const F9_DSS>& getStateHistory() const { return mStateHistory; }
 		double getSnapshotInterval_s() const { return 1.0 / mDataSnapsPerSec; }
 		double getDuration() const { return mDuration; }
 
 	private:
-		bool terminationCondMet();
+		void run();
+		bool terminateCondMet();
 		void serialiseSnapshot(unsigned long snapshotNumber);
 		void printProgress(double startTime_s, double progress_0_1);
 

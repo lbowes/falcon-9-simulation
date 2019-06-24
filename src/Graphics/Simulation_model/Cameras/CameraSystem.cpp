@@ -14,11 +14,24 @@ namespace Graphics {
         mCurrentCamera(FPV),
         mHasFocus(false)
 	{
-		mCameras.push_back(std::make_unique<FPVCamera>(
+		
+
+        // --------------- CURRENT PROBLEM ----------------------
+        // It is hard to get the position of the stage and the FPV camera's look-at vector to line up.
+        // If we position the stage along the -Z axis for example, and set the camera's look-at vec to
+        // point down this axis, you'd think that the camera would face the stage. This is not
+        // the case - the camera points 90 degs clockwise (along the -X axis). Assuming that the mYaw 
+        // value of the camera was off, we tried applying a simple offset of +90 degrees to fix this.
+
+        // This fixed the problem for the X axis, but did not do anything to help the Z axis. The same
+        // effect can be seen by subtracting 90 degs from mYaw (it works with Z but not X).
+        
+
+        mCameras.push_back(std::make_unique<FPVCamera>(
 			sceneManager,
 			input,
-			chrono::Vector(0, 80, 0),       //-20.0, 3.0, 0.0 //-85.0, 30.0, 0.0
-			irr::core::vector3df(-1, -10, 0).normalize(), //1.0, 0.0, 0.0
+			chrono::Vector(0, 70.0, 0),       //-20.0, 3.0, 0.0 //-85.0, 30.0, 0.0
+			irr::core::vector3df(0.0, -10.0, -1.0).normalize(), //1.0, 0.0, 0.0
 			0.1f,
 			10000.0f,
 			windowAspect,
