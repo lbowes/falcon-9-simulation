@@ -150,7 +150,7 @@ namespace Graphics {
 		mHWinput.update(centreScreen);
 
         // Update the point in time being displayed by the simulation
-        //handleTimeSelection(frameTime_s);
+        handleTimeSelection(frameTime_s);
 
         // Fix window aspect ratio with resizing
 		const float aspectRatio = static_cast<float>(dims.getWidth()) / dims.getHeight();
@@ -189,11 +189,13 @@ namespace Graphics {
 			keyFrameCount = mKeyFrames.size(),
 			recentKeyFrameIdx = std::clamp(static_cast<unsigned>(s), 0U, static_cast<unsigned>(keyFrameCount - 1));
 
-		ModelKeyFrame
-			mostRecentState = mKeyFrames.at(recentKeyFrameIdx),
-			nextState = mKeyFrames.at(std::clamp(recentKeyFrameIdx + 1, 0U, static_cast<unsigned>(keyFrameCount - 1)));
+        if(!mKeyFrames.empty()) {
+		    ModelKeyFrame
+			    mostRecentState = mKeyFrames.at(recentKeyFrameIdx),
+    			nextState = mKeyFrames.at(std::clamp(recentKeyFrameIdx + 1, 0U, static_cast<unsigned>(keyFrameCount - 1)));
 
-		mCurrentState = ModelKeyFrame::lerp(mostRecentState, nextState, betweenKeyFrames);;
+		    mCurrentState = ModelKeyFrame::lerp(mostRecentState, nextState, betweenKeyFrames);;
+        }
 	}
 
 }
