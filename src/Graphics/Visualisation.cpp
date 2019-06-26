@@ -6,6 +6,7 @@
 #include <core/ChFrame.h>
 #include <IMGUI/imgui.h>
 #include <algorithm>
+#include <iomanip>
 
 namespace Graphics {
 
@@ -31,7 +32,8 @@ namespace Graphics {
 	Visualisation::Visualisation(double keyFrameInterval_s, double simDuration_s) :
 		mKeyFrameInterval_s(keyFrameInterval_s),
 		mSimDuration_s(simDuration_s),
-		mIniSaveFile_imgui("../dat/Visualisation/imgui.ini"),
+		mIniSaveFilepath_imgui("../dat/Visualisation/imgui.ini"),
+        mSaveStateFilepath("../dat/appState.json"),
         mGUILayer(mPlayback, simDuration_s)
 	{
 		using namespace irr;
@@ -79,12 +81,20 @@ namespace Graphics {
 
 		init();
         run();
+        saveAppState();
 	}
 
 	Visualisation::~Visualisation() {
-		mDevice->drop();
-		ImGui::SaveIniSettingsToDisk(mIniSaveFile_imgui.c_str());
+        mDevice->closeDevice();
+        mDevice->run();
+        mDevice->drop();
+		ImGui::SaveIniSettingsToDisk(mIniSaveFilepath_imgui.c_str());
 		mImGuiHandle->drop();
+
+        nlohmann::json appState;
+        save(appState);
+        std::ofstream o(mSaveStateFilepath);
+        o << std::setw(4) << appState;
 	}
 
 	void Visualisation::run() {
@@ -108,17 +118,18 @@ namespace Graphics {
 	void Visualisation::init() {
 		using namespace irr;
 		
-		mDevice->getCursorControl()->setVisible(false);
-
 		core::recti viewport = mDevice->getVideoDriver()->getViewPort();
 		float aspectRatio = viewport.getWidth() / viewport.getHeight();
 
+        // Instantiate and load the CameraSystem
 		mCameraSystem = std::make_unique<CameraSystem>(*mDevice, *mSceneMgr, mHWinput, aspectRatio);
-		mModel = std::make_unique<SimulationModel>(*mVidDriver, *mSceneMgr);
+        mModel = std::make_unique<SimulationModel>(*mVidDriver, *mSceneMgr);
 
-		ImGui::LoadIniSettingsFromDisk(mIniSaveFile_imgui.c_str());
+		ImGui::LoadIniSettingsFromDisk(mIniSaveFilepath_imgui.c_str());
 
         buildKeyFrameHistory();
+
+        loadAppState();
 	}
 
     void Visualisation::buildKeyFrameHistory() 
@@ -131,8 +142,10 @@ namespace Graphics {
 
 	void Visualisation::handleInput(const float frameTime_s) {
 		// Quit app with Esc
-		if(mHWinput.isKeyPressed(irr::KEY_ESCAPE))
+		if(mHWinput.isKeyPressed(irr::KEY_ESCAPE)) {
 			mDevice->closeDevice();
+            saveAppState();
+        }
 
         // Pause/resume with keyboard
 		if(mHWinput.isKeyReleased(irr::KEY_PAUSE))
@@ -191,11 +204,47 @@ namespace Graphics {
 
         if(!mKeyFrames.empty()) {
 		    ModelKeyFrame
-			    mostRecentState = mKeyFrames.at(recentKeyFrameIdx),
-    			nextState = mKeyFrames.at(std::clamp(recentKeyFrameIdx + 1, 0U, static_cast<unsigned>(keyFrameCount - 1)));
+			    mostRecentFrame = mKeyFrames.at(recentKeyFrameIdx),
+    			nextFrame = mKeyFrames.at(std::clamp(recentKeyFrameIdx + 1, 0U, static_cast<unsigned>(keyFrameCount - 1)));
 
-		    mCurrentState = ModelKeyFrame::lerp(mostRecentState, nextState, betweenKeyFrames);;
+		    mCurrentState = ModelKeyFrame::lerp(mostRecentFrame, nextFrame, betweenKeyFrames);;
         }
 	}
+
+    void Visualisation::saveAppState() const {
+        nlohmann::json appState;
+        save(appState);
+        std::ofstream o(mSaveStateFilepath);
+        o << std::setw(4) << appState;
+    }
+
+    void Visualisation::save(nlohmann::json& dest) const {
+        mCameraSystem->save(dest["mCameraSystem"]);
+
+        dest["mPlayback"]["mTime_s"] = mPlayback.mTime_s;
+        dest["mPlayback"]["mSpeed"] = mPlayback.mSpeed;
+        dest["mPlayback"]["mLastSpeed"] = mPlayback.mLastSpeed;
+        dest["mPlayback"]["mPaused"] = mPlayback.mPaused;
+    }
+    
+    void Visualisation::loadAppState() {
+        std::ifstream saveState(mSaveStateFilepath);
+        if(saveState) {
+            std::stringstream buffer;
+            buffer << saveState.rdbuf();
+            load(buffer.str());
+        }
+    }
+
+    void Visualisation::load(const std::string& source) {
+        nlohmann::json j = nlohmann::json::parse(source);
+
+        j["mPlayback"]["mTime_s"].get_to(mPlayback.mTime_s);
+        j["mPlayback"]["mSpeed"].get_to(mPlayback.mSpeed);
+        j["mPlayback"]["mLastSpeed"].get_to(mPlayback.mLastSpeed);
+        j["mPlayback"]["mPaused"].get_to(mPlayback.mPaused);
+
+        mCameraSystem->load(j["mCameraSystem"].dump());
+    }
 
 }

@@ -14,7 +14,7 @@ namespace Physics {
 
         class GroundPlane {
         private:
-            static const chrono::Vector mPos_world;
+            static const chrono::ChVector<> mPos_world;
             static const float mThickness;
             chrono::ChSystemNSC& mSystemHandle;
             std::shared_ptr<chrono::ChBody> mBody;

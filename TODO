@@ -4,6 +4,8 @@
   |_| \___/|___/ \___/ 
 __________________________________________________________________________________________________________________________________
 
-1. Fix the issue of linking multiple tanks to the stage. Fine with 1, explodes with any more.
+1. Look into saving the state of the simulation (time/speed controls, camera position) with JSON file (see NeuralNetwork project)
 
-2. Look into saving the state of the simulation (time/speed controls, camera position) with JSON file (see NeuralNetwork project)
+2. Long term, look into how the SpaceX API (https://github.com/r-spacex/SpaceX-API) can be used to build missions. We'd need some method of combing the json response for e.g. the latest mission and integrating all data possible into the simulation.
+
+3. Use some of the cool functions in ChIrrTools once the simulation is running to draw things like springs, and trajectories

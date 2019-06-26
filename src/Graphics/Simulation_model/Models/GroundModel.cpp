@@ -23,9 +23,15 @@ namespace Graphics {
 			50,
 			50,
 			ChCoordsys<>(displacement_world, Q_from_AngAxis(CH_C_PI / 2, VECT_X)),
-            irr::video::SColor(70, 100, 100, 100),
+            irr::video::SColor(10, 100, 100, 100),
 			true
 		);
+
+        const chrono::ChVector<> 
+            springStart = chrono::ChVector<>(-10, 0, -10) - currentCamPos_world,
+            springEnd = chrono::ChVector<>(-10, 40, -10) - currentCamPos_world;
+
+        irrlicht::ChIrrTools::drawSpring(mVidDriver, 0.5, springStart, springEnd, irr::video::SColor(255, 255, 255, 255), 65, 10.0, true);
     }
 
 }

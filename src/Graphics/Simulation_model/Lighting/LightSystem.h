@@ -52,4 +52,4 @@ namespace Graphics {
 
 }
 
-#endif
+#endif // GRAPHICS_LIGHTSYSTEM_H

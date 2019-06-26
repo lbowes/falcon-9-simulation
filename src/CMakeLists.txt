@@ -142,7 +142,7 @@ SET(SOURCE_FILES
 	Physics/External/Environment.cpp
 	Physics/External/GeoCoordUtils.cpp
 	Physics/External/GroundPlane.cpp
-	#Physics/External/SurfaceLocation.cpp
+	Physics/External/SurfaceLocation.cpp
 	Physics/Internal/Hardware/Common/Propellant/CylinderFluidTank.cpp
 	Physics/Internal/Hardware/Common/Propellant/Fluid.cpp
 	Physics/Internal/Hardware/Common/Propellant/PropellantSubsystem.cpp

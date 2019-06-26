@@ -4,6 +4,8 @@
 #include <IrrlichtDevice.h>
 #include <ISceneManager.h>
 #include <IMGUI/imgui.h>
+#include <ICameraSceneNode.h>
+#include <iomanip>
 
 namespace Graphics {
 
@@ -14,8 +16,9 @@ namespace Graphics {
         mCurrentCamera(FPV),
         mHasFocus(false)
 	{
-		
-
+        
+        
+        // todo
         // --------------- CURRENT PROBLEM ----------------------
         // It is hard to get the position of the stage and the FPV camera's look-at vector to line up.
         // If we position the stage along the -Z axis for example, and set the camera's look-at vec to
@@ -25,19 +28,8 @@ namespace Graphics {
 
         // This fixed the problem for the X axis, but did not do anything to help the Z axis. The same
         // effect can be seen by subtracting 90 degs from mYaw (it works with Z but not X).
-        
 
-        mCameras.push_back(std::make_unique<FPVCamera>(
-			sceneManager,
-			input,
-			chrono::Vector(0, 70.0, 0),       //-20.0, 3.0, 0.0 //-85.0, 30.0, 0.0
-			irr::core::vector3df(0.0, -10.0, -1.0).normalize(), //1.0, 0.0, 0.0
-			0.1f,
-			10000.0f,
-			windowAspect,
-			44.7f
-		)); 
-
+        mCameras.push_back(std::make_unique<FPVCamera>(sceneManager, input, windowAspect)); 
 		mCameras.push_back(std::make_unique<InterstageCamera>(sceneManager, windowAspect));
 
 		sceneManager.setActiveCamera(&mCameras[FPV]->getInternalCamera());
@@ -53,7 +45,7 @@ namespace Graphics {
 	}
 
 	void CameraSystem::update(chrono::ChCoordsys<double> stage1Transform_world, float windowAspect, float dt) {
-		static_cast<FPVCamera*>(mCameras[FPV].get())->update(windowAspect, dt);
+        static_cast<FPVCamera*>(mCameras[FPV].get())->update(windowAspect, dt);
 		static_cast<InterstageCamera*>(mCameras[interstage].get())->update(stage1Transform_world, windowAspect);
 		//CHASER_CAM->update(windowAspect, stage1CoMPosition_world/* , dt */);
 	}
@@ -94,5 +86,25 @@ namespace Graphics {
 			mHasFocus = false;
 		}
 	}
+
+     void CameraSystem::save(nlohmann::json& dest) const {
+        static_cast<FPVCamera*>(mCameras[FPV].get())->save(dest["FPVCamera"]);
+        dest["mHasFocus"] = mHasFocus;
+        dest["mCurrentCamera"] = mCurrentCamera;
+    }
+
+    void CameraSystem::load(const std::string& source) {
+        if(source.empty()) {
+            printf("CameraSystem::load: source json string is empty");
+            return;
+        }
+
+        nlohmann::json j = nlohmann::json::parse(source);
+        static_cast<FPVCamera*>(mCameras[FPV].get())->load(j["FPVCamera"].dump());
+        j["mHasFocus"].get_to(mHasFocus);
+        j["mCurrentCamera"].get_to(mCurrentCamera);
+
+        mDevice.getCursorControl()->setVisible(!mHasFocus);
+    }
 
 }

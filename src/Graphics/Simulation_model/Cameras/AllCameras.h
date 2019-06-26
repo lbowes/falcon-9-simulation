@@ -2,6 +2,8 @@
 #define GRAPHICS_ALLCAMERAS_H
 #pragma once
 
+#include "../../ISerialisable.hpp"
+
 #include <vector3d.h>
 #include <core/ChVector.h>
 #include <core/ChFrame.h>
@@ -19,14 +21,12 @@ namespace irr {
 
 namespace Graphics {
 
-	/*
-	- A camera with a high precision position.
-	- In terms of OpenGL, the mInternalCamera's position remains fixed at the origin.
-	*/
+	// A camera with a high precision position.
+	// In terms of OpenGL, the mInternalCamera's position remains fixed at the origin.
 	class SimulationCamera {
 	protected:
-		chrono::Vector mPosition_world;                //High precision
-		irr::core::vector3df mLookAtDir_world;         //Low precision
+		chrono::ChVector<> mPosition_world;    //High precision
+		irr::core::vector3df mLookAtDir_world; //Low precision
 		irr::scene::ICameraSceneNode* mInternalCamera;
 
 	public:
@@ -44,12 +44,14 @@ namespace Graphics {
 
 		void setPosition_world(chrono::Vector newPosition_world) { mPosition_world = newPosition_world; }
 		chrono::Vector getPosition_world() const { return mPosition_world; }
+        void setLookAtDir_world(irr::core::vector3df newLookAtDir_world) { mLookAtDir_world = newLookAtDir_world; }
+		irr::core::vector3df getLookAtDir_world() const { return mLookAtDir_world; }
 		irr::scene::ICameraSceneNode& getInternalCamera() { return *mInternalCamera; }
 		const irr::scene::ICameraSceneNode& getInternalCamera() const { return *mInternalCamera; }
 
 	};
 
-	class FPVCamera : public SimulationCamera {
+	class FPVCamera : public SimulationCamera, public ISerialisable {
 	private:
 		const float
 			mMinMovementSpeed,
@@ -72,18 +74,16 @@ namespace Graphics {
 		FPVCamera(
 			irr::scene::ISceneManager& sceneManager, 
 			Input::HWEventReceiver& input, 
-			chrono::ChVector<> position_world = {0, 0, 0}, 
-			irr::core::vector3df lookAtDir_world = {0, 0, -1}, 
-			float near = 0.1f, 
-			float far = 1000.0f, 
-			float aspect = 1920.0f / 1080.0f, 
-			float FOVY_degs = 45.0f
+			float aspect = 1920.0f / 1080.0f
 		);
 
 		~FPVCamera() = default;
 
 		void update(float windowAspect, float dt);
 		void handleInput(float dt);
+
+        void save(nlohmann::json& dest) const override;
+        void load(const std::string& source) override;
 
 	private:
 		void handleDirectionInput(float dt);

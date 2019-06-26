@@ -3,6 +3,8 @@
 #pragma once
 
 #include "AllCameras.h"
+#include "../../../3rd_Party/json.hpp"
+#include "../../ISerialisable.hpp"
 
 #include <vector2d.h>
 #include <vector>
@@ -21,7 +23,7 @@ namespace irr {
 
 namespace Graphics {
 
-	class CameraSystem {
+	class CameraSystem : public ISerialisable {
 	public:
 		enum CameraNames : unsigned char { FPV, interstage/*, chaser, droneShip*/ };
 	
@@ -30,7 +32,7 @@ namespace Graphics {
 		irr::scene::ISceneManager& mSceneManager;
 		const Input::HWEventReceiver& mHWInput;
 		std::vector<std::unique_ptr<SimulationCamera>> mCameras;
-		unsigned mCurrentCamera;
+		unsigned char mCurrentCamera;
 		bool mHasFocus;
 
 	public:
@@ -39,10 +41,11 @@ namespace Graphics {
 
 		void update(chrono::ChCoordsys<double> stage1Transform_world, float windowAspect, float dt);
 		void handleInput(irr::core::vector2di centreScreenPos_scr, float dt);
-		
+        void save(nlohmann::json& dest) const override;
+        void load(const std::string& source) override;
+
 		bool hasFocus() const { return mHasFocus; }
 		SimulationCamera& getCurrentSimCamera() const { return *mCameras[mCurrentCamera].get(); }
-
 		void setFocus(bool shouldHaveFocus) { mHasFocus = shouldHaveFocus; }
 
 	};

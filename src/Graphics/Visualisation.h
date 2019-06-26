@@ -8,6 +8,7 @@
 #include "Simulation_model/Cameras/CameraSystem.h"
 #include "Simulation_model/SimulationModel.h"
 #include "Simulation_model/ModelKeyFrame.h"
+#include "ISerialisable.hpp"
 
 #include <IrrIMGUI/IrrIMGUI.h>
 #include <map>
@@ -40,13 +41,15 @@ namespace Graphics {
 		void togglePauseState();
 	};
 
-	class Visualisation {
+	class Visualisation : public ISerialisable {
 	private:
 		const double
 			mKeyFrameInterval_s,
 			mSimDuration_s;
 
-		const std::string mIniSaveFile_imgui;
+		const std::string 
+            mIniSaveFilepath_imgui,
+            mSaveStateFilepath;
         
 	    IrrIMGUI::IIMGUIHandle* mImGuiHandle;
         irr::IrrlichtDevice* mDevice;
@@ -79,6 +82,10 @@ namespace Graphics {
 		void update(float frameTime_s);
 		void render();
 		void handleTimeSelection(float frameTime_s);
+        void saveAppState() const;
+        void save(nlohmann::json& dest) const override;
+        void loadAppState();
+        void load(const std::string& source) override;
 
 	};
 

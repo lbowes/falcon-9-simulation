@@ -28,16 +28,6 @@ namespace Physics {
 
 		};
 
-        // Should be responsible for containing
-        class Falcon9_DSS {
-        private:
-
-        public:
-            Falcon9_DSS();
-            ~Falcon9_DSS() = default;
-
-        };
-
 	}
 }
 

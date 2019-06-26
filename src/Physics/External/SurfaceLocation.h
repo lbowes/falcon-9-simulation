@@ -3,6 +3,7 @@
 #pragma once
 
 #include <chrono/core/ChFrame.h>
+#include <chrono/core/ChMatrixDynamic.h>
 #include <string>
 
 namespace Physics {

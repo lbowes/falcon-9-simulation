@@ -11,7 +11,7 @@
 namespace Graphics {
 
 	SimulationCamera::SimulationCamera(irr::scene::ISceneManager& sceneManager, chrono::ChVector<> position_world, irr::core::vector3df lookAtDir_world, float near, float far, float aspect, float FOVY_degs) :
-		mPosition_world(position_world),
+        mPosition_world(position_world),
 		mLookAtDir_world(lookAtDir_world)
 	{
 		mInternalCamera = sceneManager.addCameraSceneNode();
@@ -26,8 +26,8 @@ namespace Graphics {
 		mInternalCamera->setFOV(irr::core::degToRad(FOVY_degs));
 	}
 
-	FPVCamera::FPVCamera(irr::scene::ISceneManager& sceneManager, Input::HWEventReceiver& input, chrono::ChVector<> position_world, irr::core::vector3df lookAtDir_world, float near, float far, float aspect, float FOVY_degs) :
-		SimulationCamera(sceneManager, position_world, lookAtDir_world, near, far, aspect, FOVY_degs),
+	FPVCamera::FPVCamera(irr::scene::ISceneManager& sceneManager, Input::HWEventReceiver& input, float aspect) :
+		SimulationCamera(sceneManager, chrono::Vector(0, 70.0, 0), irr::core::vector3df(0.0, -10.0, -1.0).normalize(), 0.1f, 300.0f, aspect, 44.7f),
 		mMinMovementSpeed(6.4f),         // 25.0f
 		mMaxMovementSpeed(20000.0f),     // 20000.0f
 		mSpeedAdjustSensitivity(200.0f), // 200.0f
@@ -35,10 +35,8 @@ namespace Graphics {
 		mZoomSensitivity(0.1f),          // 0.1f
 		mLookAroundSensitivity(0.05f),   // 0.05f
 		mMovementSpeed(200.0f),          // 400.0f  
-		//mPitch(-lookAtDir_world.getHorizontalAngle().X),
-		//mYaw(lookAtDir_world.getHorizontalAngle().Y),
-		mPitch(-lookAtDir_world.getSphericalCoordinateAngles().X),
-		mYaw(lookAtDir_world.getSphericalCoordinateAngles().Y),
+		mPitch(-mLookAtDir_world.getSphericalCoordinateAngles().X), //mPitch(-lookAtDir_world.getHorizontalAngle().X),
+		mYaw(mLookAtDir_world.getSphericalCoordinateAngles().Y), //mYaw(lookAtDir_world.getHorizontalAngle().Y),
 		mHWInput(input),
 		mVelocity_world(0, 0, 0)
 	{ 
@@ -52,8 +50,9 @@ namespace Graphics {
 		mPosition_world += mVelocity_world * static_cast<double>(dt);
 		mVelocity_world *= 1.0 / (1.0 + (dt * mMovementFriction));
 
-		//if(mPosition_world.y() < 1.78)
-			//mPosition_world.y() = 1.78;
+        // Keep the camera above the ground at roughly eye-level
+		if(mPosition_world.y() < 1.74)
+			mPosition_world.y() = 1.74;
 
 		mInternalCamera->setTarget(mLookAtDir_world);
 
@@ -83,6 +82,42 @@ namespace Graphics {
 		handleZoomInput(dt);
 		handleMovementInput(dt);
 	}
+
+    void FPVCamera::load(const std::string& source) {
+        nlohmann::json j = nlohmann::json::parse(source);
+
+        j["mMovementSpeed"].get_to(mMovementSpeed);
+        j["mPitch"].get_to(mPitch);
+        j["mYaw"].get_to(mYaw);
+
+        j["mPosition_world"]["x"].get_to(mPosition_world.x());
+        j["mPosition_world"]["y"].get_to(mPosition_world.y());
+        j["mPosition_world"]["z"].get_to(mPosition_world.z());
+
+        j["mVelocity_world"]["x"].get_to(mVelocity_world.x());
+        j["mVelocity_world"]["y"].get_to(mVelocity_world.y());
+        j["mVelocity_world"]["z"].get_to(mVelocity_world.z());
+
+        j["mLookAtDir_world"]["x"].get_to(mLookAtDir_world.X);
+        j["mLookAtDir_world"]["y"].get_to(mLookAtDir_world.Y);
+        j["mLookAtDir_world"]["z"].get_to(mLookAtDir_world.Z);
+    }
+    
+    void FPVCamera::save(nlohmann::json& dest) const {
+        dest["mMovementSpeed"] = mMovementSpeed;
+        dest["mPitch"] = mPitch;
+        dest["mYaw"] = mYaw;
+
+        // If the velocity is below a certain threshold, consider the camera to have to stopped moving
+        // so next run, the camera begins from stationary state.
+        chrono::ChVector<> vel = mVelocity_world;
+        if(vel.Length() < 0.4)
+            vel = 0;
+
+        dest["mPosition_world"] = {{"x", mPosition_world.x()}, {"y", mPosition_world.y()}, {"z", mPosition_world.z()}};
+        dest["mVelocity_world"] = {{"x", vel.x()}, {"y", vel.y()}, {"z", vel.z()}};
+        dest["mLookAtDir_world"] = {{"x", mLookAtDir_world.X}, {"y", mLookAtDir_world.Y}, {"z", mLookAtDir_world.Z}};
+    }
 
 	void FPVCamera::handleDirectionInput(float dt) {
 		using namespace irr::core;
