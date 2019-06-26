@@ -36,13 +36,12 @@ namespace Graphics {
 
 	class LightSystem {
 	private:
-		irr::video::IVideoDriver& mVidDriver;
 		irr::scene::ISceneManager& mSceneManager;
 
 		std::vector<SimLight> mLights;
 
 	public:
-		LightSystem(irr::video::IVideoDriver& vidDriver, irr::scene::ISceneManager& sceneManager);
+		LightSystem(irr::scene::ISceneManager& sceneManager);
 		~LightSystem() = default;
 
 		void update(const chrono::ChVector<double>& currentCamPos_world);

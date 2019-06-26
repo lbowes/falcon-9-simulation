@@ -11,16 +11,16 @@ namespace Physics {
 		class SurfaceLocation {
 		private:
 			std::string mName;
-			chrono::Vector mGPSCoordinate_LLH;
+			chrono::ChVector<> mGPSCoordinate_LLH;
 			chrono::ChFrame<> mEUN_to_ECEF;
 
 		public:
-			SurfaceLocation(const std::string& name = "", const chrono::Vector& gpsCoord_LLH = {0, 0, 0});
+			SurfaceLocation(const std::string& name = "", const chrono::ChVector<>& gpsCoord_LLH = {0, 0, 0});
 			void operator=(const SurfaceLocation& other);
 			~SurfaceLocation() = default;
 
 			void setName(const std::string& name) { mName = name; }
-			void setGPSPosition(const chrono::Vector& gpsCoord_LLH);
+			void setGPSPosition(const chrono::ChVector<>& gpsCoord_LLH);
 
 			const chrono::ChFrame<>& getEUN_to_ECEFTransform() const { return mEUN_to_ECEF; }
 
@@ -32,4 +32,4 @@ namespace Physics {
 	}
 }
 
-#endif
+#endif // PHYSICS_EXTERNAL_SURFACELOCATION_H

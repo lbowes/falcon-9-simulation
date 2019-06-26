@@ -128,9 +128,9 @@ SET(SOURCE_FILES
 	Graphics/Simulation_model/Lighting/LightSystem.cpp
 	Graphics/Simulation_model/Cameras/AllCameras.cpp
 	Graphics/Simulation_model/Cameras/CameraSystem.cpp
-	Graphics/Simulation_model/SimulationModelLayer.cpp
+	Graphics/Simulation_model/SimulationModel.cpp
 	Graphics/Simulation_model/Models/GroundModel.cpp
-	Graphics/Simulation_model/Models/Falcon_9/F9Model.cpp
+	Graphics/Simulation_model/Models/Falcon_9/Falcon9Model.cpp
 	Graphics/Simulation_model/Models/Falcon_9/Stage_1/F9S1Model.cpp
 	Graphics/Simulation_model/Models/Falcon_9/Stage_2/F9S2Model.cpp
 	Graphics/GUI/GUILayer.cpp

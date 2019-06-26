@@ -12,16 +12,16 @@ namespace Graphics {
 		class GUILayer {
 		private:
 			PlaybackConfig& mPlaybackHandle;
-			const double mSimDuration;
+			const double mSimDuration_s;
 
 		public:
-			GUILayer(PlaybackConfig& playbackConfigHandle, double simDuration);
+			GUILayer(PlaybackConfig& playbackConfigHandle, double simDuration_s);
 			~GUILayer() = default;
 
 			void render();
+			void loadImGuiStyle();
 
 		private:
-			void loadImGuiStyle();
 			void playbackControlPanel();
 
 		};
@@ -29,4 +29,4 @@ namespace Graphics {
 	}
 }
 
-#endif
+#endif // GRAPHICS_GUI_GUILAYER_H

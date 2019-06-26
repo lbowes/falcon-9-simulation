@@ -1,5 +1,4 @@
 #include "Visualisation.h"
-#include "../Physics/Internal/Hardware/Falcon_9/F9.h"
 
 #include <chrono_irrlicht/ChIrrWizard.h>
 #include <chrono_irrlicht/ChIrrTools.h>
@@ -29,23 +28,21 @@ namespace Graphics {
 		}
 	}
 
-	Visualisation::Visualisation(const std::map<const unsigned, const Physics::F9_DSS>& stateHistoryHandle, double snapshotInterval_s, double simDuration) :
-		mStateHistory(stateHistoryHandle),
-		mSnapshotInterval_s(snapshotInterval_s),
-		mSimDuration(simDuration),
-		mIniSaveFile_imgui("../dat/Visualisation/imgui.ini")
+	Visualisation::Visualisation(double keyFrameInterval_s, double simDuration_s) :
+		mKeyFrameInterval_s(keyFrameInterval_s),
+		mSimDuration_s(simDuration_s),
+		mIniSaveFile_imgui("../dat/Visualisation/imgui.ini"),
+        mGUILayer(mPlayback, simDuration_s)
 	{
 		using namespace irr;
 		
-		mEventReceiver.addReciever(&mHWinput);
-		mEventReceiver.addReciever(&mImGuiEventReceiver);
-
-		//Get monitor resolution
+        // Initialise device
+        //Get monitor resolution
 		IrrlichtDevice* tmp = createDevice(video::EDT_NULL);
 		core::dimension2du res = tmp->getVideoModeList()->getDesktopResolution();
 		tmp->drop();
 
-		SIrrlichtCreationParameters params;
+        SIrrlichtCreationParameters params;
 		params.DriverType = video::EDT_OPENGL;
 		params.WindowSize = res / 2;
 		params.Bits = 16;
@@ -64,15 +61,22 @@ namespace Graphics {
 
 		mDevice->setWindowCaption(L"Falcon 9 Simulation");
 
+        // Initialise other core Irrlicht components
+        mVidDriver = mDevice->getVideoDriver();
+		mSceneMgr = mDevice->getSceneManager();
+
+		mEventReceiver.addReciever(&mHWinput);
+		mEventReceiver.addReciever(&mImGuiEventReceiver);
+
 		// Prevents IrrIMGUI from hiding the OS cursor during initialisation and forcing a new rendered cursor
 		IrrIMGUI::SIMGUISettings settings;
 		settings.mIsGUIMouseCursorEnabled = false;
 
-		mImGuiHandle = IrrIMGUI::createIMGUI(mDevice, &mImGuiEventReceiver, &settings);
+        mImGuiHandle = IrrIMGUI::createIMGUI(mDevice, &mImGuiEventReceiver, &settings);
 
-		mVidDriver = mDevice->getVideoDriver();
-		mSceneMgr = mDevice->getSceneManager();
-		
+        // Must be called after ImGui is initialised
+        mGUILayer.loadImGuiStyle();        
+
 		init();
         run();
 	}
@@ -82,7 +86,6 @@ namespace Graphics {
 		ImGui::SaveIniSettingsToDisk(mIniSaveFile_imgui.c_str());
 		mImGuiHandle->drop();
 	}
-
 
 	void Visualisation::run() {
 		unsigned lastTime = mDevice->getTimer()->getRealTime();
@@ -111,11 +114,20 @@ namespace Graphics {
 		float aspectRatio = viewport.getWidth() / viewport.getHeight();
 
 		mCameraSystem = std::make_unique<CameraSystem>(*mDevice, *mSceneMgr, mHWinput, aspectRatio);
-		mModelLayer = std::make_unique<SimulationModelLayer>(*mVidDriver, *mSceneMgr, aspectRatio);
-		mGUILayer = std::make_unique<GUI::GUILayer>(mPlayback, mSimDuration);
+		mModel = std::make_unique<SimulationModel>(*mVidDriver, *mSceneMgr);
 
 		ImGui::LoadIniSettingsFromDisk(mIniSaveFile_imgui.c_str());
+
+        buildKeyFrameHistory();
 	}
+
+    void Visualisation::buildKeyFrameHistory() 
+        // When the visualisation begins, it only has access to the output CSV file from the simulation.
+        // This must first be converted into a series of key frames making up the animation history of the
+        // system's model.
+    {
+        // mKeyFrames.insert(..., ...);
+    }
 
 	void Visualisation::handleInput(const float frameTime_s) {
 		// Quit app with Esc
@@ -137,21 +149,27 @@ namespace Graphics {
 		irr::core::vector2di centreScreen = irr::core::vector2di(dims.getWidth() / 2, dims.getHeight() / 2);
 		mHWinput.update(centreScreen);
 
-        handleTimeSelection(frameTime_s);
+        // Update the point in time being displayed by the simulation
+        //handleTimeSelection(frameTime_s);
 
         // Fix window aspect ratio with resizing
 		const float aspectRatio = static_cast<float>(dims.getWidth()) / dims.getHeight();
-		mCameraSystem->update(mLiveSnapshot.getF9S1_DSS().getS1ToWorldTransform().GetCoord(), aspectRatio, frameTime_s);
+		
+        // todo: fix this, the camera system should be given the transform of the interstage camera mount
+        // Shouldn't the interstage camera have its own ChCoordsys which could then be used to have
+        // ChIrrTools align the camera to the model automatically somehow?
+        mCameraSystem->update(chrono::ChCoordsys<double>(), aspectRatio, frameTime_s);
+        //mCameraSystem->update(mCurrentState.getF9S1_DSS().getS1ToWorldTransform().GetCoord(), aspectRatio, frameTime_s);
 		
         // Pass in the required camera position so that models can update their own positions
-		mModelLayer->update(mCameraSystem->getCurrentSimCamera().getPosition_world(), mLiveSnapshot, frameTime_s);
+		mModel->update(mCameraSystem->getCurrentSimCamera().getPosition_world(), mCurrentState);
 	}
 	
 	void Visualisation::render() {
 		mVidDriver->beginScene(true, true, irr::video::SColor(255, 0, 0, 0));
 		
-		mGUILayer->render();
-		mModelLayer->render(mCameraSystem->getCurrentSimCamera().getPosition_world());
+		mGUILayer.render();
+		mModel->render(mCameraSystem->getCurrentSimCamera().getPosition_world());
 		mImGuiHandle->drawAll();
 		
 		mVidDriver->endScene();
@@ -159,23 +177,23 @@ namespace Graphics {
 
 	void Visualisation::handleTimeSelection(float frameTime_s) {
 		// Advance the simulation time correctly according to the frame time...
-		mPlayback.mTime_s = std::min(static_cast<float>(mSimDuration), mPlayback.mTime_s + mPlayback.mSpeed * frameTime_s);
+		mPlayback.mTime_s = std::min(static_cast<float>(mSimDuration_s), mPlayback.mTime_s + mPlayback.mSpeed * frameTime_s);
 		
 		// Localise the current time within the snapshot history...
 		double 
-			s = floor(mPlayback.mTime_s / mSnapshotInterval_s),
-			betweenSnapshots = fmod(mPlayback.mTime_s, mSnapshotInterval_s) / mSnapshotInterval_s;
+			s = floor(mPlayback.mTime_s / mKeyFrameInterval_s),
+			betweenKeyFrames = fmod(mPlayback.mTime_s, mKeyFrameInterval_s) / mKeyFrameInterval_s;
 	
 		// Find the index of the the most recent snapshot to have been recorded...
 		const unsigned
-			snapshotCount = mStateHistory.size(),
-			recentSnapshotIdx = std::clamp(static_cast<unsigned>(s), 0U, static_cast<unsigned>(snapshotCount - 1));
+			keyFrameCount = mKeyFrames.size(),
+			recentKeyFrameIdx = std::clamp(static_cast<unsigned>(s), 0U, static_cast<unsigned>(keyFrameCount - 1));
 
-		Physics::F9_DSS
-			mostRecentState = mStateHistory.at(recentSnapshotIdx),
-			nextState = mStateHistory.at(std::clamp(recentSnapshotIdx + 1, 0U, static_cast<unsigned>(snapshotCount - 1)));
+		ModelKeyFrame
+			mostRecentState = mKeyFrames.at(recentKeyFrameIdx),
+			nextState = mKeyFrames.at(std::clamp(recentKeyFrameIdx + 1, 0U, static_cast<unsigned>(keyFrameCount - 1)));
 
-		mLiveSnapshot = Physics::F9_DSS::lerp(mostRecentState, nextState, betweenSnapshots);;
+		mCurrentState = ModelKeyFrame::lerp(mostRecentState, nextState, betweenKeyFrames);;
 	}
 
 }

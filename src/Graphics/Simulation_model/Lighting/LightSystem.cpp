@@ -1,9 +1,9 @@
 #include "LightSystem.h"
+
 #include <ISceneManager.h>
-#include <IVideoDriver.h>
 #include <ILightSceneNode.h>
-#include <IBillboardSceneNode.h>
 #include <vector3d.h>
+#include <chrono_irrlicht/ChIrrTools.h>
 
 //TODO: Do a better job with this lighting system, it is quite basic at the moment
 
@@ -16,11 +16,10 @@ namespace Graphics {
 
 	void SimLight::update(const chrono::ChVector<>& currentCamPos_world) {
 		const chrono::ChVector<> displacement = mPosition_world - currentCamPos_world;
-		mInternalLight->setPosition({displacement.x(), displacement.y(), displacement.z()});
+		mInternalLight->setPosition(irr::core::vector3dfCH(displacement));
 	}
 
-	LightSystem::LightSystem(irr::video::IVideoDriver& vidDriver, irr::scene::ISceneManager& sceneManager) :
-		mVidDriver(vidDriver),
+	LightSystem::LightSystem(irr::scene::ISceneManager& sceneManager) :
 		mSceneManager(sceneManager)
 	{
 		using namespace irr;

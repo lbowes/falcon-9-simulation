@@ -8,8 +8,8 @@ namespace External {
 	
 	class GeoCoordUtils {
 	public:
-		static chrono::Vector toGeodetic(const chrono::Vector& ecef_XYZ);
-		static chrono::Vector toECEF(const chrono::Vector& geodetic_LLH);
+		static chrono::ChVector<> toGeodetic(const chrono::Vector& ecef_XYZ);
+		static chrono::ChVector<> toECEF(const chrono::Vector& geodetic_LLH);
 
 	private:
 		GeoCoordUtils() = default;

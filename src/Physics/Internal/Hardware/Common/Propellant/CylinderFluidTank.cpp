@@ -7,7 +7,7 @@
 namespace Physics {
 	namespace Hardware {
 
-		CylinderFluidTank::CylinderFluidTank(Fluid f, double height, double radius, double thickness, double density) :
+		CylinderFluidTank::CylinderFluidTank(chrono::ChSystemNSC& system, Fluid f, double height, double radius, double thickness, double density) :
 			mFluid(f),
 			mHeight(height),
 			mRadius(radius),
@@ -20,7 +20,8 @@ namespace Physics {
 			mTankCoM_tank({0, height * 0.5, 0}),
 			mTankInertia_tank(tankInertia_tank())
 		{ 
-			assemble();
+            system.AddBody(mBody);
+            assemble();
 		}
 
 		void CylinderFluidTank::addFluid(double mass) {
@@ -116,7 +117,7 @@ namespace Physics {
 			// Responsible for updating various tank properties after the fluid mass has changed
 		{
 			mFluidVolume = mFluidMass / mFluid.mDensity;
-			mFluidLevel = (mFluidVolume / mVolume_internal) * mInternmTankCoM_tankalHeight;
+			mFluidLevel = (mFluidVolume / mVolume_internal) * mInternalHeight;
 			mPercentFull = mFluidMass / mMaxFluidMass;
 
 			// addFluid() and removeFluid() handle the change of value of the fluid mass,

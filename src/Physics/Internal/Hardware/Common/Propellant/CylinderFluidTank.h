@@ -45,7 +45,7 @@ namespace Physics {
 			chrono::ChMatrix33<> mFluidInertia_tank;
 
 		public:
-			CylinderFluidTank(Fluid f, double height, double radius, double thickness, double density);
+			CylinderFluidTank(chrono::ChSystemNSC& system, Fluid f, double height, double radius, double thickness, double density);
 			~CylinderFluidTank() = default;
 
             //void attachToStage();

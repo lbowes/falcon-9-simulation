@@ -4,11 +4,11 @@
 
 #include <core/ChVector2.h>
 #include <chrono/physics/ChBodyAuxRef.h>
-#include <chrono/physics/ChLinkRevolute.h>
+#include <chrono/physics/ChLinkLock.h>
 #include <memory>
 
 namespace chrono {
-	class ChSystem;
+	class ChSystemNSC;
 }
 
 namespace Physics {
@@ -44,7 +44,7 @@ namespace Physics {
 
 			std::shared_ptr<chrono::ChBodyAuxRef> mAFrameBody;
 
-			std::shared_ptr<chrono::ChLinkRevolute> mAFrameJoint;
+			std::shared_ptr<chrono::ChLinkLockRevolute> mAFrameJoint;
 
 			enum class Phase : unsigned char { stowed, deploying, locked };
 			Phase mDeploymentPhase = Phase::stowed;

@@ -24,7 +24,7 @@ namespace Physics {
             void update(double dt);
 
         private:
-			void assemble();
+			void assemble(chrono::ChSystemNSC& systemHandle);
 
 		};
 

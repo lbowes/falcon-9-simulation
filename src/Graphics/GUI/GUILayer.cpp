@@ -7,12 +7,10 @@
 namespace Graphics {
 	namespace GUI {
 
-		GUILayer::GUILayer(PlaybackConfig& playbackConfigHandle, double simDuration) :
+		GUILayer::GUILayer(PlaybackConfig& playbackConfigHandle, double simDuration_s) :
 			mPlaybackHandle(playbackConfigHandle),
-			mSimDuration(simDuration)
-		{
-			loadImGuiStyle();
-		}
+			mSimDuration_s(simDuration_s)
+		{ }
 
 		void GUILayer::render() {
 			playbackControlPanel();
@@ -102,7 +100,7 @@ namespace Graphics {
 			ImGui::Text("Time ");
 			ImGui::SameLine();
 			ImGui::PushItemWidth(ImGui::GetContentRegionAvailWidth());
-			ImGui::SliderFloat("##time", &mPlaybackHandle.mTime_s, 0.0f, mSimDuration);
+			ImGui::SliderFloat("##time", &mPlaybackHandle.mTime_s, 0.0f, mSimDuration_s);
 			ImGui::PopItemWidth();
 
 			// Speed slider

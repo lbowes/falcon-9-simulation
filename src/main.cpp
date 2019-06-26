@@ -2,8 +2,8 @@
 #include "Graphics/Visualisation.h"
 
 int main() {
-    Physics::Simulation sim(dataFile);
-    Graphics::Visualisation vis(sim.getStateHistory(), sim.getSnapshotInterval_s(), sim.getDuration());
+    Physics::Simulation sim("../dat/output.csv");
+    Graphics::Visualisation vis(sim.getSampleInterval_s(), sim.getDuration_s());
 
 	return 0;
 }

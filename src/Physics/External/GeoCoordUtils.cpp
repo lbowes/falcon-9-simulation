@@ -5,7 +5,7 @@
 
 namespace External {
 
-	chrono::Vector GeoCoordUtils::toGeodetic(const chrono::Vector& ecef_XYZ) 
+	chrono::Vector GeoCoordUtils::toGeodetic(const chrono::ChVector<>& ecef_XYZ) 
 		// Converts an ECEF position vector (X, Y, Z) to a geodetic coordinate (latitude, longitude, height)
 		// Implementation of https://en.wikipedia.org/wiki/Geographic_coordinate_conversion#The_application_of_Ferrari's_solution
 		// Tested using:
@@ -16,9 +16,9 @@ namespace External {
 		using namespace Physics::External;
 		
 		const double
-			X = ecef_XYZ.x,
-			Y = ecef_XYZ.z,
-			Z = ecef_XYZ.y,
+			X = ecef_XYZ.x(),
+			Y = ecef_XYZ.z(),
+			Z = ecef_XYZ.y(),
 			a = Earth::WGS84::a,
 			b = Earth::WGS84::b,
 			e = Earth::WGS84::ecc,
@@ -46,17 +46,17 @@ namespace External {
 		return chrono::Vector(latitude, longitude, height);
 	}
 
-	chrono::Vector GeoCoordUtils::toECEF(const chrono::Vector& geodetic_LLH) 
+	chrono::Vector GeoCoordUtils::toECEF(const chrono::ChVector<>& geodetic_LLH) 
 		// Converts a geodetic coordinate (latitude, longitude, height) to an ECEF position vector (X, Y, Z)
 		// Implementation of https://en.wikipedia.org/wiki/Geographic_coordinate_conversion#From_geodetic_to_ECEF_coordinates 
 	{
 		const double
-			lat = chrono::CH_C_DEG_TO_RAD * geodetic_LLH.x,
-			lon = chrono::CH_C_DEG_TO_RAD * geodetic_LLH.y,
-			N = Physics::External::Earth::getRadiusAtLatitude_m(geodetic_LLH.x),
-			x = (N + geodetic_LLH.z) * cos(lat) * cos(lon),
-			z = (N + geodetic_LLH.z) * cos(lat) * sin(lon),
-			y = ((1.0 - pow(Physics::External::Earth::WGS84::ecc, 2.0)) * N + geodetic_LLH.z) * sin(lat);
+			lat = chrono::CH_C_DEG_TO_RAD * geodetic_LLH.x(),
+			lon = chrono::CH_C_DEG_TO_RAD * geodetic_LLH.y(),
+			N = Physics::External::Earth::getRadiusAtLatitude_m(geodetic_LLH.x()),
+			x = (N + geodetic_LLH.z()) * cos(lat) * cos(lon),
+			z = (N + geodetic_LLH.z()) * cos(lat) * sin(lon),
+			y = ((1.0 - pow(Physics::External::Earth::WGS84::ecc, 2.0)) * N + geodetic_LLH.z()) * sin(lat);
 
 		return chrono::Vector(x, y, z);
 	}

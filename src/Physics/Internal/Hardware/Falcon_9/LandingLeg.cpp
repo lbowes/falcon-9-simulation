@@ -23,7 +23,7 @@ namespace Physics {
 			systemHandle->AddBody(mAFrameBody);
 
 			mAFrameBody->SetNameString("Landing leg " + std::to_string(sInstanceCount) + " A-frame");
-			mAFrameBody->SetFrame_COG_to_REF({0.0, sCoMPos_AFrame2D.y, -sCoMPos_AFrame2D.x});
+			mAFrameBody->SetFrame_COG_to_REF({0.0, sCoMPos_AFrame2D.y(), -sCoMPos_AFrame2D.x()});
 			mAFrameBody->SetMass(sAFrameMass);
 			mAFrameBody->SetInertia(calcInertia_AFrame());
 			mAFrameBody->SetCollide(true);
@@ -39,8 +39,8 @@ namespace Physics {
 			
 			// The joint coordinate frame in stage space.
 			chrono::ChFrame<> jointFrame_stage;
-            chrono::Vector pos_stage3D = { 0.0, sPos_stage2D.y, -sPos_stage2D.x };
-            const chrono::ChQuaternion clockingRotation = chrono::Q_from_AngY(clockingDegree_degs * chrono::CH_C_DEG_TO_RAD);
+            chrono::Vector pos_stage3D = { 0.0, sPos_stage2D.y(), -sPos_stage2D.x() };
+            const chrono::ChQuaternion<> clockingRotation = chrono::Q_from_AngY(clockingDegree_degs * chrono::CH_C_DEG_TO_RAD);
             pos_stage3D = clockingRotation.Rotate(pos_stage3D);
             jointFrame_stage.SetPos(pos_stage3D);
             jointFrame_stage.SetRot(clockingRotation);
@@ -61,7 +61,7 @@ namespace Physics {
                 inertia_origin;
                 
             // Calculate the 3D displacement vector of the centre of mass from the leg's origin
-            const ChVector<> CoMPos_AFrame3D = { 0.0, sCoMPos_AFrame2D.y, -sCoMPos_AFrame2D.x };
+            const ChVector<> CoMPos_AFrame3D = { 0.0, sCoMPos_AFrame2D.y(), -sCoMPos_AFrame2D.x() };
 
             // Use the parallel axis theorem to calculate the inertia of the leg about its origin
             ChInertiaUtils::TranslateInertia(inertia_CoM, -CoMPos_AFrame3D, sAFrameMass, inertia_origin);

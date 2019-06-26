@@ -124,33 +124,34 @@ endif()
 #--------------------------------------------------------------
 
 SET(SOURCE_FILES 
-    main.cpp 
-	Input/HWEventReceiver.cpp
-	Input/MasterEventReceiver.cpp
-	Graphics/Visualisation.cpp
-	Graphics/Simulation_model/Lighting/LightSystem.cpp
+	Graphics/GUI/GUILayer.cpp
+    Graphics/GUI/UIUtils.hpp
+    Graphics/Visualisation.cpp
 	Graphics/Simulation_model/Cameras/AllCameras.cpp
 	Graphics/Simulation_model/Cameras/CameraSystem.cpp
-	Graphics/Simulation_model/SimulationModelLayer.cpp
+	Graphics/Simulation_model/Lighting/LightSystem.cpp
+	Graphics/Simulation_model/Models/Falcon_9/Falcon9Model.cpp
 	Graphics/Simulation_model/Models/GroundModel.cpp
-	Graphics/Simulation_model/Models/Falcon_9/F9Model.cpp
-	Graphics/Simulation_model/Models/Falcon_9/Stage_1/F9S1Model.cpp
-	Graphics/Simulation_model/Models/Falcon_9/Stage_2/F9S2Model.cpp
-	Graphics/GUI/GUILayer.cpp
-    Physics/Simulation.cpp
+	Graphics/Simulation_model/Models/OBJModel.hpp
+	Graphics/Simulation_model/ModelKeyFrame.cpp
+	Graphics/Simulation_model/SimulationModel.cpp
+	Graphics/Visualisation.cpp
+    Input/HWEventReceiver.cpp
+	Input/MasterEventReceiver.cpp
+	Physics/External/Earth.cpp
+	Physics/External/Environment.cpp
+	Physics/External/GeoCoordUtils.cpp
 	Physics/External/GroundPlane.cpp
+	#Physics/External/SurfaceLocation.cpp
 	Physics/Internal/Hardware/Common/Propellant/CylinderFluidTank.cpp
 	Physics/Internal/Hardware/Common/Propellant/Fluid.cpp
-	Physics/Internal/Hardware/Common/Propulsion/Engine.cpp
-	Physics/Internal/Hardware/Common/Structural/ILaunchVehicle.cpp
-	Physics/Internal/Hardware/Common/Structural/IStage.cpp
-	Physics/Internal/Hardware/Falcon_9/F9.cpp
-	Physics/Internal/Hardware/Falcon_9/Stage_1/F9S1.cpp
-	Physics/Internal/Hardware/Falcon_9/Stage_1/LandingLeg.cpp
-	Physics/Internal/Hardware/Falcon_9/Stage_1/GridFin.cpp
-	Physics/Internal/Hardware/Falcon_9/Stage_1/Merlin1D.cpp
-	Physics/Internal/Hardware/Falcon_9/Stage_1/GridFin.cpp
-	Physics/Internal/Hardware/Falcon_9/Stage_2/F9S2.cpp
+	Physics/Internal/Hardware/Common/Propellant/PropellantSubsystem.cpp
+	Physics/Internal/Hardware/Common/Propellant/SupplyLine.cpp
+	Physics/Internal/Hardware/Falcon_9/Falcon9.cpp
+	Physics/Internal/Hardware/Falcon_9/LandingLeg.cpp
+    Physics/Simulation.cpp
+    Physics/System.cpp
+    main.cpp 
 )
 
 add_executable(myexe ${SOURCE_FILES})

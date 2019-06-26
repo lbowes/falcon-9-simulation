@@ -14,7 +14,7 @@ namespace Graphics {
         using namespace chrono;
 
 		//See F9S1Model::update() for explanation
-		const chrono::Vector displacement_world = Physics::External::GroundPlane::getPos_world() - currentCamPos_world;
+		const chrono::ChVector<> displacement_world = Physics::External::GroundPlane::getPos_world() - currentCamPos_world;
 
 		irrlicht::ChIrrTools::drawGrid(
 			mVidDriver,

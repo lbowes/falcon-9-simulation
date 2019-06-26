@@ -6,8 +6,8 @@
 #include "../Input/HWEventReceiver.h"
 #include "GUI/GUILayer.h"
 #include "Simulation_model/Cameras/CameraSystem.h"
-#include "Simulation_model/SimulationModelLayer.h"
-#include "../Physics/Internal/Hardware/Falcon_9/F9.h"
+#include "Simulation_model/SimulationModel.h"
+#include "Simulation_model/ModelKeyFrame.h"
 
 #include <IrrIMGUI/IrrIMGUI.h>
 #include <map>
@@ -42,38 +42,38 @@ namespace Graphics {
 
 	class Visualisation {
 	private:
-		irr::IrrlichtDevice* mDevice;
+		const double
+			mKeyFrameInterval_s,
+			mSimDuration_s;
+
+		const std::string mIniSaveFile_imgui;
+        
+	    IrrIMGUI::IIMGUIHandle* mImGuiHandle;
+        irr::IrrlichtDevice* mDevice;
 		irr::video::IVideoDriver* mVidDriver;
     	irr::scene::ISceneManager* mSceneMgr;
-	    IrrIMGUI::IIMGUIHandle* mImGuiHandle;
 
+        PlaybackConfig mPlayback;
 		Input::HWEventReceiver mHWinput;
 		Input::MasterEventReceiver mEventReceiver;
 		IrrIMGUI::CIMGUIEventReceiver mImGuiEventReceiver;
 
+		GUI::GUILayer mGUILayer;
 		std::unique_ptr<CameraSystem> mCameraSystem;
-		std::unique_ptr<SimulationModelLayer> mModelLayer;
-		std::unique_ptr<GUI::GUILayer> mGUILayer;
+		std::unique_ptr<SimulationModel> mModel;
 
-		const std::map<const unsigned, const Physics::F9_DSS>& mStateHistory;
+		std::map<const unsigned, const ModelKeyFrame> mKeyFrames;
 
-		const double
-			mSnapshotInterval_s,
-			mSimDuration;
-
-		const std::string mIniSaveFile_imgui;
-
-		PlaybackConfig mPlayback;
-
-		Physics::F9_DSS mLiveSnapshot;
+	 	ModelKeyFrame mCurrentState;
 
 	public:
-		Visualisation(const std::map<const unsigned, const Physics::F9_DSS>& stateHistoryHandle, double snapshotInterval_s, double simDuration);
+		Visualisation(double keyFrameInterval_s, double simDuration_s);
 		~Visualisation();
 
 	private:
 		void run();
 		void init();
+        void buildKeyFrameHistory();
 		void loadImGuiStyle();
 		void handleInput(float frameTime_s);
 		void update(float frameTime_s);

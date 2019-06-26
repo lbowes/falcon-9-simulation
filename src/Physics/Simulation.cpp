@@ -4,69 +4,69 @@
 
 namespace Physics {
 
-	Simulation::Simulation() :
-		mDuration(1.0),       // 20.0 - todo: should eventually be removed in favour of simulation-termination condition checking
-		mUpdatesPerSec(100),  // 1000
-		mDataSnapsPerSec(10), // 10 - sample the state of the simulation every 1/10th of a second
-		mFalcon9(mSystem),
-		mGround(mSystem)
+	Simulation::Simulation(const std::string& outputCSVFilepath) :
+		mDuration_s(10),    // 20.0 - todo: should eventually be removed in favour of simulation-termination condition checking
+		mUpdatesFreq(100), // 1000
+        mSampleFreq(10),   // 10 - sample the state of the simulation every 1/10th of a second
+		mOuptutCSVFile(outputCSVFilepath),
+        mSimulatedTime_s(0)
 	{ 
-		chrono::collision::ChCollisionModel::SetDefaultSuggestedEnvelope(1.0);
-		chrono::collision::ChCollisionModel::SetDefaultSuggestedMargin(0.05);
-		
-		// temp
-		mSystem.SetSolverType(chrono::ChSolver::Type::BARZILAIBORWEIN);
-		mSystem.SetTimestepperType(chrono::ChTimestepper::Type::EULER_IMPLICIT_PROJECTED);
-		mSystem.SetSolverWarmStarting(true);
-		mSystem.SetMaxItersSolverSpeed(200); // 200
-        mSystem.Set_G_acc({0, 0, 0});
-		//
-
-        // Look at whether or not the simulation actually needs to be re-run everytime the application runs
+        // todo: Look at whether or not the simulation actually needs to be re-run everytime the application runs
         run();
 	}
 
 	void Simulation::run() {
 		unsigned short 
 			updateCount = 0,
-			snapshotCount = 0;
+			sampleCount = 0;
 
 		printf("Simulation started...\n");
 
-        const auto startTime = std::chrono::high_resolution_clock::now();
+        const auto startTime_s = std::chrono::high_resolution_clock::now();
+
+        std::ofstream outputCSV(mOuptutCSVFile);
+        outputCSV << "this,is,a,test";
 
 		while(!terminateCondMet()) {
-			const double dt = 1.0 / mUpdatesPerSec;
-			
-			mFalcon9.update(dt);
-			mSystem.DoStepDynamics(dt);
+            const double dt = 1.0 / mUpdatesFreq;
+            
+            // ===========
+            // MAIN UPDATE
+            mSystem.update(dt);
+            // ===========
 
-			if((updateCount + 1) % (mUpdatesPerSec / mDataSnapsPerSec) == 0)
-				serialiseSnapshot(snapshotCount++);
+            mSimulatedTime_s += dt;
 
-            const auto currentTime = std::chrono::high_resolution_clock::now();
-			const double timeTaken_s = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - startTime).count() / 1000.0;
-            printProgress(timeTaken_s, mSystem.GetChTime() / mDuration);
+			if((updateCount + 1) % (mUpdatesFreq / mSampleFreq) == 0)
+				serialiseSample(sampleCount++);
+
+            const auto currentTime_s = std::chrono::high_resolution_clock::now();
+			const double timeTaken_s = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime_s - startTime_s).count() / 1000.0;
+            printProgress(timeTaken_s, mSimulatedTime_s / mDuration_s);
 			updateCount++;
 		}
+
+        outputCSV.close();
 
 		printf("\nSimulation terminated.\n");
 	}
 
 	bool Simulation::terminateCondMet() {
-		return mSystem.GetChTime() >= mDuration;
+		return mSimulatedTime_s >= mDuration_s;
 	}
 
-	void Simulation::serialiseSnapshot(unsigned long snapshotNumber) {
-		F9_DSS snapshot = F9_DSS(mFalcon9);
-		mStateHistory.insert({snapshotNumber, snapshot});
+	void Simulation::serialiseSample(unsigned long sampleNumber) {
+		//F9_DSS sample = F9_DSS(mFalcon9);
+		//mStateHistory.insert({sampleNumber, sample});
+
+        // TODO: Add data points to the CSV file each sample
 	}
 
 	void Simulation::printProgress(double timeTaken_s, double progress_0_1) {
         // Bold green colour
         printf("\033[1;32m");
 
-		printf("\r%.2f s Simulated: %.2f / %.2f s (%.2f %%)", timeTaken_s, mSystem.GetChTime(), mDuration, progress_0_1 * 100.0f);
+		printf("\r%.2f s Simulated: %.2f / %.2f s (%.2f %%)", timeTaken_s, mSimulatedTime_s, mDuration_s, progress_0_1 * 100.0f);
 		fflush(stdout);
 
 		// Default colour
