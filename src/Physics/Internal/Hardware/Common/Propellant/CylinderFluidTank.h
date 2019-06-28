@@ -3,6 +3,8 @@
 #pragma once
 
 #include "Fluid.h"
+#include "../../../../IDataSource.hpp"
+
 #include <chrono/physics/ChBodyAuxRef.h>
 
 namespace chrono {
@@ -12,7 +14,7 @@ namespace chrono {
 namespace Physics {
 	namespace Hardware {
 
-		class CylinderFluidTank {
+		class CylinderFluidTank : public IDataSource {
 		private:
             std::shared_ptr<chrono::ChBodyAuxRef> mBody;
             
@@ -52,13 +54,14 @@ namespace Physics {
 			void addFluid(double mass);
 			void removeFluid(double mass);
 			void removeAllFluid();
+            void outputToCSV(std::string& destRowCSV) const override;
 
 			bool isEmpty() const { return mFluidMass <= 0.0; }
 			double getFluidMassValue_tank() const { return mFluidMass; }
 			double getPercentFull() const { return mPercentFull; }
 
 		private:
-			void assemble();
+			void assemble(chrono::ChSystemNSC& system);
             double combinedMass() const;
 			chrono::ChFrame<> combinedCoM_tank() const;
 			chrono::ChMatrix33<> combinedInertia_tank() const;

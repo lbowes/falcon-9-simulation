@@ -4,6 +4,7 @@
 
 #include "LandingLeg.h"
 #include "../Common/Propellant/CylinderFluidTank.h"
+#include "../../../IDataSource.hpp"
 
 namespace chrono {
 	class ChSystemNSC;
@@ -12,7 +13,7 @@ namespace chrono {
 namespace Physics {
 	namespace Hardware {
 
-		class Falcon9 {
+		class Falcon9 : public IDataSource {
 		private:
             std::unique_ptr<CylinderFluidTank> mS1RP1Tank;
             std::unique_ptr<LandingLeg> mLandingLeg;
@@ -22,6 +23,7 @@ namespace Physics {
 			~Falcon9() = default;
 
             void update(double dt);
+            void outputToCSV(std::string& destRowCSV) const override;
 
         private:
 			void assemble(chrono::ChSystemNSC& systemHandle);
@@ -31,4 +33,4 @@ namespace Physics {
 	}
 }
 
-#endif // PHYSICS_HARDWARE_F9_H
+#endif // PHYSICS_HARDWARE_FALCON9_H

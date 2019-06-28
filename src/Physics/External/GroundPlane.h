@@ -3,7 +3,7 @@
 #pragma once
 
 #include <core/ChVector.h>
-#include <physics/ChBody.h>
+#include <physics/ChBodyAuxRef.h>
 
 namespace chrono {
     class ChSystemNSC;
@@ -17,7 +17,7 @@ namespace Physics {
             static const chrono::ChVector<> mPos_world;
             static const float mThickness;
             chrono::ChSystemNSC& mSystemHandle;
-            std::shared_ptr<chrono::ChBody> mBody;
+            std::shared_ptr<chrono::ChBodyAuxRef> mBody;
 
         public:
             GroundPlane(chrono::ChSystemNSC& systemHandle);

@@ -14,7 +14,7 @@ namespace Physics {
             mSystemHandle(systemHandle)
         {
 		    // Initialise body and add it to system
-		    mBody = std::make_shared<chrono::ChBody>();
+		    mBody = std::make_shared<chrono::ChBodyAuxRef>();
             systemHandle.AddBody(mBody);
 
             // Collision
@@ -34,7 +34,7 @@ namespace Physics {
     		mBody->GetMaterialSurfaceNSC()->SetSpinningFriction(1);
 
     		// Positioning in world
-    		mBody->SetPos(mPos_world - chrono::Vector(0, mThickness, 0));
+    		mBody->SetFrame_REF_to_abs(chrono::ChFrame<>(mPos_world - chrono::Vector(0, mThickness, 0)));
         }
 
 		const chrono::Vector& GroundPlane::getPos_world() { return mPos_world; }

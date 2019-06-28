@@ -29,11 +29,12 @@ namespace Graphics {
 		}
 	}
 
-	Visualisation::Visualisation(double keyFrameInterval_s, double simDuration_s) :
+	Visualisation::Visualisation(const std::string& simResultsFilepath_CSV, double keyFrameInterval_s, double simDuration_s) :
 		mKeyFrameInterval_s(keyFrameInterval_s),
 		mSimDuration_s(simDuration_s),
 		mIniSaveFilepath_imgui("../dat/Visualisation/imgui.ini"),
         mSaveStateFilepath("../dat/appState.json"),
+        mSimResultsFilepath_CSV(simResultsFilepath_CSV),
         mGUILayer(mPlayback, simDuration_s)
 	{
 		using namespace irr;
@@ -137,7 +138,22 @@ namespace Graphics {
         // This must first be converted into a series of key frames making up the animation history of the
         // system's model.
     {
-        // mKeyFrames.insert(..., ...);
+        std::ifstream file(mSimResultsFilepath_CSV);
+        
+        if(!file) {
+            printf("Visualisation::buildKeyFrameHistory: Could not open file %s", mSimResultsFilepath_CSV.c_str());
+            return;
+        }
+
+        unsigned frameIdx = 0; 
+
+        std::string str;
+        std::getline(file, str); // Skip first line of CSV file
+        while (std::getline(file, str)) {
+            // Each line of the CSV file is read into str - we need to parse this and use it to construct a keyFrame         
+            mKeyFrames.insert({frameIdx, ModelKeyFrame(str)});
+            frameIdx++;
+        }
     }
 
 	void Visualisation::handleInput(const float frameTime_s) {

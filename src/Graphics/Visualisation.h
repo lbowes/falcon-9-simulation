@@ -49,7 +49,8 @@ namespace Graphics {
 
 		const std::string 
             mIniSaveFilepath_imgui,
-            mSaveStateFilepath;
+            mSaveStateFilepath,
+            mSimResultsFilepath_CSV;
         
 	    IrrIMGUI::IIMGUIHandle* mImGuiHandle;
         irr::IrrlichtDevice* mDevice;
@@ -70,7 +71,7 @@ namespace Graphics {
 	 	ModelKeyFrame mCurrentState;
 
 	public:
-		Visualisation(double keyFrameInterval_s, double simDuration_s);
+		Visualisation(const std::string& simResultsFilepath_CSV, double keyFrameInterval_s, double simDuration_s);
 		~Visualisation();
 
 	private:

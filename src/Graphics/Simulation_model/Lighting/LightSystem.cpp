@@ -25,10 +25,10 @@ namespace Graphics {
 		using namespace irr;
 
 		//Static lights
-		mSceneManager.setAmbientLight({0.94f, 0.94f, 1.0f, 1.0f});
+		mSceneManager.setAmbientLight(irr::video::SColor(255, 230, 230, 230));
 
-		addPointLight({10, -40, 10}, {1.000, 0.894, 0.471, 1.0}, 20.0f);
-		addPointLight({40, 10, -40}, {1.000, 0.894, 0.471, 1.0}, 20.0f); 
+		addPointLight({-100, 100, 0}, {1.000, 0.894, 0.471, 1.0}, 20.0f);
+		addPointLight({120, 30, -120}, {1.000, 0.894, 0.471, 1.0}, 20.0f); 
 		addPointLight({10, -40, -10}, {1.000, 0.894, 0.471, 1.0}, 20.0f);
 		addPointLight({-10, -40, -10}, {1.000, 0.894, 0.471, 1.0}, 20.0f);
 		

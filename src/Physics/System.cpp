@@ -13,7 +13,7 @@ namespace Physics {
 		mSystem.SetTimestepperType(chrono::ChTimestepper::Type::EULER_IMPLICIT_PROJECTED);
 		mSystem.SetSolverWarmStarting(true);
 		mSystem.SetMaxItersSolverSpeed(200); // 200
-        mSystem.Set_G_acc({0, 0, 0});
+        //mSystem.Set_G_acc({0, 0, 0});
     }
 
     void System::update(double dt) {
@@ -28,7 +28,14 @@ namespace Physics {
     std::string System::sample() const 
         // Should return one row, to fill the output CSV file
     {
-        return "";
+        std::string row;
+        
+        // TODO: other big objects to collect data from
+        // Environment::outputToCSV(row)
+        // mGround.outputToCSV(row)
+        mFalcon9.outputToCSV(row);
+
+        return row + "\n";
     }
 
 }

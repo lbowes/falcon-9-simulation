@@ -2,8 +2,9 @@
 #include "Graphics/Visualisation.h"
 
 int main() {
-    Physics::Simulation sim("../dat/output.csv");
-    Graphics::Visualisation vis(sim.getSampleInterval_s(), sim.getDuration_s());
+    const std::string dataFile_CSV = "../dat/output.csv";
+    Physics::Simulation sim(dataFile_CSV);
+    Graphics::Visualisation vis(dataFile_CSV, sim.getSampleInterval_s(), sim.getDuration_s());
 
 	return 0;
 }

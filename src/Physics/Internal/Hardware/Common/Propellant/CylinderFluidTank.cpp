@@ -3,6 +3,7 @@
 #include <chrono/utils/ChCompositeInertia.h>
 #include <chrono/utils/ChUtilsGeometry.h>
 #include <chrono/physics/ChSystemNSC.h>
+#include <iomanip>
 
 namespace Physics {
 	namespace Hardware {
@@ -20,8 +21,7 @@ namespace Physics {
 			mTankCoM_tank({0, height * 0.5, 0}),
 			mTankInertia_tank(tankInertia_tank())
 		{ 
-            system.AddBody(mBody);
-            assemble();
+            assemble(system);
 		}
 
 		void CylinderFluidTank::addFluid(double mass) {
@@ -39,7 +39,25 @@ namespace Physics {
 			onFluidMassChange();
 		}
 
-		void CylinderFluidTank::assemble() {
+        void CylinderFluidTank::outputToCSV(std::string& destRowCSV) const {   
+            std::stringstream ss;
+            ss << std::setprecision(std::numeric_limits<long double>::digits10 + 1);
+
+            // Position            
+            const chrono::ChVector<> pos = mBody->GetFrame_REF_to_abs().GetPos();
+            ss << pos.x() << "," << pos.y() << "," << pos.z() << ",";
+            
+            // Rotation
+            const chrono::ChQuaternion<> rot = mBody->GetFrame_REF_to_abs().GetRot();
+            ss << rot.e0() << "," << rot.e1() << "," << rot.e2() << "," << rot.e3() << ",";
+            
+            destRowCSV += ss.str();
+        }
+
+		void CylinderFluidTank::assemble(chrono::ChSystemNSC& system) {
+            mBody = std::make_shared<chrono::ChBodyAuxRef>();
+            system.AddBody(mBody);
+            
             // Mass/inertia properties
 			mBody->SetMass(combinedMass());
 			mBody->SetInertia(combinedInertia_tank());
@@ -57,7 +75,18 @@ namespace Physics {
 			mBody->SetCollide(true);
 
             // Centre of mass
-			mBody->SetFrame_COG_to_REF(combinedCoM_tank());
+            mBody->SetFrame_COG_to_REF(combinedCoM_tank());
+
+			// temp testing
+            mBody->SetPos({0, 10.0, 0});
+            //mBody->SetRot(chrono::Q_from_AngX(0.3));
+            //mBody->SetRot_dt(chrono::Q_from_AngX(3.14));
+            //
+
+            // ------------- CURRENTLY WORKING ON ------------- 
+            // - Making sure that all physics above is correct for the tank now that the visualisation is working (test when full)
+            // - Look into visualising coordinate frames (origin, CoM) of tank
+            // - Generalise the current solution to work with other components once the tank has been implemented correctly
 		}
 
 		// void CylinderFluidTank::attachToStage() {

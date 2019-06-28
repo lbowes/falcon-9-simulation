@@ -8,18 +8,23 @@ namespace Physics {
         }
 
         void Falcon9::update(double dt) {
+            // todo: update any domain logic entities for the falcon 9 (as opposed to physics objects that are automatically updated by the system)
             // ...
         }
 
+        void Falcon9::outputToCSV(std::string& destRowCSV) const {
+            mS1RP1Tank->outputToCSV(destRowCSV);
+        }
+
 		void Falcon9::assemble(chrono::ChSystemNSC& systemHandle) {
-            //mS1RP1Tank = std::make_unique<CylinderFluidTank>(
-            //    systemHandle,
-			//    Propellants::mFluids[Propellants::RP1],
-			//    14,
-			//    1.83,
-			//    0.012,
-			//    2250 
-			//);
+            mS1RP1Tank = std::make_unique<CylinderFluidTank>(
+                systemHandle,
+			    Propellants::mFluids[Propellants::RP1],
+			    14.0,
+			    1.83,
+			    0.012,
+			    2250.0
+			);
         }
 
 	}

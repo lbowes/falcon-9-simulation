@@ -8,24 +8,26 @@ namespace Physics {
 		mDuration_s(10),    // 20.0 - todo: should eventually be removed in favour of simulation-termination condition checking
 		mUpdatesFreq(100), // 1000
         mSampleFreq(10),   // 10 - sample the state of the simulation every 1/10th of a second
-		mOuptutCSVFile(outputCSVFilepath),
+		mOuptutCSVFilepath(outputCSVFilepath),
+        mOutputCSVFile(outputCSVFilepath),
         mSimulatedTime_s(0)
 	{ 
         // todo: Look at whether or not the simulation actually needs to be re-run everytime the application runs
+        init();
         run();
+        close();
 	}
 
+    void Simulation::init() {
+        mOutputCSVFile << "S1_RP1Tank_pos_x,S1_RP1Tank_pos_y,S1_RP1Tank_pos_z,S1_RP1Tank_rot_e0,S1_RP1Tank_rot_e1,S1_RP1Tank_rot_e2,S1_RP1Tank_rot_e3\n";
+    }
+
 	void Simulation::run() {
-		unsigned short 
-			updateCount = 0,
-			sampleCount = 0;
+		unsigned short updateCount = 0;
 
 		printf("Simulation started...\n");
 
         const auto startTime_s = std::chrono::high_resolution_clock::now();
-
-        std::ofstream outputCSV(mOuptutCSVFile);
-        outputCSV << "this,is,a,test";
 
 		while(!terminateCondMet()) {
             const double dt = 1.0 / mUpdatesFreq;
@@ -38,7 +40,7 @@ namespace Physics {
             mSimulatedTime_s += dt;
 
 			if((updateCount + 1) % (mUpdatesFreq / mSampleFreq) == 0)
-				serialiseSample(sampleCount++);
+				serialiseSample();
 
             const auto currentTime_s = std::chrono::high_resolution_clock::now();
 			const double timeTaken_s = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime_s - startTime_s).count() / 1000.0;
@@ -46,20 +48,19 @@ namespace Physics {
 			updateCount++;
 		}
 
-        outputCSV.close();
-
 		printf("\nSimulation terminated.\n");
 	}
+
+    void Simulation::close() {
+        mOutputCSVFile.close();
+    }
 
 	bool Simulation::terminateCondMet() {
 		return mSimulatedTime_s >= mDuration_s;
 	}
 
-	void Simulation::serialiseSample(unsigned long sampleNumber) {
-		//F9_DSS sample = F9_DSS(mFalcon9);
-		//mStateHistory.insert({sampleNumber, sample});
-
-        // TODO: Add data points to the CSV file each sample
+	void Simulation::serialiseSample() {
+        mOutputCSVFile << mSystem.sample();            
 	}
 
 	void Simulation::printProgress(double timeTaken_s, double progress_0_1) {

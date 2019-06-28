@@ -14,7 +14,8 @@ namespace Physics {
 			mUpdatesFreq,
 			mSampleFreq;
 
-        const std::string mOuptutCSVFile;
+        const std::string mOuptutCSVFilepath;
+        std::ofstream mOutputCSVFile;
 
         double mSimulatedTime_s;
 
@@ -28,9 +29,11 @@ namespace Physics {
 		double getDuration_s() const { return mDuration_s; }
 
 	private:
+        void init();
 		void run();
+        void close();
 		bool terminateCondMet();
-		void serialiseSample(unsigned long snapshotNumber);
+		void serialiseSample();
 		void printProgress(double startTime_s, double progress_0_1);
 
 	};

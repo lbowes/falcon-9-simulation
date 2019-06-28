@@ -199,12 +199,12 @@ namespace Graphics {
     }
 
 	InterstageCamera::InterstageCamera(irr::scene::ISceneManager& sceneManager, float aspect) :
-		mFOV(44.712002f),           //44.712002f
+		mFOV(44.712002f),        //44.712002f
 		SimulationCamera(sceneManager, chrono::Vector(0), irr::core::vector3df(0), 0.1f, 1000.0f, aspect, mFOV),
 		mClockDegree_degs(45.0 + 10.882f), //45.0 + 10.882f, 45.0 to account for model rotation in blender
-		mPitch_degs(2.222f),        //2.222f
-		mHeight_stage(10.0f),      //45.89f
-		mHeightAboveWall(1.951f)   //1.951f
+		mPitch_degs(2.222f),     //2.222f
+		mHeight_stage(10.0f),    //45.89f
+		mHeightAboveWall(1.951f) //1.951f
 	{
 		using namespace chrono;
 
@@ -285,7 +285,6 @@ namespace Graphics {
         // If we just print stageTransform_world.pos, we see that the stage remains positioned at (0, 0, 0). So surely the transform
         // should not move the camera at all relative to the stage. It should just rotate exactly as the stage moves, but for some reason
         // the camera's vertical position changes
-
 
         ImGui::Begin("Interstage cam info");
 		ImGui::Text("abs pos: %.3f, %.3f, %.3f\n", mPosition_world.x(), mPosition_world.y(), mPosition_world.z());

@@ -20,7 +20,7 @@ namespace Graphics {
             const std::string objModelFilepath = sModelPath + objFilename;
     		mMesh = sceneManager.addMeshSceneNode(sceneManager.getMesh(objModelFilepath.c_str()));
 			mMesh->setMaterialFlag(video::EMF_BACK_FACE_CULLING, false);
-            
+
             // Any other material flags that are to be set for OBJ models should be set here
             // mMesh->setMaterialFlag(..., ...);
             // e.g. mMesh->setMaterialFlag(video::EMF_WIREFRAME, true);
@@ -34,16 +34,8 @@ namespace Graphics {
 		    // between the object's and camera's imaginary positions, then floating point errors only occur on objects very far 
 		    // away from the camera (where they are not noticeable anyway).
         {
-            // TODO: Check that this actually works
 			transform_world.pos -= camPos_world;
             chrono::irrlicht::ChIrrTools::alignIrrlichtNodeToChronoCsys(mMesh, transform_world);
-
-            
-            //const chrono::Vector pos_ogl = transform_world.pos - camPos_world;
-			//mMesh->setPosition(irr::core::vector3dfCH(pos_ogl));
-
-            //const chrono::Vector rot_ogl = transform_world.rot.Q_to_Euler123() * chrono::CH_C_RAD_TO_DEG;
-        	//mMesh->setRotation(irr::core::vector3dfCH(rot_ogl));
 		}
 
 	};
