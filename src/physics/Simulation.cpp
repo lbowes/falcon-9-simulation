@@ -32,10 +32,10 @@ namespace Physics {
 		while(!terminateCondMet()) {
             const double dt = 1.0 / mUpdatesFreq;
             
-            // ===========
-            // MAIN UPDATE
+            // |=============|
+            // | MAIN UPDATE |
             mSystem.update(dt);
-            // ===========
+            // |=============|
 
             mSimulatedTime_s += dt;
 

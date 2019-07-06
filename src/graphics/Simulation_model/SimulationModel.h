@@ -5,7 +5,7 @@
 #include "Lighting/LightSystem.h"
 #include "Models/Falcon_9/Falcon9Model.h"
 #include "Models/GroundModel.h"
-#include "ModelKeyFrame.h"
+#include "Falcon9Keyframe.h"
 
 #include <memory>
 
@@ -34,7 +34,7 @@ namespace Graphics {
 		SimulationModel(irr::video::IVideoDriver& vidDriver, irr::scene::ISceneManager& sceneManager);
 		~SimulationModel() = default;
 
-		void update(const chrono::Vector& currentCamPos_world, const ModelKeyFrame& keyFrame);
+		void update(const chrono::Vector& currentCamPos_world, const Falcon9Keyframe& Keyframe);
 		void render(const chrono::Vector& currentCamPos_world);
 
 	};

@@ -8,7 +8,7 @@
 #include <chrono/physics/ChSystemNSC.h>
 
 namespace Physics {
-    
+
     class System {
     private:
         chrono::ChSystemNSC mSystem;

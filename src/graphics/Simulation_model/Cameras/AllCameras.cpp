@@ -34,12 +34,16 @@ namespace Graphics {
 		mMovementFriction(7.0f),         // 7.0f
 		mZoomSensitivity(0.1f),          // 0.1f
 		mLookAroundSensitivity(0.05f),   // 0.05f
-		mMovementSpeed(200.0f),          // 400.0f  
+		mMovementSpeed(200.0f),          // 400.0f                  
 		mPitch(-mLookAtDir_world.getSphericalCoordinateAngles().X), //mPitch(-lookAtDir_world.getHorizontalAngle().X),
-		mYaw(mLookAtDir_world.getSphericalCoordinateAngles().Y), //mYaw(lookAtDir_world.getHorizontalAngle().Y),
+		mYaw(mLookAtDir_world.getSphericalCoordinateAngles().Y),    //mYaw(lookAtDir_world.getHorizontalAngle().Y),
 		mHWInput(input),
 		mVelocity_world(0, 0, 0)
 	{ 
+        // TODO: Technically, the mPitch and mYaw initialisation above is still broken if we want to start the camera from
+        // a certain state in code, but since state is saved and reloaded all the time, the app starts with the correct
+        // set up. If we stop loading the saved state then these lines are not correct (they cause the camera to jump).
+
         clampPitchYaw();
         mLookAtDir_world = recalcLookAtVec(mPitch, mYaw);
     }
@@ -51,8 +55,8 @@ namespace Graphics {
 		mVelocity_world *= 1.0 / (1.0 + (dt * mMovementFriction));
 
         // Keep the camera above the ground at roughly eye-level
-		if(mPosition_world.y() < 1.74)
-			mPosition_world.y() = 1.74;
+		//if(mPosition_world.y() < 1.74)
+			//mPosition_world.y() = 1.74;
 
 		mInternalCamera->setTarget(mLookAtDir_world);
 

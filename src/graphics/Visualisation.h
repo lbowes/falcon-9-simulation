@@ -7,7 +7,7 @@
 #include "GUI/GUILayer.h"
 #include "Simulation_model/Cameras/CameraSystem.h"
 #include "Simulation_model/SimulationModel.h"
-#include "Simulation_model/ModelKeyFrame.h"
+#include "Simulation_model/Falcon9Keyframe.h"
 #include "ISerialisable.hpp"
 
 #include <IrrIMGUI/IrrIMGUI.h>
@@ -44,7 +44,7 @@ namespace Graphics {
 	class Visualisation : public ISerialisable {
 	private:
 		const double
-			mKeyFrameInterval_s,
+			mKeyframeInterval_s,
 			mSimDuration_s;
 
 		const std::string 
@@ -66,18 +66,18 @@ namespace Graphics {
 		std::unique_ptr<CameraSystem> mCameraSystem;
 		std::unique_ptr<SimulationModel> mModel;
 
-		std::map<const unsigned, const ModelKeyFrame> mKeyFrames;
+		std::map<const unsigned, const Falcon9Keyframe> mKeyframes;
 
-	 	ModelKeyFrame mCurrentState;
+	 	Falcon9Keyframe mCurrentState;
 
 	public:
-		Visualisation(const std::string& simResultsFilepath_CSV, double keyFrameInterval_s, double simDuration_s);
+		Visualisation(const std::string& simResultsFilepath_CSV, double KeyframeInterval_s, double simDuration_s);
 		~Visualisation();
 
 	private:
 		void run();
 		void init();
-        void buildKeyFrameHistory();
+        void buildKeyframeHistory();
 		void loadImGuiStyle();
 		void handleInput(float frameTime_s);
 		void update(float frameTime_s);

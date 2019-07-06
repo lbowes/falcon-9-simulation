@@ -5,6 +5,7 @@
 #include "../OBJModel.hpp"
 
 #include <core/ChVector.h>
+#include <map>
 
 namespace irr {
 	namespace scene {
@@ -14,25 +15,20 @@ namespace irr {
 
 namespace Graphics {
 
-    class ModelKeyFrame;
+    class Falcon9Keyframe;
 
 	class Falcon9Model {
 	private:
-		OBJModel 
-            mS1RP1TankModel;
-            // stage 1 merlins,
-            // stage 2 merlin
-            // legs,
-            // grid fins, 
-            // payload fairings,
-            // stage 1 fuselage
-            // stage 2 fuselage
+        std::map<std::string, std::unique_ptr<OBJModel>> mComponentModels;
 
 	public:
 		Falcon9Model(irr::scene::ISceneManager& sceneManager);
 		~Falcon9Model() = default;
 
-		void update(const chrono::ChVector<>& currentCamPos_world, const ModelKeyFrame& k);
+		void update(const chrono::ChVector<>& currentCamPos_world, const Falcon9Keyframe& k);
+        
+    private:
+        void addComponentModels(irr::scene::ISceneManager& sceneManager);
 
 	};
 

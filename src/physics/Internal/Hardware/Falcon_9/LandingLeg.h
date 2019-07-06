@@ -2,6 +2,8 @@
 #define PHYSICS_HARDWARE_LANDINGLEG_H
 #pragma once
 
+#include "../../../IDataSource.hpp"
+
 #include <core/ChVector2.h>
 #include <chrono/physics/ChBodyAuxRef.h>
 #include <chrono/physics/ChLinkLock.h>
@@ -14,14 +16,14 @@ namespace chrono {
 namespace Physics {
 	namespace Hardware {
 
-		class LandingLeg {
+		class LandingLeg : public IDataSource {
 		private:
 			// Position (m) of the A-frame joint, w.r.t the stage's origin, in 2D.
 			static const chrono::ChVector2<> sPos_stage2D;
-				
+
 			// Position (m) of the telescoping piston joint (roughly half way up the RP-1 tank), w.r.t the stage's origin in 2D.
 			static const chrono::ChVector2<> sPistonStartPos_stage2D;
-			
+
 			// Position (m) of the deployment actuator joint (just beneath sPistonStartPos_stage2D), w.r.t the stage's origin in 2D.
 			static const chrono::ChVector2<> sPusherStartPos_stage2D;
 
@@ -53,9 +55,11 @@ namespace Physics {
 			LandingLeg(chrono::ChSystemNSC* systemHandle);
 			~LandingLeg() = default;
 
+            void outputToCSV(std::string& destRowCSV) const override;
+
 		private:
 			void attachToStage(std::shared_ptr<chrono::ChBody> mount, double clockingDegree);
-			chrono::ChMatrix33<> calcInertia_AFrame() const;	
+			chrono::ChMatrix33<> calcInertia_AFrame() const;
 
 		};
 

@@ -133,7 +133,7 @@ SET(SOURCE_FILES
 	Graphics/Simulation_model/Models/Falcon_9/Falcon9Model.cpp
 	Graphics/Simulation_model/Models/GroundModel.cpp
 	Graphics/Simulation_model/Models/OBJModel.hpp
-	Graphics/Simulation_model/ModelKeyFrame.cpp
+	Graphics/Simulation_model/Falcon9Keyframe.cpp
 	Graphics/Simulation_model/SimulationModel.cpp
 	Graphics/Visualisation.cpp
     Input/HWEventReceiver.cpp

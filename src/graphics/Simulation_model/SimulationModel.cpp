@@ -14,8 +14,8 @@ namespace Graphics {
 		mGroundModel(vidDriver)
 	{ }
 
-	void SimulationModel::update(const chrono::Vector& currentCamPos_world, const ModelKeyFrame& keyFrame) {
-		mFalcon9Model.update(currentCamPos_world, keyFrame);
+	void SimulationModel::update(const chrono::Vector& currentCamPos_world, const Falcon9Keyframe& Keyframe) {
+		mFalcon9Model.update(currentCamPos_world, Keyframe);
 		mLightSystem.update(currentCamPos_world);
 	}
 

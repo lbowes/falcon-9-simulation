@@ -17,9 +17,9 @@ namespace Physics {
 		class CylinderFluidTank : public IDataSource {
 		private:
             std::shared_ptr<chrono::ChBodyAuxRef> mBody;
-            
+
             chrono::ChFrame<> mTransform_stage;
-			
+
 			const Fluid mFluid;
 
 			const double
@@ -38,7 +38,7 @@ namespace Physics {
 
 			double
 				mFluidVolume,     // m^3
-				mFluidLevel,      // m, measured from the top of the lower wall of the tank (= 0.0) 
+				mFluidLevel,      // m, measured from the top of the lower wall of the tank (= 0.0)
 				mPercentFull,     // 0 -> 1
 				mFluidMass;       // kg
 

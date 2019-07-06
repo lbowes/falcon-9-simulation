@@ -1,9 +1,11 @@
 #include "CylinderFluidTank.h"
+#include "../../../../../util/CSVUtils.hpp"
 
 #include <chrono/utils/ChCompositeInertia.h>
 #include <chrono/utils/ChUtilsGeometry.h>
 #include <chrono/physics/ChSystemNSC.h>
 #include <iomanip>
+#include <chrono/core/ChFrame.h>
 
 namespace Physics {
 	namespace Hardware {
@@ -20,7 +22,7 @@ namespace Physics {
 			mTankMass(mMaterialDensity * (chrono::utils::CalcCylinderVolume(radius, mHeight * 0.5) - mVolume_internal)),
 			mTankCoM_tank({0, height * 0.5, 0}),
 			mTankInertia_tank(tankInertia_tank())
-		{ 
+		{
             assemble(system);
 		}
 
@@ -39,28 +41,18 @@ namespace Physics {
 			onFluidMassChange();
 		}
 
-        void CylinderFluidTank::outputToCSV(std::string& destRowCSV) const {   
-            std::stringstream ss;
-            ss << std::setprecision(std::numeric_limits<long double>::digits10 + 1);
-
-            // Position            
-            const chrono::ChVector<> pos = mBody->GetFrame_REF_to_abs().GetPos();
-            ss << pos.x() << "," << pos.y() << "," << pos.z() << ",";
-            
-            // Rotation
-            const chrono::ChQuaternion<> rot = mBody->GetFrame_REF_to_abs().GetRot();
-            ss << rot.e0() << "," << rot.e1() << "," << rot.e2() << "," << rot.e3() << ",";
-            
-            destRowCSV += ss.str();
+        void CylinderFluidTank::outputToCSV(std::string& destRowCSV) const {
+            Util::outputToCSV(mBody->GetFrame_REF_to_abs(), destRowCSV);
         }
 
 		void CylinderFluidTank::assemble(chrono::ChSystemNSC& system) {
             mBody = std::make_shared<chrono::ChBodyAuxRef>();
             system.AddBody(mBody);
-            
+
             // Mass/inertia properties
 			mBody->SetMass(combinedMass());
 			mBody->SetInertia(combinedInertia_tank());
+            mBody->SetFrame_COG_to_REF(combinedCoM_tank());
 
             // Material properties
 			mBody->GetMaterialSurfaceNSC()->SetFriction(1);
@@ -74,25 +66,21 @@ namespace Physics {
 			mBody->GetCollisionModel()->BuildModel();
 			mBody->SetCollide(true);
 
-            // Centre of mass
-            mBody->SetFrame_COG_to_REF(combinedCoM_tank());
-
 			// temp testing
-            mBody->SetPos({0, 10.0, 0});
-            //mBody->SetRot(chrono::Q_from_AngX(0.3));
-            //mBody->SetRot_dt(chrono::Q_from_AngX(3.14));
-            //
+            chrono::ChFrame<double> frame;
+            frame.SetPos({0, 10, 22});
+            frame.SetRot(chrono::Q_from_AngX(chrono::CH_C_PI_2));
+            mBody->SetFrame_REF_to_abs(frame);
 
-            // ------------- CURRENTLY WORKING ON ------------- 
-            // - Making sure that all physics above is correct for the tank now that the visualisation is working (test when full)
+            // ------------- CURRENTLY WORKING ON -------------
             // - Look into visualising coordinate frames (origin, CoM) of tank
             // - Generalise the current solution to work with other components once the tank has been implemented correctly
 		}
 
 		// void CylinderFluidTank::attachToStage() {
-        //     // Move the tank into the correct position/orientation on the stage   
+        //     // Move the tank into the correct position/orientation on the stage
         //     mBody->SetFrame_REF_to_abs(mTransform_stage >> mStageBodyHandle->GetFrame_REF_to_abs());
-            
+
         //     mStageLink1 = std::make_shared<chrono::ChLinkLockLock>();
     	// 	mStageLink1->Initialize(mStageBodyHandle, mBody, chrono::ChCoordsys(chrono::Vector(0, 0, 0)));
 		// 	mStageBodyHandle->GetSystem()->AddLink(mStageLink1);
@@ -108,7 +96,9 @@ namespace Physics {
 
 		chrono::ChFrame<> CylinderFluidTank::combinedCoM_tank() const {
 			const chrono::Vector CoM_tank = (mTankMass * mTankCoM_tank + mFluidMass * mFluidCoM_tank) / (mTankMass + mFluidMass);
-			return chrono::ChFrame(CoM_tank);
+
+            return chrono::ChFrame(CoM_tank);
+			//return chrono::ChFrame(chrono::Vector());
 		}
 
 		chrono::ChMatrix33<> CylinderFluidTank::combinedInertia_tank() const {
@@ -124,7 +114,7 @@ namespace Physics {
 
 			// Calculate the (local) inertia of a solid cylinder with the outer dimensions of the tank, around it's CoM
 			ChMatrix33<> tankInertiaSolid_tankCoM = utils::CalcCylinderGyration(mRadius, mHeight * 0.5);
-			
+
 			// Place this inertia at the tank's CoM (relative to the tank's origin)
 			// Internally, AddComponent() uses the parallel axis theorem
 			tankInertia_tank.AddComponent(mTankCoM, mTankMass, tankInertiaSolid_tankCoM);
@@ -132,7 +122,7 @@ namespace Physics {
 			// Calculate the (local) inertia of a void cylinder with the inner dimensions of the tank, around it's CoM
 			// This will 'hollow out' the tank
 			ChMatrix33<> tankInertiaVoid_tankCoM = utils::CalcCylinderGyration(mRadius - mWallThickness, mHeight * 0.5 - mWallThickness);
-			
+
 			// Place this inertia at the tank's CoM (relative to the tank's origin) and make it a void material
 			const double voidMass = mVolume_internal * mMaterialDensity;
 			tankInertia_tank.AddComponent(mTankCoM, voidMass, tankInertiaVoid_tankCoM, true);
@@ -142,7 +132,7 @@ namespace Physics {
 			return tankInertia_tank.GetInertia() * mTankMass;
 		}
 
-		void CylinderFluidTank::onFluidMassChange() 
+		void CylinderFluidTank::onFluidMassChange()
 			// Responsible for updating various tank properties after the fluid mass has changed
 		{
 			mFluidVolume = mFluidMass / mFluid.mDensity;
@@ -156,9 +146,9 @@ namespace Physics {
 			else if(mFluid.mState == FluidState::gas)
 				mFluidCoM_tank = { 0, mWallThickness + mInternalHeight * 0.5, 0 };
 
-			// After the fluid level has changed, its inertia must be updated (in tank space) 
+			// After the fluid level has changed, its inertia must be updated (in tank space)
 			mFluidInertia_tank = chrono::utils::CalcCylinderGyration(mRadius - mWallThickness, mHeight * 0.5 - mWallThickness, mFluidCoM_tank);
-			
+
 			// Update mBody properties
 			mBody->SetMass(combinedMass());
 			mBody->SetInertia(combinedInertia_tank());

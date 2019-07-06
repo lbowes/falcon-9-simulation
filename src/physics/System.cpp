@@ -8,7 +8,7 @@ namespace Physics {
     {
         chrono::collision::ChCollisionModel::SetDefaultSuggestedEnvelope(1.0);
 		chrono::collision::ChCollisionModel::SetDefaultSuggestedMargin(0.05);
-		
+
 		mSystem.SetSolverType(chrono::ChSolver::Type::BARZILAIBORWEIN);
 		mSystem.SetTimestepperType(chrono::ChTimestepper::Type::EULER_IMPLICIT_PROJECTED);
 		mSystem.SetSolverWarmStarting(true);
@@ -21,21 +21,22 @@ namespace Physics {
         // Environment::update(dt);
         // mGround.update(dt);
         mFalcon9.update(dt);
-        
+
         mSystem.DoStepDynamics(dt);
     }
 
-    std::string System::sample() const 
+    std::string System::sample() const
         // Should return one row, to fill the output CSV file
     {
         std::string row;
-        
+
         // TODO: other big objects to collect data from
         // Environment::outputToCSV(row)
         // mGround.outputToCSV(row)
         mFalcon9.outputToCSV(row);
+        row += "\n";
 
-        return row + "\n";
+        return row;
     }
 
 }

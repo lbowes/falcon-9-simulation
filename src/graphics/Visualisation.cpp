@@ -29,8 +29,8 @@ namespace Graphics {
 		}
 	}
 
-	Visualisation::Visualisation(const std::string& simResultsFilepath_CSV, double keyFrameInterval_s, double simDuration_s) :
-		mKeyFrameInterval_s(keyFrameInterval_s),
+	Visualisation::Visualisation(const std::string& simResultsFilepath_CSV, double KeyframeInterval_s, double simDuration_s) :
+		mKeyframeInterval_s(KeyframeInterval_s),
 		mSimDuration_s(simDuration_s),
 		mIniSaveFilepath_imgui("../dat/Visualisation/imgui.ini"),
         mSaveStateFilepath("../dat/appState.json"),
@@ -128,12 +128,12 @@ namespace Graphics {
 
 		ImGui::LoadIniSettingsFromDisk(mIniSaveFilepath_imgui.c_str());
 
-        buildKeyFrameHistory();
+        buildKeyframeHistory();
 
         loadAppState();
 	}
 
-    void Visualisation::buildKeyFrameHistory() 
+    void Visualisation::buildKeyframeHistory() 
         // When the visualisation begins, it only has access to the output CSV file from the simulation.
         // This must first be converted into a series of key frames making up the animation history of the
         // system's model.
@@ -141,7 +141,7 @@ namespace Graphics {
         std::ifstream file(mSimResultsFilepath_CSV);
         
         if(!file) {
-            printf("Visualisation::buildKeyFrameHistory: Could not open file %s", mSimResultsFilepath_CSV.c_str());
+            printf("Visualisation::buildKeyframeHistory: Could not open file %s", mSimResultsFilepath_CSV.c_str());
             return;
         }
 
@@ -150,8 +150,8 @@ namespace Graphics {
         std::string str;
         std::getline(file, str); // Skip first line of CSV file
         while (std::getline(file, str)) {
-            // Each line of the CSV file is read into str - we need to parse this and use it to construct a keyFrame         
-            mKeyFrames.insert({frameIdx, ModelKeyFrame(str)});
+            // Each line of the CSV file is read into str - we need to parse this and use it to construct a Keyframe         
+            mKeyframes.insert({frameIdx, Falcon9Keyframe(str)});
             frameIdx++;
         }
     }
@@ -210,20 +210,20 @@ namespace Graphics {
 		
 		// Localise the current time within the snapshot history...
 		double 
-			s = floor(mPlayback.mTime_s / mKeyFrameInterval_s),
-			betweenKeyFrames = fmod(mPlayback.mTime_s, mKeyFrameInterval_s) / mKeyFrameInterval_s;
+			s = floor(mPlayback.mTime_s / mKeyframeInterval_s),
+			betweenKeyframes = fmod(mPlayback.mTime_s, mKeyframeInterval_s) / mKeyframeInterval_s;
 	
 		// Find the index of the the most recent snapshot to have been recorded...
 		const unsigned
-			keyFrameCount = mKeyFrames.size(),
-			recentKeyFrameIdx = std::clamp(static_cast<unsigned>(s), 0U, static_cast<unsigned>(keyFrameCount - 1));
+			KeyframeCount = mKeyframes.size(),
+			recentKeyframeIdx = std::clamp(static_cast<unsigned>(s), 0U, static_cast<unsigned>(KeyframeCount - 1));
 
-        if(!mKeyFrames.empty()) {
-		    ModelKeyFrame
-			    mostRecentFrame = mKeyFrames.at(recentKeyFrameIdx),
-    			nextFrame = mKeyFrames.at(std::clamp(recentKeyFrameIdx + 1, 0U, static_cast<unsigned>(keyFrameCount - 1)));
+        if(!mKeyframes.empty()) {
+		    Falcon9Keyframe
+			    mostRecentFrame = mKeyframes.at(recentKeyframeIdx),
+    			nextFrame = mKeyframes.at(std::clamp(recentKeyframeIdx + 1, 0U, static_cast<unsigned>(KeyframeCount - 1)));
 
-		    mCurrentState = ModelKeyFrame::lerp(mostRecentFrame, nextFrame, betweenKeyFrames);;
+		    mCurrentState = Falcon9Keyframe::lerp(mostRecentFrame, nextFrame, betweenKeyframes);;
         }
 	}
 
@@ -255,7 +255,7 @@ namespace Graphics {
     void Visualisation::load(const std::string& source) {
         nlohmann::json j = nlohmann::json::parse(source);
 
-        j["mPlayback"]["mTime_s"].get_to(mPlayback.mTime_s);
+        //j["mPlayback"]["mTime_s"].get_to(mPlayback.mTime_s);
         j["mPlayback"]["mSpeed"].get_to(mPlayback.mSpeed);
         j["mPlayback"]["mLastSpeed"].get_to(mPlayback.mLastSpeed);
         j["mPlayback"]["mPaused"].get_to(mPlayback.mPaused);

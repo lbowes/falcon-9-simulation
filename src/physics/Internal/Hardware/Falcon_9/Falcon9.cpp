@@ -14,6 +14,8 @@ namespace Physics {
 
         void Falcon9::outputToCSV(std::string& destRowCSV) const {
             mS1RP1Tank->outputToCSV(destRowCSV);
+            mLandingLeg->outputToCSV(destRowCSV);
+            //mSomethingElse->outputToCSV(destRowCSV)
         }
 
 		void Falcon9::assemble(chrono::ChSystemNSC& systemHandle) {

@@ -11,7 +11,7 @@ namespace Graphics {
 	class OBJModel {
     private:
         static constexpr auto sModelPath = "../res/models/";
-		irr::scene::IMeshSceneNode* mMesh;
+        irr::scene::IMeshSceneNode* mMesh;
 
 	public:
 		OBJModel(irr::scene::ISceneManager& sceneManager, const std::string& objFilename) {

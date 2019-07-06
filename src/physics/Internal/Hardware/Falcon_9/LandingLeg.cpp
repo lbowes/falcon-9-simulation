@@ -33,10 +33,14 @@ namespace Physics {
 			sInstanceCount++;
 		}
 
+        void LandingLeg::outputToCSV(std::string& destRowCSV) const {
+
+        }
+
 		void LandingLeg::attachToStage(std::shared_ptr<chrono::ChBody> mount, double clockingDegree_degs) {
 			mAFrameJoint = std::make_shared<chrono::ChLinkLockRevolute>();
 			mSystemHandle->AddLink(mAFrameJoint);
-			
+
 			// The joint coordinate frame in stage space.
 			chrono::ChFrame<> jointFrame_stage;
             chrono::Vector pos_stage3D = { 0.0, sPos_stage2D.y(), -sPos_stage2D.x() };
@@ -54,12 +58,12 @@ namespace Physics {
 
 		chrono::ChMatrix33<> LandingLeg::calcInertia_AFrame() const {
 			using namespace chrono;
-            
+
             // Calculate inertia of landing leg about its centre of mass
-            ChMatrix33<> 
+            ChMatrix33<>
                 inertia_CoM = utils::CalcCylinderGyration(0.4032, 3.4715),
                 inertia_origin;
-                
+
             // Calculate the 3D displacement vector of the centre of mass from the leg's origin
             const ChVector<> CoMPos_AFrame3D = { 0.0, sCoMPos_AFrame2D.y(), -sCoMPos_AFrame2D.x() };
 
