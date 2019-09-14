@@ -1,9 +1,9 @@
-#ifndef PHYSICS_SYSTEM_H
-#define PHYSICS_SYSTEM_H
+#ifndef F9SIM_PHYSICS_SYSTEM_H_
+#define F9SIM_PHYSICS_SYSTEM_H_
 #pragma once
 
-#include "Internal/Hardware/Falcon_9/Falcon9.h"
-#include "External/GroundPlane.h"
+#include "internal/hardware/falcon_9/Falcon9.h"
+#include "external/GroundPlane.h"
 
 #include <chrono/physics/ChSystemNSC.h>
 
@@ -26,4 +26,4 @@ namespace Physics {
 
 }
 
-#endif
+#endif // F9SIM_PHYSICS_SYSTEM_H_

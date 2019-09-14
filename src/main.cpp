@@ -1,5 +1,5 @@
-#include "Physics/Simulation.h"
-#include "Graphics/Visualisation.h"
+#include "physics/Simulation.h"
+#include "graphics/Visualisation.h"
 
 int main() {
     const std::string dataFile_CSV = "../dat/output.csv";

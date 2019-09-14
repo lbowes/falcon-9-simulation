@@ -1,5 +1,5 @@
-#ifndef INPUT_HWINPUTRECEIVER_H
-#define INPUT_HWINPUTRECEIVER_H
+#ifndef F9SIM_INPUT_HWINPUTRECEIVER_H_
+#define F9SIM_INPUT_HWINPUTRECEIVER_H_
 #pragma once
 
 #include <IEventReceiver.h>
@@ -36,9 +36,9 @@ namespace Input {
 
 	class HWEventReceiver : public irr::IEventReceiver {
 	private:
-		MouseState mMouseState;	
+		MouseState mMouseState;
 
-		bool 
+		bool
 			mKeysDown[irr::KEY_KEY_CODES_COUNT],
 			mKeysClicked[irr::KEY_KEY_CODES_COUNT];
 
@@ -62,4 +62,4 @@ namespace Input {
 
 }
 
-#endif
+#endif // F9SIM_INPUT_HWINPUTRECEIVER_H_

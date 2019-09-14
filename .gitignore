@@ -32,7 +32,7 @@
 *.app
 
 #Misc files
-Notes
+**/Notes
 Notes.odt
 build/
 onlineHelp.txt
@@ -41,3 +41,4 @@ onlineHelp.txt
 res/SpaceXLogo.png
 res/HighResLogo.xcf
 res/textures/*
+TODO

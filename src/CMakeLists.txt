@@ -82,10 +82,10 @@ endif()
 # For OpenGL-based or non-graphics projects, this is optional and the block
 # below can be removed (or else explcitly set CMAKE_MACOSX_BUNDLE to 'OFF').
 #
-# If creating application bundles, the build output will be named 'myexe.app'.
+# If creating application bundles, the build output will be named 'F9Sim.app'.
 # Use the convenience script 'run_app.sh' available under 'contrib/appbundle-macosx/'
 # to run:
-#     start_demo.sh myexe.app
+#     start_demo.sh F9Sim.app
 
 if(APPLE)
     set(CMAKE_MACOSX_BUNDLE ON)
@@ -97,10 +97,8 @@ endif()
 #--------------------------------------------------------------
 
 SET(IRRIMGUI_INCLUDES
-	"/home/lbowes/dev/Programming/Deps/Projects/IrrIMGUI/IrrIMGUI-0.3.1/includes"
-	"/home/lbowes/dev/Programming/Deps/Projects/IrrIMGUI/IrrIMGUI-0.3.1/dependency"
-	"/home/userfs/l/lmb573/Documents/Personal/Programming/Deps/Projects/IrrIMGUI/IrrIMGUI-0.3.1/includes"
-	"/home/userfs/l/lmb573/Documents/Personal/Programming/Deps/Projects/IrrIMGUI/IrrIMGUI-0.3.1/dependency"
+	"/home/lbowes/dev/programming/deps/projects/IrrIMGUI/IrrIMGUI-0.3.1/includes"
+	"/home/lbowes/dev/programming/deps/projects/IrrIMGUI/IrrIMGUI-0.3.1/dependency"
 )
 
 include_directories(${CHRONO_INCLUDE_DIRS} ${IRRIMGUI_INCLUDES})
@@ -124,37 +122,37 @@ endif()
 #--------------------------------------------------------------
 
 SET(SOURCE_FILES 
-	Graphics/GUI/GUILayer.cpp
-    Graphics/GUI/UIUtils.hpp
-    Graphics/Visualisation.cpp
-	Graphics/Simulation_model/Cameras/AllCameras.cpp
-	Graphics/Simulation_model/Cameras/CameraSystem.cpp
-	Graphics/Simulation_model/Lighting/LightSystem.cpp
-	Graphics/Simulation_model/Models/Falcon_9/Falcon9Model.cpp
-	Graphics/Simulation_model/Models/GroundModel.cpp
-	Graphics/Simulation_model/Models/OBJModel.hpp
-	Graphics/Simulation_model/Falcon9Keyframe.cpp
-	Graphics/Simulation_model/SimulationModel.cpp
-	Graphics/Visualisation.cpp
-    Input/HWEventReceiver.cpp
-	Input/MasterEventReceiver.cpp
-	Physics/External/Earth.cpp
-	Physics/External/Environment.cpp
-	Physics/External/GeoCoordUtils.cpp
-	Physics/External/GroundPlane.cpp
-	Physics/External/SurfaceLocation.cpp
-	Physics/Internal/Hardware/Common/Propellant/CylinderFluidTank.cpp
-	Physics/Internal/Hardware/Common/Propellant/Fluid.cpp
-	Physics/Internal/Hardware/Common/Propellant/PropellantSubsystem.cpp
-	Physics/Internal/Hardware/Common/Propellant/SupplyLine.cpp
-	Physics/Internal/Hardware/Falcon_9/Falcon9.cpp
-	Physics/Internal/Hardware/Falcon_9/LandingLeg.cpp
-    Physics/Simulation.cpp
-    Physics/System.cpp
+	graphics/gui/GUILayer.cpp
+    graphics/gui/UIUtils.hpp
+    graphics/Visualisation.cpp
+	graphics/simulation_model/cameras/AllCameras.cpp
+	graphics/simulation_model/cameras/CameraSystem.cpp
+	graphics/simulation_model/lighting/LightSystem.cpp
+	graphics/simulation_model/models/falcon_9/Falcon9Model.cpp
+	graphics/simulation_model/models/GroundModel.cpp
+	graphics/simulation_model/models/OBJModel.hpp
+	graphics/simulation_model/Falcon9Keyframe.cpp
+	graphics/simulation_model/SimulationModel.cpp
+	graphics/Visualisation.cpp
+    input/HWEventReceiver.cpp
+	input/MasterEventReceiver.cpp
+	physics/external/Earth.cpp
+	physics/external/Environment.cpp
+	physics/external/GeoCoordUtils.cpp
+	physics/external/GroundPlane.cpp
+	physics/external/SurfaceLocation.cpp
+	physics/internal/hardware/common/propellant/CylinderFluidTank.cpp
+	physics/internal/hardware/common/propellant/Fluid.cpp
+	physics/internal/hardware/common/propellant/PropellantSubsystem.cpp
+	physics/internal/hardware/common/propellant/SupplyLine.cpp
+	physics/internal/hardware/falcon_9/Falcon9.cpp
+	physics/internal/hardware/falcon_9/LandingLeg.cpp
+    physics/Simulation.cpp
+    physics/System.cpp
     main.cpp 
 )
 
-add_executable(myexe ${SOURCE_FILES})
+add_executable(F9Sim ${SOURCE_FILES})
 
 #--------------------------------------------------------------
 # Set properties for your executable target
@@ -165,7 +163,7 @@ add_executable(myexe ${SOURCE_FILES})
 # install tree (if using an installed version of Chrono).
 #--------------------------------------------------------------
 
-set_target_properties(myexe PROPERTIES 
+set_target_properties(F9Sim PROPERTIES 
 	COMPILE_FLAGS "${CHRONO_CXX_FLAGS} ${EXTRA_COMPILE_FLAGS}"
 	COMPILE_DEFINITIONS "CHRONO_DATA_DIR=\"${CHRONO_DATA_DIR}\""
 	LINK_FLAGS "${CHRONO_LINKER_FLAGS}"
@@ -177,13 +175,12 @@ set_target_properties(myexe PROPERTIES
 
 find_library(IRRIMGUI_LIB_FIND NAMES libIrrIMGUI.a
 	PATHS 
-	/home/lbowes/dev/Programming/Deps/Projects/IrrIMGUI/build
-	/home/userfs/l/lmb573/Documents/Personal/Programming/Deps/Projects/IrrIMGUI/build
+	/home/lbowes/dev/programming/deps/projects/IrrIMGUI/build
 )
 
 SET(IRRIMGUI_LIBRARY ${IRRIMGUI_LIB_FIND})
 
-target_link_libraries(myexe ${CHRONO_LIBRARIES} ${IRRIMGUI_LIBRARY})
+target_link_libraries(F9Sim ${CHRONO_LIBRARIES} ${IRRIMGUI_LIBRARY})
 
 #--------------------------------------------------------------
 # === 4 (OPTIONAL) ===

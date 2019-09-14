@@ -1,13 +1,13 @@
-#ifndef GRAPHICS_VISUALISATION_H
-#define GRAPHICS_VISUALISATION_H
+#ifndef F9SIM_GRAPHICS_VISUALISATION_H_
+#define F9SIM_GRAPHICS_VISUALISATION_H_
 #pragma once
 
-#include "../Input/MasterEventReceiver.h"
-#include "../Input/HWEventReceiver.h"
-#include "GUI/GUILayer.h"
-#include "Simulation_model/Cameras/CameraSystem.h"
-#include "Simulation_model/SimulationModel.h"
-#include "Simulation_model/Falcon9Keyframe.h"
+#include "../input/MasterEventReceiver.h"
+#include "../input/HWEventReceiver.h"
+#include "gui/GUILayer.h"
+#include "simulation_model/cameras/CameraSystem.h"
+#include "simulation_model/SimulationModel.h"
+#include "simulation_model/Falcon9Keyframe.h"
 #include "ISerialisable.hpp"
 
 #include <IrrIMGUI/IrrIMGUI.h>
@@ -19,7 +19,7 @@ namespace irr {
 	namespace video {
 		class IVideoDriver;
 	}
-	
+
 	namespace scene {
 		class ISceneManager;
 	}
@@ -28,7 +28,7 @@ namespace irr {
 namespace Graphics {
 
 	struct PlaybackConfig {
-		float 
+		float
 			mTime_s,
 			mSpeed,
 			mLastSpeed;
@@ -47,11 +47,11 @@ namespace Graphics {
 			mKeyframeInterval_s,
 			mSimDuration_s;
 
-		const std::string 
+		const std::string
             mIniSaveFilepath_imgui,
             mSaveStateFilepath,
             mSimResultsFilepath_CSV;
-        
+
 	    IrrIMGUI::IIMGUIHandle* mImGuiHandle;
         irr::IrrlichtDevice* mDevice;
 		irr::video::IVideoDriver* mVidDriver;
@@ -92,4 +92,4 @@ namespace Graphics {
 
 }
 
-#endif // GRAPHICS_VISUALISATION_H
+#endif // F9SIM_GRAPHICS_VISUALISATION_H_

@@ -1,10 +1,10 @@
- _____ ___  ___   ___  
-|_   _/ _ \|   \ / _ \ 
+ _____ ___  ___   ___
+|_   _/ _ \|   \ / _ \
   | || (_) | |) | (_) |
-  |_| \___/|___/ \___/ 
+  |_| \___/|___/ \___/
 __________________________________________________________________________________________________________________________________
 
-1. Look into saving the state of the simulation (time/speed controls, camera position) with JSON file (see NeuralNetwork project)
+1. Run CMake again and get app building - grep Chrono_DIR
 
 2. Long term, look into how the SpaceX API (https://github.com/r-spacex/SpaceX-API) can be used to build missions. We'd need some method of combing the json response for e.g. the latest mission and integrating all data possible into the simulation.
 

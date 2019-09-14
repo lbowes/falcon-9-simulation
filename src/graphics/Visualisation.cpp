@@ -38,7 +38,7 @@ namespace Graphics {
         mGUILayer(mPlayback, simDuration_s)
 	{
 		using namespace irr;
-		
+
         // Initialise device
         //Get monitor resolution
 		IrrlichtDevice* tmp = createDevice(video::EDT_NULL);
@@ -78,7 +78,7 @@ namespace Graphics {
         mImGuiHandle = IrrIMGUI::createIMGUI(mDevice, &mImGuiEventReceiver, &settings);
 
         // Must be called after ImGui is initialised
-        mGUILayer.loadImGuiStyle();        
+        mGUILayer.loadImGuiStyle();
 
 		init();
         run();
@@ -118,7 +118,7 @@ namespace Graphics {
 
 	void Visualisation::init() {
 		using namespace irr;
-		
+
 		core::recti viewport = mDevice->getVideoDriver()->getViewPort();
 		float aspectRatio = viewport.getWidth() / viewport.getHeight();
 
@@ -133,24 +133,24 @@ namespace Graphics {
         loadAppState();
 	}
 
-    void Visualisation::buildKeyframeHistory() 
+    void Visualisation::buildKeyframeHistory()
         // When the visualisation begins, it only has access to the output CSV file from the simulation.
         // This must first be converted into a series of key frames making up the animation history of the
         // system's model.
     {
         std::ifstream file(mSimResultsFilepath_CSV);
-        
+
         if(!file) {
             printf("Visualisation::buildKeyframeHistory: Could not open file %s", mSimResultsFilepath_CSV.c_str());
             return;
         }
 
-        unsigned frameIdx = 0; 
+        unsigned frameIdx = 0;
 
         std::string str;
         std::getline(file, str); // Skip first line of CSV file
         while (std::getline(file, str)) {
-            // Each line of the CSV file is read into str - we need to parse this and use it to construct a Keyframe         
+            // Each line of the CSV file is read into str - we need to parse this and use it to construct a Keyframe
             mKeyframes.insert({frameIdx, Falcon9Keyframe(str)});
             frameIdx++;
         }
@@ -183,36 +183,36 @@ namespace Graphics {
 
         // Fix window aspect ratio with resizing
 		const float aspectRatio = static_cast<float>(dims.getWidth()) / dims.getHeight();
-		
+
         // todo: fix this, the camera system should be given the transform of the interstage camera mount
         // Shouldn't the interstage camera have its own ChCoordsys which could then be used to have
         // ChIrrTools align the camera to the model automatically somehow?
         mCameraSystem->update(chrono::ChCoordsys<double>(), aspectRatio, frameTime_s);
         //mCameraSystem->update(mCurrentState.getF9S1_DSS().getS1ToWorldTransform().GetCoord(), aspectRatio, frameTime_s);
-		
+
         // Pass in the required camera position so that models can update their own positions
 		mModel->update(mCameraSystem->getCurrentSimCamera().getPosition_world(), mCurrentState);
 	}
-	
+
 	void Visualisation::render() {
 		mVidDriver->beginScene(true, true, irr::video::SColor(255, 0, 0, 0));
-		
+
 		mGUILayer.render();
 		mModel->render(mCameraSystem->getCurrentSimCamera().getPosition_world());
 		mImGuiHandle->drawAll();
-		
+
 		mVidDriver->endScene();
 	}
 
 	void Visualisation::handleTimeSelection(float frameTime_s) {
 		// Advance the simulation time correctly according to the frame time...
 		mPlayback.mTime_s = std::min(static_cast<float>(mSimDuration_s), mPlayback.mTime_s + mPlayback.mSpeed * frameTime_s);
-		
+
 		// Localise the current time within the snapshot history...
-		double 
+		double
 			s = floor(mPlayback.mTime_s / mKeyframeInterval_s),
 			betweenKeyframes = fmod(mPlayback.mTime_s, mKeyframeInterval_s) / mKeyframeInterval_s;
-	
+
 		// Find the index of the the most recent snapshot to have been recorded...
 		const unsigned
 			KeyframeCount = mKeyframes.size(),
@@ -242,7 +242,7 @@ namespace Graphics {
         dest["mPlayback"]["mLastSpeed"] = mPlayback.mLastSpeed;
         dest["mPlayback"]["mPaused"] = mPlayback.mPaused;
     }
-    
+
     void Visualisation::loadAppState() {
         std::ifstream saveState(mSaveStateFilepath);
         if(saveState) {

@@ -1,5 +1,5 @@
-#ifndef PHYSICS_IDATASOURCE_HPP
-#define PHYSICS_IDATASOURCE_HPP
+#ifndef F9SIM_PHYSICS_IDATASOURCE_HPP_
+#define F9SIM_PHYSICS_IDATASOURCE_HPP_
 
 #include <string>
 
@@ -13,7 +13,7 @@ namespace Physics {
     private:
         // The index of the first data point owned by this class, in the complete CSV row
         char mFirstIdx;
-        
+
         // The number of data points that this class is responsible for in the complete CSV row
         char mNumDataPoints;
 
@@ -27,4 +27,4 @@ namespace Physics {
 
 }
 
-#endif
+#endif // F9SIM_PHYSICS_IDATASOURCE_HPP_

@@ -1,5 +1,5 @@
-#ifndef PHYSICS_SIMULATION_H
-#define PHYSICS_SIMULATION_H
+#ifndef F9SIM_PHYSICS_SIMULATION_H_
+#define F9SIM_PHYSICS_SIMULATION_H_
 #pragma once
 
 #include "System.h"
@@ -10,7 +10,7 @@ namespace Physics {
 	private:
 		const double mDuration_s;
 
-		const unsigned short 
+		const unsigned short
 			mUpdatesFreq,
 			mSampleFreq;
 
@@ -40,4 +40,4 @@ namespace Physics {
 
 }
 
-#endif // PHYSICS_SIMULATION_H
+#endif // F9SIM_PHYSICS_SIMULATION_H_
