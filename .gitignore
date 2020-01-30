@@ -32,13 +32,6 @@
 *.app
 
 #Misc files
-**/Notes
-Notes.odt
 build/
-onlineHelp.txt
-.vscode/
-.idea/
-res/SpaceXLogo.png
-res/HighResLogo.xcf
-res/textures/*
+Session.vim
 TODO

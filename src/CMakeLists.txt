@@ -9,14 +9,15 @@
 #--------------------------------------------------------------
  
 
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.13.0)
 
 #--------------------------------------------------------------
 # === 1 === 
 # Modify the project name if you want: 
 #--------------------------------------------------------------
 
-project(F9Sim)
+project(Falcon9Simulation)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 #--------------------------------------------------------------
 # === 2 ===
@@ -62,8 +63,7 @@ project(F9Sim)
 LIST(APPEND CMAKE_PREFIX_PATH "${CMAKE_INSTALL_PREFIX}/../Chrono/lib")
 find_package(Chrono
              COMPONENTS Irrlicht
-             CONFIG
-)
+             CONFIG)
 
 #--------------------------------------------------------------
 # Return now if Chrono or a required component was not found.
@@ -82,10 +82,10 @@ endif()
 # For OpenGL-based or non-graphics projects, this is optional and the block
 # below can be removed (or else explcitly set CMAKE_MACOSX_BUNDLE to 'OFF').
 #
-# If creating application bundles, the build output will be named 'F9Sim.app'.
+# If creating application bundles, the build output will be named 'Falcon9Simulation.app'.
 # Use the convenience script 'run_app.sh' available under 'contrib/appbundle-macosx/'
 # to run:
-#     start_demo.sh F9Sim.app
+#     start_demo.sh Falcon9Simulation.app
 
 if(APPLE)
     set(CMAKE_MACOSX_BUNDLE ON)
@@ -96,12 +96,17 @@ endif()
 # of the requested modules.
 #--------------------------------------------------------------
 
-SET(IRRIMGUI_INCLUDES
-	"/home/lbowes/dev/programming/deps/projects/IrrIMGUI/IrrIMGUI-0.3.1/includes"
-	"/home/lbowes/dev/programming/deps/projects/IrrIMGUI/IrrIMGUI-0.3.1/dependency"
-)
+include_directories(${CHRONO_INCLUDE_DIRS})
 
-include_directories(${CHRONO_INCLUDE_DIRS} ${IRRIMGUI_INCLUDES})
+#-----------------------------------------------------------------------------
+# Fix for VS 2017 15.8 and newer to handle alignment specification with Eigen
+#-----------------------------------------------------------------------------
+
+if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+  if(MSVC AND ${MSVC_VERSION} GREATER_EQUAL 1915)
+    add_definitions( "-D_ENABLE_EXTENDED_ALIGNED_STORAGE" )
+  endif()
+endif()
 
 #--------------------------------------------------------------
 # Tweaks to disable some warnings with MSVC
@@ -110,9 +115,9 @@ if(MSVC)
     add_definitions("-D_CRT_SECURE_NO_DEPRECATE")  # avoids deprecation warnings
     add_definitions("-D_SCL_SECURE_NO_DEPRECATE")  # avoids deprecation warnings
     add_definitions( "-DNOMINMAX" )                # do not use MSVC's min/max macros
-    set(EXTRA_COMPILE_FLAGS "/wd4275 -std=c++17")             # disable warnings triggered by Irrlicht
+    set(EXTRA_COMPILE_FLAGS "/wd4275")             # disable warnings triggered by Irrlicht
 else()
-    set(EXTRA_COMPILE_FLAGS "-std=c++17")
+    set(EXTRA_COMPILE_FLAGS "")
 endif()
 
 #--------------------------------------------------------------
@@ -121,38 +126,8 @@ endif()
 # files in your project. 
 #--------------------------------------------------------------
 
-SET(SOURCE_FILES 
-	graphics/gui/GUILayer.cpp
-    graphics/gui/UIUtils.hpp
-    graphics/Visualisation.cpp
-	graphics/simulation_model/cameras/AllCameras.cpp
-	graphics/simulation_model/cameras/CameraSystem.cpp
-	graphics/simulation_model/lighting/LightSystem.cpp
-	graphics/simulation_model/models/falcon_9/Falcon9Model.cpp
-	graphics/simulation_model/models/GroundModel.cpp
-	graphics/simulation_model/models/OBJModel.hpp
-	graphics/simulation_model/Falcon9Keyframe.cpp
-	graphics/simulation_model/SimulationModel.cpp
-	graphics/Visualisation.cpp
-    input/HWEventReceiver.cpp
-	input/MasterEventReceiver.cpp
-	physics/external/Earth.cpp
-	physics/external/Environment.cpp
-	physics/external/GeoCoordUtils.cpp
-	physics/external/GroundPlane.cpp
-	physics/external/SurfaceLocation.cpp
-	physics/internal/hardware/common/propellant/CylinderFluidTank.cpp
-	physics/internal/hardware/common/propellant/Fluid.cpp
-	physics/internal/hardware/common/propellant/PropellantSubsystem.cpp
-	physics/internal/hardware/common/propellant/SupplyLine.cpp
-	physics/internal/hardware/falcon_9/Falcon9.cpp
-	physics/internal/hardware/falcon_9/LandingLeg.cpp
-    physics/Simulation.cpp
-    physics/System.cpp
-    main.cpp 
-)
-
-add_executable(F9Sim ${SOURCE_FILES})
+add_executable(Falcon9Simulation main.cpp)
+add_subdirectory(testSubdir)
 
 #--------------------------------------------------------------
 # Set properties for your executable target
@@ -163,24 +138,16 @@ add_executable(F9Sim ${SOURCE_FILES})
 # install tree (if using an installed version of Chrono).
 #--------------------------------------------------------------
 
-set_target_properties(F9Sim PROPERTIES 
-	COMPILE_FLAGS "${CHRONO_CXX_FLAGS} ${EXTRA_COMPILE_FLAGS}"
-	COMPILE_DEFINITIONS "CHRONO_DATA_DIR=\"${CHRONO_DATA_DIR}\""
-	LINK_FLAGS "${CHRONO_LINKER_FLAGS}"
-)
+set_target_properties(Falcon9Simulation PROPERTIES 
+	    COMPILE_FLAGS "${CHRONO_CXX_FLAGS} ${EXTRA_COMPILE_FLAGS}"
+	    COMPILE_DEFINITIONS "CHRONO_DATA_DIR=\"${CHRONO_DATA_DIR}\""
+	    LINK_FLAGS "${CHRONO_LINKER_FLAGS}")
 
 #--------------------------------------------------------------
 # Link to Chrono libraries and dependency libraries
 #--------------------------------------------------------------
 
-find_library(IRRIMGUI_LIB_FIND NAMES libIrrIMGUI.a
-	PATHS 
-	/home/lbowes/dev/programming/deps/projects/IrrIMGUI/build
-)
-
-SET(IRRIMGUI_LIBRARY ${IRRIMGUI_LIB_FIND})
-
-target_link_libraries(F9Sim ${CHRONO_LIBRARIES} ${IRRIMGUI_LIBRARY})
+target_link_libraries(Falcon9Simulation ${CHRONO_LIBRARIES})
 
 #--------------------------------------------------------------
 # === 4 (OPTIONAL) ===

@@ -1,5 +1,5 @@
 // =============================================================================
-// PROJECT CHRONO - http://projectchrono.org
+
 //
 // Copyright (c) 2014 projectchrono.org
 // All rights reserved.
@@ -9,31 +9,24 @@
 // http://projectchrono.org/license-chrono.txt.
 //
 // =============================================================================
-// Authors: Alessandro Tasora
-// =============================================================================
-//
-//  Demo code about
-//
-//  - constraints and 'engine' objects
-//  - using IRRLICHT as a realtime 3D viewer of a slider-crank mechanism
-//    simulated with Chrono::Engine.
-//  - using the real-time step.
-//  
-// This is just a possible method of integration of Chrono::Engine + Irrlicht;
-// many others are possible.
-//
+// A very simple example that can be used as template project for
+// a Chrono::Engine simulator with 3D view.
 // =============================================================================
 
-#include "chrono/core/ChRealtimeStep.h"
+#include "chrono/assets/ChColorAsset.h"
+#include "chrono/assets/ChTexture.h"
+#include "chrono/physics/ChBodyEasy.h"
+#include "chrono/physics/ChLinkMate.h"
 #include "chrono/physics/ChSystemNSC.h"
-#include "chrono/physics/ChLinkMotorRotationSpeed.h"
 #include "chrono_irrlicht/ChIrrApp.h"
 
-// Use the namespaces of Chrono
+// Use the namespace of Chrono
+
 using namespace chrono;
 using namespace chrono::irrlicht;
 
 // Use the main namespaces of Irrlicht
+
 using namespace irr;
 using namespace irr::core;
 using namespace irr::scene;
@@ -42,101 +35,107 @@ using namespace irr::io;
 using namespace irr::gui;
 
 int main(int argc, char* argv[]) {
-    GetLog() << "Copyright (c) 2017 projectchrono.org\nChrono version: " << CHRONO_VERSION << "\n\n";
-    //
-    // HERE YOU CREATE THE MECHANICAL SYSTEM OF CHRONO...
-    //
-    // 1- Create a ChronoENGINE physical system: all bodies and constraints
-    //    will be handled by this ChSystemNSC object.
-    ChSystemNSC my_system;
-    // 2- Create the rigid bodies of the slider-crank mechanical system
-    //   (a crank, a rod, a truss), maybe setting position/mass/inertias of
-    //   their center of mass (COG) etc.
-    // ..the truss
-    auto my_body_A = std::make_shared<ChBody>();
-    my_system.AddBody(my_body_A);
-    my_body_A->SetBodyFixed(true);  // truss does not move!
-    my_body_A->SetName("Ground-Truss");
-    // ..the crank
-    auto my_body_B = std::make_shared<ChBody>();
-    my_system.AddBody(my_body_B);
-    my_body_B->SetPos(ChVector<>(1, 0, 0));  // position of COG of crank
-    my_body_B->SetMass(2);
-    my_body_B->SetName("Crank");
-    // ..the rod
-    auto my_body_C = std::make_shared<ChBody>();
-    my_system.AddBody(my_body_C);
-    my_body_C->SetPos(ChVector<>(4, 0, 0));  // position of COG of rod
-    my_body_C->SetMass(3);
-    my_body_C->SetName("Rod");
-    // 3- Create constraints: the mechanical joints between the rigid bodies.
-    // .. a revolute joint between crank and rod
-    auto my_link_BC = std::make_shared<ChLinkLockRevolute>();
-    my_link_BC->SetName("RevJointCrankRod");
-    my_link_BC->Initialize(my_body_B, my_body_C, ChCoordsys<>(ChVector<>(2, 0, 0)));
-    my_system.AddLink(my_link_BC);
-    // .. a slider joint between rod and truss
-    auto my_link_CA = std::make_shared<ChLinkLockPointLine>();
-    my_link_CA->SetName("TransJointRodGround");
-    my_link_CA->Initialize(my_body_C, my_body_A, ChCoordsys<>(ChVector<>(6, 0, 0)));
-    my_system.AddLink(my_link_CA);
-    // .. an engine between crank and truss
-    auto my_link_AB = std::make_shared<ChLinkMotorRotationSpeed>();
-    my_link_AB->Initialize(my_body_A, my_body_B, ChFrame<>(ChVector<>(0, 0, 0)));
-    my_link_AB->SetName("RevJointEngine");
-    my_system.AddLink(my_link_AB);
-    auto my_speed_function = std::make_shared<ChFunction_Const>(CH_C_PI);  // speed w=3.145 rad/sec
-    my_link_AB->SetSpeedFunction(my_speed_function);
-    
-    // 4- Create the Irrlicht visualization
-    ChIrrApp application(&my_system, L"Simple slider-crank example", core::dimension2d<u32>(800, 600), false);
+    // Set path to Chrono data directory
+    SetChronoDataPath(CHRONO_DATA_DIR);
+
+    // Create a Chrono physical system
+    ChSystemNSC mphysicalSystem;
+
+    // Create the Irrlicht visualization (open the Irrlicht device,
+    // bind a simple user interface, etc. etc.)
+    ChIrrApp application(&mphysicalSystem, L"A simple project template", core::dimension2d<u32>(800, 600),
+                         false); // screen dimensions
+
     // Easy shortcuts to add camera, lights, logo and sky in Irrlicht scene:
-    ChIrrWizard::add_typical_Logo(application.GetDevice());
-    ChIrrWizard::add_typical_Sky(application.GetDevice());
-    ChIrrWizard::add_typical_Lights(application.GetDevice());
-    ChIrrWizard::add_typical_Camera(application.GetDevice(), core::vector3df(0, 0, -6));
-    // Bind assets
+    application.AddTypicalLogo();
+    application.AddTypicalSky();
+    application.AddTypicalLights();
+    application.AddTypicalCamera(core::vector3df(2, 2, -5),
+                                 core::vector3df(0, 1, 0)); // to change the position of camera
+    // application.AddLightWithShadow(vector3df(1,25,-5), vector3df(0,0,0), 35, 0.2,35, 55, 512, video::SColorf(1,1,1));
+
+    //======================================================================
+
+    // HERE YOU CAN POPULATE THE PHYSICAL SYSTEM WITH BODIES AND LINKS.
+    //
+    // An example: a pendulum.
+
+    // 1-Create a floor that is fixed (that is used also to represent the absolute reference)
+
+    auto floorBody = std::make_shared<ChBodyEasyBox>(10, 2, 10, // x, y, z dimensions
+                                                     3000,      // density
+                                                     false,     // no contact geometry
+                                                     true       // enable visualization geometry
+    );
+    floorBody->SetPos(ChVector<>(0, -2, 0));
+    floorBody->SetBodyFixed(true);
+
+    mphysicalSystem.Add(floorBody);
+
+    // 2-Create a pendulum
+
+    auto pendulumBody = std::make_shared<ChBodyEasyBox>(0.5, 2, 0.5, // x, y, z dimensions
+                                                        3000,        // density
+                                                        false,       // no contact geometry
+                                                        true         // enable visualization geometry
+    );
+    pendulumBody->SetPos(ChVector<>(0, 3, 0));
+    pendulumBody->SetPos_dt(ChVector<>(1, 0, 0));
+
+    mphysicalSystem.Add(pendulumBody);
+
+    // 3-Create a spherical constraint.
+    //   Here we'll use a ChLinkMateGeneric, but we could also use ChLinkLockSpherical
+
+    auto sphericalLink =
+        std::make_shared<ChLinkMateGeneric>(true, true, true, false, false, false); // x,y,z,Rx,Ry,Rz constrains
+    ChFrame<> link_position_abs(ChVector<>(0, 4, 0));
+
+    sphericalLink->Initialize(pendulumBody,       // the 1st body to connect
+                              floorBody,          // the 2nd body to connect
+                              false,              // the two following frames are in absolute, not relative, coords.
+                              link_position_abs,  // the link reference attached to 1st body
+                              link_position_abs); // the link reference attached to 2nd body
+
+    mphysicalSystem.Add(sphericalLink);
+
+    // Optionally, attach a RGB color asset to the floor, for better visualization
+    auto color = std::make_shared<ChColorAsset>();
+    color->SetColor(ChColor(0.2f, 0.25f, 0.25f));
+    floorBody->AddAsset(color);
+
+    // Optionally, attach a texture to the pendulum, for better visualization
+    auto texture = std::make_shared<ChTexture>();
+    texture->SetTextureFilename(GetChronoDataFile("cubetexture_bluwhite.png")); // texture in ../data
+    pendulumBody->AddAsset(texture);
+
+    //======================================================================
+
+    // Use this function for adding a ChIrrNodeAsset to all items
+    // Otherwise use application.AssetBind(myitem); on a per-item basis.
     application.AssetBindAll();
+
+    // Use this function for 'converting' assets into Irrlicht meshes
     application.AssetUpdateAll();
+
+    // Adjust some settings:
+    application.SetTimestep(0.005);
+    application.SetTryRealtime(true);
+
     //
-    // THE SOFT-REAL-TIME CYCLE, SHOWING THE SIMULATION
+    // THE SOFT-REAL-TIME CYCLE
     //
-    // This will help choosing an integration step which matches the
-    // real-time step of the simulation..
-    ChRealtimeStepTimer m_realtime_timer;
-    bool removed = false;
+
     while (application.GetDevice()->run()) {
-        // Irrlicht must prepare frame to draw
-        application.BeginScene(true, true, SColor(255, 140, 161, 192));
-        // Irrlicht now draws simple lines in 3D world representing a
-        // skeleton of the mechanism, in this instant:
-        //
-        // .. draw items belonging to Irrlicht scene, if any
+        application.BeginScene();
+
         application.DrawAll();
-        // .. draw a grid
-        ChIrrTools::drawGrid(application.GetVideoDriver(), 0.5, 0.5);
-        // .. draw GUI items belonging to Irrlicht screen, if any
-        application.GetIGUIEnvironment()->drawAll();
-        // .. draw the rod (from joint BC to joint CA)
-        ChIrrTools::drawSegment(application.GetVideoDriver(), my_link_BC->GetMarker1()->GetAbsCoord().pos,
-                                my_link_CA->GetMarker1()->GetAbsCoord().pos, video::SColor(255, 0, 255, 0));
-        // .. draw the crank (from joint AB to joint BC)
-        ChIrrTools::drawSegment(application.GetVideoDriver(), my_link_AB->GetLinkAbsoluteCoords().pos,
-                                my_link_BC->GetMarker1()->GetAbsCoord().pos, video::SColor(255, 255, 0, 0));
-        // .. draw a small circle at crank origin
-        ChIrrTools::drawCircle(application.GetVideoDriver(), 0.1, ChCoordsys<>(ChVector<>(0, 0, 0), QUNIT));
-        /* test: delete a link after 10 seconds
-        if (my_system.GetChTime() >10 && (!removed))
-        {
-                my_system.RemoveLink(my_link_AB);
-                removed = true;
-        }*/
-        // HERE CHRONO INTEGRATION IS PERFORMED: THE
-        // TIME OF THE SIMULATION ADVANCES FOR A SINGLE
-        // STEP:
-        my_system.DoStepDynamics(m_realtime_timer.SuggestSimulationStep(0.02));
-        // Irrlicht must finish drawing the frame
+
+        // This performs the integration timestep!
+        application.DoStep();
+
         application.EndScene();
     }
+
     return 0;
 }
