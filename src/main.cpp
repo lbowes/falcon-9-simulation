@@ -1,6 +1,12 @@
-#include <iostream>
+#include "simulation/Simulation.h"
+#include "visualisation/Visualisation.h"
 
 int main() {
-    printf("hello world!\n");
+    Simulation sim;
+    sim.run();
+
+    Visualisation vis;
+    vis.run();
+
     return 0;
 }

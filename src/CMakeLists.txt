@@ -127,7 +127,8 @@ endif()
 #--------------------------------------------------------------
 
 add_executable(Falcon9Simulation main.cpp)
-add_subdirectory(testSubdir)
+add_subdirectory(simulation)
+add_subdirectory(visualisation)
 
 #--------------------------------------------------------------
 # Set properties for your executable target

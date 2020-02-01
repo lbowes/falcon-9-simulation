@@ -13,12 +13,12 @@
 // a Chrono::Engine simulator with 3D view.
 // =============================================================================
 
-#include "chrono/assets/ChColorAsset.h"
-#include "chrono/assets/ChTexture.h"
-#include "chrono/physics/ChBodyEasy.h"
-#include "chrono/physics/ChLinkMate.h"
-#include "chrono/physics/ChSystemNSC.h"
-#include "chrono_irrlicht/ChIrrApp.h"
+#include <chrono/assets/ChColorAsset.h>
+#include <chrono/assets/ChTexture.h>
+#include <chrono/physics/ChBodyEasy.h>
+#include <chrono/physics/ChLinkMate.h>
+#include <chrono/physics/ChSystemNSC.h>
+#include <chrono_irrlicht/ChIrrApp.h>
 
 // Use the namespace of Chrono
 
