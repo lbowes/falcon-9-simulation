@@ -1,9 +1,9 @@
 #ifndef VISUALISATION_H_
 #define VISUALISATION_H_
 
+#include "graphics/gui/GUI.h"
 #include "input/MasterEventReceiver.h"
 
-#include <IrrIMGUI/IrrIMGUI.h>
 #include <chrono_irrlicht/ChIrrWizard.h>
 
 
@@ -12,11 +12,10 @@ private:
     irr::IrrlichtDevice* mDevice;
     irr::video::IVideoDriver* mVidDriver;
     irr::scene::ISceneManager* mSceneMgr;
-    IrrIMGUI::IIMGUIHandle* mImGuiHandle;
 
     Input::HWEventReceiver mHWInput;
     Input::MasterEventReceiver mEventReceiver;
-    IrrIMGUI::CIMGUIEventReceiver mImGuiEventReceiver;
+    Graphics::GUI mGUI;
 
 public:
     Visualisation();
