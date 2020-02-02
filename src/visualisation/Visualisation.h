@@ -24,6 +24,7 @@ public:
     void run();
 
 private:
+    irr::core::dimension2du getMonitorResolution() const;
     void initIrrlicht();
     void initImGui();
     void setImGuiStyle();

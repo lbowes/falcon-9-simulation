@@ -5,6 +5,7 @@
 
 
 Visualisation::Visualisation() {
+
     initIrrlicht();
     mGUI.initWith(*mDevice);
 
@@ -14,16 +15,9 @@ Visualisation::Visualisation() {
 
 
 void Visualisation::initIrrlicht() {
-    using namespace irr;
-
-    SIrrlichtCreationParameters params;
-    params.DriverType = video::EDT_OPENGL;
-
-    IrrlichtDevice* temp = createDevice(video::EDT_NULL);
-    core::dimension2du monitorRes = temp->getVideoModeList()->getDesktopResolution();
-    temp->drop();
-    params.WindowSize = monitorRes / 2;
-
+    irr::SIrrlichtCreationParameters params;
+    params.DriverType = irr::video::EDT_OPENGL;
+    params.WindowSize = getMonitorResolution() / 2;
     params.Bits = 16;
     params.Fullscreen = false;
     params.Stencilbuffer = true;
@@ -42,6 +36,14 @@ void Visualisation::initIrrlicht() {
 
     mVidDriver = mDevice->getVideoDriver();
     mSceneMgr = mDevice->getSceneManager();
+}
+
+
+irr::core::dimension2du Visualisation::getMonitorResolution() const {
+    irr::IrrlichtDevice* temp = irr::createDevice(irr::video::EDT_NULL);
+    irr::core::dimension2du monitorRes = temp->getVideoModeList()->getDesktopResolution();
+    temp->drop();
+    return monitorRes;
 }
 
 

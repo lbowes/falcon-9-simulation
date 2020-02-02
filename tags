@@ -14,6 +14,7 @@ $(VERBOSE).SILENT	build/visualisation/Makefile	/^$(VERBOSE).SILENT:$/;"	t
 2	build/compile_commands.json	/^{$/;"	o
 3	build/compile_commands.json	/^{$/;"	o
 4	build/compile_commands.json	/^{$/;"	o
+5	build/compile_commands.json	/^{$/;"	o
 ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#   define ARCHITECTURE_ID /;"	d	file:
 ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define ARCHITECTURE_ID /;"	d	file:
 ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define ARCHITECTURE_ID$/;"	d	file:
@@ -22,7 +23,7 @@ ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#
 ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define ARCHITECTURE_ID$/;"	d	file:
 Acknowledgements	README.md	/^## Acknowledgements$/;"	s
 Aim	README.md	/^## Aim$/;"	s
-Button	src/visualisation/input/HWEventReceiver.h	/^        enum Button : unsigned char {$/;"	g	class:Input::MouseState	typeref:typename:unsigned char	access:public
+Button	src/visualisation/input/HWEventReceiver.h	/^        enum Button : unsigned char {$/;"	g	class:Input::MouseState	typeref:typename:unsigned char
 CMAKE_AR	build/CMakeFiles/3.16.3/CMakeCCompiler.cmake	/^set(CMAKE_AR "\/usr\/bin\/ar")$/;"	v
 CMAKE_AR	build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake	/^set(CMAKE_AR "\/usr\/bin\/ar")$/;"	v
 CMAKE_BINARY_DIR	build/Makefile	/^CMAKE_BINARY_DIR = \/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build$/;"	m
@@ -227,10 +228,13 @@ C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define C_D
 C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define C_DIALECT$/;"	d	file:
 C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define C_DIALECT /;"	d	file:
 Collapsed	build/imgui.ini	/^Collapsed=0$/;"	k	section:Window
-DEC	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define DEC(/;"	d	file:	signature:(n)
-DEC	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define DEC(/;"	d	file:	signature:(n)
+DEC	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define DEC(/;"	d	file:
+DEC	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define DEC(/;"	d	file:
 Dependencies	README.md	/^## Dependencies$/;"	s
-DirectoryOfThisScript	.ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f	access:public	signature:()
+DirectoryOfThisScript	.ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
+DockId	build/imgui.ini	/^DockId=0x00000003,0$/;"	k	section:Window
+DockSpace   ID	build/imgui.ini	/^DockSpace   ID=0x3BC79352 Pos=0,19 Size=2507,1366 Split=X$/;"	k	section:Docking
+Docking	build/imgui.ini	/^[Docking][Data]$/;"	s
 EQUALS	build/Makefile	/^EQUALS = =$/;"	m
 EQUALS	build/simulation/Makefile	/^EQUALS = =$/;"	m
 EQUALS	build/visualisation/Makefile	/^EQUALS = =$/;"	m
@@ -242,34 +246,15 @@ Falcon9Simulation	build/Makefile	/^Falcon9Simulation: cmake_check_build_system$/
 Falcon9Simulation	src/CMakeLists.txt	/^add_executable(Falcon9Simulation main.cpp)$/;"	t
 Falcon9Simulation	src/CMakeLists.txt	/^project(Falcon9Simulation)$/;"	p
 Falcon9Simulation/fast	build/Makefile	/^Falcon9Simulation\/fast:$/;"	t
-FlagsForFile	.ycm_extra_conf.py	/^def FlagsForFile( filename ):$/;"	f	access:public	signature:( filename )
+FlagsForFile	.ycm_extra_conf.py	/^def FlagsForFile( filename ):$/;"	f
 GRAPHICS_GUI_H_	src/visualisation/graphics/gui/GUI.h	/^#define GRAPHICS_GUI_H_$/;"	d
-GUI	src/visualisation/graphics/gui/GUI.h	/^        GUI() = default;$/;"	p	class:Graphics::GUI	access:public	signature:()
 GUI	src/visualisation/graphics/gui/GUI.h	/^    class GUI {$/;"	c	namespace:Graphics
 Graphics	src/visualisation/graphics/gui/GUI.cpp	/^namespace Graphics {$/;"	n	file:
 Graphics	src/visualisation/graphics/gui/GUI.h	/^namespace Graphics {$/;"	n
-Graphics::GUI	src/visualisation/graphics/gui/GUI.h	/^    class GUI {$/;"	c	namespace:Graphics
-Graphics::GUI::GUI	src/visualisation/graphics/gui/GUI.h	/^        GUI() = default;$/;"	p	class:Graphics::GUI	access:public	signature:()
-Graphics::GUI::getEventReceiver	src/visualisation/graphics/gui/GUI.h	/^        inline IrrIMGUI::CIMGUIEventReceiver& getEventReceiver() const;$/;"	p	class:Graphics::GUI	typeref:typename:IrrIMGUI::CIMGUIEventReceiver &	access:public	signature:() const
-Graphics::GUI::init	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::init(irr::IrrlichtDevice& device) {$/;"	f	class:Graphics::GUI	typeref:typename:void	signature:(irr::IrrlichtDevice & device)
-Graphics::GUI::init	src/visualisation/graphics/gui/GUI.h	/^        void init(irr::IrrlichtDevice& device);$/;"	p	class:Graphics::GUI	typeref:typename:void	access:public	signature:(irr::IrrlichtDevice & device)
-Graphics::GUI::initImGui	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::initImGui(irr::IrrlichtDevice& device) {$/;"	f	class:Graphics::GUI	typeref:typename:void	signature:(irr::IrrlichtDevice & device)
-Graphics::GUI::initImGui	src/visualisation/graphics/gui/GUI.h	/^        void initImGui(irr::IrrlichtDevice& device);$/;"	p	class:Graphics::GUI	typeref:typename:void	access:private	signature:(irr::IrrlichtDevice & device)
-Graphics::GUI::mImGuiEventReceiver	src/visualisation/graphics/gui/GUI.h	/^        IrrIMGUI::CIMGUIEventReceiver mImGuiEventReceiver;$/;"	m	class:Graphics::GUI	typeref:typename:IrrIMGUI::CIMGUIEventReceiver	access:private
-Graphics::GUI::mImGuiHandle	src/visualisation/graphics/gui/GUI.h	/^        IrrIMGUI::IIMGUIHandle* mImGuiHandle;$/;"	m	class:Graphics::GUI	typeref:typename:IrrIMGUI::IIMGUIHandle *	access:private
-Graphics::GUI::render	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::render() {$/;"	f	class:Graphics::GUI	typeref:typename:void	signature:()
-Graphics::GUI::render	src/visualisation/graphics/gui/GUI.h	/^        void render();$/;"	p	class:Graphics::GUI	typeref:typename:void	access:public	signature:()
-Graphics::GUI::setImGuiStyle	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::setImGuiStyle() {$/;"	f	class:Graphics::GUI	typeref:typename:void	signature:()
-Graphics::GUI::setImGuiStyle	src/visualisation/graphics/gui/GUI.h	/^        void setImGuiStyle();$/;"	p	class:Graphics::GUI	typeref:typename:void	access:private	signature:()
-Graphics::GUI::start	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::start() {$/;"	f	class:Graphics::GUI	typeref:typename:void	signature:()
-Graphics::GUI::start	src/visualisation/graphics/gui/GUI.h	/^        void start();$/;"	p	class:Graphics::GUI	typeref:typename:void	access:public	signature:()
-Graphics::GUI::~GUI	src/visualisation/graphics/gui/GUI.h	/^        ~GUI() = default;$/;"	p	class:Graphics::GUI	access:public	signature:()
-Graphics::getEventReceiver	src/visualisation/graphics/gui/GUI.cpp	/^    IrrIMGUI::CIMGUIEventReceiver& getEventReceiver() {$/;"	f	namespace:Graphics	typeref:typename:IrrIMGUI::CIMGUIEventReceiver &	signature:()
-HEX	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define HEX(/;"	d	file:	signature:(n)
-HEX	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define HEX(/;"	d	file:	signature:(n)
-HWEventReceiver	src/visualisation/input/HWEventReceiver.cpp	/^    HWEventReceiver::HWEventReceiver() {$/;"	f	class:Input::HWEventReceiver	signature:()
-HWEventReceiver	src/visualisation/input/HWEventReceiver.h	/^        HWEventReceiver();$/;"	p	class:Input::HWEventReceiver	access:public	signature:()
-HWEventReceiver	src/visualisation/input/HWEventReceiver.h	/^    class HWEventReceiver : public irr::IEventReceiver {$/;"	c	namespace:Input	inherits:irr::IEventReceiver
+HEX	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define HEX(/;"	d	file:
+HEX	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define HEX(/;"	d	file:
+HWEventReceiver	src/visualisation/input/HWEventReceiver.cpp	/^    HWEventReceiver::HWEventReceiver() {$/;"	f	class:Input::HWEventReceiver
+HWEventReceiver	src/visualisation/input/HWEventReceiver.h	/^    class HWEventReceiver : public irr::IEventReceiver {$/;"	c	namespace:Input
 ID_VOID_MAIN	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define ID_VOID_MAIN$/;"	d	file:
 INPUT_HWEVENTRECEIVER_H	src/visualisation/input/HWEventReceiver.h	/^#define INPUT_HWEVENTRECEIVER_H$/;"	d
 IRRIMGUI_INCLUDES	src/CMakeLists.txt	/^SET(IRRIMGUI_INCLUDES$/;"	v
@@ -278,65 +263,15 @@ Input	src/visualisation/input/HWEventReceiver.cpp	/^namespace Input {$/;"	n	file
 Input	src/visualisation/input/HWEventReceiver.h	/^namespace Input {$/;"	n
 Input	src/visualisation/input/MasterEventReceiver.cpp	/^namespace Input {$/;"	n	file:
 Input	src/visualisation/input/MasterEventReceiver.h	/^namespace Input {$/;"	n
-Input::HWEventReceiver	src/visualisation/input/HWEventReceiver.h	/^    class HWEventReceiver : public irr::IEventReceiver {$/;"	c	namespace:Input	inherits:irr::IEventReceiver
-Input::HWEventReceiver::HWEventReceiver	src/visualisation/input/HWEventReceiver.cpp	/^    HWEventReceiver::HWEventReceiver() {$/;"	f	class:Input::HWEventReceiver	signature:()
-Input::HWEventReceiver::HWEventReceiver	src/visualisation/input/HWEventReceiver.h	/^        HWEventReceiver();$/;"	p	class:Input::HWEventReceiver	access:public	signature:()
-Input::HWEventReceiver::OnEvent	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::OnEvent(const irr::SEvent& e) {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool	signature:(const irr::SEvent & e)
-Input::HWEventReceiver::OnEvent	src/visualisation/input/HWEventReceiver.h	/^        virtual bool OnEvent(const irr::SEvent& event);$/;"	p	class:Input::HWEventReceiver	typeref:typename:bool	access:public	signature:(const irr::SEvent & event)
-Input::HWEventReceiver::getMouse	src/visualisation/input/HWEventReceiver.h	/^        MouseState& getMouse() { return mMouseState; }$/;"	f	class:Input::HWEventReceiver	typeref:typename:MouseState &	access:public	signature:()
-Input::HWEventReceiver::getMouse	src/visualisation/input/HWEventReceiver.h	/^        const MouseState& getMouse() const { return mMouseState; }$/;"	f	class:Input::HWEventReceiver	typeref:typename:const MouseState &	access:public	signature:() const
-Input::HWEventReceiver::isKeyPressed	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::isKeyPressed(irr::EKEY_CODE key) const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool	signature:(irr::EKEY_CODE key) const
-Input::HWEventReceiver::isKeyPressed	src/visualisation/input/HWEventReceiver.h	/^        bool isKeyPressed(irr::EKEY_CODE key) const;$/;"	p	class:Input::HWEventReceiver	typeref:typename:bool	access:public	signature:(irr::EKEY_CODE key) const
-Input::HWEventReceiver::isKeyReleased	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::isKeyReleased(irr::EKEY_CODE key) const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool	signature:(irr::EKEY_CODE key) const
-Input::HWEventReceiver::isKeyReleased	src/visualisation/input/HWEventReceiver.h	/^        bool isKeyReleased(irr::EKEY_CODE key) const;$/;"	p	class:Input::HWEventReceiver	typeref:typename:bool	access:public	signature:(irr::EKEY_CODE key) const
-Input::HWEventReceiver::mCentreScreenPos_scr	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2di mCentreScreenPos_scr;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2di	access:private
-Input::HWEventReceiver::mKeysClicked	src/visualisation/input/HWEventReceiver.h	/^        bool mKeysClicked[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]	access:private
-Input::HWEventReceiver::mKeysDown	src/visualisation/input/HWEventReceiver.h	/^        bool mKeysDown[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]	access:private
-Input::HWEventReceiver::mMousePosition	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2df mMousePosition;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2df	access:private
-Input::HWEventReceiver::mMouseState	src/visualisation/input/HWEventReceiver.h	/^        MouseState mMouseState;$/;"	m	class:Input::HWEventReceiver	typeref:typename:MouseState	access:private
-Input::HWEventReceiver::update	src/visualisation/input/HWEventReceiver.cpp	/^    void HWEventReceiver::update(irr::core::vector2di centreScreenPos_scr) {$/;"	f	class:Input::HWEventReceiver	typeref:typename:void	signature:(irr::core::vector2di centreScreenPos_scr)
-Input::HWEventReceiver::update	src/visualisation/input/HWEventReceiver.h	/^        void update(irr::core::vector2di centreScreenPos_scr);$/;"	p	class:Input::HWEventReceiver	typeref:typename:void	access:public	signature:(irr::core::vector2di centreScreenPos_scr)
-Input::HWEventReceiver::~HWEventReceiver	src/visualisation/input/HWEventReceiver.h	/^        ~HWEventReceiver() = default;$/;"	p	class:Input::HWEventReceiver	access:public	signature:()
-Input::MasterEventReceiver	src/visualisation/input/MasterEventReceiver.h	/^    class MasterEventReceiver : public irr::IEventReceiver {$/;"	c	namespace:Input	inherits:irr::IEventReceiver
-Input::MasterEventReceiver::MasterEventReceiver	src/visualisation/input/MasterEventReceiver.h	/^        MasterEventReceiver() = default;$/;"	p	class:Input::MasterEventReceiver	access:public	signature:()
-Input::MasterEventReceiver::OnEvent	src/visualisation/input/MasterEventReceiver.cpp	/^    bool MasterEventReceiver::OnEvent(const irr::SEvent& e) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:bool	signature:(const irr::SEvent & e)
-Input::MasterEventReceiver::OnEvent	src/visualisation/input/MasterEventReceiver.h	/^        virtual bool OnEvent(const irr::SEvent& e);$/;"	p	class:Input::MasterEventReceiver	typeref:typename:bool	access:public	signature:(const irr::SEvent & e)
-Input::MasterEventReceiver::addReceiver	src/visualisation/input/MasterEventReceiver.cpp	/^    void MasterEventReceiver::addReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void	signature:(irr::IEventReceiver * receiver)
-Input::MasterEventReceiver::addReceiver	src/visualisation/input/MasterEventReceiver.h	/^        void addReceiver(irr::IEventReceiver* receiver);$/;"	p	class:Input::MasterEventReceiver	typeref:typename:void	access:public	signature:(irr::IEventReceiver * receiver)
-Input::MasterEventReceiver::mReceivers	src/visualisation/input/MasterEventReceiver.h	/^        irr::core::array<irr::IEventReceiver*> mReceivers;$/;"	m	class:Input::MasterEventReceiver	typeref:typename:irr::core::array<irr::IEventReceiver * >	access:private
-Input::MasterEventReceiver::removeReceiver	src/visualisation/input/MasterEventReceiver.cpp	/^    void MasterEventReceiver::removeReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void	signature:(irr::IEventReceiver * receiver)
-Input::MasterEventReceiver::removeReceiver	src/visualisation/input/MasterEventReceiver.h	/^        void removeReceiver(irr::IEventReceiver* receiver);$/;"	p	class:Input::MasterEventReceiver	typeref:typename:void	access:public	signature:(irr::IEventReceiver * receiver)
-Input::MasterEventReceiver::~MasterEventReceiver	src/visualisation/input/MasterEventReceiver.h	/^        ~MasterEventReceiver() = default;$/;"	p	class:Input::MasterEventReceiver	access:public	signature:()
-Input::MouseState	src/visualisation/input/HWEventReceiver.h	/^    class MouseState {$/;"	c	namespace:Input
-Input::MouseState::Button	src/visualisation/input/HWEventReceiver.h	/^        enum Button : unsigned char {$/;"	g	class:Input::MouseState	typeref:typename:unsigned char	access:public
-Input::MouseState::MouseState	src/visualisation/input/HWEventReceiver.cpp	/^    MouseState::MouseState() :$/;"	f	class:Input::MouseState	signature:()
-Input::MouseState::MouseState	src/visualisation/input/HWEventReceiver.h	/^        MouseState();$/;"	p	class:Input::MouseState	access:public	signature:()
-Input::MouseState::getDelta_scr	src/visualisation/input/HWEventReceiver.h	/^        const irr::core::vector2di& getDelta_scr() const { return mDelta_scr; }$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &	access:public	signature:() const
-Input::MouseState::getPosition_scr	src/visualisation/input/HWEventReceiver.h	/^        const irr::core::vector2di& getPosition_scr() const { return mPosition_scr; }$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &	access:public	signature:() const
-Input::MouseState::getScroll	src/visualisation/input/HWEventReceiver.h	/^        float getScroll() const { return mWheelScroll; }$/;"	f	class:Input::MouseState	typeref:typename:float	access:public	signature:() const
-Input::MouseState::isButtonPressed	src/visualisation/input/HWEventReceiver.h	/^        bool isButtonPressed(Button b) const { return mButtonsPressed[b]; }$/;"	f	class:Input::MouseState	typeref:typename:bool	access:public	signature:(Button b) const
-Input::MouseState::left	src/visualisation/input/HWEventReceiver.h	/^            left = 0,$/;"	e	enum:Input::MouseState::Button	access:public
-Input::MouseState::mButtonsPressed	src/visualisation/input/HWEventReceiver.h	/^        bool mButtonsPressed[3];$/;"	m	class:Input::MouseState	typeref:typename:bool[3]	access:private
-Input::MouseState::mDelta_scr	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2di mDelta_scr;$/;"	m	class:Input::MouseState	typeref:typename:irr::core::vector2di	access:private
-Input::MouseState::mPosition_scr	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2di mPosition_scr;$/;"	m	class:Input::MouseState	typeref:typename:irr::core::vector2di	access:private
-Input::MouseState::mWheelScroll	src/visualisation/input/HWEventReceiver.h	/^        float mWheelScroll;$/;"	m	class:Input::MouseState	typeref:typename:float	access:private
-Input::MouseState::middle	src/visualisation/input/HWEventReceiver.h	/^            middle,$/;"	e	enum:Input::MouseState::Button	access:public
-Input::MouseState::right	src/visualisation/input/HWEventReceiver.h	/^            right$/;"	e	enum:Input::MouseState::Button	access:public
-Input::MouseState::setPosition	src/visualisation/input/HWEventReceiver.h	/^        void setPosition(irr::core::vector2di newPosition_scr) { mPosition_scr = newPosition_scr/;"	f	class:Input::MouseState	typeref:typename:void	access:public	signature:(irr::core::vector2di newPosition_scr)
-Input::MouseState::~MouseState	src/visualisation/input/HWEventReceiver.h	/^        ~MouseState() = default;$/;"	p	class:Input::MouseState	access:public	signature:()
 MASTER_EVENT_RECEIVER_H_	src/visualisation/input/MasterEventReceiver.h	/^#define MASTER_EVENT_RECEIVER_H_$/;"	d
 MINGW	build/CMakeFiles/3.16.3/CMakeCCompiler.cmake	/^  set(MINGW 1)$/;"	v
 MINGW	build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake	/^  set(MINGW 1)$/;"	v
-MakeRelativePathsInFlagsAbsolute	.ycm_extra_conf.py	/^def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):$/;"	f	access:public	signature:( flags, working_directory )
-MasterEventReceiver	src/visualisation/input/MasterEventReceiver.h	/^        MasterEventReceiver() = default;$/;"	p	class:Input::MasterEventReceiver	access:public	signature:()
-MasterEventReceiver	src/visualisation/input/MasterEventReceiver.h	/^    class MasterEventReceiver : public irr::IEventReceiver {$/;"	c	namespace:Input	inherits:irr::IEventReceiver
-MouseState	src/visualisation/input/HWEventReceiver.cpp	/^    MouseState::MouseState() :$/;"	f	class:Input::MouseState	signature:()
-MouseState	src/visualisation/input/HWEventReceiver.h	/^        MouseState();$/;"	p	class:Input::MouseState	access:public	signature:()
+MakeRelativePathsInFlagsAbsolute	.ycm_extra_conf.py	/^def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):$/;"	f
+MasterEventReceiver	src/visualisation/input/MasterEventReceiver.h	/^    class MasterEventReceiver : public irr::IEventReceiver {$/;"	c	namespace:Input
+MouseState	src/visualisation/input/HWEventReceiver.cpp	/^    MouseState::MouseState() :$/;"	f	class:Input::MouseState
 MouseState	src/visualisation/input/HWEventReceiver.h	/^    class MouseState {$/;"	c	namespace:Input
-OnEvent	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::OnEvent(const irr::SEvent& e) {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool	signature:(const irr::SEvent & e)
-OnEvent	src/visualisation/input/HWEventReceiver.h	/^        virtual bool OnEvent(const irr::SEvent& event);$/;"	p	class:Input::HWEventReceiver	typeref:typename:bool	access:public	signature:(const irr::SEvent & event)
-OnEvent	src/visualisation/input/MasterEventReceiver.cpp	/^    bool MasterEventReceiver::OnEvent(const irr::SEvent& e) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:bool	signature:(const irr::SEvent & e)
-OnEvent	src/visualisation/input/MasterEventReceiver.h	/^        virtual bool OnEvent(const irr::SEvent& e);$/;"	p	class:Input::MasterEventReceiver	typeref:typename:bool	access:public	signature:(const irr::SEvent & e)
+OnEvent	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::OnEvent(const irr::SEvent& e) {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool
+OnEvent	src/visualisation/input/MasterEventReceiver.cpp	/^    bool MasterEventReceiver::OnEvent(const irr::SEvent& e) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:bool
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define PLATFORM_ID /;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define PLATFORM_ID$/;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define PLATFORM_ID /;"	d	file:
@@ -347,11 +282,10 @@ PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# def
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID$/;"	d	file:
 Pos	build/imgui.ini	/^Pos=0,1179$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=0,19$/;"	k	section:Window
-Pos	build/imgui.ini	/^Pos=1242,458$/;"	k	section:Window
-Pos	build/imgui.ini	/^Pos=1898,267$/;"	k	section:Window
-Pos	build/imgui.ini	/^Pos=309,724$/;"	k	section:Window
+Pos	build/imgui.ini	/^Pos=1574,69$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=60,60$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=683,275$/;"	k	section:Window
+Pos	build/imgui.ini	/^Pos=691,440$/;"	k	section:Window
 RM	build/Makefile	/^RM = \/snap\/cmake\/237\/bin\/cmake -E remove -f$/;"	m
 RM	build/simulation/Makefile	/^RM = \/snap\/cmake\/237\/bin\/cmake -E remove -f$/;"	m
 RM	build/visualisation/Makefile	/^RM = \/snap\/cmake\/237\/bin\/cmake -E remove -f$/;"	m
@@ -368,55 +302,31 @@ SIMULATE_VERSION_PATCH	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^
 SIMULATE_VERSION_PATCH	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define SIMULATE_VERSION_PATCH /;"	d	file:
 SIMULATION_H_	src/simulation/Simulation.h	/^#define SIMULATION_H_$/;"	d
 SOMECPP_H_	src/testSubdir/someCpp.h	/^#define SOMECPP_H_$/;"	d
-STRINGIFY	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define STRINGIFY(/;"	d	file:	signature:(X)
-STRINGIFY	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define STRINGIFY(/;"	d	file:	signature:(X)
-STRINGIFY_HELPER	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define STRINGIFY_HELPER(/;"	d	file:	signature:(X)
-STRINGIFY_HELPER	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define STRINGIFY_HELPER(/;"	d	file:	signature:(X)
+STRINGIFY	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define STRINGIFY(/;"	d	file:
+STRINGIFY	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define STRINGIFY(/;"	d	file:
+STRINGIFY_HELPER	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define STRINGIFY_HELPER(/;"	d	file:
+STRINGIFY_HELPER	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define STRINGIFY_HELPER(/;"	d	file:
 SUFFIXES	build/Makefile	/^SUFFIXES =$/;"	m
 SUFFIXES	build/simulation/Makefile	/^SUFFIXES =$/;"	m
 SUFFIXES	build/visualisation/Makefile	/^SUFFIXES =$/;"	m
 SessionLoad	Session.vim	/^let SessionLoad = 1$/;"	v
-Simulation	src/simulation/Simulation.h	/^    Simulation() = default;$/;"	p	class:Simulation	access:public	signature:()
 Simulation	src/simulation/Simulation.h	/^class Simulation {$/;"	c
-Simulation::Simulation	src/simulation/Simulation.h	/^    Simulation() = default;$/;"	p	class:Simulation	access:public	signature:()
-Simulation::run	src/simulation/Simulation.cpp	/^void Simulation::run() {}$/;"	f	class:Simulation	typeref:typename:void	signature:()
-Simulation::run	src/simulation/Simulation.h	/^    void run();$/;"	p	class:Simulation	typeref:typename:void	access:public	signature:()
-Simulation::~Simulation	src/simulation/Simulation.h	/^    ~Simulation() = default;$/;"	p	class:Simulation	access:public	signature:()
 Size	build/imgui.ini	/^Size=2507,1385$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=2507,206$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=333,827$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=345,249$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=400,400$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=429,1158$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=460,1366$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=465,1366$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=569,109$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=609,910$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=688,640$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=764,431$/;"	k	section:Window
 Status	README.md	/^## Status$/;"	s
 UNIX	build/CMakeFiles/3.16.3/CMakeCCompiler.cmake	/^  set(UNIX 1)$/;"	v
 UNIX	build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake	/^  set(UNIX 1)$/;"	v
 VISUALISATION_H_	src/visualisation/Visualisation.h	/^#define VISUALISATION_H_$/;"	d
-Visualisation	src/visualisation/Visualisation.cpp	/^Visualisation::Visualisation() {$/;"	f	class:Visualisation	signature:()
-Visualisation	src/visualisation/Visualisation.h	/^    Visualisation();$/;"	p	class:Visualisation	access:public	signature:()
+Visualisation	src/visualisation/Visualisation.cpp	/^Visualisation::Visualisation() {$/;"	f	class:Visualisation
 Visualisation	src/visualisation/Visualisation.h	/^class Visualisation {$/;"	c
-Visualisation::Visualisation	src/visualisation/Visualisation.cpp	/^Visualisation::Visualisation() {$/;"	f	class:Visualisation	signature:()
-Visualisation::Visualisation	src/visualisation/Visualisation.h	/^    Visualisation();$/;"	p	class:Visualisation	access:public	signature:()
-Visualisation::initImGui	src/visualisation/Visualisation.h	/^    void initImGui();$/;"	p	class:Visualisation	typeref:typename:void	access:private	signature:()
-Visualisation::initIrrlicht	src/visualisation/Visualisation.cpp	/^void Visualisation::initIrrlicht() {$/;"	f	class:Visualisation	typeref:typename:void	signature:()
-Visualisation::initIrrlicht	src/visualisation/Visualisation.h	/^    void initIrrlicht();$/;"	p	class:Visualisation	typeref:typename:void	access:private	signature:()
-Visualisation::mDevice	src/visualisation/Visualisation.h	/^    irr::IrrlichtDevice* mDevice;$/;"	m	class:Visualisation	typeref:typename:irr::IrrlichtDevice *	access:private
-Visualisation::mEventReceiver	src/visualisation/Visualisation.h	/^    Input::MasterEventReceiver mEventReceiver;$/;"	m	class:Visualisation	typeref:typename:Input::MasterEventReceiver	access:private
-Visualisation::mGUI	src/visualisation/Visualisation.h	/^    Graphics::GUI mGUI;$/;"	m	class:Visualisation	typeref:typename:Graphics::GUI	access:private
-Visualisation::mHWInput	src/visualisation/Visualisation.h	/^    Input::HWEventReceiver mHWInput;$/;"	m	class:Visualisation	typeref:typename:Input::HWEventReceiver	access:private
-Visualisation::mSceneMgr	src/visualisation/Visualisation.h	/^    irr::scene::ISceneManager* mSceneMgr;$/;"	m	class:Visualisation	typeref:typename:irr::scene::ISceneManager *	access:private
-Visualisation::mVidDriver	src/visualisation/Visualisation.h	/^    irr::video::IVideoDriver* mVidDriver;$/;"	m	class:Visualisation	typeref:typename:irr::video::IVideoDriver *	access:private
-Visualisation::render	src/visualisation/Visualisation.cpp	/^void Visualisation::render() {$/;"	f	class:Visualisation	typeref:typename:void	signature:()
-Visualisation::render	src/visualisation/Visualisation.h	/^    void render();$/;"	p	class:Visualisation	typeref:typename:void	access:private	signature:()
-Visualisation::run	src/visualisation/Visualisation.cpp	/^void Visualisation::run() {$/;"	f	class:Visualisation	typeref:typename:void	signature:()
-Visualisation::run	src/visualisation/Visualisation.h	/^    void run();$/;"	p	class:Visualisation	typeref:typename:void	access:public	signature:()
-Visualisation::setImGuiStyle	src/visualisation/Visualisation.h	/^    void setImGuiStyle();$/;"	p	class:Visualisation	typeref:typename:void	access:private	signature:()
-Visualisation::update	src/visualisation/Visualisation.h	/^    void update();$/;"	p	class:Visualisation	typeref:typename:void	access:private	signature:()
-Visualisation::~Visualisation	src/visualisation/Visualisation.h	/^    ~Visualisation() = default;$/;"	p	class:Visualisation	access:public	signature:()
 Window	build/imgui.ini	/^[Window][About Dear ImGui]$/;"	s
 Window	build/imgui.ini	/^[Window][Dear ImGui Demo]$/;"	s
 Window	build/imgui.ini	/^[Window][Dear ImGui Metrics]$/;"	s
@@ -427,8 +337,7 @@ Window	build/imgui.ini	/^[Window][Example: Documents]$/;"	s
 Window	build/imgui.ini	/^[Window][Example: Property editor]$/;"	s
 Window	build/imgui.ini	/^[Window][Style Editor]$/;"	s
 Window	build/imgui.ini	/^[Window][Test window]$/;"	s
-addReceiver	src/visualisation/input/MasterEventReceiver.cpp	/^    void MasterEventReceiver::addReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void	signature:(irr::IEventReceiver * receiver)
-addReceiver	src/visualisation/input/MasterEventReceiver.h	/^        void addReceiver(irr::IEventReceiver* receiver);$/;"	p	class:Input::MasterEventReceiver	typeref:typename:void	access:public	signature:(irr::IEventReceiver * receiver)
+addReceiver	src/visualisation/input/MasterEventReceiver.cpp	/^    void MasterEventReceiver::addReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void
 all	build/Makefile	/^all: cmake_check_build_system$/;"	t
 all	build/simulation/Makefile	/^all: cmake_check_build_system$/;"	t
 all	build/visualisation/Makefile	/^all: cmake_check_build_system$/;"	t
@@ -449,9 +358,10 @@ command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DA
 command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:2
 command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:3
 command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:4
-compilation_database_folder	.ycm_extra_conf.py	/^compilation_database_folder = os.path.join(DirectoryOfThisScript(), 'build')$/;"	v	access:public
+command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:5
+compilation_database_folder	.ycm_extra_conf.py	/^compilation_database_folder = os.path.join(DirectoryOfThisScript(), 'build')$/;"	v
 const	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define const$/;"	d	file:
-database	.ycm_extra_conf.py	/^  database = ycm_core.CompilationDatabase( compilation_database_folder )$/;"	v	access:public
+database	.ycm_extra_conf.py	/^  database = ycm_core.CompilationDatabase( compilation_database_folder )$/;"	v
 default_target	build/Makefile	/^default_target: all$/;"	t
 default_target	build/simulation/Makefile	/^default_target: all$/;"	t
 default_target	build/visualisation/Makefile	/^default_target: all$/;"	t
@@ -463,6 +373,7 @@ directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/prog
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:2
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:3
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:4
+directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:5
 edit_cache	build/Makefile	/^edit_cache:$/;"	t
 edit_cache	build/simulation/Makefile	/^edit_cache:$/;"	t
 edit_cache	build/visualisation/Makefile	/^edit_cache:$/;"	t
@@ -472,18 +383,19 @@ edit_cache/fast	build/visualisation/Makefile	/^edit_cache\/fast: edit_cache$/;"	
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/main.cpp"$/;"	s	object:0
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/simulation\/Simu/;"	s	object:1
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/V/;"	s	object:2
+file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/g/;"	s	object:5
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/i/;"	s	object:3
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/i/;"	s	object:4
-flags	.ycm_extra_conf.py	/^flags = [$/;"	v	access:public
+flags	.ycm_extra_conf.py	/^flags = [$/;"	v
 g:this_obsession	Session.vim	/^let g:this_obsession = v:this_session$/;"	v
 g:this_session	Session.vim	/^let g:this_session = v:this_session$/;"	v
-getDelta_scr	src/visualisation/input/HWEventReceiver.h	/^        const irr::core::vector2di& getDelta_scr() const { return mDelta_scr; }$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &	access:public	signature:() const
-getEventReceiver	src/visualisation/graphics/gui/GUI.cpp	/^    IrrIMGUI::CIMGUIEventReceiver& getEventReceiver() {$/;"	f	namespace:Graphics	typeref:typename:IrrIMGUI::CIMGUIEventReceiver &	signature:()
-getEventReceiver	src/visualisation/graphics/gui/GUI.h	/^        inline IrrIMGUI::CIMGUIEventReceiver& getEventReceiver() const;$/;"	p	class:Graphics::GUI	typeref:typename:IrrIMGUI::CIMGUIEventReceiver &	access:public	signature:() const
-getMouse	src/visualisation/input/HWEventReceiver.h	/^        MouseState& getMouse() { return mMouseState; }$/;"	f	class:Input::HWEventReceiver	typeref:typename:MouseState &	access:public	signature:()
-getMouse	src/visualisation/input/HWEventReceiver.h	/^        const MouseState& getMouse() const { return mMouseState; }$/;"	f	class:Input::HWEventReceiver	typeref:typename:const MouseState &	access:public	signature:() const
-getPosition_scr	src/visualisation/input/HWEventReceiver.h	/^        const irr::core::vector2di& getPosition_scr() const { return mPosition_scr; }$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &	access:public	signature:() const
-getScroll	src/visualisation/input/HWEventReceiver.h	/^        float getScroll() const { return mWheelScroll; }$/;"	f	class:Input::MouseState	typeref:typename:float	access:public	signature:() const
+getDelta_scr	src/visualisation/input/HWEventReceiver.h	/^        const irr::core::vector2di& getDelta_scr() const { return mDelta_scr; }$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &
+getEventReceiver	src/visualisation/graphics/gui/GUI.cpp	/^    IrrIMGUI::CIMGUIEventReceiver& GUI::getEventReceiver() {$/;"	f	class:Graphics::GUI	typeref:typename:IrrIMGUI::CIMGUIEventReceiver &
+getMonitorResolution	src/visualisation/Visualisation.cpp	/^irr::core::dimension2du Visualisation::getMonitorResolution() const {$/;"	f	class:Visualisation	typeref:typename:irr::core::dimension2du
+getMouse	src/visualisation/input/HWEventReceiver.h	/^        MouseState& getMouse() { return mMouseState; }$/;"	f	class:Input::HWEventReceiver	typeref:typename:MouseState &
+getMouse	src/visualisation/input/HWEventReceiver.h	/^        const MouseState& getMouse() const { return mMouseState; }$/;"	f	class:Input::HWEventReceiver	typeref:typename:const MouseState &
+getPosition_scr	src/visualisation/input/HWEventReceiver.h	/^        const irr::core::vector2di& getPosition_scr() const { return mPosition_scr; }$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &
+getScroll	src/visualisation/input/HWEventReceiver.h	/^        float getScroll() const { return mWheelScroll; }$/;"	f	class:Input::MouseState	typeref:typename:float
 help	build/Makefile	/^help:$/;"	t
 help	build/simulation/Makefile	/^help:$/;"	t
 help	build/visualisation/Makefile	/^help:$/;"	t
@@ -505,49 +417,43 @@ info_version	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const
 info_version	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version[] = {$/;"	v	typeref:typename:char const[]
 info_version_internal	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
 info_version_internal	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
-init	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::init(irr::IrrlichtDevice& device) {$/;"	f	class:Graphics::GUI	typeref:typename:void	signature:(irr::IrrlichtDevice & device)
-init	src/visualisation/graphics/gui/GUI.h	/^        void init(irr::IrrlichtDevice& device);$/;"	p	class:Graphics::GUI	typeref:typename:void	access:public	signature:(irr::IrrlichtDevice & device)
-initImGui	src/visualisation/Visualisation.h	/^    void initImGui();$/;"	p	class:Visualisation	typeref:typename:void	access:private	signature:()
-initImGui	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::initImGui(irr::IrrlichtDevice& device) {$/;"	f	class:Graphics::GUI	typeref:typename:void	signature:(irr::IrrlichtDevice & device)
-initImGui	src/visualisation/graphics/gui/GUI.h	/^        void initImGui(irr::IrrlichtDevice& device);$/;"	p	class:Graphics::GUI	typeref:typename:void	access:private	signature:(irr::IrrlichtDevice & device)
-initIrrlicht	src/visualisation/Visualisation.cpp	/^void Visualisation::initIrrlicht() {$/;"	f	class:Visualisation	typeref:typename:void	signature:()
-initIrrlicht	src/visualisation/Visualisation.h	/^    void initIrrlicht();$/;"	p	class:Visualisation	typeref:typename:void	access:private	signature:()
-isButtonPressed	src/visualisation/input/HWEventReceiver.h	/^        bool isButtonPressed(Button b) const { return mButtonsPressed[b]; }$/;"	f	class:Input::MouseState	typeref:typename:bool	access:public	signature:(Button b) const
-isKeyPressed	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::isKeyPressed(irr::EKEY_CODE key) const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool	signature:(irr::EKEY_CODE key) const
-isKeyPressed	src/visualisation/input/HWEventReceiver.h	/^        bool isKeyPressed(irr::EKEY_CODE key) const;$/;"	p	class:Input::HWEventReceiver	typeref:typename:bool	access:public	signature:(irr::EKEY_CODE key) const
-isKeyReleased	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::isKeyReleased(irr::EKEY_CODE key) const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool	signature:(irr::EKEY_CODE key) const
-isKeyReleased	src/visualisation/input/HWEventReceiver.h	/^        bool isKeyReleased(irr::EKEY_CODE key) const;$/;"	p	class:Input::HWEventReceiver	typeref:typename:bool	access:public	signature:(irr::EKEY_CODE key) const
-left	src/visualisation/input/HWEventReceiver.h	/^            left = 0,$/;"	e	enum:Input::MouseState::Button	access:public
-mButtonsPressed	src/visualisation/input/HWEventReceiver.h	/^        bool mButtonsPressed[3];$/;"	m	class:Input::MouseState	typeref:typename:bool[3]	access:private
-mCentreScreenPos_scr	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2di mCentreScreenPos_scr;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2di	access:private
-mDelta_scr	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2di mDelta_scr;$/;"	m	class:Input::MouseState	typeref:typename:irr::core::vector2di	access:private
-mDevice	src/visualisation/Visualisation.h	/^    irr::IrrlichtDevice* mDevice;$/;"	m	class:Visualisation	typeref:typename:irr::IrrlichtDevice *	access:private
-mEventReceiver	src/visualisation/Visualisation.h	/^    Input::MasterEventReceiver mEventReceiver;$/;"	m	class:Visualisation	typeref:typename:Input::MasterEventReceiver	access:private
-mGUI	src/visualisation/Visualisation.h	/^    Graphics::GUI mGUI;$/;"	m	class:Visualisation	typeref:typename:Graphics::GUI	access:private
-mHWInput	src/visualisation/Visualisation.h	/^    Input::HWEventReceiver mHWInput;$/;"	m	class:Visualisation	typeref:typename:Input::HWEventReceiver	access:private
-mImGuiEventReceiver	src/visualisation/graphics/gui/GUI.h	/^        IrrIMGUI::CIMGUIEventReceiver mImGuiEventReceiver;$/;"	m	class:Graphics::GUI	typeref:typename:IrrIMGUI::CIMGUIEventReceiver	access:private
-mImGuiHandle	src/visualisation/graphics/gui/GUI.h	/^        IrrIMGUI::IIMGUIHandle* mImGuiHandle;$/;"	m	class:Graphics::GUI	typeref:typename:IrrIMGUI::IIMGUIHandle *	access:private
-mKeysClicked	src/visualisation/input/HWEventReceiver.h	/^        bool mKeysClicked[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]	access:private
-mKeysDown	src/visualisation/input/HWEventReceiver.h	/^        bool mKeysDown[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]	access:private
-mMousePosition	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2df mMousePosition;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2df	access:private
-mMouseState	src/visualisation/input/HWEventReceiver.h	/^        MouseState mMouseState;$/;"	m	class:Input::HWEventReceiver	typeref:typename:MouseState	access:private
-mPosition_scr	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2di mPosition_scr;$/;"	m	class:Input::MouseState	typeref:typename:irr::core::vector2di	access:private
-mReceivers	src/visualisation/input/MasterEventReceiver.h	/^        irr::core::array<irr::IEventReceiver*> mReceivers;$/;"	m	class:Input::MasterEventReceiver	typeref:typename:irr::core::array<irr::IEventReceiver * >	access:private
-mSceneMgr	src/visualisation/Visualisation.h	/^    irr::scene::ISceneManager* mSceneMgr;$/;"	m	class:Visualisation	typeref:typename:irr::scene::ISceneManager *	access:private
-mVidDriver	src/visualisation/Visualisation.h	/^    irr::video::IVideoDriver* mVidDriver;$/;"	m	class:Visualisation	typeref:typename:irr::video::IVideoDriver *	access:private
-mWheelScroll	src/visualisation/input/HWEventReceiver.h	/^        float mWheelScroll;$/;"	m	class:Input::MouseState	typeref:typename:float	access:private
-main	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f	signature:(argc,argv)
-main	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f	typeref:typename:void	signature:()
-main	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f	typeref:typename:int	signature:(int argc,char * argv[])
-main	src/example.cpp	/^int main(int argc, char* argv[]) {$/;"	f	typeref:typename:int	signature:(int argc,char * argv[])
-main	src/main.cpp	/^int main() {$/;"	f	typeref:typename:int	signature:()
+initImGui	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::initImGui(irr::IrrlichtDevice& device) {$/;"	f	class:Graphics::GUI	typeref:typename:void
+initIrrlicht	src/visualisation/Visualisation.cpp	/^void Visualisation::initIrrlicht() {$/;"	f	class:Visualisation	typeref:typename:void
+initWith	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::initWith(irr::IrrlichtDevice& device) {$/;"	f	class:Graphics::GUI	typeref:typename:void
+isButtonPressed	src/visualisation/input/HWEventReceiver.h	/^        bool isButtonPressed(Button b) const { return mButtonsPressed[b]; }$/;"	f	class:Input::MouseState	typeref:typename:bool
+isKeyPressed	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::isKeyPressed(irr::EKEY_CODE key) const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool
+isKeyReleased	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::isKeyReleased(irr::EKEY_CODE key) const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool
+left	src/visualisation/input/HWEventReceiver.h	/^            left = 0,$/;"	e	enum:Input::MouseState::Button
+mButtonsPressed	src/visualisation/input/HWEventReceiver.h	/^        bool mButtonsPressed[3];$/;"	m	class:Input::MouseState	typeref:typename:bool[3]
+mCentreScreenPos_scr	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2di mCentreScreenPos_scr;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2di
+mDelta_scr	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2di mDelta_scr;$/;"	m	class:Input::MouseState	typeref:typename:irr::core::vector2di
+mDevice	src/visualisation/Visualisation.h	/^    irr::IrrlichtDevice* mDevice;$/;"	m	class:Visualisation	typeref:typename:irr::IrrlichtDevice *
+mEventReceiver	src/visualisation/Visualisation.h	/^    Input::MasterEventReceiver mEventReceiver;$/;"	m	class:Visualisation	typeref:typename:Input::MasterEventReceiver
+mGUI	src/visualisation/Visualisation.h	/^    Graphics::GUI mGUI;$/;"	m	class:Visualisation	typeref:typename:Graphics::GUI
+mHWInput	src/visualisation/Visualisation.h	/^    Input::HWEventReceiver mHWInput;$/;"	m	class:Visualisation	typeref:typename:Input::HWEventReceiver
+mImGuiEventReceiver	src/visualisation/graphics/gui/GUI.h	/^        IrrIMGUI::CIMGUIEventReceiver mImGuiEventReceiver;$/;"	m	class:Graphics::GUI	typeref:typename:IrrIMGUI::CIMGUIEventReceiver
+mImGuiHandle	src/visualisation/graphics/gui/GUI.h	/^        IrrIMGUI::IIMGUIHandle* mImGuiHandle;$/;"	m	class:Graphics::GUI	typeref:typename:IrrIMGUI::IIMGUIHandle *
+mKeysClicked	src/visualisation/input/HWEventReceiver.h	/^        bool mKeysClicked[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]
+mKeysDown	src/visualisation/input/HWEventReceiver.h	/^        bool mKeysDown[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]
+mMousePosition	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2df mMousePosition;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2df
+mMouseState	src/visualisation/input/HWEventReceiver.h	/^        MouseState mMouseState;$/;"	m	class:Input::HWEventReceiver	typeref:typename:MouseState
+mPosition_scr	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2di mPosition_scr;$/;"	m	class:Input::MouseState	typeref:typename:irr::core::vector2di
+mReceivers	src/visualisation/input/MasterEventReceiver.h	/^        irr::core::array<irr::IEventReceiver*> mReceivers;$/;"	m	class:Input::MasterEventReceiver	typeref:typename:irr::core::array<irr::IEventReceiver * >
+mSceneMgr	src/visualisation/Visualisation.h	/^    irr::scene::ISceneManager* mSceneMgr;$/;"	m	class:Visualisation	typeref:typename:irr::scene::ISceneManager *
+mVidDriver	src/visualisation/Visualisation.h	/^    irr::video::IVideoDriver* mVidDriver;$/;"	m	class:Visualisation	typeref:typename:irr::video::IVideoDriver *
+mWheelScroll	src/visualisation/input/HWEventReceiver.h	/^        float mWheelScroll;$/;"	m	class:Input::MouseState	typeref:typename:float
+main	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
+main	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f	typeref:typename:void
+main	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f	typeref:typename:int
+main	src/example.cpp	/^int main(int argc, char* argv[]) {$/;"	f	typeref:typename:int
+main	src/main.cpp	/^int main() {$/;"	f	typeref:typename:int
 main.cpp.i	build/Makefile	/^main.cpp.i:$/;"	t
 main.cpp.o	build/Makefile	/^main.cpp.o:$/;"	t
 main.cpp.s	build/Makefile	/^main.cpp.s:$/;"	t
 main.i	build/Makefile	/^main.i: main.cpp.i$/;"	t
 main.o	build/Makefile	/^main.o: main.cpp.o$/;"	t
 main.s	build/Makefile	/^main.s: main.cpp.s$/;"	t
-middle	src/visualisation/input/HWEventReceiver.h	/^            middle,$/;"	e	enum:Input::MouseState::Button	access:public
+middle	src/visualisation/input/HWEventReceiver.h	/^            middle,$/;"	e	enum:Input::MouseState::Button
 preinstall	build/Makefile	/^preinstall: all$/;"	t
 preinstall	build/simulation/Makefile	/^preinstall: all$/;"	t
 preinstall	build/visualisation/Makefile	/^preinstall: all$/;"	t
@@ -562,43 +468,38 @@ rebuild_cache	build/visualisation/Makefile	/^rebuild_cache:$/;"	t
 rebuild_cache/fast	build/Makefile	/^rebuild_cache\/fast: rebuild_cache$/;"	t
 rebuild_cache/fast	build/simulation/Makefile	/^rebuild_cache\/fast: rebuild_cache$/;"	t
 rebuild_cache/fast	build/visualisation/Makefile	/^rebuild_cache\/fast: rebuild_cache$/;"	t
-removeReceiver	src/visualisation/input/MasterEventReceiver.cpp	/^    void MasterEventReceiver::removeReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void	signature:(irr::IEventReceiver * receiver)
-removeReceiver	src/visualisation/input/MasterEventReceiver.h	/^        void removeReceiver(irr::IEventReceiver* receiver);$/;"	p	class:Input::MasterEventReceiver	typeref:typename:void	access:public	signature:(irr::IEventReceiver * receiver)
-render	src/visualisation/Visualisation.cpp	/^void Visualisation::render() {$/;"	f	class:Visualisation	typeref:typename:void	signature:()
-render	src/visualisation/Visualisation.h	/^    void render();$/;"	p	class:Visualisation	typeref:typename:void	access:private	signature:()
-render	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::render() {$/;"	f	class:Graphics::GUI	typeref:typename:void	signature:()
-render	src/visualisation/graphics/gui/GUI.h	/^        void render();$/;"	p	class:Graphics::GUI	typeref:typename:void	access:public	signature:()
-right	src/visualisation/input/HWEventReceiver.h	/^            right$/;"	e	enum:Input::MouseState::Button	access:public
-run	src/simulation/Simulation.cpp	/^void Simulation::run() {}$/;"	f	class:Simulation	typeref:typename:void	signature:()
-run	src/simulation/Simulation.h	/^    void run();$/;"	p	class:Simulation	typeref:typename:void	access:public	signature:()
-run	src/visualisation/Visualisation.cpp	/^void Visualisation::run() {$/;"	f	class:Visualisation	typeref:typename:void	signature:()
-run	src/visualisation/Visualisation.h	/^    void run();$/;"	p	class:Visualisation	typeref:typename:void	access:public	signature:()
+removeReceiver	src/visualisation/input/MasterEventReceiver.cpp	/^    void MasterEventReceiver::removeReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void
+render	src/visualisation/Visualisation.cpp	/^void Visualisation::render() {$/;"	f	class:Visualisation	typeref:typename:void
+render	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::render() {$/;"	f	class:Graphics::GUI	typeref:typename:void
+right	src/visualisation/input/HWEventReceiver.h	/^            right$/;"	e	enum:Input::MouseState::Button
+run	src/simulation/Simulation.cpp	/^void Simulation::run() {}$/;"	f	class:Simulation	typeref:typename:void
+run	src/visualisation/Visualisation.cpp	/^void Visualisation::run() {$/;"	f	class:Visualisation	typeref:typename:void
 s:so_save	Session.vim	/^let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0$/;"	v
 s:sx	Session.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
 s:wipebuf	Session.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
-setImGuiStyle	src/visualisation/Visualisation.h	/^    void setImGuiStyle();$/;"	p	class:Visualisation	typeref:typename:void	access:private	signature:()
-setImGuiStyle	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::setImGuiStyle() {$/;"	f	class:Graphics::GUI	typeref:typename:void	signature:()
-setImGuiStyle	src/visualisation/graphics/gui/GUI.h	/^        void setImGuiStyle();$/;"	p	class:Graphics::GUI	typeref:typename:void	access:private	signature:()
-setPosition	src/visualisation/input/HWEventReceiver.h	/^        void setPosition(irr::core::vector2di newPosition_scr) { mPosition_scr = newPosition_scr/;"	f	class:Input::MouseState	typeref:typename:void	access:public	signature:(irr::core::vector2di newPosition_scr)
+setImGuiStyle	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::setImGuiStyle() {$/;"	f	class:Graphics::GUI	typeref:typename:void
+setPosition	src/visualisation/input/HWEventReceiver.h	/^        void setPosition(irr::core::vector2di newPosition_scr) { mPosition_scr = newPosition_scr/;"	f	class:Input::MouseState	typeref:typename:void
 simulation/Simulation.cpp.i	build/Makefile	/^simulation\/Simulation.cpp.i:$/;"	t
 simulation/Simulation.cpp.o	build/Makefile	/^simulation\/Simulation.cpp.o:$/;"	t
 simulation/Simulation.cpp.s	build/Makefile	/^simulation\/Simulation.cpp.s:$/;"	t
 simulation/Simulation.i	build/Makefile	/^simulation\/Simulation.i: simulation\/Simulation.cpp.i$/;"	t
 simulation/Simulation.o	build/Makefile	/^simulation\/Simulation.o: simulation\/Simulation.cpp.o$/;"	t
 simulation/Simulation.s	build/Makefile	/^simulation\/Simulation.s: simulation\/Simulation.cpp.s$/;"	t
-someFunction	src/testSubdir/someCpp.cpp	/^void someFunction() {$/;"	f	typeref:typename:void	signature:()
-someFunction	src/testSubdir/someCpp.h	/^void someFunction();$/;"	p	typeref:typename:void	signature:()
-start	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::start() {$/;"	f	class:Graphics::GUI	typeref:typename:void	signature:()
-start	src/visualisation/graphics/gui/GUI.h	/^        void start();$/;"	p	class:Graphics::GUI	typeref:typename:void	access:public	signature:()
-update	src/visualisation/Visualisation.h	/^    void update();$/;"	p	class:Visualisation	typeref:typename:void	access:private	signature:()
-update	src/visualisation/input/HWEventReceiver.cpp	/^    void HWEventReceiver::update(irr::core::vector2di centreScreenPos_scr) {$/;"	f	class:Input::HWEventReceiver	typeref:typename:void	signature:(irr::core::vector2di centreScreenPos_scr)
-update	src/visualisation/input/HWEventReceiver.h	/^        void update(irr::core::vector2di centreScreenPos_scr);$/;"	p	class:Input::HWEventReceiver	typeref:typename:void	access:public	signature:(irr::core::vector2di centreScreenPos_scr)
+someFunction	src/testSubdir/someCpp.cpp	/^void someFunction() {$/;"	f	typeref:typename:void
+start	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::start() {$/;"	f	class:Graphics::GUI	typeref:typename:void
+update	src/visualisation/input/HWEventReceiver.cpp	/^    void HWEventReceiver::update(irr::core::vector2di centreScreenPos_scr) {$/;"	f	class:Input::HWEventReceiver	typeref:typename:void
 visualisation/Visualisation.cpp.i	build/Makefile	/^visualisation\/Visualisation.cpp.i:$/;"	t
 visualisation/Visualisation.cpp.o	build/Makefile	/^visualisation\/Visualisation.cpp.o:$/;"	t
 visualisation/Visualisation.cpp.s	build/Makefile	/^visualisation\/Visualisation.cpp.s:$/;"	t
 visualisation/Visualisation.i	build/Makefile	/^visualisation\/Visualisation.i: visualisation\/Visualisation.cpp.i$/;"	t
 visualisation/Visualisation.o	build/Makefile	/^visualisation\/Visualisation.o: visualisation\/Visualisation.cpp.o$/;"	t
 visualisation/Visualisation.s	build/Makefile	/^visualisation\/Visualisation.s: visualisation\/Visualisation.cpp.s$/;"	t
+visualisation/graphics/gui/GUI.cpp.i	build/Makefile	/^visualisation\/graphics\/gui\/GUI.cpp.i:$/;"	t
+visualisation/graphics/gui/GUI.cpp.o	build/Makefile	/^visualisation\/graphics\/gui\/GUI.cpp.o:$/;"	t
+visualisation/graphics/gui/GUI.cpp.s	build/Makefile	/^visualisation\/graphics\/gui\/GUI.cpp.s:$/;"	t
+visualisation/graphics/gui/GUI.i	build/Makefile	/^visualisation\/graphics\/gui\/GUI.i: visualisation\/graphics\/gui\/GUI.cpp.i$/;"	t
+visualisation/graphics/gui/GUI.o	build/Makefile	/^visualisation\/graphics\/gui\/GUI.o: visualisation\/graphics\/gui\/GUI.cpp.o$/;"	t
+visualisation/graphics/gui/GUI.s	build/Makefile	/^visualisation\/graphics\/gui\/GUI.s: visualisation\/graphics\/gui\/GUI.cpp.s$/;"	t
 visualisation/input/HWEventReceiver.cpp.i	build/Makefile	/^visualisation\/input\/HWEventReceiver.cpp.i:$/;"	t
 visualisation/input/HWEventReceiver.cpp.o	build/Makefile	/^visualisation\/input\/HWEventReceiver.cpp.o:$/;"	t
 visualisation/input/HWEventReceiver.cpp.s	build/Makefile	/^visualisation\/input\/HWEventReceiver.cpp.s:$/;"	t
@@ -612,9 +513,3 @@ visualisation/input/MasterEventReceiver.i	build/Makefile	/^visualisation\/input\
 visualisation/input/MasterEventReceiver.o	build/Makefile	/^visualisation\/input\/MasterEventReceiver.o: visualisation\/input\/MasterEventReceiver.cpp.o$/;"	t
 visualisation/input/MasterEventReceiver.s	build/Makefile	/^visualisation\/input\/MasterEventReceiver.s: visualisation\/input\/MasterEventReceiver.cpp.s$/;"	t
 volatile	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define volatile$/;"	d	file:
-~GUI	src/visualisation/graphics/gui/GUI.h	/^        ~GUI() = default;$/;"	p	class:Graphics::GUI	access:public	signature:()
-~HWEventReceiver	src/visualisation/input/HWEventReceiver.h	/^        ~HWEventReceiver() = default;$/;"	p	class:Input::HWEventReceiver	access:public	signature:()
-~MasterEventReceiver	src/visualisation/input/MasterEventReceiver.h	/^        ~MasterEventReceiver() = default;$/;"	p	class:Input::MasterEventReceiver	access:public	signature:()
-~MouseState	src/visualisation/input/HWEventReceiver.h	/^        ~MouseState() = default;$/;"	p	class:Input::MouseState	access:public	signature:()
-~Simulation	src/simulation/Simulation.h	/^    ~Simulation() = default;$/;"	p	class:Simulation	access:public	signature:()
-~Visualisation	src/visualisation/Visualisation.h	/^    ~Visualisation() = default;$/;"	p	class:Visualisation	access:public	signature:()
