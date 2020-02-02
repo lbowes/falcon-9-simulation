@@ -3,7 +3,7 @@
 namespace Graphics {
 
 
-    void GUI::init(irr::IrrlichtDevice& device) {
+    void GUI::initWith(irr::IrrlichtDevice& device) {
         initImGui(device);
         setImGuiStyle();
     }
@@ -18,20 +18,21 @@ namespace Graphics {
         ImGui::Begin("Test window");
         ImGui::Text("This is some text");
         ImGui::End();
+        mImGuiHandle->drawAll();
     }
 
 
-    IrrIMGUI::CIMGUIEventReceiver& getEventReceiver() {
+    IrrIMGUI::CIMGUIEventReceiver& GUI::getEventReceiver() {
         return mImGuiEventReceiver;
     }
 
 
     void GUI::initImGui(irr::IrrlichtDevice& device) {
+        ImGui::CreateContext();
+
         IrrIMGUI::SIMGUISettings settings;
         settings.mIsGUIMouseCursorEnabled = false;
-
-        ImGui::CreateContext();
-        mImGuiHandle = IrrIMGUI::createIMGUI(device, &mImGuiEventReceiver, &settings);
+        mImGuiHandle = IrrIMGUI::createIMGUI(&device, &mImGuiEventReceiver, &settings);
     }
 
 

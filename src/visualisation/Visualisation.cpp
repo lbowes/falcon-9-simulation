@@ -6,10 +6,10 @@
 
 Visualisation::Visualisation() {
     initIrrlicht();
-    mGUI.init(*mDevice);
+    mGUI.initWith(*mDevice);
 
     mEventReceiver.addReceiver(&mHWInput);
-    mEventReceiver.addReceiver(mGUI.getEventReceiver());
+    mEventReceiver.addReceiver(&mGUI.getEventReceiver());
 }
 
 

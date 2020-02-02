@@ -16,10 +16,10 @@ namespace Graphics {
         GUI() = default;
         ~GUI() = default;
 
-        void init(irr::IrrlichtDevice& device);
+        void initWith(irr::IrrlichtDevice& device);
         void start();
         void render();
-        inline IrrIMGUI::CIMGUIEventReceiver& getEventReceiver() const;
+        IrrIMGUI::CIMGUIEventReceiver& getEventReceiver();
 
     private:
         void initImGui(irr::IrrlichtDevice& device);
