@@ -3,14 +3,20 @@
 
 #include "input/MasterEventReceiver.h"
 
+#include <IrrIMGUI/IrrIMGUI.h>
 #include <chrono_irrlicht/ChIrrWizard.h>
+
 
 class Visualisation {
 private:
     irr::IrrlichtDevice* mDevice;
     irr::video::IVideoDriver* mVidDriver;
     irr::scene::ISceneManager* mSceneMgr;
+    IrrIMGUI::IIMGUIHandle* mImGuiHandle;
+
+    Input::HWEventReceiver mHWInput;
     Input::MasterEventReceiver mEventReceiver;
+    IrrIMGUI::CIMGUIEventReceiver mImGuiEventReceiver;
 
 public:
     Visualisation();

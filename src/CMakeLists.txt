@@ -96,7 +96,12 @@ endif()
 # of the requested modules.
 #--------------------------------------------------------------
 
-include_directories(${CHRONO_INCLUDE_DIRS})
+SET(IRRIMGUI_INCLUDES
+	"/home/lewis/dev/programming/deps/projects/IrrIMGUI/IrrIMGUI-0.3.1/includes"
+	"/home/lewis/dev/programming/deps/projects/IrrIMGUI/IrrIMGUI-0.3.1/dependency"
+)
+
+include_directories(${CHRONO_INCLUDE_DIRS} ${IRRIMGUI_INCLUDES})
 
 #-----------------------------------------------------------------------------
 # Fix for VS 2017 15.8 and newer to handle alignment specification with Eigen
@@ -148,7 +153,14 @@ set_target_properties(Falcon9Simulation PROPERTIES
 # Link to Chrono libraries and dependency libraries
 #--------------------------------------------------------------
 
-target_link_libraries(Falcon9Simulation ${CHRONO_LIBRARIES})
+find_library(IRRIMGUI_LIB_FIND NAMES libIrrIMGUI.a
+	PATHS
+	/home/lewis/dev/programming/deps/projects/IrrIMGUI/build
+)
+
+SET(IRRIMGUI_LIBRARY ${IRRIMGUI_LIB_FIND})
+
+target_link_libraries(Falcon9Simulation ${CHRONO_LIBRARIES} ${IRRIMGUI_LIBRARY})
 
 #--------------------------------------------------------------
 # === 4 (OPTIONAL) ===
