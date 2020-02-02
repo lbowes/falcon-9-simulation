@@ -25,6 +25,9 @@ public:
     void run();
 
 private:
+    void initIrrlicht();
+    void initImGui();
+    void setImGuiStyle();
     void render();
     void update();
 };
