@@ -3,6 +3,7 @@
 #include <IMGUI/imgui.h>
 #include <iostream>
 
+
 Visualisation::Visualisation() {
     using namespace irr;
 
@@ -39,6 +40,7 @@ Visualisation::Visualisation() {
     IrrIMGUI::SIMGUISettings settings;
     settings.mIsGUIMouseCursorEnabled = false;
 
+    ImGui::CreateContext();
     mImGuiHandle = IrrIMGUI::createIMGUI(mDevice, &mImGuiEventReceiver, &settings);
 }
 
@@ -50,8 +52,8 @@ void Visualisation::run() {
         const unsigned now = mDevice->getTimer()->getRealTime();
         const float frameTime_s = static_cast<float>(now - lastTime) / 1000.0f;
 
-        //mImGuiHandle->startGUI();
-        //ImGui::Begin("Test window");
+        mImGuiHandle->startGUI();
+        ImGui::Begin("Test window");
         // handleInput(frameTime_s);
         // update(frameTime_s);
         render();
@@ -66,7 +68,7 @@ void Visualisation::render() {
 
     // mGUILayer.render();
     // mModel->render(mCameraSystem->getCurrentSimCamera().getPosition_world());
-    //mImGuiHandle->drawAll();
+    mImGuiHandle->drawAll();
 
     mVidDriver->endScene();
 }
