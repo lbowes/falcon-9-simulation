@@ -6,5 +6,5 @@ target_sources(Falcon9Simulation
 		GUI.cpp
 		simulation_model/SimulationModel.cpp
 		simulation_model/Scene.cpp
-		simulation_model/CameraSystem.cpp
+		simulation_model/cameras/CameraSystem.cpp
 )

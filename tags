@@ -17,6 +17,7 @@ $(VERBOSE).SILENT	build/visualisation/Makefile	/^$(VERBOSE).SILENT:$/;"	t
 5	build/compile_commands.json	/^{$/;"	o
 6	build/compile_commands.json	/^{$/;"	o
 7	build/compile_commands.json	/^{$/;"	o
+8	build/compile_commands.json	/^{$/;"	o
 ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#   define ARCHITECTURE_ID /;"	d	file:
 ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define ARCHITECTURE_ID /;"	d	file:
 ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define ARCHITECTURE_ID$/;"	d	file:
@@ -27,8 +28,8 @@ Acknowledgements	README.md	/^## Acknowledgements$/;"	s
 Aim	README.md	/^## Aim$/;"	s
 Button	src/main_old.cpp	/^        enum Button : unsigned char {$/;"	g	class:Input::MouseState	typeref:typename:unsigned char	file:
 Button	src/visualisation/input/HWEventReceiver.h	/^        enum Button : unsigned char {$/;"	g	class:Input::MouseState	typeref:typename:unsigned char
-CAMERASYSTEM_H_	src/visualisation/simulation_model/CameraSystem.h	/^#define CAMERASYSTEM_H_$/;"	d
-CAMERASYSTEM_H_	src/visualisation/simulation_model/FPVCamera.h	/^#define CAMERASYSTEM_H_$/;"	d
+CAMERABASESTATE_H_	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^#define CAMERABASESTATE_H_$/;"	d
+CAMERASYSTEM_H_	src/visualisation/simulation_model/cameras/CameraSystem.h	/^#define CAMERASYSTEM_H_$/;"	d
 CMAKE_AR	build/CMakeFiles/3.16.3/CMakeCCompiler.cmake	/^set(CMAKE_AR "\/usr\/bin\/ar")$/;"	v
 CMAKE_AR	build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake	/^set(CMAKE_AR "\/usr\/bin\/ar")$/;"	v
 CMAKE_BINARY_DIR	build/Makefile	/^CMAKE_BINARY_DIR = \/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build$/;"	m
@@ -232,20 +233,27 @@ CYGWIN	build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake	/^  set(CYGWIN 1)$/;"	v
 C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define C_DIALECT /;"	d	file:
 C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define C_DIALECT$/;"	d	file:
 C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define C_DIALECT /;"	d	file:
-CameraSystem	src/visualisation/simulation_model/CameraSystem.h	/^class CameraSystem {$/;"	c
-CameraSystem	src/visualisation/simulation_model/FPVCamera.cpp	/^CameraSystem::CameraSystem() :$/;"	f	class:CameraSystem
-CameraSystem	src/visualisation/simulation_model/FPVCamera.h	/^class CameraSystem {$/;"	c
+CameraBaseState	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^struct CameraBaseState {$/;"	s
+CameraSystem	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^CameraSystem::CameraSystem(irr::scene::ISceneManager& sceneMgrHandle) :$/;"	f	class:CameraSystem
+CameraSystem	src/visualisation/simulation_model/cameras/CameraSystem.h	/^class CameraSystem {$/;"	c
 Collapsed	build/imgui.ini	/^Collapsed=0$/;"	k	section:Window
 DEC	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define DEC(/;"	d	file:
 DEC	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define DEC(/;"	d	file:
 Dependencies	README.md	/^## Dependencies$/;"	s
 DirectoryOfThisScript	.ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
+DockId	build/imgui.ini	/^DockId=0x00000002,0$/;"	k	section:Window
+DockId	build/imgui.ini	/^DockId=0x00000003,0$/;"	k	section:Window
+DockNode    ID	build/imgui.ini	/^DockNode    ID=0x00000001 Pos=60,60 Size=135,48 Split=X$/;"	k	section:Docking
+Docking	build/imgui.ini	/^[Docking][Data]$/;"	s
 EQUALS	build/Makefile	/^EQUALS = =$/;"	m
 EQUALS	build/simulation/Makefile	/^EQUALS = =$/;"	m
 EQUALS	build/visualisation/Makefile	/^EQUALS = =$/;"	m
 EXECUTABLE_OUTPUT_PATH	src/CMakeLists.txt	/^set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})$/;"	v
 EXTRA_COMPILE_FLAGS	src/CMakeLists.txt	/^    set(EXTRA_COMPILE_FLAGS "")$/;"	v
 EXTRA_COMPILE_FLAGS	src/CMakeLists.txt	/^    set(EXTRA_COMPILE_FLAGS "\/wd4275")             # disable warnings triggered by Irrlicht$/;"	v
+FPVCAMERA_H_	src/visualisation/simulation_model/cameras/FPVCamera.h	/^#define FPVCAMERA_H_$/;"	d
+FPVCamera	src/visualisation/simulation_model/cameras/FPVCamera.c	/^FPVCamera::FPVCamera() {$/;"	f	typeref:typename:FPVCamera::
+FPVCamera	src/visualisation/simulation_model/cameras/FPVCamera.h	/^class FPVCamera {$/;"	c
 Falcon-9-Simulation	README.md	/^# Falcon-9-Simulation$/;"	c
 Falcon9Simulation	build/Makefile	/^Falcon9Simulation: cmake_check_build_system$/;"	t
 Falcon9Simulation	src/CMakeLists.txt	/^add_executable(Falcon9Simulation main.cpp)$/;"	t
@@ -294,7 +302,7 @@ PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  de
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define PLATFORM_ID$/;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID /;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID$/;"	d	file:
-Pos	build/imgui.ini	/^Pos=1261,115$/;"	k	section:Window
+Pos	build/imgui.ini	/^Pos=130,60$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=60,14$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=60,60$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=926,309$/;"	k	section:Window
@@ -329,11 +337,11 @@ SessionLoad	Session.vim	/^let SessionLoad = 1$/;"	v
 Simulation	src/simulation/Simulation.h	/^class Simulation {$/;"	c
 SimulationModel	src/visualisation/simulation_model/SimulationModel.cpp	/^SimulationModel::SimulationModel(irr::scene::ISceneManager& sceneMgr) :$/;"	f	class:SimulationModel
 SimulationModel	src/visualisation/simulation_model/SimulationModel.h	/^class SimulationModel {$/;"	c
-Size	build/imgui.ini	/^Size=135,48$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=2507,1385$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=351,243$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=400,400$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=480,406$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=65,48$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=68,48$/;"	k	section:Window
 Status	README.md	/^## Status$/;"	s
 UNIX	build/CMakeFiles/3.16.3/CMakeCCompiler.cmake	/^  set(UNIX 1)$/;"	v
 UNIX	build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake	/^  set(UNIX 1)$/;"	v
@@ -355,6 +363,7 @@ all	build/Makefile	/^all: cmake_check_build_system$/;"	t
 all	build/simulation/Makefile	/^all: cmake_check_build_system$/;"	t
 all	build/visualisation/Makefile	/^all: cmake_check_build_system$/;"	t
 applyCameraPosOffset	src/visualisation/simulation_model/Scene.cpp	/^void Scene::applyCameraPosOffset(chrono::ChVector<> camPos) {$/;"	f	class:Scene	typeref:typename:void
+aspectRatio	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^    float aspectRatio;$/;"	m	struct:CameraBaseState	typeref:typename:float
 clean	build/Makefile	/^clean:$/;"	t
 clean	build/simulation/Makefile	/^clean:$/;"	t
 clean	build/visualisation/Makefile	/^clean:$/;"	t
@@ -377,6 +386,7 @@ command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DA
 command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:5
 command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:6
 command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:7
+command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:8
 compilation_database_folder	.ycm_extra_conf.py	/^compilation_database_folder = os.path.join(DirectoryOfThisScript(), 'build')$/;"	v
 const	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define const$/;"	d	file:
 database	.ycm_extra_conf.py	/^  database = ycm_core.CompilationDatabase( compilation_database_folder )$/;"	v
@@ -394,6 +404,7 @@ directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/prog
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:5
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:6
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:7
+directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:8
 edit_cache	build/Makefile	/^edit_cache:$/;"	t
 edit_cache	build/simulation/Makefile	/^edit_cache:$/;"	t
 edit_cache	build/visualisation/Makefile	/^edit_cache:$/;"	t
@@ -402,6 +413,7 @@ edit_cache/fast	build/simulation/Makefile	/^edit_cache\/fast: edit_cache$/;"	t
 edit_cache/fast	build/visualisation/Makefile	/^edit_cache\/fast: edit_cache$/;"	t
 engineSceneNode	src/main_old.cpp	/^irr::scene::ISceneNode* engineSceneNode;$/;"	v	typeref:typename:irr::scene::ISceneNode *
 engineTransform_world	src/main_old.cpp	/^chrono::ChCoordsys<> engineTransform_world = chrono::ChCoordsys<>(chrono::ChVector<>(0.0f, 1.75f/;"	v	typeref:typename:chrono::ChCoordsys<>
+farValue	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^    float farValue;$/;"	m	struct:CameraBaseState	typeref:typename:float
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/main.cpp"$/;"	s	object:0
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/simulation\/Simu/;"	s	object:1
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/G/;"	s	object:5
@@ -410,6 +422,7 @@ file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/p
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/i/;"	s	object:4
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/s/;"	s	object:6
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/s/;"	s	object:7
+file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/s/;"	s	object:8
 flags	.ycm_extra_conf.py	/^flags = [$/;"	v
 g:this_obsession	Session.vim	/^let g:this_obsession = v:this_session$/;"	v
 g:this_session	Session.vim	/^let g:this_session = v:this_session$/;"	v
@@ -430,9 +443,9 @@ getScroll	src/main_old.cpp	/^        float getScroll() const {$/;"	f	class:Input
 getScroll	src/visualisation/input/HWEventReceiver.h	/^        float getScroll() const { return mWheelScroll; }$/;"	f	class:Input::MouseState	typeref:typename:float
 handleInput	src/main_old.cpp	/^void handleInput(double frameTime_s) {$/;"	f	typeref:typename:void
 handleInput	src/visualisation/Visualisation.cpp	/^void Visualisation::handleInput(double frameTime_s) {$/;"	f	class:Visualisation	typeref:typename:void
-handleInput	src/visualisation/simulation_model/CameraSystem.cpp	/^void CameraSystem::handleInput() {$/;"	f	class:CameraSystem	typeref:typename:void
-handleInput	src/visualisation/simulation_model/FPVCamera.cpp	/^void CameraSystem::handleInput() {$/;"	f	class:CameraSystem	typeref:typename:void
 handleInput	src/visualisation/simulation_model/SimulationModel.cpp	/^void SimulationModel::handleInput(double frameTime_s) {$/;"	f	class:SimulationModel	typeref:typename:void
+handleInput	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^void CameraSystem::handleInput(float frameTime_s) {$/;"	f	class:CameraSystem	typeref:typename:void
+handleInput	src/visualisation/simulation_model/cameras/FPVCamera.c	/^void handleInput() {$/;"	f	typeref:typename:void
 help	build/Makefile	/^help:$/;"	t
 help	build/simulation/Makefile	/^help:$/;"	t
 help	build/visualisation/Makefile	/^help:$/;"	t
@@ -467,11 +480,12 @@ isKeyReleased	src/main_old.cpp	/^        bool isKeyReleased(irr::EKEY_CODE key) 
 isKeyReleased	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::isKeyReleased(irr::EKEY_CODE key) const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool
 left	src/main_old.cpp	/^            left = 0,$/;"	e	enum:Input::MouseState::Button	file:
 left	src/visualisation/input/HWEventReceiver.h	/^            left = 0,$/;"	e	enum:Input::MouseState::Button
-mAspectRatio	src/visualisation/simulation_model/CameraSystem.h	/^    float mAspectRatio;$/;"	m	class:CameraSystem	typeref:typename:float
-mAspectRatio	src/visualisation/simulation_model/FPVCamera.h	/^    float mAspectRatio;$/;"	m	class:CameraSystem	typeref:typename:float
+lookAt	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^    chrono::ChVector<> lookAt;$/;"	m	struct:CameraBaseState	typeref:typename:chrono::ChVector<>
+mAspectRatio	src/visualisation/simulation_model/cameras/CameraSystem.h	/^    float mAspectRatio;$/;"	m	class:CameraSystem	typeref:typename:float
 mButtonsPressed	src/main_old.cpp	/^        bool mButtonsPressed[3];$/;"	m	class:Input::MouseState	typeref:typename:bool[3]	file:
 mButtonsPressed	src/visualisation/input/HWEventReceiver.h	/^        bool mButtonsPressed[3];$/;"	m	class:Input::MouseState	typeref:typename:bool[3]
 mCamera	src/main_old.cpp	/^irr::scene::ICameraSceneNode* mCamera;$/;"	v	typeref:typename:irr::scene::ICameraSceneNode *
+mCameraBase	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    CameraBaseState mCameraBase;$/;"	m	class:FPVCamera	typeref:typename:CameraBaseState
 mCameraLookAtDir	src/main_old.cpp	/^chrono::ChVector<> mCameraLookAtDir;$/;"	v	typeref:typename:chrono::ChVector<>
 mCameraMovementFriction	src/main_old.cpp	/^const float mCameraMovementFriction = 7.0f;$/;"	v	typeref:typename:const float
 mCameraPos	src/main_old.cpp	/^chrono::ChVector<> mCameraPos = chrono::ChVector<>(2.0f, 1.78f, 0.0f);$/;"	v	typeref:typename:chrono::ChVector<>
@@ -493,14 +507,21 @@ mImGuiEventReceiver	src/main_old.cpp	/^IrrIMGUI::CIMGUIEventReceiver mImGuiEvent
 mImGuiEventReceiver	src/visualisation/GUI.h	/^    IrrIMGUI::CIMGUIEventReceiver mImGuiEventReceiver;$/;"	m	class:GUI	typeref:typename:IrrIMGUI::CIMGUIEventReceiver
 mImGuiHandle	src/main_old.cpp	/^IrrIMGUI::IIMGUIHandle* mImGuiHandle;$/;"	v	typeref:typename:IrrIMGUI::IIMGUIHandle *
 mImGuiHandle	src/visualisation/GUI.h	/^    IrrIMGUI::IIMGUIHandle* mImGuiHandle;$/;"	m	class:GUI	typeref:typename:IrrIMGUI::IIMGUIHandle *
+mInternalIrrlichtCam	src/visualisation/simulation_model/cameras/CameraSystem.h	/^    irr::scene::ICameraSceneNode* mInternalIrrlichtCam;$/;"	m	class:CameraSystem	typeref:typename:irr::scene::ICameraSceneNode *
 mKeysClicked	src/main_old.cpp	/^        bool mKeysClicked[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]	file:
 mKeysClicked	src/visualisation/input/HWEventReceiver.h	/^        bool mKeysClicked[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]
 mKeysDown	src/main_old.cpp	/^        bool mKeysDown[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]	file:
 mKeysDown	src/visualisation/input/HWEventReceiver.h	/^        bool mKeysDown[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]
+mLookAroundSensitivity	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    static const float mLookAroundSensitivity;$/;"	m	class:FPVCamera	typeref:typename:const float
+mMaxMoveSpeed	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    static const float mMaxMoveSpeed;$/;"	m	class:FPVCamera	typeref:typename:const float
+mMinMoveSpeed	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    static const float mMinMoveSpeed;$/;"	m	class:FPVCamera	typeref:typename:const float
 mMousePosition	src/main_old.cpp	/^        irr::core::vector2df mMousePosition;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2df	file:
 mMousePosition	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2df mMousePosition;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2df
 mMouseState	src/main_old.cpp	/^        MouseState mMouseState;$/;"	m	class:Input::HWEventReceiver	typeref:typename:MouseState	file:
 mMouseState	src/visualisation/input/HWEventReceiver.h	/^        MouseState mMouseState;$/;"	m	class:Input::HWEventReceiver	typeref:typename:MouseState
+mMoveFriction	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    static const float mMoveFriction;$/;"	m	class:FPVCamera	typeref:typename:const float
+mMovementSpeed	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    float mMovementSpeed;$/;"	m	class:FPVCamera	typeref:typename:float
+mPitch	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    float mPitch;$/;"	m	class:FPVCamera	typeref:typename:float
 mPosition_scr	src/main_old.cpp	/^        irr::core::vector2di mPosition_scr;$/;"	m	class:Input::MouseState	typeref:typename:irr::core::vector2di	file:
 mPosition_scr	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2di mPosition_scr;$/;"	m	class:Input::MouseState	typeref:typename:irr::core::vector2di
 mReceivers	src/main_old.cpp	/^        irr::core::array<irr::IEventReceiver*> mReceivers;$/;"	m	class:Input::MasterEventReceiver	typeref:typename:irr::core::array<irr::IEventReceiver * >	file:
@@ -512,10 +533,14 @@ mSceneMgr	src/visualisation/simulation_model/Scene.h	/^    irr::scene::ISceneMan
 mSceneMgrHandle	src/visualisation/simulation_model/SimulationModel.h	/^    irr::scene::ISceneManager& mSceneMgrHandle;$/;"	m	class:SimulationModel	typeref:typename:irr::scene::ISceneManager &
 mSceneNodes	src/visualisation/simulation_model/Scene.h	/^    std::unordered_map<std::string, HighPrecisionSceneNode> mSceneNodes;$/;"	m	class:Scene	typeref:typename:std::unordered_map<std::string,HighPrecisionSceneNode>
 mSimulationModel	src/visualisation/Visualisation.h	/^    std::unique_ptr<SimulationModel> mSimulationModel;$/;"	m	class:Visualisation	typeref:typename:std::unique_ptr<SimulationModel>
+mSpeedAdjustSensitivity	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    static const float mSpeedAdjustSensitivity;$/;"	m	class:FPVCamera	typeref:typename:const float
+mVelocity	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    chrono::ChVector<> mVelocity;$/;"	m	class:FPVCamera	typeref:typename:chrono::ChVector<>
 mVidDriver	src/main_old.cpp	/^irr::video::IVideoDriver* mVidDriver;$/;"	v	typeref:typename:irr::video::IVideoDriver *
 mVidDriver	src/visualisation/Visualisation.h	/^    irr::video::IVideoDriver* mVidDriver;$/;"	m	class:Visualisation	typeref:typename:irr::video::IVideoDriver *
 mWheelScroll	src/main_old.cpp	/^        float mWheelScroll;$/;"	m	class:Input::MouseState	typeref:typename:float	file:
 mWheelScroll	src/visualisation/input/HWEventReceiver.h	/^        float mWheelScroll;$/;"	m	class:Input::MouseState	typeref:typename:float
+mYaw	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    float mYaw;$/;"	m	class:FPVCamera	typeref:typename:float
+mZoomSensitivity	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    static const float mZoomSensitivity;$/;"	m	class:FPVCamera	typeref:typename:const float
 main	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f	typeref:typename:void
 main	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f	typeref:typename:int
@@ -530,6 +555,8 @@ main.o	build/Makefile	/^main.o: main.cpp.o$/;"	t
 main.s	build/Makefile	/^main.s: main.cpp.s$/;"	t
 middle	src/main_old.cpp	/^            middle,$/;"	e	enum:Input::MouseState::Button	file:
 middle	src/visualisation/input/HWEventReceiver.h	/^            middle,$/;"	e	enum:Input::MouseState::Button
+nearValue	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^    float nearValue;$/;"	m	struct:CameraBaseState	typeref:typename:float
+position	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^    chrono::ChVector<> position;$/;"	m	struct:CameraBaseState	typeref:typename:chrono::ChVector<>
 preinstall	build/Makefile	/^preinstall: all$/;"	t
 preinstall	build/simulation/Makefile	/^preinstall: all$/;"	t
 preinstall	build/visualisation/Makefile	/^preinstall: all$/;"	t
@@ -575,11 +602,12 @@ update	src/main_old.cpp	/^        void update(irr::core::vector2di centreScreenP
 update	src/main_old.cpp	/^void update(double frameTime_s) {$/;"	f	typeref:typename:void
 update	src/visualisation/Visualisation.cpp	/^void Visualisation::update(double frameTime_s) {$/;"	f	class:Visualisation	typeref:typename:void
 update	src/visualisation/input/HWEventReceiver.cpp	/^    void HWEventReceiver::update(irr::core::vector2di centreScreenPos_scr) {$/;"	f	class:Input::HWEventReceiver	typeref:typename:void
-update	src/visualisation/simulation_model/CameraSystem.cpp	/^void CameraSystem::update() {$/;"	f	class:CameraSystem	typeref:typename:void
-update	src/visualisation/simulation_model/FPVCamera.cpp	/^void CameraSystem::update() {$/;"	f	class:CameraSystem	typeref:typename:void
 update	src/visualisation/simulation_model/SimulationModel.cpp	/^void SimulationModel::update(double frameTime_s, float aspectRatio) {$/;"	f	class:SimulationModel	typeref:typename:void
+update	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^void CameraSystem::update() {$/;"	f	class:CameraSystem	typeref:typename:void
+update	src/visualisation/simulation_model/cameras/FPVCamera.c	/^void update() {$/;"	f	typeref:typename:void
 updateAllNodeTransforms	src/visualisation/simulation_model/Scene.cpp	/^void Scene::updateAllNodeTransforms() {$/;"	f	class:Scene	typeref:typename:void
-updateAspectRatio	src/visualisation/simulation_model/FPVCamera.cpp	/^void CameraSystem::updateAspectRatio(float aspectRatio) {$/;"	f	class:CameraSystem	typeref:typename:void
+updateAspectRatio	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^void CameraSystem::updateAspectRatio(float aspectRatio) {$/;"	f	class:CameraSystem	typeref:typename:void
+verticalFOV	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^    float verticalFOV;$/;"	m	struct:CameraBaseState	typeref:typename:float
 visualisation/GUI.cpp.i	build/Makefile	/^visualisation\/GUI.cpp.i:$/;"	t
 visualisation/GUI.cpp.o	build/Makefile	/^visualisation\/GUI.cpp.o:$/;"	t
 visualisation/GUI.cpp.s	build/Makefile	/^visualisation\/GUI.cpp.s:$/;"	t
@@ -604,6 +632,12 @@ visualisation/input/MasterEventReceiver.cpp.s	build/Makefile	/^visualisation\/in
 visualisation/input/MasterEventReceiver.i	build/Makefile	/^visualisation\/input\/MasterEventReceiver.i: visualisation\/input\/MasterEventReceiver.cpp.i$/;"	t
 visualisation/input/MasterEventReceiver.o	build/Makefile	/^visualisation\/input\/MasterEventReceiver.o: visualisation\/input\/MasterEventReceiver.cpp.o$/;"	t
 visualisation/input/MasterEventReceiver.s	build/Makefile	/^visualisation\/input\/MasterEventReceiver.s: visualisation\/input\/MasterEventReceiver.cpp.s$/;"	t
+visualisation/simulation_model/CameraSystem.cpp.i	build/Makefile	/^visualisation\/simulation_model\/CameraSystem.cpp.i:$/;"	t
+visualisation/simulation_model/CameraSystem.cpp.o	build/Makefile	/^visualisation\/simulation_model\/CameraSystem.cpp.o:$/;"	t
+visualisation/simulation_model/CameraSystem.cpp.s	build/Makefile	/^visualisation\/simulation_model\/CameraSystem.cpp.s:$/;"	t
+visualisation/simulation_model/CameraSystem.i	build/Makefile	/^visualisation\/simulation_model\/CameraSystem.i: visualisation\/simulation_model\/CameraSystem.c/;"	t
+visualisation/simulation_model/CameraSystem.o	build/Makefile	/^visualisation\/simulation_model\/CameraSystem.o: visualisation\/simulation_model\/CameraSystem.c/;"	t
+visualisation/simulation_model/CameraSystem.s	build/Makefile	/^visualisation\/simulation_model\/CameraSystem.s: visualisation\/simulation_model\/CameraSystem.c/;"	t
 visualisation/simulation_model/Scene.cpp.i	build/Makefile	/^visualisation\/simulation_model\/Scene.cpp.i:$/;"	t
 visualisation/simulation_model/Scene.cpp.o	build/Makefile	/^visualisation\/simulation_model\/Scene.cpp.o:$/;"	t
 visualisation/simulation_model/Scene.cpp.s	build/Makefile	/^visualisation\/simulation_model\/Scene.cpp.s:$/;"	t

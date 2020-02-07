@@ -1,8 +1,8 @@
 #ifndef SIMULATIONMODEL_H_
 #define SIMULATIONMODEL_H_
 
-#include "CameraSystem.h"
 #include "Scene.h"
+#include "cameras/CameraSystem.h"
 
 #include <ISceneManager.h>
 #include <IrrlichtDevice.h>

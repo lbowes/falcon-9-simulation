@@ -8,7 +8,7 @@ SimulationModel::SimulationModel(irr::scene::ISceneManager& sceneMgr) :
 
 
 void SimulationModel::handleInput(double frameTime_s) {
-    // todo
+    mCameraSystem.handleInput(frameTime_s);
 }
 
 
