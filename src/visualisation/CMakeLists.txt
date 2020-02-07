@@ -3,5 +3,8 @@ target_sources(Falcon9Simulation
 		Visualisation.cpp
 		input/MasterEventReceiver.cpp
 		input/HWEventReceiver.cpp
-		graphics/gui/GUI.cpp
+		GUI.cpp
+		simulation_model/SimulationModel.cpp
+		simulation_model/Scene.cpp
+		simulation_model/CameraSystem.cpp
 )

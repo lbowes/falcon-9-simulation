@@ -15,6 +15,8 @@ $(VERBOSE).SILENT	build/visualisation/Makefile	/^$(VERBOSE).SILENT:$/;"	t
 3	build/compile_commands.json	/^{$/;"	o
 4	build/compile_commands.json	/^{$/;"	o
 5	build/compile_commands.json	/^{$/;"	o
+6	build/compile_commands.json	/^{$/;"	o
+7	build/compile_commands.json	/^{$/;"	o
 ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#   define ARCHITECTURE_ID /;"	d	file:
 ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define ARCHITECTURE_ID /;"	d	file:
 ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define ARCHITECTURE_ID$/;"	d	file:
@@ -23,7 +25,10 @@ ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#
 ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define ARCHITECTURE_ID$/;"	d	file:
 Acknowledgements	README.md	/^## Acknowledgements$/;"	s
 Aim	README.md	/^## Aim$/;"	s
+Button	src/main_old.cpp	/^        enum Button : unsigned char {$/;"	g	class:Input::MouseState	typeref:typename:unsigned char	file:
 Button	src/visualisation/input/HWEventReceiver.h	/^        enum Button : unsigned char {$/;"	g	class:Input::MouseState	typeref:typename:unsigned char
+CAMERASYSTEM_H_	src/visualisation/simulation_model/CameraSystem.h	/^#define CAMERASYSTEM_H_$/;"	d
+CAMERASYSTEM_H_	src/visualisation/simulation_model/FPVCamera.h	/^#define CAMERASYSTEM_H_$/;"	d
 CMAKE_AR	build/CMakeFiles/3.16.3/CMakeCCompiler.cmake	/^set(CMAKE_AR "\/usr\/bin\/ar")$/;"	v
 CMAKE_AR	build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake	/^set(CMAKE_AR "\/usr\/bin\/ar")$/;"	v
 CMAKE_BINARY_DIR	build/Makefile	/^CMAKE_BINARY_DIR = \/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build$/;"	m
@@ -34,9 +39,9 @@ CMAKE_C90_COMPILE_FEATURES	build/CMakeFiles/3.16.3/CMakeCCompiler.cmake	/^set(CM
 CMAKE_C99_COMPILE_FEATURES	build/CMakeFiles/3.16.3/CMakeCCompiler.cmake	/^set(CMAKE_C99_COMPILE_FEATURES "c_std_99;c_restrict;c_variadic_macros")$/;"	v
 CMAKE_CL_SHOWINCLUDES_PREFIX	build/CMakeFiles/3.16.3/CMakeCCompiler.cmake	/^  set(CMAKE_CL_SHOWINCLUDES_PREFIX "${CMAKE_C_CL_SHOWINCLUDES_PREFIX}")$/;"	v
 CMAKE_CL_SHOWINCLUDES_PREFIX	build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake	/^  set(CMAKE_CL_SHOWINCLUDES_PREFIX "${CMAKE_CXX_CL_SHOWINCLUDES_PREFIX}")$/;"	v
-CMAKE_COMMAND	build/Makefile	/^CMAKE_COMMAND = \/snap\/cmake\/237\/bin\/cmake$/;"	m
-CMAKE_COMMAND	build/simulation/Makefile	/^CMAKE_COMMAND = \/snap\/cmake\/237\/bin\/cmake$/;"	m
-CMAKE_COMMAND	build/visualisation/Makefile	/^CMAKE_COMMAND = \/snap\/cmake\/237\/bin\/cmake$/;"	m
+CMAKE_COMMAND	build/Makefile	/^CMAKE_COMMAND = \/usr\/local\/bin\/cmake$/;"	m
+CMAKE_COMMAND	build/simulation/Makefile	/^CMAKE_COMMAND = \/usr\/local\/bin\/cmake$/;"	m
+CMAKE_COMMAND	build/visualisation/Makefile	/^CMAKE_COMMAND = \/usr\/local\/bin\/cmake$/;"	m
 CMAKE_COMPILER_IS_CYGWIN	build/CMakeFiles/3.16.3/CMakeCCompiler.cmake	/^set(CMAKE_COMPILER_IS_CYGWIN )$/;"	v
 CMAKE_COMPILER_IS_CYGWIN	build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake	/^set(CMAKE_COMPILER_IS_CYGWIN )$/;"	v
 CMAKE_COMPILER_IS_GNUCC	build/CMakeFiles/3.16.3/CMakeCCompiler.cmake	/^set(CMAKE_COMPILER_IS_GNUCC 1)$/;"	v
@@ -136,10 +141,10 @@ CMAKE_FORCE_UNIX_PATHS	build/CMakeFiles/CMakeDirectoryInformation.cmake	/^set(CM
 CMAKE_FORCE_UNIX_PATHS	build/simulation/CMakeFiles/CMakeDirectoryInformation.cmake	/^set(CMAKE_FORCE_UNIX_PATHS 1)$/;"	v
 CMAKE_FORCE_UNIX_PATHS	build/visualisation/CMakeFiles/CMakeDirectoryInformation.cmake	/^set(CMAKE_FORCE_UNIX_PATHS 1)$/;"	v
 CMAKE_Fortran_TARGET_MODULE_DIR	build/CMakeFiles/Falcon9Simulation.dir/DependInfo.cmake	/^set(CMAKE_Fortran_TARGET_MODULE_DIR "")$/;"	v
-CMAKE_HOST_SYSTEM	build/CMakeFiles/3.16.3/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM "Linux-5.3.0-26-generic")$/;"	v
+CMAKE_HOST_SYSTEM	build/CMakeFiles/3.16.3/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM "Linux-5.3.0-28-generic")$/;"	v
 CMAKE_HOST_SYSTEM_NAME	build/CMakeFiles/3.16.3/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM_NAME "Linux")$/;"	v
 CMAKE_HOST_SYSTEM_PROCESSOR	build/CMakeFiles/3.16.3/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM_PROCESSOR "x86_64")$/;"	v
-CMAKE_HOST_SYSTEM_VERSION	build/CMakeFiles/3.16.3/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM_VERSION "5.3.0-26-generic")$/;"	v
+CMAKE_HOST_SYSTEM_VERSION	build/CMakeFiles/3.16.3/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM_VERSION "5.3.0-28-generic")$/;"	v
 CMAKE_INSTALL_COMPONENT	build/cmake_install.cmake	/^    set(CMAKE_INSTALL_COMPONENT "${COMPONENT}")$/;"	v
 CMAKE_INSTALL_COMPONENT	build/cmake_install.cmake	/^    set(CMAKE_INSTALL_COMPONENT)$/;"	v
 CMAKE_INSTALL_COMPONENT	build/simulation/cmake_install.cmake	/^    set(CMAKE_INSTALL_COMPONENT "${COMPONENT}")$/;"	v
@@ -182,11 +187,11 @@ CMAKE_SIZEOF_VOID_P	build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake	/^  set(CMAKE
 CMAKE_SOURCE_DIR	build/Makefile	/^CMAKE_SOURCE_DIR = \/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src$/;"	m
 CMAKE_SOURCE_DIR	build/simulation/Makefile	/^CMAKE_SOURCE_DIR = \/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src$/;"	m
 CMAKE_SOURCE_DIR	build/visualisation/Makefile	/^CMAKE_SOURCE_DIR = \/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src$/;"	m
-CMAKE_SYSTEM	build/CMakeFiles/3.16.3/CMakeSystem.cmake	/^set(CMAKE_SYSTEM "Linux-5.3.0-26-generic")$/;"	v
+CMAKE_SYSTEM	build/CMakeFiles/3.16.3/CMakeSystem.cmake	/^set(CMAKE_SYSTEM "Linux-5.3.0-28-generic")$/;"	v
 CMAKE_SYSTEM_LOADED	build/CMakeFiles/3.16.3/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_LOADED 1)$/;"	v
 CMAKE_SYSTEM_NAME	build/CMakeFiles/3.16.3/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_NAME "Linux")$/;"	v
 CMAKE_SYSTEM_PROCESSOR	build/CMakeFiles/3.16.3/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_PROCESSOR "x86_64")$/;"	v
-CMAKE_SYSTEM_VERSION	build/CMakeFiles/3.16.3/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_VERSION "5.3.0-26-generic")$/;"	v
+CMAKE_SYSTEM_VERSION	build/CMakeFiles/3.16.3/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_VERSION "5.3.0-28-generic")$/;"	v
 CMAKE_TARGET_DEFINITIONS_CXX	build/CMakeFiles/Falcon9Simulation.dir/DependInfo.cmake	/^set(CMAKE_TARGET_DEFINITIONS_CXX$/;"	v
 CMAKE_TARGET_LINKED_INFO_FILES	build/CMakeFiles/Falcon9Simulation.dir/DependInfo.cmake	/^set(CMAKE_TARGET_LINKED_INFO_FILES$/;"	v
 COMPILER_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_ID /;"	d	file:
@@ -227,14 +232,14 @@ CYGWIN	build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake	/^  set(CYGWIN 1)$/;"	v
 C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define C_DIALECT /;"	d	file:
 C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define C_DIALECT$/;"	d	file:
 C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define C_DIALECT /;"	d	file:
+CameraSystem	src/visualisation/simulation_model/CameraSystem.h	/^class CameraSystem {$/;"	c
+CameraSystem	src/visualisation/simulation_model/FPVCamera.cpp	/^CameraSystem::CameraSystem() :$/;"	f	class:CameraSystem
+CameraSystem	src/visualisation/simulation_model/FPVCamera.h	/^class CameraSystem {$/;"	c
 Collapsed	build/imgui.ini	/^Collapsed=0$/;"	k	section:Window
 DEC	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define DEC(/;"	d	file:
 DEC	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define DEC(/;"	d	file:
 Dependencies	README.md	/^## Dependencies$/;"	s
 DirectoryOfThisScript	.ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
-DockId	build/imgui.ini	/^DockId=0x00000003,0$/;"	k	section:Window
-DockSpace   ID	build/imgui.ini	/^DockSpace   ID=0x3BC79352 Pos=0,19 Size=2507,1366 Split=X$/;"	k	section:Docking
-Docking	build/imgui.ini	/^[Docking][Data]$/;"	s
 EQUALS	build/Makefile	/^EQUALS = =$/;"	m
 EQUALS	build/simulation/Makefile	/^EQUALS = =$/;"	m
 EQUALS	build/visualisation/Makefile	/^EQUALS = =$/;"	m
@@ -247,18 +252,22 @@ Falcon9Simulation	src/CMakeLists.txt	/^add_executable(Falcon9Simulation main.cpp
 Falcon9Simulation	src/CMakeLists.txt	/^project(Falcon9Simulation)$/;"	p
 Falcon9Simulation/fast	build/Makefile	/^Falcon9Simulation\/fast:$/;"	t
 FlagsForFile	.ycm_extra_conf.py	/^def FlagsForFile( filename ):$/;"	f
-GRAPHICS_GUI_H_	src/visualisation/graphics/gui/GUI.h	/^#define GRAPHICS_GUI_H_$/;"	d
-GUI	src/visualisation/graphics/gui/GUI.h	/^    class GUI {$/;"	c	namespace:Graphics
-Graphics	src/visualisation/graphics/gui/GUI.cpp	/^namespace Graphics {$/;"	n	file:
-Graphics	src/visualisation/graphics/gui/GUI.h	/^namespace Graphics {$/;"	n
+GUI	src/visualisation/GUI.cpp	/^GUI::GUI(irr::IrrlichtDevice& device) :$/;"	f	class:GUI
+GUI	src/visualisation/GUI.h	/^class GUI {$/;"	c
+GUI_H_	src/visualisation/GUI.h	/^#define GUI_H_$/;"	d
 HEX	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define HEX(/;"	d	file:
 HEX	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define HEX(/;"	d	file:
+HIGHPRECISIONSCENENODE_H_	src/visualisation/simulation_model/HighPrecisionSceneNode.h	/^#define HIGHPRECISIONSCENENODE_H_$/;"	d
+HWEventReceiver	src/main_old.cpp	/^        HWEventReceiver() {$/;"	f	class:Input::HWEventReceiver	file:
+HWEventReceiver	src/main_old.cpp	/^    class HWEventReceiver : public irr::IEventReceiver {$/;"	c	namespace:Input	file:
 HWEventReceiver	src/visualisation/input/HWEventReceiver.cpp	/^    HWEventReceiver::HWEventReceiver() {$/;"	f	class:Input::HWEventReceiver
 HWEventReceiver	src/visualisation/input/HWEventReceiver.h	/^    class HWEventReceiver : public irr::IEventReceiver {$/;"	c	namespace:Input
+HighPrecisionSceneNode	src/visualisation/simulation_model/HighPrecisionSceneNode.h	/^struct HighPrecisionSceneNode {$/;"	s
 ID_VOID_MAIN	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define ID_VOID_MAIN$/;"	d	file:
 INPUT_HWEVENTRECEIVER_H	src/visualisation/input/HWEventReceiver.h	/^#define INPUT_HWEVENTRECEIVER_H$/;"	d
 IRRIMGUI_INCLUDES	src/CMakeLists.txt	/^SET(IRRIMGUI_INCLUDES$/;"	v
 IRRIMGUI_LIBRARY	src/CMakeLists.txt	/^SET(IRRIMGUI_LIBRARY ${IRRIMGUI_LIB_FIND})$/;"	v
+Input	src/main_old.cpp	/^namespace Input {$/;"	n	file:
 Input	src/visualisation/input/HWEventReceiver.cpp	/^namespace Input {$/;"	n	file:
 Input	src/visualisation/input/HWEventReceiver.h	/^namespace Input {$/;"	n
 Input	src/visualisation/input/MasterEventReceiver.cpp	/^namespace Input {$/;"	n	file:
@@ -267,9 +276,14 @@ MASTER_EVENT_RECEIVER_H_	src/visualisation/input/MasterEventReceiver.h	/^#define
 MINGW	build/CMakeFiles/3.16.3/CMakeCCompiler.cmake	/^  set(MINGW 1)$/;"	v
 MINGW	build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake	/^  set(MINGW 1)$/;"	v
 MakeRelativePathsInFlagsAbsolute	.ycm_extra_conf.py	/^def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):$/;"	f
+MasterEventReceiver	src/main_old.cpp	/^    class MasterEventReceiver : public irr::IEventReceiver {$/;"	c	namespace:Input	file:
 MasterEventReceiver	src/visualisation/input/MasterEventReceiver.h	/^    class MasterEventReceiver : public irr::IEventReceiver {$/;"	c	namespace:Input
+MouseState	src/main_old.cpp	/^        MouseState() :$/;"	f	class:Input::MouseState	file:
+MouseState	src/main_old.cpp	/^    class MouseState {$/;"	c	namespace:Input	file:
 MouseState	src/visualisation/input/HWEventReceiver.cpp	/^    MouseState::MouseState() :$/;"	f	class:Input::MouseState
 MouseState	src/visualisation/input/HWEventReceiver.h	/^    class MouseState {$/;"	c	namespace:Input
+OnEvent	src/main_old.cpp	/^        virtual bool OnEvent(const irr::SEvent& e) {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool	file:
+OnEvent	src/main_old.cpp	/^        virtual bool OnEvent(const irr::SEvent& e) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:bool	file:
 OnEvent	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::OnEvent(const irr::SEvent& e) {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool
 OnEvent	src/visualisation/input/MasterEventReceiver.cpp	/^    bool MasterEventReceiver::OnEvent(const irr::SEvent& e) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:bool
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define PLATFORM_ID /;"	d	file:
@@ -280,15 +294,14 @@ PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  de
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define PLATFORM_ID$/;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID /;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID$/;"	d	file:
-Pos	build/imgui.ini	/^Pos=0,1179$/;"	k	section:Window
-Pos	build/imgui.ini	/^Pos=0,19$/;"	k	section:Window
-Pos	build/imgui.ini	/^Pos=1574,69$/;"	k	section:Window
+Pos	build/imgui.ini	/^Pos=1261,115$/;"	k	section:Window
+Pos	build/imgui.ini	/^Pos=60,14$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=60,60$/;"	k	section:Window
-Pos	build/imgui.ini	/^Pos=683,275$/;"	k	section:Window
-Pos	build/imgui.ini	/^Pos=691,440$/;"	k	section:Window
-RM	build/Makefile	/^RM = \/snap\/cmake\/237\/bin\/cmake -E remove -f$/;"	m
-RM	build/simulation/Makefile	/^RM = \/snap\/cmake\/237\/bin\/cmake -E remove -f$/;"	m
-RM	build/visualisation/Makefile	/^RM = \/snap\/cmake\/237\/bin\/cmake -E remove -f$/;"	m
+Pos	build/imgui.ini	/^Pos=926,309$/;"	k	section:Window
+RM	build/Makefile	/^RM = \/usr\/local\/bin\/cmake -E remove -f$/;"	m
+RM	build/simulation/Makefile	/^RM = \/usr\/local\/bin\/cmake -E remove -f$/;"	m
+RM	build/visualisation/Makefile	/^RM = \/usr\/local\/bin\/cmake -E remove -f$/;"	m
+SCENE_H_	src/visualisation/simulation_model/Scene.h	/^#define SCENE_H_$/;"	d
 SHELL	build/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SHELL	build/simulation/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SHELL	build/visualisation/Makefile	/^SHELL = \/bin\/sh$/;"	m
@@ -300,6 +313,7 @@ SIMULATE_VERSION_MINOR	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^
 SIMULATE_VERSION_MINOR	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define SIMULATE_VERSION_MINOR /;"	d	file:
 SIMULATE_VERSION_PATCH	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define SIMULATE_VERSION_PATCH /;"	d	file:
 SIMULATE_VERSION_PATCH	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define SIMULATE_VERSION_PATCH /;"	d	file:
+SIMULATIONMODEL_H_	src/visualisation/simulation_model/SimulationModel.h	/^#define SIMULATIONMODEL_H_$/;"	d
 SIMULATION_H_	src/simulation/Simulation.h	/^#define SIMULATION_H_$/;"	d
 SOMECPP_H_	src/testSubdir/someCpp.h	/^#define SOMECPP_H_$/;"	d
 STRINGIFY	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define STRINGIFY(/;"	d	file:
@@ -309,44 +323,46 @@ STRINGIFY_HELPER	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^
 SUFFIXES	build/Makefile	/^SUFFIXES =$/;"	m
 SUFFIXES	build/simulation/Makefile	/^SUFFIXES =$/;"	m
 SUFFIXES	build/visualisation/Makefile	/^SUFFIXES =$/;"	m
+Scene	src/visualisation/simulation_model/Scene.cpp	/^Scene::Scene(irr::scene::ISceneManager& sceneMgr) :$/;"	f	class:Scene
+Scene	src/visualisation/simulation_model/Scene.h	/^class Scene {$/;"	c
 SessionLoad	Session.vim	/^let SessionLoad = 1$/;"	v
 Simulation	src/simulation/Simulation.h	/^class Simulation {$/;"	c
+SimulationModel	src/visualisation/simulation_model/SimulationModel.cpp	/^SimulationModel::SimulationModel(irr::scene::ISceneManager& sceneMgr) :$/;"	f	class:SimulationModel
+SimulationModel	src/visualisation/simulation_model/SimulationModel.h	/^class SimulationModel {$/;"	c
+Size	build/imgui.ini	/^Size=135,48$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=2507,1385$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=2507,206$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=333,827$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=345,249$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=351,243$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=400,400$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=429,1158$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=460,1366$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=465,1366$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=569,109$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=764,431$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=480,406$/;"	k	section:Window
 Status	README.md	/^## Status$/;"	s
 UNIX	build/CMakeFiles/3.16.3/CMakeCCompiler.cmake	/^  set(UNIX 1)$/;"	v
 UNIX	build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake	/^  set(UNIX 1)$/;"	v
 VISUALISATION_H_	src/visualisation/Visualisation.h	/^#define VISUALISATION_H_$/;"	d
-Visualisation	src/visualisation/Visualisation.cpp	/^Visualisation::Visualisation() {$/;"	f	class:Visualisation
+Visualisation	src/visualisation/Visualisation.cpp	/^Visualisation::Visualisation() :$/;"	f	class:Visualisation
 Visualisation	src/visualisation/Visualisation.h	/^class Visualisation {$/;"	c
-Window	build/imgui.ini	/^[Window][About Dear ImGui]$/;"	s
 Window	build/imgui.ini	/^[Window][Dear ImGui Demo]$/;"	s
-Window	build/imgui.ini	/^[Window][Dear ImGui Metrics]$/;"	s
 Window	build/imgui.ini	/^[Window][Debug##Default]$/;"	s
 Window	build/imgui.ini	/^[Window][DockSpace Demo]$/;"	s
-Window	build/imgui.ini	/^[Window][Example: Custom rendering]$/;"	s
-Window	build/imgui.ini	/^[Window][Example: Documents]$/;"	s
-Window	build/imgui.ini	/^[Window][Example: Property editor]$/;"	s
-Window	build/imgui.ini	/^[Window][Style Editor]$/;"	s
 Window	build/imgui.ini	/^[Window][Test window]$/;"	s
+Window	build/imgui.ini	/^[Window][This is a test window]$/;"	s
+addAllLights	src/visualisation/simulation_model/Scene.cpp	/^void Scene::addAllLights() {$/;"	f	class:Scene	typeref:typename:void
+addAllMeshes	src/visualisation/simulation_model/Scene.cpp	/^void Scene::addAllMeshes() {$/;"	f	class:Scene	typeref:typename:void
+addEngineMesh	src/main_old.cpp	/^void addEngineMesh() {$/;"	f	typeref:typename:void
+addMesh	src/visualisation/simulation_model/Scene.cpp	/^void Scene::addMesh(const std::string& name, const std::string& filePath) {$/;"	f	class:Scene	typeref:typename:void
+addReceiver	src/main_old.cpp	/^        void addReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void	file:
 addReceiver	src/visualisation/input/MasterEventReceiver.cpp	/^    void MasterEventReceiver::addReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void
 all	build/Makefile	/^all: cmake_check_build_system$/;"	t
 all	build/simulation/Makefile	/^all: cmake_check_build_system$/;"	t
 all	build/visualisation/Makefile	/^all: cmake_check_build_system$/;"	t
+applyCameraPosOffset	src/visualisation/simulation_model/Scene.cpp	/^void Scene::applyCameraPosOffset(chrono::ChVector<> camPos) {$/;"	f	class:Scene	typeref:typename:void
 clean	build/Makefile	/^clean:$/;"	t
 clean	build/simulation/Makefile	/^clean:$/;"	t
 clean	build/visualisation/Makefile	/^clean:$/;"	t
 clean/fast	build/Makefile	/^clean\/fast: clean$/;"	t
 clean/fast	build/simulation/Makefile	/^clean\/fast: clean$/;"	t
 clean/fast	build/visualisation/Makefile	/^clean\/fast: clean$/;"	t
+close	src/main_old.cpp	/^void close() {$/;"	f	typeref:typename:void
+close	src/visualisation/Visualisation.cpp	/^void Visualisation::close() {$/;"	f	class:Visualisation	typeref:typename:void
 cmake_check_build_system	build/Makefile	/^cmake_check_build_system:$/;"	t
 cmake_check_build_system	build/simulation/Makefile	/^cmake_check_build_system:$/;"	t
 cmake_check_build_system	build/visualisation/Makefile	/^cmake_check_build_system:$/;"	t
@@ -359,6 +375,8 @@ command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DA
 command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:3
 command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:4
 command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:5
+command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:6
+command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:7
 compilation_database_folder	.ycm_extra_conf.py	/^compilation_database_folder = os.path.join(DirectoryOfThisScript(), 'build')$/;"	v
 const	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define const$/;"	d	file:
 database	.ycm_extra_conf.py	/^  database = ycm_core.CompilationDatabase( compilation_database_folder )$/;"	v
@@ -374,28 +392,47 @@ directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/prog
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:3
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:4
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:5
+directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:6
+directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:7
 edit_cache	build/Makefile	/^edit_cache:$/;"	t
 edit_cache	build/simulation/Makefile	/^edit_cache:$/;"	t
 edit_cache	build/visualisation/Makefile	/^edit_cache:$/;"	t
 edit_cache/fast	build/Makefile	/^edit_cache\/fast: edit_cache$/;"	t
 edit_cache/fast	build/simulation/Makefile	/^edit_cache\/fast: edit_cache$/;"	t
 edit_cache/fast	build/visualisation/Makefile	/^edit_cache\/fast: edit_cache$/;"	t
+engineSceneNode	src/main_old.cpp	/^irr::scene::ISceneNode* engineSceneNode;$/;"	v	typeref:typename:irr::scene::ISceneNode *
+engineTransform_world	src/main_old.cpp	/^chrono::ChCoordsys<> engineTransform_world = chrono::ChCoordsys<>(chrono::ChVector<>(0.0f, 1.75f/;"	v	typeref:typename:chrono::ChCoordsys<>
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/main.cpp"$/;"	s	object:0
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/simulation\/Simu/;"	s	object:1
+file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/G/;"	s	object:5
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/V/;"	s	object:2
-file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/g/;"	s	object:5
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/i/;"	s	object:3
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/i/;"	s	object:4
+file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/s/;"	s	object:6
+file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/s/;"	s	object:7
 flags	.ycm_extra_conf.py	/^flags = [$/;"	v
 g:this_obsession	Session.vim	/^let g:this_obsession = v:this_session$/;"	v
 g:this_session	Session.vim	/^let g:this_session = v:this_session$/;"	v
+getAspectRatio	src/main_old.cpp	/^float getAspectRatio() {$/;"	f	typeref:typename:float
+getAspectRatio	src/visualisation/Visualisation.cpp	/^float Visualisation::getAspectRatio() {$/;"	f	class:Visualisation	typeref:typename:float
+getDelta_scr	src/main_old.cpp	/^        const irr::core::vector2di& getDelta_scr() const {$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &	file:
 getDelta_scr	src/visualisation/input/HWEventReceiver.h	/^        const irr::core::vector2di& getDelta_scr() const { return mDelta_scr; }$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &
-getEventReceiver	src/visualisation/graphics/gui/GUI.cpp	/^    IrrIMGUI::CIMGUIEventReceiver& GUI::getEventReceiver() {$/;"	f	class:Graphics::GUI	typeref:typename:IrrIMGUI::CIMGUIEventReceiver &
+getEventReceiver	src/visualisation/GUI.cpp	/^IrrIMGUI::CIMGUIEventReceiver& GUI::getEventReceiver() {$/;"	f	class:GUI	typeref:typename:IrrIMGUI::CIMGUIEventReceiver &
+getMonitorResolution	src/main_old.cpp	/^irr::core::dimension2du getMonitorResolution() {$/;"	f	typeref:typename:irr::core::dimension2du
 getMonitorResolution	src/visualisation/Visualisation.cpp	/^irr::core::dimension2du Visualisation::getMonitorResolution() const {$/;"	f	class:Visualisation	typeref:typename:irr::core::dimension2du
+getMouse	src/main_old.cpp	/^        MouseState& getMouse() {$/;"	f	class:Input::HWEventReceiver	typeref:typename:MouseState &	file:
+getMouse	src/main_old.cpp	/^        const MouseState& getMouse() const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:const MouseState &	file:
 getMouse	src/visualisation/input/HWEventReceiver.h	/^        MouseState& getMouse() { return mMouseState; }$/;"	f	class:Input::HWEventReceiver	typeref:typename:MouseState &
 getMouse	src/visualisation/input/HWEventReceiver.h	/^        const MouseState& getMouse() const { return mMouseState; }$/;"	f	class:Input::HWEventReceiver	typeref:typename:const MouseState &
+getPosition_scr	src/main_old.cpp	/^        const irr::core::vector2di& getPosition_scr() const {$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &	file:
 getPosition_scr	src/visualisation/input/HWEventReceiver.h	/^        const irr::core::vector2di& getPosition_scr() const { return mPosition_scr; }$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &
+getScroll	src/main_old.cpp	/^        float getScroll() const {$/;"	f	class:Input::MouseState	typeref:typename:float	file:
 getScroll	src/visualisation/input/HWEventReceiver.h	/^        float getScroll() const { return mWheelScroll; }$/;"	f	class:Input::MouseState	typeref:typename:float
+handleInput	src/main_old.cpp	/^void handleInput(double frameTime_s) {$/;"	f	typeref:typename:void
+handleInput	src/visualisation/Visualisation.cpp	/^void Visualisation::handleInput(double frameTime_s) {$/;"	f	class:Visualisation	typeref:typename:void
+handleInput	src/visualisation/simulation_model/CameraSystem.cpp	/^void CameraSystem::handleInput() {$/;"	f	class:CameraSystem	typeref:typename:void
+handleInput	src/visualisation/simulation_model/FPVCamera.cpp	/^void CameraSystem::handleInput() {$/;"	f	class:CameraSystem	typeref:typename:void
+handleInput	src/visualisation/simulation_model/SimulationModel.cpp	/^void SimulationModel::handleInput(double frameTime_s) {$/;"	f	class:SimulationModel	typeref:typename:void
 help	build/Makefile	/^help:$/;"	t
 help	build/simulation/Makefile	/^help:$/;"	t
 help	build/visualisation/Makefile	/^help:$/;"	t
@@ -417,42 +454,81 @@ info_version	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const
 info_version	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version[] = {$/;"	v	typeref:typename:char const[]
 info_version_internal	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
 info_version_internal	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
-initImGui	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::initImGui(irr::IrrlichtDevice& device) {$/;"	f	class:Graphics::GUI	typeref:typename:void
-initIrrlicht	src/visualisation/Visualisation.cpp	/^void Visualisation::initIrrlicht() {$/;"	f	class:Visualisation	typeref:typename:void
-initWith	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::initWith(irr::IrrlichtDevice& device) {$/;"	f	class:Graphics::GUI	typeref:typename:void
+init	src/main_old.cpp	/^void init() {$/;"	f	typeref:typename:void
+initCamera	src/main_old.cpp	/^void initCamera() {$/;"	f	typeref:typename:void
+initDevice	src/visualisation/Visualisation.cpp	/^void Visualisation::initDevice() {$/;"	f	class:Visualisation	typeref:typename:void
+initImGui	src/visualisation/GUI.cpp	/^void GUI::initImGui(irr::IrrlichtDevice& device) {$/;"	f	class:GUI	typeref:typename:void
+internalNode	src/visualisation/simulation_model/HighPrecisionSceneNode.h	/^    irr::scene::ISceneNode* internalNode;$/;"	m	struct:HighPrecisionSceneNode	typeref:typename:irr::scene::ISceneNode *
+isButtonPressed	src/main_old.cpp	/^        bool isButtonPressed(Button b) const {$/;"	f	class:Input::MouseState	typeref:typename:bool	file:
 isButtonPressed	src/visualisation/input/HWEventReceiver.h	/^        bool isButtonPressed(Button b) const { return mButtonsPressed[b]; }$/;"	f	class:Input::MouseState	typeref:typename:bool
+isKeyPressed	src/main_old.cpp	/^        bool isKeyPressed(irr::EKEY_CODE key) const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool	file:
 isKeyPressed	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::isKeyPressed(irr::EKEY_CODE key) const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool
+isKeyReleased	src/main_old.cpp	/^        bool isKeyReleased(irr::EKEY_CODE key) const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool	file:
 isKeyReleased	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::isKeyReleased(irr::EKEY_CODE key) const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool
+left	src/main_old.cpp	/^            left = 0,$/;"	e	enum:Input::MouseState::Button	file:
 left	src/visualisation/input/HWEventReceiver.h	/^            left = 0,$/;"	e	enum:Input::MouseState::Button
+mAspectRatio	src/visualisation/simulation_model/CameraSystem.h	/^    float mAspectRatio;$/;"	m	class:CameraSystem	typeref:typename:float
+mAspectRatio	src/visualisation/simulation_model/FPVCamera.h	/^    float mAspectRatio;$/;"	m	class:CameraSystem	typeref:typename:float
+mButtonsPressed	src/main_old.cpp	/^        bool mButtonsPressed[3];$/;"	m	class:Input::MouseState	typeref:typename:bool[3]	file:
 mButtonsPressed	src/visualisation/input/HWEventReceiver.h	/^        bool mButtonsPressed[3];$/;"	m	class:Input::MouseState	typeref:typename:bool[3]
+mCamera	src/main_old.cpp	/^irr::scene::ICameraSceneNode* mCamera;$/;"	v	typeref:typename:irr::scene::ICameraSceneNode *
+mCameraLookAtDir	src/main_old.cpp	/^chrono::ChVector<> mCameraLookAtDir;$/;"	v	typeref:typename:chrono::ChVector<>
+mCameraMovementFriction	src/main_old.cpp	/^const float mCameraMovementFriction = 7.0f;$/;"	v	typeref:typename:const float
+mCameraPos	src/main_old.cpp	/^chrono::ChVector<> mCameraPos = chrono::ChVector<>(2.0f, 1.78f, 0.0f);$/;"	v	typeref:typename:chrono::ChVector<>
+mCameraSystem	src/visualisation/simulation_model/SimulationModel.h	/^    CameraSystem mCameraSystem;$/;"	m	class:SimulationModel	typeref:typename:CameraSystem
+mCameraVelocity	src/main_old.cpp	/^chrono::ChVector<> mCameraVelocity;$/;"	v	typeref:typename:chrono::ChVector<>
+mCamerasHaveFocus	src/main_old.cpp	/^bool mCamerasHaveFocus = false;$/;"	v	typeref:typename:bool
+mCentreScreenPos_scr	src/main_old.cpp	/^        irr::core::vector2di mCentreScreenPos_scr;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2di	file:
 mCentreScreenPos_scr	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2di mCentreScreenPos_scr;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2di
+mDelta_scr	src/main_old.cpp	/^        irr::core::vector2di mDelta_scr;$/;"	m	class:Input::MouseState	typeref:typename:irr::core::vector2di	file:
 mDelta_scr	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2di mDelta_scr;$/;"	m	class:Input::MouseState	typeref:typename:irr::core::vector2di
+mDevice	src/main_old.cpp	/^irr::IrrlichtDevice* mDevice;$/;"	v	typeref:typename:irr::IrrlichtDevice *
 mDevice	src/visualisation/Visualisation.h	/^    irr::IrrlichtDevice* mDevice;$/;"	m	class:Visualisation	typeref:typename:irr::IrrlichtDevice *
+mEventReceiver	src/main_old.cpp	/^Input::MasterEventReceiver mEventReceiver;$/;"	v	typeref:typename:Input::MasterEventReceiver
 mEventReceiver	src/visualisation/Visualisation.h	/^    Input::MasterEventReceiver mEventReceiver;$/;"	m	class:Visualisation	typeref:typename:Input::MasterEventReceiver
-mGUI	src/visualisation/Visualisation.h	/^    Graphics::GUI mGUI;$/;"	m	class:Visualisation	typeref:typename:Graphics::GUI
+mGUI	src/visualisation/Visualisation.h	/^    std::unique_ptr<GUI> mGUI;$/;"	m	class:Visualisation	typeref:typename:std::unique_ptr<GUI>
+mHWInput	src/main_old.cpp	/^Input::HWEventReceiver mHWInput;$/;"	v	typeref:typename:Input::HWEventReceiver
 mHWInput	src/visualisation/Visualisation.h	/^    Input::HWEventReceiver mHWInput;$/;"	m	class:Visualisation	typeref:typename:Input::HWEventReceiver
-mImGuiEventReceiver	src/visualisation/graphics/gui/GUI.h	/^        IrrIMGUI::CIMGUIEventReceiver mImGuiEventReceiver;$/;"	m	class:Graphics::GUI	typeref:typename:IrrIMGUI::CIMGUIEventReceiver
-mImGuiHandle	src/visualisation/graphics/gui/GUI.h	/^        IrrIMGUI::IIMGUIHandle* mImGuiHandle;$/;"	m	class:Graphics::GUI	typeref:typename:IrrIMGUI::IIMGUIHandle *
+mImGuiEventReceiver	src/main_old.cpp	/^IrrIMGUI::CIMGUIEventReceiver mImGuiEventReceiver;$/;"	v	typeref:typename:IrrIMGUI::CIMGUIEventReceiver
+mImGuiEventReceiver	src/visualisation/GUI.h	/^    IrrIMGUI::CIMGUIEventReceiver mImGuiEventReceiver;$/;"	m	class:GUI	typeref:typename:IrrIMGUI::CIMGUIEventReceiver
+mImGuiHandle	src/main_old.cpp	/^IrrIMGUI::IIMGUIHandle* mImGuiHandle;$/;"	v	typeref:typename:IrrIMGUI::IIMGUIHandle *
+mImGuiHandle	src/visualisation/GUI.h	/^    IrrIMGUI::IIMGUIHandle* mImGuiHandle;$/;"	m	class:GUI	typeref:typename:IrrIMGUI::IIMGUIHandle *
+mKeysClicked	src/main_old.cpp	/^        bool mKeysClicked[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]	file:
 mKeysClicked	src/visualisation/input/HWEventReceiver.h	/^        bool mKeysClicked[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]
+mKeysDown	src/main_old.cpp	/^        bool mKeysDown[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]	file:
 mKeysDown	src/visualisation/input/HWEventReceiver.h	/^        bool mKeysDown[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]
+mMousePosition	src/main_old.cpp	/^        irr::core::vector2df mMousePosition;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2df	file:
 mMousePosition	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2df mMousePosition;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2df
+mMouseState	src/main_old.cpp	/^        MouseState mMouseState;$/;"	m	class:Input::HWEventReceiver	typeref:typename:MouseState	file:
 mMouseState	src/visualisation/input/HWEventReceiver.h	/^        MouseState mMouseState;$/;"	m	class:Input::HWEventReceiver	typeref:typename:MouseState
+mPosition_scr	src/main_old.cpp	/^        irr::core::vector2di mPosition_scr;$/;"	m	class:Input::MouseState	typeref:typename:irr::core::vector2di	file:
 mPosition_scr	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2di mPosition_scr;$/;"	m	class:Input::MouseState	typeref:typename:irr::core::vector2di
+mReceivers	src/main_old.cpp	/^        irr::core::array<irr::IEventReceiver*> mReceivers;$/;"	m	class:Input::MasterEventReceiver	typeref:typename:irr::core::array<irr::IEventReceiver * >	file:
 mReceivers	src/visualisation/input/MasterEventReceiver.h	/^        irr::core::array<irr::IEventReceiver*> mReceivers;$/;"	m	class:Input::MasterEventReceiver	typeref:typename:irr::core::array<irr::IEventReceiver * >
-mSceneMgr	src/visualisation/Visualisation.h	/^    irr::scene::ISceneManager* mSceneMgr;$/;"	m	class:Visualisation	typeref:typename:irr::scene::ISceneManager *
+mScene	src/visualisation/simulation_model/SimulationModel.h	/^    Scene mScene;$/;"	m	class:SimulationModel	typeref:typename:Scene
+mSceneManager	src/visualisation/Visualisation.h	/^    irr::scene::ISceneManager* mSceneManager;$/;"	m	class:Visualisation	typeref:typename:irr::scene::ISceneManager *
+mSceneMgr	src/main_old.cpp	/^irr::scene::ISceneManager* mSceneMgr;$/;"	v	typeref:typename:irr::scene::ISceneManager *
+mSceneMgr	src/visualisation/simulation_model/Scene.h	/^    irr::scene::ISceneManager& mSceneMgr;$/;"	m	class:Scene	typeref:typename:irr::scene::ISceneManager &
+mSceneMgrHandle	src/visualisation/simulation_model/SimulationModel.h	/^    irr::scene::ISceneManager& mSceneMgrHandle;$/;"	m	class:SimulationModel	typeref:typename:irr::scene::ISceneManager &
+mSceneNodes	src/visualisation/simulation_model/Scene.h	/^    std::unordered_map<std::string, HighPrecisionSceneNode> mSceneNodes;$/;"	m	class:Scene	typeref:typename:std::unordered_map<std::string,HighPrecisionSceneNode>
+mSimulationModel	src/visualisation/Visualisation.h	/^    std::unique_ptr<SimulationModel> mSimulationModel;$/;"	m	class:Visualisation	typeref:typename:std::unique_ptr<SimulationModel>
+mVidDriver	src/main_old.cpp	/^irr::video::IVideoDriver* mVidDriver;$/;"	v	typeref:typename:irr::video::IVideoDriver *
 mVidDriver	src/visualisation/Visualisation.h	/^    irr::video::IVideoDriver* mVidDriver;$/;"	m	class:Visualisation	typeref:typename:irr::video::IVideoDriver *
+mWheelScroll	src/main_old.cpp	/^        float mWheelScroll;$/;"	m	class:Input::MouseState	typeref:typename:float	file:
 mWheelScroll	src/visualisation/input/HWEventReceiver.h	/^        float mWheelScroll;$/;"	m	class:Input::MouseState	typeref:typename:float
 main	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f	typeref:typename:void
 main	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f	typeref:typename:int
 main	src/example.cpp	/^int main(int argc, char* argv[]) {$/;"	f	typeref:typename:int
 main	src/main.cpp	/^int main() {$/;"	f	typeref:typename:int
+main	src/main_old.cpp	/^int main() {$/;"	f	typeref:typename:int
 main.cpp.i	build/Makefile	/^main.cpp.i:$/;"	t
 main.cpp.o	build/Makefile	/^main.cpp.o:$/;"	t
 main.cpp.s	build/Makefile	/^main.cpp.s:$/;"	t
 main.i	build/Makefile	/^main.i: main.cpp.i$/;"	t
 main.o	build/Makefile	/^main.o: main.cpp.o$/;"	t
 main.s	build/Makefile	/^main.s: main.cpp.s$/;"	t
+middle	src/main_old.cpp	/^            middle,$/;"	e	enum:Input::MouseState::Button	file:
 middle	src/visualisation/input/HWEventReceiver.h	/^            middle,$/;"	e	enum:Input::MouseState::Button
 preinstall	build/Makefile	/^preinstall: all$/;"	t
 preinstall	build/simulation/Makefile	/^preinstall: all$/;"	t
@@ -468,16 +544,22 @@ rebuild_cache	build/visualisation/Makefile	/^rebuild_cache:$/;"	t
 rebuild_cache/fast	build/Makefile	/^rebuild_cache\/fast: rebuild_cache$/;"	t
 rebuild_cache/fast	build/simulation/Makefile	/^rebuild_cache\/fast: rebuild_cache$/;"	t
 rebuild_cache/fast	build/visualisation/Makefile	/^rebuild_cache\/fast: rebuild_cache$/;"	t
+removeReceiver	src/main_old.cpp	/^        void removeReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void	file:
 removeReceiver	src/visualisation/input/MasterEventReceiver.cpp	/^    void MasterEventReceiver::removeReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void
+render	src/main_old.cpp	/^void render() {$/;"	f	typeref:typename:void
+render	src/visualisation/GUI.cpp	/^void GUI::render() {$/;"	f	class:GUI	typeref:typename:void
 render	src/visualisation/Visualisation.cpp	/^void Visualisation::render() {$/;"	f	class:Visualisation	typeref:typename:void
-render	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::render() {$/;"	f	class:Graphics::GUI	typeref:typename:void
+resetCursorToCenterScr	src/main_old.cpp	/^void resetCursorToCenterScr(irr::gui::ICursorControl* cursor) {$/;"	f	typeref:typename:void
+right	src/main_old.cpp	/^            right$/;"	e	enum:Input::MouseState::Button	file:
 right	src/visualisation/input/HWEventReceiver.h	/^            right$/;"	e	enum:Input::MouseState::Button
+run	src/main_old.cpp	/^void run() {$/;"	f	typeref:typename:void
 run	src/simulation/Simulation.cpp	/^void Simulation::run() {}$/;"	f	class:Simulation	typeref:typename:void
 run	src/visualisation/Visualisation.cpp	/^void Visualisation::run() {$/;"	f	class:Visualisation	typeref:typename:void
 s:so_save	Session.vim	/^let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0$/;"	v
 s:sx	Session.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
 s:wipebuf	Session.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
-setImGuiStyle	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::setImGuiStyle() {$/;"	f	class:Graphics::GUI	typeref:typename:void
+setImGuiStyle	src/visualisation/GUI.cpp	/^void GUI::setImGuiStyle() {$/;"	f	class:GUI	typeref:typename:void
+setPosition	src/main_old.cpp	/^        void setPosition(irr::core::vector2di newPosition_scr) {$/;"	f	class:Input::MouseState	typeref:typename:void	file:
 setPosition	src/visualisation/input/HWEventReceiver.h	/^        void setPosition(irr::core::vector2di newPosition_scr) { mPosition_scr = newPosition_scr/;"	f	class:Input::MouseState	typeref:typename:void
 simulation/Simulation.cpp.i	build/Makefile	/^simulation\/Simulation.cpp.i:$/;"	t
 simulation/Simulation.cpp.o	build/Makefile	/^simulation\/Simulation.cpp.o:$/;"	t
@@ -486,20 +568,30 @@ simulation/Simulation.i	build/Makefile	/^simulation\/Simulation.i: simulation\/S
 simulation/Simulation.o	build/Makefile	/^simulation\/Simulation.o: simulation\/Simulation.cpp.o$/;"	t
 simulation/Simulation.s	build/Makefile	/^simulation\/Simulation.s: simulation\/Simulation.cpp.s$/;"	t
 someFunction	src/testSubdir/someCpp.cpp	/^void someFunction() {$/;"	f	typeref:typename:void
-start	src/visualisation/graphics/gui/GUI.cpp	/^    void GUI::start() {$/;"	f	class:Graphics::GUI	typeref:typename:void
+start	src/visualisation/GUI.cpp	/^void GUI::start() {$/;"	f	class:GUI	typeref:typename:void
+toggleCameraFocus	src/main_old.cpp	/^void toggleCameraFocus() {$/;"	f	typeref:typename:void
+transform_world	src/visualisation/simulation_model/HighPrecisionSceneNode.h	/^    chrono::ChCoordsys<> transform_world;$/;"	m	struct:HighPrecisionSceneNode	typeref:typename:chrono::ChCoordsys<>
+update	src/main_old.cpp	/^        void update(irr::core::vector2di centreScreenPos_scr) {$/;"	f	class:Input::HWEventReceiver	typeref:typename:void	file:
+update	src/main_old.cpp	/^void update(double frameTime_s) {$/;"	f	typeref:typename:void
+update	src/visualisation/Visualisation.cpp	/^void Visualisation::update(double frameTime_s) {$/;"	f	class:Visualisation	typeref:typename:void
 update	src/visualisation/input/HWEventReceiver.cpp	/^    void HWEventReceiver::update(irr::core::vector2di centreScreenPos_scr) {$/;"	f	class:Input::HWEventReceiver	typeref:typename:void
+update	src/visualisation/simulation_model/CameraSystem.cpp	/^void CameraSystem::update() {$/;"	f	class:CameraSystem	typeref:typename:void
+update	src/visualisation/simulation_model/FPVCamera.cpp	/^void CameraSystem::update() {$/;"	f	class:CameraSystem	typeref:typename:void
+update	src/visualisation/simulation_model/SimulationModel.cpp	/^void SimulationModel::update(double frameTime_s, float aspectRatio) {$/;"	f	class:SimulationModel	typeref:typename:void
+updateAllNodeTransforms	src/visualisation/simulation_model/Scene.cpp	/^void Scene::updateAllNodeTransforms() {$/;"	f	class:Scene	typeref:typename:void
+updateAspectRatio	src/visualisation/simulation_model/FPVCamera.cpp	/^void CameraSystem::updateAspectRatio(float aspectRatio) {$/;"	f	class:CameraSystem	typeref:typename:void
+visualisation/GUI.cpp.i	build/Makefile	/^visualisation\/GUI.cpp.i:$/;"	t
+visualisation/GUI.cpp.o	build/Makefile	/^visualisation\/GUI.cpp.o:$/;"	t
+visualisation/GUI.cpp.s	build/Makefile	/^visualisation\/GUI.cpp.s:$/;"	t
+visualisation/GUI.i	build/Makefile	/^visualisation\/GUI.i: visualisation\/GUI.cpp.i$/;"	t
+visualisation/GUI.o	build/Makefile	/^visualisation\/GUI.o: visualisation\/GUI.cpp.o$/;"	t
+visualisation/GUI.s	build/Makefile	/^visualisation\/GUI.s: visualisation\/GUI.cpp.s$/;"	t
 visualisation/Visualisation.cpp.i	build/Makefile	/^visualisation\/Visualisation.cpp.i:$/;"	t
 visualisation/Visualisation.cpp.o	build/Makefile	/^visualisation\/Visualisation.cpp.o:$/;"	t
 visualisation/Visualisation.cpp.s	build/Makefile	/^visualisation\/Visualisation.cpp.s:$/;"	t
 visualisation/Visualisation.i	build/Makefile	/^visualisation\/Visualisation.i: visualisation\/Visualisation.cpp.i$/;"	t
 visualisation/Visualisation.o	build/Makefile	/^visualisation\/Visualisation.o: visualisation\/Visualisation.cpp.o$/;"	t
 visualisation/Visualisation.s	build/Makefile	/^visualisation\/Visualisation.s: visualisation\/Visualisation.cpp.s$/;"	t
-visualisation/graphics/gui/GUI.cpp.i	build/Makefile	/^visualisation\/graphics\/gui\/GUI.cpp.i:$/;"	t
-visualisation/graphics/gui/GUI.cpp.o	build/Makefile	/^visualisation\/graphics\/gui\/GUI.cpp.o:$/;"	t
-visualisation/graphics/gui/GUI.cpp.s	build/Makefile	/^visualisation\/graphics\/gui\/GUI.cpp.s:$/;"	t
-visualisation/graphics/gui/GUI.i	build/Makefile	/^visualisation\/graphics\/gui\/GUI.i: visualisation\/graphics\/gui\/GUI.cpp.i$/;"	t
-visualisation/graphics/gui/GUI.o	build/Makefile	/^visualisation\/graphics\/gui\/GUI.o: visualisation\/graphics\/gui\/GUI.cpp.o$/;"	t
-visualisation/graphics/gui/GUI.s	build/Makefile	/^visualisation\/graphics\/gui\/GUI.s: visualisation\/graphics\/gui\/GUI.cpp.s$/;"	t
 visualisation/input/HWEventReceiver.cpp.i	build/Makefile	/^visualisation\/input\/HWEventReceiver.cpp.i:$/;"	t
 visualisation/input/HWEventReceiver.cpp.o	build/Makefile	/^visualisation\/input\/HWEventReceiver.cpp.o:$/;"	t
 visualisation/input/HWEventReceiver.cpp.s	build/Makefile	/^visualisation\/input\/HWEventReceiver.cpp.s:$/;"	t
@@ -512,4 +604,18 @@ visualisation/input/MasterEventReceiver.cpp.s	build/Makefile	/^visualisation\/in
 visualisation/input/MasterEventReceiver.i	build/Makefile	/^visualisation\/input\/MasterEventReceiver.i: visualisation\/input\/MasterEventReceiver.cpp.i$/;"	t
 visualisation/input/MasterEventReceiver.o	build/Makefile	/^visualisation\/input\/MasterEventReceiver.o: visualisation\/input\/MasterEventReceiver.cpp.o$/;"	t
 visualisation/input/MasterEventReceiver.s	build/Makefile	/^visualisation\/input\/MasterEventReceiver.s: visualisation\/input\/MasterEventReceiver.cpp.s$/;"	t
+visualisation/simulation_model/Scene.cpp.i	build/Makefile	/^visualisation\/simulation_model\/Scene.cpp.i:$/;"	t
+visualisation/simulation_model/Scene.cpp.o	build/Makefile	/^visualisation\/simulation_model\/Scene.cpp.o:$/;"	t
+visualisation/simulation_model/Scene.cpp.s	build/Makefile	/^visualisation\/simulation_model\/Scene.cpp.s:$/;"	t
+visualisation/simulation_model/Scene.i	build/Makefile	/^visualisation\/simulation_model\/Scene.i: visualisation\/simulation_model\/Scene.cpp.i$/;"	t
+visualisation/simulation_model/Scene.o	build/Makefile	/^visualisation\/simulation_model\/Scene.o: visualisation\/simulation_model\/Scene.cpp.o$/;"	t
+visualisation/simulation_model/Scene.s	build/Makefile	/^visualisation\/simulation_model\/Scene.s: visualisation\/simulation_model\/Scene.cpp.s$/;"	t
+visualisation/simulation_model/SimulationModel.cpp.i	build/Makefile	/^visualisation\/simulation_model\/SimulationModel.cpp.i:$/;"	t
+visualisation/simulation_model/SimulationModel.cpp.o	build/Makefile	/^visualisation\/simulation_model\/SimulationModel.cpp.o:$/;"	t
+visualisation/simulation_model/SimulationModel.cpp.s	build/Makefile	/^visualisation\/simulation_model\/SimulationModel.cpp.s:$/;"	t
+visualisation/simulation_model/SimulationModel.i	build/Makefile	/^visualisation\/simulation_model\/SimulationModel.i: visualisation\/simulation_model\/SimulationM/;"	t
+visualisation/simulation_model/SimulationModel.o	build/Makefile	/^visualisation\/simulation_model\/SimulationModel.o: visualisation\/simulation_model\/SimulationM/;"	t
+visualisation/simulation_model/SimulationModel.s	build/Makefile	/^visualisation\/simulation_model\/SimulationModel.s: visualisation\/simulation_model\/SimulationM/;"	t
 volatile	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define volatile$/;"	d	file:
+~GUI	src/visualisation/GUI.cpp	/^GUI::~GUI() {$/;"	f	class:GUI
+~Visualisation	src/visualisation/Visualisation.cpp	/^Visualisation::~Visualisation() {$/;"	f	class:Visualisation

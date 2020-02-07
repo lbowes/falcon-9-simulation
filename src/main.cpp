@@ -1,10 +1,7 @@
-#include "simulation/Simulation.h"
 #include "visualisation/Visualisation.h"
 
-int main() {
-    Simulation sim;
-    sim.run();
 
+int main() {
     Visualisation vis;
     vis.run();
 

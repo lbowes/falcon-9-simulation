@@ -52,8 +52,12 @@ int main(int argc, char* argv[]) {
     application.AddTypicalLights();
     application.AddTypicalCamera(core::vector3df(2, 2, -5),
                                  core::vector3df(0, 1, 0)); // to change the position of camera
-    // application.AddLightWithShadow(vector3df(1,25,-5), vector3df(0,0,0), 35, 0.2,35, 55, 512, video::SColorf(1,1,1));
+                                                            // application.AddLightWithShadow(vector3df(1,25,-5), vector3df(0,0,0), 35, 0.2,35, 55, 512, video::SColorf(1,1,1));
 
+    application.SetPlotCOGFrames(true);
+    application.SetPlotLinkFrames(true);
+    application.SetPlotCollisionShapes(true);
+    application.SetPlotAABB(true);
     //======================================================================
 
     // HERE YOU CAN POPULATE THE PHYSICAL SYSTEM WITH BODIES AND LINKS.
@@ -126,7 +130,7 @@ int main(int argc, char* argv[]) {
     // THE SOFT-REAL-TIME CYCLE
     //
 
-    while (application.GetDevice()->run()) {
+    while(application.GetDevice()->run()) {
         application.BeginScene();
 
         application.DrawAll();

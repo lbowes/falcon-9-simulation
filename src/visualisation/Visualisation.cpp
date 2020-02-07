@@ -4,17 +4,29 @@
 #include <iostream>
 
 
-Visualisation::Visualisation() {
+Visualisation::Visualisation() :
+    mDevice(nullptr),
+    mVidDriver(nullptr) {
 
-    initIrrlicht();
-    mGUI.initWith(*mDevice);
+    initDevice();
+
+    mVidDriver = mDevice->getVideoDriver();
+    mSceneManager = mDevice->getSceneManager();
+
+    mGUI = std::make_unique<GUI>(*mDevice);
+    mSimulationModel = std::make_unique<SimulationModel>(*mDevice->getSceneManager());
 
     mEventReceiver.addReceiver(&mHWInput);
-    mEventReceiver.addReceiver(&mGUI.getEventReceiver());
+    mEventReceiver.addReceiver(&mGUI->getEventReceiver());
 }
 
 
-void Visualisation::initIrrlicht() {
+Visualisation::~Visualisation() {
+    close();
+}
+
+
+void Visualisation::initDevice() {
     irr::SIrrlichtCreationParameters params;
     params.DriverType = irr::video::EDT_OPENGL;
     params.WindowSize = getMonitorResolution() / 2;
@@ -33,9 +45,6 @@ void Visualisation::initIrrlicht() {
     }
 
     mDevice->setWindowCaption(L"Falcon 9 Simulation");
-
-    mVidDriver = mDevice->getVideoDriver();
-    mSceneMgr = mDevice->getSceneManager();
 }
 
 
@@ -54,9 +63,12 @@ void Visualisation::run() {
         const unsigned now = mDevice->getTimer()->getRealTime();
         const float frameTime_s = static_cast<float>(now - lastTime) / 1000.0f;
 
-        mGUI.start();
-        // handleInput(frameTime_s);
-        // update(frameTime_s);
+        mGUI->start();
+
+        if(mDevice->isWindowFocused())
+            handleInput(frameTime_s);
+
+        update(frameTime_s);
         render();
 
         lastTime = now;
@@ -64,11 +76,38 @@ void Visualisation::run() {
 }
 
 
+void Visualisation::handleInput(double frameTime_s) {
+    if(mHWInput.isKeyPressed(irr::KEY_ESCAPE))
+        close();
+
+    mSimulationModel->handleInput(frameTime_s);
+}
+
+
+void Visualisation::update(double frameTime_s) {
+    mSimulationModel->update(frameTime_s, getAspectRatio());
+}
+
+
+float Visualisation::getAspectRatio() {
+    irr::core::recti viewport = mVidDriver->getViewPort();
+    return static_cast<float>(viewport.getWidth()) / viewport.getHeight();
+}
+
+
 void Visualisation::render() {
     mVidDriver->beginScene(true, true, irr::video::SColor(255, 128, 128, 128));
 
-    // mModel->render(mCameraSystem->getCurrentSimCamera().getPosition_world());
-    mGUI.render();
+    mSceneManager->drawAll();
+    mGUI->render();
 
     mVidDriver->endScene();
 }
+
+
+void Visualisation::close() {
+    mDevice->closeDevice();
+    mDevice->run();
+    mDevice->drop();
+}
+
