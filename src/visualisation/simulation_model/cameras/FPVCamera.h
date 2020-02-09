@@ -29,9 +29,13 @@ public:
     FPVCamera();
     ~FPVCamera() = default;
 
-    void handleInput();
-    void registerWithCameraSystem();
-    void update();
+    void handleInput(double dt);
+    void update(double dt);
+
+private:
+    void handleMovementInput(double dt);
+    void handleDirectionInput(double dt);
+    void handleZoomInput(double dt);
 };
 
 #endif // FPVCAMERA_H_

@@ -235,6 +235,7 @@ C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define C_D
 C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define C_DIALECT$/;"	d	file:
 C_DIALECT	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define C_DIALECT /;"	d	file:
 CameraBaseState	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^struct CameraBaseState {$/;"	s
+CameraHandle	src/visualisation/simulation_model/cameras/CameraSystem.h	/^    struct CameraHandle {$/;"	s	class:CameraSystem
 CameraSystem	src/visualisation/simulation_model/cameras/CameraSystem.h	/^class CameraSystem {$/;"	c
 Collapsed	build/imgui.ini	/^Collapsed=0$/;"	k	section:Window
 DEC	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define DEC(/;"	d	file:
@@ -243,7 +244,7 @@ Dependencies	README.md	/^## Dependencies$/;"	s
 DirectoryOfThisScript	.ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
 DockId	build/imgui.ini	/^DockId=0x00000002,0$/;"	k	section:Window
 DockId	build/imgui.ini	/^DockId=0x00000003,0$/;"	k	section:Window
-DockNode    ID	build/imgui.ini	/^DockNode    ID=0x00000001 Pos=60,60 Size=135,48 Split=X$/;"	k	section:Docking
+DockNode    ID	build/imgui.ini	/^DockNode    ID=0x00000001 Pos=60,60 Size=471,632 Split=X$/;"	k	section:Docking
 Docking	build/imgui.ini	/^[Docking][Data]$/;"	s
 EQUALS	build/Makefile	/^EQUALS = =$/;"	m
 EQUALS	build/simulation/Makefile	/^EQUALS = =$/;"	m
@@ -252,7 +253,7 @@ EXECUTABLE_OUTPUT_PATH	src/CMakeLists.txt	/^set(EXECUTABLE_OUTPUT_PATH ${CMAKE_B
 EXTRA_COMPILE_FLAGS	src/CMakeLists.txt	/^    set(EXTRA_COMPILE_FLAGS "")$/;"	v
 EXTRA_COMPILE_FLAGS	src/CMakeLists.txt	/^    set(EXTRA_COMPILE_FLAGS "\/wd4275")             # disable warnings triggered by Irrlicht$/;"	v
 FPVCAMERA_H_	src/visualisation/simulation_model/cameras/FPVCamera.h	/^#define FPVCAMERA_H_$/;"	d
-FPVCamera	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^FPVCamera::FPVCamera() {$/;"	f	class:FPVCamera
+FPVCamera	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^FPVCamera::FPVCamera() :$/;"	f	class:FPVCamera
 FPVCamera	src/visualisation/simulation_model/cameras/FPVCamera.h	/^class FPVCamera {$/;"	c
 Falcon-9-Simulation	README.md	/^# Falcon-9-Simulation$/;"	c
 Falcon9Simulation	build/Makefile	/^Falcon9Simulation: cmake_check_build_system$/;"	t
@@ -265,14 +266,13 @@ GUI	src/visualisation/GUI.h	/^class GUI {$/;"	c
 GUI_H_	src/visualisation/GUI.h	/^#define GUI_H_$/;"	d
 HEX	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define HEX(/;"	d	file:
 HEX	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define HEX(/;"	d	file:
-HIGHPRECISIONSCENENODE_H_	src/visualisation/simulation_model/HighPrecisionSceneNode.h	/^#define HIGHPRECISIONSCENENODE_H_$/;"	d
 HWEventReceiver	src/main_old.cpp	/^        HWEventReceiver() {$/;"	f	class:Input::HWEventReceiver	file:
 HWEventReceiver	src/main_old.cpp	/^    class HWEventReceiver : public irr::IEventReceiver {$/;"	c	namespace:Input	file:
 HWEventReceiver	src/visualisation/input/HWEventReceiver.cpp	/^    HWEventReceiver::HWEventReceiver() {$/;"	f	class:Input::HWEventReceiver
 HWEventReceiver	src/visualisation/input/HWEventReceiver.h	/^    class HWEventReceiver : public irr::IEventReceiver {$/;"	c	namespace:Input
-HighPrecisionSceneNode	src/visualisation/simulation_model/HighPrecisionSceneNode.h	/^struct HighPrecisionSceneNode {$/;"	s
+HighPrecisionSceneNode	src/visualisation/simulation_model/Scene.h	/^    struct HighPrecisionSceneNode {$/;"	s	class:Scene
 ID_VOID_MAIN	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define ID_VOID_MAIN$/;"	d	file:
-INPUT_HWEVENTRECEIVER_H	src/visualisation/input/HWEventReceiver.h	/^#define INPUT_HWEVENTRECEIVER_H$/;"	d
+INPUT_HWEVENTRECEIVER_H_	src/visualisation/input/HWEventReceiver.h	/^#define INPUT_HWEVENTRECEIVER_H_$/;"	d
 IRRIMGUI_INCLUDES	src/CMakeLists.txt	/^SET(IRRIMGUI_INCLUDES$/;"	v
 IRRIMGUI_LIBRARY	src/CMakeLists.txt	/^SET(IRRIMGUI_LIBRARY ${IRRIMGUI_LIB_FIND})$/;"	v
 Input	src/main_old.cpp	/^namespace Input {$/;"	n	file:
@@ -303,7 +303,8 @@ PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  de
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define PLATFORM_ID$/;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID /;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID$/;"	d	file:
-Pos	build/imgui.ini	/^Pos=130,60$/;"	k	section:Window
+Pos	build/imgui.ini	/^Pos=179,60$/;"	k	section:Window
+Pos	build/imgui.ini	/^Pos=1976,463$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=60,14$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=60,60$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=926,309$/;"	k	section:Window
@@ -339,11 +340,12 @@ SessionLoad	Session.vim	/^let SessionLoad = 1$/;"	v
 Simulation	src/simulation/Simulation.h	/^class Simulation {$/;"	c
 SimulationModel	src/visualisation/simulation_model/SimulationModel.cpp	/^SimulationModel::SimulationModel(irr::scene::ISceneManager& sceneMgr) :$/;"	f	class:SimulationModel
 SimulationModel	src/visualisation/simulation_model/SimulationModel.h	/^class SimulationModel {$/;"	c
+Size	build/imgui.ini	/^Size=117,632$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=2507,1385$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=351,243$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=352,632$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=400,400$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=65,48$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=68,48$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=466,311$/;"	k	section:Window
 Status	README.md	/^## Status$/;"	s
 UNIX	build/CMakeFiles/3.16.3/CMakeCCompiler.cmake	/^  set(UNIX 1)$/;"	v
 UNIX	build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake	/^  set(UNIX 1)$/;"	v
@@ -353,11 +355,13 @@ Visualisation	src/visualisation/Visualisation.h	/^class Visualisation {$/;"	c
 Window	build/imgui.ini	/^[Window][Dear ImGui Demo]$/;"	s
 Window	build/imgui.ini	/^[Window][Debug##Default]$/;"	s
 Window	build/imgui.ini	/^[Window][DockSpace Demo]$/;"	s
+Window	build/imgui.ini	/^[Window][Example: Custom rendering]$/;"	s
 Window	build/imgui.ini	/^[Window][Test window]$/;"	s
 Window	build/imgui.ini	/^[Window][This is a test window]$/;"	s
 addAllLights	src/visualisation/simulation_model/Scene.cpp	/^void Scene::addAllLights() {$/;"	f	class:Scene	typeref:typename:void
 addAllMeshes	src/visualisation/simulation_model/Scene.cpp	/^void Scene::addAllMeshes() {$/;"	f	class:Scene	typeref:typename:void
 addEngineMesh	src/main_old.cpp	/^void addEngineMesh() {$/;"	f	typeref:typename:void
+addLight	src/visualisation/simulation_model/Scene.cpp	/^void Scene::addLight(const std::string& name, irr::scene::ILightSceneNode* light) {$/;"	f	class:Scene	typeref:typename:void
 addMesh	src/visualisation/simulation_model/Scene.cpp	/^void Scene::addMesh(const std::string& name, const std::string& filePath) {$/;"	f	class:Scene	typeref:typename:void
 addReceiver	src/main_old.cpp	/^        void addReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void	file:
 addReceiver	src/visualisation/input/MasterEventReceiver.cpp	/^    void MasterEventReceiver::addReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void
@@ -431,26 +435,30 @@ file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/p
 flags	.ycm_extra_conf.py	/^flags = [$/;"	v
 g:this_obsession	Session.vim	/^let g:this_obsession = v:this_session$/;"	v
 g:this_session	Session.vim	/^let g:this_session = v:this_session$/;"	v
+getActiveCameraPos	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^chrono::ChVector<> CameraSystem::getActiveCameraPos() {$/;"	f	class:CameraSystem	typeref:typename:chrono::ChVector<>
 getAspectRatio	src/main_old.cpp	/^float getAspectRatio() {$/;"	f	typeref:typename:float
 getAspectRatio	src/visualisation/Visualisation.cpp	/^float Visualisation::getAspectRatio() {$/;"	f	class:Visualisation	typeref:typename:float
 getDelta_scr	src/main_old.cpp	/^        const irr::core::vector2di& getDelta_scr() const {$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &	file:
-getDelta_scr	src/visualisation/input/HWEventReceiver.h	/^        const irr::core::vector2di& getDelta_scr() const { return mDelta_scr; }$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &
+getDelta_scr	src/visualisation/input/HWEventReceiver.cpp	/^    const irr::core::vector2di& MouseState::getDelta_scr() const {$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &
 getEventReceiver	src/visualisation/GUI.cpp	/^IrrIMGUI::CIMGUIEventReceiver& GUI::getEventReceiver() {$/;"	f	class:GUI	typeref:typename:IrrIMGUI::CIMGUIEventReceiver &
 getMonitorResolution	src/main_old.cpp	/^irr::core::dimension2du getMonitorResolution() {$/;"	f	typeref:typename:irr::core::dimension2du
 getMonitorResolution	src/visualisation/Visualisation.cpp	/^irr::core::dimension2du Visualisation::getMonitorResolution() const {$/;"	f	class:Visualisation	typeref:typename:irr::core::dimension2du
 getMouse	src/main_old.cpp	/^        MouseState& getMouse() {$/;"	f	class:Input::HWEventReceiver	typeref:typename:MouseState &	file:
 getMouse	src/main_old.cpp	/^        const MouseState& getMouse() const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:const MouseState &	file:
-getMouse	src/visualisation/input/HWEventReceiver.h	/^        MouseState& getMouse() { return mMouseState; }$/;"	f	class:Input::HWEventReceiver	typeref:typename:MouseState &
-getMouse	src/visualisation/input/HWEventReceiver.h	/^        const MouseState& getMouse() const { return mMouseState; }$/;"	f	class:Input::HWEventReceiver	typeref:typename:const MouseState &
+getMouse	src/visualisation/input/HWEventReceiver.cpp	/^    const MouseState& HWEventReceiver::getMouse() {$/;"	f	class:Input::HWEventReceiver	typeref:typename:const MouseState &
 getPosition_scr	src/main_old.cpp	/^        const irr::core::vector2di& getPosition_scr() const {$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &	file:
-getPosition_scr	src/visualisation/input/HWEventReceiver.h	/^        const irr::core::vector2di& getPosition_scr() const { return mPosition_scr; }$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &
+getPosition_scr	src/visualisation/input/HWEventReceiver.cpp	/^    const irr::core::vector2di& MouseState::getPosition_scr() const {$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &
 getScroll	src/main_old.cpp	/^        float getScroll() const {$/;"	f	class:Input::MouseState	typeref:typename:float	file:
-getScroll	src/visualisation/input/HWEventReceiver.h	/^        float getScroll() const { return mWheelScroll; }$/;"	f	class:Input::MouseState	typeref:typename:float
+getScroll	src/visualisation/input/HWEventReceiver.cpp	/^    float MouseState::getScroll() const {$/;"	f	class:Input::MouseState	typeref:typename:float
+handle	src/visualisation/simulation_model/cameras/CameraSystem.h	/^        const CameraBaseState* handle;$/;"	m	struct:CameraSystem::CameraHandle	typeref:typename:const CameraBaseState *
+handleDirectionInput	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::handleDirectionInput(double dt) {$/;"	f	class:FPVCamera	typeref:typename:void
 handleInput	src/main_old.cpp	/^void handleInput(double frameTime_s) {$/;"	f	typeref:typename:void
 handleInput	src/visualisation/Visualisation.cpp	/^void Visualisation::handleInput(double frameTime_s) {$/;"	f	class:Visualisation	typeref:typename:void
-handleInput	src/visualisation/simulation_model/SimulationModel.cpp	/^void SimulationModel::handleInput() {$/;"	f	class:SimulationModel	typeref:typename:void
+handleInput	src/visualisation/simulation_model/SimulationModel.cpp	/^void SimulationModel::handleInput(double dt) {$/;"	f	class:SimulationModel	typeref:typename:void
 handleInput	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^void CameraSystem::handleInput() {$/;"	f	class:CameraSystem	typeref:typename:void
-handleInput	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::handleInput() {$/;"	f	class:FPVCamera	typeref:typename:void
+handleInput	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::handleInput(double dt) {$/;"	f	class:FPVCamera	typeref:typename:void
+handleMovementInput	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::handleMovementInput(double dt) {$/;"	f	class:FPVCamera	typeref:typename:void
+handleZoomInput	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::handleZoomInput(double dt) {$/;"	f	class:FPVCamera	typeref:typename:void
 help	build/Makefile	/^help:$/;"	t
 help	build/simulation/Makefile	/^help:$/;"	t
 help	build/visualisation/Makefile	/^help:$/;"	t
@@ -477,18 +485,18 @@ init	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^void CameraSy
 initCamera	src/main_old.cpp	/^void initCamera() {$/;"	f	typeref:typename:void
 initDevice	src/visualisation/Visualisation.cpp	/^void Visualisation::initDevice() {$/;"	f	class:Visualisation	typeref:typename:void
 initImGui	src/visualisation/GUI.cpp	/^void GUI::initImGui(irr::IrrlichtDevice& device) {$/;"	f	class:GUI	typeref:typename:void
-internalNode	src/visualisation/simulation_model/HighPrecisionSceneNode.h	/^    irr::scene::ISceneNode* internalNode;$/;"	m	struct:HighPrecisionSceneNode	typeref:typename:irr::scene::ISceneNode *
+internalNode	src/visualisation/simulation_model/Scene.h	/^        irr::scene::ISceneNode* internalNode;$/;"	m	struct:Scene::HighPrecisionSceneNode	typeref:typename:irr::scene::ISceneNode *
 isButtonPressed	src/main_old.cpp	/^        bool isButtonPressed(Button b) const {$/;"	f	class:Input::MouseState	typeref:typename:bool	file:
-isButtonPressed	src/visualisation/input/HWEventReceiver.h	/^        bool isButtonPressed(Button b) const { return mButtonsPressed[b]; }$/;"	f	class:Input::MouseState	typeref:typename:bool
+isButtonPressed	src/visualisation/input/HWEventReceiver.cpp	/^    bool MouseState::isButtonPressed(Button b) const {$/;"	f	class:Input::MouseState	typeref:typename:bool
 isKeyPressed	src/main_old.cpp	/^        bool isKeyPressed(irr::EKEY_CODE key) const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool	file:
-isKeyPressed	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::isKeyPressed(irr::EKEY_CODE key) const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool
+isKeyPressed	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::isKeyPressed(irr::EKEY_CODE key) {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool
 isKeyReleased	src/main_old.cpp	/^        bool isKeyReleased(irr::EKEY_CODE key) const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool	file:
-isKeyReleased	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::isKeyReleased(irr::EKEY_CODE key) const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool
+isKeyReleased	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::isKeyReleased(irr::EKEY_CODE key) {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool
 left	src/main_old.cpp	/^            left = 0,$/;"	e	enum:Input::MouseState::Button	file:
 left	src/visualisation/input/HWEventReceiver.h	/^            left = 0,$/;"	e	enum:Input::MouseState::Button
 lookAt	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^    chrono::ChVector<> lookAt;$/;"	m	struct:CameraBaseState	typeref:typename:chrono::ChVector<>
-mActiveCameraState	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^std::map<std::string, CameraBaseState*>::iterator CameraSystem::mActiveCameraState;$/;"	m	class:CameraSystem	typeref:typename:std::map<std::string,CameraBaseState * >::iterator
-mActiveCameraState	src/visualisation/simulation_model/cameras/CameraSystem.h	/^    static std::map<std::string, CameraBaseState*>::iterator mActiveCameraState;$/;"	m	class:CameraSystem	typeref:typename:std::map<std::string,CameraBaseState * >::iterator
+mActiveCamera	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^CameraSystem::CameraHandle CameraSystem::mActiveCamera;$/;"	m	class:CameraSystem	typeref:typename:CameraSystem::CameraHandle
+mActiveCamera	src/visualisation/simulation_model/cameras/CameraSystem.h	/^    static CameraHandle mActiveCamera;$/;"	m	class:CameraSystem	typeref:typename:CameraHandle
 mAdjustSpeed	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^const float FPVCamera::Sensitivity::mAdjustSpeed = 200.0f;$/;"	m	class:FPVCamera::Sensitivity	typeref:typename:const float
 mAdjustSpeed	src/visualisation/simulation_model/cameras/FPVCamera.h	/^        static const float mAdjustSpeed;$/;"	m	struct:FPVCamera::Sensitivity	typeref:typename:const float
 mAspectRatio	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^float CameraSystem::mAspectRatio = 1.0f;$/;"	m	class:CameraSystem	typeref:typename:float
@@ -497,15 +505,16 @@ mButtonsPressed	src/main_old.cpp	/^        bool mButtonsPressed[3];$/;"	m	class:
 mButtonsPressed	src/visualisation/input/HWEventReceiver.h	/^        bool mButtonsPressed[3];$/;"	m	class:Input::MouseState	typeref:typename:bool[3]
 mCamera	src/main_old.cpp	/^irr::scene::ICameraSceneNode* mCamera;$/;"	v	typeref:typename:irr::scene::ICameraSceneNode *
 mCameraBase	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    CameraBaseState mCameraBase;$/;"	m	class:FPVCamera	typeref:typename:CameraBaseState
+mCameraHandles	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^std::vector<CameraSystem::CameraHandle> CameraSystem::mCameraHandles;$/;"	m	class:CameraSystem	typeref:typename:std::vector<CameraSystem::CameraHandle>
+mCameraHandles	src/visualisation/simulation_model/cameras/CameraSystem.h	/^    static std::vector<CameraHandle> mCameraHandles;$/;"	m	class:CameraSystem	typeref:typename:std::vector<CameraHandle>
 mCameraLookAtDir	src/main_old.cpp	/^chrono::ChVector<> mCameraLookAtDir;$/;"	v	typeref:typename:chrono::ChVector<>
 mCameraMovementFriction	src/main_old.cpp	/^const float mCameraMovementFriction = 7.0f;$/;"	v	typeref:typename:const float
 mCameraPos	src/main_old.cpp	/^chrono::ChVector<> mCameraPos = chrono::ChVector<>(2.0f, 1.78f, 0.0f);$/;"	v	typeref:typename:chrono::ChVector<>
-mCameraStateHandles	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^std::map<std::string, CameraBaseState*> CameraSystem::mCameraStateHandles;$/;"	m	class:CameraSystem	typeref:typename:std::map<std::string,CameraBaseState * >
-mCameraStateHandles	src/visualisation/simulation_model/cameras/CameraSystem.h	/^    static std::map<std::string, CameraBaseState*> mCameraStateHandles;$/;"	m	class:CameraSystem	typeref:typename:std::map<std::string,CameraBaseState * >
 mCameraVelocity	src/main_old.cpp	/^chrono::ChVector<> mCameraVelocity;$/;"	v	typeref:typename:chrono::ChVector<>
 mCamerasHaveFocus	src/main_old.cpp	/^bool mCamerasHaveFocus = false;$/;"	v	typeref:typename:bool
 mCentreScreenPos_scr	src/main_old.cpp	/^        irr::core::vector2di mCentreScreenPos_scr;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2di	file:
-mCentreScreenPos_scr	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2di mCentreScreenPos_scr;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2di
+mCentreScreenPos_scr	src/visualisation/input/HWEventReceiver.cpp	/^    irr::core::vector2di HWEventReceiver::mCentreScreenPos_scr;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2di
+mCentreScreenPos_scr	src/visualisation/input/HWEventReceiver.h	/^        static irr::core::vector2di mCentreScreenPos_scr;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2di
 mDelta_scr	src/main_old.cpp	/^        irr::core::vector2di mDelta_scr;$/;"	m	class:Input::MouseState	typeref:typename:irr::core::vector2di	file:
 mDelta_scr	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2di mDelta_scr;$/;"	m	class:Input::MouseState	typeref:typename:irr::core::vector2di
 mDevice	src/main_old.cpp	/^irr::IrrlichtDevice* mDevice;$/;"	v	typeref:typename:irr::IrrlichtDevice *
@@ -526,9 +535,11 @@ mInitialised	src/visualisation/simulation_model/cameras/CameraSystem.h	/^    sta
 mIrrlichtCam	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^irr::scene::ICameraSceneNode* CameraSystem::mIrrlichtCam = nullptr;$/;"	m	class:CameraSystem	typeref:typename:irr::scene::ICameraSceneNode *
 mIrrlichtCam	src/visualisation/simulation_model/cameras/CameraSystem.h	/^    static irr::scene::ICameraSceneNode* mIrrlichtCam;$/;"	m	class:CameraSystem	typeref:typename:irr::scene::ICameraSceneNode *
 mKeysClicked	src/main_old.cpp	/^        bool mKeysClicked[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]	file:
-mKeysClicked	src/visualisation/input/HWEventReceiver.h	/^        bool mKeysClicked[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]
+mKeysClicked	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::mKeysClicked[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]
+mKeysClicked	src/visualisation/input/HWEventReceiver.h	/^        static bool mKeysClicked[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]
 mKeysDown	src/main_old.cpp	/^        bool mKeysDown[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]	file:
-mKeysDown	src/visualisation/input/HWEventReceiver.h	/^        bool mKeysDown[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]
+mKeysDown	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::mKeysDown[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]
+mKeysDown	src/visualisation/input/HWEventReceiver.h	/^        static bool mKeysDown[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]
 mLookAround	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^const float FPVCamera::Sensitivity::mLookAround = 0.05f;$/;"	m	class:FPVCamera::Sensitivity	typeref:typename:const float
 mLookAround	src/visualisation/simulation_model/cameras/FPVCamera.h	/^        static const float mLookAround;$/;"	m	struct:FPVCamera::Sensitivity	typeref:typename:const float
 mMaxSpeed	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^const float FPVCamera::Movement::mMaxSpeed = 1000.0f;$/;"	m	class:FPVCamera::Movement	typeref:typename:const float
@@ -536,9 +547,11 @@ mMaxSpeed	src/visualisation/simulation_model/cameras/FPVCamera.h	/^        stati
 mMinSpeed	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^const float FPVCamera::Movement::mMinSpeed = 6.4f;$/;"	m	class:FPVCamera::Movement	typeref:typename:const float
 mMinSpeed	src/visualisation/simulation_model/cameras/FPVCamera.h	/^        static const float mMinSpeed;$/;"	m	struct:FPVCamera::Movement	typeref:typename:const float
 mMousePosition	src/main_old.cpp	/^        irr::core::vector2df mMousePosition;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2df	file:
-mMousePosition	src/visualisation/input/HWEventReceiver.h	/^        irr::core::vector2df mMousePosition;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2df
+mMousePosition	src/visualisation/input/HWEventReceiver.cpp	/^    irr::core::vector2di HWEventReceiver::mMousePosition;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2di
+mMousePosition	src/visualisation/input/HWEventReceiver.h	/^        static irr::core::vector2di mMousePosition;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2di
 mMouseState	src/main_old.cpp	/^        MouseState mMouseState;$/;"	m	class:Input::HWEventReceiver	typeref:typename:MouseState	file:
-mMouseState	src/visualisation/input/HWEventReceiver.h	/^        MouseState mMouseState;$/;"	m	class:Input::HWEventReceiver	typeref:typename:MouseState
+mMouseState	src/visualisation/input/HWEventReceiver.cpp	/^    MouseState HWEventReceiver::mMouseState;$/;"	m	class:Input::HWEventReceiver	typeref:typename:MouseState
+mMouseState	src/visualisation/input/HWEventReceiver.h	/^        static MouseState mMouseState;$/;"	m	class:Input::HWEventReceiver	typeref:typename:MouseState
 mMovement	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    } mMovement;$/;"	m	class:FPVCamera	typeref:struct:FPVCamera::Movement
 mMovementSpeed	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    float mMovementSpeed;$/;"	m	class:FPVCamera	typeref:typename:float
 mPitch	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    float mPitch;$/;"	m	class:FPVCamera	typeref:typename:float
@@ -576,6 +589,7 @@ main.o	build/Makefile	/^main.o: main.cpp.o$/;"	t
 main.s	build/Makefile	/^main.s: main.cpp.s$/;"	t
 middle	src/main_old.cpp	/^            middle,$/;"	e	enum:Input::MouseState::Button	file:
 middle	src/visualisation/input/HWEventReceiver.h	/^            middle,$/;"	e	enum:Input::MouseState::Button
+name	src/visualisation/simulation_model/cameras/CameraSystem.h	/^        std::string name;$/;"	m	struct:CameraSystem::CameraHandle	typeref:typename:std::string
 nearValue	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^    float nearValue;$/;"	m	struct:CameraBaseState	typeref:typename:float
 position	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^    chrono::ChVector<> position;$/;"	m	struct:CameraBaseState	typeref:typename:chrono::ChVector<>
 preinstall	build/Makefile	/^preinstall: all$/;"	t
@@ -592,8 +606,7 @@ rebuild_cache	build/visualisation/Makefile	/^rebuild_cache:$/;"	t
 rebuild_cache/fast	build/Makefile	/^rebuild_cache\/fast: rebuild_cache$/;"	t
 rebuild_cache/fast	build/simulation/Makefile	/^rebuild_cache\/fast: rebuild_cache$/;"	t
 rebuild_cache/fast	build/visualisation/Makefile	/^rebuild_cache\/fast: rebuild_cache$/;"	t
-registerHandleTo	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^void CameraSystem::registerHandleTo(CameraBaseState* cameraState, const std::string& name) {$/;"	f	class:CameraSystem	typeref:typename:void
-registerWithCameraSystem	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::registerWithCameraSystem() {$/;"	f	class:FPVCamera	typeref:typename:void
+registerHandleTo	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^void CameraSystem::registerHandleTo(CameraBaseState& cameraState, const std::string& name) {$/;"	f	class:CameraSystem	typeref:typename:void
 removeReceiver	src/main_old.cpp	/^        void removeReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void	file:
 removeReceiver	src/visualisation/input/MasterEventReceiver.cpp	/^    void MasterEventReceiver::removeReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void
 render	src/main_old.cpp	/^void render() {$/;"	f	typeref:typename:void
@@ -610,7 +623,7 @@ s:sx	Session.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
 s:wipebuf	Session.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
 setImGuiStyle	src/visualisation/GUI.cpp	/^void GUI::setImGuiStyle() {$/;"	f	class:GUI	typeref:typename:void
 setPosition	src/main_old.cpp	/^        void setPosition(irr::core::vector2di newPosition_scr) {$/;"	f	class:Input::MouseState	typeref:typename:void	file:
-setPosition	src/visualisation/input/HWEventReceiver.h	/^        void setPosition(irr::core::vector2di newPosition_scr) { mPosition_scr = newPosition_scr/;"	f	class:Input::MouseState	typeref:typename:void
+setPosition	src/visualisation/input/HWEventReceiver.cpp	/^    void MouseState::setPosition(irr::core::vector2di newPosition_scr) {$/;"	f	class:Input::MouseState	typeref:typename:void
 setScreenAspectRatio	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^void CameraSystem::setScreenAspectRatio(float aspectRatio) {$/;"	f	class:CameraSystem	typeref:typename:void
 simulation/Simulation.cpp.i	build/Makefile	/^simulation\/Simulation.cpp.i:$/;"	t
 simulation/Simulation.cpp.o	build/Makefile	/^simulation\/Simulation.cpp.o:$/;"	t
@@ -622,14 +635,14 @@ someFunction	src/testSubdir/someCpp.cpp	/^void someFunction() {$/;"	f	typeref:ty
 start	src/visualisation/GUI.cpp	/^void GUI::start() {$/;"	f	class:GUI	typeref:typename:void
 testCam	src/visualisation/simulation_model/SimulationModel.h	/^    FPVCamera testCam;$/;"	m	class:SimulationModel	typeref:typename:FPVCamera
 toggleCameraFocus	src/main_old.cpp	/^void toggleCameraFocus() {$/;"	f	typeref:typename:void
-transform_world	src/visualisation/simulation_model/HighPrecisionSceneNode.h	/^    chrono::ChCoordsys<> transform_world;$/;"	m	struct:HighPrecisionSceneNode	typeref:typename:chrono::ChCoordsys<>
+transform_world	src/visualisation/simulation_model/Scene.h	/^        chrono::ChCoordsys<> transform_world;$/;"	m	struct:Scene::HighPrecisionSceneNode	typeref:typename:chrono::ChCoordsys<>
 up	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^    chrono::ChVector<> up;$/;"	m	struct:CameraBaseState	typeref:typename:chrono::ChVector<>
 update	src/main_old.cpp	/^        void update(irr::core::vector2di centreScreenPos_scr) {$/;"	f	class:Input::HWEventReceiver	typeref:typename:void	file:
 update	src/main_old.cpp	/^void update(double frameTime_s) {$/;"	f	typeref:typename:void
 update	src/visualisation/Visualisation.cpp	/^void Visualisation::update(double frameTime_s) {$/;"	f	class:Visualisation	typeref:typename:void
 update	src/visualisation/input/HWEventReceiver.cpp	/^    void HWEventReceiver::update(irr::core::vector2di centreScreenPos_scr) {$/;"	f	class:Input::HWEventReceiver	typeref:typename:void
-update	src/visualisation/simulation_model/SimulationModel.cpp	/^void SimulationModel::update(float aspectRatio) {$/;"	f	class:SimulationModel	typeref:typename:void
-update	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::update() {$/;"	f	class:FPVCamera	typeref:typename:void
+update	src/visualisation/simulation_model/SimulationModel.cpp	/^void SimulationModel::update(float aspectRatio, double dt) {$/;"	f	class:SimulationModel	typeref:typename:void
+update	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::update(double dt) {$/;"	f	class:FPVCamera	typeref:typename:void
 updateAllNodeTransforms	src/visualisation/simulation_model/Scene.cpp	/^void Scene::updateAllNodeTransforms() {$/;"	f	class:Scene	typeref:typename:void
 updateIrrlichtCamera	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^void CameraSystem::updateIrrlichtCamera() {$/;"	f	class:CameraSystem	typeref:typename:void
 verticalFOV	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^    float verticalFOV;$/;"	m	struct:CameraBaseState	typeref:typename:float

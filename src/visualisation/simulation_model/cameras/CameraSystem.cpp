@@ -7,8 +7,8 @@
 bool CameraSystem::mInitialised = false;
 float CameraSystem::mAspectRatio = 1.0f;
 irr::scene::ICameraSceneNode* CameraSystem::mIrrlichtCam = nullptr;
-std::map<std::string, CameraBaseState*> CameraSystem::mCameraStateHandles;
-std::map<std::string, CameraBaseState*>::iterator CameraSystem::mActiveCameraState;
+std::vector<CameraSystem::CameraHandle> CameraSystem::mCameraHandles;
+CameraSystem::CameraHandle CameraSystem::mActiveCamera;
 
 
 void CameraSystem::init(irr::scene::ISceneManager& sceneMgrHandle) {
@@ -31,8 +31,10 @@ void CameraSystem::setScreenAspectRatio(float aspectRatio) {
 
 void CameraSystem::updateIrrlichtCamera() {
     // Updates the state of the internal irrlicht camera based on the currently bound `CameraBaseState`.
-    const CameraBaseState* current = mActiveCameraState->second;
+    const CameraBaseState* current = mActiveCamera.handle;
 
+    mIrrlichtCam->setUpVector(irr::core::vector3dfCH(current->up));
+    mIrrlichtCam->setTarget(irr::core::vector3dfCH(current->lookAt));
     mIrrlichtCam->setNearValue(current->nearValue);
     mIrrlichtCam->setFarValue(current->farValue);
     mIrrlichtCam->setFOV(irr::core::degToRad(current->verticalFOV));
@@ -44,13 +46,15 @@ void CameraSystem::updateIrrlichtCamera() {
     // However in the future, the plan is to add multiple camera views with different aspect ratios, at which point
     // `current->aspectRatio` should be used here.
     mIrrlichtCam->setAspectRatio(mAspectRatio);
-
-    mIrrlichtCam->setUpVector(irr::core::vector3dfCH(current->up));
-    mIrrlichtCam->setTarget(irr::core::vector3dfCH(current->lookAt));
 }
 
 
-void CameraSystem::registerHandleTo(CameraBaseState* cameraState, const std::string& name) {
-    mCameraStateHandles[name] = cameraState;
-    mActiveCameraState = mCameraStateHandles.begin();
+void CameraSystem::registerHandleTo(CameraBaseState& cameraState, const std::string& name) {
+    mCameraHandles.push_back({name, &cameraState});
+    mActiveCamera = mCameraHandles.back();
+}
+
+
+chrono::ChVector<> CameraSystem::getActiveCameraPos() {
+    return mActiveCamera.handle->position;
 }

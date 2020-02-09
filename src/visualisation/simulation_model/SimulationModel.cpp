@@ -7,23 +7,25 @@ SimulationModel::SimulationModel(irr::scene::ISceneManager& sceneMgr) :
     mScene(sceneMgr) {
 
     CameraSystem::init(sceneMgr);
-
-    testCam.registerWithCameraSystem();
 }
 
 
-void SimulationModel::handleInput() {
+void SimulationModel::handleInput(double dt) {
     CameraSystem::handleInput();
+    // temp
+    testCam.handleInput(dt);
 }
 
 
-void SimulationModel::update(float aspectRatio) {
+void SimulationModel::update(float aspectRatio, double dt) {
     CameraSystem::setScreenAspectRatio(aspectRatio);
     CameraSystem::updateIrrlichtCamera();
 
     mScene.updateAllNodeTransforms();
-    // mScene.applyCameraPosOffset(chrono::ChVector<>(2.5, -1, 0));
 
     // todo
-    mScene.applyCameraPosOffset(mCameraSystem.getActiveCameraPos());
+    mScene.applyCameraPosOffset(CameraSystem::getActiveCameraPos());
+
+    // temp
+    testCam.update(dt);
 }

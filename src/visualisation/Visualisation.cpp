@@ -80,12 +80,12 @@ void Visualisation::handleInput(double frameTime_s) {
     if(mHWInput.isKeyPressed(irr::KEY_ESCAPE))
         close();
 
-    mSimulationModel->handleInput();
+    mSimulationModel->handleInput(frameTime_s);
 }
 
 
 void Visualisation::update(double frameTime_s) {
-    mSimulationModel->update(getAspectRatio());
+    mSimulationModel->update(getAspectRatio(), frameTime_s);
 }
 
 
@@ -96,7 +96,7 @@ float Visualisation::getAspectRatio() {
 
 
 void Visualisation::render() {
-    mVidDriver->beginScene(true, true, irr::video::SColor(255, 128, 128, 128));
+    mVidDriver->beginScene(true, true, irr::video::SColor(255, 0, 0, 0));
 
     mSceneManager->drawAll();
     mGUI->render();

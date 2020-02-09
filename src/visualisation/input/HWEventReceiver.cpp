@@ -2,6 +2,14 @@
 
 namespace Input {
 
+
+    MouseState HWEventReceiver::mMouseState;
+    bool HWEventReceiver::mKeysDown[irr::KEY_KEY_CODES_COUNT];
+    bool HWEventReceiver::mKeysClicked[irr::KEY_KEY_CODES_COUNT];
+    irr::core::vector2di HWEventReceiver::mMousePosition;
+    irr::core::vector2di HWEventReceiver::mCentreScreenPos_scr;
+
+
     MouseState::MouseState() :
         mPosition_scr(0, 0),
         mWheelScroll(0.0f) {
@@ -9,8 +17,34 @@ namespace Input {
         mButtonsPressed[left] = mButtonsPressed[middle] = mButtonsPressed[right] = false;
     }
 
+
+    const irr::core::vector2di& MouseState::getPosition_scr() const {
+        return mPosition_scr;
+    }
+
+
+    const irr::core::vector2di& MouseState::getDelta_scr() const {
+        return mDelta_scr;
+    }
+
+
+    bool MouseState::isButtonPressed(Button b) const {
+        return mButtonsPressed[b];
+    }
+
+
+    float MouseState::getScroll() const {
+        return mWheelScroll;
+    }
+
+
+    void MouseState::setPosition(irr::core::vector2di newPosition_scr) {
+        mPosition_scr = newPosition_scr;
+    }
+
+
     HWEventReceiver::HWEventReceiver() {
-        for (unsigned key = 0; key < irr::KEY_KEY_CODES_COUNT; key++)
+        for(unsigned key = 0; key < irr::KEY_KEY_CODES_COUNT; key++)
             mKeysDown[key] = mKeysClicked[key] = false;
     }
 
@@ -21,21 +55,21 @@ namespace Input {
 
         mMouseState.mWheelScroll = 0.0f;
 
-        for (bool& k : mKeysClicked)
+        for(bool& k : mKeysClicked)
             k = false;
     }
 
     bool HWEventReceiver::OnEvent(const irr::SEvent& e) {
         using namespace irr;
 
-        switch (e.EventType) {
+        switch(e.EventType) {
         case EET_KEY_INPUT_EVENT: {
             mKeysDown[e.KeyInput.Key] = e.KeyInput.PressedDown;
             mKeysClicked[e.KeyInput.Key] = !e.KeyInput.PressedDown;
             break;
         }
         case EET_MOUSE_INPUT_EVENT: {
-            switch (e.MouseInput.Event) {
+            switch(e.MouseInput.Event) {
             case EMIE_LMOUSE_PRESSED_DOWN: {
                 mMouseState.mButtonsPressed[MouseState::Button::left] = true;
                 break;
@@ -89,12 +123,19 @@ namespace Input {
         return false;
     }
 
-    bool HWEventReceiver::isKeyPressed(irr::EKEY_CODE key) const {
+
+    bool HWEventReceiver::isKeyPressed(irr::EKEY_CODE key) {
         return mKeysDown[key];
     }
 
-    bool HWEventReceiver::isKeyReleased(irr::EKEY_CODE key) const {
+
+    bool HWEventReceiver::isKeyReleased(irr::EKEY_CODE key) {
         return mKeysClicked[key];
+    }
+
+
+    const MouseState& HWEventReceiver::getMouse() {
+        return mMouseState;
     }
 
 } // namespace Input

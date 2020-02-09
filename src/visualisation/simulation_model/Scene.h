@@ -1,8 +1,6 @@
 #ifndef SCENE_H_
 #define SCENE_H_
 
-#include "HighPrecisionSceneNode.h"
-
 #include <IMeshSceneNode.h>
 #include <ISceneManager.h>
 #include <chrono/core/ChCoordsys.h>
@@ -12,6 +10,12 @@
 
 
 class Scene {
+public:
+    struct HighPrecisionSceneNode {
+        irr::scene::ISceneNode* internalNode;
+        chrono::ChCoordsys<> transform_world;
+    };
+
 private:
     irr::scene::ISceneManager& mSceneMgr;
     std::unordered_map<std::string, HighPrecisionSceneNode> mSceneNodes;
@@ -27,6 +31,7 @@ private:
     void addAllMeshes();
     void addAllLights();
     void addMesh(const std::string& name, const std::string& filePath);
+    void addLight(const std::string& name, irr::scene::ILightSceneNode* light);
 };
 
 #endif // SCENE_H_

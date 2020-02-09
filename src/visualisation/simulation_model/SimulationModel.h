@@ -19,11 +19,8 @@ public:
     ~SimulationModel() = default;
 
     void initWith(irr::IrrlichtDevice& device);
-    void handleInput();
-    void update(float aspectRatio);
-
-private:
-    void offsetAllSceneNodesByCamPos();
+    void handleInput(double dt);
+    void update(float aspectRatio, double dt);
 };
 
 #endif // SIMULATIONMODEL_H_

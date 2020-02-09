@@ -6,16 +6,22 @@
 #include <ICameraSceneNode.h>
 #include <ISceneManager.h>
 
-#include <map>
+#include <vector>
 
 
 class CameraSystem {
+public:
+    struct CameraHandle {
+        std::string name;
+        const CameraBaseState* handle;
+    };
+
 private:
     static bool mInitialised;
     static float mAspectRatio;
     static irr::scene::ICameraSceneNode* mIrrlichtCam;
-    static std::map<std::string, CameraBaseState*> mCameraStateHandles;
-    static std::map<std::string, CameraBaseState*>::iterator mActiveCameraState;
+    static std::vector<CameraHandle> mCameraHandles;
+    static CameraHandle mActiveCamera;
 
 public:
     CameraSystem() = delete;
@@ -25,7 +31,8 @@ public:
     static void handleInput();
     static void setScreenAspectRatio(float aspectRatio);
     static void updateIrrlichtCamera();
-    static void registerHandleTo(CameraBaseState* cameraState, const std::string& name);
+    static void registerHandleTo(CameraBaseState& cameraState, const std::string& name);
+    static chrono::ChVector<> getActiveCameraPos();
 };
 
 #endif // CAMERASYSTEM_H_
