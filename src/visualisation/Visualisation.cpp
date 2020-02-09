@@ -80,12 +80,12 @@ void Visualisation::handleInput(double frameTime_s) {
     if(mHWInput.isKeyPressed(irr::KEY_ESCAPE))
         close();
 
-    mSimulationModel->handleInput(frameTime_s);
+    mSimulationModel->handleInput();
 }
 
 
 void Visualisation::update(double frameTime_s) {
-    mSimulationModel->update(frameTime_s, getAspectRatio());
+    mSimulationModel->update(getAspectRatio());
 }
 
 

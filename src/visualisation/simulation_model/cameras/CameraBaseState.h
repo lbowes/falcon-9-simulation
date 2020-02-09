@@ -10,6 +10,7 @@ struct CameraBaseState {
     float farValue;
     float verticalFOV;
     chrono::ChVector<> position;
+    chrono::ChVector<> up;
     chrono::ChVector<> lookAt;
 };
 

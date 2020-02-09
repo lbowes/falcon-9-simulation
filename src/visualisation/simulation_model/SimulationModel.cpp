@@ -1,20 +1,29 @@
 #include "SimulationModel.h"
+#include "cameras/CameraSystem.h"
 
 
 SimulationModel::SimulationModel(irr::scene::ISceneManager& sceneMgr) :
     mSceneMgrHandle(sceneMgr),
     mScene(sceneMgr) {
+
+    CameraSystem::init(sceneMgr);
+
+    testCam.registerWithCameraSystem();
 }
 
 
-void SimulationModel::handleInput(double frameTime_s) {
-    mCameraSystem.handleInput(frameTime_s);
+void SimulationModel::handleInput() {
+    CameraSystem::handleInput();
 }
 
 
-void SimulationModel::update(double frameTime_s, float aspectRatio) {
-    mCameraSystem.updateAspectRatio(aspectRatio);
+void SimulationModel::update(float aspectRatio) {
+    CameraSystem::setScreenAspectRatio(aspectRatio);
+    CameraSystem::updateIrrlichtCamera();
 
     mScene.updateAllNodeTransforms();
-    mScene.applyCameraPosOffset(chrono::ChVector<>() /* mCameraSystem.getActiveCameraPos() */);
+    // mScene.applyCameraPosOffset(chrono::ChVector<>(2.5, -1, 0));
+
+    // todo
+    mScene.applyCameraPosOffset(mCameraSystem.getActiveCameraPos());
 }

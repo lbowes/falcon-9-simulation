@@ -16,7 +16,7 @@ void Scene::updateAllNodeTransforms() {
     // will come from is not yet known.
 
     // Meshes
-    mSceneNodes["Merlin1D_0"].transform_world = chrono::ChCoordsys<>();
+    mSceneNodes["Merlin1D_0"].transform_world = chrono::ChCoordsys<>(chrono::ChVector<>(0, 0, 0));
 
     // Lights
     // todo
@@ -49,4 +49,5 @@ void Scene::addAllLights() {
 void Scene::addMesh(const std::string& name, const std::string& filePath) {
     irr::scene::IMesh* mesh = mSceneMgr.getMesh(filePath.c_str());
     mSceneNodes[name] = {mSceneMgr.addMeshSceneNode(mesh), chrono::ChCoordsys<>()};
+    mSceneNodes[name].internalNode->setMaterialFlag(irr::video::EMF_WIREFRAME, true);
 }

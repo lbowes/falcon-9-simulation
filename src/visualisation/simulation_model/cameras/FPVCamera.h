@@ -6,12 +6,17 @@
 
 class FPVCamera {
 private:
-    static const float mZoomSensitivity;
-    static const float mLookAroundSensitivity;
-    static const float mSpeedAdjustSensitivity;
-    static const float mMinMoveSpeed;
-    static const float mMaxMoveSpeed;
-    static const float mMoveFriction;
+    struct Sensitivity {
+        static const float mZoom;
+        static const float mLookAround;
+        static const float mAdjustSpeed;
+    } mSensitivity;
+
+    struct Movement {
+        static const float mMinSpeed;
+        static const float mMaxSpeed;
+        static const float mFriction;
+    } mMovement;
 
     CameraBaseState mCameraBase;
 
@@ -25,6 +30,7 @@ public:
     ~FPVCamera() = default;
 
     void handleInput();
+    void registerWithCameraSystem();
     void update();
 };
 

@@ -1,22 +1,31 @@
 #ifndef CAMERASYSTEM_H_
 #define CAMERASYSTEM_H_
 
+#include "CameraBaseState.h"
+
 #include <ICameraSceneNode.h>
 #include <ISceneManager.h>
+
+#include <map>
 
 
 class CameraSystem {
 private:
-    float mAspectRatio;
-    irr::scene::ICameraSceneNode* mInternalIrrlichtCam;
+    static bool mInitialised;
+    static float mAspectRatio;
+    static irr::scene::ICameraSceneNode* mIrrlichtCam;
+    static std::map<std::string, CameraBaseState*> mCameraStateHandles;
+    static std::map<std::string, CameraBaseState*>::iterator mActiveCameraState;
 
 public:
-    CameraSystem(irr::scene::ISceneManager& sceneMgrHandle);
+    CameraSystem() = delete;
     ~CameraSystem() = default;
 
-    void handleInput(float frameTime_s);
-    void updateAspectRatio(float aspectRatio);
-    void update();
+    static void init(irr::scene::ISceneManager& sceneMgrHandle);
+    static void handleInput();
+    static void setScreenAspectRatio(float aspectRatio);
+    static void updateIrrlichtCamera();
+    static void registerHandleTo(CameraBaseState* cameraState, const std::string& name);
 };
 
 #endif // CAMERASYSTEM_H_
