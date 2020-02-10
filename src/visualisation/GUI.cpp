@@ -108,12 +108,6 @@ void GUI::start() {
 
 
 void GUI::render() {
-    ImGui::Begin("Test window");
-    ImGui::Text("This is some text");
-    ImGui::End();
-
-    ImGui::ShowDemoWindow();
-
     mImGuiHandle->drawAll();
 }
 

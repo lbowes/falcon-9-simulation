@@ -25,7 +25,6 @@ void SimulationModel::update(float aspectRatio, double dt) {
 
     // todo
     mScene.applyCameraPosOffset(CameraSystem::getActiveCameraPos());
-
     // temp
     testCam.update(dt);
 }

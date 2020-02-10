@@ -2,10 +2,15 @@
 #include "../../input/HWEventReceiver.h"
 #include "CameraSystem.h"
 
+#include <IMGUI/imgui.h>
+#include <algorithm>
+#include <chrono/core/ChMathematics.h>
+#include <iostream>
+
 
 // Magic constants
 const float FPVCamera::Sensitivity::mZoom = 0.1f;
-const float FPVCamera::Sensitivity::mLookAround = 0.05f;
+const float FPVCamera::Sensitivity::mLookAround = 0.45f;
 const float FPVCamera::Sensitivity::mAdjustSpeed = 200.0f;
 const float FPVCamera::Movement::mMinSpeed = 6.4f;
 const float FPVCamera::Movement::mMaxSpeed = 1000.0f;
@@ -32,7 +37,7 @@ FPVCamera::FPVCamera() :
 void FPVCamera::handleInput(double dt) {
     handleMovementInput(dt);
     handleZoomInput(dt);
-    handleDirectionInput(dt);
+    handleDirectionInput();
 }
 
 
@@ -76,21 +81,37 @@ void FPVCamera::handleMovementInput(double dt) {
 }
 
 
-void FPVCamera::handleDirectionInput(double dt) {
+void FPVCamera::handleDirectionInput() {
     using namespace irr::core;
 
-    vector2di mouseDelta = Input::HWEventReceiver::getMouse().getDelta_scr();
+    vector2di mouseDelta = Input::MouseState::getDelta_scr();
 
     mYaw -= mouseDelta.X * Sensitivity::mLookAround;
     mPitch -= mouseDelta.Y * Sensitivity::mLookAround;
-    //clampPitchYaw();
+    clampPitchYaw();
 
-    //mLookAtDir_world = recalcLookAtVec(mPitch, mYaw);
-
-    //temp
-    //mCameraBase.lookAt = -mCameraBase.position;
+    mCameraBase.lookAt = recalcLookAtVec(mPitch, mYaw);
 }
 
 
 void FPVCamera::handleZoomInput(double dt) {
+}
+
+
+void FPVCamera::clampPitchYaw() {
+    mYaw -= 360.0f * floor(mYaw / 360.0f);
+    mPitch = std::clamp(mPitch, -89.9f, 89.9f);
+}
+
+
+chrono::ChVector<> FPVCamera::recalcLookAtVec(float pitch, float yaw) const {
+    using namespace chrono;
+
+    ChVector<> result;
+    result.x() = cos(CH_C_DEG_TO_RAD * pitch) * cos(CH_C_DEG_TO_RAD * yaw);
+    result.y() = sin(CH_C_DEG_TO_RAD * pitch);
+    result.z() = cos(CH_C_DEG_TO_RAD * pitch) * sin(CH_C_DEG_TO_RAD * yaw);
+    result.Normalize();
+
+    return result;
 }

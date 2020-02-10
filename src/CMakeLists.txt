@@ -120,9 +120,9 @@ if(MSVC)
     add_definitions("-D_CRT_SECURE_NO_DEPRECATE")  # avoids deprecation warnings
     add_definitions("-D_SCL_SECURE_NO_DEPRECATE")  # avoids deprecation warnings
     add_definitions( "-DNOMINMAX" )                # do not use MSVC's min/max macros
-    set(EXTRA_COMPILE_FLAGS "/wd4275")             # disable warnings triggered by Irrlicht
+    set(EXTRA_COMPILE_FLAGS "/wd4275 -std=c++17")             # disable warnings triggered by Irrlicht
 else()
-    set(EXTRA_COMPILE_FLAGS "")
+    set(EXTRA_COMPILE_FLAGS "-std=c++17")
 endif()
 
 #--------------------------------------------------------------

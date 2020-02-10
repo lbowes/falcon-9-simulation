@@ -2,6 +2,7 @@
 #include "../../input/HWEventReceiver.h"
 
 #include <chrono_irrlicht/ChIrrTools.h>
+#include <iostream>
 
 
 bool CameraSystem::mInitialised = false;

@@ -34,8 +34,10 @@ public:
 
 private:
     void handleMovementInput(double dt);
-    void handleDirectionInput(double dt);
+    void handleDirectionInput();
     void handleZoomInput(double dt);
+    void clampPitchYaw();
+    chrono::ChVector<> recalcLookAtVec(float pitch, float yaw) const;
 };
 
 #endif // FPVCAMERA_H_

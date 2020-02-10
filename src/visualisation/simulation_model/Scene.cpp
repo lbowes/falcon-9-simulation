@@ -60,6 +60,7 @@ void Scene::addMesh(const std::string& name, const std::string& filePath) {
     irr::scene::IMesh* mesh = mSceneMgr.getMesh(filePath.c_str());
     mSceneNodes[name] = {mSceneMgr.addMeshSceneNode(mesh), chrono::ChCoordsys<>()};
     // mSceneNodes[name].internalNode->setMaterialFlag(irr::video::EMF_WIREFRAME, true);
+    mSceneNodes[name].internalNode->setMaterialFlag(irr::video::EMF_BACK_FACE_CULLING, false);
 }
 
 

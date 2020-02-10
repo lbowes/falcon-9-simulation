@@ -81,11 +81,15 @@ void Visualisation::handleInput(double frameTime_s) {
         close();
 
     mSimulationModel->handleInput(frameTime_s);
+    Input::MouseState::setPosition(irr::core::vector2di(400, 400));
+    mDevice->getCursorControl()->setPosition(irr::core::vector2di(400, 400));
 }
 
 
 void Visualisation::update(double frameTime_s) {
     mSimulationModel->update(getAspectRatio(), frameTime_s);
+
+    Input::HWEventReceiver::update();
 }
 
 
