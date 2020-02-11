@@ -22,9 +22,8 @@ namespace Input {
         for(bool& b : sButtonsPressed)
             b = false;
 
-        //sDelta_scr = sPosition_scr - sLastPosition_scr;
-        //sDelta_scr = irr::core::vector2di(0, 0);
-        //sLastPosition_scr = sPosition_scr;
+        sDelta_scr = sPosition_scr - sLastPosition_scr;
+        sLastPosition_scr = sPosition_scr;
     }
 
 
@@ -109,9 +108,7 @@ namespace Input {
                 break;
             }
             case EMIE_MOUSE_MOVED: {
-                MouseState::sLastPosition_scr = MouseState::sPosition_scr;
                 MouseState::sPosition_scr = irr::core::vector2di(e.MouseInput.X, e.MouseInput.Y);
-                MouseState::sDelta_scr = MouseState::sPosition_scr - MouseState::sLastPosition_scr;
                 break;
             }
             case EMIE_MOUSE_WHEEL: {

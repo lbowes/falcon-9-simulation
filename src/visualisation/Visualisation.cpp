@@ -29,6 +29,7 @@ Visualisation::~Visualisation() {
 void Visualisation::initDevice() {
     irr::SIrrlichtCreationParameters params;
     params.DriverType = irr::video::EDT_OPENGL;
+    params.AntiAlias = true;
     params.WindowSize = getMonitorResolution() / 2;
     params.Bits = 16;
     params.Fullscreen = false;
@@ -81,8 +82,11 @@ void Visualisation::handleInput(double frameTime_s) {
         close();
 
     mSimulationModel->handleInput(frameTime_s);
-    Input::MouseState::setPosition(irr::core::vector2di(400, 400));
-    mDevice->getCursorControl()->setPosition(irr::core::vector2di(400, 400));
+    //Input::MouseState::setPosition(irr::core::vector2di(400, 400));
+    //mDevice->getCursorControl()->setPosition(irr::core::vector2di(400, 400));
+    ImGui::Begin("device info");
+    ImGui::Text("window focused: %i", mDevice->isWindowFocused());
+    ImGui::End();
 }
 
 

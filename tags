@@ -732,7 +732,7 @@ mIrrlichtCam	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^irr::
 mIrrlichtCam	src/visualisation/simulation_model/cameras/CameraSystem.h	/^    static irr::scene::ICameraSceneNode* mIrrlichtCam;$/;"	m	class:CameraSystem	typeref:typename:irr::scene::ICameraSceneNode *
 mKeysClicked	src/main_old.cpp	/^        bool mKeysClicked[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]	file:
 mKeysDown	src/main_old.cpp	/^        bool mKeysDown[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]	file:
-mLookAround	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^const float FPVCamera::Sensitivity::mLookAround = 0.45f;$/;"	m	class:FPVCamera::Sensitivity	typeref:typename:const float
+mLookAround	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^const float FPVCamera::Sensitivity::mLookAround = 0.05f;$/;"	m	class:FPVCamera::Sensitivity	typeref:typename:const float
 mLookAround	src/visualisation/simulation_model/cameras/FPVCamera.h	/^        static const float mLookAround;$/;"	m	struct:FPVCamera::Sensitivity	typeref:typename:const float
 mMaxSpeed	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^const float FPVCamera::Movement::mMaxSpeed = 1000.0f;$/;"	m	class:FPVCamera::Movement	typeref:typename:const float
 mMaxSpeed	src/visualisation/simulation_model/cameras/FPVCamera.h	/^        static const float mMaxSpeed;$/;"	m	struct:FPVCamera::Movement	typeref:typename:const float
@@ -797,7 +797,6 @@ rebuild_cache	build/visualisation/Makefile	/^rebuild_cache:$/;"	t
 rebuild_cache/fast	build/Makefile	/^rebuild_cache\/fast: rebuild_cache$/;"	t
 rebuild_cache/fast	build/simulation/Makefile	/^rebuild_cache\/fast: rebuild_cache$/;"	t
 rebuild_cache/fast	build/visualisation/Makefile	/^rebuild_cache\/fast: rebuild_cache$/;"	t
-recalcLookAtVec	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^chrono::ChVector<> FPVCamera::recalcLookAtVec(float pitch, float yaw) const {$/;"	f	class:FPVCamera	typeref:typename:chrono::ChVector<>
 registerHandleTo	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^void CameraSystem::registerHandleTo(CameraBaseState& cameraState, const std::string& name) {$/;"	f	class:CameraSystem	typeref:typename:void
 removeReceiver	src/main_old.cpp	/^        void removeReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void	file:
 removeReceiver	src/visualisation/input/MasterEventReceiver.cpp	/^    void MasterEventReceiver::removeReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void
@@ -839,6 +838,8 @@ simulation/Simulation.o	build/Makefile	/^simulation\/Simulation.o: simulation\/S
 simulation/Simulation.s	build/Makefile	/^simulation\/Simulation.s: simulation\/Simulation.cpp.s$/;"	t
 someFunction	src/testSubdir/someCpp.cpp	/^void someFunction() {$/;"	f	typeref:typename:void
 start	src/visualisation/GUI.cpp	/^void GUI::start() {$/;"	f	class:GUI	typeref:typename:void
+syncLookAtWithPitchYaw	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::syncLookAtWithPitchYaw() {$/;"	f	class:FPVCamera	typeref:typename:void
+syncPitchYawWithLookAt	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::syncPitchYawWithLookAt() {$/;"	f	class:FPVCamera	typeref:typename:void
 testCam	src/visualisation/simulation_model/SimulationModel.h	/^    FPVCamera testCam;$/;"	m	class:SimulationModel	typeref:typename:FPVCamera
 toggleCameraFocus	src/main_old.cpp	/^void toggleCameraFocus() {$/;"	f	typeref:typename:void
 transform_world	src/visualisation/simulation_model/Scene.h	/^        chrono::ChCoordsys<> transform_world;$/;"	m	struct:Scene::HighPrecisionSceneNode	typeref:typename:chrono::ChCoordsys<>
