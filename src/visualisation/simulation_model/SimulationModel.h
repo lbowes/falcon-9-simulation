@@ -10,7 +10,7 @@
 
 class SimulationModel {
 private:
-    irr::scene::ISceneManager& mSceneMgrHandle;
+    bool mCamerasHaveFocus;
     Scene mScene;
     FPVCamera testCam;
 
@@ -18,7 +18,6 @@ public:
     SimulationModel(irr::scene::ISceneManager& sceneMgr);
     ~SimulationModel() = default;
 
-    void initWith(irr::IrrlichtDevice& device);
     void handleInput(double dt);
     void update(float aspectRatio, double dt);
 };

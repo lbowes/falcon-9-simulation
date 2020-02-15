@@ -16,7 +16,7 @@ public:
 
     void initWith(irr::IrrlichtDevice& device);
     void start();
-    void render();
+    void render(irr::video::ITexture* renderTarget);
     IrrIMGUI::CIMGUIEventReceiver& getEventReceiver();
 
 private:

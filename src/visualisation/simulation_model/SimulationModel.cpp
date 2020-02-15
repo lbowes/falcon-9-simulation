@@ -1,9 +1,11 @@
 #include "SimulationModel.h"
 #include "cameras/CameraSystem.h"
 
+#include "../input/HWEventReceiver.h"
+
 
 SimulationModel::SimulationModel(irr::scene::ISceneManager& sceneMgr) :
-    mSceneMgrHandle(sceneMgr),
+    mCamerasHaveFocus(false),
     mScene(sceneMgr) {
 
     CameraSystem::init(sceneMgr);
@@ -11,7 +13,12 @@ SimulationModel::SimulationModel(irr::scene::ISceneManager& sceneMgr) :
 
 
 void SimulationModel::handleInput(double dt) {
-    CameraSystem::handleInput();
+    if(Input::HWEventReceiver::isKeyPressed(irr::KEY_KEY_C))
+
+
+        if(mCamerasHaveFocus)
+            CameraSystem::handleInput();
+
     // temp
     testCam.handleInput(dt);
 }
@@ -24,7 +31,7 @@ void SimulationModel::update(float aspectRatio, double dt) {
     mScene.updateAllNodeTransforms();
 
     // todo
-    mScene.applyCameraPosOffset(CameraSystem::getActiveCameraPos());
+    mScene.offsetAllNodePositionsBy(-CameraSystem::getActiveCameraPos());
     // temp
     testCam.update(dt);
 }

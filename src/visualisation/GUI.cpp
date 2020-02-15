@@ -107,7 +107,12 @@ void GUI::start() {
 }
 
 
-void GUI::render() {
+void GUI::render(irr::video::ITexture* renderTarget) {
+    ImGui::Begin("test drawing image");
+    IrrIMGUI::IGUITexture* guiTexture = mImGuiHandle->createTexture(renderTarget);
+    ImGui::Image(guiTexture, ImVec2(800.0f, 800.0f));
+    ImGui::End();
+
     mImGuiHandle->drawAll();
 }
 

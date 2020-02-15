@@ -28,7 +28,7 @@ FPVCamera::FPVCamera() :
     mCameraBase.verticalFOV = 44.7f;
     mCameraBase.position = {0.0, 0.5, 3.5};
     mCameraBase.up = {0, 1, 0};
-    mCameraBase.lookAt = {0.6, 0, -1};
+    mCameraBase.lookAt = {0, 0, -1};
 
     syncPitchYawWithLookAt();
 

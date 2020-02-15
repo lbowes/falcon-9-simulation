@@ -6,6 +6,7 @@
 #include <IEventReceiver.h>
 #include <irrArray.h>
 
+
 namespace Input {
 
     class MasterEventReceiver : public irr::IEventReceiver {

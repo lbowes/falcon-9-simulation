@@ -11,21 +11,21 @@
 
 class Scene {
 public:
-    struct HighPrecisionSceneNode {
-        irr::scene::ISceneNode* internalNode;
+    struct HighPrecisionNode {
+        irr::scene::ISceneNode* node;
         chrono::ChCoordsys<> transform_world;
     };
 
 private:
     irr::scene::ISceneManager& mSceneMgr;
-    std::unordered_map<std::string, HighPrecisionSceneNode> mSceneNodes;
+    std::unordered_map<std::string, HighPrecisionNode> mSceneNodes;
 
 public:
     Scene(irr::scene::ISceneManager& sceneMgr);
     ~Scene() = default;
 
     void updateAllNodeTransforms();
-    void applyCameraPosOffset(chrono::ChVector<> camPos);
+    void offsetAllNodePositionsBy(chrono::ChVector<> offset);
 
 private:
     void addAllMeshes();

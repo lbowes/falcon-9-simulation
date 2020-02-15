@@ -17,11 +17,11 @@ public:
     };
 
 private:
-    static bool mInitialised;
-    static float mAspectRatio;
-    static irr::scene::ICameraSceneNode* mIrrlichtCam;
-    static std::vector<CameraHandle> mCameraHandles;
-    static CameraHandle mActiveCamera;
+    static bool sInitialised;
+    static float sAspectRatio;
+    static irr::scene::ICameraSceneNode* sIrrlichtCam;
+    static std::vector<CameraHandle> sCameraHandles;
+    static CameraHandle sActiveCamera;
 
 public:
     CameraSystem() = delete;

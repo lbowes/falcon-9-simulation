@@ -5,7 +5,6 @@
 #include "input/MasterEventReceiver.h"
 #include "simulation_model/SimulationModel.h"
 
-#include <ITriangleSelector.h>
 #include <chrono_irrlicht/ChIrrWizard.h>
 #include <memory>
 
@@ -20,6 +19,8 @@ private:
     Input::MasterEventReceiver mEventReceiver;
     std::unique_ptr<GUI> mGUI;
     std::unique_ptr<SimulationModel> mSimulationModel;
+
+    irr::video::ITexture* rt = 0;
 
 public:
     Visualisation();
@@ -41,3 +42,4 @@ private:
 };
 
 #endif // VISUALISATION_H_
+

@@ -1,6 +1,7 @@
 #include "Visualisation.h"
 
 #include <IMGUI/imgui.h>
+#include <IVideoDriver.h>
 #include <iostream>
 
 
@@ -18,6 +19,10 @@ Visualisation::Visualisation() :
 
     mEventReceiver.addReceiver(&mHWInput);
     mEventReceiver.addReceiver(&mGUI->getEventReceiver());
+
+    // temp
+    rt = mVidDriver->addRenderTargetTexture(irr::core::dimension2d<irr::u32>(800, 800), "RTT1");
+    // temp
 }
 
 
@@ -69,6 +74,7 @@ void Visualisation::run() {
         if(mDevice->isWindowFocused())
             handleInput(frameTime_s);
 
+        ImGui::ShowDemoWindow();
         update(frameTime_s);
         render();
 
@@ -78,15 +84,12 @@ void Visualisation::run() {
 
 
 void Visualisation::handleInput(double frameTime_s) {
-    if(mHWInput.isKeyPressed(irr::KEY_ESCAPE))
+    using namespace Input;
+
+    if(HWEventReceiver::isKeyPressed(irr::KEY_ESCAPE))
         close();
 
     mSimulationModel->handleInput(frameTime_s);
-    //Input::MouseState::setPosition(irr::core::vector2di(400, 400));
-    //mDevice->getCursorControl()->setPosition(irr::core::vector2di(400, 400));
-    ImGui::Begin("device info");
-    ImGui::Text("window focused: %i", mDevice->isWindowFocused());
-    ImGui::End();
 }
 
 
@@ -104,10 +107,16 @@ float Visualisation::getAspectRatio() {
 
 
 void Visualisation::render() {
-    mVidDriver->beginScene(true, true, irr::video::SColor(255, 0, 0, 0));
+    using namespace irr;
 
+    mVidDriver->beginScene(true, true, video::SColor(255, 0, 0, 0));
+
+    // Render everything to the render target
+    mVidDriver->setRenderTarget(rt, true, true, video::SColor(0, 0, 0, 255));
     mSceneManager->drawAll();
-    mGUI->render();
+
+    mVidDriver->setRenderTarget(0, true, true, 0);
+    mGUI->render(rt);
 
     mVidDriver->endScene();
 }
