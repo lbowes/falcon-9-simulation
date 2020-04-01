@@ -14,7 +14,8 @@ Visualisation::Visualisation() :
     mVidDriver = mDevice->getVideoDriver();
     mSceneManager = mDevice->getSceneManager();
 
-    mGUI = std::make_unique<GUI>(*mDevice);
+    const irr::core::dimension2du monitorRes = getMonitorResolution();
+    mGUI = std::make_unique<GUI>(*mDevice, monitorRes);
     mSimulationModel = std::make_unique<SimulationModel>(*mDevice->getSceneManager());
 
     mEventReceiver.addReceiver(&mHWInput);

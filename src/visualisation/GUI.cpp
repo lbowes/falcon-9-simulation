@@ -2,19 +2,19 @@
 #include <iostream>
 
 
-GUI::GUI(irr::IrrlichtDevice& device) :
+GUI::GUI(irr::IrrlichtDevice& device, irr::core::dimension2du monitorResolution) :
     mSimView({.texture = nullptr,
               .renderTarget = nullptr,
-              .dimensions = irr::core::dimension2du(1, 1),
-              .lastDimensions = irr::core::dimension2du(1, 1)}),
+              .dimensions = irr::core::dimension2du(100, 100)}),
     mVidDriverHandle(*device.getVideoDriver()),
     mImGuiHandle(nullptr) {
 
     initImGui(device);
 
-    mSimView.renderTarget = mVidDriverHandle.addRenderTargetTexture(irr::core::dimension2du(1, 1));
-
+    const irr::core::dimension2du renderTargetDims = monitorResolution.getOptimalSize();
+    mSimView.renderTarget = mVidDriverHandle.addRenderTargetTexture(renderTargetDims);
     bindSimViewToRenderTarget();
+
     setImGuiStyle();
 }
 
@@ -129,13 +129,8 @@ void GUI::bindSimViewToRenderTarget() {
 void GUI::render() {
     ImGui::Begin("Simulation Viewport");
 
-    mSimView.lastDimensions = mSimView.dimensions;
     ImVec2 winDims = ImGui::GetContentRegionAvail();
     mSimView.dimensions = {static_cast<unsigned int>(winDims.x), static_cast<unsigned int>(winDims.y)};
-
-    if(simViewWinHasChangedSize())
-        handleSimViewWindowResize();
-    //bindSimViewToRenderTarget();
 
     ImGui::Image(mSimView.texture, winDims);
     ImGui::End();
@@ -151,23 +146,6 @@ IrrIMGUI::CIMGUIEventReceiver& GUI::getEventReceiver() {
 
 float GUI::getSimViewWindowAspectRatio() const {
     return static_cast<float>(mSimView.dimensions.Width) / static_cast<float>(mSimView.dimensions.Height);
-}
-
-
-bool GUI::simViewWinHasChangedSize() const {
-    return mSimView.lastDimensions != mSimView.dimensions;
-}
-
-
-void GUI::handleSimViewWindowResize() {
-    using namespace irr::core;
-
-    bool nonZeroArea = static_cast<int>(mSimView.dimensions.getArea()) > 0;
-    if(nonZeroArea) {
-        const dimension2du newDims = mSimView.dimensions.getOptimalSize();
-        mSimView.renderTarget = mVidDriverHandle.addRenderTargetTexture(newDims, "SimulationViewport");
-        bindSimViewToRenderTarget();
-    }
 }
 
 

@@ -13,7 +13,6 @@ private:
         IrrIMGUI::IGUITexture* texture;
         irr::video::ITexture* renderTarget;
         irr::core::dimension2du dimensions;
-        irr::core::dimension2du lastDimensions;
     };
     SimulationView mSimView;
 
@@ -22,7 +21,7 @@ private:
     IrrIMGUI::IIMGUIHandle* mImGuiHandle;
 
 public:
-    GUI(irr::IrrlichtDevice& device);
+    GUI(irr::IrrlichtDevice& device, irr::core::dimension2du monitorResolution);
     ~GUI();
 
     void initWith(irr::IrrlichtDevice& device);
