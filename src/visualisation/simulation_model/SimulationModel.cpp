@@ -13,11 +13,11 @@ SimulationModel::SimulationModel(irr::scene::ISceneManager& sceneMgr) :
 
 
 void SimulationModel::handleInput(double dt) {
-    if(Input::HWEventReceiver::isKeyPressed(irr::KEY_KEY_C))
+    //if(Input::HWEventReceiver::isKeyPressed(irr::KEY_KEY_C))
 
 
-        if(mCamerasHaveFocus)
-            CameraSystem::handleInput();
+    if(mCamerasHaveFocus)
+        CameraSystem::handleInput();
 
     // temp
     testCam.handleInput(dt);
@@ -25,7 +25,7 @@ void SimulationModel::handleInput(double dt) {
 
 
 void SimulationModel::update(float aspectRatio, double dt) {
-    CameraSystem::setScreenAspectRatio(aspectRatio);
+    CameraSystem::setAspectRatio(aspectRatio);
     CameraSystem::updateIrrlichtCamera();
 
     mScene.updateAllNodeTransforms();

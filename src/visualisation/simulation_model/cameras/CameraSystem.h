@@ -29,7 +29,7 @@ public:
 
     static void init(irr::scene::ISceneManager& sceneMgrHandle);
     static void handleInput();
-    static void setScreenAspectRatio(float aspectRatio);
+    static void setAspectRatio(float aspectRatio);
     static void updateIrrlichtCamera();
     static void registerHandleTo(CameraBaseState& cameraState, const std::string& name);
     static chrono::ChVector<> getActiveCameraPos();

@@ -54,9 +54,9 @@ CMAKE_CL_SHOWINCLUDES_PREFIX	build/CMakeFiles/3.16.3/CMakeCCompiler.cmake	/^  se
 CMAKE_CL_SHOWINCLUDES_PREFIX	build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake	/^  set(CMAKE_CL_SHOWINCLUDES_PREFIX "${CMAKE_CXX_CL_SHOWINCLUDES_PREFIX}")$/;"	v
 CMAKE_CL_SHOWINCLUDES_PREFIX	build/CMakeFiles/3.16.4/CMakeCCompiler.cmake	/^  set(CMAKE_CL_SHOWINCLUDES_PREFIX "${CMAKE_C_CL_SHOWINCLUDES_PREFIX}")$/;"	v
 CMAKE_CL_SHOWINCLUDES_PREFIX	build/CMakeFiles/3.16.4/CMakeCXXCompiler.cmake	/^  set(CMAKE_CL_SHOWINCLUDES_PREFIX "${CMAKE_CXX_CL_SHOWINCLUDES_PREFIX}")$/;"	v
-CMAKE_COMMAND	build/Makefile	/^CMAKE_COMMAND = \/snap\/cmake\/252\/bin\/cmake$/;"	m
-CMAKE_COMMAND	build/simulation/Makefile	/^CMAKE_COMMAND = \/snap\/cmake\/252\/bin\/cmake$/;"	m
-CMAKE_COMMAND	build/visualisation/Makefile	/^CMAKE_COMMAND = \/snap\/cmake\/252\/bin\/cmake$/;"	m
+CMAKE_COMMAND	build/Makefile	/^CMAKE_COMMAND = \/usr\/local\/bin\/cmake$/;"	m
+CMAKE_COMMAND	build/simulation/Makefile	/^CMAKE_COMMAND = \/usr\/local\/bin\/cmake$/;"	m
+CMAKE_COMMAND	build/visualisation/Makefile	/^CMAKE_COMMAND = \/usr\/local\/bin\/cmake$/;"	m
 CMAKE_COMPILER_IS_CYGWIN	build/CMakeFiles/3.16.3/CMakeCCompiler.cmake	/^set(CMAKE_COMPILER_IS_CYGWIN )$/;"	v
 CMAKE_COMPILER_IS_CYGWIN	build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake	/^set(CMAKE_COMPILER_IS_CYGWIN )$/;"	v
 CMAKE_COMPILER_IS_CYGWIN	build/CMakeFiles/3.16.4/CMakeCCompiler.cmake	/^set(CMAKE_COMPILER_IS_CYGWIN )$/;"	v
@@ -388,10 +388,9 @@ DEC	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define DEC(/
 DEC	build/CMakeFiles/3.16.4/CompilerIdC/CMakeCCompilerId.c	/^#define DEC(/;"	d	file:
 DEC	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define DEC(/;"	d	file:
 Dependencies	README.md	/^## Dependencies$/;"	s
-DirectoryOfThisScript	.ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
-DockId	build/imgui.ini	/^DockId=0x00000002,0$/;"	k	section:Window
-DockId	build/imgui.ini	/^DockId=0x00000003,0$/;"	k	section:Window
-DockNode    ID	build/imgui.ini	/^DockNode    ID=0x00000001 Pos=491,97 Size=471,632 Split=X$/;"	k	section:Docking
+DockId	build/imgui.ini	/^DockId=0x00000001,0$/;"	k	section:Window
+DockId	build/imgui.ini	/^DockId=0x00000006,0$/;"	k	section:Window
+DockSpace     ID	build/imgui.ini	/^DockSpace     ID=0x3BC79352 Pos=0,19 Size=2507,1366 Split=X$/;"	k	section:Docking
 Docking	build/imgui.ini	/^[Docking][Data]$/;"	s
 EQUALS	build/Makefile	/^EQUALS = =$/;"	m
 EQUALS	build/simulation/Makefile	/^EQUALS = =$/;"	m
@@ -407,7 +406,6 @@ Falcon9Simulation	build/Makefile	/^Falcon9Simulation: cmake_check_build_system$/
 Falcon9Simulation	src/CMakeLists.txt	/^add_executable(Falcon9Simulation main.cpp)$/;"	t
 Falcon9Simulation	src/CMakeLists.txt	/^project(Falcon9Simulation)$/;"	p
 Falcon9Simulation/fast	build/Makefile	/^Falcon9Simulation\/fast:$/;"	t
-FlagsForFile	.ycm_extra_conf.py	/^def FlagsForFile( filename ):$/;"	f
 GUI	src/visualisation/GUI.cpp	/^GUI::GUI(irr::IrrlichtDevice& device) :$/;"	f	class:GUI
 GUI	src/visualisation/GUI.h	/^class GUI {$/;"	c
 GUI_H_	src/visualisation/GUI.h	/^#define GUI_H_$/;"	d
@@ -435,7 +433,6 @@ MINGW	build/CMakeFiles/3.16.3/CMakeCCompiler.cmake	/^  set(MINGW 1)$/;"	v
 MINGW	build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake	/^  set(MINGW 1)$/;"	v
 MINGW	build/CMakeFiles/3.16.4/CMakeCCompiler.cmake	/^  set(MINGW 1)$/;"	v
 MINGW	build/CMakeFiles/3.16.4/CMakeCXXCompiler.cmake	/^  set(MINGW 1)$/;"	v
-MakeRelativePathsInFlagsAbsolute	.ycm_extra_conf.py	/^def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):$/;"	f
 MasterEventReceiver	src/main_old.cpp	/^    class MasterEventReceiver : public irr::IEventReceiver {$/;"	c	namespace:Input	file:
 MasterEventReceiver	src/visualisation/input/MasterEventReceiver.h	/^    class MasterEventReceiver : public irr::IEventReceiver {$/;"	c	namespace:Input
 MouseState	src/main_old.cpp	/^        MouseState() :$/;"	f	class:Input::MouseState	file:
@@ -462,17 +459,20 @@ PLATFORM_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  de
 PLATFORM_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define PLATFORM_ID$/;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID /;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID$/;"	d	file:
-Pos	build/imgui.ini	/^Pos=102,207$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=1976,463$/;"	k	section:Window
+Pos	build/imgui.ini	/^Pos=2291,19$/;"	k	section:Window
+Pos	build/imgui.ini	/^Pos=288,701$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=491,97$/;"	k	section:Window
+Pos	build/imgui.ini	/^Pos=599,103$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=60,14$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=60,60$/;"	k	section:Window
-Pos	build/imgui.ini	/^Pos=610,97$/;"	k	section:Window
+Pos	build/imgui.ini	/^Pos=600,30$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=66,166$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=926,309$/;"	k	section:Window
-RM	build/Makefile	/^RM = \/snap\/cmake\/252\/bin\/cmake -E remove -f$/;"	m
-RM	build/simulation/Makefile	/^RM = \/snap\/cmake\/252\/bin\/cmake -E remove -f$/;"	m
-RM	build/visualisation/Makefile	/^RM = \/snap\/cmake\/252\/bin\/cmake -E remove -f$/;"	m
+Pos	build/imgui.ini	/^Pos=975,537$/;"	k	section:Window
+RM	build/Makefile	/^RM = \/usr\/local\/bin\/cmake -E remove -f$/;"	m
+RM	build/simulation/Makefile	/^RM = \/usr\/local\/bin\/cmake -E remove -f$/;"	m
+RM	build/visualisation/Makefile	/^RM = \/usr\/local\/bin\/cmake -E remove -f$/;"	m
 SCENE_H_	src/visualisation/simulation_model/Scene.h	/^#define SCENE_H_$/;"	d
 SHELL	build/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SHELL	build/simulation/Makefile	/^SHELL = \/bin\/sh$/;"	m
@@ -514,13 +514,16 @@ SessionLoad	Session.vim	/^let SessionLoad = 1$/;"	v
 Simulation	src/simulation/Simulation.h	/^class Simulation {$/;"	c
 SimulationModel	src/visualisation/simulation_model/SimulationModel.cpp	/^SimulationModel::SimulationModel(irr::scene::ISceneManager& sceneMgr) :$/;"	f	class:SimulationModel
 SimulationModel	src/visualisation/simulation_model/SimulationModel.h	/^class SimulationModel {$/;"	c
+SimulationView	src/visualisation/GUI.h	/^    struct SimulationView {$/;"	s	class:GUI
+Size	build/imgui.ini	/^Size=1164,534$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=117,632$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=1213,868$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=1301,938$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=159,62$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=216,1366$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=2507,1385$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=32,35$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=332,146$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=351,243$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=352,632$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=400,400$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=403,222$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=466,311$/;"	k	section:Window
@@ -536,12 +539,16 @@ Window	build/imgui.ini	/^[Window][Dear ImGui Demo]$/;"	s
 Window	build/imgui.ini	/^[Window][Debug##Default]$/;"	s
 Window	build/imgui.ini	/^[Window][DockSpace Demo]$/;"	s
 Window	build/imgui.ini	/^[Window][Example: Custom rendering]$/;"	s
+Window	build/imgui.ini	/^[Window][Main dockspace]$/;"	s
 Window	build/imgui.ini	/^[Window][Mouse debug info]$/;"	s
+Window	build/imgui.ini	/^[Window][Simulation Viewport]$/;"	s
 Window	build/imgui.ini	/^[Window][Test window]$/;"	s
 Window	build/imgui.ini	/^[Window][This is a test window]$/;"	s
 Window	build/imgui.ini	/^[Window][camera info]$/;"	s
 Window	build/imgui.ini	/^[Window][device info]$/;"	s
+Window	build/imgui.ini	/^[Window][test drawing image]$/;"	s
 Window	build/imgui.ini	/^[Window][test]$/;"	s
+Window	build/imgui.ini	/^[Window][this is a test window]$/;"	s
 addAllLights	src/visualisation/simulation_model/Scene.cpp	/^void Scene::addAllLights() {$/;"	f	class:Scene	typeref:typename:void
 addAllMeshes	src/visualisation/simulation_model/Scene.cpp	/^void Scene::addAllMeshes() {$/;"	f	class:Scene	typeref:typename:void
 addEngineMesh	src/main_old.cpp	/^void addEngineMesh() {$/;"	f	typeref:typename:void
@@ -553,6 +560,7 @@ all	build/Makefile	/^all: cmake_check_build_system$/;"	t
 all	build/simulation/Makefile	/^all: cmake_check_build_system$/;"	t
 all	build/visualisation/Makefile	/^all: cmake_check_build_system$/;"	t
 aspectRatio	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^    float aspectRatio;$/;"	m	struct:CameraBaseState	typeref:typename:float
+bindSimViewToRenderTarget	src/visualisation/GUI.cpp	/^void GUI::bindSimViewToRenderTarget() {$/;"	f	class:GUI	typeref:typename:void
 clampPitchYaw	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::clampPitchYaw() {$/;"	f	class:FPVCamera	typeref:typename:void
 clean	build/Makefile	/^clean:$/;"	t
 clean	build/simulation/Makefile	/^clean:$/;"	t
@@ -578,16 +586,15 @@ command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DA
 command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:7
 command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:8
 command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:9
-compilation_database_folder	.ycm_extra_conf.py	/^compilation_database_folder = os.path.join(DirectoryOfThisScript(), 'build')$/;"	v
 const	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define const$/;"	d	file:
 const	build/CMakeFiles/3.16.4/CompilerIdC/CMakeCCompilerId.c	/^# define const$/;"	d	file:
-database	.ycm_extra_conf.py	/^  database = ycm_core.CompilationDatabase( compilation_database_folder )$/;"	v
 default_target	build/Makefile	/^default_target: all$/;"	t
 default_target	build/simulation/Makefile	/^default_target: all$/;"	t
 default_target	build/visualisation/Makefile	/^default_target: all$/;"	t
 depend	build/Makefile	/^depend:$/;"	t
 depend	build/simulation/Makefile	/^depend:$/;"	t
 depend	build/visualisation/Makefile	/^depend:$/;"	t
+dimensions	src/visualisation/GUI.h	/^        irr::core::dimension2du dimensions;$/;"	m	struct:GUI::SimulationView	typeref:typename:irr::core::dimension2du
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:0
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:1
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:2
@@ -617,12 +624,10 @@ file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/p
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/s/;"	s	object:7
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/s/;"	s	object:8
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/s/;"	s	object:9
-flags	.ycm_extra_conf.py	/^flags = [$/;"	v
 g:this_obsession	Session.vim	/^let g:this_obsession = v:this_session$/;"	v
 g:this_session	Session.vim	/^let g:this_session = v:this_session$/;"	v
 getActiveCameraPos	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^chrono::ChVector<> CameraSystem::getActiveCameraPos() {$/;"	f	class:CameraSystem	typeref:typename:chrono::ChVector<>
 getAspectRatio	src/main_old.cpp	/^float getAspectRatio() {$/;"	f	typeref:typename:float
-getAspectRatio	src/visualisation/Visualisation.cpp	/^float Visualisation::getAspectRatio() {$/;"	f	class:Visualisation	typeref:typename:float
 getDelta_scr	src/main_old.cpp	/^        const irr::core::vector2di& getDelta_scr() const {$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &	file:
 getDelta_scr	src/visualisation/input/HWEventReceiver.cpp	/^    const irr::core::vector2di& MouseState::getDelta_scr() {$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &
 getEventReceiver	src/visualisation/GUI.cpp	/^IrrIMGUI::CIMGUIEventReceiver& GUI::getEventReceiver() {$/;"	f	class:GUI	typeref:typename:IrrIMGUI::CIMGUIEventReceiver &
@@ -634,6 +639,8 @@ getPosition_scr	src/main_old.cpp	/^        const irr::core::vector2di& getPositi
 getPosition_scr	src/visualisation/input/HWEventReceiver.cpp	/^    const irr::core::vector2di& MouseState::getPosition_scr() {$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &
 getScroll	src/main_old.cpp	/^        float getScroll() const {$/;"	f	class:Input::MouseState	typeref:typename:float	file:
 getScroll	src/visualisation/input/HWEventReceiver.cpp	/^    float MouseState::getScroll() {$/;"	f	class:Input::MouseState	typeref:typename:float
+getSimViewRenderTarget	src/visualisation/GUI.cpp	/^irr::video::ITexture& GUI::getSimViewRenderTarget() const {$/;"	f	class:GUI	typeref:typename:irr::video::ITexture &
+getSimViewWindowAspectRatio	src/visualisation/GUI.cpp	/^float GUI::getSimViewWindowAspectRatio() const {$/;"	f	class:GUI	typeref:typename:float
 handle	src/visualisation/simulation_model/cameras/CameraSystem.h	/^        const CameraBaseState* handle;$/;"	m	struct:CameraSystem::CameraHandle	typeref:typename:const CameraBaseState *
 handleDirectionInput	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::handleDirectionInput() {$/;"	f	class:FPVCamera	typeref:typename:void
 handleInput	src/main_old.cpp	/^void handleInput(double frameTime_s) {$/;"	f	typeref:typename:void
@@ -642,6 +649,7 @@ handleInput	src/visualisation/simulation_model/SimulationModel.cpp	/^void Simula
 handleInput	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^void CameraSystem::handleInput() {$/;"	f	class:CameraSystem	typeref:typename:void
 handleInput	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::handleInput(double dt) {$/;"	f	class:FPVCamera	typeref:typename:void
 handleMovementInput	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::handleMovementInput(double dt) {$/;"	f	class:FPVCamera	typeref:typename:void
+handleSimViewWindowResize	src/visualisation/GUI.cpp	/^void GUI::handleSimViewWindowResize() {$/;"	f	class:GUI	typeref:typename:void
 handleZoomInput	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::handleZoomInput(double dt) {$/;"	f	class:FPVCamera	typeref:typename:void
 help	build/Makefile	/^help:$/;"	t
 help	build/simulation/Makefile	/^help:$/;"	t
@@ -695,6 +703,7 @@ isKeyPressed	src/main_old.cpp	/^        bool isKeyPressed(irr::EKEY_CODE key) co
 isKeyPressed	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::isKeyPressed(irr::EKEY_CODE key) {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool
 isKeyReleased	src/main_old.cpp	/^        bool isKeyReleased(irr::EKEY_CODE key) const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool	file:
 isKeyReleased	src/visualisation/input/HWEventReceiver.cpp	/^    bool HWEventReceiver::isKeyReleased(irr::EKEY_CODE key) {$/;"	f	class:Input::HWEventReceiver	typeref:typename:bool
+lastDimensions	src/visualisation/GUI.h	/^        irr::core::dimension2du lastDimensions;$/;"	m	struct:GUI::SimulationView	typeref:typename:irr::core::dimension2du
 left	src/main_old.cpp	/^            left = 0,$/;"	e	enum:Input::MouseState::Button	file:
 left	src/visualisation/input/HWEventReceiver.h	/^            left = 0,$/;"	e	enum:Input::MouseState::Button
 lookAt	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^    chrono::ChVector<> lookAt;$/;"	m	struct:CameraBaseState	typeref:typename:chrono::ChVector<>
@@ -746,10 +755,12 @@ mSceneMgr	src/main_old.cpp	/^irr::scene::ISceneManager* mSceneMgr;$/;"	v	typeref
 mSceneMgr	src/visualisation/simulation_model/Scene.h	/^    irr::scene::ISceneManager& mSceneMgr;$/;"	m	class:Scene	typeref:typename:irr::scene::ISceneManager &
 mSceneNodes	src/visualisation/simulation_model/Scene.h	/^    std::unordered_map<std::string, HighPrecisionNode> mSceneNodes;$/;"	m	class:Scene	typeref:typename:std::unordered_map<std::string,HighPrecisionNode>
 mSensitivity	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    } mSensitivity;$/;"	m	class:FPVCamera	typeref:struct:FPVCamera::Sensitivity
+mSimView	src/visualisation/GUI.h	/^    SimulationView mSimView;$/;"	m	class:GUI	typeref:typename:SimulationView
 mSimulationModel	src/visualisation/Visualisation.h	/^    std::unique_ptr<SimulationModel> mSimulationModel;$/;"	m	class:Visualisation	typeref:typename:std::unique_ptr<SimulationModel>
 mVelocity	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    chrono::ChVector<> mVelocity;$/;"	m	class:FPVCamera	typeref:typename:chrono::ChVector<>
 mVidDriver	src/main_old.cpp	/^irr::video::IVideoDriver* mVidDriver;$/;"	v	typeref:typename:irr::video::IVideoDriver *
 mVidDriver	src/visualisation/Visualisation.h	/^    irr::video::IVideoDriver* mVidDriver;$/;"	m	class:Visualisation	typeref:typename:irr::video::IVideoDriver *
+mVidDriverHandle	src/visualisation/GUI.h	/^    irr::video::IVideoDriver& mVidDriverHandle;$/;"	m	class:GUI	typeref:typename:irr::video::IVideoDriver &
 mWheelScroll	src/main_old.cpp	/^        float mWheelScroll;$/;"	m	class:Input::MouseState	typeref:typename:float	file:
 mYaw	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    float mYaw;$/;"	m	class:FPVCamera	typeref:typename:float
 mZoom	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^const float FPVCamera::Sensitivity::mZoom = 0.1f;$/;"	m	class:FPVCamera::Sensitivity	typeref:typename:const float
@@ -796,12 +807,12 @@ registerHandleTo	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^v
 removeReceiver	src/main_old.cpp	/^        void removeReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void	file:
 removeReceiver	src/visualisation/input/MasterEventReceiver.cpp	/^    void MasterEventReceiver::removeReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void
 render	src/main_old.cpp	/^void render() {$/;"	f	typeref:typename:void
-render	src/visualisation/GUI.cpp	/^void GUI::render(irr::video::ITexture* renderTarget) {$/;"	f	class:GUI	typeref:typename:void
+render	src/visualisation/GUI.cpp	/^void GUI::render() {$/;"	f	class:GUI	typeref:typename:void
 render	src/visualisation/Visualisation.cpp	/^void Visualisation::render() {$/;"	f	class:Visualisation	typeref:typename:void
+renderTarget	src/visualisation/GUI.h	/^        irr::video::ITexture* renderTarget;$/;"	m	struct:GUI::SimulationView	typeref:typename:irr::video::ITexture *
 resetCursorToCenterScr	src/main_old.cpp	/^void resetCursorToCenterScr(irr::gui::ICursorControl* cursor) {$/;"	f	typeref:typename:void
 right	src/main_old.cpp	/^            right$/;"	e	enum:Input::MouseState::Button	file:
 right	src/visualisation/input/HWEventReceiver.h	/^            right$/;"	e	enum:Input::MouseState::Button
-rt	src/visualisation/Visualisation.h	/^    irr::video::ITexture* rt = 0;$/;"	m	class:Visualisation	typeref:typename:irr::video::ITexture *
 run	src/main_old.cpp	/^void run() {$/;"	f	typeref:typename:void
 run	src/simulation/Simulation.cpp	/^void Simulation::run() {}$/;"	f	class:Simulation	typeref:typename:void
 run	src/visualisation/Visualisation.cpp	/^void Visualisation::run() {$/;"	f	class:Visualisation	typeref:typename:void
@@ -832,10 +843,11 @@ sPosition_scr	src/visualisation/input/HWEventReceiver.cpp	/^    irr::core::vecto
 sPosition_scr	src/visualisation/input/HWEventReceiver.h	/^        static irr::core::vector2di sPosition_scr;$/;"	m	class:Input::MouseState	typeref:typename:irr::core::vector2di
 sWheelScroll	src/visualisation/input/HWEventReceiver.cpp	/^    float MouseState::sWheelScroll;$/;"	m	class:Input::MouseState	typeref:typename:float
 sWheelScroll	src/visualisation/input/HWEventReceiver.h	/^        static float sWheelScroll;$/;"	m	class:Input::MouseState	typeref:typename:float
+setAspectRatio	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^void CameraSystem::setAspectRatio(float aspectRatio) {$/;"	f	class:CameraSystem	typeref:typename:void
 setImGuiStyle	src/visualisation/GUI.cpp	/^void GUI::setImGuiStyle() {$/;"	f	class:GUI	typeref:typename:void
 setPosition	src/main_old.cpp	/^        void setPosition(irr::core::vector2di newPosition_scr) {$/;"	f	class:Input::MouseState	typeref:typename:void	file:
 setPosition	src/visualisation/input/HWEventReceiver.cpp	/^    void MouseState::setPosition(irr::core::vector2di newPosition_scr) {$/;"	f	class:Input::MouseState	typeref:typename:void
-setScreenAspectRatio	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^void CameraSystem::setScreenAspectRatio(float aspectRatio) {$/;"	f	class:CameraSystem	typeref:typename:void
+simViewWinHasChangedSize	src/visualisation/GUI.cpp	/^bool GUI::simViewWinHasChangedSize() const {$/;"	f	class:GUI	typeref:typename:bool
 simulation/Simulation.cpp.i	build/Makefile	/^simulation\/Simulation.cpp.i:$/;"	t
 simulation/Simulation.cpp.o	build/Makefile	/^simulation\/Simulation.cpp.o:$/;"	t
 simulation/Simulation.cpp.s	build/Makefile	/^simulation\/Simulation.cpp.s:$/;"	t
@@ -847,6 +859,7 @@ start	src/visualisation/GUI.cpp	/^void GUI::start() {$/;"	f	class:GUI	typeref:ty
 syncLookAtWithPitchYaw	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::syncLookAtWithPitchYaw() {$/;"	f	class:FPVCamera	typeref:typename:void
 syncPitchYawWithLookAt	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::syncPitchYawWithLookAt() {$/;"	f	class:FPVCamera	typeref:typename:void
 testCam	src/visualisation/simulation_model/SimulationModel.h	/^    FPVCamera testCam;$/;"	m	class:SimulationModel	typeref:typename:FPVCamera
+texture	src/visualisation/GUI.h	/^        IrrIMGUI::IGUITexture* texture;$/;"	m	struct:GUI::SimulationView	typeref:typename:IrrIMGUI::IGUITexture *
 toggleCameraFocus	src/main_old.cpp	/^void toggleCameraFocus() {$/;"	f	typeref:typename:void
 transform_world	src/visualisation/simulation_model/Scene.h	/^        chrono::ChCoordsys<> transform_world;$/;"	m	struct:Scene::HighPrecisionNode	typeref:typename:chrono::ChCoordsys<>
 up	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^    chrono::ChVector<> up;$/;"	m	struct:CameraBaseState	typeref:typename:chrono::ChVector<>

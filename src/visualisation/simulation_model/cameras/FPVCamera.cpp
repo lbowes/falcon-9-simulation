@@ -39,7 +39,7 @@ FPVCamera::FPVCamera() :
 void FPVCamera::handleInput(double dt) {
     handleMovementInput(dt);
     handleZoomInput(dt);
-    handleDirectionInput();
+    //handleDirectionInput();
 }
 
 

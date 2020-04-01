@@ -28,7 +28,7 @@ void CameraSystem::handleInput() {
 }
 
 
-void CameraSystem::setScreenAspectRatio(float aspectRatio) {
+void CameraSystem::setAspectRatio(float aspectRatio) {
     sAspectRatio = aspectRatio;
 }
 

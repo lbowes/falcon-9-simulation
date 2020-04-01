@@ -14,4 +14,6 @@ struct CameraBaseState {
     chrono::ChVector<> lookAt;
 };
 
+
 #endif // CAMERABASESTATE_H_
+

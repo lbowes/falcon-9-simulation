@@ -19,10 +19,6 @@ Visualisation::Visualisation() :
 
     mEventReceiver.addReceiver(&mHWInput);
     mEventReceiver.addReceiver(&mGUI->getEventReceiver());
-
-    // temp
-    rt = mVidDriver->addRenderTargetTexture(irr::core::dimension2d<irr::u32>(800, 800), "RTT1");
-    // temp
 }
 
 
@@ -74,7 +70,6 @@ void Visualisation::run() {
         if(mDevice->isWindowFocused())
             handleInput(frameTime_s);
 
-        ImGui::ShowDemoWindow();
         update(frameTime_s);
         render();
 
@@ -94,30 +89,22 @@ void Visualisation::handleInput(double frameTime_s) {
 
 
 void Visualisation::update(double frameTime_s) {
-    mSimulationModel->update(getAspectRatio(), frameTime_s);
+    const float aspect = mGUI->getSimViewWindowAspectRatio();
+    mSimulationModel->update(aspect, frameTime_s);
 
     Input::HWEventReceiver::update();
 }
 
 
-float Visualisation::getAspectRatio() {
-    irr::core::recti viewport = mVidDriver->getViewPort();
-    return static_cast<float>(viewport.getWidth()) / viewport.getHeight();
-}
-
-
 void Visualisation::render() {
-    using namespace irr;
-
-    mVidDriver->beginScene(true, true, video::SColor(255, 0, 0, 0));
-
-    // Render everything to the render target
-    mVidDriver->setRenderTarget(rt, true, true, video::SColor(0, 0, 0, 255));
+    // Bind the simulation view render target and render the scene to it
+    mVidDriver->setRenderTarget(&mGUI->getSimViewRenderTarget());
+    mVidDriver->beginScene();
     mSceneManager->drawAll();
 
-    mVidDriver->setRenderTarget(0, true, true, 0);
-    mGUI->render(rt);
-
+    // Swap back to the main render target and render the GUI
+    mVidDriver->setRenderTarget(irr::video::ERT_FRAME_BUFFER);
+    mGUI->render();
     mVidDriver->endScene();
 }
 

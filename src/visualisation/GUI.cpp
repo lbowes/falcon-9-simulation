@@ -1,15 +1,26 @@
 #include "GUI.h"
+#include <iostream>
 
 
 GUI::GUI(irr::IrrlichtDevice& device) :
+    mSimView({.texture = nullptr,
+              .renderTarget = nullptr,
+              .dimensions = irr::core::dimension2du(1, 1),
+              .lastDimensions = irr::core::dimension2du(1, 1)}),
+    mVidDriverHandle(*device.getVideoDriver()),
     mImGuiHandle(nullptr) {
 
     initImGui(device);
+
+    mSimView.renderTarget = mVidDriverHandle.addRenderTargetTexture(irr::core::dimension2du(1, 1));
+
+    bindSimViewToRenderTarget();
     setImGuiStyle();
 }
 
 
 GUI::~GUI() {
+    mImGuiHandle->deleteTexture(mSimView.texture);
     mImGuiHandle->drop();
 }
 
@@ -107,10 +118,26 @@ void GUI::start() {
 }
 
 
-void GUI::render(irr::video::ITexture* renderTarget) {
-    ImGui::Begin("test drawing image");
-    IrrIMGUI::IGUITexture* guiTexture = mImGuiHandle->createTexture(renderTarget);
-    ImGui::Image(guiTexture, ImVec2(800.0f, 800.0f));
+void GUI::bindSimViewToRenderTarget() {
+    if(mSimView.texture)
+        mImGuiHandle->deleteTexture(mSimView.texture);
+
+    mSimView.texture = mImGuiHandle->createTexture(mSimView.renderTarget);
+}
+
+
+void GUI::render() {
+    ImGui::Begin("Simulation Viewport");
+
+    mSimView.lastDimensions = mSimView.dimensions;
+    ImVec2 winDims = ImGui::GetContentRegionAvail();
+    mSimView.dimensions = {static_cast<unsigned int>(winDims.x), static_cast<unsigned int>(winDims.y)};
+
+    if(simViewWinHasChangedSize())
+        handleSimViewWindowResize();
+    //bindSimViewToRenderTarget();
+
+    ImGui::Image(mSimView.texture, winDims);
     ImGui::End();
 
     mImGuiHandle->drawAll();
@@ -119,4 +146,31 @@ void GUI::render(irr::video::ITexture* renderTarget) {
 
 IrrIMGUI::CIMGUIEventReceiver& GUI::getEventReceiver() {
     return mImGuiEventReceiver;
+}
+
+
+float GUI::getSimViewWindowAspectRatio() const {
+    return static_cast<float>(mSimView.dimensions.Width) / static_cast<float>(mSimView.dimensions.Height);
+}
+
+
+bool GUI::simViewWinHasChangedSize() const {
+    return mSimView.lastDimensions != mSimView.dimensions;
+}
+
+
+void GUI::handleSimViewWindowResize() {
+    using namespace irr::core;
+
+    bool nonZeroArea = static_cast<int>(mSimView.dimensions.getArea()) > 0;
+    if(nonZeroArea) {
+        const dimension2du newDims = mSimView.dimensions.getOptimalSize();
+        mSimView.renderTarget = mVidDriverHandle.addRenderTargetTexture(newDims, "SimulationViewport");
+        bindSimViewToRenderTarget();
+    }
+}
+
+
+irr::video::ITexture& GUI::getSimViewRenderTarget() const {
+    return *mSimView.renderTarget;
 }

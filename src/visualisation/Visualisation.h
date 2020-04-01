@@ -5,7 +5,6 @@
 #include "input/MasterEventReceiver.h"
 #include "simulation_model/SimulationModel.h"
 
-#include <chrono_irrlicht/ChIrrWizard.h>
 #include <memory>
 
 
@@ -20,8 +19,6 @@ private:
     std::unique_ptr<GUI> mGUI;
     std::unique_ptr<SimulationModel> mSimulationModel;
 
-    irr::video::ITexture* rt = 0;
-
 public:
     Visualisation();
     ~Visualisation();
@@ -31,11 +28,8 @@ public:
 private:
     void handleInput(double frameTime_s);
     void update(double frameTime_s);
-    float getAspectRatio();
     irr::core::dimension2du getMonitorResolution() const;
     void initDevice();
-    void initImGui();
-    void setImGuiStyle();
     void render();
     void update();
     void close();

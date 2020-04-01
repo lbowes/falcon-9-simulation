@@ -48,11 +48,11 @@ void Scene::addAllLights() {
 
     addLight(
         "someExampleLight",
-        mSceneMgr.addLightSceneNode(0, irr::core::vector3df(0, 0, 0), irr::video::SColorf(0.5f, 0.5f, 0.7f)));
+        mSceneMgr.addLightSceneNode(0, irr::core::vector3df(0, 0, 0), irr::video::SColorf(0.5f, 0.5f, 0.5f)));
 
     addLight(
         "anotherExampleLight",
-        mSceneMgr.addLightSceneNode(0, irr::core::vector3df(0, 0, 0), irr::video::SColorf(0.8f, 0.2f, 0.5f)));
+        mSceneMgr.addLightSceneNode(0, irr::core::vector3df(0, 0, 0), irr::video::SColorf(0.8f, 0.8f, 0.8f)));
 }
 
 
