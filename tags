@@ -390,6 +390,7 @@ DEC	build/CMakeFiles/3.16.4/CompilerIdC/CMakeCCompilerId.c	/^#define DEC(/;"	d	f
 DEC	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define DEC(/;"	d	file:
 Dependencies	README.md	/^## Dependencies$/;"	s
 DockId	build/imgui.ini	/^DockId=0x00000001,0$/;"	k	section:Window
+DockId	build/imgui.ini	/^DockId=0x00000003,0$/;"	k	section:Window
 DockId	build/imgui.ini	/^DockId=0x00000006,0$/;"	k	section:Window
 DockId	build/imgui.ini	/^DockId=0x00000007,0$/;"	k	section:Window
 DockId	build/imgui.ini	/^DockId=0x00000008,0$/;"	k	section:Window
@@ -464,12 +465,11 @@ PLATFORM_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  de
 PLATFORM_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID /;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID$/;"	d	file:
 Pos	build/imgui.ini	/^Pos=0,0$/;"	k	section:Window
-Pos	build/imgui.ini	/^Pos=0,1150$/;"	k	section:Window
+Pos	build/imgui.ini	/^Pos=0,1213$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=1976,463$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=2185,0$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=2291,19$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=288,701$/;"	k	section:Window
-Pos	build/imgui.ini	/^Pos=378,126$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=491,97$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=599,103$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=60,14$/;"	k	section:Window
@@ -524,11 +524,11 @@ SimulationView	src/visualisation/GUI.h	/^    struct SimulationView {$/;"	s	class
 Size	build/imgui.ini	/^Size=1164,534$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=117,632$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=1301,938$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=1492,867$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=159,62$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=216,1366$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=2507,1211$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=2507,1385$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=2507,235$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=2507,172$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=32,35$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=322,1385$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=351,243$/;"	k	section:Window
