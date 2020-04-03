@@ -126,7 +126,51 @@ void GUI::bindSimViewToRenderTarget() {
 }
 
 
-void GUI::render() {
+void GUI::drawAll() {
+    showMainDockspace();
+    showSimView();
+    showSimPlaybackControls();
+
+    mImGuiHandle->drawAll();
+}
+
+
+void GUI::showMainDockspace() {
+    // Code lifted from ImGui dockspace demo (imgui_demo.cpp)
+
+    ImGuiViewport* viewport = ImGui::GetMainViewport();
+    ImGui::SetNextWindowPos(viewport->Pos);
+    ImGui::SetNextWindowSize(viewport->Size);
+    ImGui::SetNextWindowViewport(viewport->ID);
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 4.0f);
+
+    ImGuiWindowFlags window_flags =
+        ImGuiWindowFlags_NoDocking |
+        ImGuiWindowFlags_NoTitleBar |
+        ImGuiWindowFlags_NoCollapse |
+        ImGuiWindowFlags_NoResize |
+        ImGuiWindowFlags_NoMove |
+        ImGuiWindowFlags_NoBringToFrontOnFocus |
+        ImGuiWindowFlags_NoNavFocus;
+
+    static ImGuiDockNodeFlags dockspace_flags = ImGuiDockNodeFlags_None;
+
+    if(dockspace_flags & ImGuiDockNodeFlags_PassthruCentralNode)
+        window_flags |= ImGuiWindowFlags_NoBackground;
+
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+    ImGui::Begin("Main dockspace", (bool*)true, window_flags);
+    ImGui::PopStyleVar(3);
+
+    ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
+    ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
+
+    ImGui::End();
+}
+
+
+void GUI::showSimView() {
     ImGui::Begin("Simulation Viewport");
 
     ImVec2 winDims = ImGui::GetContentRegionAvail();
@@ -134,8 +178,13 @@ void GUI::render() {
 
     ImGui::Image(mSimView.texture, winDims);
     ImGui::End();
+}
 
-    mImGuiHandle->drawAll();
+
+void GUI::showSimPlaybackControls() {
+    ImGui::Begin("Playback controls");
+    ImGui::Text("TODO: Playback controls");
+    ImGui::End();
 }
 
 

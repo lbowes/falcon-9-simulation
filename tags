@@ -11,6 +11,7 @@ $(VERBOSE).SILENT	build/simulation/Makefile	/^$(VERBOSE).SILENT:$/;"	t
 $(VERBOSE).SILENT	build/visualisation/Makefile	/^$(VERBOSE).SILENT:$/;"	t
 0	build/compile_commands.json	/^{$/;"	o
 1	build/compile_commands.json	/^{$/;"	o
+10	build/compile_commands.json	/^{$/;"	o
 2	build/compile_commands.json	/^{$/;"	o
 3	build/compile_commands.json	/^{$/;"	o
 4	build/compile_commands.json	/^{$/;"	o
@@ -390,7 +391,10 @@ DEC	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define DEC(/
 Dependencies	README.md	/^## Dependencies$/;"	s
 DockId	build/imgui.ini	/^DockId=0x00000001,0$/;"	k	section:Window
 DockId	build/imgui.ini	/^DockId=0x00000006,0$/;"	k	section:Window
+DockId	build/imgui.ini	/^DockId=0x00000007,0$/;"	k	section:Window
+DockId	build/imgui.ini	/^DockId=0x00000008,0$/;"	k	section:Window
 DockSpace     ID	build/imgui.ini	/^DockSpace     ID=0x3BC79352 Pos=0,19 Size=2507,1366 Split=X$/;"	k	section:Docking
+DockSpace     ID	build/imgui.ini	/^DockSpace     ID=0xF0471CBE Window=0x33E0E8B8 Pos=0,0 Size=2507,1385 Split=Y$/;"	k	section:Docking
 Docking	build/imgui.ini	/^[Docking][Data]$/;"	s
 EQUALS	build/Makefile	/^EQUALS = =$/;"	m
 EQUALS	build/simulation/Makefile	/^EQUALS = =$/;"	m
@@ -459,17 +463,19 @@ PLATFORM_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  de
 PLATFORM_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define PLATFORM_ID$/;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID /;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID$/;"	d	file:
+Pos	build/imgui.ini	/^Pos=0,0$/;"	k	section:Window
+Pos	build/imgui.ini	/^Pos=0,1150$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=1976,463$/;"	k	section:Window
+Pos	build/imgui.ini	/^Pos=2185,0$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=2291,19$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=288,701$/;"	k	section:Window
-Pos	build/imgui.ini	/^Pos=373,178$/;"	k	section:Window
+Pos	build/imgui.ini	/^Pos=378,126$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=491,97$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=599,103$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=60,14$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=60,60$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=66,166$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=926,309$/;"	k	section:Window
-Pos	build/imgui.ini	/^Pos=975,537$/;"	k	section:Window
 RM	build/Makefile	/^RM = \/usr\/local\/bin\/cmake -E remove -f$/;"	m
 RM	build/simulation/Makefile	/^RM = \/usr\/local\/bin\/cmake -E remove -f$/;"	m
 RM	build/visualisation/Makefile	/^RM = \/usr\/local\/bin\/cmake -E remove -f$/;"	m
@@ -518,11 +524,13 @@ SimulationView	src/visualisation/GUI.h	/^    struct SimulationView {$/;"	s	class
 Size	build/imgui.ini	/^Size=1164,534$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=117,632$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=1301,938$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=1373,802$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=1492,867$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=159,62$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=216,1366$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=2507,1385$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=2507,235$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=32,35$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=322,1385$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=351,243$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=400,400$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=403,222$/;"	k	section:Window
@@ -532,7 +540,10 @@ UNIX	build/CMakeFiles/3.16.3/CMakeCCompiler.cmake	/^  set(UNIX 1)$/;"	v
 UNIX	build/CMakeFiles/3.16.3/CMakeCXXCompiler.cmake	/^  set(UNIX 1)$/;"	v
 UNIX	build/CMakeFiles/3.16.4/CMakeCCompiler.cmake	/^  set(UNIX 1)$/;"	v
 UNIX	build/CMakeFiles/3.16.4/CMakeCXXCompiler.cmake	/^  set(UNIX 1)$/;"	v
+VERTFLIPSCREENQUAD_H_	src/visualisation/VertFlipScreenQuad.h	/^#define VERTFLIPSCREENQUAD_H_$/;"	d
 VISUALISATION_H_	src/visualisation/Visualisation.h	/^#define VISUALISATION_H_$/;"	d
+VertFlipScreenQuad	src/visualisation/VertFlipScreenQuad.cpp	/^VertFlipScreenQuad::VertFlipScreenQuad(irr::video::IVideoDriver& vidDriver, irr::core::dimension/;"	f	class:VertFlipScreenQuad
+VertFlipScreenQuad	src/visualisation/VertFlipScreenQuad.h	/^class VertFlipScreenQuad {$/;"	c
 Visualisation	src/visualisation/Visualisation.cpp	/^Visualisation::Visualisation() :$/;"	f	class:Visualisation
 Visualisation	src/visualisation/Visualisation.h	/^class Visualisation {$/;"	c
 Window	build/imgui.ini	/^[Window][Dear ImGui Demo]$/;"	s
@@ -541,6 +552,7 @@ Window	build/imgui.ini	/^[Window][DockSpace Demo]$/;"	s
 Window	build/imgui.ini	/^[Window][Example: Custom rendering]$/;"	s
 Window	build/imgui.ini	/^[Window][Main dockspace]$/;"	s
 Window	build/imgui.ini	/^[Window][Mouse debug info]$/;"	s
+Window	build/imgui.ini	/^[Window][Playback controls]$/;"	s
 Window	build/imgui.ini	/^[Window][Simulation Viewport]$/;"	s
 Window	build/imgui.ini	/^[Window][Test window]$/;"	s
 Window	build/imgui.ini	/^[Window][This is a test window]$/;"	s
@@ -578,6 +590,7 @@ cmake_force	build/simulation/Makefile	/^cmake_force:$/;"	t
 cmake_force	build/visualisation/Makefile	/^cmake_force:$/;"	t
 command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:0
 command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:1
+command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:10
 command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:2
 command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:3
 command	build/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:4
@@ -597,6 +610,7 @@ depend	build/visualisation/Makefile	/^depend:$/;"	t
 dimensions	src/visualisation/GUI.h	/^        irr::core::dimension2du dimensions;$/;"	m	struct:GUI::SimulationView	typeref:typename:irr::core::dimension2du
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:0
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:1
+directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:10
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:2
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:3
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:4
@@ -605,6 +619,8 @@ directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/prog
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:7
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:8
 directory	build/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/build",$/;"	s	object:9
+drawAll	src/visualisation/GUI.cpp	/^void GUI::drawAll() {$/;"	f	class:GUI	typeref:typename:void
+drawAll	src/visualisation/VertFlipScreenQuad.cpp	/^void VertFlipScreenQuad::drawAll() {$/;"	f	class:VertFlipScreenQuad	typeref:typename:void
 edit_cache	build/Makefile	/^edit_cache:$/;"	t
 edit_cache	build/simulation/Makefile	/^edit_cache:$/;"	t
 edit_cache	build/visualisation/Makefile	/^edit_cache:$/;"	t
@@ -618,9 +634,10 @@ file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/p
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/simulation\/Simu/;"	s	object:1
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/G/;"	s	object:5
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/V/;"	s	object:2
+file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/V/;"	s	object:6
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/i/;"	s	object:3
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/i/;"	s	object:4
-file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/s/;"	s	object:6
+file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/s/;"	s	object:10
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/s/;"	s	object:7
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/s/;"	s	object:8
 file	build/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/Falcon-9-Simulation\/src\/visualisation\/s/;"	s	object:9
@@ -637,6 +654,7 @@ getMouse	src/main_old.cpp	/^        MouseState& getMouse() {$/;"	f	class:Input::
 getMouse	src/main_old.cpp	/^        const MouseState& getMouse() const {$/;"	f	class:Input::HWEventReceiver	typeref:typename:const MouseState &	file:
 getPosition_scr	src/main_old.cpp	/^        const irr::core::vector2di& getPosition_scr() const {$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &	file:
 getPosition_scr	src/visualisation/input/HWEventReceiver.cpp	/^    const irr::core::vector2di& MouseState::getPosition_scr() {$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &
+getRenderTarget	src/visualisation/VertFlipScreenQuad.cpp	/^irr::video::ITexture& VertFlipScreenQuad::getRenderTarget() const {$/;"	f	class:VertFlipScreenQuad	typeref:typename:irr::video::ITexture &
 getScroll	src/main_old.cpp	/^        float getScroll() const {$/;"	f	class:Input::MouseState	typeref:typename:float	file:
 getScroll	src/visualisation/input/HWEventReceiver.cpp	/^    float MouseState::getScroll() {$/;"	f	class:Input::MouseState	typeref:typename:float
 getSimViewRenderTarget	src/visualisation/GUI.cpp	/^irr::video::ITexture& GUI::getSimViewRenderTarget() const {$/;"	f	class:GUI	typeref:typename:irr::video::ITexture &
@@ -731,10 +749,12 @@ mImGuiEventReceiver	src/main_old.cpp	/^IrrIMGUI::CIMGUIEventReceiver mImGuiEvent
 mImGuiEventReceiver	src/visualisation/GUI.h	/^    IrrIMGUI::CIMGUIEventReceiver mImGuiEventReceiver;$/;"	m	class:GUI	typeref:typename:IrrIMGUI::CIMGUIEventReceiver
 mImGuiHandle	src/main_old.cpp	/^IrrIMGUI::IIMGUIHandle* mImGuiHandle;$/;"	v	typeref:typename:IrrIMGUI::IIMGUIHandle *
 mImGuiHandle	src/visualisation/GUI.h	/^    IrrIMGUI::IIMGUIHandle* mImGuiHandle;$/;"	m	class:GUI	typeref:typename:IrrIMGUI::IIMGUIHandle *
+mIndices	src/visualisation/VertFlipScreenQuad.h	/^    unsigned short mIndices[6];$/;"	m	class:VertFlipScreenQuad	typeref:typename:unsigned short[6]
 mKeysClicked	src/main_old.cpp	/^        bool mKeysClicked[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]	file:
 mKeysDown	src/main_old.cpp	/^        bool mKeysDown[irr::KEY_KEY_CODES_COUNT];$/;"	m	class:Input::HWEventReceiver	typeref:typename:bool[]	file:
 mLookAround	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^const float FPVCamera::Sensitivity::mLookAround = 0.05f;$/;"	m	class:FPVCamera::Sensitivity	typeref:typename:const float
 mLookAround	src/visualisation/simulation_model/cameras/FPVCamera.h	/^        static const float mLookAround;$/;"	m	struct:FPVCamera::Sensitivity	typeref:typename:const float
+mMaterial	src/visualisation/VertFlipScreenQuad.h	/^    irr::video::SMaterial mMaterial;$/;"	m	class:VertFlipScreenQuad	typeref:typename:irr::video::SMaterial
 mMaxSpeed	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^const float FPVCamera::Movement::mMaxSpeed = 1000.0f;$/;"	m	class:FPVCamera::Movement	typeref:typename:const float
 mMaxSpeed	src/visualisation/simulation_model/cameras/FPVCamera.h	/^        static const float mMaxSpeed;$/;"	m	struct:FPVCamera::Movement	typeref:typename:const float
 mMinSpeed	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^const float FPVCamera::Movement::mMinSpeed = 6.4f;$/;"	m	class:FPVCamera::Movement	typeref:typename:const float
@@ -747,6 +767,7 @@ mPitch	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    float mPitch
 mPosition_scr	src/main_old.cpp	/^        irr::core::vector2di mPosition_scr;$/;"	m	class:Input::MouseState	typeref:typename:irr::core::vector2di	file:
 mReceivers	src/main_old.cpp	/^        irr::core::array<irr::IEventReceiver*> mReceivers;$/;"	m	class:Input::MasterEventReceiver	typeref:typename:irr::core::array<irr::IEventReceiver * >	file:
 mReceivers	src/visualisation/input/MasterEventReceiver.h	/^        irr::core::array<irr::IEventReceiver*> mReceivers;$/;"	m	class:Input::MasterEventReceiver	typeref:typename:irr::core::array<irr::IEventReceiver * >
+mRenderTarget	src/visualisation/VertFlipScreenQuad.h	/^    irr::video::ITexture* mRenderTarget;$/;"	m	class:VertFlipScreenQuad	typeref:typename:irr::video::ITexture *
 mScene	src/visualisation/simulation_model/SimulationModel.h	/^    Scene mScene;$/;"	m	class:SimulationModel	typeref:typename:Scene
 mSceneManager	src/visualisation/Visualisation.h	/^    irr::scene::ISceneManager* mSceneManager;$/;"	m	class:Visualisation	typeref:typename:irr::scene::ISceneManager *
 mSceneMgr	src/main_old.cpp	/^irr::scene::ISceneManager* mSceneMgr;$/;"	v	typeref:typename:irr::scene::ISceneManager *
@@ -756,9 +777,12 @@ mSensitivity	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    } mSen
 mSimView	src/visualisation/GUI.h	/^    SimulationView mSimView;$/;"	m	class:GUI	typeref:typename:SimulationView
 mSimulationModel	src/visualisation/Visualisation.h	/^    std::unique_ptr<SimulationModel> mSimulationModel;$/;"	m	class:Visualisation	typeref:typename:std::unique_ptr<SimulationModel>
 mVelocity	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    chrono::ChVector<> mVelocity;$/;"	m	class:FPVCamera	typeref:typename:chrono::ChVector<>
+mVertFlipScreenQuad	src/visualisation/Visualisation.h	/^    std::unique_ptr<VertFlipScreenQuad> mVertFlipScreenQuad;$/;"	m	class:Visualisation	typeref:typename:std::unique_ptr<VertFlipScreenQuad>
+mVertices	src/visualisation/VertFlipScreenQuad.h	/^    irr::video::S3DVertex mVertices[4];$/;"	m	class:VertFlipScreenQuad	typeref:typename:irr::video::S3DVertex[4]
 mVidDriver	src/main_old.cpp	/^irr::video::IVideoDriver* mVidDriver;$/;"	v	typeref:typename:irr::video::IVideoDriver *
 mVidDriver	src/visualisation/Visualisation.h	/^    irr::video::IVideoDriver* mVidDriver;$/;"	m	class:Visualisation	typeref:typename:irr::video::IVideoDriver *
 mVidDriverHandle	src/visualisation/GUI.h	/^    irr::video::IVideoDriver& mVidDriverHandle;$/;"	m	class:GUI	typeref:typename:irr::video::IVideoDriver &
+mVidDriverHandle	src/visualisation/VertFlipScreenQuad.h	/^    irr::video::IVideoDriver& mVidDriverHandle;$/;"	m	class:VertFlipScreenQuad	typeref:typename:irr::video::IVideoDriver &
 mWheelScroll	src/main_old.cpp	/^        float mWheelScroll;$/;"	m	class:Input::MouseState	typeref:typename:float	file:
 mYaw	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    float mYaw;$/;"	m	class:FPVCamera	typeref:typename:float
 mZoom	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^const float FPVCamera::Sensitivity::mZoom = 0.1f;$/;"	m	class:FPVCamera::Sensitivity	typeref:typename:const float
@@ -805,7 +829,6 @@ registerHandleTo	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^v
 removeReceiver	src/main_old.cpp	/^        void removeReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void	file:
 removeReceiver	src/visualisation/input/MasterEventReceiver.cpp	/^    void MasterEventReceiver::removeReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void
 render	src/main_old.cpp	/^void render() {$/;"	f	typeref:typename:void
-render	src/visualisation/GUI.cpp	/^void GUI::render() {$/;"	f	class:GUI	typeref:typename:void
 render	src/visualisation/Visualisation.cpp	/^void Visualisation::render() {$/;"	f	class:Visualisation	typeref:typename:void
 renderTarget	src/visualisation/GUI.h	/^        irr::video::ITexture* renderTarget;$/;"	m	struct:GUI::SimulationView	typeref:typename:irr::video::ITexture *
 resetCursorToCenterScr	src/main_old.cpp	/^void resetCursorToCenterScr(irr::gui::ICursorControl* cursor) {$/;"	f	typeref:typename:void
@@ -845,6 +868,9 @@ setAspectRatio	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^voi
 setImGuiStyle	src/visualisation/GUI.cpp	/^void GUI::setImGuiStyle() {$/;"	f	class:GUI	typeref:typename:void
 setPosition	src/main_old.cpp	/^        void setPosition(irr::core::vector2di newPosition_scr) {$/;"	f	class:Input::MouseState	typeref:typename:void	file:
 setPosition	src/visualisation/input/HWEventReceiver.cpp	/^    void MouseState::setPosition(irr::core::vector2di newPosition_scr) {$/;"	f	class:Input::MouseState	typeref:typename:void
+showMainDockspace	src/visualisation/GUI.cpp	/^void GUI::showMainDockspace() {$/;"	f	class:GUI	typeref:typename:void
+showSimPlaybackControls	src/visualisation/GUI.cpp	/^void GUI::showSimPlaybackControls() {$/;"	f	class:GUI	typeref:typename:void
+showSimView	src/visualisation/GUI.cpp	/^void GUI::showSimView() {$/;"	f	class:GUI	typeref:typename:void
 simulation/Simulation.cpp.i	build/Makefile	/^simulation\/Simulation.cpp.i:$/;"	t
 simulation/Simulation.cpp.o	build/Makefile	/^simulation\/Simulation.cpp.o:$/;"	t
 simulation/Simulation.cpp.s	build/Makefile	/^simulation\/Simulation.cpp.s:$/;"	t
@@ -876,6 +902,12 @@ visualisation/GUI.cpp.s	build/Makefile	/^visualisation\/GUI.cpp.s:$/;"	t
 visualisation/GUI.i	build/Makefile	/^visualisation\/GUI.i: visualisation\/GUI.cpp.i$/;"	t
 visualisation/GUI.o	build/Makefile	/^visualisation\/GUI.o: visualisation\/GUI.cpp.o$/;"	t
 visualisation/GUI.s	build/Makefile	/^visualisation\/GUI.s: visualisation\/GUI.cpp.s$/;"	t
+visualisation/VertFlipScreenQuad.cpp.i	build/Makefile	/^visualisation\/VertFlipScreenQuad.cpp.i:$/;"	t
+visualisation/VertFlipScreenQuad.cpp.o	build/Makefile	/^visualisation\/VertFlipScreenQuad.cpp.o:$/;"	t
+visualisation/VertFlipScreenQuad.cpp.s	build/Makefile	/^visualisation\/VertFlipScreenQuad.cpp.s:$/;"	t
+visualisation/VertFlipScreenQuad.i	build/Makefile	/^visualisation\/VertFlipScreenQuad.i: visualisation\/VertFlipScreenQuad.cpp.i$/;"	t
+visualisation/VertFlipScreenQuad.o	build/Makefile	/^visualisation\/VertFlipScreenQuad.o: visualisation\/VertFlipScreenQuad.cpp.o$/;"	t
+visualisation/VertFlipScreenQuad.s	build/Makefile	/^visualisation\/VertFlipScreenQuad.s: visualisation\/VertFlipScreenQuad.cpp.s$/;"	t
 visualisation/Visualisation.cpp.i	build/Makefile	/^visualisation\/Visualisation.cpp.i:$/;"	t
 visualisation/Visualisation.cpp.o	build/Makefile	/^visualisation\/Visualisation.cpp.o:$/;"	t
 visualisation/Visualisation.cpp.s	build/Makefile	/^visualisation\/Visualisation.cpp.s:$/;"	t

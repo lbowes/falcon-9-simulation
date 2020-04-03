@@ -2,6 +2,7 @@
 #define VISUALISATION_H_
 
 #include "GUI.h"
+#include "VertFlipScreenQuad.h"
 #include "input/MasterEventReceiver.h"
 #include "simulation_model/SimulationModel.h"
 
@@ -17,6 +18,7 @@ private:
     Input::HWEventReceiver mHWInput;
     Input::MasterEventReceiver mEventReceiver;
     std::unique_ptr<GUI> mGUI;
+    std::unique_ptr<VertFlipScreenQuad> mVertFlipScreenQuad;
     std::unique_ptr<SimulationModel> mSimulationModel;
 
 public:

@@ -26,7 +26,7 @@ public:
 
     void initWith(irr::IrrlichtDevice& device);
     void start();
-    void render();
+    void drawAll();
     IrrIMGUI::CIMGUIEventReceiver& getEventReceiver();
     float getSimViewWindowAspectRatio() const;
     irr::video::ITexture& getSimViewRenderTarget() const;
@@ -35,6 +35,9 @@ private:
     void bindSimViewToRenderTarget();
     void initImGui(irr::IrrlichtDevice& device);
     void setImGuiStyle();
+    void showMainDockspace();
+    void showSimView();
+    void showSimPlaybackControls();
 };
 
 #endif // GUI_H_

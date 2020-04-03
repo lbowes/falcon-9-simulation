@@ -4,6 +4,7 @@ target_sources(Falcon9Simulation
 		input/MasterEventReceiver.cpp
 		input/HWEventReceiver.cpp
 		GUI.cpp
+		VertFlipScreenQuad.cpp
 		simulation_model/SimulationModel.cpp
 		simulation_model/Scene.cpp
 		simulation_model/cameras/CameraSystem.cpp

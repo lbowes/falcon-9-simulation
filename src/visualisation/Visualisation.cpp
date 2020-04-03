@@ -16,6 +16,7 @@ Visualisation::Visualisation() :
 
     const irr::core::dimension2du monitorRes = getMonitorResolution();
     mGUI = std::make_unique<GUI>(*mDevice, monitorRes);
+    mVertFlipScreenQuad = std::make_unique<VertFlipScreenQuad>(*mVidDriver, monitorRes);
     mSimulationModel = std::make_unique<SimulationModel>(*mDevice->getSceneManager());
 
     mEventReceiver.addReceiver(&mHWInput);
@@ -98,15 +99,21 @@ void Visualisation::update(double frameTime_s) {
 
 
 void Visualisation::render() {
-    // Bind the simulation view render target and render the scene to it
-    mVidDriver->setRenderTarget(&mGUI->getSimViewRenderTarget());
     mVidDriver->beginScene();
 
+    // Get the image of the scene onto the render target texture in the fullscreen quad
+    mVidDriver->setRenderTarget(&mVertFlipScreenQuad->getRenderTarget(), true, true, irr::video::SColor(255, 0, 0, 0));
     mSceneManager->drawAll();
 
-    // Swap back to the main render target and render the GUI
+    // Get the contents of the fullscreen quad (vertically flipped version of the scene's contents) into the GUI's
+    // simulation view
+    mVidDriver->setRenderTarget(&mGUI->getSimViewRenderTarget());
+    mVertFlipScreenQuad->drawAll();
+
+    // Get the contents of the GUI (complete sim view and other windows) onto the monitor
     mVidDriver->setRenderTarget(irr::video::ERT_FRAME_BUFFER);
-    mGUI->render();
+    mGUI->drawAll();
+
     mVidDriver->endScene();
 }
 
@@ -116,4 +123,3 @@ void Visualisation::close() {
     mDevice->run();
     mDevice->drop();
 }
-
