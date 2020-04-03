@@ -101,6 +101,7 @@ void Visualisation::render() {
     // Bind the simulation view render target and render the scene to it
     mVidDriver->setRenderTarget(&mGUI->getSimViewRenderTarget());
     mVidDriver->beginScene();
+
     mSceneManager->drawAll();
 
     // Swap back to the main render target and render the GUI

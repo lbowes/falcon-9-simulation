@@ -33,10 +33,8 @@ public:
 
 private:
     void bindSimViewToRenderTarget();
-    void handleSimViewWindowResize();
     void initImGui(irr::IrrlichtDevice& device);
     void setImGuiStyle();
-    bool simViewWinHasChangedSize() const;
 };
 
 #endif // GUI_H_
