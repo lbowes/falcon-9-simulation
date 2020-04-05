@@ -28,5 +28,5 @@ private:
 };
 
 
-#endif
+#endif // ANIMATION_H_
 

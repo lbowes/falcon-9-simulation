@@ -1,38 +1,25 @@
 #ifndef SCENE_H_
 #define SCENE_H_
 
-#include <IMeshSceneNode.h>
-#include <ISceneManager.h>
-#include <chrono/core/ChCoordsys.h>
-#include <chrono/core/ChVector.h>
+#include "SimulationModel.h"
+#include "cameras/FPVCamera.h"
 
-#include <string>
-#include <unordered_map>
+#include <ISceneManager.h>
+#include <IrrlichtDevice.h>
 
 
 class Scene {
-public:
-    struct HighPrecisionNode {
-        irr::scene::ISceneNode* node;
-		chrono::Coordsys transform_world;
-    };
-
 private:
-    irr::scene::ISceneManager& mSceneMgr;
-    std::unordered_map<std::string, HighPrecisionNode> mSceneNodes;
+    bool mCamerasHaveFocus;
+    SimulationModel mSimModel;
+    FPVCamera testCam;
 
 public:
-    Scene(irr::scene::ISceneManager& sceneMgr);
+    Scene(irr::scene::ISceneManager& sceneMgr, irr::video::IVideoDriver& vidDriver);
     ~Scene() = default;
 
-    void updateAllNodeTransforms();
-    void offsetAllNodePositionsBy(chrono::ChVector<> offset);
-
-private:
-    void addAllMeshes();
-    void addAllLights();
-    void addMesh(const std::string& name, const std::string& filePath);
-    void addLight(const std::string& name, irr::scene::ILightSceneNode* light);
+    void handleInput(double dt);
+    void update(float aspectRatio, double dt);
 };
 
 

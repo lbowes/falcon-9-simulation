@@ -23,7 +23,6 @@ $(VERBOSE).SILENT	build/visualisation/Makefile	/^$(VERBOSE).SILENT:$/;"	t
 8	build/compile_commands.json	/^{$/;"	o
 9	build/compile_commands.json	/^{$/;"	o
 ANIMATIONFRAME_H_	src/visualisation/AnimationFrame.h	/^#define ANIMATIONFRAME_H_$/;"	d
-ANIMATION_H_	build/Animation.h	/^#define ANIMATION_H_$/;"	d
 ANIMATION_H_	src/visualisation/Animation.h	/^#define ANIMATION_H_$/;"	d
 ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#   define ARCHITECTURE_ID /;"	d	file:
 ARCHITECTURE_ID	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define ARCHITECTURE_ID /;"	d	file:
@@ -39,7 +38,6 @@ ARCHITECTURE_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#
 ARCHITECTURE_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define ARCHITECTURE_ID$/;"	d	file:
 Acknowledgements	README.md	/^## Acknowledgements$/;"	s
 Aim	README.md	/^## Aim$/;"	s
-Animation	build/Animation.h	/^class Animation {$/;"	c
 Animation	src/visualisation/Animation.cpp	/^Animation::Animation(double frameInterval_s, double duration_s) :$/;"	f	class:Animation
 Animation	src/visualisation/Animation.h	/^class Animation {$/;"	c
 AnimationFrame	src/visualisation/AnimationFrame.h	/^class AnimationFrame {$/;"	c
@@ -432,7 +430,7 @@ HWEventReceiver	src/main_old.cpp	/^        HWEventReceiver() {$/;"	f	class:Input
 HWEventReceiver	src/main_old.cpp	/^    class HWEventReceiver : public irr::IEventReceiver {$/;"	c	namespace:Input	file:
 HWEventReceiver	src/visualisation/input/HWEventReceiver.cpp	/^    HWEventReceiver::HWEventReceiver() {$/;"	f	class:Input::HWEventReceiver
 HWEventReceiver	src/visualisation/input/HWEventReceiver.h	/^    class HWEventReceiver : public irr::IEventReceiver {$/;"	c	namespace:Input
-HighPrecisionNode	src/visualisation/simulation_model/Scene.h	/^    struct HighPrecisionNode {$/;"	s	class:Scene
+HighPrecisionNode	src/visualisation/simulation_model/SimulationModel.h	/^    struct HighPrecisionNode {$/;"	s	class:SimulationModel
 ID_VOID_MAIN	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define ID_VOID_MAIN$/;"	d	file:
 ID_VOID_MAIN	build/CMakeFiles/3.16.4/CompilerIdC/CMakeCCompilerId.c	/^# define ID_VOID_MAIN$/;"	d	file:
 INPUT_HWEVENTRECEIVER_H_	src/visualisation/input/HWEventReceiver.h	/^#define INPUT_HWEVENTRECEIVER_H_$/;"	d
@@ -475,7 +473,7 @@ PLATFORM_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  de
 PLATFORM_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID /;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID$/;"	d	file:
 Pos	build/imgui.ini	/^Pos=0,0$/;"	k	section:Window
-Pos	build/imgui.ini	/^Pos=0,1183$/;"	k	section:Window
+Pos	build/imgui.ini	/^Pos=0,1175$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=1197,820$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=1976,463$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=2185,0$/;"	k	section:Window
@@ -522,12 +520,12 @@ STRINGIFY_HELPER	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^
 SUFFIXES	build/Makefile	/^SUFFIXES =$/;"	m
 SUFFIXES	build/simulation/Makefile	/^SUFFIXES =$/;"	m
 SUFFIXES	build/visualisation/Makefile	/^SUFFIXES =$/;"	m
-Scene	src/visualisation/simulation_model/Scene.cpp	/^Scene::Scene(irr::scene::ISceneManager& sceneMgr) :$/;"	f	class:Scene
+Scene	src/visualisation/simulation_model/Scene.cpp	/^Scene::Scene(irr::scene::ISceneManager& sceneMgr, irr::video::IVideoDriver& vidDriver) :$/;"	f	class:Scene
 Scene	src/visualisation/simulation_model/Scene.h	/^class Scene {$/;"	c
 Sensitivity	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    struct Sensitivity {$/;"	s	class:FPVCamera
 SessionLoad	Session.vim	/^let SessionLoad = 1$/;"	v
 Simulation	src/simulation/Simulation.h	/^class Simulation {$/;"	c
-SimulationModel	src/visualisation/simulation_model/SimulationModel.cpp	/^SimulationModel::SimulationModel(irr::scene::ISceneManager& sceneMgr) :$/;"	f	class:SimulationModel
+SimulationModel	src/visualisation/simulation_model/SimulationModel.cpp	/^SimulationModel::SimulationModel(irr::scene::ISceneManager& sceneMgr, irr::video::IVideoDriver& /;"	f	class:SimulationModel
 SimulationModel	src/visualisation/simulation_model/SimulationModel.h	/^class SimulationModel {$/;"	c
 SimulationView	src/visualisation/GUI.h	/^    struct SimulationView {$/;"	s	class:GUI
 Size	build/imgui.ini	/^Size=1164,534$/;"	k	section:Window
@@ -535,9 +533,9 @@ Size	build/imgui.ini	/^Size=117,632$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=1301,938$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=159,62$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=216,1366$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=2507,1181$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=2507,1173$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=2507,1385$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=2507,202$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=2507,210$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=32,35$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=322,1385$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=351,243$/;"	k	section:Window
@@ -570,13 +568,14 @@ Window	build/imgui.ini	/^[Window][device info]$/;"	s
 Window	build/imgui.ini	/^[Window][test drawing image]$/;"	s
 Window	build/imgui.ini	/^[Window][test]$/;"	s
 Window	build/imgui.ini	/^[Window][this is a test window]$/;"	s
-addAllLights	src/visualisation/simulation_model/Scene.cpp	/^void Scene::addAllLights() {$/;"	f	class:Scene	typeref:typename:void
-addAllMeshes	src/visualisation/simulation_model/Scene.cpp	/^void Scene::addAllMeshes() {$/;"	f	class:Scene	typeref:typename:void
+addAllLights	src/visualisation/simulation_model/SimulationModel.cpp	/^void SimulationModel::addAllLights() {$/;"	f	class:SimulationModel	typeref:typename:void
+addAllMeshes	src/visualisation/simulation_model/SimulationModel.cpp	/^void SimulationModel::addAllMeshes() {$/;"	f	class:SimulationModel	typeref:typename:void
 addEngineMesh	src/main_old.cpp	/^void addEngineMesh() {$/;"	f	typeref:typename:void
-addLight	src/visualisation/simulation_model/Scene.cpp	/^void Scene::addLight(const std::string& name, irr::scene::ILightSceneNode* light) {$/;"	f	class:Scene	typeref:typename:void
-addMesh	src/visualisation/simulation_model/Scene.cpp	/^void Scene::addMesh(const std::string& name, const std::string& filePath) {$/;"	f	class:Scene	typeref:typename:void
+addLight	src/visualisation/simulation_model/SimulationModel.cpp	/^void SimulationModel::addLight(const std::string& name, irr::scene::ISceneNode* light) {$/;"	f	class:SimulationModel	typeref:typename:void
+addMesh	src/visualisation/simulation_model/SimulationModel.cpp	/^void SimulationModel::addMesh(const std::string& name, const std::string& filePath) {$/;"	f	class:SimulationModel	typeref:typename:void
 addReceiver	src/main_old.cpp	/^        void addReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void	file:
 addReceiver	src/visualisation/input/MasterEventReceiver.cpp	/^    void MasterEventReceiver::addReceiver(irr::IEventReceiver* receiver) {$/;"	f	class:Input::MasterEventReceiver	typeref:typename:void
+addSky	src/visualisation/simulation_model/SimulationModel.cpp	/^void SimulationModel::addSky(irr::video::IVideoDriver& vidDriver) {$/;"	f	class:SimulationModel	typeref:typename:void
 all	build/Makefile	/^all: cmake_check_build_system$/;"	t
 all	build/simulation/Makefile	/^all: cmake_check_build_system$/;"	t
 all	build/visualisation/Makefile	/^all: cmake_check_build_system$/;"	t
@@ -678,7 +677,7 @@ handle	src/visualisation/simulation_model/cameras/CameraSystem.h	/^        const
 handleDirectionInput	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::handleDirectionInput() {$/;"	f	class:FPVCamera	typeref:typename:void
 handleInput	src/main_old.cpp	/^void handleInput(double frameTime_s) {$/;"	f	typeref:typename:void
 handleInput	src/visualisation/Visualisation.cpp	/^void Visualisation::handleInput(double frameTime_s) {$/;"	f	class:Visualisation	typeref:typename:void
-handleInput	src/visualisation/simulation_model/SimulationModel.cpp	/^void SimulationModel::handleInput(double dt) {$/;"	f	class:SimulationModel	typeref:typename:void
+handleInput	src/visualisation/simulation_model/Scene.cpp	/^void Scene::handleInput(double dt) {$/;"	f	class:Scene	typeref:typename:void
 handleInput	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^void CameraSystem::handleInput() {$/;"	f	class:CameraSystem	typeref:typename:void
 handleInput	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::handleInput(double dt) {$/;"	f	class:FPVCamera	typeref:typename:void
 handleMovementInput	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::handleMovementInput(double dt) {$/;"	f	class:FPVCamera	typeref:typename:void
@@ -751,21 +750,17 @@ mCameraMovementFriction	src/main_old.cpp	/^const float mCameraMovementFriction =
 mCameraPos	src/main_old.cpp	/^chrono::ChVector<> mCameraPos = chrono::ChVector<>(2.0f, 1.78f, 0.0f);$/;"	v	typeref:typename:chrono::ChVector<>
 mCameraVelocity	src/main_old.cpp	/^chrono::ChVector<> mCameraVelocity;$/;"	v	typeref:typename:chrono::ChVector<>
 mCamerasHaveFocus	src/main_old.cpp	/^bool mCamerasHaveFocus = false;$/;"	v	typeref:typename:bool
-mCamerasHaveFocus	src/visualisation/simulation_model/SimulationModel.h	/^    bool mCamerasHaveFocus;$/;"	m	class:SimulationModel	typeref:typename:bool
+mCamerasHaveFocus	src/visualisation/simulation_model/Scene.h	/^    bool mCamerasHaveFocus;$/;"	m	class:Scene	typeref:typename:bool
 mCentreScreenPos_scr	src/main_old.cpp	/^        irr::core::vector2di mCentreScreenPos_scr;$/;"	m	class:Input::HWEventReceiver	typeref:typename:irr::core::vector2di	file:
 mCoordSystems	src/visualisation/AnimationFrame.h	/^    std::unordered_map<std::string, chrono::ChCoordsys<double>> mCoordSystems;$/;"	m	class:AnimationFrame	typeref:typename:std::unordered_map<std::string,chrono::ChCoordsys<double>>
 mDelta_scr	src/main_old.cpp	/^        irr::core::vector2di mDelta_scr;$/;"	m	class:Input::MouseState	typeref:typename:irr::core::vector2di	file:
 mDevice	src/main_old.cpp	/^irr::IrrlichtDevice* mDevice;$/;"	v	typeref:typename:irr::IrrlichtDevice *
 mDevice	src/visualisation/Visualisation.h	/^    irr::IrrlichtDevice* mDevice;$/;"	m	class:Visualisation	typeref:typename:irr::IrrlichtDevice *
-mDuration_s	build/Animation.h	/^    double mDuration_s;$/;"	m	class:Animation	typeref:typename:double
 mDuration_s	src/visualisation/Animation.h	/^    double mDuration_s;$/;"	m	class:Animation	typeref:typename:double
 mEventReceiver	src/main_old.cpp	/^Input::MasterEventReceiver mEventReceiver;$/;"	v	typeref:typename:Input::MasterEventReceiver
 mEventReceiver	src/visualisation/Visualisation.h	/^    Input::MasterEventReceiver mEventReceiver;$/;"	m	class:Visualisation	typeref:typename:Input::MasterEventReceiver
-mFrameCount	build/Animation.h	/^    unsigned int mFrameCount;$/;"	m	class:Animation	typeref:typename:unsigned int
 mFrameCount	src/visualisation/Animation.h	/^    unsigned int mFrameCount;$/;"	m	class:Animation	typeref:typename:unsigned int
-mFrameInterval_s	build/Animation.h	/^    const double mFrameInterval_s;$/;"	m	class:Animation	typeref:typename:const double
 mFrameInterval_s	src/visualisation/Animation.h	/^    const double mFrameInterval_s;$/;"	m	class:Animation	typeref:typename:const double
-mFrames	build/Animation.h	/^    std::vector<AnimationFrame> mFrames;$/;"	m	class:Animation	typeref:typename:std::vector<AnimationFrame>
 mFrames	src/visualisation/Animation.h	/^    std::vector<AnimationFrame> mFrames;$/;"	m	class:Animation	typeref:typename:std::vector<AnimationFrame>
 mFriction	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^const float FPVCamera::Movement::mFriction = 7.0f;$/;"	m	class:FPVCamera::Movement	typeref:typename:const float
 mFriction	src/visualisation/simulation_model/cameras/FPVCamera.h	/^        static const float mFriction;$/;"	m	struct:FPVCamera::Movement	typeref:typename:const float
@@ -795,14 +790,14 @@ mPosition_scr	src/main_old.cpp	/^        irr::core::vector2di mPosition_scr;$/;"
 mReceivers	src/main_old.cpp	/^        irr::core::array<irr::IEventReceiver*> mReceivers;$/;"	m	class:Input::MasterEventReceiver	typeref:typename:irr::core::array<irr::IEventReceiver * >	file:
 mReceivers	src/visualisation/input/MasterEventReceiver.h	/^        irr::core::array<irr::IEventReceiver*> mReceivers;$/;"	m	class:Input::MasterEventReceiver	typeref:typename:irr::core::array<irr::IEventReceiver * >
 mRenderTarget	src/visualisation/VertFlipScreenQuad.h	/^    irr::video::ITexture* mRenderTarget;$/;"	m	class:VertFlipScreenQuad	typeref:typename:irr::video::ITexture *
-mScene	src/visualisation/simulation_model/SimulationModel.h	/^    Scene mScene;$/;"	m	class:SimulationModel	typeref:typename:Scene
+mScene	src/visualisation/Visualisation.h	/^    std::unique_ptr<Scene> mScene;$/;"	m	class:Visualisation	typeref:typename:std::unique_ptr<Scene>
 mSceneManager	src/visualisation/Visualisation.h	/^    irr::scene::ISceneManager* mSceneManager;$/;"	m	class:Visualisation	typeref:typename:irr::scene::ISceneManager *
 mSceneMgr	src/main_old.cpp	/^irr::scene::ISceneManager* mSceneMgr;$/;"	v	typeref:typename:irr::scene::ISceneManager *
-mSceneMgr	src/visualisation/simulation_model/Scene.h	/^    irr::scene::ISceneManager& mSceneMgr;$/;"	m	class:Scene	typeref:typename:irr::scene::ISceneManager &
-mSceneNodes	src/visualisation/simulation_model/Scene.h	/^    std::unordered_map<std::string, HighPrecisionNode> mSceneNodes;$/;"	m	class:Scene	typeref:typename:std::unordered_map<std::string,HighPrecisionNode>
+mSceneMgr	src/visualisation/simulation_model/SimulationModel.h	/^    irr::scene::ISceneManager& mSceneMgr;$/;"	m	class:SimulationModel	typeref:typename:irr::scene::ISceneManager &
+mSceneNodes	src/visualisation/simulation_model/SimulationModel.h	/^    std::unordered_map<std::string, HighPrecisionNode> mSceneNodes;$/;"	m	class:SimulationModel	typeref:typename:std::unordered_map<std::string,HighPrecisionNode>
 mSensitivity	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    } mSensitivity;$/;"	m	class:FPVCamera	typeref:struct:FPVCamera::Sensitivity
+mSimModel	src/visualisation/simulation_model/Scene.h	/^    SimulationModel mSimModel;$/;"	m	class:Scene	typeref:typename:SimulationModel
 mSimView	src/visualisation/GUI.h	/^    SimulationView mSimView;$/;"	m	class:GUI	typeref:typename:SimulationView
-mSimulationModel	src/visualisation/Visualisation.h	/^    std::unique_ptr<SimulationModel> mSimulationModel;$/;"	m	class:Visualisation	typeref:typename:std::unique_ptr<SimulationModel>
 mTimeStamp_s	src/visualisation/AnimationFrame.h	/^    double mTimeStamp_s;$/;"	m	class:AnimationFrame	typeref:typename:double
 mVelocity	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    chrono::ChVector<> mVelocity;$/;"	m	class:FPVCamera	typeref:typename:chrono::ChVector<>
 mVertFlipScreenQuad	src/visualisation/Visualisation.h	/^    std::unique_ptr<VertFlipScreenQuad> mVertFlipScreenQuad;$/;"	m	class:Visualisation	typeref:typename:std::unique_ptr<VertFlipScreenQuad>
@@ -811,7 +806,6 @@ mVidDriver	src/main_old.cpp	/^irr::video::IVideoDriver* mVidDriver;$/;"	v	typere
 mVidDriver	src/visualisation/Visualisation.h	/^    irr::video::IVideoDriver* mVidDriver;$/;"	m	class:Visualisation	typeref:typename:irr::video::IVideoDriver *
 mVidDriverHandle	src/visualisation/GUI.h	/^    irr::video::IVideoDriver& mVidDriverHandle;$/;"	m	class:GUI	typeref:typename:irr::video::IVideoDriver &
 mVidDriverHandle	src/visualisation/VertFlipScreenQuad.h	/^    irr::video::IVideoDriver& mVidDriverHandle;$/;"	m	class:VertFlipScreenQuad	typeref:typename:irr::video::IVideoDriver &
-mVisibleFrame	build/Animation.h	/^    AnimationFrame mVisibleFrame;$/;"	m	class:Animation	typeref:typename:AnimationFrame
 mVisibleFrame	src/visualisation/Animation.h	/^    AnimationFrame mVisibleFrame;$/;"	m	class:Animation	typeref:typename:AnimationFrame
 mWheelScroll	src/main_old.cpp	/^        float mWheelScroll;$/;"	m	class:Input::MouseState	typeref:typename:float	file:
 mYaw	src/visualisation/simulation_model/cameras/FPVCamera.h	/^    float mYaw;$/;"	m	class:FPVCamera	typeref:typename:float
@@ -836,8 +830,8 @@ middle	src/main_old.cpp	/^            middle,$/;"	e	enum:Input::MouseState::Butt
 middle	src/visualisation/input/HWEventReceiver.h	/^            middle,$/;"	e	enum:Input::MouseState::Button
 name	src/visualisation/simulation_model/cameras/CameraSystem.h	/^        std::string name;$/;"	m	struct:CameraSystem::CameraHandle	typeref:typename:std::string
 nearValue	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^    float nearValue;$/;"	m	struct:CameraBaseState	typeref:typename:float
-node	src/visualisation/simulation_model/Scene.h	/^        irr::scene::ISceneNode* node;$/;"	m	struct:Scene::HighPrecisionNode	typeref:typename:irr::scene::ISceneNode *
-offsetAllNodePositionsBy	src/visualisation/simulation_model/Scene.cpp	/^void Scene::offsetAllNodePositionsBy(chrono::ChVector<> offset) {$/;"	f	class:Scene	typeref:typename:void
+node	src/visualisation/simulation_model/SimulationModel.h	/^        irr::scene::ISceneNode* node;$/;"	m	struct:SimulationModel::HighPrecisionNode	typeref:typename:irr::scene::ISceneNode *
+offsetAllNodePositionsBy	src/visualisation/simulation_model/SimulationModel.cpp	/^void SimulationModel::offsetAllNodePositionsBy(chrono::ChVector<> offset) {$/;"	f	class:SimulationModel	typeref:typename:void
 position	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^    chrono::ChVector<> position;$/;"	m	struct:CameraBaseState	typeref:typename:chrono::ChVector<>
 preinstall	build/Makefile	/^preinstall: all$/;"	t
 preinstall	build/simulation/Makefile	/^preinstall: all$/;"	t
@@ -910,19 +904,19 @@ simulation/Simulation.s	build/Makefile	/^simulation\/Simulation.s: simulation\/S
 start	src/visualisation/GUI.cpp	/^void GUI::start() {$/;"	f	class:GUI	typeref:typename:void
 syncLookAtWithPitchYaw	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::syncLookAtWithPitchYaw() {$/;"	f	class:FPVCamera	typeref:typename:void
 syncPitchYawWithLookAt	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::syncPitchYawWithLookAt() {$/;"	f	class:FPVCamera	typeref:typename:void
-testCam	src/visualisation/simulation_model/SimulationModel.h	/^    FPVCamera testCam;$/;"	m	class:SimulationModel	typeref:typename:FPVCamera
+testCam	src/visualisation/simulation_model/Scene.h	/^    FPVCamera testCam;$/;"	m	class:Scene	typeref:typename:FPVCamera
 texture	src/visualisation/GUI.h	/^        IrrIMGUI::IGUITexture* texture;$/;"	m	struct:GUI::SimulationView	typeref:typename:IrrIMGUI::IGUITexture *
 toggleCameraFocus	src/main_old.cpp	/^void toggleCameraFocus() {$/;"	f	typeref:typename:void
-transform_world	src/visualisation/simulation_model/Scene.h	/^        Coordsys transform_world;$/;"	m	struct:Scene::HighPrecisionNode	typeref:typename:Coordsys
+transform_world	src/visualisation/simulation_model/SimulationModel.h	/^        chrono::Coordsys transform_world;$/;"	m	struct:SimulationModel::HighPrecisionNode	typeref:typename:chrono::Coordsys
 up	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^    chrono::ChVector<> up;$/;"	m	struct:CameraBaseState	typeref:typename:chrono::ChVector<>
 update	src/main_old.cpp	/^        void update(irr::core::vector2di centreScreenPos_scr) {$/;"	f	class:Input::HWEventReceiver	typeref:typename:void	file:
 update	src/main_old.cpp	/^void update(double frameTime_s) {$/;"	f	typeref:typename:void
 update	src/visualisation/Visualisation.cpp	/^void Visualisation::update(double frameTime_s) {$/;"	f	class:Visualisation	typeref:typename:void
 update	src/visualisation/input/HWEventReceiver.cpp	/^    void HWEventReceiver::update() {$/;"	f	class:Input::HWEventReceiver	typeref:typename:void
 update	src/visualisation/input/HWEventReceiver.cpp	/^    void MouseState::update() {$/;"	f	class:Input::MouseState	typeref:typename:void
-update	src/visualisation/simulation_model/SimulationModel.cpp	/^void SimulationModel::update(float aspectRatio, double dt) {$/;"	f	class:SimulationModel	typeref:typename:void
+update	src/visualisation/simulation_model/Scene.cpp	/^void Scene::update(float aspectRatio, double dt) {$/;"	f	class:Scene	typeref:typename:void
 update	src/visualisation/simulation_model/cameras/FPVCamera.cpp	/^void FPVCamera::update(double dt) {$/;"	f	class:FPVCamera	typeref:typename:void
-updateAllNodeTransforms	src/visualisation/simulation_model/Scene.cpp	/^void Scene::updateAllNodeTransforms() {$/;"	f	class:Scene	typeref:typename:void
+updateAllNodeTransforms	src/visualisation/simulation_model/SimulationModel.cpp	/^void SimulationModel::updateAllNodeTransforms() {$/;"	f	class:SimulationModel	typeref:typename:void
 updateIrrlichtCamera	src/visualisation/simulation_model/cameras/CameraSystem.cpp	/^void CameraSystem::updateIrrlichtCamera() {$/;"	f	class:CameraSystem	typeref:typename:void
 updateTime	src/visualisation/Animation.cpp	/^void Animation::updateTime(double time_s) {$/;"	f	class:Animation	typeref:typename:void
 verticalFOV	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^    float verticalFOV;$/;"	m	struct:CameraBaseState	typeref:typename:float

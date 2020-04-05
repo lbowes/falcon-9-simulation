@@ -17,7 +17,7 @@ Visualisation::Visualisation() :
     const irr::core::dimension2du monitorRes = getMonitorResolution();
     mGUI = std::make_unique<GUI>(*mDevice, monitorRes);
     mVertFlipScreenQuad = std::make_unique<VertFlipScreenQuad>(*mVidDriver, monitorRes);
-    mSimulationModel = std::make_unique<SimulationModel>(*mDevice->getSceneManager());
+    mScene = std::make_unique<Scene>(*mDevice->getSceneManager(), *mVidDriver);
 
     mEventReceiver.addReceiver(&mHWInput);
     mEventReceiver.addReceiver(&mGUI->getEventReceiver());
@@ -86,13 +86,13 @@ void Visualisation::handleInput(double frameTime_s) {
     if(HWEventReceiver::isKeyPressed(irr::KEY_ESCAPE))
         close();
 
-    mSimulationModel->handleInput(frameTime_s);
+    mScene->handleInput(frameTime_s);
 }
 
 
 void Visualisation::update(double frameTime_s) {
     const float aspect = mGUI->getSimViewWindowAspectRatio();
-    mSimulationModel->update(aspect, frameTime_s);
+    mScene->update(aspect, frameTime_s);
 
     Input::HWEventReceiver::update();
 }

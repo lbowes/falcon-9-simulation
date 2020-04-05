@@ -4,7 +4,7 @@
 #include "GUI.h"
 #include "VertFlipScreenQuad.h"
 #include "input/MasterEventReceiver.h"
-#include "simulation_model/SimulationModel.h"
+#include "simulation_model/Scene.h"
 
 #include <memory>
 
@@ -19,7 +19,7 @@ private:
     Input::MasterEventReceiver mEventReceiver;
     std::unique_ptr<GUI> mGUI;
     std::unique_ptr<VertFlipScreenQuad> mVertFlipScreenQuad;
-    std::unique_ptr<SimulationModel> mSimulationModel;
+    std::unique_ptr<Scene> mScene;
 
 public:
     Visualisation();

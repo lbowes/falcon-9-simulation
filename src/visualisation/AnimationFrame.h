@@ -30,5 +30,5 @@ public:
 };
 
 
-#endif
+#endif // ANIMATIONFRAME_H_
 
