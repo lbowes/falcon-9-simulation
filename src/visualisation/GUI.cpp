@@ -194,7 +194,10 @@ IrrIMGUI::CIMGUIEventReceiver& GUI::getEventReceiver() {
 
 
 float GUI::getSimViewWindowAspectRatio() const {
-    return static_cast<float>(mSimView.dimensions.Width) / static_cast<float>(mSimView.dimensions.Height);
+    const float width = static_cast<float>(mSimView.dimensions.Width);
+    const float height = static_cast<float>(mSimView.dimensions.Height);
+
+    return width / height;
 }
 
 

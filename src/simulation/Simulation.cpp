@@ -1,3 +1,5 @@
 #include "Simulation.h"
 
-void Simulation::run() {}
+
+void Simulation::run() {
+}

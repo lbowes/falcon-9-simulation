@@ -37,5 +37,6 @@ private:
     void close();
 };
 
+
 #endif // VISUALISATION_H_
 

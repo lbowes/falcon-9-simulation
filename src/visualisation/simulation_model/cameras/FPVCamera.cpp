@@ -23,7 +23,7 @@ FPVCamera::FPVCamera() :
     mPitch(0.0f),
     mYaw(0.0f) {
 
-    mCameraBase.nearValue = 0.1f;
+    mCameraBase.nearValue = 0.5f;
     mCameraBase.farValue = 300.0f;
     mCameraBase.verticalFOV = 44.7f;
     mCameraBase.position = {0.0, 0.5, 3.5};

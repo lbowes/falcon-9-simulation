@@ -22,5 +22,6 @@ public:
     void update(float aspectRatio, double dt);
 };
 
+
 #endif // SIMULATIONMODEL_H_
 

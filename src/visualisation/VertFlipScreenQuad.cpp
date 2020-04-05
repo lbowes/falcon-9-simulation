@@ -10,17 +10,18 @@ VertFlipScreenQuad::VertFlipScreenQuad(irr::video::IVideoDriver& vidDriver, irr:
 
     mRenderTarget = vidDriver.addRenderTargetTexture(monitorResolution, "VertFlippedScreenQuad");
 
-    mVertices[0] = S3DVertex(-1, 1, 0, 0, 0, 0, SColor(255, 255, 255, 255), 0, 0);
-    mVertices[1] = S3DVertex(1, 1, 0, 0, 0, 0, SColor(255, 255, 255, 255), 1, 0);
-    mVertices[2] = S3DVertex(1, -1, 0, 0, 0, 0, SColor(255, 255, 255, 255), 1, 1);
-    mVertices[3] = S3DVertex(-1, -1, 0, 0, 0, 0, SColor(255, 255, 255, 255), 0, 1);
+    const SColor white = SColor(255, 255, 255, 255);
+    mVertices[0] = S3DVertex(-1, -1, 0, 0, 0, 0, white, 0, 1);
+    mVertices[1] = S3DVertex(-1, 1, 0, 0, 0, 0, white, 0, 0);
+    mVertices[2] = S3DVertex(1, 1, 0, 0, 0, 0, white, 1, 0);
+    mVertices[3] = S3DVertex(1, -1, 0, 0, 0, 0, white, 1, 1);
 
     mIndices[0] = 0;
     mIndices[1] = 1;
-    mIndices[2] = 3;
-    mIndices[3] = 1;
-    mIndices[4] = 2;
-    mIndices[5] = 3;
+    mIndices[2] = 2;
+    mIndices[3] = 2;
+    mIndices[4] = 3;
+    mIndices[5] = 0;
 
     matrix4 invertY;
     invertY.buildTextureTransform(0.0f, vector2df(0, 0), vector2df(0, 1.0f), vector2df(1.0f, -1.0f));

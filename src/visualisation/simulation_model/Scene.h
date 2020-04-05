@@ -5,6 +5,7 @@
 #include <ISceneManager.h>
 #include <chrono/core/ChCoordsys.h>
 #include <chrono/core/ChVector.h>
+
 #include <string>
 #include <unordered_map>
 
@@ -13,7 +14,7 @@ class Scene {
 public:
     struct HighPrecisionNode {
         irr::scene::ISceneNode* node;
-        chrono::ChCoordsys<> transform_world;
+		chrono::Coordsys transform_world;
     };
 
 private:
@@ -33,6 +34,7 @@ private:
     void addMesh(const std::string& name, const std::string& filePath);
     void addLight(const std::string& name, irr::scene::ILightSceneNode* light);
 };
+
 
 #endif // SCENE_H_
 
