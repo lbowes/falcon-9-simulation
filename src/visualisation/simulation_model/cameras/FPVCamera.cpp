@@ -19,7 +19,7 @@ const float FPVCamera::Movement::mFriction = 7.0f;
 
 FPVCamera::FPVCamera() :
     mVelocity(chrono::ChVector<>()),
-    mMovementSpeed(20.0f),
+    mMovementSpeed(200.0f),
     mPitch(0.0f),
     mYaw(0.0f) {
 
@@ -39,7 +39,7 @@ FPVCamera::FPVCamera() :
 void FPVCamera::handleInput(double dt) {
     handleMovementInput(dt);
     handleZoomInput(dt);
-    handleDirectionInput();
+    //handleDirectionInput();
 }
 
 

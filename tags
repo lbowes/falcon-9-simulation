@@ -391,7 +391,6 @@ CameraBaseState	src/visualisation/simulation_model/cameras/CameraBaseState.h	/^s
 CameraHandle	src/visualisation/simulation_model/cameras/CameraSystem.h	/^    struct CameraHandle {$/;"	s	class:CameraSystem
 CameraSystem	src/visualisation/simulation_model/cameras/CameraSystem.h	/^class CameraSystem {$/;"	c
 Collapsed	build/imgui.ini	/^Collapsed=0$/;"	k	section:Window
-Collapsed	build/imgui.ini	/^Collapsed=1$/;"	k	section:Window
 DEC	build/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define DEC(/;"	d	file:
 DEC	build/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define DEC(/;"	d	file:
 DEC	build/CMakeFiles/3.16.4/CompilerIdC/CMakeCCompilerId.c	/^#define DEC(/;"	d	file:
@@ -473,8 +472,7 @@ PLATFORM_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  de
 PLATFORM_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID /;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.16.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID$/;"	d	file:
 Pos	build/imgui.ini	/^Pos=0,0$/;"	k	section:Window
-Pos	build/imgui.ini	/^Pos=0,1175$/;"	k	section:Window
-Pos	build/imgui.ini	/^Pos=1197,820$/;"	k	section:Window
+Pos	build/imgui.ini	/^Pos=0,1194$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=1976,463$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=2185,0$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=2291,19$/;"	k	section:Window
@@ -483,6 +481,7 @@ Pos	build/imgui.ini	/^Pos=599,103$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=60,14$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=60,60$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=66,166$/;"	k	section:Window
+Pos	build/imgui.ini	/^Pos=718,236$/;"	k	section:Window
 Pos	build/imgui.ini	/^Pos=926,309$/;"	k	section:Window
 RM	build/Makefile	/^RM = \/usr\/local\/bin\/cmake -E remove -f$/;"	m
 RM	build/simulation/Makefile	/^RM = \/usr\/local\/bin\/cmake -E remove -f$/;"	m
@@ -528,16 +527,16 @@ Simulation	src/simulation/Simulation.h	/^class Simulation {$/;"	c
 SimulationModel	src/visualisation/simulation_model/SimulationModel.cpp	/^SimulationModel::SimulationModel(irr::scene::ISceneManager& sceneMgr, irr::video::IVideoDriver& /;"	f	class:SimulationModel
 SimulationModel	src/visualisation/simulation_model/SimulationModel.h	/^class SimulationModel {$/;"	c
 SimulationView	src/visualisation/GUI.h	/^    struct SimulationView {$/;"	s	class:GUI
-Size	build/imgui.ini	/^Size=1164,534$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=117,632$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=1301,938$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=159,62$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=216,1366$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=2507,1173$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=2507,1192$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=2507,1385$/;"	k	section:Window
-Size	build/imgui.ini	/^Size=2507,210$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=2507,191$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=32,35$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=322,1385$/;"	k	section:Window
+Size	build/imgui.ini	/^Size=331,140$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=351,243$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=400,400$/;"	k	section:Window
 Size	build/imgui.ini	/^Size=403,222$/;"	k	section:Window

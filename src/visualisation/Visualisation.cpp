@@ -32,11 +32,12 @@ Visualisation::~Visualisation() {
 void Visualisation::initDevice() {
     irr::SIrrlichtCreationParameters params;
     params.DriverType = irr::video::EDT_OPENGL;
-    params.AntiAlias = true;
+    params.AntiAlias = false;
+    params.ZBufferBits = 24;
     params.WindowSize = getMonitorResolution() / 2;
-    params.Bits = 16;
+    params.Bits = 24;
     params.Fullscreen = false;
-    params.Stencilbuffer = true;
+    params.Stencilbuffer = false;
     params.Vsync = true;
     params.EventReceiver = &mEventReceiver;
 

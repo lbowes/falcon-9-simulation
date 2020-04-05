@@ -18,9 +18,9 @@ void SimulationModel::updateAllNodeTransforms() {
     using namespace chrono;
 
     // Meshes
-    mSceneNodes["UnitCube"].transform_world = Coordsys(ChVector<>(0.0f, 0.6f, 0.0f));
-    mSceneNodes["someExampleLight"].transform_world = Coordsys(ChVector<>(30.0f, 0.0f, 0.0f));
-    mSceneNodes["anotherExampleLight"].transform_world = Coordsys(ChVector<>(-20.0f, 0.0f, 50.0f));
+    mSceneNodes["Falcon9Full"].transform_world = Coordsys(ChVector<>(0.0f, 0.6f, 0.0f));
+    mSceneNodes["someExampleLight"].transform_world = Coordsys(ChVector<>(100.0f, 0.0f, 0.0f));
+    mSceneNodes["anotherExampleLight"].transform_world = Coordsys(ChVector<>(-90.0f, 0.0f, 120.0f));
 }
 
 
@@ -53,7 +53,7 @@ void SimulationModel::addSky(irr::video::IVideoDriver& vidDriver) {
 void SimulationModel::addAllMeshes() {
     const std::string& modelDir = "../res/obj/";
 
-    addMesh("UnitCube", modelDir + "UnitCube.obj");
+    addMesh("Falcon9Full", modelDir + "Falcon9Full.obj");
     // TODO: Add all simulation meshes here
 }
 
@@ -61,7 +61,7 @@ void SimulationModel::addAllMeshes() {
 void SimulationModel::addAllLights() {
     using namespace irr;
 
-    mSceneMgr.setAmbientLight(video::SColor(0, 150, 150, 150));
+    mSceneMgr.setAmbientLight(video::SColor(255, 200, 200, 255));
 
     addLight(
         "someExampleLight",
@@ -69,7 +69,11 @@ void SimulationModel::addAllLights() {
 
     addLight(
         "anotherExampleLight",
-        mSceneMgr.addLightSceneNode(0, core::vector3df(0, 0, 0), video::SColorf(1.0f, 1.0f, 0.8f)));
+        mSceneMgr.addLightSceneNode(0, core::vector3df(0, 0, 0), video::SColorf(1.0f, 1.0f, 1.0f)));
+
+    scene::ILightSceneNode* sun = mSceneMgr.addLightSceneNode(0, core::vector3df(0, 1000, 0), video::SColorf(1.0f, 0.0f, 0.0f));
+    sun->setLightType(video::ELT_DIRECTIONAL);
+    addLight("sun", sun);
 }
 
 
