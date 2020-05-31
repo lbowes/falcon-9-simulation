@@ -1,9 +1,9 @@
 include_directories("include/")
 
 # ========== Simulation library ==========
-add_library(f9-sim-simulation-lib)
+add_library(f9sim-simulation-lib)
 
-target_sources(f9-sim-simulation-lib
+target_sources(f9sim-simulation-lib
 	PRIVATE
 		src/Simulation.cpp
 )
@@ -18,24 +18,24 @@ endif()
 
 include_directories(${CHRONO_INCLUDE_DIRS})
 
-set_target_properties(f9-sim-simulation-lib PROPERTIES 
+set_target_properties(f9sim-simulation-lib PROPERTIES 
 	COMPILE_FLAGS "${CHRONO_CXX_FLAGS}"
 	COMPILE_DEFINITIONS "CHRONO_DATA_DIR=\"${CHRONO_DATA_DIR}\""
 	LINK_FLAGS "${CHRONO_LINKER_FLAGS}"
 )
 
-target_link_libraries(f9-sim-simulation-lib
+target_link_libraries(f9sim-simulation-lib
 	${CHRONO_LIBRARIES}
 )
 
 # ========== Simulation application ==========
-add_executable(f9-sim-simulation)
+add_executable(f9sim-simulation)
 
-target_sources(f9-sim-simulation
+target_sources(f9sim-simulation
 	PRIVATE
 		src/main.cpp
 )
 
-target_link_libraries(f9-sim-simulation
-	f9-sim-simulation-lib
+target_link_libraries(f9sim-simulation
+	f9sim-simulation-lib
 )
