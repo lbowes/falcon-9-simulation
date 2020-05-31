@@ -21,7 +21,7 @@ jobs:
         run: |
           rm -rf build
           mkdir -p build/dev
-          cmake -DBUILD_TESTS:BOOL=TRUE -DChrono_DIR:PATH=/deps/chrono/chrono_build/doesntexist -B build/dev -S .
+          cmake -D DBUILD_TESTS:BOOL=TRUE DChrono_DIR:PATH=/deps/chrono/chrono_build/cmake -B build/dev -S .
           
       - name: Build project
         run: |
