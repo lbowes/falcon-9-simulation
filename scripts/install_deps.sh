@@ -17,5 +17,6 @@ cd ../deps
 git clone https://github.com/projectchrono/chrono.git
 cd chrono
 mkdir chrono_build
+cmake -S . -B chrono_build
 # todo, complete local build
 # http://api.projectchrono.org/4.0.0/tutorial_install_chrono.html
