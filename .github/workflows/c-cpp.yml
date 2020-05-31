@@ -1,0 +1,61 @@
+name: C/C++ CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-18.04
+
+    steps:   
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+        
+      - name: Install dependencies
+        run: |
+          chmod +x ./scripts/install_deps.sh
+          sudo ./scripts/install_deps.sh
+          
+      - name: Run cmake in new build dir
+        run: |
+          rm -rf build
+          mkdir -p build/dev
+          cmake -DBUILD_TESTS:BOOL=TRUE -B build/dev -S .
+          
+      - name: Build project
+        run: |
+          cd build/dev
+          make all
+          chmod +x tests/f9-sim-tests
+          
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ail-tests
+          path: build/dev/tests
+        
+  test:
+    name: Test
+    needs: build
+    runs-on: ubuntu-18.04
+    
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+        
+      - name: Download tests binary
+        uses: actions/download-artifact@v2
+        with:
+          name: f9-sim-tests
+          path: build/dev/tests
+      
+      - name: Run tests
+        run: |
+          chmod +x ./build/dev/tests/f9-sim-tests
+          sudo ./build/dev/tests/f9-sim-tests --success
+      
+      # Delete the test binary artifact after it's been run (only required for life of this workflow)
+      - uses: geekyeggo/delete-artifact@v1
+        with:
+          name: f9-sim-tests
