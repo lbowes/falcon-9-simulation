@@ -15,8 +15,8 @@ apt-get -y install build-essential
 apt-get -y install libeigen3-dev
 
 # Setup ProjectChrono library
-mkdir ../deps
-cd ../deps
+mkdir deps
+cd deps
 git clone https://github.com/projectchrono/chrono.git
 cd chrono
 mkdir chrono_build
