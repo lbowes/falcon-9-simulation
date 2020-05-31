@@ -2,10 +2,8 @@
 #include "../../input/HWEventReceiver.h"
 #include "CameraSystem.h"
 
-#include <IMGUI/imgui.h>
 #include <algorithm>
 #include <chrono/core/ChMathematics.h>
-#include <iostream>
 
 
 // Magic constants
@@ -19,7 +17,7 @@ const float FPVCamera::Movement::mFriction = 7.0f;
 
 FPVCamera::FPVCamera() :
     mVelocity(chrono::ChVector<>()),
-    mMovementSpeed(200.0f),
+    mMovementSpeed(20.0f),
     mPitch(0.0f),
     mYaw(0.0f) {
 

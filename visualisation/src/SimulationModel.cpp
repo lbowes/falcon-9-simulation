@@ -18,7 +18,7 @@ void SimulationModel::updateAllNodeTransforms() {
     using namespace chrono;
 
     // Meshes
-    mSceneNodes["Falcon9Full"].transform_world = Coordsys(ChVector<>(0.0f, 0.6f, 0.0f));
+    mSceneNodes["Merlin1D"].transform_world = Coordsys(ChVector<>(0.0f, 0.6f, 0.0f));
     mSceneNodes["someExampleLight"].transform_world = Coordsys(ChVector<>(100.0f, 0.0f, 0.0f));
     mSceneNodes["anotherExampleLight"].transform_world = Coordsys(ChVector<>(-90.0f, 0.0f, 120.0f));
 }
@@ -53,7 +53,7 @@ void SimulationModel::addSky(irr::video::IVideoDriver& vidDriver) {
 void SimulationModel::addAllMeshes() {
     const std::string& modelDir = "../res/obj/";
 
-    addMesh("Falcon9Full", modelDir + "Falcon9Full.obj");
+    addMesh("Merlin1D", modelDir + "Merlin1D.obj");
     // TODO: Add all simulation meshes here
 }
 
