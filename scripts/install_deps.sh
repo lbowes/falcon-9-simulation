@@ -13,4 +13,7 @@ apt-get -y install build-essential
 
 # Install ProjectChrono library
 #todo
-
+mkdir ../deps
+cd ../deps
+git clone git@github.com:projectchrono/chrono.git
+cd chrono
