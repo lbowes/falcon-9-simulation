@@ -17,6 +17,9 @@ jobs:
           chmod +x ./scripts/install_deps.sh
           sudo ./scripts/install_deps.sh
           
+      - name: Print contents of root directory
+        run: ls -l .
+
       - name: Run cmake in new build dir
         run: |
           rm -rf build
