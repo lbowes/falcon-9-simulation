@@ -15,5 +15,5 @@ apt-get -y install build-essential
 #todo
 mkdir ../deps
 cd ../deps
-git clone git@github.com:projectchrono/chrono.git
+git clone https://github.com/projectchrono/chrono.git
 cd chrono
