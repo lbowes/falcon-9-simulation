@@ -18,7 +18,7 @@ jobs:
           sudo ./scripts/install_deps.sh
           
       - name: Print contents of root directory
-        run: ls -l dep
+        run: ls -l deps
 
       - name: Run cmake in new build dir
         run: |
