@@ -2,6 +2,7 @@
 
 
 int main() {
+    printf("Running simulation...\n");
     Simulation sim;
     sim.run();
 

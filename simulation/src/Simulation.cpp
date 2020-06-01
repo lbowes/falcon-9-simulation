@@ -21,7 +21,7 @@ void Simulation::run() {
 
         mSystem.DoStepDynamics(dt_s);
 
-        saveSnapshotTo(stateHistory);
+        saveSnapshotTo(stateHistory[""]);
     }
 
     writeHistoryToFile(stateHistory);

@@ -1251,6 +1251,8 @@ file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programmin
 file	build/release/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/simulation\/src\/Simu/;"	s	object:0
 file	build/release/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/simulation\/src\/main/;"	s	object:1
 file	build/release/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/m/;"	s	object:2
+fileEmpty	tests/test_Simulation.cpp	/^static bool fileEmpty(const char* file) {$/;"	f	typeref:typename:bool	file:
+fileExists	tests/test_Simulation.cpp	/^static bool fileExists(const char* file) {$/;"	f	typeref:typename:bool	file:
 get	3rd_party/catch.hpp	/^        auto get() -> std::ostream& { return *m_oss; }$/;"	f	class:Catch::ReusableStringStream	typeref:typename:std::ostream &
 getActiveCameraPos	visualisation/src/CameraSystem.cpp	/^chrono::ChVector<> CameraSystem::getActiveCameraPos() {$/;"	f	class:CameraSystem	typeref:typename:chrono::ChVector<>
 getDelta_scr	visualisation/src/HWEventReceiver.cpp	/^    const irr::core::vector2di& MouseState::getDelta_scr() {$/;"	f	class:Input::MouseState	typeref:typename:const irr::core::vector2di &
@@ -1276,7 +1278,7 @@ help	build/dev/visualisation/Makefile	/^help:$/;"	t
 help	build/release/Makefile	/^help:$/;"	t
 help	build/release/simulation/Makefile	/^help:$/;"	t
 help	build/release/visualisation/Makefile	/^help:$/;"	t
-history	build/dev/simulation/output.json	/^    "history": "test"$/;"	s
+history	build/dev/simulation/output.json	/^    "history": "todo"$/;"	s
 id	3rd_party/json.hpp	/^    const int id;$/;"	m	class:nlohmann::detail::exception	typeref:typename:const int
 index_sequence	3rd_party/json.hpp	/^struct index_sequence$/;"	s	namespace:nlohmann::detail
 index_sequence_for	3rd_party/json.hpp	/^using index_sequence_for = make_index_sequence<sizeof...(Ts)>;$/;"	t	namespace:nlohmann::detail
@@ -1437,6 +1439,7 @@ other_error	3rd_party/json.hpp	/^    other_error(int id_, const char* what_arg) 
 other_error	3rd_party/json.hpp	/^class other_error : public exception$/;"	c	namespace:nlohmann::detail
 out_of_range	3rd_party/json.hpp	/^    out_of_range(int id_, const char* what_arg) : exception(id_, what_arg) {}$/;"	f	class:nlohmann::detail::out_of_range
 out_of_range	3rd_party/json.hpp	/^class out_of_range : public exception$/;"	c	namespace:nlohmann::detail
+outputFile	tests/test_Simulation.cpp	/^static const char* outputFile = "output.json";$/;"	v	typeref:typename:const char *	file:
 p	3rd_party/catch.hpp	/^            cli::pin_ptr<System::Byte> p = &bytes[0];$/;"	v	namespace:Catch::Detail	typeref:typename:cli::pin_ptr<System::Byte>
 parse_error	3rd_party/json.hpp	/^    parse_error(int id_, std::size_t byte_, const char* what_arg)$/;"	f	class:nlohmann::detail::parse_error
 parse_error	3rd_party/json.hpp	/^class parse_error : public exception$/;"	c	namespace:nlohmann::detail
@@ -1528,6 +1531,7 @@ setupInitialState	simulation/src/System.cpp	/^void System::setupInitialState() {
 showMainDockspace	visualisation/src/GUI.cpp	/^void GUI::showMainDockspace() {$/;"	f	class:GUI	typeref:typename:void
 showSimPlaybackControls	visualisation/src/GUI.cpp	/^void GUI::showSimPlaybackControls() {$/;"	f	class:GUI	typeref:typename:void
 showSimView	visualisation/src/GUI.cpp	/^void GUI::showSimView() {$/;"	f	class:GUI	typeref:typename:void
+sim	tests/test_Simulation.cpp	/^        Simulation sim;$/;"	v	typeref:typename:Simulation
 simulation/CMakeFiles/f9sim-simulation-lib.dir/rule	build/dev/simulation/Makefile	/^simulation\/CMakeFiles\/f9sim-simulation-lib.dir\/rule:$/;"	t
 simulation/CMakeFiles/f9sim-simulation-lib.dir/rule	build/release/simulation/Makefile	/^simulation\/CMakeFiles\/f9sim-simulation-lib.dir\/rule:$/;"	t
 simulation/CMakeFiles/f9sim-simulation.dir/rule	build/dev/simulation/Makefile	/^simulation\/CMakeFiles\/f9sim-simulation.dir\/rule:$/;"	t
