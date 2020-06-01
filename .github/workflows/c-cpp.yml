@@ -34,7 +34,7 @@ jobs:
           
       - uses: actions/upload-artifact@v2
         with:
-          name: ail-tests
+          name: f9sim-tests
           path: build/dev/tests
         
   test:
