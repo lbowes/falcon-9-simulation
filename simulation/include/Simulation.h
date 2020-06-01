@@ -1,15 +1,17 @@
 #ifndef SIMULATION_H_
 #define SIMULATION_H_
 
-#include "System.h"
+
+#include "../3rd_party/json.hpp"
+
+#include <chrono/physics/ChSystemNSC.h>
+#include <stdint.h>
 
 
 class Simulation {
 private:
-    const unsigned int mUpdateFreq_hz;
-    const double mDuration_s;
-    double mSimulatedTime_s;
-    System mSystem;
+    chrono::ChSystemNSC mSystem;
+    const uint16_t mUpdateFreq_hz;
 
 public:
     Simulation();
@@ -18,9 +20,9 @@ public:
     void run();
 
 private:
-    void init();
-    void close();
-    bool shouldTerminate();
+    bool stopConditionMet() const;
+    void saveSnapshotTo(nlohmann::json& history) const;
+    void writeHistoryToFile(const nlohmann::json& history) const;
 };
 
 

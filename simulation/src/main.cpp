@@ -1,11 +1,9 @@
-//#include "simulation/Simulation.h"
-#include <iostream>
+#include "Simulation.h"
 
 
 int main() {
-    printf("running simulation\n");
-    //Simulation sim;
-    //sim.run();
+    Simulation sim;
+    sim.run();
 
     return 0;
 }
