@@ -1,7 +1,9 @@
-#include <iostream>
+#include "Visualisation.h"
 
 
 int main() {
-    printf("running visualisation...\n");
+    Visualisation vis;
+    vis.run;
+
     return 0;
 }

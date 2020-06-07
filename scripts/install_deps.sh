@@ -11,7 +11,7 @@ apt-get update
 # Build tools
 apt-get -y install build-essential
 
-# Install Eigen 3
+# Eigen 3
 apt-get -y install libeigen3-dev
 
 # Setup ProjectChrono library
@@ -21,3 +21,8 @@ git clone https://github.com/projectchrono/chrono.git
 cd chrono
 mkdir chrono_build
 cmake -S . -B chrono_build
+
+# bgfx dependencies
+apt-get -y install libgl1-mesa-dev
+apt-get -y install x11proto-core-dev
+apt-get -y install libx11-dev

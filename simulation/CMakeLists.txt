@@ -6,6 +6,8 @@ add_library(f9sim-simulation-lib)
 target_sources(f9sim-simulation-lib
 	PRIVATE
 		src/Simulation.cpp
+		src/FlightComputer.cpp
+		src/Falcon9/Falcon9_Vehicle.cpp
 )
 
 set_target_properties(f9sim-simulation-lib PROPERTIES 
