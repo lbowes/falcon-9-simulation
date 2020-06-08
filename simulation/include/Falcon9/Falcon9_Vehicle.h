@@ -20,6 +20,7 @@ private:
 
     // temp
     std::shared_ptr<chrono::ChBodyAuxRef> mCube;
+    std::shared_ptr<chrono::ChBody> mFloorPlane;
     //
 
 public:

@@ -8,19 +8,42 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
     mSystemHandle(system) {
 
     // temp
-    mCube = std::make_shared<chrono::ChBodyAuxRef>();
-    mSystemHandle.AddBody(mCube);
+    // Shared material
+    auto mat = std::make_shared<chrono::ChMaterialSurfaceNSC>();
+    mat->SetFriction(0.4f);
+    mat->SetRestitution(0.1f);
 
-    mCube->SetNameString("unit_cube");
-    const double mass = 10.0;
-    mCube->SetMass(mass);
-    mCube->SetBodyFixed(false);
-    mCube->SetCollide(true);
-    mCube->SetInertia(1.0 / 6.0 * mass);
+    // Cube
+    {
+        mCube = std::make_shared<chrono::ChBodyAuxRef>();
+        mSystemHandle.AddBody(mCube);
 
-    const chrono::ChVector<> position = {0.0f, 10.0f, 0.0f};
-    const chrono::ChFrame<> frame = chrono::ChFrame<>(position);
-    mCube->SetFrame_REF_to_abs(frame);
+        mCube->SetNameString("unit_cube");
+        const double mass = 10.0;
+        mCube->SetMass(mass);
+        mCube->SetBodyFixed(false);
+        mCube->SetInertia(1.0 / 6.0 * mass);
+        auto cubeCollisionModel = mCube->GetCollisionModel();
+        cubeCollisionModel->ClearModel();
+        cubeCollisionModel->AddBox(1.0f, 1.0f, 1.0f);
+        mCube->SetCollide(true);
+
+        const chrono::ChVector<> position = {0.0f, 10.0f, 0.0f};
+        const chrono::ChQuaternion<> orientation = chrono::Q_from_AngX(10.0);
+        const chrono::ChFrame<> frame = chrono::ChFrame<>(position, orientation);
+        mCube->SetFrame_REF_to_abs(frame);
+    }
+
+    // Floor plane
+    {
+        mFloorPlane = std::make_unique<chrono::ChBody>();
+        mSystemHandle.AddBody(mFloorPlane);
+        mFloorPlane->SetBodyFixed(true);
+        auto planeCollisionModel = mFloorPlane->GetCollisionModel();
+        planeCollisionModel->ClearModel();
+        planeCollisionModel->AddBox(20.0f, 1.0f, 20.0f);
+        mFloorPlane->SetCollide(true);
+    }
     //
 }
 

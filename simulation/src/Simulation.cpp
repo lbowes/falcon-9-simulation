@@ -9,10 +9,13 @@ Simulation::Simulation() :
     mFalcon9(mSystem) {
 
     //temp
-    mSystem.SetSolverMaxIterations(200);
+    chrono::collision::ChCollisionModel::SetDefaultSuggestedEnvelope(1.0);
+    chrono::collision::ChCollisionModel::SetDefaultSuggestedMargin(0.05);
+
+    mSystem.SetSolverType(chrono::ChSolver::Type::BARZILAIBORWEIN);
+    mSystem.SetTimestepperType(chrono::ChTimestepper::Type::EULER_IMPLICIT_PROJECTED);
+    mSystem.SetSolverMaxIterations(20);
     mSystem.Set_G_acc(chrono::ChVector<>(0.0, -9.80665, 0.0));
-
-
     //
 }
 

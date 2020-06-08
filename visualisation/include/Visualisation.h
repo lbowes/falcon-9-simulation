@@ -1,42 +1,20 @@
-#ifndef VISUALISATION_H_
-#define VISUALISATION_H_
+#ifndef F9SIM_GRAPHICS_VISUALISATION_H_
+#define F9SIM_GRAPHICS_VISUALISATION_H_
+#pragma once
 
-#include "GUI.h"
-#include "VertFlipScreenQuad.h"
-#include "input/MasterEventReceiver.h"
-#include "simulation_model/Scene.h"
-
-#include <memory>
-
+namespace F9Sim {
+namespace Graphics {
 
 class Visualisation {
 private:
-    irr::IrrlichtDevice* mDevice;
-    irr::video::IVideoDriver* mVidDriver;
-    irr::scene::ISceneManager* mSceneManager;
-
-    Input::HWEventReceiver mHWInput;
-    Input::MasterEventReceiver mEventReceiver;
-    std::unique_ptr<GUI> mGUI;
-    std::unique_ptr<VertFlipScreenQuad> mVertFlipScreenQuad;
-    std::unique_ptr<Scene> mScene;
-
 public:
     Visualisation();
-    ~Visualisation();
-
-    void run();
-
-private:
-    void handleInput(double frameTime_s);
-    void update(double frameTime_s);
-    irr::core::dimension2du getMonitorResolution() const;
-    void initDevice();
-    void render();
-    void update();
-    void close();
+    ~Visualisation() = default;
 };
 
+} // namespace Graphics
+} // namespace F9Sim
 
-#endif // VISUALISATION_H_
+
+#endif // F9SIM_GRAPHICS_VISUALISATION_H_
 
