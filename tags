@@ -8057,6 +8057,7 @@ $(VERBOSE)MAKESILENT	build/dev/visualisation/Makefile	/^$(VERBOSE)MAKESILENT = -
 999	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 ANIMATIONFRAME_H_	visualisation/include/AnimationFrame.h	/^#define ANIMATIONFRAME_H_$/;"	d
 ANIMATION_H_	visualisation/include/Animation.h	/^#define ANIMATION_H_$/;"	d
+APPLICATION_H	visualisation/include/Application.h	/^#define APPLICATION_H$/;"	d
 ARCHITECTURE_ID	build/dev/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#   define ARCHITECTURE_ID /;"	d	file:
 ARCHITECTURE_ID	build/dev/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define ARCHITECTURE_ID /;"	d	file:
 ARCHITECTURE_ID	build/dev/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#  define ARCHITECTURE_ID$/;"	d	file:
@@ -8157,6 +8158,8 @@ AnimationFrame	visualisation/include/AnimationFrame.h	/^class AnimationFrame {$/
 AntiAliasedFill	3rd_party/imgui/imgui.h	/^    bool        AntiAliasedFill;            \/\/ Enable anti-aliasing on filled shapes (rounded /;"	m	struct:ImGuiStyle	typeref:typename:bool
 AntiAliasedLines	3rd_party/imgui/imgui.h	/^    bool        AntiAliasedLines;           \/\/ Enable anti-aliasing on lines\/borders. Disable/;"	m	struct:ImGuiStyle	typeref:typename:bool
 Appearing	3rd_party/imgui/imgui_internal.h	/^    bool                    Appearing;                          \/\/ Set during the frame where /;"	m	struct:ImGuiWindow	typeref:typename:bool
+Application	visualisation/include/Application.h	/^class Application {$/;"	c	namespace:GF
+Application	visualisation/src/Application.cpp	/^Application::Application(const std::string& windowTitle, const std::string& iconPath, glm::ivec2/;"	f	class:GF::Application
 ApplyAllFn	3rd_party/imgui/imgui_internal.h	/^    void        (*ApplyAllFn)(ImGuiContext* ctx, ImGuiSettingsHandler* handler);                /;"	m	struct:ImGuiSettingsHandler	typeref:typename:void (*)(ImGuiContext * ctx,ImGuiSettingsHandler * handler)
 ApplyWindowSettings	3rd_party/imgui/imgui.cpp	/^static void ApplyWindowSettings(ImGuiWindow* window, ImGuiWindowSettings* settings)$/;"	f	typeref:typename:void	file:
 ArcFastVtx	3rd_party/imgui/imgui_internal.h	/^    ImVec2          ArcFastVtx[12 * IM_DRAWLIST_ARCFAST_TESSELLATION_MULTIPLIER];  \/\/ FIXME: B/;"	m	struct:ImDrawListSharedData	typeref:typename:ImVec2[]
@@ -9430,14 +9433,18 @@ FunctionReturnType	3rd_party/catch.hpp	/^    using FunctionReturnType = std::rem
 FunctionReturnType	3rd_party/catch.hpp	/^    using FunctionReturnType = typename std::remove_reference<typename std::remove_cv<typename s/;"	t	namespace:Catch
 GCrc32LookupTable	3rd_party/imgui/imgui.cpp	/^static const ImU32 GCrc32LookupTable[256] =$/;"	v	typeref:typename:const ImU32[256]	file:
 GDataTypeInfo	3rd_party/imgui/imgui_widgets.cpp	/^static const ImGuiDataTypeInfo GDataTypeInfo[] =$/;"	v	typeref:typename:const ImGuiDataTypeInfo[]	file:
+GF	visualisation/include/Application.h	/^namespace GF {$/;"	n
+GF	visualisation/src/Application.cpp	/^namespace GF {$/;"	n	file:
+GF	visualisation/src/Window.cpp	/^namespace GF {$/;"	n	file:
 GImAllocatorAllocFunc	3rd_party/imgui/imgui.cpp	/^static void*  (*GImAllocatorAllocFunc)(size_t size, void* user_data) = MallocWrapper;$/;"	v	typeref:typename:void * (*)(size_t size,void * user_data)	file:
 GImAllocatorFreeFunc	3rd_party/imgui/imgui.cpp	/^static void   (*GImAllocatorFreeFunc)(void* ptr, void* user_data) = FreeWrapper;$/;"	v	typeref:typename:void (*)(void * ptr,void * user_data)	file:
 GImAllocatorUserData	3rd_party/imgui/imgui.cpp	/^static void*    GImAllocatorUserData = NULL;$/;"	v	typeref:typename:void *	file:
 GImGui	3rd_party/imgui/imgui.cpp	/^ImGuiContext*   GImGui = NULL;$/;"	v	typeref:typename:ImGuiContext *
-GLFW_EXPOSE_NATIVE_COCOA	visualisation/src/main.cpp	/^#define GLFW_EXPOSE_NATIVE_COCOA$/;"	d	file:
+GLFW_EXPOSE_NATIVE_COCOA	visualisation/src/main_old.cpp	/^#define GLFW_EXPOSE_NATIVE_COCOA$/;"	d	file:
 GLFW_EXPOSE_NATIVE_WIN32	3rd_party/imgui/imgui_impl_glfw.cpp	/^#define GLFW_EXPOSE_NATIVE_WIN32$/;"	d	file:
-GLFW_EXPOSE_NATIVE_WIN32	visualisation/src/main.cpp	/^#define GLFW_EXPOSE_NATIVE_WIN32$/;"	d	file:
-GLFW_EXPOSE_NATIVE_X11	visualisation/src/main.cpp	/^#define GLFW_EXPOSE_NATIVE_X11$/;"	d	file:
+GLFW_EXPOSE_NATIVE_WIN32	visualisation/src/main_old.cpp	/^#define GLFW_EXPOSE_NATIVE_WIN32$/;"	d	file:
+GLFW_EXPOSE_NATIVE_X11	visualisation/src/Visualisation.cpp	/^#define GLFW_EXPOSE_NATIVE_X11$/;"	d	file:
+GLFW_EXPOSE_NATIVE_X11	visualisation/src/main_old.cpp	/^#define GLFW_EXPOSE_NATIVE_X11$/;"	d	file:
 GLFW_HAS_NEW_CURSORS	3rd_party/imgui/imgui_impl_glfw.cpp	/^#define GLFW_HAS_NEW_CURSORS /;"	d	file:
 GLFW_HAS_PER_MONITOR_DPI	3rd_party/imgui/imgui_impl_glfw.cpp	/^#define GLFW_HAS_PER_MONITOR_DPI /;"	d	file:
 GLFW_HAS_VULKAN	3rd_party/imgui/imgui_impl_glfw.cpp	/^#define GLFW_HAS_VULKAN /;"	d	file:
@@ -9662,6 +9669,7 @@ HoveredIdPreviousFrame	3rd_party/imgui/imgui_internal.h	/^    ImGuiID           
 HoveredIdTimer	3rd_party/imgui/imgui_internal.h	/^    float                   HoveredIdTimer;                     \/\/ Measure contiguous hovering/;"	m	struct:ImGuiContext	typeref:typename:float
 HoveredRootWindow	3rd_party/imgui/imgui_internal.h	/^    ImGuiWindow*            HoveredRootWindow;                  \/\/ Will catch mouse inputs (fo/;"	m	struct:ImGuiContext	typeref:typename:ImGuiWindow *
 HoveredWindow	3rd_party/imgui/imgui_internal.h	/^    ImGuiWindow*            HoveredWindow;                      \/\/ Will catch mouse inputs$/;"	m	struct:ImGuiContext	typeref:typename:ImGuiWindow *
+IApplication	visualisation/include/Window.h	/^class IApplication {$/;"	c
 ID	3rd_party/imgui/imgui_internal.h	/^    ImGuiID                 ID;                                 \/\/ == ImHashStr(Name)$/;"	m	struct:ImGuiWindow	typeref:typename:ImGuiID
 ID	3rd_party/imgui/imgui_internal.h	/^    ImGuiID                 ID;                     \/\/ widget id owning the text state$/;"	m	struct:ImGuiInputTextState	typeref:typename:ImGuiID
 ID	3rd_party/imgui/imgui_internal.h	/^    ImGuiID             ID;                     \/\/ Zero for tab-bars used by docking$/;"	m	struct:ImGuiTabBar	typeref:typename:ImGuiID
@@ -9701,6 +9709,7 @@ IMGUI_IMPL_OPENGL_LOADER_GLEW	3rd_party/imgui/imgui_impl_opengl3.h	/^    #define
 IMGUI_IMPL_OPENGL_MAY_HAVE_VTX_OFFSET	3rd_party/imgui/imgui_impl_opengl3.cpp	/^#define IMGUI_IMPL_OPENGL_MAY_HAVE_VTX_OFFSET /;"	d	file:
 IMGUI_PAYLOAD_TYPE_COLOR_3F	3rd_party/imgui/imgui.h	/^#define IMGUI_PAYLOAD_TYPE_COLOR_3F /;"	d
 IMGUI_PAYLOAD_TYPE_COLOR_4F	3rd_party/imgui/imgui.h	/^#define IMGUI_PAYLOAD_TYPE_COLOR_4F /;"	d
+IMGUI_SRC	visualisation/CMakeLists.txt	/^set(IMGUI_SRC $/;"	v
 IMGUI_STB_NAMESPACE	3rd_party/imgui/imgui_draw.cpp	/^namespace IMGUI_STB_NAMESPACE$/;"	n	file:
 IMGUI_TEST_ENGINE_ID_INFO	3rd_party/imgui/imgui_internal.h	/^#define IMGUI_TEST_ENGINE_ID_INFO(/;"	d
 IMGUI_TEST_ENGINE_ID_INFO2	3rd_party/imgui/imgui_internal.h	/^#define IMGUI_TEST_ENGINE_ID_INFO2(/;"	d
@@ -12137,14 +12146,15 @@ VarIdx	3rd_party/imgui/imgui_internal.h	/^    ImGuiStyleVar   VarIdx;$/;"	m	stru
 Visible	3rd_party/imgui/imgui.h	/^    unsigned int    Visible : 1;        \/\/ Flag to allow early out when rendering$/;"	m	struct:ImFontGlyph	typeref:typename:unsigned int:1
 VisibleTabId	3rd_party/imgui/imgui_internal.h	/^    ImGuiID             VisibleTabId;           \/\/ Can occasionally be != SelectedTabId (e.g. /;"	m	struct:ImGuiTabBar	typeref:typename:ImGuiID
 VisibleTabWasSubmitted	3rd_party/imgui/imgui_internal.h	/^    bool                VisibleTabWasSubmitted;$/;"	m	struct:ImGuiTabBar	typeref:typename:bool
-Visualisation	visualisation/include/Visualisation.h	/^class Visualisation {$/;"	c	namespace:F9Sim::Graphics
-Visualisation	visualisation/src/Visualisation.cpp	/^Visualisation::Visualisation() {$/;"	f	class:F9Sim::Graphics::Visualisation
+Visualisation_init	visualisation/src/Visualisation.cpp	/^bool Visualisation_init() {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:bool
+Visualisation_run	visualisation/src/Visualisation.cpp	/^void Visualisation_run() {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:void
 VtxBuffer	3rd_party/imgui/imgui.h	/^    ImVector<ImDrawVert>    VtxBuffer;          \/\/ Vertex buffer.$/;"	m	struct:ImDrawList	typeref:typename:ImVector<ImDrawVert>
 VtxOffset	3rd_party/imgui/imgui.h	/^    unsigned int    VtxOffset;          \/\/ 4    \/\/ Start offset in vertex buffer. Pre-1.71 o/;"	m	struct:ImDrawCmd	typeref:typename:unsigned int
 WIN32_LEAN_AND_MEAN	3rd_party/imgui/imgui.cpp	/^#define WIN32_LEAN_AND_MEAN$/;"	d	file:
 WINDOWS_MOUSE_WHEEL_SCROLL_LOCK_TIMER	3rd_party/imgui/imgui.cpp	/^static const float WINDOWS_MOUSE_WHEEL_SCROLL_LOCK_TIMER    = 2.00f;    \/\/ Lock scrolled windo/;"	v	typeref:typename:const float	file:
 WINDOWS_RESIZE_FROM_EDGES_FEEDBACK_TIMER	3rd_party/imgui/imgui.cpp	/^static const float WINDOWS_RESIZE_FROM_EDGES_FEEDBACK_TIMER = 0.04f;    \/\/ Reduce visual noise/;"	v	typeref:typename:const float	file:
 WINDOWS_RESIZE_FROM_EDGES_HALF_THICKNESS	3rd_party/imgui/imgui.cpp	/^static const float WINDOWS_RESIZE_FROM_EDGES_HALF_THICKNESS = 4.0f;     \/\/ Extend outside and /;"	v	typeref:typename:const float	file:
+WINDOW_H_	visualisation/include/Window.h	/^#define WINDOW_H_$/;"	d
 WRT_Content	3rd_party/imgui/imgui.cpp	/^    enum { WRT_OuterRect, WRT_OuterRectClipped, WRT_InnerRect, WRT_InnerClipRect, WRT_WorkRect, /;"	e	enum:ImGui::ShowMetricsWindow::__anon70e25a820103	file:
 WRT_ContentRegionRect	3rd_party/imgui/imgui.cpp	/^    enum { WRT_OuterRect, WRT_OuterRectClipped, WRT_InnerRect, WRT_InnerClipRect, WRT_WorkRect, /;"	e	enum:ImGui::ShowMetricsWindow::__anon70e25a820103	file:
 WRT_Count	3rd_party/imgui/imgui.cpp	/^    enum { WRT_OuterRect, WRT_OuterRectClipped, WRT_InnerRect, WRT_InnerClipRect, WRT_WorkRect, /;"	e	enum:ImGui::ShowMetricsWindow::__anon70e25a820103	file:
@@ -12177,6 +12187,7 @@ Width	3rd_party/imgui/imgui_internal.h	/^    float       Width, NextWidth;$/;"	m
 Width	3rd_party/imgui/imgui_internal.h	/^    float       Width;$/;"	m	struct:ImGuiShrinkWidthItem	typeref:typename:float
 Window	3rd_party/imgui/imgui_internal.h	/^    ImGuiWindow*        Window;         \/\/ Resolved on BeginPopup() - may stay unresolved if u/;"	m	struct:ImGuiPopupData	typeref:typename:ImGuiWindow *
 Window	3rd_party/imgui/imgui_internal.h	/^    ImGuiWindow*    Window;             \/\/ Best candidate window$/;"	m	struct:ImGuiNavMoveResult	typeref:typename:ImGuiWindow *
+Window	visualisation/src/Window.cpp	/^Window::Window(const std::string& title, glm::ivec2 dimensions) :$/;"	f	class:GF::Window
 WindowBorderSize	3rd_party/imgui/imgui.h	/^    float       WindowBorderSize;           \/\/ Thickness of border around windows. Generally s/;"	m	struct:ImGuiStyle	typeref:typename:float
 WindowBorderSize	3rd_party/imgui/imgui_internal.h	/^    float                   WindowBorderSize;                   \/\/ Window border size at the t/;"	m	struct:ImGuiWindow	typeref:typename:float
 WindowMenuButtonPosition	3rd_party/imgui/imgui.h	/^    ImGuiDir    WindowMenuButtonPosition;   \/\/ Side of the collapsing\/docking button in the t/;"	m	struct:ImGuiStyle	typeref:typename:ImGuiDir
@@ -12328,6 +12339,7 @@ clean/fast	build/release/visualisation/Makefile	/^clean\/fast: clean$/;"	t
 clear	3rd_party/imgui/imgui.h	/^    inline void         clear()                             { if (Data) { Size = Capacity = 0; I/;"	f	struct:ImVector	typeref:typename:void
 clear	3rd_party/imgui/imgui.h	/^    void                clear()                 { Buf.clear(); }$/;"	f	struct:ImGuiTextBuffer	typeref:typename:void
 clear	3rd_party/imgui/imgui_internal.h	/^    void    clear()                     { Buf.clear(); }$/;"	f	struct:ImChunkStream	typeref:typename:void
+clear	visualisation/src/Window.cpp	/^void Window::clear() const {$/;"	f	class:GF::Window	typeref:typename:void
 cmake_check_build_system	build/dev/Makefile	/^cmake_check_build_system:$/;"	t
 cmake_check_build_system	build/dev/simulation/Makefile	/^cmake_check_build_system:$/;"	t
 cmake_check_build_system	build/dev/tests/Makefile	/^cmake_check_build_system:$/;"	t
@@ -13550,8 +13562,10 @@ g_VertHandle	3rd_party/imgui/imgui_impl_opengl3.cpp	/^static GLuint       g_Shad
 g_Window	3rd_party/imgui/imgui_impl_glfw.cpp	/^static GLFWwindow*          g_Window = NULL;    \/\/ Main window$/;"	v	typeref:typename:GLFWwindow *	file:
 get	3rd_party/catch.hpp	/^        auto get() -> std::ostream& { return *m_oss; }$/;"	f	class:Catch::ReusableStringStream	typeref:typename:std::ostream &
 getActiveCameraPos	visualisation/src/CameraSystem.cpp	/^chrono::ChVector<> CameraSystem::getActiveCameraPos() {$/;"	f	class:CameraSystem	typeref:typename:chrono::ChVector<>
-glfw_errorCallback	visualisation/src/main.cpp	/^static void glfw_errorCallback(int error, const char* description) {$/;"	f	typeref:typename:void	file:
-glfw_keyCallback	visualisation/src/main.cpp	/^static void glfw_keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {$/;"	f	typeref:typename:void	file:
+getMonitorResolution	visualisation/src/Window.cpp	/^glm::ivec2 Window::getMonitorResolution() {$/;"	f	class:GF::Window	typeref:typename:glm::ivec2
+glfw_errorCallback	visualisation/src/Visualisation.cpp	/^static void glfw_errorCallback(int error, const char* description) {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:void	file:
+glfw_errorCallback	visualisation/src/main_old.cpp	/^static void glfw_errorCallback(int error, const char* description) {$/;"	f	typeref:typename:void	file:
+glfw_keyCallback	visualisation/src/main_old.cpp	/^static void glfw_keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {$/;"	f	typeref:typename:void	file:
 glyf	3rd_party/imgui/imstb_truetype.h	/^   int loca,head,glyf,hhea,hmtx,kern,gpos; \/\/ table locations as offset from start of .ttf$/;"	m	struct:stbtt_fontinfo	typeref:typename:int
 gpos	3rd_party/imgui/imstb_truetype.h	/^   int loca,head,glyf,hhea,hmtx,kern,gpos; \/\/ table locations as offset from start of .ttf$/;"	m	struct:stbtt_fontinfo	typeref:typename:int
 gsubrs	3rd_party/imgui/imstb_truetype.h	/^   stbtt__buf gsubrs;                 \/\/ global charstring subroutines index$/;"	m	struct:stbtt_fontinfo	typeref:typename:stbtt__buf
@@ -13648,7 +13662,9 @@ info_version_internal	build/dev/CMakeFiles/3.17.3/CompilerIdC/CMakeCCompilerId.c
 info_version_internal	build/dev/CMakeFiles/3.17.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
 info_version_internal	build/release/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
 info_version_internal	build/release/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
+init	visualisation/src/Application.cpp	/^void Application::init() {$/;"	f	class:GF::Application	typeref:typename:void
 init	visualisation/src/CameraSystem.cpp	/^void CameraSystem::init(irr::scene::ISceneManager& sceneMgrHandle) {$/;"	f	class:CameraSystem	typeref:typename:void
+init	visualisation/src/Window.cpp	/^bool Window::init() {$/;"	f	class:GF::Window	typeref:typename:bool
 init	visualisation/src/helloworld.cpp	/^    void init(int32_t _argc, const char* const* _argv, uint32_t _width, uint32_t _height) overri/;"	f	class:__anon491389030111::ExampleHelloWorld	typeref:typename:void	file:
 init_mode	3rd_party/imgui/imstb_rectpack.h	/^   int init_mode;$/;"	m	struct:stbrp_context	typeref:typename:int
 initialized	3rd_party/imgui/imstb_textedit.h	/^   unsigned char initialized;$/;"	m	struct:__anon9e551a350308	typeref:typename:unsigned char
@@ -13684,21 +13700,26 @@ load	visualisation/src/Animation.cpp	/^void Animation::load() {$/;"	f	class:Anim
 loca	3rd_party/imgui/imstb_truetype.h	/^   int loca,head,glyf,hhea,hmtx,kern,gpos; \/\/ table locations as offset from start of .ttf$/;"	m	struct:stbtt_fontinfo	typeref:typename:int
 lookAt	visualisation/include/CameraBaseState.h	/^    chrono::ChVector<> lookAt;$/;"	m	struct:CameraBaseState	typeref:typename:chrono::ChVector<>
 m	3rd_party/json.hpp	/^    std::runtime_error m;$/;"	m	class:nlohmann::detail::exception	typeref:typename:std::runtime_error
+mAccumulator	visualisation/include/Application.h	/^        mAccumulator = 0.0;$/;"	m	class:GF::Application	typeref:typename:double
 mAdjustSpeed	visualisation/include/FPVCamera.h	/^        static const float mAdjustSpeed;$/;"	m	struct:FPVCamera::Sensitivity	typeref:typename:const float
 mAdjustSpeed	visualisation/src/FPVCamera.cpp	/^const float FPVCamera::Sensitivity::mAdjustSpeed = 200.0f;$/;"	m	class:FPVCamera::Sensitivity	typeref:typename:const float
 mCameraBase	visualisation/include/FPVCamera.h	/^    CameraBaseState mCameraBase;$/;"	m	class:FPVCamera	typeref:typename:CameraBaseState
 mCamerasHaveFocus	visualisation/include/Scene.h	/^    bool mCamerasHaveFocus;$/;"	m	class:Scene	typeref:typename:bool
 mCoordSystems	visualisation/include/AnimationFrame.h	/^    std::unordered_map<std::string, chrono::ChCoordsys<double>> mCoordSystems;$/;"	m	class:AnimationFrame	typeref:typename:std::unordered_map<std::string,chrono::ChCoordsys<double>>
 mCube	simulation/include/Falcon9/Falcon9_Vehicle.h	/^    std::shared_ptr<chrono::ChBodyAuxRef> mCube;$/;"	m	class:Hardware::Falcon9_Vehicle	typeref:typename:std::shared_ptr<chrono::ChBodyAuxRef>
+mCurrentTime	visualisation/include/Application.h	/^        mCurrentTime = 0.0,$/;"	m	class:GF::Application	typeref:typename:double
 mDuration_s	visualisation/include/Animation.h	/^    double mDuration_s;$/;"	m	class:Animation	typeref:typename:double
 mFalcon9	simulation/include/Simulation.h	/^    Hardware::Falcon9_Vehicle mFalcon9;$/;"	m	class:Simulation	typeref:typename:Hardware::Falcon9_Vehicle
 mFlightComputer	simulation/include/Simulation.h	/^    Software::FlightComputer mFlightComputer;$/;"	m	class:Simulation	typeref:typename:Software::FlightComputer
 mFloorPlane	simulation/include/Falcon9/Falcon9_Vehicle.h	/^    std::shared_ptr<chrono::ChBody> mFloorPlane;$/;"	m	class:Hardware::Falcon9_Vehicle	typeref:typename:std::shared_ptr<chrono::ChBody>
 mFrameCount	visualisation/include/Animation.h	/^    unsigned int mFrameCount;$/;"	m	class:Animation	typeref:typename:unsigned int
 mFrameInterval_s	visualisation/include/Animation.h	/^    const double mFrameInterval_s;$/;"	m	class:Animation	typeref:typename:const double
+mFrameTime	visualisation/include/Application.h	/^        mFrameTime = 0.0,$/;"	m	class:GF::Application	typeref:typename:double
 mFrames	visualisation/include/Animation.h	/^    std::vector<AnimationFrame> mFrames;$/;"	m	class:Animation	typeref:typename:std::vector<AnimationFrame>
 mFriction	visualisation/include/FPVCamera.h	/^        static const float mFriction;$/;"	m	struct:FPVCamera::Movement	typeref:typename:const float
 mFriction	visualisation/src/FPVCamera.cpp	/^const float FPVCamera::Movement::mFriction = 7.0f;$/;"	m	class:FPVCamera::Movement	typeref:typename:const float
+mLastRenderTime	visualisation/include/Application.h	/^        mLastRenderTime = 0.0,$/;"	m	class:GF::Application	typeref:typename:double
+mLastTime	visualisation/include/Application.h	/^        mLastTime = 0.0,$/;"	m	class:GF::Application	typeref:typename:double
 mLookAround	visualisation/include/FPVCamera.h	/^        static const float mLookAround;$/;"	m	struct:FPVCamera::Sensitivity	typeref:typename:const float
 mLookAround	visualisation/src/FPVCamera.cpp	/^const float FPVCamera::Sensitivity::mLookAround = 0.05f;$/;"	m	class:FPVCamera::Sensitivity	typeref:typename:const float
 mMaxSpeed	visualisation/include/FPVCamera.h	/^        static const float mMaxSpeed;$/;"	m	struct:FPVCamera::Movement	typeref:typename:const float
@@ -13707,7 +13728,10 @@ mMinSpeed	visualisation/include/FPVCamera.h	/^        static const float mMinSpe
 mMinSpeed	visualisation/src/FPVCamera.cpp	/^const float FPVCamera::Movement::mMinSpeed = 6.4f;$/;"	m	class:FPVCamera::Movement	typeref:typename:const float
 mMovement	visualisation/include/FPVCamera.h	/^    } mMovement;$/;"	m	class:FPVCamera	typeref:struct:FPVCamera::Movement
 mMovementSpeed	visualisation/include/FPVCamera.h	/^    float mMovementSpeed;$/;"	m	class:FPVCamera	typeref:typename:float
+mOpenGLInitialised	visualisation/src/Window.cpp	/^bool Window::mOpenGLInitialised = false;$/;"	m	class:GF::Window	typeref:typename:bool
 mPitch	visualisation/include/FPVCamera.h	/^    float mPitch;$/;"	m	class:FPVCamera	typeref:typename:float
+mResourceSet	visualisation/include/Application.h	/^    ResourceSet mResourceSet;$/;"	m	class:GF::Application	typeref:typename:ResourceSet
+mRunning	visualisation/include/Application.h	/^    bool mRunning = true;$/;"	m	class:GF::Application	typeref:typename:bool
 mSceneMgr	visualisation/include/SimulationModel.h	/^    irr::scene::ISceneManager& mSceneMgr;$/;"	m	class:SimulationModel	typeref:typename:irr::scene::ISceneManager &
 mSceneNodes	visualisation/include/SimulationModel.h	/^    std::unordered_map<std::string, HighPrecisionNode> mSceneNodes;$/;"	m	class:SimulationModel	typeref:typename:std::unordered_map<std::string,HighPrecisionNode>
 mSensitivity	visualisation/include/FPVCamera.h	/^    } mSensitivity;$/;"	m	class:FPVCamera	typeref:struct:FPVCamera::Sensitivity
@@ -13715,9 +13739,11 @@ mSimModel	visualisation/include/Scene.h	/^    SimulationModel mSimModel;$/;"	m	c
 mSystem	simulation/include/Simulation.h	/^    chrono::ChSystemNSC mSystem;$/;"	m	class:Simulation	typeref:typename:chrono::ChSystemNSC
 mSystemHandle	simulation/include/Falcon9/Falcon9_Vehicle.h	/^    chrono::ChSystemNSC& mSystemHandle;$/;"	m	class:Hardware::Falcon9_Vehicle	typeref:typename:chrono::ChSystemNSC &
 mTimeStamp_s	visualisation/include/AnimationFrame.h	/^    double mTimeStamp_s;$/;"	m	class:AnimationFrame	typeref:typename:double
+mUpdateDelta	visualisation/include/Application.h	/^    const double mUpdateDelta = 1.0 \/ 2000.0;$/;"	m	class:GF::Application	typeref:typename:const double
 mUpdateFreq_hz	simulation/include/Simulation.h	/^    const uint16_t mUpdateFreq_hz;$/;"	m	class:Simulation	typeref:typename:const uint16_t
 mVelocity	visualisation/include/FPVCamera.h	/^    chrono::ChVector<> mVelocity;$/;"	m	class:FPVCamera	typeref:typename:chrono::ChVector<>
 mVisibleFrame	visualisation/include/Animation.h	/^    AnimationFrame mVisibleFrame;$/;"	m	class:Animation	typeref:typename:AnimationFrame
+mWindow	visualisation/include/Application.h	/^    Window mWindow;$/;"	m	class:GF::Application	typeref:typename:Window
 mYaw	visualisation/include/FPVCamera.h	/^    float mYaw;$/;"	m	class:FPVCamera	typeref:typename:float
 mZoom	visualisation/include/FPVCamera.h	/^        static const float mZoom;$/;"	m	struct:FPVCamera::Sensitivity	typeref:typename:const float
 mZoom	visualisation/src/FPVCamera.cpp	/^const float FPVCamera::Sensitivity::mZoom = 0.1f;$/;"	m	class:FPVCamera::Sensitivity	typeref:typename:const float
@@ -13744,7 +13770,8 @@ main	build/release/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^int main(a
 main	build/release/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f	typeref:typename:void
 main	build/release/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f	typeref:typename:int
 main	simulation/src/main.cpp	/^int main() {$/;"	f	typeref:typename:int
-main	visualisation/src/main.cpp	/^int main(int argc, char** argv) {$/;"	f	typeref:typename:int
+main	visualisation/src/main.cpp	/^int main() {$/;"	f	typeref:typename:int
+main	visualisation/src/main_old.cpp	/^int main(int argc, char** argv) {$/;"	f	typeref:typename:int
 main_clipboard	3rd_party/imgui/imgui.cpp	/^static PasteboardRef main_clipboard = 0;$/;"	v	typeref:typename:PasteboardRef	file:
 makeTestInvoker	3rd_party/catch.hpp	/^auto makeTestInvoker( void (C::*testAsMethod)() ) noexcept -> ITestInvoker* {$/;"	f	namespace:Catch	typeref:typename:auto
 make_index_sequence	3rd_party/json.hpp	/^struct make_index_sequence$/;"	s	namespace:nlohmann::detail
@@ -15890,6 +15917,7 @@ reference	3rd_party/json.hpp	/^    using reference = T&;$/;"	t	namespace:nlohman
 reference	3rd_party/json.hpp	/^    using reference = typename It::reference;$/;"	t	namespace:nlohmann::detail	typeref:typename:It::reference
 registerEnum	3rd_party/catch.hpp	/^        Detail::EnumInfo const& registerEnum( StringRef enumName, StringRef allEnums, std::initi/;"	f	struct:Catch::IMutableEnumValuesRegistry	typeref:typename:Detail::EnumInfo const &
 registerHandleTo	visualisation/src/CameraSystem.cpp	/^void CameraSystem::registerHandleTo(CameraBaseState& cameraState, const std::string& name) {$/;"	f	class:CameraSystem	typeref:typename:void
+render	visualisation/src/Application.cpp	/^void Application::render() {$/;"	f	class:GF::Application	typeref:typename:void
 reserve	3rd_party/imgui/imgui.h	/^    inline void         reserve(int new_capacity)           { if (new_capacity <= Capacity) retu/;"	f	struct:ImVector	typeref:typename:void
 reserve	3rd_party/imgui/imgui.h	/^    void                reserve(int capacity)   { Buf.reserve(capacity); }$/;"	f	struct:ImGuiTextBuffer	typeref:typename:void
 resize	3rd_party/imgui/imgui.h	/^    inline void         resize(int new_size)                { if (new_size > Capacity) reserve(_/;"	f	struct:ImVector	typeref:typename:void
@@ -15898,6 +15926,7 @@ resize_border_def	3rd_party/imgui/imgui.cpp	/^static const ImGuiResizeBorderDef 
 resize_grip_def	3rd_party/imgui/imgui.cpp	/^static const ImGuiResizeGripDef resize_grip_def[4] =$/;"	v	typeref:typename:const ImGuiResizeGripDef[4]	file:
 resultDisposition	3rd_party/catch.hpp	/^        ResultDisposition::Flags resultDisposition;$/;"	m	struct:Catch::AssertionInfo	typeref:typename:ResultDisposition::Flags
 run	simulation/src/Simulation.cpp	/^void Simulation::run() {$/;"	f	class:Simulation	typeref:typename:void
+run	visualisation/src/Application.cpp	/^void Application::run() {$/;"	f	class:GF::Application	typeref:typename:void
 s0	3rd_party/imgui/imstb_truetype.h	/^   float x0,y0,s0,t0; \/\/ top-left$/;"	m	struct:__anon65b4c42c0308	typeref:typename:float
 s1	3rd_party/imgui/imstb_truetype.h	/^   float x1,y1,s1,t1; \/\/ bottom-right$/;"	m	struct:__anon65b4c42c0308	typeref:typename:float
 sActiveCamera	visualisation/include/CameraSystem.h	/^    static CameraHandle sActiveCamera;$/;"	m	class:CameraSystem	typeref:typename:CameraHandle
@@ -15911,14 +15940,21 @@ sInitialised	visualisation/src/CameraSystem.cpp	/^bool CameraSystem::sInitialise
 sIrrlichtCam	visualisation/include/CameraSystem.h	/^    static irr::scene::ICameraSceneNode* sIrrlichtCam;$/;"	m	class:CameraSystem	typeref:typename:irr::scene::ICameraSceneNode *
 sIrrlichtCam	visualisation/src/CameraSystem.cpp	/^irr::scene::ICameraSceneNode* CameraSystem::sIrrlichtCam = nullptr;$/;"	m	class:CameraSystem	typeref:typename:irr::scene::ICameraSceneNode *
 s_empty	3rd_party/catch.hpp	/^        static constexpr char const* const s_empty = "";$/;"	m	class:Catch::StringRef	typeref:typename:char const * const
-s_showStats	visualisation/src/main.cpp	/^static bool s_showStats = false;$/;"	v	typeref:typename:bool	file:
+s_height	visualisation/src/Visualisation.cpp	/^static int s_height = 0;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:int	file:
+s_showStats	visualisation/src/main_old.cpp	/^static bool s_showStats = false;$/;"	v	typeref:typename:bool	file:
+s_width	visualisation/src/Visualisation.cpp	/^static int s_width = 0;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:int	file:
+s_window	visualisation/src/Visualisation.cpp	/^static GLFWwindow* s_window = nullptr;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:GLFWwindow *	file:
 saveSnapshotTo	simulation/src/Falcon9/Falcon9_Vehicle.cpp	/^void Falcon9_Vehicle::saveSnapshotTo(nlohmann::json& snapshot) const {$/;"	f	class:Hardware::Falcon9_Vehicle	typeref:typename:void
 saveSnapshotTo	simulation/src/Simulation.cpp	/^void Simulation::saveSnapshotTo(nlohmann::json& history) const {$/;"	f	class:Simulation	typeref:typename:void
 select_end	3rd_party/imgui/imstb_textedit.h	/^   int select_end;$/;"	m	struct:__anon9e551a350308	typeref:typename:int
 select_start	3rd_party/imgui/imstb_textedit.h	/^   int select_start;          \/\/ selection start point$/;"	m	struct:__anon9e551a350308	typeref:typename:int
 setAspectRatio	visualisation/src/CameraSystem.cpp	/^void CameraSystem::setAspectRatio(float aspectRatio) {$/;"	f	class:CameraSystem	typeref:typename:void
 setControlProfile	simulation/src/Falcon9/Falcon9_Vehicle.cpp	/^void Falcon9_Vehicle::setControlProfile(const ControlProfile& p) {$/;"	f	class:Hardware::Falcon9_Vehicle	typeref:typename:void
+setDimensions	visualisation/src/Window.cpp	/^void Window::setDimensions(glm::ivec2 dimensions) {$/;"	f	class:GF::Window	typeref:typename:void
+setIcon	visualisation/src/Window.cpp	/^void Window::setIcon(const std::string& iconPath) {$/;"	f	class:GF::Window	typeref:typename:void
+setWindowPosition	visualisation/include/Application.h	/^    void setWindowPosition(glm::ivec2 newPosition) const { glfwSetWindowPos(mWindow.getHandle(),/;"	f	class:GF::Application	typeref:typename:void
 shrink	3rd_party/imgui/imgui.h	/^    inline void         shrink(int new_size)                { IM_ASSERT(new_size <= Size); Size /;"	f	struct:ImVector	typeref:typename:void
+shutdown	visualisation/src/Visualisation.cpp	/^static void shutdown() {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:void	file:
 shutdown	visualisation/src/helloworld.cpp	/^    virtual int shutdown() override {$/;"	f	class:__anon491389030111::ExampleHelloWorld	typeref:typename:int	file:
 sim	tests/test_Simulation.cpp	/^        Simulation sim;$/;"	v	typeref:typename:Simulation
 simulation/CMakeFiles/f9sim-simulation-lib.dir/rule	build/dev/simulation/Makefile	/^simulation\/CMakeFiles\/f9sim-simulation-lib.dir\/rule:$/;"	t
@@ -17262,6 +17298,7 @@ undostate	3rd_party/imgui/imstb_textedit.h	/^   StbUndoState undostate;$/;"	m	st
 up	visualisation/include/CameraBaseState.h	/^    chrono::ChVector<> up;$/;"	m	struct:CameraBaseState	typeref:typename:chrono::ChVector<>
 update	visualisation/src/FPVCamera.cpp	/^void FPVCamera::update(double dt) {$/;"	f	class:FPVCamera	typeref:typename:void
 update	visualisation/src/Scene.cpp	/^void Scene::update(float aspectRatio, double dt) {$/;"	f	class:Scene	typeref:typename:void
+update	visualisation/src/Window.cpp	/^void Window::update() const {$/;"	f	class:GF::Window	typeref:typename:void
 update	visualisation/src/helloworld.cpp	/^    bool update() override {$/;"	f	class:__anon491389030111::ExampleHelloWorld	typeref:typename:bool	file:
 updateAllNodeTransforms	visualisation/src/SimulationModel.cpp	/^void SimulationModel::updateAllNodeTransforms() {$/;"	f	class:SimulationModel	typeref:typename:void
 updateIrrlichtCamera	visualisation/src/CameraSystem.cpp	/^void CameraSystem::updateIrrlichtCamera() {$/;"	f	class:CameraSystem	typeref:typename:void
@@ -17360,6 +17397,7 @@ yoff	3rd_party/imgui/imstb_truetype.h	/^   float xoff,yoff,xadvance;$/;"	m	struc
 yoff	3rd_party/imgui/imstb_truetype.h	/^   float xoff,yoff,xadvance;$/;"	m	struct:__anon65b4c42c0408	typeref:typename:float
 yoff2	3rd_party/imgui/imstb_truetype.h	/^   float xoff2,yoff2;$/;"	m	struct:__anon65b4c42c0408	typeref:typename:float
 z	3rd_party/imgui/imgui.h	/^    float                                   x, y, z, w;$/;"	m	struct:ImVec4	typeref:typename:float
+~Application	visualisation/src/Application.cpp	/^Application::~Application() {$/;"	f	class:GF::Application
 ~ExampleAppConsole	3rd_party/imgui/imgui_demo.cpp	/^    ~ExampleAppConsole()$/;"	f	struct:ExampleAppConsole	file:
 ~ImDrawData	3rd_party/imgui/imgui.h	/^    ~ImDrawData()   { Clear(); }$/;"	f	struct:ImDrawData
 ~ImDrawList	3rd_party/imgui/imgui.h	/^    ~ImDrawList() { ClearFreeMemory(); }$/;"	f	struct:ImDrawList
@@ -17370,3 +17408,4 @@ z	3rd_party/imgui/imgui.h	/^    float                                   x, y, z,
 ~ImGuiWindow	3rd_party/imgui/imgui.cpp	/^ImGuiWindow::~ImGuiWindow()$/;"	f	class:ImGuiWindow
 ~ImPool	3rd_party/imgui/imgui_internal.h	/^    ~ImPool()   { Clear(); }$/;"	f	struct:ImPool
 ~ImVector	3rd_party/imgui/imgui.h	/^    inline ~ImVector()                                      { if (Data) IM_FREE(Data); }$/;"	f	struct:ImVector
+~Window	visualisation/src/Window.cpp	/^Window::~Window() {$/;"	f	class:GF::Window

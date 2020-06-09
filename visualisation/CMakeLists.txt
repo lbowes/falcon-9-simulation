@@ -1,13 +1,25 @@
 # ========== Visualisation ========== 
 include_directories("include/")
+include_directories("../")
 include_directories("../simulation/include")
 include_directories(${GLFW_INCLUDE_DIRS})
 
 add_executable(f9sim-visualisation)
 
+set(IMGUI_SRC 
+	../3rd_party/imgui/imgui.cpp
+	../3rd_party/imgui/imgui_draw.cpp
+	../3rd_party/imgui/imgui_demo.cpp
+	../3rd_party/imgui/imgui_impl_glfw.cpp
+	../3rd_party/imgui/imgui_widgets.cpp
+	../3rd_party/imgui/imgui_impl_bgfx.cpp
+)
+
 target_sources(f9sim-visualisation
 	PRIVATE
 		src/main.cpp
+		src/Visualisation.cpp
+		${IMGUI_SRC}
 )
 
 # Link to libraries

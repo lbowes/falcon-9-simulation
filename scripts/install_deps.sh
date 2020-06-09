@@ -22,6 +22,7 @@ cd chrono
 mkdir chrono_build
 cd chrono_build
 cmake ..
+make
 make install
 
 # ========== BGFX ==========
@@ -39,4 +40,5 @@ git submodule update
 mkdir bgfx_build
 cd bgfx_build
 cmake ..
+make
 make install

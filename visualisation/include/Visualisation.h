@@ -2,15 +2,14 @@
 #define F9SIM_GRAPHICS_VISUALISATION_H_
 #pragma once
 
+
 namespace F9Sim {
 namespace Graphics {
 
-class Visualisation {
-private:
-public:
-    Visualisation();
-    ~Visualisation() = default;
-};
+
+bool Visualisation_init();
+void Visualisation_run();
+
 
 } // namespace Graphics
 } // namespace F9Sim
