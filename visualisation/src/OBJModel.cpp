@@ -55,6 +55,7 @@ OBJModel::OBJModel(const char* filepath) {
     bgfx::ShaderHandle fsh = loadShader("resources/shaders/f_square.bin");
 
     m_shader = bgfx::createProgram(vsh, fsh, true);
+    u_uniform = bgfx::createUniform("u_uniform", bgfx::UniformType::Vec4);
 }
 
 
@@ -62,6 +63,7 @@ OBJModel::~OBJModel() {
     bgfx::destroy(m_vbh);
     bgfx::destroy(m_ibh);
     bgfx::destroy(m_shader);
+    bgfx::destroy(u_uniform);
 }
 
 
@@ -91,11 +93,15 @@ void OBJModel::draw(float aspectRatio) const {
     bgfx::setViewTransform(0, view, proj);
     //
 
-    // Model transform
+    // Set an example uniform
+    static float uniformVar = 0.5f;
     static float rotation = 0.0f;
     ImGui::Begin("temp");
     ImGui::SliderAngle("rotation", &rotation, 0.0f, 360.0f);
+    ImGui::SliderFloat("uniformVar", &uniformVar, 0.0f, 1.0f);
     ImGui::End();
+
+    bgfx::setUniform(u_uniform, &uniformVar);
 
     float mtx[16];
     bx::mtxRotateY(mtx, rotation);

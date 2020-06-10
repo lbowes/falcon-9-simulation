@@ -11448,12 +11448,12 @@ Pos	3rd_party/imgui/imgui_internal.h	/^    float       Pos[3], NextWidths[3];$/;
 Pos	build/dev/visualisation/imgui.ini	/^Pos=-18,-18$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=-40,120$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=1063,869$/;"	k	section:Window
-Pos	build/dev/visualisation/imgui.ini	/^Pos=1319,658$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=1485,203$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=1587,349$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=1882,60$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=1993,664$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=35,593$/;"	k	section:Window
+Pos	build/dev/visualisation/imgui.ini	/^Pos=441,604$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=492,869$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=608,143$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=881,468$/;"	k	section:Window
@@ -17720,6 +17720,7 @@ type	3rd_party/json.hpp	/^    using type = index_sequence;$/;"	t	struct:nlohmann
 type	3rd_party/json.hpp	/^    using type = void;$/;"	t	struct:nlohmann::detail::make_void	typeref:typename:void
 type_error	3rd_party/json.hpp	/^    type_error(int id_, const char* what_arg) : exception(id_, what_arg) {}$/;"	f	class:nlohmann::detail::type_error
 type_error	3rd_party/json.hpp	/^class type_error : public exception$/;"	c	namespace:nlohmann::detail
+u_uniform	visualisation/include/OBJModel.h	/^    bgfx::UniformHandle u_uniform;$/;"	m	class:F9Sim::Graphics::OBJModel	typeref:typename:bgfx::UniformHandle
 uncvref_t	3rd_party/json.hpp	/^using uncvref_t = typename std::remove_cv<typename std::remove_reference<T>::type>::type;$/;"	t	namespace:nlohmann::detail	typeref:typename:std::remove_cv<typename std::remove_reference<T>::type>::type
 undo_char	3rd_party/imgui/imstb_textedit.h	/^   STB_TEXTEDIT_CHARTYPE  undo_char[STB_TEXTEDIT_UNDOCHARCOUNT];$/;"	m	struct:__anon9e551a350208	typeref:typename:STB_TEXTEDIT_CHARTYPE[]
 undo_char_point	3rd_party/imgui/imstb_textedit.h	/^   int undo_char_point, redo_char_point;$/;"	m	struct:__anon9e551a350208	typeref:typename:int

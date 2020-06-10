@@ -37,6 +37,7 @@ private:
     bgfx::VertexBufferHandle m_vbh;
     bgfx::IndexBufferHandle m_ibh;
     bgfx::ProgramHandle m_shader;
+    bgfx::UniformHandle u_uniform;
 
 public:
     OBJModel(const char* filepath);
