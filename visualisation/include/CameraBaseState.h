@@ -1,7 +1,13 @@
-#ifndef CAMERABASESTATE_H_
-#define CAMERABASESTATE_H_
+#ifndef F9SIM_GRAPHICS_CAMERABASESTATE_H_
+#define F9SIM_GRAPHICS_CAMERABASESTATE_H_
+#pragma once
+
 
 #include <chrono/core/ChVector.h>
+
+
+namespace F9Sim {
+namespace Graphics {
 
 
 struct CameraBaseState {
@@ -15,5 +21,9 @@ struct CameraBaseState {
 };
 
 
-#endif // CAMERABASESTATE_H_
+} // namespace Graphics
+} // namespace F9Sim
+
+
+#endif // F9SIM_GRAPHICS_CAMERABASESTATE_H_
 

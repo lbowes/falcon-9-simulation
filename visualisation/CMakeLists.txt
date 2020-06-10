@@ -19,6 +19,7 @@ target_sources(f9sim-visualisation
 	PRIVATE
 		src/main.cpp
 		src/Visualisation.cpp
+		src/OBJModel.cpp
 		${IMGUI_SRC}
 )
 

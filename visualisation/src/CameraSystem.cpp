@@ -1,16 +1,18 @@
 #include "CameraSystem.h"
-#include "../../input/HWEventReceiver.h"
-
-#include <IMGUI/imgui.h>
-#include <chrono_irrlicht/ChIrrTools.h>
-#include <iostream>
 
 
-bool CameraSystem::sInitialised = false;
-float CameraSystem::sAspectRatio = 1.0f;
-irr::scene::ICameraSceneNode* CameraSystem::sIrrlichtCam = nullptr;
-std::vector<CameraSystem::CameraHandle> CameraSystem::sCameraHandles;
-CameraSystem::CameraHandle CameraSystem::sActiveCamera;
+namespace F9Sim {
+namespace Graphics {
+
+
+bool s_initialised = false;
+float s_aspectRatio = 1.0f;
+
+// todo convert this into bgfx equivalent
+irr::scene::ICameraSceneNode* s_irrlichtCam = nullptr;
+
+std::vector<CameraSystem::CameraHandle> sCameraHandles;
+CameraSystem::CameraHandle s_activeCamera;
 
 
 void CameraSystem::init(irr::scene::ISceneManager& sceneMgrHandle) {
@@ -62,3 +64,7 @@ void CameraSystem::registerHandleTo(CameraBaseState& cameraState, const std::str
 chrono::ChVector<> CameraSystem::getActiveCameraPos() {
     return sActiveCamera.handle->position;
 }
+
+
+} // namespace Graphics
+} // namespace F9Sim

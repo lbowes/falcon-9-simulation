@@ -4047,6 +4047,7 @@ $(VERBOSE)MAKESILENT	build/dev/visualisation/Makefile	/^$(VERBOSE)MAKESILENT = -
 1	build/dev/simulation/output.json	/^                    9.999019335,$/;"	n	array:history.1.falcon9.position_world
 1	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 1	build/release/compile_commands.json	/^{$/;"	o
+10	build/dev/compile_commands.json	/^{$/;"	o
 10	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 100	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 1000	build/dev/simulation/output.json	/^        {$/;"	o	array:history
@@ -4059,6 +4060,7 @@ $(VERBOSE)MAKESILENT	build/dev/visualisation/Makefile	/^$(VERBOSE)MAKESILENT = -
 107	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 108	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 109	build/dev/simulation/output.json	/^        {$/;"	o	array:history
+11	build/dev/compile_commands.json	/^{$/;"	o
 11	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 110	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 111	build/dev/simulation/output.json	/^        {$/;"	o	array:history
@@ -4070,6 +4072,7 @@ $(VERBOSE)MAKESILENT	build/dev/visualisation/Makefile	/^$(VERBOSE)MAKESILENT = -
 117	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 118	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 119	build/dev/simulation/output.json	/^        {$/;"	o	array:history
+12	build/dev/compile_commands.json	/^{$/;"	o
 12	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 120	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 121	build/dev/simulation/output.json	/^        {$/;"	o	array:history
@@ -4081,6 +4084,7 @@ $(VERBOSE)MAKESILENT	build/dev/visualisation/Makefile	/^$(VERBOSE)MAKESILENT = -
 127	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 128	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 129	build/dev/simulation/output.json	/^        {$/;"	o	array:history
+13	build/dev/compile_commands.json	/^{$/;"	o
 13	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 130	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 131	build/dev/simulation/output.json	/^        {$/;"	o	array:history
@@ -4092,6 +4096,7 @@ $(VERBOSE)MAKESILENT	build/dev/visualisation/Makefile	/^$(VERBOSE)MAKESILENT = -
 137	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 138	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 139	build/dev/simulation/output.json	/^        {$/;"	o	array:history
+14	build/dev/compile_commands.json	/^{$/;"	o
 14	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 140	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 141	build/dev/simulation/output.json	/^        {$/;"	o	array:history
@@ -7722,6 +7727,7 @@ $(VERBOSE)MAKESILENT	build/dev/visualisation/Makefile	/^$(VERBOSE)MAKESILENT = -
 697	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 698	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 699	build/dev/simulation/output.json	/^        {$/;"	o	array:history
+7	build/dev/compile_commands.json	/^{$/;"	o
 7	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 70	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 700	build/dev/simulation/output.json	/^        {$/;"	o	array:history
@@ -7833,6 +7839,7 @@ $(VERBOSE)MAKESILENT	build/dev/visualisation/Makefile	/^$(VERBOSE)MAKESILENT = -
 797	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 798	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 799	build/dev/simulation/output.json	/^        {$/;"	o	array:history
+8	build/dev/compile_commands.json	/^{$/;"	o
 8	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 80	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 800	build/dev/simulation/output.json	/^        {$/;"	o	array:history
@@ -7944,6 +7951,7 @@ $(VERBOSE)MAKESILENT	build/dev/visualisation/Makefile	/^$(VERBOSE)MAKESILENT = -
 897	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 898	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 899	build/dev/simulation/output.json	/^        {$/;"	o	array:history
+9	build/dev/compile_commands.json	/^{$/;"	o
 9	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 90	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 900	build/dev/simulation/output.json	/^        {$/;"	o	array:history
@@ -8076,6 +8084,7 @@ ARCHITECTURE_ID	build/release/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/
 ARCHITECTURE_ID	build/release/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#   define ARCHITECTURE_ID /;"	d	file:
 ARCHITECTURE_ID	build/release/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define ARCHITECTURE_ID /;"	d	file:
 ARCHITECTURE_ID	build/release/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define ARCHITECTURE_ID$/;"	d	file:
+Aabb	3rd_party/bgfx_extra/bounds.h	/^struct Aabb$/;"	s
 AcceptDragDropPayload	3rd_party/imgui/imgui.cpp	/^const ImGuiPayload* ImGui::AcceptDragDropPayload(const char* type, ImGuiDragDropFlags flags)$/;"	f	class:ImGui	typeref:typename:const ImGuiPayload *
 Acknowledgements	README.md	/^## Acknowledgements$/;"	s
 ActivateItem	3rd_party/imgui/imgui.cpp	/^void ImGui::ActivateItem(ImGuiID id)$/;"	f	class:ImGui	typeref:typename:void
@@ -8159,10 +8168,11 @@ AntiAliasedFill	3rd_party/imgui/imgui.h	/^    bool        AntiAliasedFill;      
 AntiAliasedLines	3rd_party/imgui/imgui.h	/^    bool        AntiAliasedLines;           \/\/ Enable anti-aliasing on lines\/borders. Disable/;"	m	struct:ImGuiStyle	typeref:typename:bool
 Appearing	3rd_party/imgui/imgui_internal.h	/^    bool                    Appearing;                          \/\/ Set during the frame where /;"	m	struct:ImGuiWindow	typeref:typename:bool
 Application	visualisation/include/Application.h	/^class Application {$/;"	c	namespace:GF
-Application	visualisation/src/Application.cpp	/^Application::Application(const std::string& windowTitle, const std::string& iconPath, glm::ivec2/;"	f	class:GF::Application
 ApplyAllFn	3rd_party/imgui/imgui_internal.h	/^    void        (*ApplyAllFn)(ImGuiContext* ctx, ImGuiSettingsHandler* handler);                /;"	m	struct:ImGuiSettingsHandler	typeref:typename:void (*)(ImGuiContext * ctx,ImGuiSettingsHandler * handler)
 ApplyWindowSettings	3rd_party/imgui/imgui.cpp	/^static void ApplyWindowSettings(ImGuiWindow* window, ImGuiWindowSettings* settings)$/;"	f	typeref:typename:void	file:
 ArcFastVtx	3rd_party/imgui/imgui_internal.h	/^    ImVec2          ArcFastVtx[12 * IM_DRAWLIST_ARCFAST_TESSELLATION_MULTIPLIER];  \/\/ FIXME: B/;"	m	struct:ImDrawListSharedData	typeref:typename:ImVec2[]
+Args	3rd_party/bgfx_extra/bgfx_utils.cpp	/^Args::Args(int _argc, const char* const* _argv)$/;"	f	class:Args
+Args	3rd_party/bgfx_extra/bgfx_utils.h	/^struct Args$/;"	s
 ArrowButton	3rd_party/imgui/imgui_widgets.cpp	/^bool ImGui::ArrowButton(const char* str_id, ImGuiDir dir)$/;"	f	class:ImGui	typeref:typename:bool
 ArrowButtonEx	3rd_party/imgui/imgui_widgets.cpp	/^bool ImGui::ArrowButtonEx(const char* str_id, ImGuiDir dir, ImVec2 size, ImGuiButtonFlags flags)$/;"	f	class:ImGui	typeref:typename:bool
 Ascent	3rd_party/imgui/imgui.h	/^    float                       Ascent, Descent;    \/\/ 4+4   \/\/ out \/\/            \/\/ Asc/;"	m	struct:ImFont	typeref:typename:float
@@ -8175,6 +8185,13 @@ AutoPosLastDirection	3rd_party/imgui/imgui_internal.h	/^    ImGuiDir            
 AutoReg	3rd_party/catch.hpp	/^struct AutoReg : NonCopyable {$/;"	s	namespace:Catch
 AutoScroll	3rd_party/imgui/imgui_demo.cpp	/^    bool                  AutoScroll;$/;"	m	struct:ExampleAppConsole	typeref:typename:bool	file:
 AutoScroll	3rd_party/imgui/imgui_demo.cpp	/^    bool                AutoScroll;  \/\/ Keep scrolling if already at the bottom.$/;"	m	struct:ExampleAppLog	typeref:typename:bool	file:
+BGFX_CHUNK_MAGIC_IB	3rd_party/bgfx_extra/bgfx_utils.cpp	/^#define BGFX_CHUNK_MAGIC_IB /;"	d	file:
+BGFX_CHUNK_MAGIC_IBC	3rd_party/bgfx_extra/bgfx_utils.cpp	/^#define BGFX_CHUNK_MAGIC_IBC /;"	d	file:
+BGFX_CHUNK_MAGIC_PRI	3rd_party/bgfx_extra/bgfx_utils.cpp	/^#define BGFX_CHUNK_MAGIC_PRI /;"	d	file:
+BGFX_CHUNK_MAGIC_VB	3rd_party/bgfx_extra/bgfx_utils.cpp	/^#define BGFX_CHUNK_MAGIC_VB /;"	d	file:
+BGFX_CHUNK_MAGIC_VBC	3rd_party/bgfx_extra/bgfx_utils.cpp	/^#define BGFX_CHUNK_MAGIC_VBC /;"	d	file:
+BGFX_UTILS_H_HEADER_GUARD	3rd_party/bgfx_extra/bgfx_utils.h	/^#define BGFX_UTILS_H_HEADER_GUARD$/;"	d
+BOUNDS_H_HEADER_GUARD	3rd_party/bgfx_extra/bounds.h	/^#define BOUNDS_H_HEADER_GUARD$/;"	d
 BUILD_TESTS	CMakeLists.txt	/^set(BUILD_TESTS FALSE CACHE BOOL "Build tests")$/;"	v
 BackendFlags	3rd_party/imgui/imgui.h	/^    ImGuiBackendFlags  BackendFlags;            \/\/ = 0              \/\/ See ImGuiBackendFlags/;"	m	struct:ImGuiIO	typeref:typename:ImGuiBackendFlags
 BackendLanguageUserData	3rd_party/imgui/imgui.h	/^    void*       BackendLanguageUserData;        \/\/ = NULL           \/\/ User data for non C++/;"	m	struct:ImGuiIO	typeref:typename:void *
@@ -8252,8 +8269,6 @@ Button	3rd_party/imgui/imgui_widgets.cpp	/^bool ImGui::Button(const char* label,
 ButtonBehavior	3rd_party/imgui/imgui_widgets.cpp	/^bool ImGui::ButtonBehavior(const ImRect& bb, ImGuiID id, bool* out_hovered, bool* out_held, ImGu/;"	f	class:ImGui	typeref:typename:bool
 ButtonEx	3rd_party/imgui/imgui_widgets.cpp	/^bool ImGui::ButtonEx(const char* label, const ImVec2& size_arg, ImGuiButtonFlags flags)$/;"	f	class:ImGui	typeref:typename:bool
 ButtonTextAlign	3rd_party/imgui/imgui.h	/^    ImVec2      ButtonTextAlign;            \/\/ Alignment of button text when button is larger /;"	m	struct:ImGuiStyle	typeref:typename:ImVec2
-CAMERABASESTATE_H_	visualisation/include/CameraBaseState.h	/^#define CAMERABASESTATE_H_$/;"	d
-CAMERASYSTEM_H_	visualisation/include/CameraSystem.h	/^#define CAMERASYSTEM_H_$/;"	d
 CATCH_ARC_ENABLED	3rd_party/catch.hpp	/^#define CATCH_ARC_ENABLED /;"	d
 CATCH_ARC_STRONG	3rd_party/catch.hpp	/^#define CATCH_ARC_STRONG /;"	d
 CATCH_ARC_STRONG	3rd_party/catch.hpp	/^#define CATCH_ARC_STRONG$/;"	d
@@ -8990,11 +9005,11 @@ CalcWindowExpectedSize	3rd_party/imgui/imgui.cpp	/^ImVec2 ImGui::CalcWindowExpec
 CalcWindowSizeAfterConstraint	3rd_party/imgui/imgui.cpp	/^static ImVec2 CalcWindowSizeAfterConstraint(ImGuiWindow* window, ImVec2 new_size)$/;"	f	typeref:typename:ImVec2	file:
 CalcWordWrapPositionA	3rd_party/imgui/imgui_draw.cpp	/^const char* ImFont::CalcWordWrapPositionA(float scale, const char* text, const char* text_end, f/;"	f	class:ImFont	typeref:typename:const char *
 CalcWrapWidthForPos	3rd_party/imgui/imgui.cpp	/^float ImGui::CalcWrapWidthForPos(const ImVec2& pos, float wrap_pos_x)$/;"	f	class:ImGui	typeref:typename:float
-CameraBaseState	visualisation/include/CameraBaseState.h	/^struct CameraBaseState {$/;"	s
-CameraHandle	visualisation/include/CameraSystem.h	/^    struct CameraHandle {$/;"	s	class:CameraSystem
-CameraSystem	visualisation/include/CameraSystem.h	/^class CameraSystem {$/;"	c
+CameraBaseState	visualisation/include/CameraBaseState.h	/^struct CameraBaseState {$/;"	s	namespace:F9Sim::Graphics
+CameraHandle	visualisation/include/CameraSystem.h	/^struct CameraHandle {$/;"	s	namespace:F9Sim::Graphics
 CanMergeDrawCommands	3rd_party/imgui/imgui_draw.cpp	/^static inline bool CanMergeDrawCommands(ImDrawCmd* a, ImDrawCmd* b)$/;"	f	typeref:typename:bool	file:
 Capacity	3rd_party/imgui/imgui.h	/^    int                 Capacity;$/;"	m	struct:ImVector	typeref:typename:int
+Capsule	3rd_party/bgfx_extra/bounds.h	/^struct Capsule$/;"	s
 CaptureKeyboardFromApp	3rd_party/imgui/imgui.cpp	/^void ImGui::CaptureKeyboardFromApp(bool capture)$/;"	f	class:ImGui	typeref:typename:void
 CaptureMouseFromApp	3rd_party/imgui/imgui.cpp	/^void ImGui::CaptureMouseFromApp(bool capture)$/;"	f	class:ImGui	typeref:typename:void
 CaseSensitive	3rd_party/catch.hpp	/^    struct CaseSensitive { enum Choice {$/;"	s	namespace:Catch
@@ -9071,6 +9086,7 @@ Col	3rd_party/imgui/imgui_internal.h	/^    ImGuiCol    Col;$/;"	m	struct:ImGuiCo
 CollapseButton	3rd_party/imgui/imgui_widgets.cpp	/^bool ImGui::CollapseButton(ImGuiID id, const ImVec2& pos)$/;"	f	class:ImGui	typeref:typename:bool
 Collapsed	3rd_party/imgui/imgui_internal.h	/^    bool                    Collapsed;                          \/\/ Set when collapsing window /;"	m	struct:ImGuiWindow	typeref:typename:bool
 Collapsed	3rd_party/imgui/imgui_internal.h	/^    bool        Collapsed;$/;"	m	struct:ImGuiWindowSettings	typeref:typename:bool
+Collapsed	build/dev/visualisation/imgui.ini	/^Collapsed=0$/;"	k	section:Window
 CollapsedCond	3rd_party/imgui/imgui_internal.h	/^    ImGuiCond                   CollapsedCond;$/;"	m	struct:ImGuiNextWindowData	typeref:typename:ImGuiCond
 CollapsedVal	3rd_party/imgui/imgui_internal.h	/^    bool                        CollapsedVal;$/;"	m	struct:ImGuiNextWindowData	typeref:typename:bool
 CollapsingHeader	3rd_party/imgui/imgui_widgets.cpp	/^bool ImGui::CollapsingHeader(const char* label, ImGuiTreeNodeFlags flags)$/;"	f	class:ImGui	typeref:typename:bool
@@ -9105,6 +9121,7 @@ Combo	3rd_party/imgui/imgui_widgets.cpp	/^bool ImGui::Combo(const char* label, i
 Combo	3rd_party/imgui/imgui_widgets.cpp	/^bool ImGui::Combo(const char* label, int* current_item, const char* const items[], int items_cou/;"	f	class:ImGui	typeref:typename:bool
 Combo	3rd_party/imgui/imgui_widgets.cpp	/^bool ImGui::Combo(const char* label, int* current_item, const char* items_separated_by_zeros, in/;"	f	class:ImGui	typeref:typename:bool
 Commands	3rd_party/imgui/imgui_demo.cpp	/^    ImVector<const char*> Commands;$/;"	m	struct:ExampleAppConsole	typeref:typename:ImVector<const char * >	file:
+Cone	3rd_party/bgfx_extra/bounds.h	/^struct Cone$/;"	s
 ConfigData	3rd_party/imgui/imgui.h	/^    ImVector<ImFontConfig>      ConfigData;         \/\/ Internal data$/;"	m	struct:ImFontAtlas	typeref:typename:ImVector<ImFontConfig>
 ConfigData	3rd_party/imgui/imgui.h	/^    const ImFontConfig*         ConfigData;         \/\/ 4-8   \/\/ in  \/\/            \/\/ Poi/;"	m	struct:ImFont	typeref:typename:const ImFontConfig *
 ConfigDataCount	3rd_party/imgui/imgui.h	/^    short                       ConfigDataCount;    \/\/ 2     \/\/ in  \/\/ ~ 1        \/\/ Num/;"	m	struct:ImFont	typeref:typename:short
@@ -9162,6 +9179,7 @@ CustomConstraints	3rd_party/imgui/imgui_demo.cpp	/^    struct CustomConstraints$
 CustomRect	3rd_party/imgui/imgui.h	/^    typedef ImFontAtlasCustomRect    CustomRect;         \/\/ OBSOLETED in 1.72+$/;"	t	struct:ImFontAtlas	typeref:typename:ImFontAtlasCustomRect
 CustomRectIds	3rd_party/imgui/imgui.h	/^    int                         CustomRectIds[1];   \/\/ Identifiers of custom texture rectangle/;"	m	struct:ImFontAtlas	typeref:typename:int[1]
 CustomRects	3rd_party/imgui/imgui.h	/^    ImVector<ImFontAtlasCustomRect> CustomRects;    \/\/ Rectangles for packing custom texture d/;"	m	struct:ImFontAtlas	typeref:typename:ImVector<ImFontAtlasCustomRect>
+Cylinder	3rd_party/bgfx_extra/bounds.h	/^struct Cylinder$/;"	s
 DC	3rd_party/imgui/imgui_internal.h	/^    ImGuiWindowTempData     DC;                                 \/\/ Temporary per-window data, /;"	m	struct:ImGuiWindow	typeref:typename:ImGuiWindowTempData
 DEC	build/dev/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^#define DEC(/;"	d	file:
 DEC	build/dev/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define DEC(/;"	d	file:
@@ -9202,6 +9220,7 @@ DidntThrowException	3rd_party/catch.hpp	/^        DidntThrowException = Exceptio
 DimBgRatio	3rd_party/imgui/imgui_internal.h	/^    float                   DimBgRatio;                         \/\/ 0.0..1.0 animation when fad/;"	m	struct:ImGuiContext	typeref:typename:float
 Dirty	3rd_party/imgui/imgui_demo.cpp	/^    bool        Dirty;      \/\/ Set when the document has been modified$/;"	m	struct:MyDocument	typeref:typename:bool	file:
 DirtyLookupTables	3rd_party/imgui/imgui.h	/^    bool                        DirtyLookupTables;  \/\/ 1     \/\/ out \/\/$/;"	m	struct:ImFont	typeref:typename:bool
+Disk	3rd_party/bgfx_extra/bounds.h	/^struct Disk$/;"	s
 DisplayContents	3rd_party/imgui/imgui_demo.cpp	/^    static void DisplayContents(MyDocument* doc)$/;"	f	struct:MyDocument	typeref:typename:void	file:
 DisplayContextMenu	3rd_party/imgui/imgui_demo.cpp	/^    static void DisplayContextMenu(MyDocument* doc)$/;"	f	struct:MyDocument	typeref:typename:void	file:
 DisplayEnd	3rd_party/imgui/imgui.h	/^    int     DisplayStart, DisplayEnd;$/;"	m	struct:ImGuiListClipper	typeref:typename:int
@@ -9315,16 +9334,22 @@ ExampleAppDocuments	3rd_party/imgui/imgui_demo.cpp	/^    ExampleAppDocuments()$/
 ExampleAppDocuments	3rd_party/imgui/imgui_demo.cpp	/^struct ExampleAppDocuments$/;"	s	file:
 ExampleAppLog	3rd_party/imgui/imgui_demo.cpp	/^    ExampleAppLog()$/;"	f	struct:ExampleAppLog	file:
 ExampleAppLog	3rd_party/imgui/imgui_demo.cpp	/^struct ExampleAppLog$/;"	s	file:
-ExampleHelloWorld	visualisation/src/helloworld.cpp	/^    ExampleHelloWorld(const char* _name, const char* _description, const char* _url) :$/;"	f	class:__anon491389030111::ExampleHelloWorld	file:
-ExampleHelloWorld	visualisation/src/helloworld.cpp	/^class ExampleHelloWorld : public entry::AppI {$/;"	c	namespace:__anon491389030111	file:
 Exception	3rd_party/catch.hpp	/^        Exception = 0x100 | FailureBit,$/;"	e	enum:Catch::ResultWas::OfType
 ExecCommand	3rd_party/imgui/imgui_demo.cpp	/^    void    ExecCommand(const char* command_line)$/;"	f	struct:ExampleAppConsole	typeref:typename:void	file:
 Expand	3rd_party/imgui/imgui_internal.h	/^    void        Expand(const ImVec2& amount)        { Min.x -= amount.x; Min.y -= amount.y; Max./;"	f	struct:ImRect	typeref:typename:void
 Expand	3rd_party/imgui/imgui_internal.h	/^    void        Expand(const float amount)          { Min.x -= amount;   Min.y -= amount;   Max./;"	f	struct:ImRect	typeref:typename:void
 ExplicitFailure	3rd_party/catch.hpp	/^        ExplicitFailure = FailureBit | 2,$/;"	e	enum:Catch::ResultWas::OfType
 ExpressionFailed	3rd_party/catch.hpp	/^        ExpressionFailed = FailureBit | 1,$/;"	e	enum:Catch::ResultWas::OfType
+F9SIM_GRAPHICS_CAMERABASESTATE_H_	visualisation/include/CameraBaseState.h	/^#define F9SIM_GRAPHICS_CAMERABASESTATE_H_$/;"	d
+F9SIM_GRAPHICS_CAMERASYSTEM_H_	visualisation/include/CameraSystem.h	/^#define F9SIM_GRAPHICS_CAMERASYSTEM_H_$/;"	d
+F9SIM_GRAPHICS_OBJMODEL_H_	visualisation/include/OBJModel.h	/^#define F9SIM_GRAPHICS_OBJMODEL_H_$/;"	d
 F9SIM_GRAPHICS_VISUALISATION_H_	visualisation/include/Visualisation.h	/^#define F9SIM_GRAPHICS_VISUALISATION_H_$/;"	d
+F9Sim	visualisation/include/CameraBaseState.h	/^namespace F9Sim {$/;"	n
+F9Sim	visualisation/include/CameraSystem.h	/^namespace F9Sim {$/;"	n
+F9Sim	visualisation/include/OBJModel.h	/^namespace F9Sim {$/;"	n
 F9Sim	visualisation/include/Visualisation.h	/^namespace F9Sim {$/;"	n
+F9Sim	visualisation/src/CameraSystem.cpp	/^namespace F9Sim {$/;"	n	file:
+F9Sim	visualisation/src/OBJModel.cpp	/^namespace F9Sim {$/;"	n	file:
 F9Sim	visualisation/src/Visualisation.cpp	/^namespace F9Sim {$/;"	n	file:
 FONT_ATLAS_DEFAULT_TEX_CURSOR_DATA	3rd_party/imgui/imgui_draw.cpp	/^static const ImVec2 FONT_ATLAS_DEFAULT_TEX_CURSOR_DATA[ImGuiMouseCursor_COUNT][3] =$/;"	v	typeref:typename:const ImVec2[][3]	file:
 FONT_ATLAS_DEFAULT_TEX_DATA_H	3rd_party/imgui/imgui_draw.cpp	/^const int FONT_ATLAS_DEFAULT_TEX_DATA_H      = 27;$/;"	v	typeref:typename:const int
@@ -9434,17 +9459,15 @@ FunctionReturnType	3rd_party/catch.hpp	/^    using FunctionReturnType = typename
 GCrc32LookupTable	3rd_party/imgui/imgui.cpp	/^static const ImU32 GCrc32LookupTable[256] =$/;"	v	typeref:typename:const ImU32[256]	file:
 GDataTypeInfo	3rd_party/imgui/imgui_widgets.cpp	/^static const ImGuiDataTypeInfo GDataTypeInfo[] =$/;"	v	typeref:typename:const ImGuiDataTypeInfo[]	file:
 GF	visualisation/include/Application.h	/^namespace GF {$/;"	n
-GF	visualisation/src/Application.cpp	/^namespace GF {$/;"	n	file:
-GF	visualisation/src/Window.cpp	/^namespace GF {$/;"	n	file:
+GF	visualisation/include/Window.h	/^namespace GF {$/;"	n
+GF_WINDOW_H	visualisation/include/Window.h	/^#define GF_WINDOW_H$/;"	d
 GImAllocatorAllocFunc	3rd_party/imgui/imgui.cpp	/^static void*  (*GImAllocatorAllocFunc)(size_t size, void* user_data) = MallocWrapper;$/;"	v	typeref:typename:void * (*)(size_t size,void * user_data)	file:
 GImAllocatorFreeFunc	3rd_party/imgui/imgui.cpp	/^static void   (*GImAllocatorFreeFunc)(void* ptr, void* user_data) = FreeWrapper;$/;"	v	typeref:typename:void (*)(void * ptr,void * user_data)	file:
 GImAllocatorUserData	3rd_party/imgui/imgui.cpp	/^static void*    GImAllocatorUserData = NULL;$/;"	v	typeref:typename:void *	file:
 GImGui	3rd_party/imgui/imgui.cpp	/^ImGuiContext*   GImGui = NULL;$/;"	v	typeref:typename:ImGuiContext *
-GLFW_EXPOSE_NATIVE_COCOA	visualisation/src/main_old.cpp	/^#define GLFW_EXPOSE_NATIVE_COCOA$/;"	d	file:
+GLEW_STATIC	visualisation/include/Window.h	/^#define GLEW_STATIC$/;"	d
 GLFW_EXPOSE_NATIVE_WIN32	3rd_party/imgui/imgui_impl_glfw.cpp	/^#define GLFW_EXPOSE_NATIVE_WIN32$/;"	d	file:
-GLFW_EXPOSE_NATIVE_WIN32	visualisation/src/main_old.cpp	/^#define GLFW_EXPOSE_NATIVE_WIN32$/;"	d	file:
 GLFW_EXPOSE_NATIVE_X11	visualisation/src/Visualisation.cpp	/^#define GLFW_EXPOSE_NATIVE_X11$/;"	d	file:
-GLFW_EXPOSE_NATIVE_X11	visualisation/src/main_old.cpp	/^#define GLFW_EXPOSE_NATIVE_X11$/;"	d	file:
 GLFW_HAS_NEW_CURSORS	3rd_party/imgui/imgui_impl_glfw.cpp	/^#define GLFW_HAS_NEW_CURSORS /;"	d	file:
 GLFW_HAS_PER_MONITOR_DPI	3rd_party/imgui/imgui_impl_glfw.cpp	/^#define GLFW_HAS_PER_MONITOR_DPI /;"	d	file:
 GLFW_HAS_VULKAN	3rd_party/imgui/imgui_impl_glfw.cpp	/^#define GLFW_HAS_VULKAN /;"	d	file:
@@ -9632,8 +9655,16 @@ GlyphsSet	3rd_party/imgui/imgui_draw.cpp	/^    ImBitVector         GlyphsSet;   
 GlyphsSet	3rd_party/imgui/imgui_draw.cpp	/^    ImBitVector         GlyphsSet;          \/\/ This is used to resolve collision when multiple/;"	m	struct:ImFontBuildDstData	typeref:typename:ImBitVector	file:
 GrabMinSize	3rd_party/imgui/imgui.h	/^    float       GrabMinSize;                \/\/ Minimum width\/height of a grab box for slider\//;"	m	struct:ImGuiStyle	typeref:typename:float
 GrabRounding	3rd_party/imgui/imgui.h	/^    float       GrabRounding;               \/\/ Radius of grabs corners rounding. Set to 0.0f t/;"	m	struct:ImGuiStyle	typeref:typename:float
+Graphics	visualisation/include/CameraBaseState.h	/^namespace Graphics {$/;"	n	namespace:F9Sim
+Graphics	visualisation/include/CameraSystem.h	/^namespace Graphics {$/;"	n	namespace:F9Sim
+Graphics	visualisation/include/OBJModel.h	/^namespace Graphics {$/;"	n	namespace:F9Sim
 Graphics	visualisation/include/Visualisation.h	/^namespace Graphics {$/;"	n	namespace:F9Sim
+Graphics	visualisation/src/CameraSystem.cpp	/^namespace Graphics {$/;"	n	namespace:F9Sim	file:
+Graphics	visualisation/src/OBJModel.cpp	/^namespace Graphics {$/;"	n	namespace:F9Sim	file:
 Graphics	visualisation/src/Visualisation.cpp	/^namespace Graphics {$/;"	n	namespace:F9Sim	file:
+Group	3rd_party/bgfx_extra/bgfx_utils.cpp	/^Group::Group()$/;"	f	class:Group
+Group	3rd_party/bgfx_extra/bgfx_utils.h	/^struct Group$/;"	s
+GroupArray	3rd_party/bgfx_extra/bgfx_utils.h	/^typedef stl::vector<Group> GroupArray;$/;"	t	typeref:typename:stl::vector<Group>
 GroupOffset	3rd_party/imgui/imgui_internal.h	/^    ImVec1                  GroupOffset;$/;"	m	struct:ImGuiWindowTempData	typeref:typename:ImVec1
 GroupStack	3rd_party/imgui/imgui_internal.h	/^    ImVector<ImGuiGroupData>GroupStack;$/;"	m	struct:ImGuiWindowTempData	typeref:typename:ImVector<ImGuiGroupData>
 GrowIndex	3rd_party/imgui/imgui_draw.cpp	/^void ImFont::GrowIndex(int new_size)$/;"	f	class:ImFont	typeref:typename:void
@@ -9658,6 +9689,7 @@ HiddenFramesCannotSkipItems	3rd_party/imgui/imgui_internal.h	/^    int          
 HighPrecisionNode	visualisation/include/SimulationModel.h	/^    struct HighPrecisionNode {$/;"	s	class:SimulationModel
 History	3rd_party/imgui/imgui_demo.cpp	/^    ImVector<char*>       History;$/;"	m	struct:ExampleAppConsole	typeref:typename:ImVector<char * >	file:
 HistoryPos	3rd_party/imgui/imgui_demo.cpp	/^    int                   HistoryPos;    \/\/ -1: new line, 0..History.Size-1 browsing history.$/;"	m	struct:ExampleAppConsole	typeref:typename:int	file:
+Hit	3rd_party/bgfx_extra/bounds.h	/^struct Hit$/;"	s
 HostClipRect	3rd_party/imgui/imgui_internal.h	/^    ImRect              HostClipRect;           \/\/ Backup of ClipRect at the time of BeginColu/;"	m	struct:ImGuiColumns	typeref:typename:ImRect
 HostCursorMaxPosX	3rd_party/imgui/imgui_internal.h	/^    float               HostCursorMaxPosX;      \/\/ Backup of CursorMaxPos at the time of Begin/;"	m	struct:ImGuiColumns	typeref:typename:float
 HostCursorPosY	3rd_party/imgui/imgui_internal.h	/^    float               HostCursorPosY;         \/\/ Backup of CursorPos at the time of BeginCol/;"	m	struct:ImGuiColumns	typeref:typename:float
@@ -9669,7 +9701,6 @@ HoveredIdPreviousFrame	3rd_party/imgui/imgui_internal.h	/^    ImGuiID           
 HoveredIdTimer	3rd_party/imgui/imgui_internal.h	/^    float                   HoveredIdTimer;                     \/\/ Measure contiguous hovering/;"	m	struct:ImGuiContext	typeref:typename:float
 HoveredRootWindow	3rd_party/imgui/imgui_internal.h	/^    ImGuiWindow*            HoveredRootWindow;                  \/\/ Will catch mouse inputs (fo/;"	m	struct:ImGuiContext	typeref:typename:ImGuiWindow *
 HoveredWindow	3rd_party/imgui/imgui_internal.h	/^    ImGuiWindow*            HoveredWindow;                      \/\/ Will catch mouse inputs$/;"	m	struct:ImGuiContext	typeref:typename:ImGuiWindow *
-IApplication	visualisation/include/Window.h	/^class IApplication {$/;"	c
 ID	3rd_party/imgui/imgui_internal.h	/^    ImGuiID                 ID;                                 \/\/ == ImHashStr(Name)$/;"	m	struct:ImGuiWindow	typeref:typename:ImGuiID
 ID	3rd_party/imgui/imgui_internal.h	/^    ImGuiID                 ID;                     \/\/ widget id owning the text state$/;"	m	struct:ImGuiInputTextState	typeref:typename:ImGuiID
 ID	3rd_party/imgui/imgui_internal.h	/^    ImGuiID             ID;                     \/\/ Zero for tab-bars used by docking$/;"	m	struct:ImGuiTabBar	typeref:typename:ImGuiID
@@ -10655,6 +10686,13 @@ ImGui_ImplOpenGL3_NewFrame	3rd_party/imgui/imgui_impl_opengl3.cpp	/^void    ImGu
 ImGui_ImplOpenGL3_RenderDrawData	3rd_party/imgui/imgui_impl_opengl3.cpp	/^void    ImGui_ImplOpenGL3_RenderDrawData(ImDrawData* draw_data)$/;"	f	typeref:typename:void
 ImGui_ImplOpenGL3_SetupRenderState	3rd_party/imgui/imgui_impl_opengl3.cpp	/^static void ImGui_ImplOpenGL3_SetupRenderState(ImDrawData* draw_data, int fb_width, int fb_heigh/;"	f	typeref:typename:void	file:
 ImGui_ImplOpenGL3_Shutdown	3rd_party/imgui/imgui_impl_opengl3.cpp	/^void    ImGui_ImplOpenGL3_Shutdown()$/;"	f	typeref:typename:void
+ImGui_Implbgfx_CreateDeviceObjects	3rd_party/imgui/imgui_impl_bgfx.cpp	/^bool ImGui_Implbgfx_CreateDeviceObjects()$/;"	f	typeref:typename:bool
+ImGui_Implbgfx_CreateFontsTexture	3rd_party/imgui/imgui_impl_bgfx.cpp	/^bool ImGui_Implbgfx_CreateFontsTexture()$/;"	f	typeref:typename:bool
+ImGui_Implbgfx_Init	3rd_party/imgui/imgui_impl_bgfx.cpp	/^void ImGui_Implbgfx_Init(int view)$/;"	f	typeref:typename:void
+ImGui_Implbgfx_InvalidateDeviceObjects	3rd_party/imgui/imgui_impl_bgfx.cpp	/^void ImGui_Implbgfx_InvalidateDeviceObjects()$/;"	f	typeref:typename:void
+ImGui_Implbgfx_NewFrame	3rd_party/imgui/imgui_impl_bgfx.cpp	/^void ImGui_Implbgfx_NewFrame()$/;"	f	typeref:typename:void
+ImGui_Implbgfx_RenderDrawLists	3rd_party/imgui/imgui_impl_bgfx.cpp	/^void ImGui_Implbgfx_RenderDrawLists(ImDrawData* draw_data)$/;"	f	typeref:typename:void
+ImGui_Implbgfx_Shutdown	3rd_party/imgui/imgui_impl_bgfx.cpp	/^void ImGui_Implbgfx_Shutdown()$/;"	f	typeref:typename:void
 ImHash	3rd_party/imgui/imgui_internal.h	/^static inline ImU32     ImHash(const void* data, int size, ImU32 seed = 0) { return size ? ImHas/;"	f	typeref:typename:ImU32
 ImHashData	3rd_party/imgui/imgui.cpp	/^ImU32 ImHashData(const void* data_p, size_t data_size, ImU32 seed)$/;"	f	typeref:typename:ImU32
 ImHashStr	3rd_party/imgui/imgui.cpp	/^ImU32 ImHashStr(const char* data_p, size_t data_size, ImU32 seed)$/;"	f	typeref:typename:ImU32
@@ -10809,6 +10847,7 @@ InputTextPasswordFont	3rd_party/imgui/imgui_internal.h	/^    ImFont             
 InputTextState	3rd_party/imgui/imgui_internal.h	/^    ImGuiInputTextState     InputTextState;$/;"	m	struct:ImGuiContext	typeref:typename:ImGuiInputTextState
 InputTextWithHint	3rd_party/imgui/imgui_widgets.cpp	/^bool ImGui::InputTextWithHint(const char* label, const char* hint, char* buf, size_t buf_size, I/;"	f	class:ImGui	typeref:typename:bool
 InsertChars	3rd_party/imgui/imgui_widgets.cpp	/^void ImGuiInputTextCallbackData::InsertChars(int pos, const char* new_text, const char* new_text/;"	f	class:ImGuiInputTextCallbackData	typeref:typename:void
+Interval	3rd_party/bgfx_extra/bounds.cpp	/^struct Interval$/;"	s	file:
 InvisibleButton	3rd_party/imgui/imgui_widgets.cpp	/^bool ImGui::InvisibleButton(const char* str_id, const ImVec2& size_arg)$/;"	f	class:ImGui	typeref:typename:bool
 IsActive	3rd_party/imgui/imgui.h	/^    bool                IsActive() const { return !Filters.empty(); }$/;"	f	struct:ImGuiTextFilter	typeref:typename:bool
 IsActiveIdUsingKey	3rd_party/imgui/imgui_internal.h	/^    inline bool             IsActiveIdUsingKey(ImGuiKey key)                            { ImGuiC/;"	f	namespace:ImGui	typeref:typename:bool
@@ -11076,9 +11115,11 @@ LastTimeActive	3rd_party/imgui/imgui_internal.h	/^    float                   La
 LastValidMousePos	3rd_party/imgui/imgui_internal.h	/^    ImVec2                  LastValidMousePos;$/;"	m	struct:ImGuiContext	typeref:typename:ImVec2
 Layers	3rd_party/imgui/imgui_internal.h	/^    ImVector<ImDrawList*>   Layers[2];           \/\/ Global layers for: regular, tooltip$/;"	m	struct:ImDrawDataBuilder	typeref:typename:ImVector<ImDrawList * >[2]
 LayoutType	3rd_party/imgui/imgui_internal.h	/^    ImGuiLayoutType         LayoutType;$/;"	m	struct:ImGuiWindowTempData	typeref:typename:ImGuiLayoutType
+Line	3rd_party/bgfx_extra/bounds.cpp	/^struct Line$/;"	s	file:
 LineMaxY	3rd_party/imgui/imgui_internal.h	/^    float               LineMinY, LineMaxY;$/;"	m	struct:ImGuiColumns	typeref:typename:float
 LineMinY	3rd_party/imgui/imgui_internal.h	/^    float               LineMinY, LineMaxY;$/;"	m	struct:ImGuiColumns	typeref:typename:float
 LineOffsets	3rd_party/imgui/imgui_demo.cpp	/^    ImVector<int>       LineOffsets; \/\/ Index to lines offset. We maintain this with AddLog() /;"	m	struct:ExampleAppLog	typeref:typename:ImVector<int>	file:
+LineSegment	3rd_party/bgfx_extra/bounds.cpp	/^struct LineSegment$/;"	s	file:
 ListBox	3rd_party/imgui/imgui_widgets.cpp	/^bool ImGui::ListBox(const char* label, int* current_item, bool (*items_getter)(void*, int, const/;"	f	class:ImGui	typeref:typename:bool
 ListBox	3rd_party/imgui/imgui_widgets.cpp	/^bool ImGui::ListBox(const char* label, int* current_item, const char* const items[], int items_c/;"	f	class:ImGui	typeref:typename:bool
 ListBoxFooter	3rd_party/imgui/imgui_widgets.cpp	/^void ImGui::ListBoxFooter()$/;"	f	class:ImGui	typeref:typename:void
@@ -11138,6 +11179,8 @@ MenuItem	3rd_party/imgui/imgui_widgets.cpp	/^bool ImGui::MenuItem(const char* la
 MenusIdSubmittedThisFrame	3rd_party/imgui/imgui_internal.h	/^    ImVector<ImGuiID>       MenusIdSubmittedThisFrame;          \/\/ A list of menu IDs that wer/;"	m	struct:ImGuiContext	typeref:typename:ImVector<ImGuiID>
 Merge	3rd_party/imgui/imgui_draw.cpp	/^void ImDrawListSplitter::Merge(ImDrawList* draw_list)$/;"	f	class:ImDrawListSplitter	typeref:typename:void
 MergeMode	3rd_party/imgui/imgui.h	/^    bool            MergeMode;              \/\/ false    \/\/ Merge into previous ImFont, so yo/;"	m	struct:ImFontConfig	typeref:typename:bool
+Mesh	3rd_party/bgfx_extra/bgfx_utils.h	/^struct Mesh$/;"	s
+MeshState	3rd_party/bgfx_extra/bgfx_utils.h	/^struct MeshState$/;"	s
 MetricsActiveAllocations	3rd_party/imgui/imgui.h	/^    int         MetricsActiveAllocations;       \/\/ Number of active allocations, updated by Me/;"	m	struct:ImGuiIO	typeref:typename:int
 MetricsActiveWindows	3rd_party/imgui/imgui.h	/^    int         MetricsActiveWindows;           \/\/ Number of active windows$/;"	m	struct:ImGuiIO	typeref:typename:int
 MetricsHelpMarker	3rd_party/imgui/imgui.cpp	/^static void MetricsHelpMarker(const char* desc)$/;"	f	typeref:typename:void	file:
@@ -11298,6 +11341,9 @@ NodeWindows	3rd_party/imgui/imgui.cpp	/^        static void NodeWindows(ImVector
 NonCopyable	3rd_party/catch.hpp	/^    class NonCopyable {$/;"	c	namespace:Catch
 Normal	3rd_party/catch.hpp	/^        Normal = 0x01,$/;"	e	enum:Catch::ResultDisposition::Flags
 NotifyOfDocumentsClosedElsewhere	3rd_party/imgui/imgui_demo.cpp	/^static void NotifyOfDocumentsClosedElsewhere(ExampleAppDocuments& app)$/;"	f	typeref:typename:void	file:
+OBJModel	visualisation/include/OBJModel.h	/^class OBJModel {$/;"	c	namespace:F9Sim::Graphics
+OBJModel	visualisation/src/OBJModel.cpp	/^OBJModel::OBJModel(const char* filepath) {$/;"	f	class:F9Sim::Graphics::OBJModel
+Obb	3rd_party/bgfx_extra/bounds.h	/^struct Obb$/;"	s
 OfType	3rd_party/catch.hpp	/^    struct ResultWas { enum OfType {$/;"	g	struct:Catch::ResultWas
 OffMaxX	3rd_party/imgui/imgui_internal.h	/^    float               OffMinX, OffMaxX;       \/\/ Offsets from HostWorkRect.Min.x$/;"	m	struct:ImGuiColumns	typeref:typename:float
 OffMinX	3rd_party/imgui/imgui_internal.h	/^    float               OffMinX, OffMaxX;       \/\/ Offsets from HostWorkRect.Min.x$/;"	m	struct:ImGuiColumns	typeref:typename:float
@@ -11399,8 +11445,22 @@ Pos	3rd_party/imgui/imgui.h	/^    ImVec2  Pos;            \/\/ Read-only.   Wind
 Pos	3rd_party/imgui/imgui_internal.h	/^    ImVec2                  Pos;                                \/\/ Position (always rounded-up/;"	m	struct:ImGuiWindow	typeref:typename:ImVec2
 Pos	3rd_party/imgui/imgui_internal.h	/^    ImVec2ih    Pos;$/;"	m	struct:ImGuiWindowSettings	typeref:typename:ImVec2ih
 Pos	3rd_party/imgui/imgui_internal.h	/^    float       Pos[3], NextWidths[3];$/;"	m	struct:ImGuiMenuColumns	typeref:typename:float[3]
+Pos	build/dev/visualisation/imgui.ini	/^Pos=-18,-18$/;"	k	section:Window
+Pos	build/dev/visualisation/imgui.ini	/^Pos=-40,120$/;"	k	section:Window
+Pos	build/dev/visualisation/imgui.ini	/^Pos=1063,869$/;"	k	section:Window
+Pos	build/dev/visualisation/imgui.ini	/^Pos=1319,658$/;"	k	section:Window
+Pos	build/dev/visualisation/imgui.ini	/^Pos=1485,203$/;"	k	section:Window
+Pos	build/dev/visualisation/imgui.ini	/^Pos=1587,349$/;"	k	section:Window
+Pos	build/dev/visualisation/imgui.ini	/^Pos=1882,60$/;"	k	section:Window
+Pos	build/dev/visualisation/imgui.ini	/^Pos=1993,664$/;"	k	section:Window
+Pos	build/dev/visualisation/imgui.ini	/^Pos=35,593$/;"	k	section:Window
+Pos	build/dev/visualisation/imgui.ini	/^Pos=492,869$/;"	k	section:Window
+Pos	build/dev/visualisation/imgui.ini	/^Pos=608,143$/;"	k	section:Window
+Pos	build/dev/visualisation/imgui.ini	/^Pos=881,468$/;"	k	section:Window
+PosColorVertex	visualisation/include/OBJModel.h	/^struct PosColorVertex {$/;"	s	namespace:F9Sim::Graphics
 PosCond	3rd_party/imgui/imgui_internal.h	/^    ImGuiCond                   PosCond;$/;"	m	struct:ImGuiNextWindowData	typeref:typename:ImGuiCond
 PosPivotVal	3rd_party/imgui/imgui_internal.h	/^    ImVec2                      PosPivotVal;$/;"	m	struct:ImGuiNextWindowData	typeref:typename:ImVec2
+PosTexcoord	3rd_party/bgfx_extra/bgfx_utils.cpp	/^	struct PosTexcoord$/;"	s	function:calcTangents	file:
 PosVal	3rd_party/imgui/imgui_internal.h	/^    ImVec2                      PosVal;$/;"	m	struct:ImGuiNextWindowData	typeref:typename:ImVec2
 PrevFrameVisible	3rd_party/imgui/imgui_internal.h	/^    int                 PrevFrameVisible;$/;"	m	struct:ImGuiTabBar	typeref:typename:int
 PrevLineSize	3rd_party/imgui/imgui_internal.h	/^    ImVec2                  PrevLineSize;$/;"	m	struct:ImGuiWindowTempData	typeref:typename:ImVec2
@@ -11414,6 +11474,8 @@ PrimUnreserve	3rd_party/imgui/imgui_draw.cpp	/^void ImDrawList::PrimUnreserve(in
 PrimVtx	3rd_party/imgui/imgui.h	/^    inline    void  PrimVtx(const ImVec2& pos, const ImVec2& uv, ImU32 col)     { PrimWriteIdx((/;"	f	struct:ImDrawList	typeref:typename:void
 PrimWriteIdx	3rd_party/imgui/imgui.h	/^    inline    void  PrimWriteIdx(ImDrawIdx idx)                                 { *_IdxWritePtr /;"	f	struct:ImDrawList	typeref:typename:void
 PrimWriteVtx	3rd_party/imgui/imgui.h	/^    inline    void  PrimWriteVtx(const ImVec2& pos, const ImVec2& uv, ImU32 col){ _VtxWritePtr->/;"	f	struct:ImDrawList	typeref:typename:void
+Primitive	3rd_party/bgfx_extra/bgfx_utils.h	/^struct Primitive$/;"	s
+PrimitiveArray	3rd_party/bgfx_extra/bgfx_utils.h	/^typedef stl::vector<Primitive> PrimitiveArray;$/;"	t	typeref:typename:stl::vector<Primitive>
 PrintFmt	3rd_party/imgui/imgui_internal.h	/^    const char* PrintFmt;       \/\/ Default printf format for the type$/;"	m	struct:ImGuiDataTypeInfo	typeref:typename:const char *
 ProgressBar	3rd_party/imgui/imgui_widgets.cpp	/^void ImGui::ProgressBar(float fraction, const ImVec2& size_arg, const char* overlay)$/;"	f	class:ImGui	typeref:typename:void
 Ptr	3rd_party/imgui/imgui_internal.h	/^    void*       Ptr;            \/\/ Either field can be set, not both. e.g. Dock node tab bars /;"	m	struct:ImGuiPtrOrIndex	typeref:typename:void *
@@ -11451,6 +11513,7 @@ RadioButton	3rd_party/imgui/imgui_widgets.cpp	/^bool ImGui::RadioButton(const ch
 RadioButton	3rd_party/imgui/imgui_widgets.cpp	/^bool ImGui::RadioButton(const char* label, int* v, int v_button)$/;"	f	class:ImGui	typeref:typename:bool
 RasterizerFlags	3rd_party/imgui/imgui.h	/^    unsigned int    RasterizerFlags;        \/\/ 0x00     \/\/ Settings for custom font rasteriz/;"	m	struct:ImFontConfig	typeref:typename:unsigned int
 RasterizerMultiply	3rd_party/imgui/imgui.h	/^    float           RasterizerMultiply;     \/\/ 1.0f     \/\/ Brighten (>1.0f) or darken (<1.0f/;"	m	struct:ImFontConfig	typeref:typename:float
+Ray	3rd_party/bgfx_extra/bounds.h	/^struct Ray$/;"	s
 ReadInitFn	3rd_party/imgui/imgui_internal.h	/^    void        (*ReadInitFn)(ImGuiContext* ctx, ImGuiSettingsHandler* handler);                /;"	m	struct:ImGuiSettingsHandler	typeref:typename:void (*)(ImGuiContext * ctx,ImGuiSettingsHandler * handler)
 ReadLineFn	3rd_party/imgui/imgui_internal.h	/^    void        (*ReadLineFn)(ImGuiContext* ctx, ImGuiSettingsHandler* handler, void* entry, con/;"	m	struct:ImGuiSettingsHandler	typeref:typename:void (*)(ImGuiContext * ctx,ImGuiSettingsHandler * handler,void * entry,const char * line)
 ReadOpenFn	3rd_party/imgui/imgui_internal.h	/^    void*       (*ReadOpenFn)(ImGuiContext* ctx, ImGuiSettingsHandler* handler, const char* name/;"	m	struct:ImGuiSettingsHandler	typeref:typename:void * (*)(ImGuiContext * ctx,ImGuiSettingsHandler * handler,const char * name)
@@ -11885,6 +11948,18 @@ Size	3rd_party/imgui/imgui.h	/^    int                 Size;$/;"	m	struct:ImVect
 Size	3rd_party/imgui/imgui_internal.h	/^    ImVec2                  Size;                               \/\/ Current size (==SizeFull or/;"	m	struct:ImGuiWindow	typeref:typename:ImVec2
 Size	3rd_party/imgui/imgui_internal.h	/^    ImVec2ih    Size;$/;"	m	struct:ImGuiWindowSettings	typeref:typename:ImVec2ih
 Size	3rd_party/imgui/imgui_internal.h	/^    size_t      Size;           \/\/ Size in byte$/;"	m	struct:ImGuiDataTypeInfo	typeref:typename:size_t
+Size	build/dev/visualisation/imgui.ini	/^Size=262,170$/;"	k	section:Window
+Size	build/dev/visualisation/imgui.ini	/^Size=338,239$/;"	k	section:Window
+Size	build/dev/visualisation/imgui.ini	/^Size=339,856$/;"	k	section:Window
+Size	build/dev/visualisation/imgui.ini	/^Size=400,400$/;"	k	section:Window
+Size	build/dev/visualisation/imgui.ini	/^Size=430,450$/;"	k	section:Window
+Size	build/dev/visualisation/imgui.ini	/^Size=500,440$/;"	k	section:Window
+Size	build/dev/visualisation/imgui.ini	/^Size=520,224$/;"	k	section:Window
+Size	build/dev/visualisation/imgui.ini	/^Size=520,600$/;"	k	section:Window
+Size	build/dev/visualisation/imgui.ini	/^Size=539,259$/;"	k	section:Window
+Size	build/dev/visualisation/imgui.ini	/^Size=550,680$/;"	k	section:Window
+Size	build/dev/visualisation/imgui.ini	/^Size=569,442$/;"	k	section:Window
+Size	build/dev/visualisation/imgui.ini	/^Size=580,449$/;"	k	section:Window
 SizeCallback	3rd_party/imgui/imgui_internal.h	/^    ImGuiSizeCallback           SizeCallback;$/;"	m	struct:ImGuiNextWindowData	typeref:typename:ImGuiSizeCallback
 SizeCallbackUserData	3rd_party/imgui/imgui_internal.h	/^    void*                       SizeCallbackUserData;$/;"	m	struct:ImGuiNextWindowData	typeref:typename:void *
 SizeCond	3rd_party/imgui/imgui_internal.h	/^    ImGuiCond                   SizeCond;$/;"	m	struct:ImGuiNextWindowData	typeref:typename:ImGuiCond
@@ -11917,12 +11992,14 @@ SourceParentId	3rd_party/imgui/imgui.h	/^    ImGuiID         SourceParentId;    
 SourceWindow	3rd_party/imgui/imgui_internal.h	/^    ImGuiWindow*        SourceWindow;   \/\/ Set on OpenPopup() copy of NavWindow at the time of/;"	m	struct:ImGuiPopupData	typeref:typename:ImGuiWindow *
 Spacing	3rd_party/imgui/imgui_internal.h	/^    float       Spacing;$/;"	m	struct:ImGuiMenuColumns	typeref:typename:float
 Spacing	3rd_party/imgui/imgui_widgets.cpp	/^void ImGui::Spacing()$/;"	f	class:ImGui	typeref:typename:void
+Sphere	3rd_party/bgfx_extra/bounds.h	/^struct Sphere$/;"	s
 Split	3rd_party/imgui/imgui_draw.cpp	/^void ImDrawListSplitter::Split(ImDrawList* draw_list, int channels_count)$/;"	f	class:ImDrawListSplitter	typeref:typename:void
 Splitter	3rd_party/imgui/imgui_internal.h	/^    ImDrawListSplitter  Splitter;$/;"	m	struct:ImGuiColumns	typeref:typename:ImDrawListSplitter
 SplitterBehavior	3rd_party/imgui/imgui_widgets.cpp	/^bool ImGui::SplitterBehavior(const ImRect& bb, ImGuiID id, ImGuiAxis axis, float* size1, float* /;"	f	class:ImGui	typeref:typename:bool
 Square	3rd_party/imgui/imgui_demo.cpp	/^        static void Square(ImGuiSizeCallbackData* data) { data->DesiredSize.x = data->DesiredSiz/;"	f	struct:ShowExampleAppConstrainedResize::CustomConstraints	typeref:typename:void	file:
 SrcCount	3rd_party/imgui/imgui_draw.cpp	/^    int                 SrcCount;           \/\/ Number of source fonts targeting this destinati/;"	m	struct:ImFontBuildDstData	typeref:typename:int	file:
 SrcRanges	3rd_party/imgui/imgui_draw.cpp	/^    const ImWchar*      SrcRanges;          \/\/ Ranges as requested by user (user is allowed to/;"	m	struct:ImFontBuildSrcData	typeref:typename:const ImWchar *	file:
+Srt	3rd_party/bgfx_extra/bounds.cpp	/^struct Srt$/;"	s	file:
 StackSizesBackup	3rd_party/imgui/imgui_internal.h	/^    short                   StackSizesBackup[6];    \/\/ Store size of various stacks for assert/;"	m	struct:ImGuiWindowTempData	typeref:typename:short[6]
 StartLockWheelingWindow	3rd_party/imgui/imgui.cpp	/^static void StartLockWheelingWindow(ImGuiWindow* window)$/;"	f	typeref:typename:void	file:
 StartMouseMovingWindow	3rd_party/imgui/imgui.cpp	/^void ImGui::StartMouseMovingWindow(ImGuiWindow* window)$/;"	f	class:ImGui	typeref:typename:void
@@ -12060,6 +12137,7 @@ TextWrapPos	3rd_party/imgui/imgui_internal.h	/^    float                   TextW
 TextWrapPosStack	3rd_party/imgui/imgui_internal.h	/^    ImVector<float>         TextWrapPosStack;$/;"	m	struct:ImGuiWindowTempData	typeref:typename:ImVector<float>
 TextWrapped	3rd_party/imgui/imgui_widgets.cpp	/^void ImGui::TextWrapped(const char* fmt, ...)$/;"	f	class:ImGui	typeref:typename:void
 TextWrappedV	3rd_party/imgui/imgui_widgets.cpp	/^void ImGui::TextWrappedV(const char* fmt, va_list args)$/;"	f	class:ImGui	typeref:typename:void
+Texture	3rd_party/bgfx_extra/bgfx_utils.h	/^	struct Texture$/;"	s	struct:MeshState
 TextureId	3rd_party/imgui/imgui.h	/^    ImTextureID     TextureId;          \/\/ 4-8  \/\/ User-provided texture ID. Set by user in /;"	m	struct:ImDrawCmd	typeref:typename:ImTextureID
 ThrewException	3rd_party/catch.hpp	/^        ThrewException = Exception | 1,$/;"	e	enum:Catch::ResultWas::OfType
 Time	3rd_party/imgui/imgui_internal.h	/^    double                  Time;$/;"	m	struct:ImGuiContext	typeref:typename:double
@@ -12091,6 +12169,7 @@ TreePop	3rd_party/imgui/imgui_widgets.cpp	/^void ImGui::TreePop()$/;"	f	class:Im
 TreePush	3rd_party/imgui/imgui_widgets.cpp	/^void ImGui::TreePush(const char* str_id)$/;"	f	class:ImGui	typeref:typename:void
 TreePush	3rd_party/imgui/imgui_widgets.cpp	/^void ImGui::TreePush(const void* ptr_id)$/;"	f	class:ImGui	typeref:typename:void
 TreePushOverrideID	3rd_party/imgui/imgui_widgets.cpp	/^void ImGui::TreePushOverrideID(ImGuiID id)$/;"	f	class:ImGui	typeref:typename:void
+Triangle	3rd_party/bgfx_extra/bounds.h	/^struct Triangle$/;"	s
 Type	3rd_party/imgui/imgui.cpp	/^    ImGuiDataType   Type;$/;"	m	struct:ImGuiStyleVarInfo	typeref:typename:ImGuiDataType	file:
 TypeHash	3rd_party/imgui/imgui_internal.h	/^    ImGuiID     TypeHash;       \/\/ == ImHashStr(TypeName)$/;"	m	struct:ImGuiSettingsHandler	typeref:typename:ImGuiID
 TypeName	3rd_party/imgui/imgui_internal.h	/^    const char* TypeName;       \/\/ Short description stored in .ini file. Disallowed character/;"	m	struct:ImGuiSettingsHandler	typeref:typename:const char *
@@ -12154,7 +12233,6 @@ WIN32_LEAN_AND_MEAN	3rd_party/imgui/imgui.cpp	/^#define WIN32_LEAN_AND_MEAN$/;"	
 WINDOWS_MOUSE_WHEEL_SCROLL_LOCK_TIMER	3rd_party/imgui/imgui.cpp	/^static const float WINDOWS_MOUSE_WHEEL_SCROLL_LOCK_TIMER    = 2.00f;    \/\/ Lock scrolled windo/;"	v	typeref:typename:const float	file:
 WINDOWS_RESIZE_FROM_EDGES_FEEDBACK_TIMER	3rd_party/imgui/imgui.cpp	/^static const float WINDOWS_RESIZE_FROM_EDGES_FEEDBACK_TIMER = 0.04f;    \/\/ Reduce visual noise/;"	v	typeref:typename:const float	file:
 WINDOWS_RESIZE_FROM_EDGES_HALF_THICKNESS	3rd_party/imgui/imgui.cpp	/^static const float WINDOWS_RESIZE_FROM_EDGES_HALF_THICKNESS = 4.0f;     \/\/ Extend outside and /;"	v	typeref:typename:const float	file:
-WINDOW_H_	visualisation/include/Window.h	/^#define WINDOW_H_$/;"	d
 WRT_Content	3rd_party/imgui/imgui.cpp	/^    enum { WRT_OuterRect, WRT_OuterRectClipped, WRT_InnerRect, WRT_InnerClipRect, WRT_WorkRect, /;"	e	enum:ImGui::ShowMetricsWindow::__anon70e25a820103	file:
 WRT_ContentRegionRect	3rd_party/imgui/imgui.cpp	/^    enum { WRT_OuterRect, WRT_OuterRectClipped, WRT_InnerRect, WRT_InnerClipRect, WRT_WorkRect, /;"	e	enum:ImGui::ShowMetricsWindow::__anon70e25a820103	file:
 WRT_Count	3rd_party/imgui/imgui.cpp	/^    enum { WRT_OuterRect, WRT_OuterRectClipped, WRT_InnerRect, WRT_InnerClipRect, WRT_WorkRect, /;"	e	enum:ImGui::ShowMetricsWindow::__anon70e25a820103	file:
@@ -12187,7 +12265,19 @@ Width	3rd_party/imgui/imgui_internal.h	/^    float       Width, NextWidth;$/;"	m
 Width	3rd_party/imgui/imgui_internal.h	/^    float       Width;$/;"	m	struct:ImGuiShrinkWidthItem	typeref:typename:float
 Window	3rd_party/imgui/imgui_internal.h	/^    ImGuiWindow*        Window;         \/\/ Resolved on BeginPopup() - may stay unresolved if u/;"	m	struct:ImGuiPopupData	typeref:typename:ImGuiWindow *
 Window	3rd_party/imgui/imgui_internal.h	/^    ImGuiWindow*    Window;             \/\/ Best candidate window$/;"	m	struct:ImGuiNavMoveResult	typeref:typename:ImGuiWindow *
-Window	visualisation/src/Window.cpp	/^Window::Window(const std::string& title, glm::ivec2 dimensions) :$/;"	f	class:GF::Window
+Window	build/dev/visualisation/imgui.ini	/^[Window][About Dear ImGui]$/;"	s
+Window	build/dev/visualisation/imgui.ini	/^[Window][Dear ImGui Demo]$/;"	s
+Window	build/dev/visualisation/imgui.ini	/^[Window][Dear ImGui Metrics]$/;"	s
+Window	build/dev/visualisation/imgui.ini	/^[Window][Dear ImGui Style Editor]$/;"	s
+Window	build/dev/visualisation/imgui.ini	/^[Window][Debug##Default]$/;"	s
+Window	build/dev/visualisation/imgui.ini	/^[Window][Example: Console]$/;"	s
+Window	build/dev/visualisation/imgui.ini	/^[Window][Example: Custom rendering]$/;"	s
+Window	build/dev/visualisation/imgui.ini	/^[Window][Example: Long text display]$/;"	s
+Window	build/dev/visualisation/imgui.ini	/^[Window][Example: Property editor]$/;"	s
+Window	build/dev/visualisation/imgui.ini	/^[Window][Example: Simple layout]$/;"	s
+Window	build/dev/visualisation/imgui.ini	/^[Window][temp]$/;"	s
+Window	build/dev/visualisation/imgui.ini	/^[Window][test]$/;"	s
+Window	visualisation/include/Window.h	/^	class Window {$/;"	c	namespace:GF
 WindowBorderSize	3rd_party/imgui/imgui.h	/^    float       WindowBorderSize;           \/\/ Thickness of border around windows. Generally s/;"	m	struct:ImGuiStyle	typeref:typename:float
 WindowBorderSize	3rd_party/imgui/imgui_internal.h	/^    float                   WindowBorderSize;                   \/\/ Window border size at the t/;"	m	struct:ImGuiWindow	typeref:typename:float
 WindowMenuButtonPosition	3rd_party/imgui/imgui.h	/^    ImGuiDir    WindowMenuButtonPosition;   \/\/ Side of the collapsing\/docking button in the t/;"	m	struct:ImGuiStyle	typeref:typename:ImGuiDir
@@ -12241,8 +12331,43 @@ _TextureIdStack	3rd_party/imgui/imgui.h	/^    ImVector<ImTextureID>   _TextureId
 _VtxCurrentIdx	3rd_party/imgui/imgui.h	/^    unsigned int            _VtxCurrentIdx;     \/\/ [Internal] Generally == VtxBuffer.Size unle/;"	m	struct:ImDrawList	typeref:typename:unsigned int
 _VtxCurrentOffset	3rd_party/imgui/imgui.h	/^    unsigned int            _VtxCurrentOffset;  \/\/ [Internal] Always 0 unless 'Flags & ImDrawL/;"	m	struct:ImDrawList	typeref:typename:unsigned int
 _VtxWritePtr	3rd_party/imgui/imgui.h	/^    ImDrawVert*             _VtxWritePtr;       \/\/ [Internal] point within VtxBuffer.Data afte/;"	m	struct:ImDrawList	typeref:typename:ImDrawVert *
+__/3rd_party/imgui/imgui.cpp.i	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui.cpp.i:$/;"	t
+__/3rd_party/imgui/imgui.cpp.o	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui.cpp.o:$/;"	t
+__/3rd_party/imgui/imgui.cpp.s	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui.cpp.s:$/;"	t
+__/3rd_party/imgui/imgui.i	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui.i: __\/3rd_party\/imgui\/imgui.cpp.i$/;"	t
+__/3rd_party/imgui/imgui.o	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui.o: __\/3rd_party\/imgui\/imgui.cpp.o$/;"	t
+__/3rd_party/imgui/imgui.s	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui.s: __\/3rd_party\/imgui\/imgui.cpp.s$/;"	t
+__/3rd_party/imgui/imgui_demo.cpp.i	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_demo.cpp.i:$/;"	t
+__/3rd_party/imgui/imgui_demo.cpp.o	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_demo.cpp.o:$/;"	t
+__/3rd_party/imgui/imgui_demo.cpp.s	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_demo.cpp.s:$/;"	t
+__/3rd_party/imgui/imgui_demo.i	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_demo.i: __\/3rd_party\/imgui\/imgui_demo.cpp.i$/;"	t
+__/3rd_party/imgui/imgui_demo.o	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_demo.o: __\/3rd_party\/imgui\/imgui_demo.cpp.o$/;"	t
+__/3rd_party/imgui/imgui_demo.s	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_demo.s: __\/3rd_party\/imgui\/imgui_demo.cpp.s$/;"	t
+__/3rd_party/imgui/imgui_draw.cpp.i	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_draw.cpp.i:$/;"	t
+__/3rd_party/imgui/imgui_draw.cpp.o	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_draw.cpp.o:$/;"	t
+__/3rd_party/imgui/imgui_draw.cpp.s	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_draw.cpp.s:$/;"	t
+__/3rd_party/imgui/imgui_draw.i	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_draw.i: __\/3rd_party\/imgui\/imgui_draw.cpp.i$/;"	t
+__/3rd_party/imgui/imgui_draw.o	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_draw.o: __\/3rd_party\/imgui\/imgui_draw.cpp.o$/;"	t
+__/3rd_party/imgui/imgui_draw.s	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_draw.s: __\/3rd_party\/imgui\/imgui_draw.cpp.s$/;"	t
+__/3rd_party/imgui/imgui_impl_bgfx.cpp.i	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_impl_bgfx.cpp.i:$/;"	t
+__/3rd_party/imgui/imgui_impl_bgfx.cpp.o	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_impl_bgfx.cpp.o:$/;"	t
+__/3rd_party/imgui/imgui_impl_bgfx.cpp.s	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_impl_bgfx.cpp.s:$/;"	t
+__/3rd_party/imgui/imgui_impl_bgfx.i	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_impl_bgfx.i: __\/3rd_party\/imgui\/imgui_impl_bgfx.cpp.i$/;"	t
+__/3rd_party/imgui/imgui_impl_bgfx.o	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_impl_bgfx.o: __\/3rd_party\/imgui\/imgui_impl_bgfx.cpp.o$/;"	t
+__/3rd_party/imgui/imgui_impl_bgfx.s	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_impl_bgfx.s: __\/3rd_party\/imgui\/imgui_impl_bgfx.cpp.s$/;"	t
+__/3rd_party/imgui/imgui_impl_glfw.cpp.i	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_impl_glfw.cpp.i:$/;"	t
+__/3rd_party/imgui/imgui_impl_glfw.cpp.o	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_impl_glfw.cpp.o:$/;"	t
+__/3rd_party/imgui/imgui_impl_glfw.cpp.s	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_impl_glfw.cpp.s:$/;"	t
+__/3rd_party/imgui/imgui_impl_glfw.i	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_impl_glfw.i: __\/3rd_party\/imgui\/imgui_impl_glfw.cpp.i$/;"	t
+__/3rd_party/imgui/imgui_impl_glfw.o	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_impl_glfw.o: __\/3rd_party\/imgui\/imgui_impl_glfw.cpp.o$/;"	t
+__/3rd_party/imgui/imgui_impl_glfw.s	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_impl_glfw.s: __\/3rd_party\/imgui\/imgui_impl_glfw.cpp.s$/;"	t
+__/3rd_party/imgui/imgui_widgets.cpp.i	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_widgets.cpp.i:$/;"	t
+__/3rd_party/imgui/imgui_widgets.cpp.o	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_widgets.cpp.o:$/;"	t
+__/3rd_party/imgui/imgui_widgets.cpp.s	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_widgets.cpp.s:$/;"	t
+__/3rd_party/imgui/imgui_widgets.i	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_widgets.i: __\/3rd_party\/imgui\/imgui_widgets.cpp.i$/;"	t
+__/3rd_party/imgui/imgui_widgets.o	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_widgets.o: __\/3rd_party\/imgui\/imgui_widgets.cpp.o$/;"	t
+__/3rd_party/imgui/imgui_widgets.s	build/dev/visualisation/Makefile	/^__\/3rd_party\/imgui\/imgui_widgets.s: __\/3rd_party\/imgui\/imgui_widgets.cpp.s$/;"	t
 __STB_INCLUDE_STB_TRUETYPE_H__	3rd_party/imgui/imstb_truetype.h	/^#define __STB_INCLUDE_STB_TRUETYPE_H__$/;"	d
-__anon491389030111	visualisation/src/helloworld.cpp	/^namespace {$/;"	n	file:
 __anon4e4886570103	3rd_party/imgui/imstb_rectpack.h	/^{$/;"	g
 __anon4e4886570203	3rd_party/imgui/imstb_rectpack.h	/^{$/;"	g
 __anon4e4886570308	3rd_party/imgui/imstb_rectpack.h	/^{$/;"	s
@@ -12274,6 +12399,9 @@ __anon9e551a350408	3rd_party/imgui/imstb_textedit.h	/^{$/;"	s
 __anon9e551a350508	3rd_party/imgui/imstb_textedit.h	/^{$/;"	s
 __anonc736fb27010a	3rd_party/imgui/imgui.h	/^        union { int val_i; float val_f; void* val_p; };$/;"	u	struct:ImGuiStorage::ImGuiStoragePair
 _grow_capacity	3rd_party/imgui/imgui.h	/^    inline int          _grow_capacity(int sz) const        { int new_capacity = Capacity ? (Cap/;"	f	struct:ImVector	typeref:typename:int
+aabbExpand	3rd_party/bgfx_extra/bounds.cpp	/^void aabbExpand(Aabb& _outAabb, const Vec3& _pos)$/;"	f	typeref:typename:void
+aabbExpand	3rd_party/bgfx_extra/bounds.cpp	/^void aabbExpand(Aabb& _outAabb, float _factor)$/;"	f	typeref:typename:void
+aabbTransformToObb	3rd_party/bgfx_extra/bounds.cpp	/^void aabbTransformToObb(Obb& _obb, const Aabb& _aabb, const float* _mtx)$/;"	f	typeref:typename:void
 active_head	3rd_party/imgui/imstb_rectpack.h	/^   stbrp_node *active_head;$/;"	m	struct:stbrp_context	typeref:typename:stbrp_node *
 addAllLights	visualisation/src/SimulationModel.cpp	/^void SimulationModel::addAllLights() {$/;"	f	class:SimulationModel	typeref:typename:void
 addAllMeshes	visualisation/src/SimulationModel.cpp	/^void SimulationModel::addAllMeshes() {$/;"	f	class:SimulationModel	typeref:typename:void
@@ -12297,29 +12425,43 @@ appendfv	3rd_party/imgui/imgui.cpp	/^void ImGuiTextBuffer::appendfv(const char* 
 arcSafeRelease	3rd_party/catch.hpp	/^inline void arcSafeRelease( NSObject* ){}$/;"	f	typeref:typename:void
 arcSafeRelease	3rd_party/catch.hpp	/^inline void arcSafeRelease( NSObject* obj ) {$/;"	f	typeref:typename:void
 array_of_unicode_codepoints	3rd_party/imgui/imstb_truetype.h	/^   int *array_of_unicode_codepoints;       \/\/ if non-zero, then this is an array of unicode co/;"	m	struct:__anon65b4c42c0508	typeref:typename:int *
-aspectRatio	visualisation/include/CameraBaseState.h	/^    float aspectRatio;$/;"	m	struct:CameraBaseState	typeref:typename:float
+aspectRatio	visualisation/include/CameraBaseState.h	/^    float aspectRatio;$/;"	m	struct:F9Sim::Graphics::CameraBaseState	typeref:typename:float
 b	3rd_party/imgui/imgui.h	/^        const char*     b;$/;"	m	struct:ImGuiTextFilter::ImGuiTextRange	typeref:typename:const char *
 back	3rd_party/imgui/imgui.h	/^    inline T&           back()                              { IM_ASSERT(Size > 0); return Data[S/;"	f	struct:ImVector	typeref:typename:T &
 back	3rd_party/imgui/imgui.h	/^    inline const T&     back() const                        { IM_ASSERT(Size > 0); return Data[S/;"	f	struct:ImVector	typeref:typename:const T &
+barycentric	3rd_party/bgfx_extra/bounds.cpp	/^Vec3 barycentric(const Triangle& _triangle, const Vec3& _pos)$/;"	f	typeref:typename:Vec3
 baseline_y_delta	3rd_party/imgui/imstb_textedit.h	/^   float baseline_y_delta;  \/\/ position of baseline relative to previous row's baseline$/;"	m	struct:__anon9e551a350408	typeref:typename:float
 begin	3rd_party/catch.hpp	/^        constexpr const_iterator begin() const { return m_start; }$/;"	f	class:Catch::StringRef	typeref:typename:const_iterator
 begin	3rd_party/imgui/imgui.h	/^    const char*         begin() const           { return Buf.Data ? &Buf.front() : EmptyString; /;"	f	struct:ImGuiTextBuffer	typeref:typename:const char *
 begin	3rd_party/imgui/imgui.h	/^    inline T*           begin()                             { return Data; }$/;"	f	struct:ImVector	typeref:typename:T *
 begin	3rd_party/imgui/imgui.h	/^    inline const T*     begin() const                       { return Data; }$/;"	f	struct:ImVector	typeref:typename:const T *
 begin	3rd_party/imgui/imgui_internal.h	/^    T*      begin()                     { size_t HDR_SZ = 4; if (!Buf.Data) return NULL; return /;"	f	struct:ImChunkStream	typeref:typename:T *
+bgfx	3rd_party/bgfx_extra/bgfx_utils.cpp	/^namespace bgfx$/;"	n	file:
 bottom_y	3rd_party/imgui/imstb_truetype.h	/^   int x,y,bottom_y;$/;"	m	struct:__anon65b4c42c1108	typeref:typename:int
 bounds	3rd_party/imgui/imstb_truetype.h	/^   int bounds;$/;"	m	struct:__anon65b4c42c0f08	typeref:typename:int
+buildFrustumPlanes	3rd_party/bgfx_extra/bounds.cpp	/^void buildFrustumPlanes(Plane* _result, const float* _viewProj)$/;"	f	typeref:typename:void
 byte	3rd_party/json.hpp	/^    const std::size_t byte;$/;"	m	class:nlohmann::detail::parse_error	typeref:typename:const std::size_t
 bytes	3rd_party/catch.hpp	/^            auto bytes = System::Text::Encoding::UTF8->GetBytes(ref->ToString());$/;"	v	namespace:Catch::Detail	typeref:typename:auto
 c_str	3rd_party/imgui/imgui.h	/^    const char*         c_str() const           { return Buf.Data ? Buf.Data : EmptyString; }$/;"	f	struct:ImGuiTextBuffer	typeref:typename:const char *
+calcAreaAabb	3rd_party/bgfx_extra/bounds.cpp	/^float calcAreaAabb(const Aabb& _aabb)$/;"	f	typeref:typename:float
+calcMaxBoundingSphere	3rd_party/bgfx_extra/bounds.cpp	/^void calcMaxBoundingSphere(Sphere& _sphere, const void* _vertices, uint32_t _numVertices, uint32/;"	f	typeref:typename:void
+calcMinBoundingSphere	3rd_party/bgfx_extra/bounds.cpp	/^void calcMinBoundingSphere(Sphere& _sphere, const void* _vertices, uint32_t _numVertices, uint32/;"	f	typeref:typename:void
+calcObb	3rd_party/bgfx_extra/bounds.cpp	/^void calcObb(Obb& _outObb, const void* _vertices, uint32_t _numVertices, uint32_t _stride, uint3/;"	f	typeref:typename:void
+calcPlane	3rd_party/bgfx_extra/bounds.cpp	/^void calcPlane(Plane& _outPlane, const Disk& _disk)$/;"	f	typeref:typename:void
+calcPlane	3rd_party/bgfx_extra/bounds.cpp	/^void calcPlane(Plane& _outPlane, const Triangle& _triangle)$/;"	f	typeref:typename:void
+calcTangents	3rd_party/bgfx_extra/bgfx_utils.cpp	/^void calcTangents(void* _vertices, uint16_t _numVertices, bgfx::VertexLayout _layout, const uint/;"	f	typeref:typename:void
 capacity	3rd_party/imgui/imgui.h	/^    inline int          capacity() const                    { return Capacity; }$/;"	f	struct:ImVector	typeref:typename:int
 capturedExpression	3rd_party/catch.hpp	/^        StringRef capturedExpression;$/;"	m	struct:Catch::AssertionInfo	typeref:typename:StringRef
+cartesian	3rd_party/bgfx_extra/bounds.cpp	/^Vec3 cartesian(const Triangle& _triangle, const Vec3& _uvw)$/;"	f	typeref:typename:Vec3
+center	3rd_party/bgfx_extra/bounds.h	/^	bx::Vec3 center;$/;"	m	struct:Disk	typeref:typename:bx::Vec3
+center	3rd_party/bgfx_extra/bounds.h	/^	bx::Vec3 center;$/;"	m	struct:Sphere	typeref:typename:bx::Vec3
 cff	3rd_party/imgui/imstb_truetype.h	/^   stbtt__buf cff;                    \/\/ cff font data$/;"	m	struct:stbtt_fontinfo	typeref:typename:stbtt__buf
 char_storage	3rd_party/imgui/imstb_textedit.h	/^   int                        char_storage;$/;"	m	struct:__anon9e551a350108	typeref:typename:int
 chardata_for_range	3rd_party/imgui/imstb_truetype.h	/^   stbtt_packedchar *chardata_for_range; \/\/ output$/;"	m	struct:__anon65b4c42c0508	typeref:typename:stbtt_packedchar *
 chars_read_current_line	3rd_party/json.hpp	/^    std::size_t chars_read_current_line = 0;$/;"	m	struct:nlohmann::detail::position_t	typeref:typename:std::size_t
 chars_read_total	3rd_party/json.hpp	/^    std::size_t chars_read_total = 0;$/;"	m	struct:nlohmann::detail::position_t	typeref:typename:std::size_t
 charstrings	3rd_party/imgui/imstb_truetype.h	/^   stbtt__buf charstrings;            \/\/ the charstring index$/;"	m	struct:stbtt_fontinfo	typeref:typename:stbtt__buf
+checkAvailTransientBuffers	3rd_party/bgfx_extra/bgfx_utils.h	/^inline bool checkAvailTransientBuffers(uint32_t _numVertices, const bgfx::VertexLayout& _layout,/;"	f	typeref:typename:bool
 chunk_size	3rd_party/imgui/imgui_internal.h	/^    int     chunk_size(const T* p)      { return ((const int*)p)[-1]; }$/;"	f	struct:ImChunkStream	typeref:typename:int
 clampPitchYaw	visualisation/src/FPVCamera.cpp	/^void FPVCamera::clampPitchYaw() {$/;"	f	class:FPVCamera	typeref:typename:void
 clean	build/dev/Makefile	/^clean:$/;"	t
@@ -12339,7 +12481,14 @@ clean/fast	build/release/visualisation/Makefile	/^clean\/fast: clean$/;"	t
 clear	3rd_party/imgui/imgui.h	/^    inline void         clear()                             { if (Data) { Size = Capacity = 0; I/;"	f	struct:ImVector	typeref:typename:void
 clear	3rd_party/imgui/imgui.h	/^    void                clear()                 { Buf.clear(); }$/;"	f	struct:ImGuiTextBuffer	typeref:typename:void
 clear	3rd_party/imgui/imgui_internal.h	/^    void    clear()                     { Buf.clear(); }$/;"	f	struct:ImChunkStream	typeref:typename:void
-clear	visualisation/src/Window.cpp	/^void Window::clear() const {$/;"	f	class:GF::Window	typeref:typename:void
+close	visualisation/include/Window.h	/^		void close() { glfwSetWindowShouldClose(mWindow, GL_TRUE); }$/;"	f	class:GF::Window	typeref:typename:void
+closestPoint	3rd_party/bgfx_extra/bounds.cpp	/^Vec3 closestPoint(const Aabb& _aabb, const Vec3& _point)$/;"	f	typeref:typename:Vec3
+closestPoint	3rd_party/bgfx_extra/bounds.cpp	/^Vec3 closestPoint(const Line& _line, const Vec3& _point)$/;"	f	typeref:typename:Vec3
+closestPoint	3rd_party/bgfx_extra/bounds.cpp	/^Vec3 closestPoint(const LineSegment& _line, const Vec3& _point)$/;"	f	typeref:typename:Vec3
+closestPoint	3rd_party/bgfx_extra/bounds.cpp	/^Vec3 closestPoint(const LineSegment& _line, const Vec3& _point, float& _outT)$/;"	f	typeref:typename:Vec3
+closestPoint	3rd_party/bgfx_extra/bounds.cpp	/^Vec3 closestPoint(const Obb& _obb, const Vec3& _point)$/;"	f	typeref:typename:Vec3
+closestPoint	3rd_party/bgfx_extra/bounds.cpp	/^Vec3 closestPoint(const Plane& _plane, const Vec3& _point)$/;"	f	typeref:typename:Vec3
+closestPoint	3rd_party/bgfx_extra/bounds.cpp	/^Vec3 closestPoint(const Triangle& _triangle, const Vec3& _point)$/;"	f	typeref:typename:Vec3
 cmake_check_build_system	build/dev/Makefile	/^cmake_check_build_system:$/;"	t
 cmake_check_build_system	build/dev/simulation/Makefile	/^cmake_check_build_system:$/;"	t
 cmake_check_build_system	build/dev/tests/Makefile	/^cmake_check_build_system:$/;"	t
@@ -12360,8 +12509,16 @@ command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_T
 command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programmi/;"	s	object:4
 command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:0
 command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:1
+command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:10
+command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:11
+command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:12
+command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:13
+command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:14
 command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:5
 command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:6
+command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:7
+command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:8
+command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:9
 command	build/release/compile_commands.json	/^  "command": "\/usr\/bin\/c++   -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation/;"	s	object:1
 command	build/release/compile_commands.json	/^  "command": "\/usr\/bin\/c++   -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation/;"	s	object:2
 command	build/release/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DCHRONO_DATA_DIR=\\\\\\"\/home\/lewis\/dev\/programming\/deps\/p/;"	s	object:0
@@ -12422,6 +12579,8 @@ depend	build/release/visualisation/Makefile	/^depend:$/;"	t
 destination	visualisation/CMakeLists.txt	/^set(destination "${CMAKE_CURRENT_BINARY_DIR}\/resources")$/;"	v
 detail	3rd_party/json.hpp	/^namespace detail$/;"	n	namespace:nlohmann
 difference_type	3rd_party/json.hpp	/^    using difference_type = ptrdiff_t;$/;"	t	namespace:nlohmann	typeref:typename:ptrdiff_t
+dir	3rd_party/bgfx_extra/bounds.cpp	/^	Vec3 dir;$/;"	m	struct:Line	typeref:typename:Vec3	file:
+dir	3rd_party/bgfx_extra/bounds.h	/^	bx::Vec3 dir;$/;"	m	struct:Ray	typeref:typename:bx::Vec3
 direction	3rd_party/imgui/imstb_truetype.h	/^   float direction;$/;"	m	struct:stbtt__active_edge	typeref:typename:float
 direction	3rd_party/imgui/imstb_truetype.h	/^   int direction;$/;"	m	struct:stbtt__active_edge	typeref:typename:int
 directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/simu/;"	s	object:2
@@ -12430,10 +12589,20 @@ directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/
 directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/simu/;"	s	object:5
 directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/test/;"	s	object:0
 directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/test/;"	s	object:1
+directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:10
+directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:11
+directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:12
+directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:13
+directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:14
 directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:6
+directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:7
+directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:8
+directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:9
 directory	build/release/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/release\//;"	s	object:0
 directory	build/release/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/release\//;"	s	object:1
 directory	build/release/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/release\//;"	s	object:2
+distance	3rd_party/bgfx_extra/bounds.cpp	/^float distance(const Plane& _plane, const LineSegment& _line)$/;"	f	typeref:typename:float
+draw	visualisation/src/OBJModel.cpp	/^void OBJModel::draw(float aspectRatio) const {$/;"	f	class:F9Sim::Graphics::OBJModel	typeref:typename:void
 dx	3rd_party/imgui/imstb_truetype.h	/^   int x,dx;$/;"	m	struct:stbtt__active_edge	typeref:typename:int
 e	3rd_party/imgui/imgui.h	/^        const char*     e;$/;"	m	struct:ImGuiTextFilter::ImGuiTextRange	typeref:typename:const char *
 edit_cache	build/dev/Makefile	/^edit_cache:$/;"	t
@@ -12457,6 +12626,12 @@ empty	3rd_party/imgui/imgui.h	/^    bool                empty() const           
 empty	3rd_party/imgui/imgui.h	/^    inline bool         empty() const                       { return Size == 0; }$/;"	f	struct:ImVector	typeref:typename:bool
 empty	3rd_party/imgui/imgui_internal.h	/^    bool    empty() const               { return Buf.Size == 0; }$/;"	f	struct:ImChunkStream	typeref:typename:bool
 enable_if_t	3rd_party/json.hpp	/^using enable_if_t = typename std::enable_if<B, T>::type;$/;"	t	namespace:nlohmann::detail	typeref:typename:std::enable_if<B,T>::type
+encodeNormalRgba8	3rd_party/bgfx_extra/bgfx_utils.h	/^inline uint32_t encodeNormalRgba8(float _x, float _y = 0.0f, float _z = 0.0f, float _w = 0.0f)$/;"	f	typeref:typename:uint32_t
+end	3rd_party/bgfx_extra/bounds.cpp	/^	Vec3 end;$/;"	m	struct:LineSegment	typeref:typename:Vec3	file:
+end	3rd_party/bgfx_extra/bounds.cpp	/^	float end;$/;"	m	struct:Interval	typeref:typename:float	file:
+end	3rd_party/bgfx_extra/bounds.h	/^	bx::Vec3 end;$/;"	m	struct:Capsule	typeref:typename:bx::Vec3
+end	3rd_party/bgfx_extra/bounds.h	/^	bx::Vec3 end;$/;"	m	struct:Cone	typeref:typename:bx::Vec3
+end	3rd_party/bgfx_extra/bounds.h	/^	bx::Vec3 end;$/;"	m	struct:Cylinder	typeref:typename:bx::Vec3
 end	3rd_party/catch.hpp	/^        constexpr const_iterator end() const { return m_start + m_size; }$/;"	f	class:Catch::StringRef	typeref:typename:const_iterator
 end	3rd_party/imgui/imgui.h	/^    const char*         end() const             { return Buf.Data ? &Buf.back() : EmptyString; }/;"	f	struct:ImGuiTextBuffer	typeref:typename:const char *
 end	3rd_party/imgui/imgui.h	/^    inline T*           end()                               { return Data + Size; }$/;"	f	struct:ImVector	typeref:typename:T *
@@ -13504,17 +13679,25 @@ falcon9	build/dev/simulation/output.json	/^            "falcon9": {$/;"	o	object
 falcon9	build/dev/simulation/output.json	/^            "falcon9": {$/;"	o	object:history.997
 falcon9	build/dev/simulation/output.json	/^            "falcon9": {$/;"	o	object:history.998
 falcon9	build/dev/simulation/output.json	/^            "falcon9": {$/;"	o	object:history.999
-farValue	visualisation/include/CameraBaseState.h	/^    float farValue;$/;"	m	struct:CameraBaseState	typeref:typename:float
+farValue	visualisation/include/CameraBaseState.h	/^    float farValue;$/;"	m	struct:F9Sim::Graphics::CameraBaseState	typeref:typename:float
 fdselect	3rd_party/imgui/imstb_truetype.h	/^   stbtt__buf fdselect;               \/\/ map from glyph to fontdict$/;"	m	struct:stbtt_fontinfo	typeref:typename:stbtt__buf
 fdx	3rd_party/imgui/imstb_truetype.h	/^   float fx,fdx,fdy;$/;"	m	struct:stbtt__active_edge	typeref:typename:float
 fdy	3rd_party/imgui/imstb_truetype.h	/^   float fx,fdx,fdy;$/;"	m	struct:stbtt__active_edge	typeref:typename:float
 file	3rd_party/catch.hpp	/^        char const* file;$/;"	m	struct:Catch::SourceLineInfo	typeref:typename:char const *
+file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:10
+file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:11
+file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:12
+file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:13
+file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:14
+file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:9
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/simulation\/src\/Falc/;"	s	object:4
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/simulation\/src\/Flig/;"	s	object:3
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/simulation\/src\/Simu/;"	s	object:2
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/simulation\/src\/main/;"	s	object:5
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/tests\/test_Simulatio/;"	s	object:1
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/tests\/test_main.cpp"$/;"	s	object:0
+file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/O/;"	s	object:8
+file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/V/;"	s	object:7
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/m/;"	s	object:6
 file	build/release/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/simulation\/src\/Simu/;"	s	object:0
 file	build/release/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/simulation\/src\/main/;"	s	object:1
@@ -13536,14 +13719,21 @@ fontstart	3rd_party/imgui/imstb_truetype.h	/^   int              fontstart;     
 free_head	3rd_party/imgui/imstb_rectpack.h	/^   stbrp_node *free_head;$/;"	m	struct:stbrp_context	typeref:typename:stbrp_node *
 front	3rd_party/imgui/imgui.h	/^    inline T&           front()                             { IM_ASSERT(Size > 0); return Data[0/;"	f	struct:ImVector	typeref:typename:T &
 front	3rd_party/imgui/imgui.h	/^    inline const T&     front() const                       { IM_ASSERT(Size > 0); return Data[0/;"	f	struct:ImVector	typeref:typename:const T &
+fs_ocornut_imgui_dx11	3rd_party/imgui/fs_ocornut_imgui.bin.h	/^static const uint8_t fs_ocornut_imgui_dx11[402] =$/;"	v	typeref:typename:const uint8_t[402]
+fs_ocornut_imgui_dx9	3rd_party/imgui/fs_ocornut_imgui.bin.h	/^static const uint8_t fs_ocornut_imgui_dx9[235] =$/;"	v	typeref:typename:const uint8_t[235]
+fs_ocornut_imgui_glsl	3rd_party/imgui/fs_ocornut_imgui.bin.h	/^static const uint8_t fs_ocornut_imgui_glsl[242] =$/;"	v	typeref:typename:const uint8_t[242]
+fs_ocornut_imgui_mtl	3rd_party/imgui/fs_ocornut_imgui.bin.h	/^static const uint8_t fs_ocornut_imgui_mtl[559] =$/;"	v	typeref:typename:const uint8_t[559]
+fs_ocornut_imgui_spv	3rd_party/imgui/fs_ocornut_imgui.bin.h	/^static const uint8_t fs_ocornut_imgui_spv[846] =$/;"	v	typeref:typename:const uint8_t[846]
 fx	3rd_party/imgui/imstb_truetype.h	/^   float fx,fdx,fdy;$/;"	m	struct:stbtt__active_edge	typeref:typename:float
 g_AttribLocationProjMtx	3rd_party/imgui/imgui_impl_opengl3.cpp	/^static GLint        g_AttribLocationTex = 0, g_AttribLocationProjMtx = 0;                       /;"	v	typeref:typename:GLint	file:
+g_AttribLocationTex	3rd_party/imgui/imgui_impl_bgfx.cpp	/^static bgfx::UniformHandle g_AttribLocationTex = BGFX_INVALID_HANDLE;$/;"	v	typeref:typename:bgfx::UniformHandle	file:
 g_AttribLocationTex	3rd_party/imgui/imgui_impl_opengl3.cpp	/^static GLint        g_AttribLocationTex = 0, g_AttribLocationProjMtx = 0;                       /;"	v	typeref:typename:GLint	file:
 g_AttribLocationVtxColor	3rd_party/imgui/imgui_impl_opengl3.cpp	/^static GLuint       g_AttribLocationVtxPos = 0, g_AttribLocationVtxUV = 0, g_AttribLocationVtxCo/;"	v	typeref:typename:GLuint	file:
 g_AttribLocationVtxPos	3rd_party/imgui/imgui_impl_opengl3.cpp	/^static GLuint       g_AttribLocationVtxPos = 0, g_AttribLocationVtxUV = 0, g_AttribLocationVtxCo/;"	v	typeref:typename:GLuint	file:
 g_AttribLocationVtxUV	3rd_party/imgui/imgui_impl_opengl3.cpp	/^static GLuint       g_AttribLocationVtxPos = 0, g_AttribLocationVtxUV = 0, g_AttribLocationVtxCo/;"	v	typeref:typename:GLuint	file:
 g_ClientApi	3rd_party/imgui/imgui_impl_glfw.cpp	/^static GlfwClientApi        g_ClientApi = GlfwClientApi_Unknown;$/;"	v	typeref:typename:GlfwClientApi	file:
 g_ElementsHandle	3rd_party/imgui/imgui_impl_opengl3.cpp	/^static unsigned int g_VboHandle = 0, g_ElementsHandle = 0;$/;"	v	typeref:typename:unsigned int	file:
+g_FontTexture	3rd_party/imgui/imgui_impl_bgfx.cpp	/^static bgfx::TextureHandle g_FontTexture = BGFX_INVALID_HANDLE;$/;"	v	typeref:typename:bgfx::TextureHandle	file:
 g_FontTexture	3rd_party/imgui/imgui_impl_opengl3.cpp	/^static GLuint       g_FontTexture = 0;$/;"	v	typeref:typename:GLuint	file:
 g_FragHandle	3rd_party/imgui/imgui_impl_opengl3.cpp	/^static GLuint       g_ShaderHandle = 0, g_VertHandle = 0, g_FragHandle = 0;$/;"	v	typeref:typename:GLuint	file:
 g_GlVersion	3rd_party/imgui/imgui_impl_opengl3.cpp	/^static GLuint       g_GlVersion = 0;                \/\/ Extracted at runtime using GL_MAJOR_VER/;"	v	typeref:typename:GLuint	file:
@@ -13555,17 +13745,26 @@ g_PrevUserCallbackChar	3rd_party/imgui/imgui_impl_glfw.cpp	/^static GLFWcharfun 
 g_PrevUserCallbackKey	3rd_party/imgui/imgui_impl_glfw.cpp	/^static GLFWkeyfun           g_PrevUserCallbackKey = NULL;$/;"	v	typeref:typename:GLFWkeyfun	file:
 g_PrevUserCallbackMousebutton	3rd_party/imgui/imgui_impl_glfw.cpp	/^static GLFWmousebuttonfun   g_PrevUserCallbackMousebutton = NULL;$/;"	v	typeref:typename:GLFWmousebuttonfun	file:
 g_PrevUserCallbackScroll	3rd_party/imgui/imgui_impl_glfw.cpp	/^static GLFWscrollfun        g_PrevUserCallbackScroll = NULL;$/;"	v	typeref:typename:GLFWscrollfun	file:
+g_ShaderHandle	3rd_party/imgui/imgui_impl_bgfx.cpp	/^static bgfx::ProgramHandle g_ShaderHandle = BGFX_INVALID_HANDLE;$/;"	v	typeref:typename:bgfx::ProgramHandle	file:
 g_ShaderHandle	3rd_party/imgui/imgui_impl_opengl3.cpp	/^static GLuint       g_ShaderHandle = 0, g_VertHandle = 0, g_FragHandle = 0;$/;"	v	typeref:typename:GLuint	file:
 g_Time	3rd_party/imgui/imgui_impl_glfw.cpp	/^static double               g_Time = 0.0;$/;"	v	typeref:typename:double	file:
 g_VboHandle	3rd_party/imgui/imgui_impl_opengl3.cpp	/^static unsigned int g_VboHandle = 0, g_ElementsHandle = 0;$/;"	v	typeref:typename:unsigned int	file:
 g_VertHandle	3rd_party/imgui/imgui_impl_opengl3.cpp	/^static GLuint       g_ShaderHandle = 0, g_VertHandle = 0, g_FragHandle = 0;$/;"	v	typeref:typename:GLuint	file:
+g_VertexLayout	3rd_party/imgui/imgui_impl_bgfx.cpp	/^static bgfx::VertexLayout g_VertexLayout;$/;"	v	typeref:typename:bgfx::VertexLayout	file:
+g_View	3rd_party/imgui/imgui_impl_bgfx.cpp	/^static uint8_t g_View = 255;$/;"	v	typeref:typename:uint8_t	file:
 g_Window	3rd_party/imgui/imgui_impl_glfw.cpp	/^static GLFWwindow*          g_Window = NULL;    \/\/ Main window$/;"	v	typeref:typename:GLFWwindow *	file:
 get	3rd_party/catch.hpp	/^        auto get() -> std::ostream& { return *m_oss; }$/;"	f	class:Catch::ReusableStringStream	typeref:typename:std::ostream &
-getActiveCameraPos	visualisation/src/CameraSystem.cpp	/^chrono::ChVector<> CameraSystem::getActiveCameraPos() {$/;"	f	class:CameraSystem	typeref:typename:chrono::ChVector<>
-getMonitorResolution	visualisation/src/Window.cpp	/^glm::ivec2 Window::getMonitorResolution() {$/;"	f	class:GF::Window	typeref:typename:glm::ivec2
+getActiveCameraPos	visualisation/src/CameraSystem.cpp	/^chrono::ChVector<> CameraSystem::getActiveCameraPos() {$/;"	f	class:F9Sim::Graphics::CameraSystem	typeref:typename:chrono::ChVector<>
+getAspect	visualisation/include/Window.h	/^		float getAspect() const { return static_cast<float>(mDimensions.x) \/ mDimensions.y; }$/;"	f	class:GF::Window	typeref:typename:float
+getCenter	3rd_party/bgfx_extra/bounds.cpp	/^Vec3 getCenter(const Aabb& _aabb)$/;"	f	typeref:typename:Vec3
+getCenter	3rd_party/bgfx_extra/bounds.cpp	/^Vec3 getCenter(const Triangle& _triangle)$/;"	f	typeref:typename:Vec3
+getDimensions	visualisation/include/Window.h	/^		glm::ivec2 getDimensions() const { return mDimensions; }$/;"	f	class:GF::Window	typeref:typename:glm::ivec2
+getExtents	3rd_party/bgfx_extra/bounds.cpp	/^Vec3 getExtents(const Aabb& _aabb)$/;"	f	typeref:typename:Vec3
+getHandle	visualisation/include/Window.h	/^		GLFWwindow* getHandle() const { return mWindow; }$/;"	f	class:GF::Window	typeref:typename:GLFWwindow *
+getPointAt	3rd_party/bgfx_extra/bounds.cpp	/^inline Vec3 getPointAt(const Line& _line, float _t)$/;"	f	typeref:typename:Vec3
+getPointAt	3rd_party/bgfx_extra/bounds.cpp	/^inline Vec3 getPointAt(const LineSegment& _line, float _t)$/;"	f	typeref:typename:Vec3
+getPointAt	3rd_party/bgfx_extra/bounds.cpp	/^inline Vec3 getPointAt(const Ray& _ray, float _t)$/;"	f	typeref:typename:Vec3
 glfw_errorCallback	visualisation/src/Visualisation.cpp	/^static void glfw_errorCallback(int error, const char* description) {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:void	file:
-glfw_errorCallback	visualisation/src/main_old.cpp	/^static void glfw_errorCallback(int error, const char* description) {$/;"	f	typeref:typename:void	file:
-glfw_keyCallback	visualisation/src/main_old.cpp	/^static void glfw_keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {$/;"	f	typeref:typename:void	file:
 glyf	3rd_party/imgui/imstb_truetype.h	/^   int loca,head,glyf,hhea,hmtx,kern,gpos; \/\/ table locations as offset from start of .ttf$/;"	m	struct:stbtt_fontinfo	typeref:typename:int
 gpos	3rd_party/imgui/imstb_truetype.h	/^   int loca,head,glyf,hhea,hmtx,kern,gpos; \/\/ table locations as offset from start of .ttf$/;"	m	struct:stbtt_fontinfo	typeref:typename:int
 gsubrs	3rd_party/imgui/imstb_truetype.h	/^   stbtt__buf gsubrs;                 \/\/ global charstring subroutines index$/;"	m	struct:stbtt_fontinfo	typeref:typename:stbtt__buf
@@ -13574,9 +13773,9 @@ h	3rd_party/imgui/imstb_truetype.h	/^   int id,w,h,was_packed;$/;"	m	struct:stbr
 h	3rd_party/imgui/imstb_truetype.h	/^   int w,h,stride;$/;"	m	struct:__anon65b4c42c0808	typeref:typename:int
 h_oversample	3rd_party/imgui/imstb_truetype.h	/^   unsigned char h_oversample, v_oversample; \/\/ don't set these, they're used internally$/;"	m	struct:__anon65b4c42c0508	typeref:typename:unsigned char
 h_oversample	3rd_party/imgui/imstb_truetype.h	/^   unsigned int   h_oversample, v_oversample;$/;"	m	struct:stbtt_pack_context	typeref:typename:unsigned int
-handle	visualisation/include/CameraSystem.h	/^        const CameraBaseState* handle;$/;"	m	struct:CameraSystem::CameraHandle	typeref:typename:const CameraBaseState *
+handle	visualisation/include/CameraSystem.h	/^    const CameraBaseState* handle;$/;"	m	struct:F9Sim::Graphics::CameraHandle	typeref:typename:const CameraBaseState *
 handleDirectionInput	visualisation/src/FPVCamera.cpp	/^void FPVCamera::handleDirectionInput() {$/;"	f	class:FPVCamera	typeref:typename:void
-handleInput	visualisation/src/CameraSystem.cpp	/^void CameraSystem::handleInput() {$/;"	f	class:CameraSystem	typeref:typename:void
+handleInput	visualisation/src/CameraSystem.cpp	/^void CameraSystem::handleInput() {$/;"	f	class:F9Sim::Graphics::CameraSystem	typeref:typename:void
 handleInput	visualisation/src/FPVCamera.cpp	/^void FPVCamera::handleInput(double dt) {$/;"	f	class:FPVCamera	typeref:typename:void
 handleInput	visualisation/src/Scene.cpp	/^void Scene::handleInput(double dt) {$/;"	f	class:Scene	typeref:typename:void
 handleMovementInput	visualisation/src/FPVCamera.cpp	/^void FPVCamera::handleMovementInput(double dt) {$/;"	f	class:FPVCamera	typeref:typename:void
@@ -13603,6 +13802,8 @@ hmtx	3rd_party/imgui/imstb_truetype.h	/^   int loca,head,glyf,hhea,hmtx,kern,gpo
 id	3rd_party/imgui/imstb_rectpack.h	/^   int            id;$/;"	m	struct:stbrp_rect	typeref:typename:int
 id	3rd_party/imgui/imstb_truetype.h	/^   int id,w,h,was_packed;$/;"	m	struct:stbrp_rect	typeref:typename:int
 id	3rd_party/json.hpp	/^    const int id;$/;"	m	class:nlohmann::detail::exception	typeref:typename:const int
+imageLoad	3rd_party/bgfx_extra/bgfx_utils.cpp	/^bimg::ImageContainer* imageLoad(const char* _filePath, bgfx::TextureFormat::Enum _dstFormat)$/;"	f	typeref:typename:bimg::ImageContainer *
+imageReleaseCb	3rd_party/bgfx_extra/bgfx_utils.cpp	/^static void imageReleaseCb(void* _ptr, void* _userData)$/;"	f	typeref:typename:void	file:
 indexToLocFormat	3rd_party/imgui/imstb_truetype.h	/^   int indexToLocFormat;              \/\/ format needed to map from glyph index to glyph$/;"	m	struct:stbtt_fontinfo	typeref:typename:int
 index_from_ptr	3rd_party/imgui/imgui.h	/^    inline int          index_from_ptr(const T* it) const   { IM_ASSERT(it >= Data && it < Data /;"	f	struct:ImVector	typeref:typename:int
 index_map	3rd_party/imgui/imstb_truetype.h	/^   int index_map;                     \/\/ a cmap mapping for our chosen character encoding$/;"	m	struct:stbtt_fontinfo	typeref:typename:int
@@ -13662,20 +13863,36 @@ info_version_internal	build/dev/CMakeFiles/3.17.3/CompilerIdC/CMakeCCompilerId.c
 info_version_internal	build/dev/CMakeFiles/3.17.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
 info_version_internal	build/release/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
 info_version_internal	build/release/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
-init	visualisation/src/Application.cpp	/^void Application::init() {$/;"	f	class:GF::Application	typeref:typename:void
-init	visualisation/src/CameraSystem.cpp	/^void CameraSystem::init(irr::scene::ISceneManager& sceneMgrHandle) {$/;"	f	class:CameraSystem	typeref:typename:void
-init	visualisation/src/Window.cpp	/^bool Window::init() {$/;"	f	class:GF::Window	typeref:typename:bool
-init	visualisation/src/helloworld.cpp	/^    void init(int32_t _argc, const char* const* _argv, uint32_t _width, uint32_t _height) overri/;"	f	class:__anon491389030111::ExampleHelloWorld	typeref:typename:void	file:
+init	visualisation/include/OBJModel.h	/^    static void init() {$/;"	f	struct:F9Sim::Graphics::PosColorVertex	typeref:typename:void
+init	visualisation/src/CameraSystem.cpp	/^void CameraSystem::init(irr::scene::ISceneManager& sceneMgrHandle) {$/;"	f	class:F9Sim::Graphics::CameraSystem	typeref:typename:void
 init_mode	3rd_party/imgui/imstb_rectpack.h	/^   int init_mode;$/;"	m	struct:stbrp_context	typeref:typename:int
 initialized	3rd_party/imgui/imstb_textedit.h	/^   unsigned char initialized;$/;"	m	struct:__anon9e551a350308	typeref:typename:unsigned char
 insert	3rd_party/imgui/imgui.h	/^    inline T*           insert(const T* it, const T& v)     { IM_ASSERT(it >= Data && it <= Data/;"	f	struct:ImVector	typeref:typename:T *
 insert_length	3rd_party/imgui/imstb_textedit.h	/^   STB_TEXTEDIT_POSITIONTYPE  insert_length;$/;"	m	struct:__anon9e551a350108	typeref:typename:STB_TEXTEDIT_POSITIONTYPE
 insert_mode	3rd_party/imgui/imstb_textedit.h	/^   unsigned char insert_mode;$/;"	m	struct:__anon9e551a350308	typeref:typename:unsigned char
+intersect	3rd_party/bgfx_extra/bounds.cpp	/^bool intersect(Line& _outLine, const Plane& _planeA, const Plane& _planeB)$/;"	f	typeref:typename:bool
+intersect	3rd_party/bgfx_extra/bounds.cpp	/^bool intersect(const LineSegment& _a, const LineSegment& _b)$/;"	f	typeref:typename:bool
+intersect	3rd_party/bgfx_extra/bounds.cpp	/^bool intersect(const LineSegment& _line, const Plane& _plane, Hit* _hit)$/;"	f	typeref:typename:bool
+intersect	3rd_party/bgfx_extra/bounds.cpp	/^bool intersect(const Ray& _ray, const Aabb& _aabb, Hit* _hit)$/;"	f	typeref:typename:bool
+intersect	3rd_party/bgfx_extra/bounds.cpp	/^bool intersect(const Ray& _ray, const Capsule& _capsule, Hit* _hit)$/;"	f	typeref:typename:bool
+intersect	3rd_party/bgfx_extra/bounds.cpp	/^bool intersect(const Ray& _ray, const Cone& _cone, Hit* _hit)$/;"	f	typeref:typename:bool
+intersect	3rd_party/bgfx_extra/bounds.cpp	/^bool intersect(const Ray& _ray, const Cylinder& _cylinder, Hit* _hit)$/;"	f	typeref:typename:bool
+intersect	3rd_party/bgfx_extra/bounds.cpp	/^bool intersect(const Ray& _ray, const Disk& _disk, Hit* _hit)$/;"	f	typeref:typename:bool
+intersect	3rd_party/bgfx_extra/bounds.cpp	/^bool intersect(const Ray& _ray, const Obb& _obb, Hit* _hit)$/;"	f	typeref:typename:bool
+intersect	3rd_party/bgfx_extra/bounds.cpp	/^bool intersect(const Ray& _ray, const Plane& _plane, Hit* _hit)$/;"	f	typeref:typename:bool
+intersect	3rd_party/bgfx_extra/bounds.cpp	/^bool intersect(const Ray& _ray, const Sphere& _sphere, Hit* _hit)$/;"	f	typeref:typename:bool
+intersect	3rd_party/bgfx_extra/bounds.cpp	/^bool intersect(const Ray& _ray, const Triangle& _triangle, Hit* _hit)$/;"	f	typeref:typename:bool
+intersect	3rd_party/bgfx_extra/bounds.cpp	/^bool intersect(float& _outTa, float& _outTb, const LineSegment& _a, const LineSegment& _b)$/;"	f	typeref:typename:bool
+intersect	3rd_party/bgfx_extra/bounds.cpp	/^static bool intersect(const Ray& _ray, const Cylinder& _cylinder, bool _capsule, Hit* _hit)$/;"	f	typeref:typename:bool	file:
+intersectPlanes	3rd_party/bgfx_extra/bounds.cpp	/^Vec3 intersectPlanes(const Plane& _pa, const Plane& _pb, const Plane& _pc)$/;"	f	typeref:typename:Vec3
 invalid_iterator	3rd_party/json.hpp	/^    invalid_iterator(int id_, const char* what_arg)$/;"	f	class:nlohmann::detail::invalid_iterator
 invalid_iterator	3rd_party/json.hpp	/^class invalid_iterator : public exception$/;"	c	namespace:nlohmann::detail
 invert	3rd_party/imgui/imstb_truetype.h	/^   int invert;$/;"	m	struct:stbtt__edge	typeref:typename:int
 invoke	3rd_party/catch.hpp	/^    void invoke() const override {$/;"	f	class:Catch::TestInvokerAsMethod	typeref:typename:void
+isClosed	visualisation/include/Window.h	/^		bool isClosed() const { return glfwWindowShouldClose(mWindow) == 1;  }$/;"	f	class:GF::Window	typeref:typename:bool
 isFalseTest	3rd_party/catch.hpp	/^    inline bool isFalseTest( int flags ) { return ( flags & ResultDisposition::FalseTest ) != 0;/;"	f	namespace:Catch	typeref:typename:bool
+isNearZero	3rd_party/bgfx_extra/bounds.cpp	/^bool isNearZero(const Vec3& _v)$/;"	f	typeref:typename:bool
+isNearZero	3rd_party/bgfx_extra/bounds.cpp	/^bool isNearZero(float _v)$/;"	f	typeref:typename:bool
 isNullTerminated	3rd_party/catch.hpp	/^        constexpr auto isNullTerminated() const noexcept -> bool {$/;"	f	class:Catch::StringRef	typeref:typename:auto
 is_callable	3rd_party/catch.hpp	/^    struct is_callable<Fun(Args...)> : decltype(is_callable_tester::test<Fun, Args...>(0)) {};$/;"	s	namespace:Catch
 is_callable_tester	3rd_party/catch.hpp	/^    struct is_callable_tester {$/;"	s	namespace:Catch
@@ -13688,6 +13905,8 @@ iterator_category	3rd_party/json.hpp	/^    using iterator_category = typename It
 iterator_traits	3rd_party/json.hpp	/^struct iterator_traits < T, enable_if_t < !std::is_pointer<T>::value >>$/;"	s	namespace:nlohmann
 iterator_traits	3rd_party/json.hpp	/^struct iterator_traits$/;"	s	namespace:nlohmann
 iterator_types	3rd_party/json.hpp	/^struct iterator_types {};$/;"	s	namespace:nlohmann::detail
+kAxis	3rd_party/bgfx_extra/bounds.cpp	/^static constexpr Vec3 kAxis[] =$/;"	v	typeref:typename:Vec3[]	file:
+kUnitAabb	3rd_party/bgfx_extra/bounds.cpp	/^static constexpr Aabb kUnitAabb =$/;"	v	typeref:typename:Aabb	file:
 kern	3rd_party/imgui/imstb_truetype.h	/^   int loca,head,glyf,hhea,hmtx,kern,gpos; \/\/ table locations as offset from start of .ttf$/;"	m	struct:stbtt_fontinfo	typeref:typename:int
 key	3rd_party/imgui/imgui.h	/^        ImGuiID key;$/;"	m	struct:ImGuiStorage::ImGuiStoragePair	typeref:typename:ImGuiID
 length	3rd_party/imgui/imstb_textedit.h	/^   int first_char, length; \/\/ first char of row, and length$/;"	m	struct:__anon9e551a350508	typeref:typename:int
@@ -13696,18 +13915,33 @@ lerpCoordSys	visualisation/src/AnimationFrame.cpp	/^void lerpCoordSys(const chro
 line	3rd_party/catch.hpp	/^        std::size_t line;$/;"	m	struct:Catch::SourceLineInfo	typeref:typename:std::size_t
 lineInfo	3rd_party/catch.hpp	/^        SourceLineInfo lineInfo;$/;"	m	struct:Catch::AssertionInfo	typeref:typename:SourceLineInfo
 lines_read	3rd_party/json.hpp	/^    std::size_t lines_read = 0;$/;"	m	struct:nlohmann::detail::position_t	typeref:typename:std::size_t
+load	3rd_party/bgfx_extra/bgfx_utils.cpp	/^void Mesh::load(bx::ReaderSeekerI* _reader, bool _ramcopy)$/;"	f	class:Mesh	typeref:typename:void
+load	3rd_party/bgfx_extra/bgfx_utils.cpp	/^void* load(bx::FileReaderI* _reader, bx::AllocatorI* _allocator, const char* _filePath, uint32_t/;"	f	typeref:typename:void *
+load	3rd_party/bgfx_extra/bgfx_utils.cpp	/^void* load(const char* _filePath, uint32_t* _size)$/;"	f	typeref:typename:void *
 load	visualisation/src/Animation.cpp	/^void Animation::load() {$/;"	f	class:Animation	typeref:typename:void
+loadMem	3rd_party/bgfx_extra/bgfx_utils.cpp	/^static const bgfx::Memory* loadMem(bx::FileReaderI* _reader, const char* _filePath)$/;"	f	typeref:typename:const bgfx::Memory *	file:
+loadMem	3rd_party/bgfx_extra/bgfx_utils.cpp	/^static void* loadMem(bx::FileReaderI* _reader, bx::AllocatorI* _allocator, const char* _filePath/;"	f	typeref:typename:void *	file:
+loadProgram	3rd_party/bgfx_extra/bgfx_utils.cpp	/^bgfx::ProgramHandle loadProgram(bx::FileReaderI* _reader, const char* _vsName, const char* _fsNa/;"	f	typeref:typename:bgfx::ProgramHandle
+loadProgram	3rd_party/bgfx_extra/bgfx_utils.cpp	/^bgfx::ProgramHandle loadProgram(const char* _vsName, const char* _fsName)$/;"	f	typeref:typename:bgfx::ProgramHandle
+loadShader	3rd_party/bgfx_extra/bgfx_utils.cpp	/^bgfx::ShaderHandle loadShader(const char* _name)$/;"	f	typeref:typename:bgfx::ShaderHandle
+loadShader	3rd_party/bgfx_extra/bgfx_utils.cpp	/^static bgfx::ShaderHandle loadShader(bx::FileReaderI* _reader, const char* _name)$/;"	f	typeref:typename:bgfx::ShaderHandle	file:
+loadShader	visualisation/src/OBJModel.cpp	/^bgfx::ShaderHandle loadShader(const char* _name) {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:bgfx::ShaderHandle
+loadTexture	3rd_party/bgfx_extra/bgfx_utils.cpp	/^bgfx::TextureHandle loadTexture(bx::FileReaderI* _reader, const char* _filePath, uint64_t _flags/;"	f	typeref:typename:bgfx::TextureHandle
+loadTexture	3rd_party/bgfx_extra/bgfx_utils.cpp	/^bgfx::TextureHandle loadTexture(const char* _name, uint64_t _flags, uint8_t _skip, bgfx::Texture/;"	f	typeref:typename:bgfx::TextureHandle
 loca	3rd_party/imgui/imstb_truetype.h	/^   int loca,head,glyf,hhea,hmtx,kern,gpos; \/\/ table locations as offset from start of .ttf$/;"	m	struct:stbtt_fontinfo	typeref:typename:int
-lookAt	visualisation/include/CameraBaseState.h	/^    chrono::ChVector<> lookAt;$/;"	m	struct:CameraBaseState	typeref:typename:chrono::ChVector<>
+lookAt	visualisation/include/CameraBaseState.h	/^    chrono::ChVector<> lookAt;$/;"	m	struct:F9Sim::Graphics::CameraBaseState	typeref:typename:chrono::ChVector<>
 m	3rd_party/json.hpp	/^    std::runtime_error m;$/;"	m	class:nlohmann::detail::exception	typeref:typename:std::runtime_error
 mAccumulator	visualisation/include/Application.h	/^        mAccumulator = 0.0;$/;"	m	class:GF::Application	typeref:typename:double
 mAdjustSpeed	visualisation/include/FPVCamera.h	/^        static const float mAdjustSpeed;$/;"	m	struct:FPVCamera::Sensitivity	typeref:typename:const float
 mAdjustSpeed	visualisation/src/FPVCamera.cpp	/^const float FPVCamera::Sensitivity::mAdjustSpeed = 200.0f;$/;"	m	class:FPVCamera::Sensitivity	typeref:typename:const float
 mCameraBase	visualisation/include/FPVCamera.h	/^    CameraBaseState mCameraBase;$/;"	m	class:FPVCamera	typeref:typename:CameraBaseState
 mCamerasHaveFocus	visualisation/include/Scene.h	/^    bool mCamerasHaveFocus;$/;"	m	class:Scene	typeref:typename:bool
+mClearColour	visualisation/include/Window.h	/^		glm::vec4 mClearColour = glm::vec4(0.5f, 0.5f, 0.5f, 1.0f);$/;"	m	class:GF::Window	typeref:typename:glm::vec4
 mCoordSystems	visualisation/include/AnimationFrame.h	/^    std::unordered_map<std::string, chrono::ChCoordsys<double>> mCoordSystems;$/;"	m	class:AnimationFrame	typeref:typename:std::unordered_map<std::string,chrono::ChCoordsys<double>>
 mCube	simulation/include/Falcon9/Falcon9_Vehicle.h	/^    std::shared_ptr<chrono::ChBodyAuxRef> mCube;$/;"	m	class:Hardware::Falcon9_Vehicle	typeref:typename:std::shared_ptr<chrono::ChBodyAuxRef>
 mCurrentTime	visualisation/include/Application.h	/^        mCurrentTime = 0.0,$/;"	m	class:GF::Application	typeref:typename:double
+mDefaultWindowToScreenScale	visualisation/include/Window.h	/^		static constexpr float mDefaultWindowToScreenScale = 0.5f;$/;"	m	class:GF::Window	typeref:typename:float
+mDimensions	visualisation/include/Window.h	/^		glm::ivec2 mDimensions = glm::vec2(-1, -1);$/;"	m	class:GF::Window	typeref:typename:glm::ivec2
 mDuration_s	visualisation/include/Animation.h	/^    double mDuration_s;$/;"	m	class:Animation	typeref:typename:double
 mFalcon9	simulation/include/Simulation.h	/^    Hardware::Falcon9_Vehicle mFalcon9;$/;"	m	class:Simulation	typeref:typename:Hardware::Falcon9_Vehicle
 mFlightComputer	simulation/include/Simulation.h	/^    Software::FlightComputer mFlightComputer;$/;"	m	class:Simulation	typeref:typename:Software::FlightComputer
@@ -13726,9 +13960,11 @@ mMaxSpeed	visualisation/include/FPVCamera.h	/^        static const float mMaxSpe
 mMaxSpeed	visualisation/src/FPVCamera.cpp	/^const float FPVCamera::Movement::mMaxSpeed = 1000.0f;$/;"	m	class:FPVCamera::Movement	typeref:typename:const float
 mMinSpeed	visualisation/include/FPVCamera.h	/^        static const float mMinSpeed;$/;"	m	struct:FPVCamera::Movement	typeref:typename:const float
 mMinSpeed	visualisation/src/FPVCamera.cpp	/^const float FPVCamera::Movement::mMinSpeed = 6.4f;$/;"	m	class:FPVCamera::Movement	typeref:typename:const float
+mModel	visualisation/src/Visualisation.cpp	/^static std::unique_ptr<OBJModel> mModel;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:std::unique_ptr<OBJModel>	file:
+mMonitor	visualisation/include/Window.h	/^		GLFWmonitor* mMonitor = nullptr;$/;"	m	class:GF::Window	typeref:typename:GLFWmonitor *
 mMovement	visualisation/include/FPVCamera.h	/^    } mMovement;$/;"	m	class:FPVCamera	typeref:struct:FPVCamera::Movement
 mMovementSpeed	visualisation/include/FPVCamera.h	/^    float mMovementSpeed;$/;"	m	class:FPVCamera	typeref:typename:float
-mOpenGLInitialised	visualisation/src/Window.cpp	/^bool Window::mOpenGLInitialised = false;$/;"	m	class:GF::Window	typeref:typename:bool
+mOpenGLInitialised	visualisation/include/Window.h	/^		static bool mOpenGLInitialised;$/;"	m	class:GF::Window	typeref:typename:bool
 mPitch	visualisation/include/FPVCamera.h	/^    float mPitch;$/;"	m	class:FPVCamera	typeref:typename:float
 mResourceSet	visualisation/include/Application.h	/^    ResourceSet mResourceSet;$/;"	m	class:GF::Application	typeref:typename:ResourceSet
 mRunning	visualisation/include/Application.h	/^    bool mRunning = true;$/;"	m	class:GF::Application	typeref:typename:bool
@@ -13739,26 +13975,69 @@ mSimModel	visualisation/include/Scene.h	/^    SimulationModel mSimModel;$/;"	m	c
 mSystem	simulation/include/Simulation.h	/^    chrono::ChSystemNSC mSystem;$/;"	m	class:Simulation	typeref:typename:chrono::ChSystemNSC
 mSystemHandle	simulation/include/Falcon9/Falcon9_Vehicle.h	/^    chrono::ChSystemNSC& mSystemHandle;$/;"	m	class:Hardware::Falcon9_Vehicle	typeref:typename:chrono::ChSystemNSC &
 mTimeStamp_s	visualisation/include/AnimationFrame.h	/^    double mTimeStamp_s;$/;"	m	class:AnimationFrame	typeref:typename:double
+mTitle	visualisation/include/Window.h	/^		const char* mTitle = "";$/;"	m	class:GF::Window	typeref:typename:const char *
+mTransform_world	visualisation/include/OBJModel.h	/^    chrono::ChCoordsys<> mTransform_world;$/;"	m	class:F9Sim::Graphics::OBJModel	typeref:typename:chrono::ChCoordsys<>
 mUpdateDelta	visualisation/include/Application.h	/^    const double mUpdateDelta = 1.0 \/ 2000.0;$/;"	m	class:GF::Application	typeref:typename:const double
 mUpdateFreq_hz	simulation/include/Simulation.h	/^    const uint16_t mUpdateFreq_hz;$/;"	m	class:Simulation	typeref:typename:const uint16_t
 mVelocity	visualisation/include/FPVCamera.h	/^    chrono::ChVector<> mVelocity;$/;"	m	class:FPVCamera	typeref:typename:chrono::ChVector<>
 mVisibleFrame	visualisation/include/Animation.h	/^    AnimationFrame mVisibleFrame;$/;"	m	class:Animation	typeref:typename:AnimationFrame
 mWindow	visualisation/include/Application.h	/^    Window mWindow;$/;"	m	class:GF::Application	typeref:typename:Window
+mWindow	visualisation/include/Window.h	/^		GLFWwindow* mWindow = nullptr;$/;"	m	class:GF::Window	typeref:typename:GLFWwindow *
 mYaw	visualisation/include/FPVCamera.h	/^    float mYaw;$/;"	m	class:FPVCamera	typeref:typename:float
 mZoom	visualisation/include/FPVCamera.h	/^        static const float mZoom;$/;"	m	struct:FPVCamera::Sensitivity	typeref:typename:const float
 mZoom	visualisation/src/FPVCamera.cpp	/^const float FPVCamera::Sensitivity::mZoom = 0.1f;$/;"	m	class:FPVCamera::Sensitivity	typeref:typename:const float
-m_debug	visualisation/src/helloworld.cpp	/^    uint32_t m_debug;$/;"	m	class:__anon491389030111::ExampleHelloWorld	typeref:typename:uint32_t	file:
-m_height	visualisation/src/helloworld.cpp	/^    uint32_t m_height;$/;"	m	class:__anon491389030111::ExampleHelloWorld	typeref:typename:uint32_t	file:
+m_aabb	3rd_party/bgfx_extra/bgfx_utils.h	/^	Aabb m_aabb;$/;"	m	struct:Group	typeref:typename:Aabb
+m_aabb	3rd_party/bgfx_extra/bgfx_utils.h	/^	Aabb m_aabb;$/;"	m	struct:Primitive	typeref:typename:Aabb
+m_abgr	visualisation/include/OBJModel.h	/^    uint32_t m_abgr;$/;"	m	struct:F9Sim::Graphics::PosColorVertex	typeref:typename:uint32_t
+m_flags	3rd_party/bgfx_extra/bgfx_utils.h	/^		uint32_t            m_flags;$/;"	m	struct:MeshState::Texture	typeref:typename:uint32_t
+m_groups	3rd_party/bgfx_extra/bgfx_utils.h	/^	GroupArray m_groups;$/;"	m	struct:Mesh	typeref:typename:GroupArray
+m_ibh	3rd_party/bgfx_extra/bgfx_utils.h	/^	bgfx::IndexBufferHandle m_ibh;$/;"	m	struct:Group	typeref:typename:bgfx::IndexBufferHandle
+m_ibh	visualisation/include/OBJModel.h	/^    bgfx::IndexBufferHandle m_ibh;$/;"	m	class:F9Sim::Graphics::OBJModel	typeref:typename:bgfx::IndexBufferHandle
 m_index	3rd_party/catch.hpp	/^        std::size_t m_index;$/;"	m	class:Catch::ReusableStringStream	typeref:typename:std::size_t
-m_mouseState	visualisation/src/helloworld.cpp	/^    entry::MouseState m_mouseState;$/;"	m	class:__anon491389030111::ExampleHelloWorld	typeref:typename:entry::MouseState	file:
+m_indices	3rd_party/bgfx_extra/bgfx_utils.h	/^	uint16_t* m_indices;$/;"	m	struct:Group	typeref:typename:uint16_t *
+m_layout	3rd_party/bgfx_extra/bgfx_utils.h	/^	bgfx::VertexLayout m_layout;$/;"	m	struct:Mesh	typeref:typename:bgfx::VertexLayout
 m_name	3rd_party/catch.hpp	/^            StringRef m_name;$/;"	m	struct:Catch::Detail::EnumInfo	typeref:typename:StringRef
+m_numIndices	3rd_party/bgfx_extra/bgfx_utils.h	/^	uint32_t m_numIndices;$/;"	m	struct:Group	typeref:typename:uint32_t
+m_numIndices	3rd_party/bgfx_extra/bgfx_utils.h	/^	uint32_t m_numIndices;$/;"	m	struct:Primitive	typeref:typename:uint32_t
+m_numTextures	3rd_party/bgfx_extra/bgfx_utils.h	/^	uint8_t             m_numTextures;$/;"	m	struct:MeshState	typeref:typename:uint8_t
+m_numVertices	3rd_party/bgfx_extra/bgfx_utils.h	/^	uint16_t m_numVertices;$/;"	m	struct:Group	typeref:typename:uint16_t
+m_numVertices	3rd_party/bgfx_extra/bgfx_utils.h	/^	uint32_t m_numVertices;$/;"	m	struct:Primitive	typeref:typename:uint32_t
+m_obb	3rd_party/bgfx_extra/bgfx_utils.h	/^	Obb m_obb;$/;"	m	struct:Group	typeref:typename:Obb
+m_obb	3rd_party/bgfx_extra/bgfx_utils.h	/^	Obb m_obb;$/;"	m	struct:Primitive	typeref:typename:Obb
 m_oss	3rd_party/catch.hpp	/^        std::ostream* m_oss;$/;"	m	class:Catch::ReusableStringStream	typeref:typename:std::ostream *
-m_reset	visualisation/src/helloworld.cpp	/^    uint32_t m_reset;$/;"	m	class:__anon491389030111::ExampleHelloWorld	typeref:typename:uint32_t	file:
+m_pad0	3rd_party/bgfx_extra/bgfx_utils.cpp	/^		float m_pad0;$/;"	m	struct:calcTangents::PosTexcoord	typeref:typename:float	file:
+m_pad1	3rd_party/bgfx_extra/bgfx_utils.cpp	/^		float m_pad1;$/;"	m	struct:calcTangents::PosTexcoord	typeref:typename:float	file:
+m_pad2	3rd_party/bgfx_extra/bgfx_utils.cpp	/^		float m_pad2;$/;"	m	struct:calcTangents::PosTexcoord	typeref:typename:float	file:
+m_pciId	3rd_party/bgfx_extra/bgfx_utils.h	/^	uint16_t m_pciId;$/;"	m	struct:Args	typeref:typename:uint16_t
+m_prims	3rd_party/bgfx_extra/bgfx_utils.h	/^	PrimitiveArray m_prims;$/;"	m	struct:Group	typeref:typename:PrimitiveArray
+m_program	3rd_party/bgfx_extra/bgfx_utils.h	/^	bgfx::ProgramHandle m_program;$/;"	m	struct:MeshState	typeref:typename:bgfx::ProgramHandle
+m_sampler	3rd_party/bgfx_extra/bgfx_utils.h	/^		bgfx::UniformHandle m_sampler;$/;"	m	struct:MeshState::Texture	typeref:typename:bgfx::UniformHandle
+m_shader	visualisation/include/OBJModel.h	/^    bgfx::ProgramHandle m_shader;$/;"	m	class:F9Sim::Graphics::OBJModel	typeref:typename:bgfx::ProgramHandle
 m_size	3rd_party/catch.hpp	/^        size_type m_size = 0;$/;"	m	class:Catch::StringRef	typeref:typename:size_type
+m_sphere	3rd_party/bgfx_extra/bgfx_utils.h	/^	Sphere m_sphere;$/;"	m	struct:Group	typeref:typename:Sphere
+m_sphere	3rd_party/bgfx_extra/bgfx_utils.h	/^	Sphere m_sphere;$/;"	m	struct:Primitive	typeref:typename:Sphere
+m_stage	3rd_party/bgfx_extra/bgfx_utils.h	/^		uint8_t             m_stage;$/;"	m	struct:MeshState::Texture	typeref:typename:uint8_t
 m_start	3rd_party/catch.hpp	/^        char const* m_start = s_empty;$/;"	m	class:Catch::StringRef	typeref:typename:char const *
+m_startIndex	3rd_party/bgfx_extra/bgfx_utils.h	/^	uint32_t m_startIndex;$/;"	m	struct:Primitive	typeref:typename:uint32_t
+m_startVertex	3rd_party/bgfx_extra/bgfx_utils.h	/^	uint32_t m_startVertex;$/;"	m	struct:Primitive	typeref:typename:uint32_t
+m_state	3rd_party/bgfx_extra/bgfx_utils.h	/^	uint64_t            m_state;$/;"	m	struct:MeshState	typeref:typename:uint64_t
 m_testAsMethod	3rd_party/catch.hpp	/^    void (C::*m_testAsMethod)();$/;"	m	class:Catch::TestInvokerAsMethod	typeref:typename:void (C::*)()
+m_texture	3rd_party/bgfx_extra/bgfx_utils.h	/^		bgfx::TextureHandle m_texture;$/;"	m	struct:MeshState::Texture	typeref:typename:bgfx::TextureHandle
+m_textures	3rd_party/bgfx_extra/bgfx_utils.h	/^	Texture             m_textures[4];$/;"	m	struct:MeshState	typeref:typename:Texture[4]
+m_type	3rd_party/bgfx_extra/bgfx_utils.h	/^	bgfx::RendererType::Enum m_type;$/;"	m	struct:Args	typeref:typename:bgfx::RendererType::Enum
+m_u	3rd_party/bgfx_extra/bgfx_utils.cpp	/^		float m_u;$/;"	m	struct:calcTangents::PosTexcoord	typeref:typename:float	file:
+m_v	3rd_party/bgfx_extra/bgfx_utils.cpp	/^		float m_v;$/;"	m	struct:calcTangents::PosTexcoord	typeref:typename:float	file:
 m_values	3rd_party/catch.hpp	/^            std::vector<std::pair<int, StringRef>> m_values;$/;"	m	struct:Catch::Detail::EnumInfo	typeref:typename:std::vector<std::pair<int,StringRef>>
-m_width	visualisation/src/helloworld.cpp	/^    uint32_t m_width;$/;"	m	class:__anon491389030111::ExampleHelloWorld	typeref:typename:uint32_t	file:
+m_vbh	3rd_party/bgfx_extra/bgfx_utils.h	/^	bgfx::VertexBufferHandle m_vbh;$/;"	m	struct:Group	typeref:typename:bgfx::VertexBufferHandle
+m_vbh	visualisation/include/OBJModel.h	/^    bgfx::VertexBufferHandle m_vbh;$/;"	m	class:F9Sim::Graphics::OBJModel	typeref:typename:bgfx::VertexBufferHandle
+m_vertices	3rd_party/bgfx_extra/bgfx_utils.h	/^	uint8_t* m_vertices;$/;"	m	struct:Group	typeref:typename:uint8_t *
+m_viewId	3rd_party/bgfx_extra/bgfx_utils.h	/^	bgfx::ViewId        m_viewId;$/;"	m	struct:MeshState	typeref:typename:bgfx::ViewId
+m_x	3rd_party/bgfx_extra/bgfx_utils.cpp	/^		float m_x;$/;"	m	struct:calcTangents::PosTexcoord	typeref:typename:float	file:
+m_x	visualisation/include/OBJModel.h	/^    float m_x;$/;"	m	struct:F9Sim::Graphics::PosColorVertex	typeref:typename:float
+m_y	3rd_party/bgfx_extra/bgfx_utils.cpp	/^		float m_y;$/;"	m	struct:calcTangents::PosTexcoord	typeref:typename:float	file:
+m_y	visualisation/include/OBJModel.h	/^    float m_y;$/;"	m	struct:F9Sim::Graphics::PosColorVertex	typeref:typename:float
+m_z	3rd_party/bgfx_extra/bgfx_utils.cpp	/^		float m_z;$/;"	m	struct:calcTangents::PosTexcoord	typeref:typename:float	file:
+m_z	visualisation/include/OBJModel.h	/^    float m_z;$/;"	m	struct:F9Sim::Graphics::PosColorVertex	typeref:typename:float
 macroName	3rd_party/catch.hpp	/^        StringRef macroName;$/;"	m	struct:Catch::AssertionInfo	typeref:typename:StringRef
 main	build/dev/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	build/dev/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f	typeref:typename:void
@@ -13771,23 +14050,36 @@ main	build/release/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^void main(
 main	build/release/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f	typeref:typename:int
 main	simulation/src/main.cpp	/^int main() {$/;"	f	typeref:typename:int
 main	visualisation/src/main.cpp	/^int main() {$/;"	f	typeref:typename:int
-main	visualisation/src/main_old.cpp	/^int main(int argc, char** argv) {$/;"	f	typeref:typename:int
 main_clipboard	3rd_party/imgui/imgui.cpp	/^static PasteboardRef main_clipboard = 0;$/;"	v	typeref:typename:PasteboardRef	file:
+makeRay	3rd_party/bgfx_extra/bounds.cpp	/^Ray makeRay(float _x, float _y, const float* _invVp)$/;"	f	typeref:typename:Ray
 makeTestInvoker	3rd_party/catch.hpp	/^auto makeTestInvoker( void (C::*testAsMethod)() ) noexcept -> ITestInvoker* {$/;"	f	namespace:Catch	typeref:typename:auto
 make_index_sequence	3rd_party/json.hpp	/^struct make_index_sequence$/;"	s	namespace:nlohmann::detail
 make_index_sequence	3rd_party/json.hpp	/^template<> struct make_index_sequence<0> : index_sequence<> {};$/;"	s	namespace:nlohmann::detail
 make_index_sequence	3rd_party/json.hpp	/^template<> struct make_index_sequence<1> : index_sequence<0> {};$/;"	s	namespace:nlohmann::detail
 make_void	3rd_party/json.hpp	/^template <typename ...Ts> struct make_void$/;"	s	namespace:nlohmann::detail
+max	3rd_party/bgfx_extra/bounds.h	/^	bx::Vec3 max;$/;"	m	struct:Aabb	typeref:typename:bx::Vec3
 max_x	3rd_party/imgui/imstb_truetype.h	/^   stbtt_int32 min_x, max_x, min_y, max_y;$/;"	m	struct:__anon65b4c42c0f08	typeref:typename:stbtt_int32
 max_y	3rd_party/imgui/imstb_truetype.h	/^   stbtt_int32 min_x, max_x, min_y, max_y;$/;"	m	struct:__anon65b4c42c0f08	typeref:typename:stbtt_int32
 merge_and_renumber	3rd_party/json.hpp	/^struct merge_and_renumber<index_sequence<I1...>, index_sequence<I2...>>$/;"	s	namespace:nlohmann::detail
+meshLoad	3rd_party/bgfx_extra/bgfx_utils.cpp	/^Mesh* meshLoad(bx::ReaderSeekerI* _reader, bool _ramcopy)$/;"	f	typeref:typename:Mesh *
+meshLoad	3rd_party/bgfx_extra/bgfx_utils.cpp	/^Mesh* meshLoad(const char* _filePath, bool _ramcopy)$/;"	f	typeref:typename:Mesh *
+meshStateCreate	3rd_party/bgfx_extra/bgfx_utils.cpp	/^MeshState* meshStateCreate()$/;"	f	typeref:typename:MeshState *
+meshStateDestroy	3rd_party/bgfx_extra/bgfx_utils.cpp	/^void meshStateDestroy(MeshState* _meshState)$/;"	f	typeref:typename:void
+meshSubmit	3rd_party/bgfx_extra/bgfx_utils.cpp	/^void meshSubmit(const Mesh* _mesh, bgfx::ViewId _id, bgfx::ProgramHandle _program, const float* /;"	f	typeref:typename:void
+meshSubmit	3rd_party/bgfx_extra/bgfx_utils.cpp	/^void meshSubmit(const Mesh* _mesh, const MeshState*const* _state, uint8_t _numPasses, const floa/;"	f	typeref:typename:void
+meshUnload	3rd_party/bgfx_extra/bgfx_utils.cpp	/^void meshUnload(Mesh* _mesh)$/;"	f	typeref:typename:void
+min	3rd_party/bgfx_extra/bounds.h	/^	bx::Vec3 min;$/;"	m	struct:Aabb	typeref:typename:bx::Vec3
 min_x	3rd_party/imgui/imstb_truetype.h	/^   stbtt_int32 min_x, max_x, min_y, max_y;$/;"	m	struct:__anon65b4c42c0f08	typeref:typename:stbtt_int32
 min_y	3rd_party/imgui/imstb_truetype.h	/^   stbtt_int32 min_x, max_x, min_y, max_y;$/;"	m	struct:__anon65b4c42c0f08	typeref:typename:stbtt_int32
 mpl_	3rd_party/catch.hpp	/^namespace mpl_{$/;"	n
+ms_decl	visualisation/include/OBJModel.h	/^    static bgfx::VertexLayout ms_decl;$/;"	m	struct:F9Sim::Graphics::PosColorVertex	typeref:typename:bgfx::VertexLayout
+ms_decl	visualisation/src/OBJModel.cpp	/^bgfx::VertexLayout PosColorVertex::ms_decl;$/;"	m	class:F9Sim::Graphics::PosColorVertex	typeref:typename:bgfx::VertexLayout
+mtx	3rd_party/bgfx_extra/bounds.h	/^	float mtx[16];$/;"	m	struct:Obb	typeref:typename:float[16]
+mtxFromSrt	3rd_party/bgfx_extra/bounds.cpp	/^void mtxFromSrt(float* _outMtx, const Srt& _srt)$/;"	f	typeref:typename:void
 name	3rd_party/catch.hpp	/^    StringRef name;$/;"	m	struct:Catch::NameAndTags	typeref:typename:StringRef
 name	3rd_party/json.hpp	/^    static std::string name(const std::string& ename, int id_)$/;"	f	class:nlohmann::detail::exception	typeref:typename:std::string
-name	visualisation/include/CameraSystem.h	/^        std::string name;$/;"	m	struct:CameraSystem::CameraHandle	typeref:typename:std::string
-nearValue	visualisation/include/CameraBaseState.h	/^    float nearValue;$/;"	m	struct:CameraBaseState	typeref:typename:float
+name	visualisation/include/CameraSystem.h	/^    std::string name;$/;"	m	struct:F9Sim::Graphics::CameraHandle	typeref:typename:std::string
+nearValue	visualisation/include/CameraBaseState.h	/^    float nearValue;$/;"	m	struct:F9Sim::Graphics::CameraBaseState	typeref:typename:float
 next	3rd_party/imgui/imstb_rectpack.h	/^   stbrp_node  *next;$/;"	m	struct:stbrp_node	typeref:typename:stbrp_node *
 next	3rd_party/imgui/imstb_truetype.h	/^   struct stbtt__active_edge *next;$/;"	m	struct:stbtt__active_edge	typeref:struct:stbtt__active_edge *
 next	3rd_party/imgui/imstb_truetype.h	/^   struct stbtt__hheap_chunk *next;$/;"	m	struct:stbtt__hheap_chunk	typeref:struct:stbtt__hheap_chunk *
@@ -13795,6 +14087,7 @@ next_chunk	3rd_party/imgui/imgui_internal.h	/^    T*      next_chunk(T* p)      
 nlohmann	3rd_party/json.hpp	/^namespace nlohmann$/;"	n
 node	visualisation/include/SimulationModel.h	/^        irr::scene::ISceneNode* node;$/;"	m	struct:SimulationModel::HighPrecisionNode	typeref:typename:irr::scene::ISceneNode *
 nodes	3rd_party/imgui/imstb_truetype.h	/^   void  *nodes;$/;"	m	struct:stbtt_pack_context	typeref:typename:void *
+normal	3rd_party/bgfx_extra/bounds.h	/^	bx::Vec3 normal;$/;"	m	struct:Disk	typeref:typename:bx::Vec3
 numGlyphs	3rd_party/imgui/imstb_truetype.h	/^   int numGlyphs;                     \/\/ number of glyphs, needed for range checking$/;"	m	struct:stbtt_fontinfo	typeref:typename:int
 num_chars	3rd_party/imgui/imstb_textedit.h	/^   int num_chars;$/;"	m	struct:__anon9e551a350408	typeref:typename:int
 num_chars	3rd_party/imgui/imstb_truetype.h	/^   int num_chars;$/;"	m	struct:__anon65b4c42c0508	typeref:typename:int
@@ -14840,6 +15133,99 @@ other_error	3rd_party/json.hpp	/^class other_error : public exception$/;"	c	name
 out_of_range	3rd_party/json.hpp	/^    out_of_range(int id_, const char* what_arg) : exception(id_, what_arg) {}$/;"	f	class:nlohmann::detail::out_of_range
 out_of_range	3rd_party/json.hpp	/^class out_of_range : public exception$/;"	c	namespace:nlohmann::detail
 outputFile	tests/test_Simulation.cpp	/^static const char* outputFile = "output.json";$/;"	v	typeref:typename:const char *	file:
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Aabb& _aabb, const Capsule& _capsule)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Aabb& _aabb, const Cone& _cone)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Aabb& _aabb, const Cylinder& _cylinder)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Aabb& _aabb, const Disk& _disk)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Aabb& _aabb, const Obb& _obb)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Aabb& _aabb, const Plane& _plane)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Aabb& _aabb, const Sphere& _sphere)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Aabb& _aabb, const Triangle& _triangle)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Aabb& _aabb, const Vec3& _pos)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Aabb& _aabbA, const Aabb& _aabbB)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Capsule& _capsule, const Aabb& _aabb)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Capsule& _capsule, const Cone& _cone)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Capsule& _capsule, const Cylinder& _cylinder)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Capsule& _capsule, const Disk& _disk)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Capsule& _capsule, const Obb& _obb)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Capsule& _capsule, const Plane& _plane)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Capsule& _capsule, const Sphere& _sphere)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Capsule& _capsule, const Triangle& _triangle)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Capsule& _capsule, const Vec3& _pos)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Capsule& _capsuleA, const Capsule& _capsuleB)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cone& _cone, const Aabb& _aabb)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cone& _cone, const Capsule& _capsule)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cone& _cone, const Cylinder& _cylinder)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cone& _cone, const Disk& _disk)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cone& _cone, const Obb& _obb)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cone& _cone, const Plane& _plane)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cone& _cone, const Sphere& _sphere)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cone& _cone, const Triangle& _triangle)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cone& _cone, const Vec3& _pos)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cone& _coneA, const Cone& _coneB)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cylinder& _cylinder, const Aabb& _aabb)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cylinder& _cylinder, const Capsule& _capsule)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cylinder& _cylinder, const Cone& _cone)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cylinder& _cylinder, const Disk& _disk)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cylinder& _cylinder, const Obb& _obb)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cylinder& _cylinder, const Plane& _plane)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cylinder& _cylinder, const Sphere& _sphere)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cylinder& _cylinder, const Triangle& _triangle)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cylinder& _cylinder, const Vec3& _pos)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Cylinder& _cylinderA, const Cylinder& _cylinderB)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Disk& _disk, const Aabb& _aabb)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Disk& _disk, const Capsule& _capsule)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Disk& _disk, const Cone& _cone)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Disk& _disk, const Cylinder& _cylinder)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Disk& _disk, const Obb& _obb)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Disk& _disk, const Plane& _plane)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Disk& _disk, const Sphere& _sphere)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Disk& _disk, const Triangle& _triangle)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Disk& _disk, const Vec3& _pos)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Disk& _diskA, const Disk& _diskB)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Interval& _a, const Interval& _b)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Obb& _obb, const Aabb& _aabb)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Obb& _obb, const Capsule& _capsule)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Obb& _obb, const Cone& _cone)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Obb& _obb, const Cylinder& _cylinder)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Obb& _obb, const Disk& _disk)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Obb& _obb, const Plane& _plane)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Obb& _obb, const Sphere& _sphere)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Obb& _obb, const Triangle& _triangle)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Obb& _obb, const Vec3& _pos)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Obb& _obbA, const Obb& _obbB)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Plane& _plane, const Aabb& _aabb)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Plane& _plane, const Capsule& _capsule)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Plane& _plane, const Cone& _cone)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Plane& _plane, const Cylinder& _cylinder)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Plane& _plane, const Disk& _disk)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Plane& _plane, const Obb& _obb)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Plane& _plane, const Sphere& _sphere)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Plane& _plane, const Triangle& _triangle)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Plane& _plane, const Vec3& _pos)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Plane& _planeA, const Plane& _planeB)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Sphere& _sphere, const Aabb& _aabb)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Sphere& _sphere, const Capsule& _capsule)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Sphere& _sphere, const Cone& _cone)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Sphere& _sphere, const Cylinder& _cylinder)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Sphere& _sphere, const Disk& _disk)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Sphere& _sphere, const Obb& _obb)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Sphere& _sphere, const Plane& _plane)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Sphere& _sphere, const Triangle& _triangle)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Sphere& _sphere, const Vec3& _pos)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Sphere& _sphereA, const Sphere& _sphereB)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Triangle& _triangle, const Aabb& _aabb)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Triangle& _triangle, const Capsule& _capsule)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Triangle& _triangle, const Cone& _cone)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Triangle& _triangle, const Cylinder& _cylinder)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Triangle& _triangle, const Disk& _disk)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Triangle& _triangle, const Obb& _obb)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Triangle& _triangle, const Plane& _plane)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Triangle& _triangle, const Sphere& _sphere)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Triangle& _triangle, const Ty& _ty)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Triangle& _triangle, const Vec3& _pos)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^bool overlap(const Triangle& _triangleA, const Triangle& _triangleB)$/;"	f	typeref:typename:bool
+overlap	3rd_party/bgfx_extra/bounds.cpp	/^inline bool overlap(const Triangle& _triangleA, const Triangle& _triangleB, const Vec3& _axis)$/;"	f	typeref:typename:bool
 p	3rd_party/catch.hpp	/^            cli::pin_ptr<System::Byte> p = &bytes[0];$/;"	v	namespace:Catch::Detail	typeref:typename:cli::pin_ptr<System::Byte>
 pack_info	3rd_party/imgui/imstb_truetype.h	/^   void *pack_info;$/;"	m	struct:stbtt_pack_context	typeref:typename:void *
 padding	3rd_party/imgui/imstb_truetype.h	/^      unsigned char type,padding;$/;"	m	struct:__anon65b4c42c0708	typeref:typename:unsigned char
@@ -14852,11 +15238,19 @@ parse_error	3rd_party/json.hpp	/^class parse_error : public exception$/;"	c	name
 performOptionalSelector	3rd_party/catch.hpp	/^inline id performOptionalSelector( id obj, SEL sel ) {$/;"	f	typeref:typename:id
 pixels	3rd_party/imgui/imstb_truetype.h	/^   unsigned char *pixels;$/;"	m	struct:__anon65b4c42c0808	typeref:typename:unsigned char *
 pixels	3rd_party/imgui/imstb_truetype.h	/^   unsigned char *pixels;$/;"	m	struct:stbtt_pack_context	typeref:typename:unsigned char *
+plane	3rd_party/bgfx_extra/bounds.h	/^	bx::Plane plane;$/;"	m	struct:Hit	typeref:typename:bx::Plane
 pointer	3rd_party/json.hpp	/^    using pointer = T*;$/;"	t	namespace:nlohmann	typeref:typename:T *
 pointer	3rd_party/json.hpp	/^    using pointer = typename It::pointer;$/;"	t	namespace:nlohmann::detail	typeref:typename:It::pointer
 pop_back	3rd_party/imgui/imgui.h	/^    inline void         pop_back()                          { IM_ASSERT(Size > 0); Size--; }$/;"	f	struct:ImVector	typeref:typename:void
+pos	3rd_party/bgfx_extra/bounds.cpp	/^	Vec3 pos;$/;"	m	struct:Line	typeref:typename:Vec3	file:
+pos	3rd_party/bgfx_extra/bounds.cpp	/^	Vec3 pos;$/;"	m	struct:LineSegment	typeref:typename:Vec3	file:
+pos	3rd_party/bgfx_extra/bounds.h	/^	bx::Vec3  pos;$/;"	m	struct:Hit	typeref:typename:bx::Vec3
+pos	3rd_party/bgfx_extra/bounds.h	/^	bx::Vec3 pos;$/;"	m	struct:Capsule	typeref:typename:bx::Vec3
+pos	3rd_party/bgfx_extra/bounds.h	/^	bx::Vec3 pos;$/;"	m	struct:Cone	typeref:typename:bx::Vec3
+pos	3rd_party/bgfx_extra/bounds.h	/^	bx::Vec3 pos;$/;"	m	struct:Cylinder	typeref:typename:bx::Vec3
+pos	3rd_party/bgfx_extra/bounds.h	/^	bx::Vec3 pos;$/;"	m	struct:Ray	typeref:typename:bx::Vec3
 pos	3rd_party/imgui/imgui.h	/^    ImVec2  pos;$/;"	m	struct:ImDrawVert	typeref:typename:ImVec2
-position	visualisation/include/CameraBaseState.h	/^    chrono::ChVector<> position;$/;"	m	struct:CameraBaseState	typeref:typename:chrono::ChVector<>
+position	visualisation/include/CameraBaseState.h	/^    chrono::ChVector<> position;$/;"	m	struct:F9Sim::Graphics::CameraBaseState	typeref:typename:chrono::ChVector<>
 position_string	3rd_party/json.hpp	/^    static std::string position_string(const position_t& pos)$/;"	f	class:nlohmann::detail::parse_error	typeref:typename:std::string
 position_t	3rd_party/json.hpp	/^struct position_t$/;"	s	namespace:nlohmann::detail
 position_world	build/dev/simulation/output.json	/^                "position_world": [$/;"	a	object:history.0.falcon9
@@ -15882,6 +16276,9 @@ priority_tag	3rd_party/json.hpp	/^template<> struct priority_tag<0> {};$/;"	s	na
 priority_tag	3rd_party/json.hpp	/^template<unsigned N> struct priority_tag : priority_tag < N - 1 > {};$/;"	s	namespace:nlohmann::detail
 process	simulation/src/FlightComputer.cpp	/^ControlProfile FlightComputer::process(const SensorReadings& readings) {$/;"	f	class:Software::FlightComputer	typeref:typename:ControlProfile
 proggy_clean_ttf_compressed_data_base85	3rd_party/imgui/imgui_draw.cpp	/^static const char proggy_clean_ttf_compressed_data_base85[11980+1] =$/;"	v	typeref:typename:const char[]	file:
+projectToAxis	3rd_party/bgfx_extra/bounds.cpp	/^Interval projectToAxis(const Vec3& _axis, const Aabb& _aabb)$/;"	f	typeref:typename:Interval
+projectToAxis	3rd_party/bgfx_extra/bounds.cpp	/^Interval projectToAxis(const Vec3& _axis, const Triangle& _triangle)$/;"	f	typeref:typename:Interval
+projectToAxis	3rd_party/bgfx_extra/bounds.cpp	/^float projectToAxis(const Vec3& _axis, const Vec3& _point)$/;"	f	typeref:typename:float
 ptr_from_offset	3rd_party/imgui/imgui_internal.h	/^    T*      ptr_from_offset(int off)    { IM_ASSERT(off >= 4 && off < Buf.Size); return (T*)(voi/;"	f	struct:ImChunkStream	typeref:typename:T *
 push_back	3rd_party/imgui/imgui.h	/^    inline void         push_back(const T& v)               { if (Size == Capacity) reserve(_gro/;"	f	struct:ImVector	typeref:typename:void
 push_front	3rd_party/imgui/imgui.h	/^    inline void         push_front(const T& v)              { if (Size == 0) push_back(v); else /;"	f	struct:ImVector	typeref:typename:void
@@ -15892,6 +16289,11 @@ qnxnto	build/dev/CMakeFiles/3.17.3/CompilerIdC/CMakeCCompilerId.c	/^char const* 
 qnxnto	build/dev/CMakeFiles/3.17.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v	typeref:typename:char const *
 qnxnto	build/release/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v	typeref:typename:char const *
 qnxnto	build/release/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v	typeref:typename:char const *
+radius	3rd_party/bgfx_extra/bounds.h	/^	float    radius;$/;"	m	struct:Capsule	typeref:typename:float
+radius	3rd_party/bgfx_extra/bounds.h	/^	float    radius;$/;"	m	struct:Cone	typeref:typename:float
+radius	3rd_party/bgfx_extra/bounds.h	/^	float    radius;$/;"	m	struct:Cylinder	typeref:typename:float
+radius	3rd_party/bgfx_extra/bounds.h	/^	float    radius;$/;"	m	struct:Disk	typeref:typename:float
+radius	3rd_party/bgfx_extra/bounds.h	/^	float    radius;$/;"	m	struct:Sphere	typeref:typename:float
 rangeToString	3rd_party/catch.hpp	/^        std::string rangeToString(InputIterator first, InputIterator last) {$/;"	f	namespace:Catch::Detail	typeref:typename:std::string
 rawMemoryToString	3rd_party/catch.hpp	/^        std::string rawMemoryToString( const T& object ) {$/;"	f	namespace:Catch::Detail	typeref:typename:std::string
 readSensors	simulation/src/Falcon9/Falcon9_Vehicle.cpp	/^SensorReadings Falcon9_Vehicle::readSensors() const {$/;"	f	class:Hardware::Falcon9_Vehicle	typeref:typename:SensorReadings
@@ -15916,46 +16318,48 @@ redo_point	3rd_party/imgui/imstb_textedit.h	/^   short undo_point, redo_point;$/
 reference	3rd_party/json.hpp	/^    using reference = T&;$/;"	t	namespace:nlohmann	typeref:typename:T &
 reference	3rd_party/json.hpp	/^    using reference = typename It::reference;$/;"	t	namespace:nlohmann::detail	typeref:typename:It::reference
 registerEnum	3rd_party/catch.hpp	/^        Detail::EnumInfo const& registerEnum( StringRef enumName, StringRef allEnums, std::initi/;"	f	struct:Catch::IMutableEnumValuesRegistry	typeref:typename:Detail::EnumInfo const &
-registerHandleTo	visualisation/src/CameraSystem.cpp	/^void CameraSystem::registerHandleTo(CameraBaseState& cameraState, const std::string& name) {$/;"	f	class:CameraSystem	typeref:typename:void
-render	visualisation/src/Application.cpp	/^void Application::render() {$/;"	f	class:GF::Application	typeref:typename:void
+registerHandleTo	visualisation/src/CameraSystem.cpp	/^void CameraSystem::registerHandleTo(CameraBaseState& cameraState, const std::string& name) {$/;"	f	class:F9Sim::Graphics::CameraSystem	typeref:typename:void
 reserve	3rd_party/imgui/imgui.h	/^    inline void         reserve(int new_capacity)           { if (new_capacity <= Capacity) retu/;"	f	struct:ImVector	typeref:typename:void
 reserve	3rd_party/imgui/imgui.h	/^    void                reserve(int capacity)   { Buf.reserve(capacity); }$/;"	f	struct:ImGuiTextBuffer	typeref:typename:void
+reset	3rd_party/bgfx_extra/bgfx_utils.cpp	/^void Group::reset()$/;"	f	class:Group	typeref:typename:void
 resize	3rd_party/imgui/imgui.h	/^    inline void         resize(int new_size)                { if (new_size > Capacity) reserve(_/;"	f	struct:ImVector	typeref:typename:void
 resize	3rd_party/imgui/imgui.h	/^    inline void         resize(int new_size, const T& v)    { if (new_size > Capacity) reserve(_/;"	f	struct:ImVector	typeref:typename:void
 resize_border_def	3rd_party/imgui/imgui.cpp	/^static const ImGuiResizeBorderDef resize_border_def[4] =$/;"	v	typeref:typename:const ImGuiResizeBorderDef[4]	file:
 resize_grip_def	3rd_party/imgui/imgui.cpp	/^static const ImGuiResizeGripDef resize_grip_def[4] =$/;"	v	typeref:typename:const ImGuiResizeGripDef[4]	file:
 resultDisposition	3rd_party/catch.hpp	/^        ResultDisposition::Flags resultDisposition;$/;"	m	struct:Catch::AssertionInfo	typeref:typename:ResultDisposition::Flags
+rotation	3rd_party/bgfx_extra/bounds.cpp	/^	Quaternion rotation;$/;"	m	struct:Srt	typeref:typename:Quaternion	file:
 run	simulation/src/Simulation.cpp	/^void Simulation::run() {$/;"	f	class:Simulation	typeref:typename:void
-run	visualisation/src/Application.cpp	/^void Application::run() {$/;"	f	class:GF::Application	typeref:typename:void
 s0	3rd_party/imgui/imstb_truetype.h	/^   float x0,y0,s0,t0; \/\/ top-left$/;"	m	struct:__anon65b4c42c0308	typeref:typename:float
 s1	3rd_party/imgui/imstb_truetype.h	/^   float x1,y1,s1,t1; \/\/ bottom-right$/;"	m	struct:__anon65b4c42c0308	typeref:typename:float
-sActiveCamera	visualisation/include/CameraSystem.h	/^    static CameraHandle sActiveCamera;$/;"	m	class:CameraSystem	typeref:typename:CameraHandle
-sActiveCamera	visualisation/src/CameraSystem.cpp	/^CameraSystem::CameraHandle CameraSystem::sActiveCamera;$/;"	m	class:CameraSystem	typeref:typename:CameraSystem::CameraHandle
-sAspectRatio	visualisation/include/CameraSystem.h	/^    static float sAspectRatio;$/;"	m	class:CameraSystem	typeref:typename:float
-sAspectRatio	visualisation/src/CameraSystem.cpp	/^float CameraSystem::sAspectRatio = 1.0f;$/;"	m	class:CameraSystem	typeref:typename:float
-sCameraHandles	visualisation/include/CameraSystem.h	/^    static std::vector<CameraHandle> sCameraHandles;$/;"	m	class:CameraSystem	typeref:typename:std::vector<CameraHandle>
-sCameraHandles	visualisation/src/CameraSystem.cpp	/^std::vector<CameraSystem::CameraHandle> CameraSystem::sCameraHandles;$/;"	m	class:CameraSystem	typeref:typename:std::vector<CameraSystem::CameraHandle>
-sInitialised	visualisation/include/CameraSystem.h	/^    static bool sInitialised;$/;"	m	class:CameraSystem	typeref:typename:bool
-sInitialised	visualisation/src/CameraSystem.cpp	/^bool CameraSystem::sInitialised = false;$/;"	m	class:CameraSystem	typeref:typename:bool
-sIrrlichtCam	visualisation/include/CameraSystem.h	/^    static irr::scene::ICameraSceneNode* sIrrlichtCam;$/;"	m	class:CameraSystem	typeref:typename:irr::scene::ICameraSceneNode *
-sIrrlichtCam	visualisation/src/CameraSystem.cpp	/^irr::scene::ICameraSceneNode* CameraSystem::sIrrlichtCam = nullptr;$/;"	m	class:CameraSystem	typeref:typename:irr::scene::ICameraSceneNode *
+sActiveCamera	visualisation/include/CameraSystem.h	/^CameraHandle sActiveCamera;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:CameraHandle
+sAspectRatio	visualisation/include/CameraSystem.h	/^float sAspectRatio;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:float
+sCameraHandles	visualisation/include/CameraSystem.h	/^std::vector<CameraHandle> sCameraHandles;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:std::vector<CameraHandle>
+sCameraHandles	visualisation/src/CameraSystem.cpp	/^std::vector<CameraSystem::CameraHandle> sCameraHandles;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:std::vector<CameraSystem::CameraHandle>
+sInitialised	visualisation/include/CameraSystem.h	/^bool sInitialised;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:bool
+sIrrlichtCam	visualisation/include/CameraSystem.h	/^irr::scene::ICameraSceneNode* sIrrlichtCam;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:irr::scene::ICameraSceneNode *
+s_activeCamera	visualisation/src/CameraSystem.cpp	/^CameraSystem::CameraHandle s_activeCamera;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:CameraSystem::CameraHandle
+s_aspectRatio	visualisation/src/CameraSystem.cpp	/^float s_aspectRatio = 1.0f;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:float
+s_cubeTriList	visualisation/src/OBJModel.cpp	/^static const uint16_t s_cubeTriList[] = {$/;"	v	namespace:F9Sim::Graphics	typeref:typename:const uint16_t[]	file:
+s_cubeVertices	visualisation/src/OBJModel.cpp	/^static PosColorVertex s_cubeVertices[] = {$/;"	v	namespace:F9Sim::Graphics	typeref:typename:PosColorVertex[]	file:
+s_embeddedShaders	3rd_party/imgui/imgui_impl_bgfx.cpp	/^static const bgfx::EmbeddedShader s_embeddedShaders[] = {$/;"	v	typeref:typename:const bgfx::EmbeddedShader[]	file:
 s_empty	3rd_party/catch.hpp	/^        static constexpr char const* const s_empty = "";$/;"	m	class:Catch::StringRef	typeref:typename:char const * const
 s_height	visualisation/src/Visualisation.cpp	/^static int s_height = 0;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:int	file:
-s_showStats	visualisation/src/main_old.cpp	/^static bool s_showStats = false;$/;"	v	typeref:typename:bool	file:
+s_initialised	visualisation/src/CameraSystem.cpp	/^bool s_initialised = false;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:bool
+s_irrlichtCam	visualisation/src/CameraSystem.cpp	/^irr::scene::ICameraSceneNode* s_irrlichtCam = nullptr;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:irr::scene::ICameraSceneNode *
 s_width	visualisation/src/Visualisation.cpp	/^static int s_width = 0;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:int	file:
 s_window	visualisation/src/Visualisation.cpp	/^static GLFWwindow* s_window = nullptr;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:GLFWwindow *	file:
 saveSnapshotTo	simulation/src/Falcon9/Falcon9_Vehicle.cpp	/^void Falcon9_Vehicle::saveSnapshotTo(nlohmann::json& snapshot) const {$/;"	f	class:Hardware::Falcon9_Vehicle	typeref:typename:void
 saveSnapshotTo	simulation/src/Simulation.cpp	/^void Simulation::saveSnapshotTo(nlohmann::json& history) const {$/;"	f	class:Simulation	typeref:typename:void
+scale	3rd_party/bgfx_extra/bounds.cpp	/^	Vec3       scale;$/;"	m	struct:Srt	typeref:typename:Vec3	file:
 select_end	3rd_party/imgui/imstb_textedit.h	/^   int select_end;$/;"	m	struct:__anon9e551a350308	typeref:typename:int
 select_start	3rd_party/imgui/imstb_textedit.h	/^   int select_start;          \/\/ selection start point$/;"	m	struct:__anon9e551a350308	typeref:typename:int
-setAspectRatio	visualisation/src/CameraSystem.cpp	/^void CameraSystem::setAspectRatio(float aspectRatio) {$/;"	f	class:CameraSystem	typeref:typename:void
+setAspectRatio	visualisation/src/CameraSystem.cpp	/^void CameraSystem::setAspectRatio(float aspectRatio) {$/;"	f	class:F9Sim::Graphics::CameraSystem	typeref:typename:void
+setClearColour	visualisation/include/Window.h	/^		void setClearColour(glm::vec4 newClearColour) { mClearColour = newClearColour; }$/;"	f	class:GF::Window	typeref:typename:void
 setControlProfile	simulation/src/Falcon9/Falcon9_Vehicle.cpp	/^void Falcon9_Vehicle::setControlProfile(const ControlProfile& p) {$/;"	f	class:Hardware::Falcon9_Vehicle	typeref:typename:void
-setDimensions	visualisation/src/Window.cpp	/^void Window::setDimensions(glm::ivec2 dimensions) {$/;"	f	class:GF::Window	typeref:typename:void
-setIcon	visualisation/src/Window.cpp	/^void Window::setIcon(const std::string& iconPath) {$/;"	f	class:GF::Window	typeref:typename:void
+setTransform	visualisation/src/OBJModel.cpp	/^void OBJModel::setTransform(const chrono::ChCoordsys<>& transform_world) {$/;"	f	class:F9Sim::Graphics::OBJModel	typeref:typename:void
 setWindowPosition	visualisation/include/Application.h	/^    void setWindowPosition(glm::ivec2 newPosition) const { glfwSetWindowPos(mWindow.getHandle(),/;"	f	class:GF::Application	typeref:typename:void
 shrink	3rd_party/imgui/imgui.h	/^    inline void         shrink(int new_size)                { IM_ASSERT(new_size <= Size); Size /;"	f	struct:ImVector	typeref:typename:void
 shutdown	visualisation/src/Visualisation.cpp	/^static void shutdown() {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:void	file:
-shutdown	visualisation/src/helloworld.cpp	/^    virtual int shutdown() override {$/;"	f	class:__anon491389030111::ExampleHelloWorld	typeref:typename:int	file:
 sim	tests/test_Simulation.cpp	/^        Simulation sim;$/;"	v	typeref:typename:Simulation
 simulation/CMakeFiles/f9sim-simulation-lib.dir/rule	build/dev/simulation/Makefile	/^simulation\/CMakeFiles\/f9sim-simulation-lib.dir\/rule:$/;"	t
 simulation/CMakeFiles/f9sim-simulation-lib.dir/rule	build/release/simulation/Makefile	/^simulation\/CMakeFiles\/f9sim-simulation-lib.dir\/rule:$/;"	t
@@ -15986,6 +16390,12 @@ src/FlightComputer.cpp.s	build/dev/simulation/Makefile	/^src\/FlightComputer.cpp
 src/FlightComputer.i	build/dev/simulation/Makefile	/^src\/FlightComputer.i: src\/FlightComputer.cpp.i$/;"	t
 src/FlightComputer.o	build/dev/simulation/Makefile	/^src\/FlightComputer.o: src\/FlightComputer.cpp.o$/;"	t
 src/FlightComputer.s	build/dev/simulation/Makefile	/^src\/FlightComputer.s: src\/FlightComputer.cpp.s$/;"	t
+src/OBJModel.cpp.i	build/dev/visualisation/Makefile	/^src\/OBJModel.cpp.i:$/;"	t
+src/OBJModel.cpp.o	build/dev/visualisation/Makefile	/^src\/OBJModel.cpp.o:$/;"	t
+src/OBJModel.cpp.s	build/dev/visualisation/Makefile	/^src\/OBJModel.cpp.s:$/;"	t
+src/OBJModel.i	build/dev/visualisation/Makefile	/^src\/OBJModel.i: src\/OBJModel.cpp.i$/;"	t
+src/OBJModel.o	build/dev/visualisation/Makefile	/^src\/OBJModel.o: src\/OBJModel.cpp.o$/;"	t
+src/OBJModel.s	build/dev/visualisation/Makefile	/^src\/OBJModel.s: src\/OBJModel.cpp.s$/;"	t
 src/Simulation.cpp.i	build/dev/simulation/Makefile	/^src\/Simulation.cpp.i:$/;"	t
 src/Simulation.cpp.i	build/release/simulation/Makefile	/^src\/Simulation.cpp.i:$/;"	t
 src/Simulation.cpp.o	build/dev/simulation/Makefile	/^src\/Simulation.cpp.o:$/;"	t
@@ -15998,6 +16408,12 @@ src/Simulation.o	build/dev/simulation/Makefile	/^src\/Simulation.o: src\/Simulat
 src/Simulation.o	build/release/simulation/Makefile	/^src\/Simulation.o: src\/Simulation.cpp.o$/;"	t
 src/Simulation.s	build/dev/simulation/Makefile	/^src\/Simulation.s: src\/Simulation.cpp.s$/;"	t
 src/Simulation.s	build/release/simulation/Makefile	/^src\/Simulation.s: src\/Simulation.cpp.s$/;"	t
+src/Visualisation.cpp.i	build/dev/visualisation/Makefile	/^src\/Visualisation.cpp.i:$/;"	t
+src/Visualisation.cpp.o	build/dev/visualisation/Makefile	/^src\/Visualisation.cpp.o:$/;"	t
+src/Visualisation.cpp.s	build/dev/visualisation/Makefile	/^src\/Visualisation.cpp.s:$/;"	t
+src/Visualisation.i	build/dev/visualisation/Makefile	/^src\/Visualisation.i: src\/Visualisation.cpp.i$/;"	t
+src/Visualisation.o	build/dev/visualisation/Makefile	/^src\/Visualisation.o: src\/Visualisation.cpp.o$/;"	t
+src/Visualisation.s	build/dev/visualisation/Makefile	/^src\/Visualisation.s: src\/Visualisation.cpp.s$/;"	t
 src/main.cpp.i	build/dev/simulation/Makefile	/^src\/main.cpp.i:$/;"	t
 src/main.cpp.i	build/dev/visualisation/Makefile	/^src\/main.cpp.i:$/;"	t
 src/main.cpp.i	build/release/simulation/Makefile	/^src\/main.cpp.i:$/;"	t
@@ -16022,6 +16438,7 @@ src/main.s	build/dev/simulation/Makefile	/^src\/main.s: src\/main.cpp.s$/;"	t
 src/main.s	build/dev/visualisation/Makefile	/^src\/main.s: src\/main.cpp.s$/;"	t
 src/main.s	build/release/simulation/Makefile	/^src\/main.s: src\/main.cpp.s$/;"	t
 src/main.s	build/release/visualisation/Makefile	/^src\/main.s: src\/main.cpp.s$/;"	t
+start	3rd_party/bgfx_extra/bounds.cpp	/^	float start;$/;"	m	struct:Interval	typeref:typename:float	file:
 started	3rd_party/imgui/imstb_truetype.h	/^   int started;$/;"	m	struct:__anon65b4c42c0f08	typeref:typename:int
 static_const	3rd_party/json.hpp	/^struct static_const$/;"	s	namespace:nlohmann::detail
 stb__barrier_in_b	3rd_party/imgui/imgui_draw.cpp	/^static const unsigned char *stb__barrier_in_b;$/;"	v	typeref:typename:const unsigned char *	file:
@@ -16252,6 +16669,8 @@ stride	3rd_party/imgui/imstb_truetype.h	/^   int w,h,stride;$/;"	m	struct:__anon
 stride_in_bytes	3rd_party/imgui/imstb_truetype.h	/^   int   stride_in_bytes;$/;"	m	struct:stbtt_pack_context	typeref:typename:int
 stringify	3rd_party/catch.hpp	/^        inline std::string stringify( NSString* nsstring ) {$/;"	f	namespace:Catch::Detail	typeref:typename:std::string
 stringify	3rd_party/catch.hpp	/^        std::string stringify(const T& e) {$/;"	f	namespace:Catch::Detail	typeref:typename:std::string
+submit	3rd_party/bgfx_extra/bgfx_utils.cpp	/^void Mesh::submit(bgfx::ViewId _id, bgfx::ProgramHandle _program, const float* _mtx, uint64_t _s/;"	f	class:Mesh	typeref:typename:void
+submit	3rd_party/bgfx_extra/bgfx_utils.cpp	/^void Mesh::submit(const MeshState*const* _state, uint8_t _numPasses, const float* _mtx, uint16_t/;"	f	class:Mesh	typeref:typename:void
 subrs	3rd_party/imgui/imstb_truetype.h	/^   stbtt__buf subrs;                  \/\/ private charstring subroutines index$/;"	m	struct:stbtt_fontinfo	typeref:typename:stbtt__buf
 swap	3rd_party/imgui/imgui.h	/^    inline void         swap(ImVector<T>& rhs)              { int rhs_size = rhs.Size; rhs.Size /;"	f	struct:ImVector	typeref:typename:void
 sy	3rd_party/imgui/imstb_truetype.h	/^   float sy;$/;"	m	struct:stbtt__active_edge	typeref:typename:float
@@ -17275,7 +17694,19 @@ time_s	build/dev/simulation/output.json	/^            "time_s": 9.96999999999983
 time_s	build/dev/simulation/output.json	/^            "time_s": 9.979999999999832$/;"	n	object:history.998
 time_s	build/dev/simulation/output.json	/^            "time_s": 9.989999999999831$/;"	n	object:history.999
 time_s	build/dev/simulation/output.json	/^            "time_s": 9.999999999999831$/;"	n	object:history.1000
+toAabb	3rd_party/bgfx_extra/bounds.cpp	/^void toAabb(Aabb& _outAabb, const Cylinder& _cylinder)$/;"	f	typeref:typename:void
+toAabb	3rd_party/bgfx_extra/bounds.cpp	/^void toAabb(Aabb& _outAabb, const Disk& _disk)$/;"	f	typeref:typename:void
+toAabb	3rd_party/bgfx_extra/bounds.cpp	/^void toAabb(Aabb& _outAabb, const Obb& _obb)$/;"	f	typeref:typename:void
+toAabb	3rd_party/bgfx_extra/bounds.cpp	/^void toAabb(Aabb& _outAabb, const Sphere& _sphere)$/;"	f	typeref:typename:void
+toAabb	3rd_party/bgfx_extra/bounds.cpp	/^void toAabb(Aabb& _outAabb, const Triangle& _triangle)$/;"	f	typeref:typename:void
+toAabb	3rd_party/bgfx_extra/bounds.cpp	/^void toAabb(Aabb& _outAabb, const Vec3& _center, const Vec3& _extents)$/;"	f	typeref:typename:void
+toAabb	3rd_party/bgfx_extra/bounds.cpp	/^void toAabb(Aabb& _outAabb, const Vec3& _extents)$/;"	f	typeref:typename:void
+toAabb	3rd_party/bgfx_extra/bounds.cpp	/^void toAabb(Aabb& _outAabb, const float* _mtx, const void* _vertices, uint32_t _numVertices, uin/;"	f	typeref:typename:void
+toAabb	3rd_party/bgfx_extra/bounds.cpp	/^void toAabb(Aabb& _outAabb, const void* _vertices, uint32_t _numVertices, uint32_t _stride)$/;"	f	typeref:typename:void
+toObb	3rd_party/bgfx_extra/bounds.cpp	/^void toObb(Obb& _outObb, const Aabb& _aabb)$/;"	f	typeref:typename:void
+toSrt	3rd_party/bgfx_extra/bounds.cpp	/^Srt toSrt(const void* _mtx)$/;"	f	typeref:typename:Srt
 transform_world	visualisation/include/SimulationModel.h	/^        chrono::Coordsys transform_world;$/;"	m	struct:SimulationModel::HighPrecisionNode	typeref:typename:chrono::Coordsys
+translation	3rd_party/bgfx_extra/bounds.cpp	/^	Vec3       translation;$/;"	m	struct:Srt	typeref:typename:Vec3	file:
 true_given	3rd_party/catch.hpp	/^    template <typename> struct true_given : std::true_type {};$/;"	s	namespace:Catch
 ttBYTE	3rd_party/imgui/imstb_truetype.h	/^#define ttBYTE(/;"	d
 ttCHAR	3rd_party/imgui/imstb_truetype.h	/^#define ttCHAR(/;"	d
@@ -17295,17 +17726,20 @@ undo_char_point	3rd_party/imgui/imstb_textedit.h	/^   int undo_char_point, redo_
 undo_point	3rd_party/imgui/imstb_textedit.h	/^   short undo_point, redo_point;$/;"	m	struct:__anon9e551a350208	typeref:typename:short
 undo_rec	3rd_party/imgui/imstb_textedit.h	/^   StbUndoRecord          undo_rec [STB_TEXTEDIT_UNDOSTATECOUNT];$/;"	m	struct:__anon9e551a350208	typeref:typename:StbUndoRecord[]
 undostate	3rd_party/imgui/imstb_textedit.h	/^   StbUndoState undostate;$/;"	m	struct:__anon9e551a350308	typeref:typename:StbUndoState
-up	visualisation/include/CameraBaseState.h	/^    chrono::ChVector<> up;$/;"	m	struct:CameraBaseState	typeref:typename:chrono::ChVector<>
+unload	3rd_party/bgfx_extra/bgfx_utils.cpp	/^void Mesh::unload()$/;"	f	class:Mesh	typeref:typename:void
+unload	3rd_party/bgfx_extra/bgfx_utils.cpp	/^void unload(void* _ptr)$/;"	f	typeref:typename:void
+up	visualisation/include/CameraBaseState.h	/^    chrono::ChVector<> up;$/;"	m	struct:F9Sim::Graphics::CameraBaseState	typeref:typename:chrono::ChVector<>
 update	visualisation/src/FPVCamera.cpp	/^void FPVCamera::update(double dt) {$/;"	f	class:FPVCamera	typeref:typename:void
 update	visualisation/src/Scene.cpp	/^void Scene::update(float aspectRatio, double dt) {$/;"	f	class:Scene	typeref:typename:void
-update	visualisation/src/Window.cpp	/^void Window::update() const {$/;"	f	class:GF::Window	typeref:typename:void
-update	visualisation/src/helloworld.cpp	/^    bool update() override {$/;"	f	class:__anon491389030111::ExampleHelloWorld	typeref:typename:bool	file:
 updateAllNodeTransforms	visualisation/src/SimulationModel.cpp	/^void SimulationModel::updateAllNodeTransforms() {$/;"	f	class:SimulationModel	typeref:typename:void
-updateIrrlichtCamera	visualisation/src/CameraSystem.cpp	/^void CameraSystem::updateIrrlichtCamera() {$/;"	f	class:CameraSystem	typeref:typename:void
+updateIrrlichtCamera	visualisation/src/CameraSystem.cpp	/^void CameraSystem::updateIrrlichtCamera() {$/;"	f	class:F9Sim::Graphics::CameraSystem	typeref:typename:void
 updateTime	visualisation/src/Animation.cpp	/^void Animation::updateTime(double time_s) {$/;"	f	class:Animation	typeref:typename:void
 user_allocator_context	3rd_party/imgui/imstb_truetype.h	/^   void *user_allocator_context;$/;"	m	struct:stbtt_pack_context	typeref:typename:void *
 userdata	3rd_party/imgui/imstb_truetype.h	/^   void           * userdata;$/;"	m	struct:stbtt_fontinfo	typeref:typename:void *
 uv	3rd_party/imgui/imgui.h	/^    ImVec2  uv;$/;"	m	struct:ImDrawVert	typeref:typename:ImVec2
+v0	3rd_party/bgfx_extra/bounds.h	/^	bx::Vec3 v0;$/;"	m	struct:Triangle	typeref:typename:bx::Vec3
+v1	3rd_party/bgfx_extra/bounds.h	/^	bx::Vec3 v1;$/;"	m	struct:Triangle	typeref:typename:bx::Vec3
+v2	3rd_party/bgfx_extra/bounds.h	/^	bx::Vec3 v2;$/;"	m	struct:Triangle	typeref:typename:bx::Vec3
 v_oversample	3rd_party/imgui/imstb_truetype.h	/^   unsigned char h_oversample, v_oversample; \/\/ don't set these, they're used internally$/;"	m	struct:__anon65b4c42c0508	typeref:typename:unsigned char
 v_oversample	3rd_party/imgui/imstb_truetype.h	/^   unsigned int   h_oversample, v_oversample;$/;"	m	struct:stbtt_pack_context	typeref:typename:unsigned int
 va_copy	3rd_party/imgui/imgui.cpp	/^#define va_copy(/;"	d	file:
@@ -17319,7 +17753,7 @@ value_type	3rd_party/imgui/imgui.h	/^    typedef T                   value_type;
 value_type	3rd_party/json.hpp	/^    using value_type = T;$/;"	v	namespace:nlohmann	typeref:struct:iterator_traits using
 value_type	3rd_party/json.hpp	/^    using value_type = std::size_t;$/;"	t	struct:nlohmann::detail::index_sequence	typeref:typename:std::size_t
 value_type	3rd_party/json.hpp	/^    using value_type = typename It::value_type;$/;"	v	namespace:nlohmann::detail	typeref:struct:iterator_types using
-verticalFOV	visualisation/include/CameraBaseState.h	/^    float verticalFOV;$/;"	m	struct:CameraBaseState	typeref:typename:float
+verticalFOV	visualisation/include/CameraBaseState.h	/^    float verticalFOV;$/;"	m	struct:F9Sim::Graphics::CameraBaseState	typeref:typename:float
 visualisation/CMakeFiles/copy_resources.dir/rule	build/dev/visualisation/Makefile	/^visualisation\/CMakeFiles\/copy_resources.dir\/rule:$/;"	t
 visualisation/CMakeFiles/f9sim-visualisation.dir/rule	build/dev/visualisation/Makefile	/^visualisation\/CMakeFiles\/f9sim-visualisation.dir\/rule:$/;"	t
 visualisation/CMakeFiles/f9sim-visualisation.dir/rule	build/release/visualisation/Makefile	/^visualisation\/CMakeFiles\/f9sim-visualisation.dir\/rule:$/;"	t
@@ -17327,6 +17761,11 @@ void_t	3rd_party/json.hpp	/^template <typename ...Ts> using void_t = typename ma
 volatile	build/dev/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define volatile$/;"	d	file:
 volatile	build/dev/CMakeFiles/3.17.3/CompilerIdC/CMakeCCompilerId.c	/^# define volatile$/;"	d	file:
 volatile	build/release/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^# define volatile$/;"	d	file:
+vs_ocornut_imgui_dx11	3rd_party/imgui/vs_ocornut_imgui.bin.h	/^static const uint8_t vs_ocornut_imgui_dx11[618] =$/;"	v	typeref:typename:const uint8_t[618]
+vs_ocornut_imgui_dx9	3rd_party/imgui/vs_ocornut_imgui.bin.h	/^static const uint8_t vs_ocornut_imgui_dx9[365] =$/;"	v	typeref:typename:const uint8_t[365]
+vs_ocornut_imgui_glsl	3rd_party/imgui/vs_ocornut_imgui.bin.h	/^static const uint8_t vs_ocornut_imgui_glsl[527] =$/;"	v	typeref:typename:const uint8_t[527]
+vs_ocornut_imgui_mtl	3rd_party/imgui/vs_ocornut_imgui.bin.h	/^static const uint8_t vs_ocornut_imgui_mtl[889] =$/;"	v	typeref:typename:const uint8_t[889]
+vs_ocornut_imgui_spv	3rd_party/imgui/vs_ocornut_imgui.bin.h	/^static const uint8_t vs_ocornut_imgui_spv[1334] =$/;"	v	typeref:typename:const uint8_t[1334]
 vsnprintf	3rd_party/imgui/imgui.cpp	/^#define vsnprintf /;"	d	file:
 vsnprintf	3rd_party/imgui/imgui_demo.cpp	/^#define vsnprintf /;"	d	file:
 w	3rd_party/imgui/imgui.h	/^    float                                   x, y, z, w;$/;"	m	struct:ImVec4	typeref:typename:float
@@ -17397,7 +17836,6 @@ yoff	3rd_party/imgui/imstb_truetype.h	/^   float xoff,yoff,xadvance;$/;"	m	struc
 yoff	3rd_party/imgui/imstb_truetype.h	/^   float xoff,yoff,xadvance;$/;"	m	struct:__anon65b4c42c0408	typeref:typename:float
 yoff2	3rd_party/imgui/imstb_truetype.h	/^   float xoff2,yoff2;$/;"	m	struct:__anon65b4c42c0408	typeref:typename:float
 z	3rd_party/imgui/imgui.h	/^    float                                   x, y, z, w;$/;"	m	struct:ImVec4	typeref:typename:float
-~Application	visualisation/src/Application.cpp	/^Application::~Application() {$/;"	f	class:GF::Application
 ~ExampleAppConsole	3rd_party/imgui/imgui_demo.cpp	/^    ~ExampleAppConsole()$/;"	f	struct:ExampleAppConsole	file:
 ~ImDrawData	3rd_party/imgui/imgui.h	/^    ~ImDrawData()   { Clear(); }$/;"	f	struct:ImDrawData
 ~ImDrawList	3rd_party/imgui/imgui.h	/^    ~ImDrawList() { ClearFreeMemory(); }$/;"	f	struct:ImDrawList
@@ -17408,4 +17846,4 @@ z	3rd_party/imgui/imgui.h	/^    float                                   x, y, z,
 ~ImGuiWindow	3rd_party/imgui/imgui.cpp	/^ImGuiWindow::~ImGuiWindow()$/;"	f	class:ImGuiWindow
 ~ImPool	3rd_party/imgui/imgui_internal.h	/^    ~ImPool()   { Clear(); }$/;"	f	struct:ImPool
 ~ImVector	3rd_party/imgui/imgui.h	/^    inline ~ImVector()                                      { if (Data) IM_FREE(Data); }$/;"	f	struct:ImVector
-~Window	visualisation/src/Window.cpp	/^Window::~Window() {$/;"	f	class:GF::Window
+~OBJModel	visualisation/src/OBJModel.cpp	/^OBJModel::~OBJModel() {$/;"	f	class:F9Sim::Graphics::OBJModel
