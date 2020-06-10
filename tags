@@ -16340,12 +16340,12 @@ sIrrlichtCam	visualisation/include/CameraSystem.h	/^irr::scene::ICameraSceneNode
 s_activeCamera	visualisation/src/CameraSystem.cpp	/^CameraSystem::CameraHandle s_activeCamera;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:CameraSystem::CameraHandle
 s_aspectRatio	visualisation/src/CameraSystem.cpp	/^float s_aspectRatio = 1.0f;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:float
 s_cubeTriList	visualisation/src/OBJModel.cpp	/^static const uint16_t s_cubeTriList[] = {$/;"	v	namespace:F9Sim::Graphics	typeref:typename:const uint16_t[]	file:
-s_cubeVertices	visualisation/src/OBJModel.cpp	/^static PosColorVertex s_cubeVertices[] = {$/;"	v	namespace:F9Sim::Graphics	typeref:typename:PosColorVertex[]	file:
 s_embeddedShaders	3rd_party/imgui/imgui_impl_bgfx.cpp	/^static const bgfx::EmbeddedShader s_embeddedShaders[] = {$/;"	v	typeref:typename:const bgfx::EmbeddedShader[]	file:
 s_empty	3rd_party/catch.hpp	/^        static constexpr char const* const s_empty = "";$/;"	m	class:Catch::StringRef	typeref:typename:char const * const
 s_height	visualisation/src/Visualisation.cpp	/^static int s_height = 0;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:int	file:
 s_initialised	visualisation/src/CameraSystem.cpp	/^bool s_initialised = false;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:bool
 s_irrlichtCam	visualisation/src/CameraSystem.cpp	/^irr::scene::ICameraSceneNode* s_irrlichtCam = nullptr;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:irr::scene::ICameraSceneNode *
+s_squareVertices	visualisation/src/OBJModel.cpp	/^static PosColorVertex s_squareVertices[] = {$/;"	v	namespace:F9Sim::Graphics	typeref:typename:PosColorVertex[]	file:
 s_width	visualisation/src/Visualisation.cpp	/^static int s_width = 0;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:int	file:
 s_window	visualisation/src/Visualisation.cpp	/^static GLFWwindow* s_window = nullptr;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:GLFWwindow *	file:
 saveSnapshotTo	simulation/src/Falcon9/Falcon9_Vehicle.cpp	/^void Falcon9_Vehicle::saveSnapshotTo(nlohmann::json& snapshot) const {$/;"	f	class:Hardware::Falcon9_Vehicle	typeref:typename:void

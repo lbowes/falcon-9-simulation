@@ -17,7 +17,9 @@ bgfx::ShaderHandle loadShader(const char* _name) {
     char* data = new char[2048];
     std::ifstream file;
     size_t fileSize;
+
     file.open(_name);
+
     if(file.is_open()) {
         file.seekg(0, std::ios::end);
         fileSize = file.tellg();
@@ -25,16 +27,18 @@ bgfx::ShaderHandle loadShader(const char* _name) {
         file.read(data, fileSize);
         file.close();
     }
+
     const bgfx::Memory* mem = bgfx::copy(data, fileSize + 1);
     mem->data[mem->size - 1] = '\0';
     bgfx::ShaderHandle handle = bgfx::createShader(mem);
     bgfx::setName(handle, _name);
+
     return handle;
 }
 
 bgfx::VertexLayout PosColorVertex::ms_decl;
 
-static PosColorVertex s_cubeVertices[] = {
+static PosColorVertex s_squareVertices[] = {
     {0.5f, 0.5f, 0.0f, 0xff0000ff},
     {0.5f, -0.5f, 0.0f, 0xff0000ff},
     {-0.5f, -0.5f, 0.0f, 0xff00ff00},
@@ -48,13 +52,13 @@ static const uint16_t s_cubeTriList[] = {
 OBJModel::OBJModel(const char* filepath) {
     // Get the data from the obj file into the correct bgfx objects ready for rendering
     PosColorVertex::init();
-    m_vbh = bgfx::createVertexBuffer(bgfx::makeRef(s_cubeVertices, sizeof(s_cubeVertices)), PosColorVertex::ms_decl);
+    m_vbh = bgfx::createVertexBuffer(bgfx::makeRef(s_squareVertices, sizeof(s_squareVertices)), PosColorVertex::ms_decl);
     m_ibh = bgfx::createIndexBuffer(bgfx::makeRef(s_cubeTriList, sizeof(s_cubeTriList)));
 
     bgfx::ShaderHandle vsh = loadShader("resources/shaders/v_square.bin");
     bgfx::ShaderHandle fsh = loadShader("resources/shaders/f_square.bin");
-
     m_shader = bgfx::createProgram(vsh, fsh, true);
+
     u_uniform = bgfx::createUniform("u_uniform", bgfx::UniformType::Vec4);
 }
 
