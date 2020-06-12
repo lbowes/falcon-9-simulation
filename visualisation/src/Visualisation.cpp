@@ -2,12 +2,15 @@
 #include "../3rd_party/imgui/imgui.h"
 #include "../3rd_party/imgui/imgui_impl_bgfx.h"
 #include "../3rd_party/imgui/imgui_impl_glfw.h"
+#include "Cameras.h"
+#include "Input.h"
 #include "OBJModel.h"
 
 #include <GLFW/glfw3.h>
 #include <bgfx/bgfx.h>
 #include <bgfx/platform.h>
 #include <bx/bx.h>
+#include <bx/math.h>
 #include <memory>
 #include <stdio.h>
 
@@ -22,7 +25,7 @@ namespace Graphics {
 static GLFWwindow* s_window = nullptr;
 static int s_width = 0;
 static int s_height = 0;
-static std::unique_ptr<OBJModel> mModel;
+static std::unique_ptr<OBJModel> m_model;
 
 static void shutdown();
 static void glfw_errorCallback(int error, const char* description);
@@ -63,8 +66,11 @@ bool Visualisation_init() {
     ImGui_ImplGlfw_InitForOpenGL(s_window, true);
     ImGui_Implbgfx_Init(0);
 
+    Cameras_init();
+    Input_init(*s_window);
+
     // temp
-    mModel = std::make_unique<OBJModel>("resources/obj/Merlin1D.obj");
+    m_model = std::make_unique<OBJModel>("resources/obj/Merlin1D.obj");
     //
 
     bgfx::touch(0);
@@ -73,13 +79,25 @@ bool Visualisation_init() {
 }
 
 
+static void temp_updateCameras(float aspectRatio) {
+}
+
+
 void Visualisation_run() {
+    double dt = 0.0;
+    double frameTime = 0.0;
+    double lastFrameTime = 0.0;
+
     while(!glfwWindowShouldClose(s_window)) {
+        lastFrameTime = frameTime;
+        frameTime = glfwGetTime();
+
         glfwPollEvents();
+        Input_update();
 
         // Handle window resize.
-        int oldWidth = s_width;
-        int oldHeight = s_height;
+        const int oldWidth = s_width;
+        const int oldHeight = s_height;
         glfwGetWindowSize(s_window, &s_width, &s_height);
         if(s_width != oldWidth || s_height != oldHeight) {
             bgfx::reset((uint32_t)s_width, (uint32_t)s_height);
@@ -91,14 +109,18 @@ void Visualisation_run() {
         ImGui::NewFrame();
 
         bgfx::touch(0);
+        {
+            const float aspectRatio = (float)s_width / (float)s_height;
+            Cameras_setViewTransform(aspectRatio, dt);
 
-        // TODO: simulation model rendering here
-        mModel->draw((float)s_width / (float)s_height);
-
+            m_model->draw();
+        }
         bgfx::frame();
 
         // Render ImGui on top of everything else
         ImGui::Render();
+
+        dt = frameTime - lastFrameTime;
     }
 }
 

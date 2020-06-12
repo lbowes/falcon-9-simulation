@@ -20,6 +20,9 @@ target_sources(f9sim-visualisation
 		src/main.cpp
 		src/Visualisation.cpp
 		src/OBJModel.cpp
+		src/Cameras.cpp
+		src/FPVCamera.cpp
+		src/Input.cpp
 		${IMGUI_SRC}
 )
 
@@ -45,6 +48,7 @@ target_link_libraries(f9sim-visualisation
 	bx
 	bimg
 	astc-codec
+	${CHRONO_LIBRARIES}
 )
 
 # Copy the resources folder to the build tree

@@ -12,6 +12,8 @@ namespace Graphics {
 
 
 struct PosColorVertex {
+    static bgfx::VertexLayout ms_decl;
+
     float m_x;
     float m_y;
     float m_z;
@@ -24,15 +26,15 @@ struct PosColorVertex {
             .add(bgfx::Attrib::Color0, 4, bgfx::AttribType::Uint8, true)
             .end();
     };
-
-    static bgfx::VertexLayout ms_decl;
 };
 
 
 class OBJModel {
 private:
+    static uint64_t s_renderState;
+
     // todo: static shader, bgfx mesh data
-    chrono::ChCoordsys<> mTransform_world;
+    chrono::ChCoordsys<> m_transform;
 
     bgfx::VertexBufferHandle m_vbh;
     bgfx::IndexBufferHandle m_ibh;
@@ -44,7 +46,7 @@ public:
     ~OBJModel();
 
     void setTransform(const chrono::ChCoordsys<>& transform_world);
-    void draw(float aspectRatio) const;
+    void draw() const;
 };
 
 

@@ -1,5 +1,6 @@
 #ifndef HARDWARE_FALCON9_VEHICLE_H_
 #define HARDWARE_FALCON9_VEHICLE_H_
+#pragma once
 
 
 #include "../3rd_party/json.hpp"

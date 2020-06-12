@@ -12,12 +12,12 @@ namespace Graphics {
 
 struct CameraBaseState {
     float aspectRatio;
-    float nearValue;
-    float farValue;
+    float near;
+    float far;
     float verticalFOV;
-    chrono::ChVector<> position;
-    chrono::ChVector<> up;
-    chrono::ChVector<> lookAt;
+    chrono::Vector position;
+    chrono::Vector up;
+    chrono::Vector lookAt;
 };
 
 
