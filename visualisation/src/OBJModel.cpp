@@ -107,6 +107,7 @@ void OBJModel::draw() const {
     // Handle translational component of transform
     const chrono::Vector camPos = Cameras_getActivePos();
     const chrono::Vector d = m_transform.pos - camPos;
+
     const bx::Vec3 translation = {d.x(), d.y(), d.z()};
 
     bx::mtxQuatTranslation(modelMtx, rotation, translation);

@@ -4120,6 +4120,7 @@ $(VERBOSE)MAKESILENT	build/dev/visualisation/Makefile	/^$(VERBOSE)MAKESILENT = -
 157	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 158	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 159	build/dev/simulation/output.json	/^        {$/;"	o	array:history
+16	build/dev/compile_commands.json	/^{$/;"	o
 16	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 160	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 161	build/dev/simulation/output.json	/^        {$/;"	o	array:history
@@ -4131,6 +4132,7 @@ $(VERBOSE)MAKESILENT	build/dev/visualisation/Makefile	/^$(VERBOSE)MAKESILENT = -
 167	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 168	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 169	build/dev/simulation/output.json	/^        {$/;"	o	array:history
+17	build/dev/compile_commands.json	/^{$/;"	o
 17	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 170	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 171	build/dev/simulation/output.json	/^        {$/;"	o	array:history
@@ -11475,15 +11477,18 @@ Pos	3rd_party/imgui/imgui_internal.h	/^    ImVec2ih    Pos;$/;"	m	struct:ImGuiWi
 Pos	3rd_party/imgui/imgui_internal.h	/^    float       Pos[3], NextWidths[3];$/;"	m	struct:ImGuiMenuColumns	typeref:typename:float[3]
 Pos	build/dev/visualisation/imgui.ini	/^Pos=-18,-18$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=-40,120$/;"	k	section:Window
-Pos	build/dev/visualisation/imgui.ini	/^Pos=1063,869$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=1485,203$/;"	k	section:Window
+Pos	build/dev/visualisation/imgui.ini	/^Pos=1559,83$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=1587,349$/;"	k	section:Window
+Pos	build/dev/visualisation/imgui.ini	/^Pos=170,188$/;"	k	section:Window
+Pos	build/dev/visualisation/imgui.ini	/^Pos=186,521$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=1882,60$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=1993,664$/;"	k	section:Window
+Pos	build/dev/visualisation/imgui.ini	/^Pos=251,389$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=35,593$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=492,869$/;"	k	section:Window
-Pos	build/dev/visualisation/imgui.ini	/^Pos=608,143$/;"	k	section:Window
-Pos	build/dev/visualisation/imgui.ini	/^Pos=809,616$/;"	k	section:Window
+Pos	build/dev/visualisation/imgui.ini	/^Pos=528,794$/;"	k	section:Window
+Pos	build/dev/visualisation/imgui.ini	/^Pos=60,60$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=881,468$/;"	k	section:Window
 PosColorVertex	visualisation/include/OBJModel.h	/^struct PosColorVertex {$/;"	s	namespace:F9Sim::Graphics
 PosCond	3rd_party/imgui/imgui_internal.h	/^    ImGuiCond                   PosCond;$/;"	m	struct:ImGuiNextWindowData	typeref:typename:ImGuiCond
@@ -11977,17 +11982,22 @@ Size	3rd_party/imgui/imgui_internal.h	/^    ImVec2                  Size;       
 Size	3rd_party/imgui/imgui_internal.h	/^    ImVec2ih    Size;$/;"	m	struct:ImGuiWindowSettings	typeref:typename:ImVec2ih
 Size	3rd_party/imgui/imgui_internal.h	/^    size_t      Size;           \/\/ Size in byte$/;"	m	struct:ImGuiDataTypeInfo	typeref:typename:size_t
 Size	build/dev/visualisation/imgui.ini	/^Size=262,170$/;"	k	section:Window
-Size	build/dev/visualisation/imgui.ini	/^Size=338,239$/;"	k	section:Window
+Size	build/dev/visualisation/imgui.ini	/^Size=282,116$/;"	k	section:Window
+Size	build/dev/visualisation/imgui.ini	/^Size=289,116$/;"	k	section:Window
 Size	build/dev/visualisation/imgui.ini	/^Size=339,856$/;"	k	section:Window
 Size	build/dev/visualisation/imgui.ini	/^Size=400,400$/;"	k	section:Window
 Size	build/dev/visualisation/imgui.ini	/^Size=430,450$/;"	k	section:Window
+Size	build/dev/visualisation/imgui.ini	/^Size=463,257$/;"	k	section:Window
 Size	build/dev/visualisation/imgui.ini	/^Size=500,440$/;"	k	section:Window
 Size	build/dev/visualisation/imgui.ini	/^Size=520,224$/;"	k	section:Window
 Size	build/dev/visualisation/imgui.ini	/^Size=520,600$/;"	k	section:Window
-Size	build/dev/visualisation/imgui.ini	/^Size=539,259$/;"	k	section:Window
+Size	build/dev/visualisation/imgui.ini	/^Size=537,149$/;"	k	section:Window
+Size	build/dev/visualisation/imgui.ini	/^Size=549,259$/;"	k	section:Window
 Size	build/dev/visualisation/imgui.ini	/^Size=550,680$/;"	k	section:Window
+Size	build/dev/visualisation/imgui.ini	/^Size=552,379$/;"	k	section:Window
 Size	build/dev/visualisation/imgui.ini	/^Size=569,442$/;"	k	section:Window
 Size	build/dev/visualisation/imgui.ini	/^Size=580,449$/;"	k	section:Window
+Size	build/dev/visualisation/imgui.ini	/^Size=762,323$/;"	k	section:Window
 SizeCallback	3rd_party/imgui/imgui_internal.h	/^    ImGuiSizeCallback           SizeCallback;$/;"	m	struct:ImGuiNextWindowData	typeref:typename:ImGuiSizeCallback
 SizeCallbackUserData	3rd_party/imgui/imgui_internal.h	/^    void*                       SizeCallbackUserData;$/;"	m	struct:ImGuiNextWindowData	typeref:typename:void *
 SizeCond	3rd_party/imgui/imgui_internal.h	/^    ImGuiCond                   SizeCond;$/;"	m	struct:ImGuiNextWindowData	typeref:typename:ImGuiCond
@@ -12294,6 +12304,8 @@ Width	3rd_party/imgui/imgui_internal.h	/^    float       Width;$/;"	m	struct:ImG
 Window	3rd_party/imgui/imgui_internal.h	/^    ImGuiWindow*        Window;         \/\/ Resolved on BeginPopup() - may stay unresolved if u/;"	m	struct:ImGuiPopupData	typeref:typename:ImGuiWindow *
 Window	3rd_party/imgui/imgui_internal.h	/^    ImGuiWindow*    Window;             \/\/ Best candidate window$/;"	m	struct:ImGuiNavMoveResult	typeref:typename:ImGuiWindow *
 Window	build/dev/visualisation/imgui.ini	/^[Window][About Dear ImGui]$/;"	s
+Window	build/dev/visualisation/imgui.ini	/^[Window][After]$/;"	s
+Window	build/dev/visualisation/imgui.ini	/^[Window][Before]$/;"	s
 Window	build/dev/visualisation/imgui.ini	/^[Window][Dear ImGui Demo]$/;"	s
 Window	build/dev/visualisation/imgui.ini	/^[Window][Dear ImGui Metrics]$/;"	s
 Window	build/dev/visualisation/imgui.ini	/^[Window][Dear ImGui Style Editor]$/;"	s
@@ -12303,6 +12315,9 @@ Window	build/dev/visualisation/imgui.ini	/^[Window][Example: Custom rendering]$/
 Window	build/dev/visualisation/imgui.ini	/^[Window][Example: Long text display]$/;"	s
 Window	build/dev/visualisation/imgui.ini	/^[Window][Example: Property editor]$/;"	s
 Window	build/dev/visualisation/imgui.ini	/^[Window][Example: Simple layout]$/;"	s
+Window	build/dev/visualisation/imgui.ini	/^[Window][Input]$/;"	s
+Window	build/dev/visualisation/imgui.ini	/^[Window][cam]$/;"	s
+Window	build/dev/visualisation/imgui.ini	/^[Window][camera info]$/;"	s
 Window	build/dev/visualisation/imgui.ini	/^[Window][temp]$/;"	s
 Window	build/dev/visualisation/imgui.ini	/^[Window][test]$/;"	s
 Window	visualisation/include/Window.h	/^	class Window {$/;"	c	namespace:GF
@@ -12550,6 +12565,8 @@ command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_T
 command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:13
 command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:14
 command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:15
+command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:16
+command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:17
 command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:5
 command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:6
 command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:7
@@ -12632,6 +12649,8 @@ directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/
 directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:13
 directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:14
 directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:15
+directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:16
+directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:17
 directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:6
 directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:7
 directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:8
@@ -13723,12 +13742,12 @@ fdselect	3rd_party/imgui/imstb_truetype.h	/^   stbtt__buf fdselect;             
 fdx	3rd_party/imgui/imstb_truetype.h	/^   float fx,fdx,fdy;$/;"	m	struct:stbtt__active_edge	typeref:typename:float
 fdy	3rd_party/imgui/imstb_truetype.h	/^   float fx,fdx,fdy;$/;"	m	struct:stbtt__active_edge	typeref:typename:float
 file	3rd_party/catch.hpp	/^        char const* file;$/;"	m	struct:Catch::SourceLineInfo	typeref:typename:char const *
-file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:10
-file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:11
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:12
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:13
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:14
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:15
+file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:16
+file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:17
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/simulation\/src\/Falc/;"	s	object:4
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/simulation\/src\/Flig/;"	s	object:3
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/simulation\/src\/Simu/;"	s	object:2
@@ -13736,6 +13755,8 @@ file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programmin
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/tests\/test_Simulatio/;"	s	object:1
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/tests\/test_main.cpp"$/;"	s	object:0
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/C/;"	s	object:9
+file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/F/;"	s	object:10
+file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/I/;"	s	object:11
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/O/;"	s	object:8
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/V/;"	s	object:7
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/m/;"	s	object:6
@@ -16413,6 +16434,12 @@ src/Cameras.cpp.s	build/dev/visualisation/Makefile	/^src\/Cameras.cpp.s:$/;"	t
 src/Cameras.i	build/dev/visualisation/Makefile	/^src\/Cameras.i: src\/Cameras.cpp.i$/;"	t
 src/Cameras.o	build/dev/visualisation/Makefile	/^src\/Cameras.o: src\/Cameras.cpp.o$/;"	t
 src/Cameras.s	build/dev/visualisation/Makefile	/^src\/Cameras.s: src\/Cameras.cpp.s$/;"	t
+src/FPVCamera.cpp.i	build/dev/visualisation/Makefile	/^src\/FPVCamera.cpp.i:$/;"	t
+src/FPVCamera.cpp.o	build/dev/visualisation/Makefile	/^src\/FPVCamera.cpp.o:$/;"	t
+src/FPVCamera.cpp.s	build/dev/visualisation/Makefile	/^src\/FPVCamera.cpp.s:$/;"	t
+src/FPVCamera.i	build/dev/visualisation/Makefile	/^src\/FPVCamera.i: src\/FPVCamera.cpp.i$/;"	t
+src/FPVCamera.o	build/dev/visualisation/Makefile	/^src\/FPVCamera.o: src\/FPVCamera.cpp.o$/;"	t
+src/FPVCamera.s	build/dev/visualisation/Makefile	/^src\/FPVCamera.s: src\/FPVCamera.cpp.s$/;"	t
 src/Falcon9/Falcon9_Vehicle.cpp.i	build/dev/simulation/Makefile	/^src\/Falcon9\/Falcon9_Vehicle.cpp.i:$/;"	t
 src/Falcon9/Falcon9_Vehicle.cpp.o	build/dev/simulation/Makefile	/^src\/Falcon9\/Falcon9_Vehicle.cpp.o:$/;"	t
 src/Falcon9/Falcon9_Vehicle.cpp.s	build/dev/simulation/Makefile	/^src\/Falcon9\/Falcon9_Vehicle.cpp.s:$/;"	t
@@ -16425,6 +16452,12 @@ src/FlightComputer.cpp.s	build/dev/simulation/Makefile	/^src\/FlightComputer.cpp
 src/FlightComputer.i	build/dev/simulation/Makefile	/^src\/FlightComputer.i: src\/FlightComputer.cpp.i$/;"	t
 src/FlightComputer.o	build/dev/simulation/Makefile	/^src\/FlightComputer.o: src\/FlightComputer.cpp.o$/;"	t
 src/FlightComputer.s	build/dev/simulation/Makefile	/^src\/FlightComputer.s: src\/FlightComputer.cpp.s$/;"	t
+src/Input.cpp.i	build/dev/visualisation/Makefile	/^src\/Input.cpp.i:$/;"	t
+src/Input.cpp.o	build/dev/visualisation/Makefile	/^src\/Input.cpp.o:$/;"	t
+src/Input.cpp.s	build/dev/visualisation/Makefile	/^src\/Input.cpp.s:$/;"	t
+src/Input.i	build/dev/visualisation/Makefile	/^src\/Input.i: src\/Input.cpp.i$/;"	t
+src/Input.o	build/dev/visualisation/Makefile	/^src\/Input.o: src\/Input.cpp.o$/;"	t
+src/Input.s	build/dev/visualisation/Makefile	/^src\/Input.s: src\/Input.cpp.s$/;"	t
 src/OBJModel.cpp.i	build/dev/visualisation/Makefile	/^src\/OBJModel.cpp.i:$/;"	t
 src/OBJModel.cpp.o	build/dev/visualisation/Makefile	/^src\/OBJModel.cpp.o:$/;"	t
 src/OBJModel.cpp.s	build/dev/visualisation/Makefile	/^src\/OBJModel.cpp.s:$/;"	t
