@@ -30,7 +30,7 @@ FPVCamera::FPVCamera() :
     m_camera.near = 0.5f;
     m_camera.far = 300.0f;
     m_camera.verticalFOV = 44.7f;
-    m_camera.position = {0.0, 0.5, 3.5};
+    m_camera.position = {0.0, 0.0, 3.5};
     m_camera.up = {0, 1, 0};
     m_camera.lookAt = {0, 0, -1};
 
@@ -42,6 +42,13 @@ FPVCamera::FPVCamera() :
 
 
 void FPVCamera::handleInput(double dt) {
+    ImGui::Begin("Before");
+    ImGui::Text("m_pitch: %f, m_yaw: %f", m_pitch, m_yaw);
+    ImGui::Text("m_pos: %f, %f, %f", m_camera.position.x(), m_camera.position.y(), m_camera.position.z());
+    chrono::Vector& lookAt = m_camera.lookAt;
+    ImGui::Text("lookAt: %f, %f, %f", lookAt.x(), lookAt.y(), lookAt.z());
+    ImGui::End();
+
     handleMovementInput(dt);
     handleZoomInput(dt);
     handleDirectionInput();
@@ -60,7 +67,9 @@ void FPVCamera::handleMovementInput(double dt) {
     m_camera.lookAt.Normalize();
 
     Vector addedVelocity = Vector();
-    const Vector horizLookAt = {m_camera.lookAt.x(), 0.0, m_camera.lookAt.z()};
+
+    Vector horizLookAt = {m_camera.lookAt.x(), 0.0, m_camera.lookAt.z()};
+    horizLookAt.Normalize();
 
     if(Input_isKeyDown(GLFW_KEY_E))
         addedVelocity += horizLookAt;
@@ -68,10 +77,10 @@ void FPVCamera::handleMovementInput(double dt) {
     if(Input_isKeyDown(GLFW_KEY_D))
         addedVelocity -= horizLookAt;
 
-    if(Input_isKeyDown(GLFW_KEY_S))
+    if(Input_isKeyDown(GLFW_KEY_F))
         addedVelocity += horizLookAt.Cross(VECT_Y);
 
-    if(Input_isKeyDown(GLFW_KEY_F))
+    if(Input_isKeyDown(GLFW_KEY_S))
         addedVelocity -= horizLookAt.Cross(VECT_Y);
 
     if(Input_isKeyDown(GLFW_KEY_SPACE))
@@ -88,19 +97,9 @@ void FPVCamera::handleMovementInput(double dt) {
 void FPVCamera::handleDirectionInput() {
     glm::ivec2 mouseDelta = Input_getMouseDelta();
 
-    m_yaw -= mouseDelta.x * Sensitivity::lookAround;
+    m_yaw += mouseDelta.x * Sensitivity::lookAround;
     m_pitch -= mouseDelta.y * Sensitivity::lookAround;
     clampPitchYaw();
-
-    ImGui::Begin("Before");
-    ImGui::Text("m_pitch: %f, m_yaw: %f", m_pitch, m_yaw);
-    ImGui::Text("m_pos: %f, %f, %f", m_camera.position.x(), m_camera.position.y(), m_camera.position.z());
-    chrono::Vector& lookAt = m_camera.lookAt;
-    ImGui::Text("lookAt: %f, %f, %f", lookAt.x(), lookAt.y(), lookAt.z());
-    ImGui::Text("mouseDelta: %d, %d", mouseDelta.x, mouseDelta.y);
-    glm::ivec2 mousePos = Input_getMousePos();
-    ImGui::Text("mousePosition: %d, %d", mousePos.x, mousePos.y);
-    ImGui::End();
 
     syncLookAtWithPitchYaw();
 }

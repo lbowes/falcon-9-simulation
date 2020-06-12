@@ -59,7 +59,7 @@ void Cameras_setViewTransform(float aspectRatio, float dt) {
         s_activeCamera.up.z()};
 
     float view[16];
-    bx::mtxLookAt(view, eye, at, up);
+    bx::mtxLookAt(view, eye, at, up, bx::Handness::Right);
 
     float proj[16];
     bx::mtxProj(
@@ -69,7 +69,7 @@ void Cameras_setViewTransform(float aspectRatio, float dt) {
         s_activeCamera.near,
         s_activeCamera.far,
         bgfx::getCaps()->homogeneousDepth,
-        bx::Handness::Left);
+        bx::Handness::Right);
 
     bgfx::setViewTransform(0, view, proj);
 }
