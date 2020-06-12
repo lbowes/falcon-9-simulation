@@ -18,7 +18,7 @@ namespace Graphics {
 
 
 // Internally, the position of the camera is locked at the origin to eliminate floating point errors
-static const bx::Vec3 eye = {0.0f, 0.0f, 0.0f};
+static const bx::Vec3 s_eye = {0.0f, 0.0f, 0.0f};
 static CameraBaseState s_activeCamera;
 static std::unique_ptr<FPVCamera> s_fpvCam;
 
@@ -59,7 +59,7 @@ void Cameras_setViewTransform(float aspectRatio, float dt) {
         s_activeCamera.up.z()};
 
     float view[16];
-    bx::mtxLookAt(view, eye, at, up, bx::Handness::Right);
+    bx::mtxLookAt(view, s_eye, at, up, bx::Handness::Right);
 
     float proj[16];
     bx::mtxProj(

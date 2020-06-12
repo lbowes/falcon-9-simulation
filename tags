@@ -12702,7 +12702,6 @@ exception	3rd_party/json.hpp	/^    exception(int id_, const char* what_arg) : id
 exception	3rd_party/json.hpp	/^class exception : public std::exception$/;"	c	namespace:nlohmann::detail
 extra	3rd_party/imgui/imstb_rectpack.h	/^   stbrp_node extra[2]; \/\/ we allocate two extra nodes so optimal user-node-count is 'width' n/;"	m	struct:stbrp_context	typeref:typename:stbrp_node[2]
 ey	3rd_party/imgui/imstb_truetype.h	/^   float ey;$/;"	m	struct:stbtt__active_edge	typeref:typename:float
-eye	visualisation/src/Cameras.cpp	/^static const bx::Vec3 eye = {0.0f, 0.0f, 0.0f};$/;"	v	namespace:F9Sim::Graphics	typeref:typename:const bx::Vec3	file:
 f9-sim	CMakeLists.txt	/^project(f9-sim)$/;"	p
 f9sim-simulation	build/dev/Makefile	/^f9sim-simulation: cmake_check_build_system$/;"	t
 f9sim-simulation	build/dev/simulation/Makefile	/^f9sim-simulation: simulation\/CMakeFiles\/f9sim-simulation.dir\/rule$/;"	t
@@ -16392,6 +16391,7 @@ s1	3rd_party/imgui/imstb_truetype.h	/^   float x1,y1,s1,t1; \/\/ bottom-right$/;
 s_activeCamera	visualisation/src/Cameras.cpp	/^static CameraBaseState s_activeCamera;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:CameraBaseState	file:
 s_embeddedShaders	3rd_party/imgui/imgui_impl_bgfx.cpp	/^static const bgfx::EmbeddedShader s_embeddedShaders[] = {$/;"	v	typeref:typename:const bgfx::EmbeddedShader[]	file:
 s_empty	3rd_party/catch.hpp	/^        static constexpr char const* const s_empty = "";$/;"	m	class:Catch::StringRef	typeref:typename:char const * const
+s_eye	visualisation/src/Cameras.cpp	/^static const bx::Vec3 s_eye = {0.0f, 0.0f, 0.0f};$/;"	v	namespace:F9Sim::Graphics	typeref:typename:const bx::Vec3	file:
 s_fpvCam	visualisation/src/Cameras.cpp	/^static std::unique_ptr<FPVCamera> s_fpvCam;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:std::unique_ptr<FPVCamera>	file:
 s_height	visualisation/src/Visualisation.cpp	/^static int s_height = 0;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:int	file:
 s_renderState	visualisation/include/OBJModel.h	/^    static uint64_t s_renderState;$/;"	m	class:F9Sim::Graphics::OBJModel	typeref:typename:uint64_t
