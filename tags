@@ -9008,10 +9008,12 @@ CalcWindowExpectedSize	3rd_party/imgui/imgui.cpp	/^ImVec2 ImGui::CalcWindowExpec
 CalcWindowSizeAfterConstraint	3rd_party/imgui/imgui.cpp	/^static ImVec2 CalcWindowSizeAfterConstraint(ImGuiWindow* window, ImVec2 new_size)$/;"	f	typeref:typename:ImVec2	file:
 CalcWordWrapPositionA	3rd_party/imgui/imgui_draw.cpp	/^const char* ImFont::CalcWordWrapPositionA(float scale, const char* text, const char* text_end, f/;"	f	class:ImFont	typeref:typename:const char *
 CalcWrapWidthForPos	3rd_party/imgui/imgui.cpp	/^float ImGui::CalcWrapWidthForPos(const ImVec2& pos, float wrap_pos_x)$/;"	f	class:ImGui	typeref:typename:float
+CameraBaseState	visualisation/include/CameraBaseState.h	/^    CameraBaseState() {$/;"	f	struct:F9Sim::Graphics::CameraBaseState
+CameraBaseState	visualisation/include/CameraBaseState.h	/^    CameraBaseState(const CameraBaseState& other) {$/;"	f	struct:F9Sim::Graphics::CameraBaseState
 CameraBaseState	visualisation/include/CameraBaseState.h	/^struct CameraBaseState {$/;"	s	namespace:F9Sim::Graphics
 Cameras_getActivePos	visualisation/src/Cameras.cpp	/^chrono::Vector Cameras_getActivePos() {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:chrono::Vector
 Cameras_init	visualisation/src/Cameras.cpp	/^void Cameras_init() {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:void
-Cameras_setViewTransform	visualisation/src/Cameras.cpp	/^void Cameras_setViewTransform(float aspectRatio, float dt) {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:void
+Cameras_setViewTransform	visualisation/src/Cameras.cpp	/^void Cameras_setViewTransform(float aspectRatio) {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:void
 CanMergeDrawCommands	3rd_party/imgui/imgui_draw.cpp	/^static inline bool CanMergeDrawCommands(ImDrawCmd* a, ImDrawCmd* b)$/;"	f	typeref:typename:bool	file:
 Capacity	3rd_party/imgui/imgui.h	/^    int                 Capacity;$/;"	m	struct:ImVector	typeref:typename:int
 Capsule	3rd_party/bgfx_extra/bounds.h	/^struct Capsule$/;"	s
@@ -9346,7 +9348,7 @@ Expand	3rd_party/imgui/imgui_internal.h	/^    void        Expand(const float amo
 ExplicitFailure	3rd_party/catch.hpp	/^        ExplicitFailure = FailureBit | 2,$/;"	e	enum:Catch::ResultWas::OfType
 ExpressionFailed	3rd_party/catch.hpp	/^        ExpressionFailed = FailureBit | 1,$/;"	e	enum:Catch::ResultWas::OfType
 F9SIM_GRAPHICS_CAMERABASESTATE_H_	visualisation/include/CameraBaseState.h	/^#define F9SIM_GRAPHICS_CAMERABASESTATE_H_$/;"	d
-F9SIM_GRAPHICS_CAMERASYSTEM_H_	visualisation/include/Cameras.h	/^#define F9SIM_GRAPHICS_CAMERASYSTEM_H_$/;"	d
+F9SIM_GRAPHICS_CAMERAS_H_	visualisation/include/Cameras.h	/^#define F9SIM_GRAPHICS_CAMERAS_H_$/;"	d
 F9SIM_GRAPHICS_FPVCAMERA_H_	visualisation/include/FPVCamera.h	/^#define F9SIM_GRAPHICS_FPVCAMERA_H_$/;"	d
 F9SIM_GRAPHICS_OBJMODEL_H_	visualisation/include/OBJModel.h	/^#define F9SIM_GRAPHICS_OBJMODEL_H_$/;"	d
 F9SIM_GRAPHICS_VISUALISATION_H_	visualisation/include/Visualisation.h	/^#define F9SIM_GRAPHICS_VISUALISATION_H_$/;"	d
@@ -12659,7 +12661,7 @@ directory	build/release/compile_commands.json	/^  "directory": "\/home\/lewis\/d
 directory	build/release/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/release\//;"	s	object:1
 directory	build/release/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/release\//;"	s	object:2
 distance	3rd_party/bgfx_extra/bounds.cpp	/^float distance(const Plane& _plane, const LineSegment& _line)$/;"	f	typeref:typename:float
-draw	visualisation/src/OBJModel.cpp	/^void OBJModel::draw() {$/;"	f	class:F9Sim::Graphics::OBJModel	typeref:typename:void
+draw	visualisation/src/OBJModel.cpp	/^void OBJModel::draw() const {$/;"	f	class:F9Sim::Graphics::OBJModel	typeref:typename:void
 dx	3rd_party/imgui/imstb_truetype.h	/^   int x,dx;$/;"	m	struct:stbtt__active_edge	typeref:typename:int
 e	3rd_party/imgui/imgui.h	/^        const char*     e;$/;"	m	struct:ImGuiTextFilter::ImGuiTextRange	typeref:typename:const char *
 edit_cache	build/dev/Makefile	/^edit_cache:$/;"	t
@@ -16392,7 +16394,7 @@ s_activeCamera	visualisation/src/Cameras.cpp	/^static CameraBaseState s_activeCa
 s_embeddedShaders	3rd_party/imgui/imgui_impl_bgfx.cpp	/^static const bgfx::EmbeddedShader s_embeddedShaders[] = {$/;"	v	typeref:typename:const bgfx::EmbeddedShader[]	file:
 s_empty	3rd_party/catch.hpp	/^        static constexpr char const* const s_empty = "";$/;"	m	class:Catch::StringRef	typeref:typename:char const * const
 s_eye	visualisation/src/Cameras.cpp	/^static const bx::Vec3 s_eye = {0.0f, 0.0f, 0.0f};$/;"	v	namespace:F9Sim::Graphics	typeref:typename:const bx::Vec3	file:
-s_fpvCam	visualisation/src/Cameras.cpp	/^static std::unique_ptr<FPVCamera> s_fpvCam;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:std::unique_ptr<FPVCamera>	file:
+s_fpvCam	visualisation/src/Visualisation.cpp	/^static std::unique_ptr<FPVCamera> s_fpvCam;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:std::unique_ptr<FPVCamera>	file:
 s_height	visualisation/src/Visualisation.cpp	/^static int s_height = 0;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:int	file:
 s_renderState	visualisation/include/OBJModel.h	/^    static uint64_t s_renderState;$/;"	m	class:F9Sim::Graphics::OBJModel	typeref:typename:uint64_t
 s_renderState	visualisation/src/OBJModel.cpp	/^uint64_t OBJModel::s_renderState =$/;"	m	class:F9Sim::Graphics::OBJModel	typeref:typename:uint64_t
@@ -17803,7 +17805,7 @@ update	visualisation/src/FPVCamera.cpp	/^void FPVCamera::update(double dt) {$/;"
 update	visualisation/src/Scene.cpp	/^void Scene::update(float aspectRatio, double dt) {$/;"	f	class:Scene	typeref:typename:void
 updateAllNodeTransforms	visualisation/src/SimulationModel.cpp	/^void SimulationModel::updateAllNodeTransforms() {$/;"	f	class:SimulationModel	typeref:typename:void
 updateTime	visualisation/src/Animation.cpp	/^void Animation::updateTime(double time_s) {$/;"	f	class:Animation	typeref:typename:void
-updateTransform	visualisation/src/OBJModel.cpp	/^void OBJModel::updateTransform() {$/;"	f	class:F9Sim::Graphics::OBJModel	typeref:typename:void
+updateTransform	visualisation/src/OBJModel.cpp	/^void OBJModel::updateTransform() const {$/;"	f	class:F9Sim::Graphics::OBJModel	typeref:typename:void
 user_allocator_context	3rd_party/imgui/imstb_truetype.h	/^   void *user_allocator_context;$/;"	m	struct:stbtt_pack_context	typeref:typename:void *
 userdata	3rd_party/imgui/imstb_truetype.h	/^   void           * userdata;$/;"	m	struct:stbtt_fontinfo	typeref:typename:void *
 uv	3rd_party/imgui/imgui.h	/^    ImVec2  uv;$/;"	m	struct:ImDrawVert	typeref:typename:ImVec2

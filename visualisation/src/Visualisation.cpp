@@ -3,6 +3,7 @@
 #include "../3rd_party/imgui/imgui_impl_bgfx.h"
 #include "../3rd_party/imgui/imgui_impl_glfw.h"
 #include "Cameras.h"
+#include "FPVCamera.h"
 #include "Input.h"
 #include "OBJModel.h"
 
@@ -26,6 +27,7 @@ static GLFWwindow* s_window = nullptr;
 static int s_width = 0;
 static int s_height = 0;
 static std::unique_ptr<OBJModel> m_model;
+static std::unique_ptr<FPVCamera> s_fpvCam;
 
 static void shutdown();
 static void glfw_errorCallback(int error, const char* description);
@@ -68,9 +70,11 @@ bool Visualisation_init() {
 
     Cameras_init();
     Input_init(*s_window);
+    Input_hideMouseCursor();
 
     // temp
     m_model = std::make_unique<OBJModel>("resources/obj/Merlin1D.obj");
+    s_fpvCam = std::make_unique<FPVCamera>();
     //
 
     bgfx::touch(0);
@@ -108,10 +112,13 @@ void Visualisation_run() {
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
+        s_fpvCam->handleInput(dt);
+        s_fpvCam->update(dt);
+
         bgfx::touch(0);
         {
             const float aspectRatio = (float)s_width / (float)s_height;
-            Cameras_setViewTransform(aspectRatio, dt);
+            Cameras_setViewTransform(aspectRatio);
 
             m_model->draw();
         }

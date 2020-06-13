@@ -11,8 +11,9 @@ namespace Graphics {
 
 
 class FPVCamera {
-	public:
+public:
     CameraBaseState m_camera;
+
 private:
     struct Sensitivity {
         static const float zoom;

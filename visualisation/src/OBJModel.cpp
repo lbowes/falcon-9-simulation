@@ -92,7 +92,7 @@ void OBJModel::setTransform(const chrono::ChCoordsys<>& transform) {
 }
 
 
-void OBJModel::draw() {
+void OBJModel::draw() const {
     // Set an example uniform
     static float uniformVar = 0.5f;
     ImGui::Begin("temp");
@@ -109,7 +109,7 @@ void OBJModel::draw() {
 }
 
 
-void OBJModel::updateTransform() {
+void OBJModel::updateTransform() const {
     // Rotation
     const chrono::Quaternion r = m_transform.rot;
     const bx::Quaternion orientation = {r.e3(), r.e0(), r.e1(), r.e2()};

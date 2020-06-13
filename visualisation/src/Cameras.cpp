@@ -20,12 +20,9 @@ namespace Graphics {
 // Internally, the position of the camera is locked at the origin to eliminate floating point errors
 static const bx::Vec3 s_eye = {0.0f, 0.0f, 0.0f};
 static CameraBaseState s_activeCamera;
-static std::unique_ptr<FPVCamera> s_fpvCam;
 
 
 void Cameras_init() {
-    s_fpvCam = std::make_unique<FPVCamera>();
-
     s_activeCamera.near = 0.1f;
     s_activeCamera.far = 100.0f;
     s_activeCamera.verticalFOV = 60.0f;
@@ -40,23 +37,16 @@ chrono::Vector Cameras_getActivePos() {
 }
 
 
-void Cameras_setViewTransform(float aspectRatio, float dt) {
-    // temp
-    Input_hideMouseCursor();
-    s_fpvCam->handleInput(dt);
-    s_fpvCam->update(dt);
-    s_activeCamera = s_fpvCam->m_camera;
-    //
-
-    const bx::Vec3 at = {
+void Cameras_setViewTransform(float aspectRatio) {
+    const bx::Vec3 at = bx::Vec3(
         s_activeCamera.lookAt.x(),
         s_activeCamera.lookAt.y(),
-        s_activeCamera.lookAt.z()};
+        s_activeCamera.lookAt.z());
 
-    const bx::Vec3 up = {
+    const bx::Vec3 up = bx::Vec3(
         s_activeCamera.up.x(),
         s_activeCamera.up.y(),
-        s_activeCamera.up.z()};
+        s_activeCamera.up.z());
 
     float view[16];
     bx::mtxLookAt(view, s_eye, at, up, bx::Handness::Right);
