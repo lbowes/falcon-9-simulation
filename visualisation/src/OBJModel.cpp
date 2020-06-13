@@ -36,7 +36,9 @@ bgfx::ShaderHandle loadShader(const char* filename) {
     return handle;
 }
 
+
 bgfx::VertexLayout PosColorVertex::ms_decl;
+
 
 uint64_t OBJModel::s_renderState =
     0 |
@@ -90,7 +92,7 @@ void OBJModel::setTransform(const chrono::ChCoordsys<>& transform) {
 }
 
 
-void OBJModel::draw() const {
+void OBJModel::draw() {
     // Set an example uniform
     static float uniformVar = 0.5f;
     ImGui::Begin("temp");
@@ -98,25 +100,33 @@ void OBJModel::draw() const {
     ImGui::End();
     bgfx::setUniform(u_uniform, &uniformVar);
 
-    float modelMtx[16];
-
-    // Handle rotational component of transform
-    const chrono::Quaternion r = m_transform.rot;
-    const bx::Quaternion rotation = {r.e3(), r.e0(), r.e1(), r.e2()};
-
-    // Handle translational component of transform
-    const chrono::Vector camPos = Cameras_getActivePos();
-    const chrono::Vector d = m_transform.pos - camPos;
-
-    const bx::Vec3 translation = {d.x(), d.y(), d.z()};
-
-    bx::mtxQuatTranslation(modelMtx, rotation, translation);
-    bgfx::setTransform(modelMtx);
+    updateTransform();
 
     bgfx::setVertexBuffer(0, m_vbh);
     bgfx::setIndexBuffer(m_ibh);
     bgfx::setState(s_renderState);
     bgfx::submit(0, m_shader);
+}
+
+
+void OBJModel::updateTransform() {
+    // Rotation
+    const chrono::Quaternion r = m_transform.rot;
+    const bx::Quaternion orientation = {r.e3(), r.e0(), r.e1(), r.e2()};
+    float rotation[16];
+    bx::mtxQuat(rotation, orientation);
+
+    // Translation
+    const chrono::Vector camPos = Cameras_getActivePos();
+    const chrono::Vector d = m_transform.pos - camPos;
+    float translation[16];
+    bx::mtxTranslate(translation, d.x(), d.y(), d.z());
+
+    // Combine rotation and translation
+    float transform[16];
+    bx::mtxMul(transform, rotation, translation);
+
+    bgfx::setTransform(transform);
 }
 
 

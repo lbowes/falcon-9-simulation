@@ -46,7 +46,10 @@ public:
     ~OBJModel();
 
     void setTransform(const chrono::ChCoordsys<>& transform_world);
-    void draw() const;
+    void draw();
+
+private:
+    void updateTransform();
 };
 
 

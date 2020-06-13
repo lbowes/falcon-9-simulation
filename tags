@@ -12659,7 +12659,7 @@ directory	build/release/compile_commands.json	/^  "directory": "\/home\/lewis\/d
 directory	build/release/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/release\//;"	s	object:1
 directory	build/release/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/release\//;"	s	object:2
 distance	3rd_party/bgfx_extra/bounds.cpp	/^float distance(const Plane& _plane, const LineSegment& _line)$/;"	f	typeref:typename:float
-draw	visualisation/src/OBJModel.cpp	/^void OBJModel::draw() const {$/;"	f	class:F9Sim::Graphics::OBJModel	typeref:typename:void
+draw	visualisation/src/OBJModel.cpp	/^void OBJModel::draw() {$/;"	f	class:F9Sim::Graphics::OBJModel	typeref:typename:void
 dx	3rd_party/imgui/imstb_truetype.h	/^   int x,dx;$/;"	m	struct:stbtt__active_edge	typeref:typename:int
 e	3rd_party/imgui/imgui.h	/^        const char*     e;$/;"	m	struct:ImGuiTextFilter::ImGuiTextRange	typeref:typename:const char *
 edit_cache	build/dev/Makefile	/^edit_cache:$/;"	t
@@ -17803,6 +17803,7 @@ update	visualisation/src/FPVCamera.cpp	/^void FPVCamera::update(double dt) {$/;"
 update	visualisation/src/Scene.cpp	/^void Scene::update(float aspectRatio, double dt) {$/;"	f	class:Scene	typeref:typename:void
 updateAllNodeTransforms	visualisation/src/SimulationModel.cpp	/^void SimulationModel::updateAllNodeTransforms() {$/;"	f	class:SimulationModel	typeref:typename:void
 updateTime	visualisation/src/Animation.cpp	/^void Animation::updateTime(double time_s) {$/;"	f	class:Animation	typeref:typename:void
+updateTransform	visualisation/src/OBJModel.cpp	/^void OBJModel::updateTransform() {$/;"	f	class:F9Sim::Graphics::OBJModel	typeref:typename:void
 user_allocator_context	3rd_party/imgui/imstb_truetype.h	/^   void *user_allocator_context;$/;"	m	struct:stbtt_pack_context	typeref:typename:void *
 userdata	3rd_party/imgui/imstb_truetype.h	/^   void           * userdata;$/;"	m	struct:stbtt_fontinfo	typeref:typename:void *
 uv	3rd_party/imgui/imgui.h	/^    ImVec2  uv;$/;"	m	struct:ImDrawVert	typeref:typename:ImVec2
