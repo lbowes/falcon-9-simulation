@@ -16392,7 +16392,7 @@ rotation	3rd_party/bgfx_extra/bounds.cpp	/^	Quaternion rotation;$/;"	m	struct:Sr
 run	simulation/src/Simulation.cpp	/^void Simulation::run() {$/;"	f	class:Simulation	typeref:typename:void
 s0	3rd_party/imgui/imstb_truetype.h	/^   float x0,y0,s0,t0; \/\/ top-left$/;"	m	struct:__anon65b4c42c0308	typeref:typename:float
 s1	3rd_party/imgui/imstb_truetype.h	/^   float x1,y1,s1,t1; \/\/ bottom-right$/;"	m	struct:__anon65b4c42c0308	typeref:typename:float
-s_activeCamera	visualisation/src/Cameras.cpp	/^static CameraBaseState s_activeCamera;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:CameraBaseState	file:
+s_activeCamera	visualisation/src/Cameras.cpp	/^static CameraBaseState const* s_activeCamera = nullptr;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:CameraBaseState const *	file:
 s_cameraMap	visualisation/src/Cameras.cpp	/^static std::unordered_map<std::string, const CameraBaseState*> s_cameraMap;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:std::unordered_map<std::string,const CameraBaseState * >	file:
 s_defaultCamera	visualisation/src/Cameras.cpp	/^static CameraBaseState s_defaultCamera;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:CameraBaseState	file:
 s_embeddedShaders	3rd_party/imgui/imgui_impl_bgfx.cpp	/^static const bgfx::EmbeddedShader s_embeddedShaders[] = {$/;"	v	typeref:typename:const bgfx::EmbeddedShader[]	file:

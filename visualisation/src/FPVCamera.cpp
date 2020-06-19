@@ -29,6 +29,7 @@ FPVCamera::FPVCamera() :
 
     m_camera.near = 0.1f;
     m_camera.far = 100.0f;
+    m_camera.aspectRatio = 1.0f;
     m_camera.verticalFOV = 44.7f;
     m_camera.position = {0.0, 0.0, 3.5};
     m_camera.up = {0, 1, 0};
@@ -43,7 +44,7 @@ FPVCamera::FPVCamera() :
 void FPVCamera::handleInput(double dt) {
     handleMovementInput(dt);
     handleZoomInput(dt);
-    //handleDirectionInput();
+    handleDirectionInput();
 }
 
 

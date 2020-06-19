@@ -70,7 +70,7 @@ bool Visualisation_init() {
 
     Cameras_init();
     Input_init(*s_window);
-    //Input_hideMouseCursor();
+    Input_hideMouseCursor();
 
     // temp
     m_model = std::make_unique<OBJModel>("resources/obj/Merlin1D.obj");

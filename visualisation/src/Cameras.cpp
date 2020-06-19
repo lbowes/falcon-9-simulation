@@ -14,7 +14,7 @@ namespace Graphics {
 
 // Internally, the position of the camera is locked at the origin to eliminate floating point errors
 static const bx::Vec3 s_eye = {0.0f, 0.0f, 0.0f};
-static CameraBaseState s_activeCamera;
+static CameraBaseState const* s_activeCamera = nullptr;
 static CameraBaseState s_defaultCamera;
 static std::unordered_map<std::string, const CameraBaseState*> s_cameraMap;
 
@@ -26,7 +26,7 @@ void Cameras_init() {
 
 
 chrono::Vector Cameras_getActivePos() {
-    return s_activeCamera.position;
+    return s_activeCamera->position;
 }
 
 
@@ -37,35 +37,39 @@ void Cameras_register(const CameraBaseState& cam, const std::string& name) {
 
 
 void Cameras_bind(const std::string& name) {
-    auto it = s_cameraMap.find(name);
+    const auto it = s_cameraMap.find(name);
 
     // Camera with name `name` hasn't been registered, can't be bound
     if(it == s_cameraMap.end()) {
-        printf("Camera '%s' has not been registered.\n", name.c_str());
+        printf("Camera '%s' has not been registered, so cannot be bound.\n", name.c_str());
         return;
     }
 
-    s_activeCamera = *it->second;
+    s_activeCamera = it->second;
     printf("Bound camera '%s'\n", name.c_str());
 }
 
 
 void Cameras_setViewTransform(float aspectRatio) {
     ImGui::Begin("Before");
-    ImGui::Text("m_pos: %f, %f, %f", s_activeCamera.position.x(), s_activeCamera.position.y(), s_activeCamera.position.z());
-    chrono::Vector& lookAt = s_activeCamera.lookAt;
+    ImGui::Text("position: %f, %f, %f", s_activeCamera->position.x(), s_activeCamera->position.y(), s_activeCamera->position.z());
+    const chrono::Vector& lookAt = s_activeCamera->lookAt;
     ImGui::Text("lookAt: %f, %f, %f", lookAt.x(), lookAt.y(), lookAt.z());
+    ImGui::Text("near: %f", s_activeCamera->near);
+    ImGui::Text("verticalFOV: %f", s_activeCamera->verticalFOV);
+    ImGui::Text("far: %f", s_activeCamera->far);
+    ImGui::Text("aspectRatio: %f", s_activeCamera->aspectRatio);
     ImGui::End();
 
     const bx::Vec3 at = bx::Vec3(
-        s_activeCamera.lookAt.x(),
-        s_activeCamera.lookAt.y(),
-        s_activeCamera.lookAt.z());
+        s_activeCamera->lookAt.x(),
+        s_activeCamera->lookAt.y(),
+        s_activeCamera->lookAt.z());
 
     const bx::Vec3 up = bx::Vec3(
-        s_activeCamera.up.x(),
-        s_activeCamera.up.y(),
-        s_activeCamera.up.z());
+        s_activeCamera->up.x(),
+        s_activeCamera->up.y(),
+        s_activeCamera->up.z());
 
     float view[16];
     bx::mtxLookAt(view, s_eye, at, up, bx::Handness::Right);
@@ -73,13 +77,12 @@ void Cameras_setViewTransform(float aspectRatio) {
     float proj[16];
     bx::mtxProj(
         proj,
-        s_activeCamera.verticalFOV,
-        1.0f,
-        s_activeCamera.near,
-        s_activeCamera.far,
+        s_activeCamera->verticalFOV,
+        aspectRatio,
+        s_activeCamera->near,
+        s_activeCamera->far,
         bgfx::getCaps()->homogeneousDepth,
         bx::Handness::Right);
-
 
     bgfx::setViewTransform(0, view, proj);
 }
@@ -87,4 +90,3 @@ void Cameras_setViewTransform(float aspectRatio) {
 
 } // namespace Graphics
 } // namespace F9Sim
-

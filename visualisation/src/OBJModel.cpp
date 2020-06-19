@@ -115,7 +115,6 @@ void OBJModel::updateTransform() const {
     // Combine rotation and translation
     float transform[16];
     bx::mtxMul(transform, rotation, translation);
-    bx::mtxIdentity(transform);
     bgfx::setTransform(transform);
 }
 
