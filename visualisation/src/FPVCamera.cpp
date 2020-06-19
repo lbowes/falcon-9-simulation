@@ -27,8 +27,8 @@ FPVCamera::FPVCamera() :
     m_pitch(0.0f),
     m_yaw(0.0f) {
 
-    m_camera.near = 0.5f;
-    m_camera.far = 300.0f;
+    m_camera.near = 0.1f;
+    m_camera.far = 100.0f;
     m_camera.verticalFOV = 44.7f;
     m_camera.position = {0.0, 0.0, 3.5};
     m_camera.up = {0, 1, 0};
@@ -36,22 +36,14 @@ FPVCamera::FPVCamera() :
 
     syncPitchYawWithLookAt();
 
-    // todo
-    //Cameras_registerHandleTo(m_camera, "first_person_view");
+    Cameras_register(m_camera, "first_person_view");
 }
 
 
 void FPVCamera::handleInput(double dt) {
-    ImGui::Begin("Before");
-    ImGui::Text("m_pitch: %f, m_yaw: %f", m_pitch, m_yaw);
-    ImGui::Text("m_pos: %f, %f, %f", m_camera.position.x(), m_camera.position.y(), m_camera.position.z());
-    chrono::Vector& lookAt = m_camera.lookAt;
-    ImGui::Text("lookAt: %f, %f, %f", lookAt.x(), lookAt.y(), lookAt.z());
-    ImGui::End();
-
     handleMovementInput(dt);
     handleZoomInput(dt);
-    handleDirectionInput();
+    //handleDirectionInput();
 }
 
 

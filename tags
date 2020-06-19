@@ -9011,8 +9011,10 @@ CalcWrapWidthForPos	3rd_party/imgui/imgui.cpp	/^float ImGui::CalcWrapWidthForPos
 CameraBaseState	visualisation/include/CameraBaseState.h	/^    CameraBaseState() {$/;"	f	struct:F9Sim::Graphics::CameraBaseState
 CameraBaseState	visualisation/include/CameraBaseState.h	/^    CameraBaseState(const CameraBaseState& other) {$/;"	f	struct:F9Sim::Graphics::CameraBaseState
 CameraBaseState	visualisation/include/CameraBaseState.h	/^struct CameraBaseState {$/;"	s	namespace:F9Sim::Graphics
+Cameras_bind	visualisation/src/Cameras.cpp	/^void Cameras_bind(const std::string& name) {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:void
 Cameras_getActivePos	visualisation/src/Cameras.cpp	/^chrono::Vector Cameras_getActivePos() {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:chrono::Vector
 Cameras_init	visualisation/src/Cameras.cpp	/^void Cameras_init() {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:void
+Cameras_register	visualisation/src/Cameras.cpp	/^void Cameras_register(const CameraBaseState& cam, const std::string& name) {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:void
 Cameras_setViewTransform	visualisation/src/Cameras.cpp	/^void Cameras_setViewTransform(float aspectRatio) {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:void
 CanMergeDrawCommands	3rd_party/imgui/imgui_draw.cpp	/^static inline bool CanMergeDrawCommands(ImDrawCmd* a, ImDrawCmd* b)$/;"	f	typeref:typename:bool	file:
 Capacity	3rd_party/imgui/imgui.h	/^    int                 Capacity;$/;"	m	struct:ImVector	typeref:typename:int
@@ -16391,6 +16393,8 @@ run	simulation/src/Simulation.cpp	/^void Simulation::run() {$/;"	f	class:Simulat
 s0	3rd_party/imgui/imstb_truetype.h	/^   float x0,y0,s0,t0; \/\/ top-left$/;"	m	struct:__anon65b4c42c0308	typeref:typename:float
 s1	3rd_party/imgui/imstb_truetype.h	/^   float x1,y1,s1,t1; \/\/ bottom-right$/;"	m	struct:__anon65b4c42c0308	typeref:typename:float
 s_activeCamera	visualisation/src/Cameras.cpp	/^static CameraBaseState s_activeCamera;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:CameraBaseState	file:
+s_cameraMap	visualisation/src/Cameras.cpp	/^static std::unordered_map<std::string, const CameraBaseState*> s_cameraMap;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:std::unordered_map<std::string,const CameraBaseState * >	file:
+s_defaultCamera	visualisation/src/Cameras.cpp	/^static CameraBaseState s_defaultCamera;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:CameraBaseState	file:
 s_embeddedShaders	3rd_party/imgui/imgui_impl_bgfx.cpp	/^static const bgfx::EmbeddedShader s_embeddedShaders[] = {$/;"	v	typeref:typename:const bgfx::EmbeddedShader[]	file:
 s_empty	3rd_party/catch.hpp	/^        static constexpr char const* const s_empty = "";$/;"	m	class:Catch::StringRef	typeref:typename:char const * const
 s_eye	visualisation/src/Cameras.cpp	/^static const bx::Vec3 s_eye = {0.0f, 0.0f, 0.0f};$/;"	v	namespace:F9Sim::Graphics	typeref:typename:const bx::Vec3	file:
@@ -16749,7 +16753,6 @@ syncPitchYawWithLookAt	visualisation/src/FPVCamera.cpp	/^void FPVCamera::syncPit
 t0	3rd_party/imgui/imstb_truetype.h	/^   float x0,y0,s0,t0; \/\/ top-left$/;"	m	struct:__anon65b4c42c0308	typeref:typename:float
 t1	3rd_party/imgui/imstb_truetype.h	/^   float x1,y1,s1,t1; \/\/ bottom-right$/;"	m	struct:__anon65b4c42c0308	typeref:typename:float
 tags	3rd_party/catch.hpp	/^    StringRef tags;$/;"	m	struct:Catch::NameAndTags	typeref:typename:StringRef
-temp_updateCameras	visualisation/src/Visualisation.cpp	/^static void temp_updateCameras(float aspectRatio) {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:void	file:
 testCam	visualisation/include/Scene.h	/^    FPVCamera testCam;$/;"	m	class:Scene	typeref:typename:FPVCamera
 test_Simulation.cpp.i	build/dev/tests/Makefile	/^test_Simulation.cpp.i:$/;"	t
 test_Simulation.cpp.o	build/dev/tests/Makefile	/^test_Simulation.cpp.o:$/;"	t
@@ -17791,7 +17794,6 @@ type	3rd_party/json.hpp	/^    using type = index_sequence;$/;"	t	struct:nlohmann
 type	3rd_party/json.hpp	/^    using type = void;$/;"	t	struct:nlohmann::detail::make_void	typeref:typename:void
 type_error	3rd_party/json.hpp	/^    type_error(int id_, const char* what_arg) : exception(id_, what_arg) {}$/;"	f	class:nlohmann::detail::type_error
 type_error	3rd_party/json.hpp	/^class type_error : public exception$/;"	c	namespace:nlohmann::detail
-u_uniform	visualisation/include/OBJModel.h	/^    bgfx::UniformHandle u_uniform;$/;"	m	class:F9Sim::Graphics::OBJModel	typeref:typename:bgfx::UniformHandle
 uncvref_t	3rd_party/json.hpp	/^using uncvref_t = typename std::remove_cv<typename std::remove_reference<T>::type>::type;$/;"	t	namespace:nlohmann::detail	typeref:typename:std::remove_cv<typename std::remove_reference<T>::type>::type
 undo_char	3rd_party/imgui/imstb_textedit.h	/^   STB_TEXTEDIT_CHARTYPE  undo_char[STB_TEXTEDIT_UNDOCHARCOUNT];$/;"	m	struct:__anon9e551a350208	typeref:typename:STB_TEXTEDIT_CHARTYPE[]
 undo_char_point	3rd_party/imgui/imstb_textedit.h	/^   int undo_char_point, redo_char_point;$/;"	m	struct:__anon9e551a350208	typeref:typename:int

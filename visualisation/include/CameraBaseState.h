@@ -11,7 +11,10 @@ namespace Graphics {
 
 
 struct CameraBaseState {
+    // note: This isn't used yet. The aspect ratio of the screen is used at all times but in future cameras could have
+    // more unique profiles and different aspect ratios.
     float aspectRatio;
+
     float near;
     float far;
     float verticalFOV;
@@ -23,12 +26,12 @@ struct CameraBaseState {
     CameraBaseState() {
         // Default state
         aspectRatio = 16.0f / 9.0f;
-        near = 1.0f;
-        far = 1.0f;
-        verticalFOV = 1.0f;
+        near = 0.1f;
+        far = 100.0f;
+        verticalFOV = 60.0f;
         position = {0.0f, 0.0f, 0.0f};
         up = {0.0f, 1.0f, 0.0f};
-        lookAt = {0.0f, 1.0f, -1.0f};
+        lookAt = {0.0f, 0.0f, -1.0f};
     }
 
 

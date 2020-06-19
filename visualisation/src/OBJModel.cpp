@@ -74,8 +74,6 @@ OBJModel::OBJModel(const char* filepath) {
     bgfx::ShaderHandle vsh = loadShader("resources/shaders/v_square.bin");
     bgfx::ShaderHandle fsh = loadShader("resources/shaders/f_square.bin");
     m_shader = bgfx::createProgram(vsh, fsh, true);
-
-    u_uniform = bgfx::createUniform("u_uniform", bgfx::UniformType::Vec4);
 }
 
 
@@ -83,7 +81,6 @@ OBJModel::~OBJModel() {
     bgfx::destroy(m_vbh);
     bgfx::destroy(m_ibh);
     bgfx::destroy(m_shader);
-    bgfx::destroy(u_uniform);
 }
 
 
@@ -93,13 +90,6 @@ void OBJModel::setTransform(const chrono::ChCoordsys<>& transform) {
 
 
 void OBJModel::draw() const {
-    // Set an example uniform
-    static float uniformVar = 0.5f;
-    ImGui::Begin("temp");
-    ImGui::SliderFloat("uniformVar", &uniformVar, 0.0f, 1.0f);
-    ImGui::End();
-    bgfx::setUniform(u_uniform, &uniformVar);
-
     updateTransform();
 
     bgfx::setVertexBuffer(0, m_vbh);
@@ -112,7 +102,7 @@ void OBJModel::draw() const {
 void OBJModel::updateTransform() const {
     // Rotation
     const chrono::Quaternion r = m_transform.rot;
-    const bx::Quaternion orientation = {r.e3(), r.e0(), r.e1(), r.e2()};
+    const bx::Quaternion orientation = {(float)r.e3(), (float)r.e0(), (float)r.e1(), (float)r.e2()};
     float rotation[16];
     bx::mtxQuat(rotation, orientation);
 
@@ -120,12 +110,12 @@ void OBJModel::updateTransform() const {
     const chrono::Vector camPos = Cameras_getActivePos();
     const chrono::Vector d = m_transform.pos - camPos;
     float translation[16];
-    bx::mtxTranslate(translation, d.x(), d.y(), d.z());
+    bx::mtxTranslate(translation, (float)d.x(), (float)d.y(), (float)d.z());
 
     // Combine rotation and translation
     float transform[16];
     bx::mtxMul(transform, rotation, translation);
-
+    bx::mtxIdentity(transform);
     bgfx::setTransform(transform);
 }
 

@@ -70,20 +70,17 @@ bool Visualisation_init() {
 
     Cameras_init();
     Input_init(*s_window);
-    Input_hideMouseCursor();
+    //Input_hideMouseCursor();
 
     // temp
     m_model = std::make_unique<OBJModel>("resources/obj/Merlin1D.obj");
     s_fpvCam = std::make_unique<FPVCamera>();
+    Cameras_bind("first_person_view");
     //
 
     bgfx::touch(0);
 
     return true;
-}
-
-
-static void temp_updateCameras(float aspectRatio) {
 }
 
 
@@ -148,3 +145,4 @@ static void glfw_errorCallback(int error, const char* description) {
 
 } // namespace Graphics
 } // namespace F9Sim
+

@@ -3,6 +3,8 @@
 #pragma once
 
 
+#include "CameraBaseState.h"
+
 #include <chrono/core/ChVector.h>
 
 
@@ -12,6 +14,8 @@ namespace Graphics {
 
 void Cameras_init();
 chrono::Vector Cameras_getActivePos();
+void Cameras_register(const CameraBaseState& cam, const std::string& name);
+void Cameras_bind(const std::string& name);
 void Cameras_setViewTransform(float aspectRatio);
 
 

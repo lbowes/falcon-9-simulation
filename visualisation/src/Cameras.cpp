@@ -1,16 +1,11 @@
 #include "Cameras.h"
-#include "CameraBaseState.h"
-
-//temp
-#include "FPVCamera.h"
-#include "Input.h"
-//
-
 #include "../3rd_party/imgui/imgui.h"
 
 #include <bgfx/bgfx.h>
 #include <bx/math.h>
 #include <memory>
+#include <string>
+#include <unordered_map>
 
 
 namespace F9Sim {
@@ -20,15 +15,13 @@ namespace Graphics {
 // Internally, the position of the camera is locked at the origin to eliminate floating point errors
 static const bx::Vec3 s_eye = {0.0f, 0.0f, 0.0f};
 static CameraBaseState s_activeCamera;
+static CameraBaseState s_defaultCamera;
+static std::unordered_map<std::string, const CameraBaseState*> s_cameraMap;
 
 
 void Cameras_init() {
-    s_activeCamera.near = 0.1f;
-    s_activeCamera.far = 100.0f;
-    s_activeCamera.verticalFOV = 60.0f;
-    s_activeCamera.position = {0.0, 0.0, -3.0};
-    s_activeCamera.up = {0.0, 1.0, 0.0};
-    s_activeCamera.lookAt = {0.0, 0.0, 1.0};
+    Cameras_register(s_defaultCamera, "default_camera");
+    Cameras_bind("default_camera");
 }
 
 
@@ -37,7 +30,33 @@ chrono::Vector Cameras_getActivePos() {
 }
 
 
+void Cameras_register(const CameraBaseState& cam, const std::string& name) {
+    printf("Registered '%s'.\n", name.c_str());
+    s_cameraMap[name] = &cam;
+}
+
+
+void Cameras_bind(const std::string& name) {
+    auto it = s_cameraMap.find(name);
+
+    // Camera with name `name` hasn't been registered, can't be bound
+    if(it == s_cameraMap.end()) {
+        printf("Camera '%s' has not been registered.\n", name.c_str());
+        return;
+    }
+
+    s_activeCamera = *it->second;
+    printf("Bound camera '%s'\n", name.c_str());
+}
+
+
 void Cameras_setViewTransform(float aspectRatio) {
+    ImGui::Begin("Before");
+    ImGui::Text("m_pos: %f, %f, %f", s_activeCamera.position.x(), s_activeCamera.position.y(), s_activeCamera.position.z());
+    chrono::Vector& lookAt = s_activeCamera.lookAt;
+    ImGui::Text("lookAt: %f, %f, %f", lookAt.x(), lookAt.y(), lookAt.z());
+    ImGui::End();
+
     const bx::Vec3 at = bx::Vec3(
         s_activeCamera.lookAt.x(),
         s_activeCamera.lookAt.y(),
@@ -55,11 +74,12 @@ void Cameras_setViewTransform(float aspectRatio) {
     bx::mtxProj(
         proj,
         s_activeCamera.verticalFOV,
-        aspectRatio,
+        1.0f,
         s_activeCamera.near,
         s_activeCamera.far,
         bgfx::getCaps()->homogeneousDepth,
         bx::Handness::Right);
+
 
     bgfx::setViewTransform(0, view, proj);
 }
@@ -67,3 +87,4 @@ void Cameras_setViewTransform(float aspectRatio) {
 
 } // namespace Graphics
 } // namespace F9Sim
+
