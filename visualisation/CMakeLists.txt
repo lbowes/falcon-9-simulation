@@ -19,9 +19,10 @@ target_sources(f9sim-visualisation
 	PRIVATE
 		src/main.cpp
 		src/Visualisation.cpp
-		src/OBJModel.cpp
+		src/Mesh.cpp
 		src/Cameras.cpp
 		src/FPVCamera.cpp
+		src/ShaderUtils.cpp
 		src/Input.cpp
 		${IMGUI_SRC}
 )

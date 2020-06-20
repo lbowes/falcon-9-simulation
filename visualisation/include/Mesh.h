@@ -1,5 +1,5 @@
-#ifndef F9SIM_GRAPHICS_OBJMODEL_H_
-#define F9SIM_GRAPHICS_OBJMODEL_H_
+#ifndef F9SIM_GRAPHICS_MESH_H_
+#define F9SIM_GRAPHICS_MESH_H_
 #pragma once
 
 
@@ -29,7 +29,7 @@ struct PosColorVertex {
 };
 
 
-class OBJModel {
+class Mesh {
 private:
     static uint64_t s_renderState;
 
@@ -41,8 +41,8 @@ private:
     bgfx::ProgramHandle m_shader;
 
 public:
-    OBJModel(const char* filepath);
-    ~OBJModel();
+    Mesh(const char* filepath);
+    ~Mesh();
 
     void setTransform(const chrono::ChCoordsys<>& transform_world);
     void draw() const;
@@ -56,5 +56,5 @@ private:
 } // namespace F9Sim
 
 
-#endif // F9SIM_GRAPHICS_OBJMODEL_H_
+#endif // F9SIM_GRAPHICS_MESH_H_
 

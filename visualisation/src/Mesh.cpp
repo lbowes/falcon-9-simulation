@@ -1,7 +1,7 @@
-#include "OBJModel.h"
-#include "Cameras.h"
-
+#include "Mesh.h"
 #include "../3rd_party/imgui/imgui.h"
+#include "Cameras.h"
+#include "ShaderUtils.h"
 
 #include <bgfx/bgfx.h>
 #include <bgfx/platform.h>
@@ -13,34 +13,10 @@ namespace F9Sim {
 namespace Graphics {
 
 
-bgfx::ShaderHandle loadShader(const char* filename) {
-    char* data = new char[2048];
-    std::ifstream file;
-    size_t fileSize;
-
-    file.open(filename);
-
-    if(file.is_open()) {
-        file.seekg(0, std::ios::end);
-        fileSize = file.tellg();
-        file.seekg(0, std::ios::beg);
-        file.read(data, fileSize);
-        file.close();
-    }
-
-    const bgfx::Memory* mem = bgfx::copy(data, fileSize + 1);
-    mem->data[mem->size - 1] = '\0';
-    bgfx::ShaderHandle handle = bgfx::createShader(mem);
-    bgfx::setName(handle, filename);
-
-    return handle;
-}
-
-
 bgfx::VertexLayout PosColorVertex::ms_decl;
 
 
-uint64_t OBJModel::s_renderState =
+uint64_t Mesh::s_renderState =
     0 |
     BGFX_STATE_WRITE_RGB |
     BGFX_STATE_WRITE_A |
@@ -49,23 +25,63 @@ uint64_t OBJModel::s_renderState =
     BGFX_STATE_MSAA;
 
 
-OBJModel::OBJModel(const char* filepath) {
+Mesh::Mesh(const char* filepath) {
     PosColorVertex::init();
 
     // Get the data from the obj file into the correct bgfx objects ready for rendering
     // (this is just temporary data for testing camera movement)
     {
-        static PosColorVertex s_squareVertices[] = {
-            {0.5f, 0.5f, 0.0f, 0xff0000ff},
-            {0.5f, -0.5f, 0.0f, 0xff0000ff},
-            {-0.5f, -0.5f, 0.0f, 0xff00ff00},
-            {-0.5f, 0.5f, 0.0f, 0xff00ff00}};
+        static PosColorVertex s_cubeVertices[] = {
+            {-1.0f, 1.0f, 1.0f, 0xff000000},
+            {1.0f, 1.0f, 1.0f, 0xff0000ff},
+            {-1.0f, -1.0f, 1.0f, 0xff00ff00},
+            {1.0f, -1.0f, 1.0f, 0xff00ffff},
+            {-1.0f, 1.0f, -1.0f, 0xffff0000},
+            {1.0f, 1.0f, -1.0f, 0xffff00ff},
+            {-1.0f, -1.0f, -1.0f, 0xffffff00},
+            {1.0f, -1.0f, -1.0f, 0xffffffff},
+        };
 
-        m_vbh = bgfx::createVertexBuffer(bgfx::makeRef(s_squareVertices, sizeof(s_squareVertices)), PosColorVertex::ms_decl);
+        m_vbh = bgfx::createVertexBuffer(bgfx::makeRef(s_cubeVertices, sizeof(s_cubeVertices)), PosColorVertex::ms_decl);
 
         static const uint16_t s_cubeTriList[] = {
-            0, 1, 3,
-            1, 2, 3};
+            0,
+            1,
+            2, // 0
+            1,
+            3,
+            2,
+            4,
+            6,
+            5, // 2
+            5,
+            6,
+            7,
+            0,
+            2,
+            4, // 4
+            4,
+            2,
+            6,
+            1,
+            5,
+            3, // 6
+            5,
+            7,
+            3,
+            0,
+            4,
+            1, // 8
+            4,
+            5,
+            1,
+            2,
+            3,
+            6, // 10
+            6,
+            3,
+            7,
+        };
 
         m_ibh = bgfx::createIndexBuffer(bgfx::makeRef(s_cubeTriList, sizeof(s_cubeTriList)));
     }
@@ -77,19 +93,19 @@ OBJModel::OBJModel(const char* filepath) {
 }
 
 
-OBJModel::~OBJModel() {
+Mesh::~Mesh() {
     bgfx::destroy(m_vbh);
     bgfx::destroy(m_ibh);
     bgfx::destroy(m_shader);
 }
 
 
-void OBJModel::setTransform(const chrono::ChCoordsys<>& transform) {
+void Mesh::setTransform(const chrono::ChCoordsys<>& transform) {
     m_transform = transform;
 }
 
 
-void OBJModel::draw() const {
+void Mesh::draw() const {
     updateTransform();
 
     bgfx::setVertexBuffer(0, m_vbh);
@@ -99,7 +115,7 @@ void OBJModel::draw() const {
 }
 
 
-void OBJModel::updateTransform() const {
+void Mesh::updateTransform() const {
     // Rotation
     const chrono::Quaternion r = m_transform.rot;
     const bx::Quaternion orientation = {(float)r.e3(), (float)r.e0(), (float)r.e1(), (float)r.e2()};

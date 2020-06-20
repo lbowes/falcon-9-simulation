@@ -5,7 +5,7 @@
 #include "Cameras.h"
 #include "FPVCamera.h"
 #include "Input.h"
-#include "OBJModel.h"
+#include "Mesh.h"
 
 #include <GLFW/glfw3.h>
 #include <bgfx/bgfx.h>
@@ -26,7 +26,7 @@ namespace Graphics {
 static GLFWwindow* s_window = nullptr;
 static int s_width = 0;
 static int s_height = 0;
-static std::unique_ptr<OBJModel> m_model;
+static std::unique_ptr<Mesh> m_mesh;
 static std::unique_ptr<FPVCamera> s_fpvCam;
 
 static void shutdown();
@@ -73,7 +73,7 @@ bool Visualisation_init() {
     Input_hideMouseCursor();
 
     // temp
-    m_model = std::make_unique<OBJModel>("resources/obj/Merlin1D.obj");
+    m_mesh = std::make_unique<Mesh>("resources/obj/Merlin1D.obj");
     s_fpvCam = std::make_unique<FPVCamera>();
     Cameras_bind("first_person_view");
     //
@@ -117,7 +117,7 @@ void Visualisation_run() {
             const float aspectRatio = (float)s_width / (float)s_height;
             Cameras_setViewTransform(aspectRatio);
 
-            m_model->draw();
+            m_mesh->draw();
         }
         bgfx::frame();
 

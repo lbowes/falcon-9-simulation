@@ -10,6 +10,9 @@ namespace F9Sim {
 namespace Graphics {
 
 
+// todo: Fix camera jump when starting app with mouse over window
+
+
 class FPVCamera {
 public:
     CameraBaseState m_camera;
