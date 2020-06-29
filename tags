@@ -16458,12 +16458,12 @@ skip_missing	3rd_party/imgui/imstb_truetype.h	/^   int   skip_missing;$/;"	m	str
 snprintf	3rd_party/imgui/imgui_demo.cpp	/^#define snprintf /;"	d	file:
 source	visualisation/CMakeLists.txt	/^set(source "${CMAKE_CURRENT_SOURCE_DIR}\/resources")$/;"	v
 split	3rd_party/imgui/imgui.cpp	/^void ImGuiTextFilter::ImGuiTextRange::split(char separator, ImVector<ImGuiTextRange>* out) const$/;"	f	class:ImGuiTextFilter::ImGuiTextRange	typeref:typename:void
-src/Cameras.cpp.i	build/dev/visualisation/Makefile	/^src\/Cameras.cpp.i:$/;"	t
-src/Cameras.cpp.o	build/dev/visualisation/Makefile	/^src\/Cameras.cpp.o:$/;"	t
-src/Cameras.cpp.s	build/dev/visualisation/Makefile	/^src\/Cameras.cpp.s:$/;"	t
-src/Cameras.i	build/dev/visualisation/Makefile	/^src\/Cameras.i: src\/Cameras.cpp.i$/;"	t
-src/Cameras.o	build/dev/visualisation/Makefile	/^src\/Cameras.o: src\/Cameras.cpp.o$/;"	t
-src/Cameras.s	build/dev/visualisation/Makefile	/^src\/Cameras.s: src\/Cameras.cpp.s$/;"	t
+src/CameraSystem.cpp.i	build/dev/visualisation/Makefile	/^src\/CameraSystem.cpp.i:$/;"	t
+src/CameraSystem.cpp.o	build/dev/visualisation/Makefile	/^src\/CameraSystem.cpp.o:$/;"	t
+src/CameraSystem.cpp.s	build/dev/visualisation/Makefile	/^src\/CameraSystem.cpp.s:$/;"	t
+src/CameraSystem.i	build/dev/visualisation/Makefile	/^src\/CameraSystem.i: src\/CameraSystem.cpp.i$/;"	t
+src/CameraSystem.o	build/dev/visualisation/Makefile	/^src\/CameraSystem.o: src\/CameraSystem.cpp.o$/;"	t
+src/CameraSystem.s	build/dev/visualisation/Makefile	/^src\/CameraSystem.s: src\/CameraSystem.cpp.s$/;"	t
 src/FPVCamera.cpp.i	build/dev/visualisation/Makefile	/^src\/FPVCamera.cpp.i:$/;"	t
 src/FPVCamera.cpp.o	build/dev/visualisation/Makefile	/^src\/FPVCamera.cpp.o:$/;"	t
 src/FPVCamera.cpp.s	build/dev/visualisation/Makefile	/^src\/FPVCamera.cpp.s:$/;"	t
