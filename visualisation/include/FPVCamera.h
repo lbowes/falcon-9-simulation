@@ -5,6 +5,8 @@
 
 #include "CameraBaseState.h"
 
+#include <glm/vec2.hpp>
+
 
 namespace F9Sim {
 namespace Graphics {
@@ -15,7 +17,20 @@ namespace Graphics {
 
 class FPVCamera {
 public:
-    CameraBaseState m_camera;
+    struct Input {
+        glm::ivec2 mouseDelta;
+
+        struct Move {
+            bool forward;
+            bool backwards;
+            bool left;
+            bool right;
+            bool up;
+            bool down;
+        } move;
+
+        Input();
+    };
 
 private:
     struct Sensitivity {
@@ -30,6 +45,7 @@ private:
         static const float friction;
     };
 
+    CameraBaseState m_camera;
     chrono::ChVector<> m_velocity;
     float m_movementSpeed;
     float m_pitch;
@@ -39,13 +55,13 @@ public:
     FPVCamera();
     ~FPVCamera() = default;
 
-    void handleInput(double dt);
+    void process(Input input, double dt);
     void update(double dt);
 
 private:
-    void handleMovementInput(double dt);
-    void handleDirectionInput();
-    void handleZoomInput(double dt);
+    void moveInput(Input::Move move, double dt);
+    void directionInput(glm::ivec2 mouseDelta);
+    void zoomInput(double dt);
     void clampPitchYaw();
     void syncLookAtWithPitchYaw();
     void syncPitchYawWithLookAt();

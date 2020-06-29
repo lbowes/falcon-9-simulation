@@ -109,7 +109,17 @@ void Visualisation_run() {
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        s_fpvCam->handleInput(dt);
+        // todo: get the required input from the Input module into the FPVCamera's input struct here
+        FPVCamera::Input input;
+        input.mouseDelta = Input_getMouseDelta();
+        input.move.forward = Input_isKeyDown(GLFW_KEY_E);
+        input.move.backwards = Input_isKeyDown(GLFW_KEY_D);
+        input.move.up = Input_isKeyDown(GLFW_KEY_SPACE);
+        input.move.down = Input_isKeyDown(GLFW_KEY_LEFT_SHIFT);
+        input.move.left = Input_isKeyDown(GLFW_KEY_S);
+        input.move.right = Input_isKeyDown(GLFW_KEY_F);
+
+        s_fpvCam->process(input, dt);
         s_fpvCam->update(dt);
 
         bgfx::touch(0);
