@@ -1,6 +1,6 @@
 #include "FPVCamera.h"
 #include "../3rd_party/imgui/imgui.h"
-#include "Cameras.h"
+#include "CameraSystem.h"
 
 #include <chrono/core/ChMathematics.h>
 #include <chrono/core/ChVector.h>
@@ -46,7 +46,7 @@ FPVCamera::FPVCamera() :
 
     syncPitchYawWithLookAt();
 
-    Cameras_register(m_camera, "first_person_view");
+    CameraSystem::getInstance().registerCam(m_camera, "first_person_view");
 }
 
 

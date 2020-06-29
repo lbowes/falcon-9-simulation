@@ -1,9 +1,0 @@
- _____ ___  ___   ___
-|_   _/ _ \|   \ / _ \
-  | || (_) | |) | (_) |
-  |_| \___/|___/ \___/
-__________________________________________________________________________________________________________________________________
-
-1. Long term, look into how the SpaceX API (https://github.com/r-spacex/SpaceX-API) can be used to build missions. We'd need some method of combing the json response for e.g. the latest mission and integrating all data possible into the simulation.
-
-2. Use some of the cool functions in ChIrrTools once the simulation is running to draw things like springs, and trajectories

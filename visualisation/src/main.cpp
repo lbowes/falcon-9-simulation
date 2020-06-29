@@ -2,12 +2,7 @@
 
 
 int main() {
-    using namespace F9Sim::Graphics;
-
-    if(!Visualisation_init())
-        return 1;
-
-    Visualisation_run();
+    F9Sim::Graphics::Visualisation::getInstance().run();
 
     return 0;
 }

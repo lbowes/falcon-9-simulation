@@ -1,4 +1,4 @@
-#include "Cameras.h"
+#include "CameraSystem.h"
 #include "../3rd_party/imgui/imgui.h"
 
 #include <bgfx/bgfx.h>
@@ -13,30 +13,36 @@ namespace Graphics {
 
 
 // Internally, the position of the camera is locked at the origin to eliminate floating point errors
-static const bx::Vec3 s_eye = {0.0f, 0.0f, 0.0f};
-static CameraBaseState const* s_activeCamera = nullptr;
-static CameraBaseState s_defaultCamera;
-static std::unordered_map<std::string, const CameraBaseState*> s_cameraMap;
+const bx::Vec3 CameraSystem::s_eye = {0.0f, 0.0f, 0.0f};
+CameraBaseState const* CameraSystem::s_activeCamera = nullptr;
+CameraBaseState CameraSystem::s_defaultCamera;
+std::unordered_map<std::string, const CameraBaseState*> CameraSystem::s_cameraMap;
 
 
-void Cameras_init() {
-    Cameras_register(s_defaultCamera, "default_camera");
-    Cameras_bind("default_camera");
+CameraSystem::CameraSystem() {
+    registerCam(s_defaultCamera, "default_camera");
+    bind("default_camera");
 }
 
 
-chrono::Vector Cameras_getActivePos() {
+CameraSystem& CameraSystem::getInstance() {
+    static CameraSystem instance;
+    return instance;
+}
+
+
+chrono::Vector CameraSystem::getActivePos() {
     return s_activeCamera->position;
 }
 
 
-void Cameras_register(const CameraBaseState& cam, const std::string& name) {
+void CameraSystem::registerCam(const CameraBaseState& cam, const std::string& name) {
     printf("Registered '%s'.\n", name.c_str());
     s_cameraMap[name] = &cam;
 }
 
 
-void Cameras_bind(const std::string& name) {
+void CameraSystem::bind(const std::string& name) {
     const auto it = s_cameraMap.find(name);
 
     // Camera with name `name` hasn't been registered, can't be bound
@@ -50,7 +56,7 @@ void Cameras_bind(const std::string& name) {
 }
 
 
-void Cameras_setViewTransform(float aspectRatio) {
+void CameraSystem::setViewTransform(float aspectRatio) {
     ImGui::Begin("Before");
     ImGui::Text("position: %f, %f, %f", s_activeCamera->position.x(), s_activeCamera->position.y(), s_activeCamera->position.z());
     const chrono::Vector& lookAt = s_activeCamera->lookAt;
