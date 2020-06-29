@@ -11,7 +11,7 @@ namespace F9Sim {
 namespace Graphics {
 
 
-struct PosColorVertex {
+struct Vertex {
     static bgfx::VertexLayout ms_decl;
 
     float m_x;

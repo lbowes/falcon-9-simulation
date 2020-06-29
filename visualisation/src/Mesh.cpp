@@ -6,14 +6,13 @@
 #include <bgfx/bgfx.h>
 #include <bgfx/platform.h>
 #include <bx/math.h>
-#include <fstream>
 
 
 namespace F9Sim {
 namespace Graphics {
 
 
-bgfx::VertexLayout PosColorVertex::ms_decl;
+bgfx::VertexLayout Vertex::ms_decl;
 
 
 uint64_t Mesh::s_renderState =
@@ -26,12 +25,12 @@ uint64_t Mesh::s_renderState =
 
 
 Mesh::Mesh(const char* filepath) {
-    PosColorVertex::init();
+    Vertex::init();
 
     // Get the data from the obj file into the correct bgfx objects ready for rendering
     // (this is just temporary data for testing camera movement)
     {
-        static PosColorVertex s_cubeVertices[] = {
+        static Vertex s_cubeVertices[] = {
             {-1.0f, 1.0f, 1.0f, 0xff000000},
             {1.0f, 1.0f, 1.0f, 0xff0000ff},
             {-1.0f, -1.0f, 1.0f, 0xff00ff00},
@@ -42,7 +41,7 @@ Mesh::Mesh(const char* filepath) {
             {1.0f, -1.0f, -1.0f, 0xffffffff},
         };
 
-        m_vbh = bgfx::createVertexBuffer(bgfx::makeRef(s_cubeVertices, sizeof(s_cubeVertices)), PosColorVertex::ms_decl);
+        m_vbh = bgfx::createVertexBuffer(bgfx::makeRef(s_cubeVertices, sizeof(s_cubeVertices)), Vertex::ms_decl);
 
         static const uint16_t s_cubeTriList[] = {
             0,

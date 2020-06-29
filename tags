@@ -4144,6 +4144,7 @@ $(VERBOSE)MAKESILENT	build/dev/visualisation/Makefile	/^$(VERBOSE)MAKESILENT = -
 177	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 178	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 179	build/dev/simulation/output.json	/^        {$/;"	o	array:history
+18	build/dev/compile_commands.json	/^{$/;"	o
 18	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 180	build/dev/simulation/output.json	/^        {$/;"	o	array:history
 181	build/dev/simulation/output.json	/^        {$/;"	o	array:history
@@ -9353,8 +9354,6 @@ F9SIM_GRAPHICS_CAMERABASESTATE_H_	visualisation/include/CameraBaseState.h	/^#def
 F9SIM_GRAPHICS_CAMERAS_H_	visualisation/include/Cameras.h	/^#define F9SIM_GRAPHICS_CAMERAS_H_$/;"	d
 F9SIM_GRAPHICS_FPVCAMERA_H_	visualisation/include/FPVCamera.h	/^#define F9SIM_GRAPHICS_FPVCAMERA_H_$/;"	d
 F9SIM_GRAPHICS_MESH_H_	visualisation/include/Mesh.h	/^#define F9SIM_GRAPHICS_MESH_H_$/;"	d
-F9SIM_GRAPHICS_OBJMODEL_H_	visualisation/include/OBJModel.h	/^#define F9SIM_GRAPHICS_OBJMODEL_H_$/;"	d
-F9SIM_GRAPHICS_SHADERUTILS_H_	visualisation/include/Loaders.h	/^#define F9SIM_GRAPHICS_SHADERUTILS_H_$/;"	d
 F9SIM_GRAPHICS_SHADERUTILS_H_	visualisation/include/ShaderUtils.h	/^#define F9SIM_GRAPHICS_SHADERUTILS_H_$/;"	d
 F9SIM_GRAPHICS_VISUALISATION_H_	visualisation/include/Visualisation.h	/^#define F9SIM_GRAPHICS_VISUALISATION_H_$/;"	d
 F9SIM_INPUT_H_	visualisation/include/Input.h	/^#define F9SIM_INPUT_H_$/;"	d
@@ -9363,14 +9362,12 @@ F9Sim	visualisation/include/Cameras.h	/^namespace F9Sim {$/;"	n
 F9Sim	visualisation/include/FPVCamera.h	/^namespace F9Sim {$/;"	n
 F9Sim	visualisation/include/Input.h	/^namespace F9Sim {$/;"	n
 F9Sim	visualisation/include/Mesh.h	/^namespace F9Sim {$/;"	n
-F9Sim	visualisation/include/OBJModel.h	/^namespace F9Sim {$/;"	n
 F9Sim	visualisation/include/ShaderUtils.h	/^namespace F9Sim {$/;"	n
 F9Sim	visualisation/include/Visualisation.h	/^namespace F9Sim {$/;"	n
 F9Sim	visualisation/src/Cameras.cpp	/^namespace F9Sim {$/;"	n	file:
 F9Sim	visualisation/src/FPVCamera.cpp	/^namespace F9Sim {$/;"	n	file:
 F9Sim	visualisation/src/Input.cpp	/^namespace F9Sim {$/;"	n	file:
 F9Sim	visualisation/src/Mesh.cpp	/^namespace F9Sim {$/;"	n	file:
-F9Sim	visualisation/src/OBJModel.cpp	/^namespace F9Sim {$/;"	n	file:
 F9Sim	visualisation/src/ShaderUtils.cpp	/^namespace F9Sim {$/;"	n	file:
 F9Sim	visualisation/src/Visualisation.cpp	/^namespace F9Sim {$/;"	n	file:
 FONT_ATLAS_DEFAULT_TEX_CURSOR_DATA	3rd_party/imgui/imgui_draw.cpp	/^static const ImVec2 FONT_ATLAS_DEFAULT_TEX_CURSOR_DATA[ImGuiMouseCursor_COUNT][3] =$/;"	v	typeref:typename:const ImVec2[][3]	file:
@@ -9679,15 +9676,12 @@ GrabRounding	3rd_party/imgui/imgui.h	/^    float       GrabRounding;            
 Graphics	visualisation/include/CameraBaseState.h	/^namespace Graphics {$/;"	n	namespace:F9Sim
 Graphics	visualisation/include/Cameras.h	/^namespace Graphics {$/;"	n	namespace:F9Sim
 Graphics	visualisation/include/FPVCamera.h	/^namespace Graphics {$/;"	n	namespace:F9Sim
-Graphics	visualisation/include/Loaders.h	/^namespace Graphics {$/;"	n
 Graphics	visualisation/include/Mesh.h	/^namespace Graphics {$/;"	n	namespace:F9Sim
-Graphics	visualisation/include/OBJModel.h	/^namespace Graphics {$/;"	n	namespace:F9Sim
 Graphics	visualisation/include/ShaderUtils.h	/^namespace Graphics {$/;"	n	namespace:F9Sim
 Graphics	visualisation/include/Visualisation.h	/^namespace Graphics {$/;"	n	namespace:F9Sim
 Graphics	visualisation/src/Cameras.cpp	/^namespace Graphics {$/;"	n	namespace:F9Sim	file:
 Graphics	visualisation/src/FPVCamera.cpp	/^namespace Graphics {$/;"	n	namespace:F9Sim	file:
 Graphics	visualisation/src/Mesh.cpp	/^namespace Graphics {$/;"	n	namespace:F9Sim	file:
-Graphics	visualisation/src/OBJModel.cpp	/^namespace Graphics {$/;"	n	namespace:F9Sim	file:
 Graphics	visualisation/src/ShaderUtils.cpp	/^namespace Graphics {$/;"	n	namespace:F9Sim	file:
 Graphics	visualisation/src/Visualisation.cpp	/^namespace Graphics {$/;"	n	namespace:F9Sim	file:
 Group	3rd_party/bgfx_extra/bgfx_utils.cpp	/^Group::Group()$/;"	f	class:Group
@@ -11227,9 +11221,7 @@ Merge	3rd_party/imgui/imgui_draw.cpp	/^void ImDrawListSplitter::Merge(ImDrawList
 MergeMode	3rd_party/imgui/imgui.h	/^    bool            MergeMode;              \/\/ false    \/\/ Merge into previous ImFont, so yo/;"	m	struct:ImFontConfig	typeref:typename:bool
 Mesh	3rd_party/bgfx_extra/bgfx_utils.h	/^struct Mesh$/;"	s
 Mesh	visualisation/include/Mesh.h	/^class Mesh {$/;"	c	namespace:F9Sim::Graphics
-Mesh	visualisation/include/OBJModel.h	/^class Mesh {$/;"	c	namespace:F9Sim::Graphics
 Mesh	visualisation/src/Mesh.cpp	/^Mesh::Mesh(const char* filepath) {$/;"	f	class:F9Sim::Graphics::Mesh
-Mesh	visualisation/src/OBJModel.cpp	/^Mesh::Mesh(const char* filepath) {$/;"	f	class:F9Sim::Graphics::Mesh
 MeshState	3rd_party/bgfx_extra/bgfx_utils.h	/^struct MeshState$/;"	s
 MetricsActiveAllocations	3rd_party/imgui/imgui.h	/^    int         MetricsActiveAllocations;       \/\/ Number of active allocations, updated by Me/;"	m	struct:ImGuiIO	typeref:typename:int
 MetricsActiveWindows	3rd_party/imgui/imgui.h	/^    int         MetricsActiveWindows;           \/\/ Number of active windows$/;"	m	struct:ImGuiIO	typeref:typename:int
@@ -11509,8 +11501,6 @@ Pos	build/dev/visualisation/imgui.ini	/^Pos=492,869$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=528,794$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=60,60$/;"	k	section:Window
 Pos	build/dev/visualisation/imgui.ini	/^Pos=881,468$/;"	k	section:Window
-PosColorVertex	visualisation/include/Mesh.h	/^struct PosColorVertex {$/;"	s	namespace:F9Sim::Graphics
-PosColorVertex	visualisation/include/OBJModel.h	/^struct PosColorVertex {$/;"	s	namespace:F9Sim::Graphics
 PosCond	3rd_party/imgui/imgui_internal.h	/^    ImGuiCond                   PosCond;$/;"	m	struct:ImGuiNextWindowData	typeref:typename:ImGuiCond
 PosPivotVal	3rd_party/imgui/imgui_internal.h	/^    ImVec2                      PosPivotVal;$/;"	m	struct:ImGuiNextWindowData	typeref:typename:ImVec2
 PosTexcoord	3rd_party/bgfx_extra/bgfx_utils.cpp	/^	struct PosTexcoord$/;"	s	function:calcTangents	file:
@@ -12280,6 +12270,7 @@ Value	3rd_party/imgui/imgui_widgets.cpp	/^void ImGui::Value(const char* prefix, 
 Value	3rd_party/imgui/imgui_widgets.cpp	/^void ImGui::Value(const char* prefix, unsigned int v)$/;"	f	class:ImGui	typeref:typename:void
 Values	3rd_party/imgui/imgui_widgets.cpp	/^    const float* Values;$/;"	m	struct:ImGuiPlotArrayGetterData	typeref:typename:const float *	file:
 VarIdx	3rd_party/imgui/imgui_internal.h	/^    ImGuiStyleVar   VarIdx;$/;"	m	struct:ImGuiStyleMod	typeref:typename:ImGuiStyleVar
+Vertex	visualisation/include/Mesh.h	/^struct Vertex {$/;"	s	namespace:F9Sim::Graphics
 Visible	3rd_party/imgui/imgui.h	/^    unsigned int    Visible : 1;        \/\/ Flag to allow early out when rendering$/;"	m	struct:ImFontGlyph	typeref:typename:unsigned int:1
 VisibleTabId	3rd_party/imgui/imgui_internal.h	/^    ImGuiID             VisibleTabId;           \/\/ Can occasionally be != SelectedTabId (e.g. /;"	m	struct:ImGuiTabBar	typeref:typename:ImGuiID
 VisibleTabWasSubmitted	3rd_party/imgui/imgui_internal.h	/^    bool                VisibleTabWasSubmitted;$/;"	m	struct:ImGuiTabBar	typeref:typename:bool
@@ -12588,6 +12579,7 @@ command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_T
 command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:15
 command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:16
 command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:17
+command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:18
 command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:5
 command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:6
 command	build/dev/compile_commands.json	/^  "command": "\/usr\/bin\/c++  -DAIL_TEST -I\/home\/lewis\/dev\/programming\/projects\/falcon-9-/;"	s	object:7
@@ -12672,6 +12664,7 @@ directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/
 directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:15
 directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:16
 directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:17
+directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:18
 directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:6
 directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:7
 directory	build/dev/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/dev\/visu/;"	s	object:8
@@ -12681,7 +12674,6 @@ directory	build/release/compile_commands.json	/^  "directory": "\/home\/lewis\/d
 directory	build/release/compile_commands.json	/^  "directory": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/build\/release\//;"	s	object:2
 distance	3rd_party/bgfx_extra/bounds.cpp	/^float distance(const Plane& _plane, const LineSegment& _line)$/;"	f	typeref:typename:float
 draw	visualisation/src/Mesh.cpp	/^void Mesh::draw() const {$/;"	f	class:F9Sim::Graphics::Mesh	typeref:typename:void
-draw	visualisation/src/OBJModel.cpp	/^void Mesh::draw() const {$/;"	f	class:F9Sim::Graphics::Mesh	typeref:typename:void
 dx	3rd_party/imgui/imstb_truetype.h	/^   int x,dx;$/;"	m	struct:stbtt__active_edge	typeref:typename:int
 e	3rd_party/imgui/imgui.h	/^        const char*     e;$/;"	m	struct:ImGuiTextFilter::ImGuiTextRange	typeref:typename:const char *
 edit_cache	build/dev/Makefile	/^edit_cache:$/;"	t
@@ -13763,12 +13755,12 @@ fdselect	3rd_party/imgui/imstb_truetype.h	/^   stbtt__buf fdselect;             
 fdx	3rd_party/imgui/imstb_truetype.h	/^   float fx,fdx,fdy;$/;"	m	struct:stbtt__active_edge	typeref:typename:float
 fdy	3rd_party/imgui/imstb_truetype.h	/^   float fx,fdx,fdy;$/;"	m	struct:stbtt__active_edge	typeref:typename:float
 file	3rd_party/catch.hpp	/^        char const* file;$/;"	m	struct:Catch::SourceLineInfo	typeref:typename:char const *
-file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:12
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:13
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:14
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:15
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:16
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:17
+file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/3rd_party\/imgui\/img/;"	s	object:18
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/simulation\/src\/Falc/;"	s	object:4
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/simulation\/src\/Flig/;"	s	object:3
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/simulation\/src\/Simu/;"	s	object:2
@@ -13777,8 +13769,9 @@ file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programmin
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/tests\/test_main.cpp"$/;"	s	object:0
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/C/;"	s	object:9
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/F/;"	s	object:10
-file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/I/;"	s	object:11
-file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/O/;"	s	object:8
+file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/I/;"	s	object:12
+file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/M/;"	s	object:8
+file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/S/;"	s	object:11
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/V/;"	s	object:7
 file	build/dev/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/visualisation\/src\/m/;"	s	object:6
 file	build/release/compile_commands.json	/^  "file": "\/home\/lewis\/dev\/programming\/projects\/falcon-9-simulation\/simulation\/src\/Simu/;"	s	object:0
@@ -13944,8 +13937,7 @@ info_version_internal	build/dev/CMakeFiles/3.17.3/CompilerIdC/CMakeCCompilerId.c
 info_version_internal	build/dev/CMakeFiles/3.17.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
 info_version_internal	build/release/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
 info_version_internal	build/release/CMakeFiles/3.16.3/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
-init	visualisation/include/Mesh.h	/^    static void init() {$/;"	f	struct:F9Sim::Graphics::PosColorVertex	typeref:typename:void
-init	visualisation/include/OBJModel.h	/^    static void init() {$/;"	f	struct:F9Sim::Graphics::PosColorVertex	typeref:typename:void
+init	visualisation/include/Mesh.h	/^    static void init() {$/;"	f	struct:F9Sim::Graphics::Vertex	typeref:typename:void
 init_mode	3rd_party/imgui/imstb_rectpack.h	/^   int init_mode;$/;"	m	struct:stbrp_context	typeref:typename:int
 initialized	3rd_party/imgui/imstb_textedit.h	/^   unsigned char initialized;$/;"	m	struct:__anon9e551a350308	typeref:typename:unsigned char
 insert	3rd_party/imgui/imgui.h	/^    inline T*           insert(const T* it, const T& v)     { IM_ASSERT(it >= Data && it <= Data/;"	f	struct:ImVector	typeref:typename:T *
@@ -14011,7 +14003,6 @@ loadProgram	3rd_party/bgfx_extra/bgfx_utils.cpp	/^bgfx::ProgramHandle loadProgra
 loadProgram	3rd_party/bgfx_extra/bgfx_utils.cpp	/^bgfx::ProgramHandle loadProgram(const char* _vsName, const char* _fsName)$/;"	f	typeref:typename:bgfx::ProgramHandle
 loadShader	3rd_party/bgfx_extra/bgfx_utils.cpp	/^bgfx::ShaderHandle loadShader(const char* _name)$/;"	f	typeref:typename:bgfx::ShaderHandle
 loadShader	3rd_party/bgfx_extra/bgfx_utils.cpp	/^static bgfx::ShaderHandle loadShader(bx::FileReaderI* _reader, const char* _name)$/;"	f	typeref:typename:bgfx::ShaderHandle	file:
-loadShader	visualisation/src/OBJModel.cpp	/^bgfx::ShaderHandle loadShader(const char* filename) {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:bgfx::ShaderHandle
 loadShader	visualisation/src/ShaderUtils.cpp	/^bgfx::ShaderHandle loadShader(const char* filename) {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:bgfx::ShaderHandle
 loadTexture	3rd_party/bgfx_extra/bgfx_utils.cpp	/^bgfx::TextureHandle loadTexture(bx::FileReaderI* _reader, const char* _filePath, uint64_t _flags/;"	f	typeref:typename:bgfx::TextureHandle
 loadTexture	3rd_party/bgfx_extra/bgfx_utils.cpp	/^bgfx::TextureHandle loadTexture(const char* _name, uint64_t _flags, uint8_t _skip, bgfx::Texture/;"	f	typeref:typename:bgfx::TextureHandle
@@ -14056,14 +14047,12 @@ mWindow	visualisation/include/Application.h	/^    Window mWindow;$/;"	m	class:GF
 mWindow	visualisation/include/Window.h	/^		GLFWwindow* mWindow = nullptr;$/;"	m	class:GF::Window	typeref:typename:GLFWwindow *
 m_aabb	3rd_party/bgfx_extra/bgfx_utils.h	/^	Aabb m_aabb;$/;"	m	struct:Group	typeref:typename:Aabb
 m_aabb	3rd_party/bgfx_extra/bgfx_utils.h	/^	Aabb m_aabb;$/;"	m	struct:Primitive	typeref:typename:Aabb
-m_abgr	visualisation/include/Mesh.h	/^    uint32_t m_abgr;$/;"	m	struct:F9Sim::Graphics::PosColorVertex	typeref:typename:uint32_t
-m_abgr	visualisation/include/OBJModel.h	/^    uint32_t m_abgr;$/;"	m	struct:F9Sim::Graphics::PosColorVertex	typeref:typename:uint32_t
+m_abgr	visualisation/include/Mesh.h	/^    uint32_t m_abgr;$/;"	m	struct:F9Sim::Graphics::Vertex	typeref:typename:uint32_t
 m_camera	visualisation/include/FPVCamera.h	/^    CameraBaseState m_camera;$/;"	m	class:F9Sim::Graphics::FPVCamera	typeref:typename:CameraBaseState
 m_flags	3rd_party/bgfx_extra/bgfx_utils.h	/^		uint32_t            m_flags;$/;"	m	struct:MeshState::Texture	typeref:typename:uint32_t
 m_groups	3rd_party/bgfx_extra/bgfx_utils.h	/^	GroupArray m_groups;$/;"	m	struct:Mesh	typeref:typename:GroupArray
 m_ibh	3rd_party/bgfx_extra/bgfx_utils.h	/^	bgfx::IndexBufferHandle m_ibh;$/;"	m	struct:Group	typeref:typename:bgfx::IndexBufferHandle
 m_ibh	visualisation/include/Mesh.h	/^    bgfx::IndexBufferHandle m_ibh;$/;"	m	class:F9Sim::Graphics::Mesh	typeref:typename:bgfx::IndexBufferHandle
-m_ibh	visualisation/include/OBJModel.h	/^    bgfx::IndexBufferHandle m_ibh;$/;"	m	class:F9Sim::Graphics::Mesh	typeref:typename:bgfx::IndexBufferHandle
 m_index	3rd_party/catch.hpp	/^        std::size_t m_index;$/;"	m	class:Catch::ReusableStringStream	typeref:typename:std::size_t
 m_indices	3rd_party/bgfx_extra/bgfx_utils.h	/^	uint16_t* m_indices;$/;"	m	struct:Group	typeref:typename:uint16_t *
 m_layout	3rd_party/bgfx_extra/bgfx_utils.h	/^	bgfx::VertexLayout m_layout;$/;"	m	struct:Mesh	typeref:typename:bgfx::VertexLayout
@@ -14087,7 +14076,6 @@ m_prims	3rd_party/bgfx_extra/bgfx_utils.h	/^	PrimitiveArray m_prims;$/;"	m	struc
 m_program	3rd_party/bgfx_extra/bgfx_utils.h	/^	bgfx::ProgramHandle m_program;$/;"	m	struct:MeshState	typeref:typename:bgfx::ProgramHandle
 m_sampler	3rd_party/bgfx_extra/bgfx_utils.h	/^		bgfx::UniformHandle m_sampler;$/;"	m	struct:MeshState::Texture	typeref:typename:bgfx::UniformHandle
 m_shader	visualisation/include/Mesh.h	/^    bgfx::ProgramHandle m_shader;$/;"	m	class:F9Sim::Graphics::Mesh	typeref:typename:bgfx::ProgramHandle
-m_shader	visualisation/include/OBJModel.h	/^    bgfx::ProgramHandle m_shader;$/;"	m	class:F9Sim::Graphics::Mesh	typeref:typename:bgfx::ProgramHandle
 m_size	3rd_party/catch.hpp	/^        size_type m_size = 0;$/;"	m	class:Catch::StringRef	typeref:typename:size_type
 m_sphere	3rd_party/bgfx_extra/bgfx_utils.h	/^	Sphere m_sphere;$/;"	m	struct:Group	typeref:typename:Sphere
 m_sphere	3rd_party/bgfx_extra/bgfx_utils.h	/^	Sphere m_sphere;$/;"	m	struct:Primitive	typeref:typename:Sphere
@@ -14100,27 +14088,22 @@ m_testAsMethod	3rd_party/catch.hpp	/^    void (C::*m_testAsMethod)();$/;"	m	clas
 m_texture	3rd_party/bgfx_extra/bgfx_utils.h	/^		bgfx::TextureHandle m_texture;$/;"	m	struct:MeshState::Texture	typeref:typename:bgfx::TextureHandle
 m_textures	3rd_party/bgfx_extra/bgfx_utils.h	/^	Texture             m_textures[4];$/;"	m	struct:MeshState	typeref:typename:Texture[4]
 m_transform	visualisation/include/Mesh.h	/^    chrono::ChCoordsys<> m_transform;$/;"	m	class:F9Sim::Graphics::Mesh	typeref:typename:chrono::ChCoordsys<>
-m_transform	visualisation/include/OBJModel.h	/^    chrono::ChCoordsys<> m_transform;$/;"	m	class:F9Sim::Graphics::Mesh	typeref:typename:chrono::ChCoordsys<>
 m_type	3rd_party/bgfx_extra/bgfx_utils.h	/^	bgfx::RendererType::Enum m_type;$/;"	m	struct:Args	typeref:typename:bgfx::RendererType::Enum
 m_u	3rd_party/bgfx_extra/bgfx_utils.cpp	/^		float m_u;$/;"	m	struct:calcTangents::PosTexcoord	typeref:typename:float	file:
 m_v	3rd_party/bgfx_extra/bgfx_utils.cpp	/^		float m_v;$/;"	m	struct:calcTangents::PosTexcoord	typeref:typename:float	file:
 m_values	3rd_party/catch.hpp	/^            std::vector<std::pair<int, StringRef>> m_values;$/;"	m	struct:Catch::Detail::EnumInfo	typeref:typename:std::vector<std::pair<int,StringRef>>
 m_vbh	3rd_party/bgfx_extra/bgfx_utils.h	/^	bgfx::VertexBufferHandle m_vbh;$/;"	m	struct:Group	typeref:typename:bgfx::VertexBufferHandle
 m_vbh	visualisation/include/Mesh.h	/^    bgfx::VertexBufferHandle m_vbh;$/;"	m	class:F9Sim::Graphics::Mesh	typeref:typename:bgfx::VertexBufferHandle
-m_vbh	visualisation/include/OBJModel.h	/^    bgfx::VertexBufferHandle m_vbh;$/;"	m	class:F9Sim::Graphics::Mesh	typeref:typename:bgfx::VertexBufferHandle
 m_velocity	visualisation/include/FPVCamera.h	/^    chrono::ChVector<> m_velocity;$/;"	m	class:F9Sim::Graphics::FPVCamera	typeref:typename:chrono::ChVector<>
 m_vertices	3rd_party/bgfx_extra/bgfx_utils.h	/^	uint8_t* m_vertices;$/;"	m	struct:Group	typeref:typename:uint8_t *
 m_viewId	3rd_party/bgfx_extra/bgfx_utils.h	/^	bgfx::ViewId        m_viewId;$/;"	m	struct:MeshState	typeref:typename:bgfx::ViewId
 m_x	3rd_party/bgfx_extra/bgfx_utils.cpp	/^		float m_x;$/;"	m	struct:calcTangents::PosTexcoord	typeref:typename:float	file:
-m_x	visualisation/include/Mesh.h	/^    float m_x;$/;"	m	struct:F9Sim::Graphics::PosColorVertex	typeref:typename:float
-m_x	visualisation/include/OBJModel.h	/^    float m_x;$/;"	m	struct:F9Sim::Graphics::PosColorVertex	typeref:typename:float
+m_x	visualisation/include/Mesh.h	/^    float m_x;$/;"	m	struct:F9Sim::Graphics::Vertex	typeref:typename:float
 m_y	3rd_party/bgfx_extra/bgfx_utils.cpp	/^		float m_y;$/;"	m	struct:calcTangents::PosTexcoord	typeref:typename:float	file:
-m_y	visualisation/include/Mesh.h	/^    float m_y;$/;"	m	struct:F9Sim::Graphics::PosColorVertex	typeref:typename:float
-m_y	visualisation/include/OBJModel.h	/^    float m_y;$/;"	m	struct:F9Sim::Graphics::PosColorVertex	typeref:typename:float
+m_y	visualisation/include/Mesh.h	/^    float m_y;$/;"	m	struct:F9Sim::Graphics::Vertex	typeref:typename:float
 m_yaw	visualisation/include/FPVCamera.h	/^    float m_yaw;$/;"	m	class:F9Sim::Graphics::FPVCamera	typeref:typename:float
 m_z	3rd_party/bgfx_extra/bgfx_utils.cpp	/^		float m_z;$/;"	m	struct:calcTangents::PosTexcoord	typeref:typename:float	file:
-m_z	visualisation/include/Mesh.h	/^    float m_z;$/;"	m	struct:F9Sim::Graphics::PosColorVertex	typeref:typename:float
-m_z	visualisation/include/OBJModel.h	/^    float m_z;$/;"	m	struct:F9Sim::Graphics::PosColorVertex	typeref:typename:float
+m_z	visualisation/include/Mesh.h	/^    float m_z;$/;"	m	struct:F9Sim::Graphics::Vertex	typeref:typename:float
 macroName	3rd_party/catch.hpp	/^        StringRef macroName;$/;"	m	struct:Catch::AssertionInfo	typeref:typename:StringRef
 main	build/dev/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	build/dev/CMakeFiles/3.16.3/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f	typeref:typename:void
@@ -14163,10 +14146,8 @@ mousePos	visualisation/src/Input.cpp	/^static glm::ivec2 mousePos;$/;"	v	namespa
 mousePosCallback	visualisation/src/Input.cpp	/^static void mousePosCallback(GLFWwindow* win, double x, double y) {$/;"	f	namespace:F9Sim	typeref:typename:void	file:
 mousePos_last	visualisation/src/Input.cpp	/^static glm::ivec2 mousePos_last;$/;"	v	namespace:F9Sim	typeref:typename:glm::ivec2	file:
 mpl_	3rd_party/catch.hpp	/^namespace mpl_{$/;"	n
-ms_decl	visualisation/include/Mesh.h	/^    static bgfx::VertexLayout ms_decl;$/;"	m	struct:F9Sim::Graphics::PosColorVertex	typeref:typename:bgfx::VertexLayout
-ms_decl	visualisation/include/OBJModel.h	/^    static bgfx::VertexLayout ms_decl;$/;"	m	struct:F9Sim::Graphics::PosColorVertex	typeref:typename:bgfx::VertexLayout
-ms_decl	visualisation/src/Mesh.cpp	/^bgfx::VertexLayout PosColorVertex::ms_decl;$/;"	m	class:F9Sim::Graphics::PosColorVertex	typeref:typename:bgfx::VertexLayout
-ms_decl	visualisation/src/OBJModel.cpp	/^bgfx::VertexLayout PosColorVertex::ms_decl;$/;"	m	class:F9Sim::Graphics::PosColorVertex	typeref:typename:bgfx::VertexLayout
+ms_decl	visualisation/include/Mesh.h	/^    static bgfx::VertexLayout ms_decl;$/;"	m	struct:F9Sim::Graphics::Vertex	typeref:typename:bgfx::VertexLayout
+ms_decl	visualisation/src/Mesh.cpp	/^bgfx::VertexLayout Vertex::ms_decl;$/;"	m	class:F9Sim::Graphics::Vertex	typeref:typename:bgfx::VertexLayout
 mtx	3rd_party/bgfx_extra/bounds.h	/^	float mtx[16];$/;"	m	struct:Obb	typeref:typename:float[16]
 mtxFromSrt	3rd_party/bgfx_extra/bounds.cpp	/^void mtxFromSrt(float* _outMtx, const Srt& _srt)$/;"	f	typeref:typename:void
 name	3rd_party/catch.hpp	/^    StringRef name;$/;"	m	struct:Catch::NameAndTags	typeref:typename:StringRef
@@ -16431,9 +16412,7 @@ s_eye	visualisation/src/Cameras.cpp	/^static const bx::Vec3 s_eye = {0.0f, 0.0f,
 s_fpvCam	visualisation/src/Visualisation.cpp	/^static std::unique_ptr<FPVCamera> s_fpvCam;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:std::unique_ptr<FPVCamera>	file:
 s_height	visualisation/src/Visualisation.cpp	/^static int s_height = 0;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:int	file:
 s_renderState	visualisation/include/Mesh.h	/^    static uint64_t s_renderState;$/;"	m	class:F9Sim::Graphics::Mesh	typeref:typename:uint64_t
-s_renderState	visualisation/include/OBJModel.h	/^    static uint64_t s_renderState;$/;"	m	class:F9Sim::Graphics::Mesh	typeref:typename:uint64_t
 s_renderState	visualisation/src/Mesh.cpp	/^uint64_t Mesh::s_renderState =$/;"	m	class:F9Sim::Graphics::Mesh	typeref:typename:uint64_t
-s_renderState	visualisation/src/OBJModel.cpp	/^uint64_t Mesh::s_renderState =$/;"	m	class:F9Sim::Graphics::Mesh	typeref:typename:uint64_t
 s_width	visualisation/src/Visualisation.cpp	/^static int s_width = 0;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:int	file:
 s_window	visualisation/src/Visualisation.cpp	/^static GLFWwindow* s_window = nullptr;$/;"	v	namespace:F9Sim::Graphics	typeref:typename:GLFWwindow *	file:
 saveSnapshotTo	simulation/src/Falcon9/Falcon9_Vehicle.cpp	/^void Falcon9_Vehicle::saveSnapshotTo(nlohmann::json& snapshot) const {$/;"	f	class:Hardware::Falcon9_Vehicle	typeref:typename:void
@@ -16445,7 +16424,6 @@ setCallbacks	visualisation/src/Input.cpp	/^static void setCallbacks() {$/;"	f	na
 setClearColour	visualisation/include/Window.h	/^		void setClearColour(glm::vec4 newClearColour) { mClearColour = newClearColour; }$/;"	f	class:GF::Window	typeref:typename:void
 setControlProfile	simulation/src/Falcon9/Falcon9_Vehicle.cpp	/^void Falcon9_Vehicle::setControlProfile(const ControlProfile& p) {$/;"	f	class:Hardware::Falcon9_Vehicle	typeref:typename:void
 setTransform	visualisation/src/Mesh.cpp	/^void Mesh::setTransform(const chrono::ChCoordsys<>& transform) {$/;"	f	class:F9Sim::Graphics::Mesh	typeref:typename:void
-setTransform	visualisation/src/OBJModel.cpp	/^void Mesh::setTransform(const chrono::ChCoordsys<>& transform) {$/;"	f	class:F9Sim::Graphics::Mesh	typeref:typename:void
 setWindowPosition	visualisation/include/Application.h	/^    void setWindowPosition(glm::ivec2 newPosition) const { glfwSetWindowPos(mWindow.getHandle(),/;"	f	class:GF::Application	typeref:typename:void
 shrink	3rd_party/imgui/imgui.h	/^    inline void         shrink(int new_size)                { IM_ASSERT(new_size <= Size); Size /;"	f	struct:ImVector	typeref:typename:void
 shutdown	visualisation/src/Visualisation.cpp	/^static void shutdown() {$/;"	f	namespace:F9Sim::Graphics	typeref:typename:void	file:
@@ -16497,12 +16475,18 @@ src/Input.cpp.s	build/dev/visualisation/Makefile	/^src\/Input.cpp.s:$/;"	t
 src/Input.i	build/dev/visualisation/Makefile	/^src\/Input.i: src\/Input.cpp.i$/;"	t
 src/Input.o	build/dev/visualisation/Makefile	/^src\/Input.o: src\/Input.cpp.o$/;"	t
 src/Input.s	build/dev/visualisation/Makefile	/^src\/Input.s: src\/Input.cpp.s$/;"	t
-src/OBJModel.cpp.i	build/dev/visualisation/Makefile	/^src\/OBJModel.cpp.i:$/;"	t
-src/OBJModel.cpp.o	build/dev/visualisation/Makefile	/^src\/OBJModel.cpp.o:$/;"	t
-src/OBJModel.cpp.s	build/dev/visualisation/Makefile	/^src\/OBJModel.cpp.s:$/;"	t
-src/OBJModel.i	build/dev/visualisation/Makefile	/^src\/OBJModel.i: src\/OBJModel.cpp.i$/;"	t
-src/OBJModel.o	build/dev/visualisation/Makefile	/^src\/OBJModel.o: src\/OBJModel.cpp.o$/;"	t
-src/OBJModel.s	build/dev/visualisation/Makefile	/^src\/OBJModel.s: src\/OBJModel.cpp.s$/;"	t
+src/Mesh.cpp.i	build/dev/visualisation/Makefile	/^src\/Mesh.cpp.i:$/;"	t
+src/Mesh.cpp.o	build/dev/visualisation/Makefile	/^src\/Mesh.cpp.o:$/;"	t
+src/Mesh.cpp.s	build/dev/visualisation/Makefile	/^src\/Mesh.cpp.s:$/;"	t
+src/Mesh.i	build/dev/visualisation/Makefile	/^src\/Mesh.i: src\/Mesh.cpp.i$/;"	t
+src/Mesh.o	build/dev/visualisation/Makefile	/^src\/Mesh.o: src\/Mesh.cpp.o$/;"	t
+src/Mesh.s	build/dev/visualisation/Makefile	/^src\/Mesh.s: src\/Mesh.cpp.s$/;"	t
+src/ShaderUtils.cpp.i	build/dev/visualisation/Makefile	/^src\/ShaderUtils.cpp.i:$/;"	t
+src/ShaderUtils.cpp.o	build/dev/visualisation/Makefile	/^src\/ShaderUtils.cpp.o:$/;"	t
+src/ShaderUtils.cpp.s	build/dev/visualisation/Makefile	/^src\/ShaderUtils.cpp.s:$/;"	t
+src/ShaderUtils.i	build/dev/visualisation/Makefile	/^src\/ShaderUtils.i: src\/ShaderUtils.cpp.i$/;"	t
+src/ShaderUtils.o	build/dev/visualisation/Makefile	/^src\/ShaderUtils.o: src\/ShaderUtils.cpp.o$/;"	t
+src/ShaderUtils.s	build/dev/visualisation/Makefile	/^src\/ShaderUtils.s: src\/ShaderUtils.cpp.s$/;"	t
 src/Simulation.cpp.i	build/dev/simulation/Makefile	/^src\/Simulation.cpp.i:$/;"	t
 src/Simulation.cpp.i	build/release/simulation/Makefile	/^src\/Simulation.cpp.i:$/;"	t
 src/Simulation.cpp.o	build/dev/simulation/Makefile	/^src\/Simulation.cpp.o:$/;"	t
@@ -17841,7 +17825,6 @@ update	visualisation/src/Scene.cpp	/^void Scene::update(float aspectRatio, doubl
 updateAllNodeTransforms	visualisation/src/SimulationModel.cpp	/^void SimulationModel::updateAllNodeTransforms() {$/;"	f	class:SimulationModel	typeref:typename:void
 updateTime	visualisation/src/Animation.cpp	/^void Animation::updateTime(double time_s) {$/;"	f	class:Animation	typeref:typename:void
 updateTransform	visualisation/src/Mesh.cpp	/^void Mesh::updateTransform() const {$/;"	f	class:F9Sim::Graphics::Mesh	typeref:typename:void
-updateTransform	visualisation/src/OBJModel.cpp	/^void Mesh::updateTransform() const {$/;"	f	class:F9Sim::Graphics::Mesh	typeref:typename:void
 user_allocator_context	3rd_party/imgui/imstb_truetype.h	/^   void *user_allocator_context;$/;"	m	struct:stbtt_pack_context	typeref:typename:void *
 userdata	3rd_party/imgui/imstb_truetype.h	/^   void           * userdata;$/;"	m	struct:stbtt_fontinfo	typeref:typename:void *
 uv	3rd_party/imgui/imgui.h	/^    ImVec2  uv;$/;"	m	struct:ImDrawVert	typeref:typename:ImVec2
@@ -17958,4 +17941,3 @@ zoom	visualisation/src/FPVCamera.cpp	/^const float FPVCamera::Sensitivity::zoom 
 ~ImPool	3rd_party/imgui/imgui_internal.h	/^    ~ImPool()   { Clear(); }$/;"	f	struct:ImPool
 ~ImVector	3rd_party/imgui/imgui.h	/^    inline ~ImVector()                                      { if (Data) IM_FREE(Data); }$/;"	f	struct:ImVector
 ~Mesh	visualisation/src/Mesh.cpp	/^Mesh::~Mesh() {$/;"	f	class:F9Sim::Graphics::Mesh
-~Mesh	visualisation/src/OBJModel.cpp	/^Mesh::~Mesh() {$/;"	f	class:F9Sim::Graphics::Mesh
