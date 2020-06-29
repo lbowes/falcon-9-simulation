@@ -1,12 +1,9 @@
 #include "FPVCamera.h"
 #include "../3rd_party/imgui/imgui.h"
 #include "Cameras.h"
-#include "Input.h"
 
-#include <GLFW/glfw3.h>
 #include <chrono/core/ChMathematics.h>
 #include <chrono/core/ChVector.h>
-#include <glm/vec2.hpp>
 
 
 namespace F9Sim {
@@ -19,6 +16,18 @@ const float FPVCamera::Sensitivity::adjustSpeed = 200.0f;
 const float FPVCamera::Movement::minSpeed = 6.4f;
 const float FPVCamera::Movement::maxSpeed = 1000.0f;
 const float FPVCamera::Movement::friction = 7.0f;
+
+
+FPVCamera::Input::Input() {
+    mouseDelta = glm::ivec2(0, 0);
+
+    move.forward = false;
+    move.backwards = false;
+    move.left = false;
+    move.right = false;
+    move.up = false;
+    move.down = false;
+}
 
 
 FPVCamera::FPVCamera() :
@@ -41,10 +50,10 @@ FPVCamera::FPVCamera() :
 }
 
 
-void FPVCamera::handleInput(double dt) {
-    handleMovementInput(dt);
-    handleZoomInput(dt);
-    handleDirectionInput();
+void FPVCamera::process(Input input, double dt) {
+    moveInput(input.move, dt);
+    zoomInput(dt);
+    directionInput(input.mouseDelta);
 }
 
 
@@ -54,32 +63,32 @@ void FPVCamera::update(double dt) {
 }
 
 
-void FPVCamera::handleMovementInput(double dt) {
+void FPVCamera::moveInput(Input::Move move, double dt) {
     using namespace chrono;
 
     m_camera.lookAt.Normalize();
 
-    Vector addedVelocity = Vector();
-
     Vector horizLookAt = {m_camera.lookAt.x(), 0.0, m_camera.lookAt.z()};
     horizLookAt.Normalize();
 
-    if(Input_isKeyDown(GLFW_KEY_E))
+    Vector addedVelocity = Vector();
+
+    if(move.forward)
         addedVelocity += horizLookAt;
 
-    if(Input_isKeyDown(GLFW_KEY_D))
+    if(move.backwards)
         addedVelocity -= horizLookAt;
 
-    if(Input_isKeyDown(GLFW_KEY_F))
+    if(move.right)
         addedVelocity += horizLookAt.Cross(VECT_Y);
 
-    if(Input_isKeyDown(GLFW_KEY_S))
+    if(move.left)
         addedVelocity -= horizLookAt.Cross(VECT_Y);
 
-    if(Input_isKeyDown(GLFW_KEY_SPACE))
+    if(move.up)
         addedVelocity.y() += 1.0;
 
-    if(Input_isKeyDown(GLFW_KEY_LEFT_SHIFT))
+    if(move.down)
         addedVelocity.y() -= 1.0;
 
     if(addedVelocity.Normalize())
@@ -87,9 +96,7 @@ void FPVCamera::handleMovementInput(double dt) {
 }
 
 
-void FPVCamera::handleDirectionInput() {
-    glm::ivec2 mouseDelta = Input_getMouseDelta();
-
+void FPVCamera::directionInput(glm::ivec2 mouseDelta) {
     m_yaw += mouseDelta.x * Sensitivity::lookAround;
     m_pitch -= mouseDelta.y * Sensitivity::lookAround;
     clampPitchYaw();
@@ -98,7 +105,7 @@ void FPVCamera::handleDirectionInput() {
 }
 
 
-void FPVCamera::handleZoomInput(double dt) {
+void FPVCamera::zoomInput(double dt) {
 }
 
 
