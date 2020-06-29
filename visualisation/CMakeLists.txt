@@ -20,7 +20,7 @@ target_sources(f9sim-visualisation
 		src/main.cpp
 		src/Visualisation.cpp
 		src/Mesh.cpp
-		src/Cameras.cpp
+		src/CameraSystem.cpp
 		src/FPVCamera.cpp
 		src/ShaderUtils.cpp
 		src/Input.cpp

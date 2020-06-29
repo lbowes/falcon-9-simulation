@@ -2,17 +2,13 @@
 #include "../3rd_party/imgui/imgui.h"
 #include "../3rd_party/imgui/imgui_impl_bgfx.h"
 #include "../3rd_party/imgui/imgui_impl_glfw.h"
-#include "Cameras.h"
-#include "FPVCamera.h"
+#include "CameraSystem.h"
 #include "Input.h"
-#include "Mesh.h"
 
-#include <GLFW/glfw3.h>
 #include <bgfx/bgfx.h>
 #include <bgfx/platform.h>
 #include <bx/bx.h>
 #include <bx/math.h>
-#include <memory>
 #include <stdio.h>
 
 #define GLFW_EXPOSE_NATIVE_X11
@@ -23,28 +19,30 @@ namespace F9Sim {
 namespace Graphics {
 
 
-static GLFWwindow* s_window = nullptr;
-static int s_width = 0;
-static int s_height = 0;
-static std::unique_ptr<Mesh> m_mesh;
-static std::unique_ptr<FPVCamera> s_fpvCam;
-
-static void shutdown();
-static void glfw_errorCallback(int error, const char* description);
+GLFWwindow* Visualisation::s_window = nullptr;
+int Visualisation::s_width = 0;
+int Visualisation::s_height = 0;
+std::unique_ptr<Mesh> Visualisation::m_mesh;
+std::unique_ptr<FPVCamera> Visualisation::s_fpvCam;
 
 
-bool Visualisation_init() {
+static void glfw_errorCallback(int error, const char* description) {
+    fprintf(stderr, "GLFW error %d: %s\n", error, description);
+}
+
+
+Visualisation::Visualisation() {
     glfwSetErrorCallback(glfw_errorCallback);
 
     if(!glfwInit())
-        return false;
+        printf("glfwInit() failed");
 
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
 
     s_window = glfwCreateWindow(960, 540, "Simulation Visualiser", nullptr, nullptr);
 
     if(!s_window)
-        return false;
+        printf("glfwCreateWindow() failed");
 
     bgfx::renderFrame();
 
@@ -56,7 +54,7 @@ bool Visualisation_init() {
     init.resolution.height = (uint32_t)s_height;
 
     if(!bgfx::init(init))
-        return false;
+        printf("bgfx::init() failed");
 
     bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH);
     bgfx::setViewRect(0, 0, 0, bgfx::BackbufferRatio::Equal);
@@ -78,12 +76,25 @@ bool Visualisation_init() {
     //
 
     bgfx::touch(0);
-
-    return true;
 }
 
 
-void Visualisation_run() {
+Visualisation::~Visualisation() {
+    ImGui_Implbgfx_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
+    bgfx::shutdown();
+    glfwTerminate();
+}
+
+
+Visualisation& Visualisation::getInstance() {
+    static Visualisation instance;
+    return instance;
+}
+
+
+void Visualisation::run() {
     double dt = 0.0;
     double frameTime = 0.0;
     double lastFrameTime = 0.0;
@@ -125,20 +136,6 @@ void Visualisation_run() {
 
         dt = frameTime - lastFrameTime;
     }
-}
-
-
-static void shutdown() {
-    ImGui_Implbgfx_Shutdown();
-    ImGui_ImplGlfw_Shutdown();
-    ImGui::DestroyContext();
-    bgfx::shutdown();
-    glfwTerminate();
-}
-
-
-static void glfw_errorCallback(int error, const char* description) {
-    fprintf(stderr, "GLFW error %d: %s\n", error, description);
 }
 
 
