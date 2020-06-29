@@ -122,7 +122,7 @@ void Mesh::updateTransform() const {
     bx::mtxQuat(rotation, orientation);
 
     // Translation
-    const chrono::Vector camPos = Cameras_getActivePos();
+    const chrono::Vector camPos = CameraSystem::getInstance().getActivePos();
     const chrono::Vector d = m_transform.pos - camPos;
     float translation[16];
     bx::mtxTranslate(translation, (float)d.x(), (float)d.y(), (float)d.z());

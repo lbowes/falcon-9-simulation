@@ -68,14 +68,13 @@ bool Visualisation_init() {
     ImGui_ImplGlfw_InitForOpenGL(s_window, true);
     ImGui_Implbgfx_Init(0);
 
-    Cameras_init();
     Input_init(*s_window);
     Input_hideMouseCursor();
 
     // temp
     m_mesh = std::make_unique<Mesh>("resources/obj/Merlin1D.obj");
     s_fpvCam = std::make_unique<FPVCamera>();
-    Cameras_bind("first_person_view");
+    CameraSystem::getInstance().bind("first_person_view");
     //
 
     bgfx::touch(0);
@@ -115,7 +114,7 @@ void Visualisation_run() {
         bgfx::touch(0);
         {
             const float aspectRatio = (float)s_width / (float)s_height;
-            Cameras_setViewTransform(aspectRatio);
+            CameraSystem::getInstance().setViewTransform(aspectRatio);
 
             m_mesh->draw();
         }
