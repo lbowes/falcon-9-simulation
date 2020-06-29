@@ -16,5 +16,5 @@ bgfx::ShaderHandle loadShader(const char* filename);
 } // namespace F9Sim
 
 
-#endif F9SIM_GRAPHICS_SHADERUTILS_H_
+#endif // F9SIM_GRAPHICS_SHADERUTILS_H_
 

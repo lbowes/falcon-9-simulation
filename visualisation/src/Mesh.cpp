@@ -1,6 +1,6 @@
 #include "Mesh.h"
 #include "../3rd_party/imgui/imgui.h"
-#include "Cameras.h"
+#include "CameraSystem.h"
 #include "ShaderUtils.h"
 
 #include <bgfx/bgfx.h>
@@ -122,7 +122,7 @@ void Mesh::updateTransform() const {
     bx::mtxQuat(rotation, orientation);
 
     // Translation
-    const chrono::Vector camPos = Cameras_getActivePos();
+    const chrono::Vector camPos = CameraSystem::getInstance().getActivePos();
     const chrono::Vector d = m_transform.pos - camPos;
     float translation[16];
     bx::mtxTranslate(translation, (float)d.x(), (float)d.y(), (float)d.z());
