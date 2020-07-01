@@ -4,6 +4,7 @@
 #include "../3rd_party/imgui/imgui_impl_glfw.h"
 #include "CameraSystem.h"
 #include "Input.h"
+#include "Scene.h"
 
 #include <bgfx/bgfx.h>
 #include <bgfx/platform.h>
@@ -73,6 +74,7 @@ Visualisation::Visualisation() {
     m_mesh = std::make_unique<Mesh>("resources/obj/Merlin1D.obj");
     s_fpvCam = std::make_unique<FPVCamera>();
     CameraSystem::getInstance().bind("first_person_view");
+    Scene& s = Scene::getInstance();
     //
 
     bgfx::touch(0);
