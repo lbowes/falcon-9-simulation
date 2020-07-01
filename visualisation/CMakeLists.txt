@@ -24,6 +24,7 @@ target_sources(f9sim-visualisation
 		src/FPVCamera.cpp
 		src/ShaderUtils.cpp
 		src/Input.cpp
+		src/Scene.cpp
 		${IMGUI_SRC}
 )
 
