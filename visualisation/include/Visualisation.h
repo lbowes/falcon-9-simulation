@@ -6,8 +6,10 @@
 #include "FPVCamera.h"
 #include "Mesh.h"
 
-#include <GLFW/glfw3.h>
 #include <memory>
+
+
+typedef struct GLFWwindow GLFWwindow;
 
 
 namespace F9Sim {

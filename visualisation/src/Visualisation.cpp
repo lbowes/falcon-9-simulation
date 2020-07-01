@@ -5,6 +5,7 @@
 #include "CameraSystem.h"
 #include "Input.h"
 
+#include <GLFW/glfw3.h>
 #include <bgfx/bgfx.h>
 #include <bgfx/platform.h>
 #include <bx/bx.h>
