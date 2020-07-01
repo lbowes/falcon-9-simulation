@@ -16,12 +16,13 @@ namespace Graphics {
 
 class Visualisation {
 private:
-    static GLFWwindow* s_window;
-    static int s_width;
-    static int s_height;
+    GLFWwindow* m_window;
+    int m_width;
+    int m_height;
 
-    static std::unique_ptr<Mesh> m_mesh;
-    static std::unique_ptr<FPVCamera> s_fpvCam;
+    std::unique_ptr<Mesh> m_mesh;
+    std::unique_ptr<FPVCamera> m_fpvCam;
+    CameraBaseState m_staticCamera;
 
 public:
     static Visualisation& getInstance();
