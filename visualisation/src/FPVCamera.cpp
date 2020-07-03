@@ -45,7 +45,6 @@ FPVCamera::FPVCamera() :
     m_camera.lookAt = {0, 0, -1};
 
     syncPitchYawWithLookAt();
-
     CameraSystem::getInstance().registerCam(m_camera, "first_person_view");
 }
 
