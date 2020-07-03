@@ -53,11 +53,6 @@ void FPVCamera::process(Input input, double dt) {
     moveInput(input.move, dt);
     zoomInput(dt);
     directionInput(input.mouseDelta);
-
-    // The mouse delta should never get this large
-    //printf("mouseDelta: %i, %i\n", input.mouseDelta.x, input.mouseDelta.y);
-    //if(input.mouseDelta.x > 20)
-    //    std::cin.get();
 }
 
 
