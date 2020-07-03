@@ -139,7 +139,7 @@ void Visualisation::run() {
         camInput.move.left = Input::isKeyDown(GLFW_KEY_S);
         camInput.move.right = Input::isKeyDown(GLFW_KEY_F);
 
-        m_fpvCam->process(camInput, dt);
+        m_fpvCam->process(camInput);
         m_fpvCam->update(dt);
 
         bgfx::touch(0);

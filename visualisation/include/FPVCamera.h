@@ -46,8 +46,9 @@ private:
     };
 
     CameraBaseState m_camera;
+    chrono::ChVector<> m_accelVec;
     chrono::ChVector<> m_velocity;
-    float m_movementSpeed;
+    float m_accel;
     float m_pitch;
     float m_yaw;
 
@@ -55,13 +56,13 @@ public:
     FPVCamera();
     ~FPVCamera() = default;
 
-    void process(Input input, double dt);
+    void process(Input input);
     void update(double dt);
 
 private:
-    void moveInput(Input::Move move, double dt);
+    void moveInput(Input::Move move);
     void directionInput(glm::ivec2 mouseDelta);
-    void zoomInput(double dt);
+    void zoomInput();
     void clampPitchYaw();
     void syncLookAtWithPitchYaw();
     void syncPitchYawWithLookAt();

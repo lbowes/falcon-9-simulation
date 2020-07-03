@@ -32,7 +32,8 @@ FPVCamera::Input::Input() {
 
 FPVCamera::FPVCamera() :
     m_velocity(chrono::Vector()),
-    m_movementSpeed(20.0f),
+    m_accelVec(chrono::Vector()),
+    m_accel(20.0f),
     m_pitch(0.0f),
     m_yaw(0.0f) {
 
@@ -49,20 +50,21 @@ FPVCamera::FPVCamera() :
 }
 
 
-void FPVCamera::process(Input input, double dt) {
-    moveInput(input.move, dt);
-    zoomInput(dt);
+void FPVCamera::process(Input input) {
+    moveInput(input.move);
+    zoomInput();
     directionInput(input.mouseDelta);
 }
 
 
 void FPVCamera::update(double dt) {
+    m_velocity += m_accelVec * m_accel * dt;
     m_velocity *= 1.0 / (1.0 + (dt * Movement::friction));
     m_camera.position += m_velocity * dt;
 }
 
 
-void FPVCamera::moveInput(Input::Move move, double dt) {
+void FPVCamera::moveInput(Input::Move move) {
     using namespace chrono;
 
     m_camera.lookAt.Normalize();
@@ -70,28 +72,25 @@ void FPVCamera::moveInput(Input::Move move, double dt) {
     Vector horizLookAt = {m_camera.lookAt.x(), 0.0, m_camera.lookAt.z()};
     horizLookAt.Normalize();
 
-    Vector addedVelocity = Vector();
+    m_accelVec = Vector();
 
     if(move.forward)
-        addedVelocity += horizLookAt;
+        m_accelVec += horizLookAt;
 
     if(move.backwards)
-        addedVelocity -= horizLookAt;
+        m_accelVec -= horizLookAt;
 
     if(move.right)
-        addedVelocity += horizLookAt.Cross(VECT_Y);
+        m_accelVec += horizLookAt.Cross(VECT_Y);
 
     if(move.left)
-        addedVelocity -= horizLookAt.Cross(VECT_Y);
+        m_accelVec -= horizLookAt.Cross(VECT_Y);
 
     if(move.up)
-        addedVelocity.y() += 1.0;
+        m_accelVec.y() += 1.0;
 
     if(move.down)
-        addedVelocity.y() -= 1.0;
-
-    if(addedVelocity.Normalize())
-        m_velocity += addedVelocity * m_movementSpeed * dt;
+        m_accelVec.y() -= 1.0;
 }
 
 
@@ -104,7 +103,7 @@ void FPVCamera::directionInput(glm::ivec2 mouseDelta) {
 }
 
 
-void FPVCamera::zoomInput(double dt) {
+void FPVCamera::zoomInput() {
 }
 
 
