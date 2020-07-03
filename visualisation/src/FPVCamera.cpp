@@ -20,7 +20,6 @@ const float FPVCamera::Movement::friction = 7.0f;
 
 FPVCamera::Input::Input() {
     mouseDelta = glm::ivec2(0, 0);
-
     move.forward = false;
     move.backwards = false;
     move.left = false;
@@ -33,7 +32,7 @@ FPVCamera::Input::Input() {
 FPVCamera::FPVCamera() :
     m_velocity(chrono::Vector()),
     m_accelVec(chrono::Vector()),
-    m_accel(20.0f),
+    m_accel(200.0f),
     m_pitch(0.0f),
     m_yaw(0.0f) {
 
@@ -69,22 +68,22 @@ void FPVCamera::moveInput(Input::Move move) {
 
     m_camera.lookAt.Normalize();
 
-    Vector horizLookAt = {m_camera.lookAt.x(), 0.0, m_camera.lookAt.z()};
-    horizLookAt.Normalize();
+    Vector horizLookAt_norm = {m_camera.lookAt.x(), 0.0, m_camera.lookAt.z()};
+    horizLookAt_norm.Normalize();
 
     m_accelVec = Vector();
 
     if(move.forward)
-        m_accelVec += horizLookAt;
+        m_accelVec += horizLookAt_norm;
 
     if(move.backwards)
-        m_accelVec -= horizLookAt;
+        m_accelVec -= horizLookAt_norm;
 
     if(move.right)
-        m_accelVec += horizLookAt.Cross(VECT_Y);
+        m_accelVec += horizLookAt_norm.Cross(VECT_Y);
 
     if(move.left)
-        m_accelVec -= horizLookAt.Cross(VECT_Y);
+        m_accelVec -= horizLookAt_norm.Cross(VECT_Y);
 
     if(move.up)
         m_accelVec.y() += 1.0;

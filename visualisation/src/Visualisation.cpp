@@ -125,6 +125,9 @@ void Visualisation::run() {
             bgfx::setViewRect(0, 0, 0, bgfx::BackbufferRatio::Equal);
         }
 
+        if(glfwGetTime() > 5.0)
+            Input::showMouseCursor();
+
         ImGui_Implbgfx_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
