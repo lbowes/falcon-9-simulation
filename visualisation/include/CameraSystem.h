@@ -5,12 +5,8 @@
 
 #include "CameraBaseState.h"
 
+#include <bx/math.h>
 #include <chrono/core/ChVector.h>
-
-
-namespace bx {
-struct Vec3;
-}
 
 
 namespace F9Sim {
@@ -19,10 +15,10 @@ namespace Graphics {
 
 class CameraSystem {
 private:
-    static const bx::Vec3 s_eye;
-    static CameraBaseState const* s_activeCamera;
-    static CameraBaseState s_defaultCamera;
-    static std::unordered_map<std::string, const CameraBaseState*> s_cameraMap;
+    const bx::Vec3 m_eye;
+    CameraBaseState const* m_activeCamera;
+    CameraBaseState m_defaultCamera;
+    std::unordered_map<std::string, const CameraBaseState*> m_cameraMap;
 
 public:
     static CameraSystem& getInstance();
@@ -32,10 +28,11 @@ public:
     void operator=(const CameraSystem&) = delete;
     void operator=(CameraSystem&&) = delete;
 
-    chrono::Vector getActivePos();
-    void registerCam(const CameraBaseState& cam, const std::string& name);
-    void bind(const std::string& name);
+    chrono::Vector getActivePos() const;
+    bool registerCam(const CameraBaseState& cam, const std::string& name);
+    bool bind(const std::string& name);
     void setViewTransform(float aspectRatio);
+    std::vector<std::string> getRegisteredCamNames() const;
 
 private:
     CameraSystem();
