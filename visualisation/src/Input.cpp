@@ -1,7 +1,6 @@
 #include "Input.h"
 
 #include <GLFW/glfw3.h>
-#include <iostream>
 
 
 namespace F9Sim {
@@ -71,8 +70,6 @@ void Input::buttonCallback(GLFWwindow* win, int button, int action, int mods) {
 
 void Input::mousePosCallback(GLFWwindow* win, double x, double y) {
     s_mousePos = {x, y};
-
-    printf("mousePos: %f, %f\n", x, y);
 
     if(s_zeroMouseDelta) {
         s_zeroMouseDelta = false;
