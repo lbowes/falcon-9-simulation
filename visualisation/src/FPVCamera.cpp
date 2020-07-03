@@ -45,7 +45,6 @@ FPVCamera::FPVCamera() :
     m_camera.lookAt = {0, 0, -1};
 
     syncPitchYawWithLookAt();
-
     CameraSystem::getInstance().registerCam(m_camera, "first_person_view");
 }
 
@@ -54,6 +53,11 @@ void FPVCamera::process(Input input, double dt) {
     moveInput(input.move, dt);
     zoomInput(dt);
     directionInput(input.mouseDelta);
+
+    // The mouse delta should never get this large
+    //printf("mouseDelta: %i, %i\n", input.mouseDelta.x, input.mouseDelta.y);
+    //if(input.mouseDelta.x > 20)
+    //    std::cin.get();
 }
 
 

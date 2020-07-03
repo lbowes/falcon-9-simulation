@@ -1,6 +1,9 @@
 #include "Input.h"
 
 #include <GLFW/glfw3.h>
+// temp
+#include <iostream>
+//
 
 
 namespace F9Sim {
@@ -8,7 +11,7 @@ namespace F9Sim {
 
 static const uint16_t MAX_KEYS = 512;
 static const uint8_t MAX_BUTTONS = 16;
-static bool cursorHidden;
+static bool cursorHidden = false;
 static bool keysDown[MAX_KEYS];
 static bool keysDown_last[MAX_KEYS];
 static bool keysPressed[MAX_KEYS];
@@ -17,10 +20,10 @@ static bool buttonsDown[MAX_BUTTONS];
 static bool buttonsPressed[MAX_BUTTONS];
 static bool buttonsReleased[MAX_BUTTONS];
 static bool buttonsDown_last[MAX_BUTTONS];
-static glm::ivec2 mousePos_last;
-static glm::ivec2 mousePos;
-static glm::ivec2 mouseDelta;
-static GLFWwindow* window;
+static glm::ivec2 mousePos_last = {0, 0};
+static glm::ivec2 mousePos = {0, 0};
+static glm::ivec2 mouseDelta = {0, 0};
+static GLFWwindow* window = nullptr;
 
 
 static void setCallbacks();
@@ -69,6 +72,12 @@ static void buttonCallback(GLFWwindow* win, int button, int action, int mods) {
 
 static void mousePosCallback(GLFWwindow* win, double x, double y) {
     mousePos = {x, y};
+
+    static bool firstCall = true;
+    if(firstCall) {
+        firstCall = false;
+        mousePos_last = mousePos;
+    }
 }
 
 
