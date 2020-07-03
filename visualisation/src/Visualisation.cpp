@@ -71,6 +71,7 @@ Visualisation::Visualisation() :
     m_mesh = std::make_unique<Mesh>("resources/obj/Merlin1D.obj");
 
     m_fpvCam = std::make_unique<FPVCamera>();
+    CameraSystem& cams = CameraSystem::getInstance();
     cams.bind("first_person_view");
 
     m_staticCamera.aspectRatio = 1.0f;
@@ -80,7 +81,6 @@ Visualisation::Visualisation() :
     m_staticCamera.position = {10.0f, 10.0f, 10.0f};
     m_staticCamera.up = {0.0f, 1.0f, 0.0f};
     m_staticCamera.lookAt = -m_staticCamera.position.GetNormalized();
-    CameraSystem& cams = CameraSystem::getInstance();
     cams.registerCam(m_staticCamera, "static_cam");
     //
 
