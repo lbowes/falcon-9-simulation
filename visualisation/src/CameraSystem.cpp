@@ -1,8 +1,6 @@
 #include "CameraSystem.h"
-#include "../3rd_party/imgui/imgui.h"
 
 #include <bgfx/bgfx.h>
-#include <bx/math.h>
 #include <memory>
 #include <string>
 #include <unordered_map>
@@ -12,15 +10,11 @@ namespace F9Sim {
 namespace Graphics {
 
 
-// Internally, the position of the camera is locked at the origin to eliminate floating point errors
-const bx::Vec3 CameraSystem::s_eye = {0.0f, 0.0f, 0.0f};
-CameraBaseState const* CameraSystem::s_activeCamera = nullptr;
-CameraBaseState CameraSystem::s_defaultCamera;
-std::unordered_map<std::string, const CameraBaseState*> CameraSystem::s_cameraMap;
+CameraSystem::CameraSystem() :
+    m_eye({0.0f, 0.0f, 0.0f}),
+    m_activeCamera(nullptr) {
 
-
-CameraSystem::CameraSystem() {
-    registerCam(s_defaultCamera, "default_camera");
+    registerCam(m_defaultCamera, "default_camera");
     bind("default_camera");
 }
 
@@ -31,66 +25,72 @@ CameraSystem& CameraSystem::getInstance() {
 }
 
 
-chrono::Vector CameraSystem::getActivePos() {
-    return s_activeCamera->position;
+chrono::Vector CameraSystem::getActivePos() const {
+    return m_activeCamera->position;
 }
 
 
-void CameraSystem::registerCam(const CameraBaseState& cam, const std::string& name) {
-    printf("Registered '%s'.\n", name.c_str());
-    s_cameraMap[name] = &cam;
-}
+bool CameraSystem::registerCam(const CameraBaseState& cam, const std::string& name) {
+    const auto it = m_cameraMap.find(name);
 
-
-void CameraSystem::bind(const std::string& name) {
-    const auto it = s_cameraMap.find(name);
-
-    // Camera with name `name` hasn't been registered, can't be bound
-    if(it == s_cameraMap.end()) {
-        printf("Camera '%s' has not been registered, so cannot be bound.\n", name.c_str());
-        return;
+    if(it != m_cameraMap.end()) {
+        printf("A camera with name '%s' has already been registered.\n", name.c_str());
+        return false;
     }
 
-    s_activeCamera = it->second;
-    printf("Bound camera '%s'\n", name.c_str());
+    m_cameraMap[name] = &cam;
+    return true;
+}
+
+
+bool CameraSystem::bind(const std::string& name) {
+    const auto it = m_cameraMap.find(name);
+
+    if(it == m_cameraMap.end()) {
+        printf("Camera '%s' has not been registered, so cannot be bound.\n", name.c_str());
+        return false;
+    }
+
+    m_activeCamera = it->second;
+    return true;
 }
 
 
 void CameraSystem::setViewTransform(float aspectRatio) {
-    ImGui::Begin("Before");
-    ImGui::Text("position: %f, %f, %f", s_activeCamera->position.x(), s_activeCamera->position.y(), s_activeCamera->position.z());
-    const chrono::Vector& lookAt = s_activeCamera->lookAt;
-    ImGui::Text("lookAt: %f, %f, %f", lookAt.x(), lookAt.y(), lookAt.z());
-    ImGui::Text("near: %f", s_activeCamera->near);
-    ImGui::Text("verticalFOV: %f", s_activeCamera->verticalFOV);
-    ImGui::Text("far: %f", s_activeCamera->far);
-    ImGui::Text("aspectRatio: %f", s_activeCamera->aspectRatio);
-    ImGui::End();
-
     const bx::Vec3 at = bx::Vec3(
-        s_activeCamera->lookAt.x(),
-        s_activeCamera->lookAt.y(),
-        s_activeCamera->lookAt.z());
+        m_activeCamera->lookAt.x(),
+        m_activeCamera->lookAt.y(),
+        m_activeCamera->lookAt.z());
 
     const bx::Vec3 up = bx::Vec3(
-        s_activeCamera->up.x(),
-        s_activeCamera->up.y(),
-        s_activeCamera->up.z());
+        m_activeCamera->up.x(),
+        m_activeCamera->up.y(),
+        m_activeCamera->up.z());
 
     float view[16];
-    bx::mtxLookAt(view, s_eye, at, up, bx::Handness::Right);
+    bx::mtxLookAt(view, m_eye, at, up, bx::Handness::Right);
 
     float proj[16];
     bx::mtxProj(
         proj,
-        s_activeCamera->verticalFOV,
+        m_activeCamera->verticalFOV,
         aspectRatio,
-        s_activeCamera->near,
-        s_activeCamera->far,
+        m_activeCamera->near,
+        m_activeCamera->far,
         bgfx::getCaps()->homogeneousDepth,
         bx::Handness::Right);
 
     bgfx::setViewTransform(0, view, proj);
+}
+
+
+std::vector<std::string> CameraSystem::getRegisteredCamNames() const {
+    std::vector<std::string> output;
+
+    for(auto it = m_cameraMap.begin(); it != m_cameraMap.end(); ++it)
+        output.push_back(it->first);
+
+    return output;
 }
 
 
