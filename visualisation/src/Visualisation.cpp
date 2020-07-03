@@ -64,8 +64,8 @@ Visualisation::Visualisation() :
     ImGui_ImplGlfw_InitForOpenGL(m_window, true);
     ImGui_Implbgfx_Init(0);
 
-    Input_init(*m_window);
-    Input_hideMouseCursor();
+    Input::init(*m_window);
+    Input::hideMouseCursor();
 
     // temp
     m_mesh = std::make_unique<Mesh>("resources/obj/Merlin1D.obj");
@@ -113,7 +113,8 @@ void Visualisation::run() {
         frameTime = glfwGetTime();
 
         glfwPollEvents();
-        Input_update();
+
+        Input::update();
 
         // Handle window resize.
         const int oldWidth = m_width;
@@ -129,16 +130,16 @@ void Visualisation::run() {
         ImGui::NewFrame();
 
         // todo: get the required input from the Input module into the FPVCamera's input struct here
-        FPVCamera::Input input;
-        input.mouseDelta = Input_getMouseDelta();
-        input.move.forward = Input_isKeyDown(GLFW_KEY_E);
-        input.move.backwards = Input_isKeyDown(GLFW_KEY_D);
-        input.move.up = Input_isKeyDown(GLFW_KEY_SPACE);
-        input.move.down = Input_isKeyDown(GLFW_KEY_LEFT_SHIFT);
-        input.move.left = Input_isKeyDown(GLFW_KEY_S);
-        input.move.right = Input_isKeyDown(GLFW_KEY_F);
+        FPVCamera::Input camInput;
+        camInput.mouseDelta = Input::getMouseDelta();
+        camInput.move.forward = Input::isKeyDown(GLFW_KEY_E);
+        camInput.move.backwards = Input::isKeyDown(GLFW_KEY_D);
+        camInput.move.up = Input::isKeyDown(GLFW_KEY_SPACE);
+        camInput.move.down = Input::isKeyDown(GLFW_KEY_LEFT_SHIFT);
+        camInput.move.left = Input::isKeyDown(GLFW_KEY_S);
+        camInput.move.right = Input::isKeyDown(GLFW_KEY_F);
 
-        m_fpvCam->process(input, dt);
+        m_fpvCam->process(camInput, dt);
         m_fpvCam->update(dt);
 
         bgfx::touch(0);
