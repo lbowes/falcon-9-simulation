@@ -156,6 +156,10 @@ glm::ivec2 Input::getMouseDelta() {
 
 void Input::hideMouseCursor() {
     glfwSetInputMode(s_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+    if(s_cursorHidden == false)
+        s_zeroMouseDelta = true;
+
     s_cursorHidden = true;
 }
 
