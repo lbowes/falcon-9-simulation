@@ -1,10 +1,11 @@
-# ========== Visualisation ========== 
 include_directories("include/")
 include_directories("../")
 include_directories("../simulation/include")
 include_directories(${GLFW_INCLUDE_DIRS})
 
-add_executable(f9sim-visualisation)
+
+# ========== Visualisation library ========== 
+add_library(f9sim-visualisation-lib)
 
 set(IMGUI_SRC 
 	../3rd_party/imgui/imgui.cpp
@@ -15,9 +16,8 @@ set(IMGUI_SRC
 	../3rd_party/imgui/imgui_impl_bgfx.cpp
 )
 
-target_sources(f9sim-visualisation
+target_sources(f9sim-visualisation-lib
 	PRIVATE
-		src/main.cpp
 		src/Visualisation.cpp
 		src/Mesh.cpp
 		src/CameraSystem.cpp
@@ -33,7 +33,6 @@ find_package(PkgConfig REQUIRED)
 
 # GLFW
 pkg_search_module(GLFW REQUIRED glfw3)
-target_link_libraries(f9sim-visualisation ${GLFW_STATIC_LIBRARIES})
 
 # OpenGL
 find_package(OpenGL REQUIRED)
@@ -42,15 +41,27 @@ if(NOT OPENGL_FOUND)
 endif(NOT OPENGL_FOUND)
 set(GL_LIBRARY GL GLU X11)
 
-target_link_libraries(f9sim-visualisation ${GL_LIBRARY})
-
 # BGFX
-target_link_libraries(f9sim-visualisation
+target_link_libraries(f9sim-visualisation-lib
 	bgfx
-	bx
 	bimg
+	bx
 	astc-codec
 	${CHRONO_LIBRARIES}
+	${GL_LIBRARY}
+	${GLFW_STATIC_LIBRARIES}
+)
+
+# ========== Visualisation app ==========
+add_executable(f9sim-visualisation)
+
+target_sources(f9sim-visualisation
+	PRIVATE
+		src/main.cpp
+)
+
+target_link_libraries(f9sim-visualisation
+	f9sim-visualisation-lib
 )
 
 # Copy the resources folder to the build tree
