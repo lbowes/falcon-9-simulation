@@ -160,7 +160,7 @@ void Input::setCursorVisible(bool visibility) {
     if(visibility != s_cursorHidden)
         s_zeroMouseDelta = true;
 
-    s_cursorHidden = !s_cursorHidden;
+    s_cursorHidden = visibility;
 }
 
 

@@ -129,8 +129,11 @@ void Visualisation::run() {
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        if(Input::isKeyPressed(GLFW_KEY_C))
-            m_fpvCamFocused = !m_fpvCamFocused;
+        if(Input::isMouseButtonReleased(GLFW_MOUSE_BUTTON_LEFT))
+            m_fpvCamFocused = true;
+
+        if(Input::isMouseButtonReleased(GLFW_MOUSE_BUTTON_RIGHT))
+            m_fpvCamFocused = false;
 
         // todo: get the required input from the Input module into the FPVCamera's input struct here
         FPVCamera::Input input;
