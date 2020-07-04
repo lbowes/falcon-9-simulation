@@ -11,6 +11,6 @@ target_link_libraries(f9sim-tests
 target_sources(f9sim-tests
 	PRIVATE
 		test_main.cpp
-		#test_Simulation.cpp
+		test_Simulation.cpp
 		test_FPVCamera.cpp
 )
