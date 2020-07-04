@@ -32,7 +32,7 @@ FPVCamera::Input::Input() {
 FPVCamera::FPVCamera() :
     m_velocity(chrono::Vector()),
     m_accelVec(chrono::Vector()),
-    m_accel(200.0f),
+    m_accel(100.0f),
     m_pitch(0.0f),
     m_yaw(0.0f) {
 

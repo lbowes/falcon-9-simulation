@@ -172,4 +172,3 @@ void Visualisation::run() {
 
 } // namespace Graphics
 } // namespace F9Sim
-
