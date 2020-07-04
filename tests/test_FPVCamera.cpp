@@ -3,19 +3,23 @@
 #include "FPVCamera.h"
 
 
-SCENARIO("Running a simulation", "[Simulation]") {
-    GIVEN("A simulation instance") {
-        Simulation sim;
+SCENARIO("Moving an FPVCamera", "[FPVCamera]") {
+    GIVEN("An FPVCamera instance registered with the CameraSystem") {
+        using namespace F9Sim::Graphics;
 
-        WHEN("The simulation is run") {
-            sim.run();
+        FPVCamera fpvCam;
+        CameraSystem& camSys = CameraSystem::getInstance();
+        camSys.bind("first_person_view");
+
+        WHEN("The camera's position is queried before any updates") {
+            const chrono::Vector camPos = camSys.getActivePos();
 
             THEN("Output file exists") {
-                REQUIRE(fileExists(outputFile));
+                REQUIRE(true);
             }
 
             THEN("Output file is not empty") {
-                REQUIRE(!fileEmpty(outputFile));
+                REQUIRE(true);
             }
         }
     }
