@@ -25,7 +25,7 @@ CameraSystem& CameraSystem::getInstance() {
 }
 
 
-chrono::Vector CameraSystem::getActivePos() const {
+glm::dvec3 CameraSystem::getActivePos() const {
     return m_activeCamera->position;
 }
 
@@ -58,14 +58,14 @@ bool CameraSystem::bind(const std::string& name) {
 
 void CameraSystem::setViewTransform(float aspectRatio) {
     const bx::Vec3 at = bx::Vec3(
-        m_activeCamera->lookAt.x(),
-        m_activeCamera->lookAt.y(),
-        m_activeCamera->lookAt.z());
+        m_activeCamera->lookAt.x,
+        m_activeCamera->lookAt.y,
+        m_activeCamera->lookAt.z);
 
     const bx::Vec3 up = bx::Vec3(
-        m_activeCamera->up.x(),
-        m_activeCamera->up.y(),
-        m_activeCamera->up.z());
+        m_activeCamera->up.x,
+        m_activeCamera->up.y,
+        m_activeCamera->up.z);
 
     float view[16];
     bx::mtxLookAt(view, m_eye, at, up, bx::Handness::Right);

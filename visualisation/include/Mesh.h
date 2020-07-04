@@ -4,7 +4,8 @@
 
 
 #include <bgfx/bgfx.h>
-#include <chrono/core/ChCoordsys.h>
+#include <glm/gtc/quaternion.hpp>
+#include <glm/vec3.hpp>
 
 
 namespace F9Sim {
@@ -34,7 +35,8 @@ private:
     static uint64_t s_renderState;
 
     // todo: static shader, bgfx mesh data
-    chrono::ChCoordsys<> m_transform;
+    glm::dvec3 m_position;
+    glm::dquat m_orientation;
 
     bgfx::VertexBufferHandle m_vbh;
     bgfx::IndexBufferHandle m_ibh;
@@ -44,7 +46,7 @@ public:
     Mesh(const char* filepath);
     ~Mesh();
 
-    void setTransform(const chrono::ChCoordsys<>& transform_world);
+    void setTransform(glm::dvec3 position, glm::dquat orientation);
     void draw() const;
 
 private:

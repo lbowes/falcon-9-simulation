@@ -2,8 +2,8 @@
 #include "../3rd_party/imgui/imgui.h"
 #include "CameraSystem.h"
 
-#include <chrono/core/ChMathematics.h>
-#include <chrono/core/ChVector.h>
+#include <glm/geometric.hpp>
+#include <glm/trigonometric.hpp>
 
 
 namespace F9Sim {
@@ -30,8 +30,8 @@ FPVCamera::Input::Input() {
 
 
 FPVCamera::FPVCamera() :
-    m_velocity(chrono::Vector()),
-    m_accelVec(chrono::Vector()),
+    m_velocity(glm::dvec3()),
+    m_accelVec(glm::dvec3()),
     m_accel(100.0f),
     m_pitch(0.0f),
     m_yaw(0.0f) {
@@ -64,14 +64,12 @@ void FPVCamera::update(double dt) {
 
 
 void FPVCamera::moveInput(Input::Move move) {
-    using namespace chrono;
+    m_camera.lookAt = glm::normalize(m_camera.lookAt);
 
-    m_camera.lookAt.Normalize();
+    glm::dvec3 forward = {m_camera.lookAt.x, 0.0, m_camera.lookAt.z};
+    forward = glm::normalize(forward);
 
-    Vector forward = {m_camera.lookAt.x(), 0.0, m_camera.lookAt.z()};
-    forward.Normalize();
-
-    m_accelVec = Vector();
+    m_accelVec = glm::dvec3();
 
     if(move.forward)
         m_accelVec += forward;
@@ -79,7 +77,9 @@ void FPVCamera::moveInput(Input::Move move) {
     if(move.backwards)
         m_accelVec -= forward;
 
-    const Vector right = forward.Cross(VECT_Y);
+    const glm::dvec3 up = {0, 1, 0};
+    const glm::dvec3 right = glm::cross(forward, up);
+
     if(move.right)
         m_accelVec += right;
 
@@ -87,10 +87,10 @@ void FPVCamera::moveInput(Input::Move move) {
         m_accelVec -= right;
 
     if(move.up)
-        m_accelVec.y() += 1.0;
+        m_accelVec += up;
 
     if(move.down)
-        m_accelVec.y() -= 1.0;
+        m_accelVec -= up;
 }
 
 
@@ -115,33 +115,32 @@ void FPVCamera::clampPitchYaw() {
 
 
 void FPVCamera::syncLookAtWithPitchYaw() {
-    using namespace chrono;
-
-    Vector result;
+    glm::dvec3 result;
 
     // Since a yaw of 0 corresponds to -Z, we need to offset m_yaw by -90 degrees for trig calculations to work
     float yawOffset = m_yaw - 90.0f;
 
-    result.x() = cos(CH_C_DEG_TO_RAD * m_pitch) * cos(CH_C_DEG_TO_RAD * yawOffset);
-    result.y() = sin(CH_C_DEG_TO_RAD * m_pitch);
-    result.z() = cos(CH_C_DEG_TO_RAD * m_pitch) * sin(CH_C_DEG_TO_RAD * yawOffset);
-    result.Normalize();
+    result.x = cos(glm::radians(m_pitch)) * cos(glm::radians(yawOffset));
+    result.y = sin(glm::radians(m_pitch));
+    result.z = cos(glm::radians(m_pitch)) * sin(glm::radians(yawOffset));
+    result = glm::normalize(result);
 
     m_camera.lookAt = result;
 }
 
 
 void FPVCamera::syncPitchYawWithLookAt() {
-    using namespace chrono;
-
-    m_camera.lookAt.Normalize();
+    m_camera.lookAt = glm::normalize(m_camera.lookAt);
 
     // Horizontal component of the look-at vector
-    Vector horizLookAt = Vector(m_camera.lookAt.x(), 0.0, m_camera.lookAt.z()).GetNormalized();
-    m_yaw = CH_C_RAD_TO_DEG * acos(horizLookAt.Dot(-VECT_Z)) * (horizLookAt.x() < 0.0 ? -1 : 1);
+    const glm::dvec3 horizLookAt = glm::normalize(glm::dvec3(m_camera.lookAt.x, 0.0, m_camera.lookAt.z));
+
+    const glm::dvec3 forward = {0, 0, -1};
+    m_yaw = glm::degrees(acos(glm::dot(horizLookAt, forward)) * (horizLookAt.x < 0.0 ? -1 : 1));
 
     // Vertical component of look-at vector
-    m_pitch = 90.0f - CH_C_RAD_TO_DEG * acos(m_camera.lookAt.Dot(VECT_Y));
+    const glm::dvec3 up = {0, 1, 0};
+    m_pitch = 90.0f - glm::degrees(acos(glm::dot(m_camera.lookAt, up)));
 }
 
 

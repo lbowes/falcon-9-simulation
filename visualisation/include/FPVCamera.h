@@ -5,7 +5,7 @@
 
 #include "CameraBaseState.h"
 
-#include <glm/vec2.hpp>
+#include <glm/vec3.hpp>
 
 
 namespace F9Sim {
@@ -43,9 +43,9 @@ private:
     };
 
     CameraBaseState m_camera;
-    chrono::ChVector<> m_accelVec;
-    chrono::ChVector<> m_velocity;
-    float m_accel;
+    glm::dvec3 m_accelVec;
+    glm::dvec3 m_velocity;
+    double m_accel;
     float m_pitch;
     float m_yaw;
 

@@ -47,7 +47,6 @@ target_link_libraries(f9sim-visualisation-lib
 	bimg
 	bx
 	astc-codec
-	${CHRONO_LIBRARIES}
 	${GL_LIBRARY}
 	${GLFW_STATIC_LIBRARIES}
 )
