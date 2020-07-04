@@ -3,7 +3,7 @@
 #include "FPVCamera.h"
 
 
-static const double errorMargin = 1e-5;
+static const double errorMargin = 1e-12;
 
 
 SCENARIO("Moving an FPVCamera", "[FPVCamera]") {

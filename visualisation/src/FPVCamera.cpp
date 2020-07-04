@@ -10,11 +10,11 @@ namespace F9Sim {
 namespace Graphics {
 
 
-const float FPVCamera::Sensitivity::zoom = 0.1f;
-const float FPVCamera::Sensitivity::adjustSpeed = 200.0f;
-const float FPVCamera::Movement::minSpeed = 6.4f;
-const float FPVCamera::Movement::maxSpeed = 1000.0f;
-const float FPVCamera::Movement::friction = 7.0f;
+const double FPVCamera::Sensitivity::zoom = 0.1f;
+const double FPVCamera::Sensitivity::adjustSpeed = 200.0f;
+const double FPVCamera::Movement::minSpeed = 6.4f;
+const double FPVCamera::Movement::maxSpeed = 1000.0f;
+const double FPVCamera::Movement::friction = 7.0f;
 
 
 FPVCamera::Input::Input() {
@@ -94,7 +94,7 @@ void FPVCamera::moveInput(Input::Move move) {
 }
 
 
-void FPVCamera::directionInput(float pitchDelta_degs, float yawDelta_degs) {
+void FPVCamera::directionInput(double pitchDelta_degs, double yawDelta_degs) {
     m_pitch += pitchDelta_degs;
     m_yaw += yawDelta_degs;
 
@@ -118,7 +118,7 @@ void FPVCamera::syncLookAtWithPitchYaw() {
     glm::dvec3 result;
 
     // Since a yaw of 0 corresponds to -Z, we need to offset m_yaw by -90 degrees for trig calculations to work
-    float yawOffset = m_yaw - 90.0f;
+    double yawOffset = m_yaw - 90.0f;
 
     result.x = cos(glm::radians(m_pitch)) * cos(glm::radians(yawOffset));
     result.y = sin(glm::radians(m_pitch));
