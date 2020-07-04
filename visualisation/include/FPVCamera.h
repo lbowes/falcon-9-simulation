@@ -12,13 +12,11 @@ namespace F9Sim {
 namespace Graphics {
 
 
-// todo: Fix camera jump when starting app with mouse over window
-
-
 class FPVCamera {
 public:
     struct Input {
-        glm::ivec2 mouseDelta;
+        float pitchDelta_degs;
+        float yawDelta_degs;
 
         struct Move {
             bool forward;
@@ -35,7 +33,6 @@ public:
 private:
     struct Sensitivity {
         static const float zoom;
-        static const float lookAround;
         static const float adjustSpeed;
     };
 
@@ -61,7 +58,7 @@ public:
 
 private:
     void moveInput(Input::Move move);
-    void directionInput(glm::ivec2 mouseDelta);
+    void directionInput(float pitchDelta_degs, float yawDelta_degs);
     void zoomInput();
     void clampPitchYaw();
     void syncLookAtWithPitchYaw();

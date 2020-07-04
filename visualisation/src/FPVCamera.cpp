@@ -11,7 +11,6 @@ namespace Graphics {
 
 
 const float FPVCamera::Sensitivity::zoom = 0.1f;
-const float FPVCamera::Sensitivity::lookAround = 0.05f;
 const float FPVCamera::Sensitivity::adjustSpeed = 200.0f;
 const float FPVCamera::Movement::minSpeed = 6.4f;
 const float FPVCamera::Movement::maxSpeed = 1000.0f;
@@ -19,7 +18,8 @@ const float FPVCamera::Movement::friction = 7.0f;
 
 
 FPVCamera::Input::Input() {
-    mouseDelta = glm::ivec2(0, 0);
+    pitchDelta_degs = false;
+    yawDelta_degs = false;
     move.forward = false;
     move.backwards = false;
     move.left = false;
@@ -52,13 +52,13 @@ FPVCamera::FPVCamera() :
 void FPVCamera::process(Input input) {
     moveInput(input.move);
     zoomInput();
-    directionInput(input.mouseDelta);
+    directionInput(input.pitchDelta_degs, input.yawDelta_degs);
 }
 
 
 void FPVCamera::update(double dt) {
     m_velocity += m_accelVec * m_accel * dt;
-    m_velocity *= 1.0 / (1.0 + (dt * Movement::friction));
+    m_velocity *= 1.0 / (1.0 + (Movement::friction * dt));
     m_camera.position += m_velocity * dt;
 }
 
@@ -68,22 +68,23 @@ void FPVCamera::moveInput(Input::Move move) {
 
     m_camera.lookAt.Normalize();
 
-    Vector horizLookAt_norm = {m_camera.lookAt.x(), 0.0, m_camera.lookAt.z()};
-    horizLookAt_norm.Normalize();
+    Vector forward = {m_camera.lookAt.x(), 0.0, m_camera.lookAt.z()};
+    forward.Normalize();
 
     m_accelVec = Vector();
 
     if(move.forward)
-        m_accelVec += horizLookAt_norm;
+        m_accelVec += forward;
 
     if(move.backwards)
-        m_accelVec -= horizLookAt_norm;
+        m_accelVec -= forward;
 
+    const Vector right = forward.Cross(VECT_Y);
     if(move.right)
-        m_accelVec += horizLookAt_norm.Cross(VECT_Y);
+        m_accelVec += right;
 
     if(move.left)
-        m_accelVec -= horizLookAt_norm.Cross(VECT_Y);
+        m_accelVec -= right;
 
     if(move.up)
         m_accelVec.y() += 1.0;
@@ -93,9 +94,10 @@ void FPVCamera::moveInput(Input::Move move) {
 }
 
 
-void FPVCamera::directionInput(glm::ivec2 mouseDelta) {
-    m_yaw += mouseDelta.x * Sensitivity::lookAround;
-    m_pitch -= mouseDelta.y * Sensitivity::lookAround;
+void FPVCamera::directionInput(float pitchDelta_degs, float yawDelta_degs) {
+    m_pitch += pitchDelta_degs;
+    m_yaw += yawDelta_degs;
+
     clampPitchYaw();
 
     syncLookAtWithPitchYaw();

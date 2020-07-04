@@ -139,7 +139,9 @@ void Visualisation::run() {
         FPVCamera::Input input;
 
         if(m_fpvCamFocused) {
-            input.mouseDelta = Input::getMouseDelta();
+            glm::ivec2 mouseDelta = Input::getMouseDelta();
+            input.pitchDelta_degs = -mouseDelta.y * 0.05f;
+            input.yawDelta_degs = mouseDelta.x * 0.05f;
             input.move.forward = Input::isKeyDown(GLFW_KEY_E);
             input.move.backwards = Input::isKeyDown(GLFW_KEY_D);
             input.move.up = Input::isKeyDown(GLFW_KEY_SPACE);
