@@ -24,6 +24,7 @@ private:
 
     std::unique_ptr<Mesh> m_mesh;
     std::unique_ptr<FPVCamera> m_fpvCam;
+    bool m_fpvCamFocused;
     CameraBaseState m_staticCamera;
 
 public:

@@ -28,7 +28,8 @@ static void glfw_errorCallback(int error, const char* description) {
 Visualisation::Visualisation() :
     m_window(nullptr),
     m_width(0),
-    m_height(0) {
+    m_height(0),
+    m_fpvCamFocused(false) {
 
     glfwSetErrorCallback(glfw_errorCallback);
 
@@ -65,7 +66,6 @@ Visualisation::Visualisation() :
     ImGui_Implbgfx_Init(0);
 
     Input::init(*m_window);
-    Input::hideMouseCursor();
 
     // temp
     m_mesh = std::make_unique<Mesh>("resources/obj/Merlin1D.obj");
@@ -125,24 +125,29 @@ void Visualisation::run() {
             bgfx::setViewRect(0, 0, 0, bgfx::BackbufferRatio::Equal);
         }
 
-        if(glfwGetTime() > 5.0)
-            Input::showMouseCursor();
-
         ImGui_Implbgfx_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        // todo: get the required input from the Input module into the FPVCamera's input struct here
-        FPVCamera::Input camInput;
-        camInput.mouseDelta = Input::getMouseDelta();
-        camInput.move.forward = Input::isKeyDown(GLFW_KEY_E);
-        camInput.move.backwards = Input::isKeyDown(GLFW_KEY_D);
-        camInput.move.up = Input::isKeyDown(GLFW_KEY_SPACE);
-        camInput.move.down = Input::isKeyDown(GLFW_KEY_LEFT_SHIFT);
-        camInput.move.left = Input::isKeyDown(GLFW_KEY_S);
-        camInput.move.right = Input::isKeyDown(GLFW_KEY_F);
+        if(Input::isKeyPressed(GLFW_KEY_C))
+            m_fpvCamFocused = !m_fpvCamFocused;
 
-        m_fpvCam->process(camInput);
+        // todo: get the required input from the Input module into the FPVCamera's input struct here
+        FPVCamera::Input input;
+
+        if(m_fpvCamFocused) {
+            input.mouseDelta = Input::getMouseDelta();
+            input.move.forward = Input::isKeyDown(GLFW_KEY_E);
+            input.move.backwards = Input::isKeyDown(GLFW_KEY_D);
+            input.move.up = Input::isKeyDown(GLFW_KEY_SPACE);
+            input.move.down = Input::isKeyDown(GLFW_KEY_LEFT_SHIFT);
+            input.move.left = Input::isKeyDown(GLFW_KEY_S);
+            input.move.right = Input::isKeyDown(GLFW_KEY_F);
+        }
+
+        Input::setCursorVisible(!m_fpvCamFocused);
+
+        m_fpvCam->process(input);
         m_fpvCam->update(dt);
 
         bgfx::touch(0);

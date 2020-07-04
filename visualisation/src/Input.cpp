@@ -151,26 +151,16 @@ glm::ivec2 Input::getMouseDelta() {
 }
 
 
-void Input::hideMouseCursor() {
-    glfwSetInputMode(s_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+void Input::setCursorVisible(bool visibility) {
+    glfwSetInputMode(s_window, GLFW_CURSOR, visibility ? GLFW_CURSOR_NORMAL : GLFW_CURSOR_DISABLED);
 
-    if(s_cursorHidden == false)
+    // If the cursor's visibility has just been changed, then for this frame, the mouse delta should be
+    // zero. Otherwise, showing/hiding the cursor causes a sudden change in position, which gives
+    // undesirable mouse delta values.
+    if(visibility != s_cursorHidden)
         s_zeroMouseDelta = true;
 
-    s_cursorHidden = true;
-}
-
-
-void Input::showMouseCursor() {
-    glfwSetInputMode(s_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-
-    // If the cursor was visible and has only just been commanded to be hidden, then for this frame
-    // the mouse delta should be 0 (otherwise an erroneous delta would be generated when the mouse
-    // position changed after it was shown).
-    if(s_cursorHidden == true)
-        s_zeroMouseDelta = true;
-
-    s_cursorHidden = false;
+    s_cursorHidden = !s_cursorHidden;
 }
 
 

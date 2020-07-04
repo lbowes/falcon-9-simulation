@@ -61,8 +61,7 @@ public:
     static bool isCursorHidden();
     static glm::ivec2 getMousePos();
     static glm::ivec2 getMouseDelta();
-    static void hideMouseCursor();
-    static void showMouseCursor();
+    static void setCursorVisible(bool visibility);
     static void setCursorPos(glm::ivec2 pos);
 
 private:
