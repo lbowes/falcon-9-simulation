@@ -8,19 +8,20 @@ namespace F9Sim {
 
 const uint16_t Input::s_maxKeys;
 const uint8_t Input::s_maxButtons;
-bool Input::m_cursorHidden = false;
-glm::ivec2 Input::m_mousePos_last = {0, 0};
-glm::ivec2 Input::m_mousePos = {0, 0};
-glm::ivec2 Input::m_mouseDelta = {0, 0};
-GLFWwindow* Input::m_window = nullptr;
-bool Input::m_keysDown[s_maxKeys];
-bool Input::m_keysDown_last[s_maxKeys];
-bool Input::m_keysPressed[s_maxKeys];
-bool Input::m_keysReleased[s_maxKeys];
-bool Input::m_buttonsDown[s_maxButtons];
-bool Input::m_buttonsPressed[s_maxButtons];
-bool Input::m_buttonsReleased[s_maxButtons];
-bool Input::m_buttonsDown_last[s_maxButtons];
+bool Input::s_cursorHidden = false;
+bool Input::s_zeroMouseDelta = true;
+glm::ivec2 Input::s_mousePos_last = {0, 0};
+glm::ivec2 Input::s_mousePos = {0, 0};
+glm::ivec2 Input::s_mouseDelta = {0, 0};
+GLFWwindow* Input::s_window = nullptr;
+bool Input::s_keysDown[s_maxKeys];
+bool Input::s_keysDown_last[s_maxKeys];
+bool Input::s_keysPressed[s_maxKeys];
+bool Input::s_keysReleased[s_maxKeys];
+bool Input::s_buttonsDown[s_maxButtons];
+bool Input::s_buttonsPressed[s_maxButtons];
+bool Input::s_buttonsReleased[s_maxButtons];
+bool Input::s_buttonsDown_last[s_maxButtons];
 
 
 static void setCallbacks(GLFWwindow* win);
@@ -30,23 +31,23 @@ static void mousePosCallback(GLFWwindow* win, double x, double y);
 
 
 void Input::init(GLFWwindow& win) {
-    m_window = &win;
+    s_window = &win;
 
     for(uint16_t i = 0; i < s_maxKeys; i++) {
-        m_keysDown[i] = false;
-        m_keysPressed[i] = false;
-        m_keysReleased[i] = false;
-        m_keysDown_last[i] = false;
+        s_keysDown[i] = false;
+        s_keysPressed[i] = false;
+        s_keysReleased[i] = false;
+        s_keysDown_last[i] = false;
     }
 
     for(uint8_t i = 0; i < s_maxButtons; i++) {
-        m_buttonsDown[i] = false;
-        m_buttonsPressed[i] = false;
-        m_buttonsReleased[i] = false;
-        m_buttonsDown_last[i] = false;
+        s_buttonsDown[i] = false;
+        s_buttonsPressed[i] = false;
+        s_buttonsReleased[i] = false;
+        s_buttonsDown_last[i] = false;
     }
 
-    setCallbacks(m_window);
+    setCallbacks(s_window);
 }
 
 
@@ -58,114 +59,114 @@ void Input::setCallbacks(GLFWwindow* win) {
 
 
 void Input::keyCallback(GLFWwindow* win, int key, int scanCode, int action, int mods) {
-    m_keysDown[key] = (key >= 0) && (key < s_maxKeys) && (action == GLFW_PRESS);
+    s_keysDown[key] = (key >= 0) && (key < s_maxKeys) && (action == GLFW_PRESS);
 }
 
 
 void Input::buttonCallback(GLFWwindow* win, int button, int action, int mods) {
-    m_buttonsDown[button] = (button >= 0) && (button < s_maxButtons) && (action == GLFW_PRESS);
+    s_buttonsDown[button] = (button >= 0) && (button < s_maxButtons) && (action == GLFW_PRESS);
 }
 
 
 void Input::mousePosCallback(GLFWwindow* win, double x, double y) {
-    m_mousePos = {x, y};
+    s_mousePos = {x, y};
 
-    static bool firstCall = true;
-    if(firstCall) {
-        firstCall = false;
-        m_mousePos_last = m_mousePos;
+    if(s_zeroMouseDelta) {
+        s_zeroMouseDelta = false;
+        s_mousePos_last = s_mousePos;
     }
 }
 
 
 void Input::update() {
-    m_mouseDelta = m_mousePos - m_mousePos_last;
-    m_mousePos_last = m_mousePos;
+    s_mouseDelta = s_mousePos - s_mousePos_last;
+    s_mousePos_last = s_mousePos;
 
     for(uint16_t i = 0; i < s_maxKeys; i++) {
-        m_keysPressed[i] = !m_keysDown_last[i] && m_keysDown[i];
-        m_keysReleased[i] = m_keysDown_last[i] && !m_keysDown[i];
-        m_keysDown_last[i] = m_keysDown[i];
+        s_keysPressed[i] = !s_keysDown_last[i] && s_keysDown[i];
+        s_keysReleased[i] = s_keysDown_last[i] && !s_keysDown[i];
+        s_keysDown_last[i] = s_keysDown[i];
     }
 
     for(uint8_t i = 0; i < s_maxButtons; i++) {
-        m_buttonsPressed[i] = !m_buttonsDown_last[i] && m_buttonsDown[i];
-        m_buttonsReleased[i] = m_buttonsDown_last[i] && !m_buttonsDown[i];
-        m_buttonsDown_last[i] = m_buttonsDown[i];
+        s_buttonsPressed[i] = !s_buttonsDown_last[i] && s_buttonsDown[i];
+        s_buttonsReleased[i] = s_buttonsDown_last[i] && !s_buttonsDown[i];
+        s_buttonsDown_last[i] = s_buttonsDown[i];
     }
 }
 
 
 bool Input::isKeyDown(uint16_t key) {
-    return key < s_maxKeys && m_keysDown[key];
+    return key < s_maxKeys && s_keysDown[key];
 }
 
 
 bool Input::isKeyUp(uint16_t key) {
-    return key < s_maxKeys && !m_keysDown[key];
+    return key < s_maxKeys && !s_keysDown[key];
 }
 
 
 bool Input::isKeyPressed(uint16_t key) {
-    return key < s_maxKeys && m_keysPressed[key];
+    return key < s_maxKeys && s_keysPressed[key];
 }
 
 
 bool Input::isKeyReleased(uint16_t key) {
-    return key < s_maxKeys && m_keysReleased[key];
+    return key < s_maxKeys && s_keysReleased[key];
 }
 
 
 bool Input::isMouseButtonDown(uint8_t button) {
-    return button < s_maxButtons && m_buttonsDown[button];
+    return button < s_maxButtons && s_buttonsDown[button];
 }
 
 
 bool Input::isMouseButtonUp(uint8_t button) {
-    return button < s_maxButtons && !m_buttonsDown[button];
+    return button < s_maxButtons && !s_buttonsDown[button];
 }
 
 
 bool Input::isMouseButtonPressed(uint8_t button) {
-    return button < s_maxButtons && m_buttonsPressed[button];
+    return button < s_maxButtons && s_buttonsPressed[button];
 }
 
 
 bool Input::isMouseButtonReleased(uint8_t button) {
-    return button < s_maxButtons && m_buttonsReleased[button];
+    return button < s_maxButtons && s_buttonsReleased[button];
 }
 
 
 bool Input::isCursorHidden() {
-    return m_cursorHidden;
+    return s_cursorHidden;
 }
 
 
 glm::ivec2 Input::getMousePos() {
-    return m_mousePos;
+    return s_mousePos;
 }
 
 
 glm::ivec2 Input::getMouseDelta() {
-    return m_mouseDelta;
+    return s_mouseDelta;
 }
 
 
-void Input::hideMouseCursor() {
-    glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-    m_cursorHidden = true;
-}
+void Input::setCursorVisible(bool visibility) {
+    glfwSetInputMode(s_window, GLFW_CURSOR, visibility ? GLFW_CURSOR_NORMAL : GLFW_CURSOR_DISABLED);
 
+    // If the cursor's visibility has just been changed, then for this frame, the mouse delta should be
+    // zero. Otherwise, showing/hiding the cursor causes a sudden change in position, which gives
+    // undesirable mouse delta values.
+    if(visibility != s_cursorHidden)
+        s_zeroMouseDelta = true;
 
-void Input::showMouseCursor() {
-    glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-    m_cursorHidden = false;
+    s_cursorHidden = visibility;
 }
 
 
 void Input::setCursorPos(glm::ivec2 pos) {
-    glfwSetCursorPos(m_window, pos.x, pos.y);
-    m_mousePos = pos;
+    glfwSetCursorPos(s_window, pos.x, pos.y);
+    s_mousePos = pos;
 }
 
 

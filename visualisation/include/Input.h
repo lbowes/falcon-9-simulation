@@ -17,19 +17,20 @@ class Input {
 private:
     static const uint16_t s_maxKeys = 512;
     static const uint8_t s_maxButtons = 16;
-    static bool m_cursorHidden;
-    static glm::ivec2 m_mousePos_last;
-    static glm::ivec2 m_mousePos;
-    static glm::ivec2 m_mouseDelta;
-    static GLFWwindow* m_window;
-    static bool m_keysDown[s_maxKeys];
-    static bool m_keysDown_last[s_maxKeys];
-    static bool m_keysPressed[s_maxKeys];
-    static bool m_keysReleased[s_maxKeys];
-    static bool m_buttonsDown[s_maxButtons];
-    static bool m_buttonsPressed[s_maxButtons];
-    static bool m_buttonsReleased[s_maxButtons];
-    static bool m_buttonsDown_last[s_maxButtons];
+    static bool s_zeroMouseDelta;
+    static bool s_cursorHidden;
+    static glm::ivec2 s_mousePos_last;
+    static glm::ivec2 s_mousePos;
+    static glm::ivec2 s_mouseDelta;
+    static GLFWwindow* s_window;
+    static bool s_keysDown[s_maxKeys];
+    static bool s_keysDown_last[s_maxKeys];
+    static bool s_keysPressed[s_maxKeys];
+    static bool s_keysReleased[s_maxKeys];
+    static bool s_buttonsDown[s_maxButtons];
+    static bool s_buttonsPressed[s_maxButtons];
+    static bool s_buttonsReleased[s_maxButtons];
+    static bool s_buttonsDown_last[s_maxButtons];
 
 public:
     Input(const Input& other) = delete;
@@ -60,8 +61,7 @@ public:
     static bool isCursorHidden();
     static glm::ivec2 getMousePos();
     static glm::ivec2 getMouseDelta();
-    static void hideMouseCursor();
-    static void showMouseCursor();
+    static void setCursorVisible(bool visibility);
     static void setCursorPos(glm::ivec2 pos);
 
 private:
