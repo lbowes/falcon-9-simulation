@@ -6,7 +6,9 @@
 #include "CameraBaseState.h"
 
 #include <bx/math.h>
-#include <chrono/core/ChVector.h>
+#include <glm/vec3.hpp>
+#include <unordered_map>
+#include <vector>
 
 
 namespace F9Sim {
@@ -28,7 +30,7 @@ public:
     void operator=(const CameraSystem&) = delete;
     void operator=(CameraSystem&&) = delete;
 
-    chrono::Vector getActivePos() const;
+    glm::dvec3 getActivePos() const;
     bool registerCam(const CameraBaseState& cam, const std::string& name);
     bool bind(const std::string& name);
     void setViewTransform(float aspectRatio);
