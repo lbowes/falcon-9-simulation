@@ -16,7 +16,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(BUILD_TESTS FALSE CACHE BOOL "Build tests")
 if(BUILD_TESTS)
-	add_definitions(-DAIL_TEST)
+	add_definitions(-DF9SIM_TEST)
 	add_subdirectory(tests)
 endif()
 
