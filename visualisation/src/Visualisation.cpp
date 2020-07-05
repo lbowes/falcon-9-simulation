@@ -80,7 +80,7 @@ Visualisation::Visualisation() :
     m_staticCamera.position = {10.0f, 10.0f, 10.0f};
     m_staticCamera.up = {0.0f, 1.0f, 0.0f};
     m_staticCamera.lookAt = -glm::normalize(m_staticCamera.position);
-    m_camSystem.registerCam(m_staticCamera, "static_cam");
+    m_camSystem.registerCam(m_staticCamera, "static");
     //
 
     bgfx::touch(0);
