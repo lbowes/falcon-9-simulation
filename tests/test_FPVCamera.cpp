@@ -3,6 +3,9 @@
 #include "FPVCamera.h"
 
 
+static const double errorMargin = 1e-12;
+
+
 SCENARIO("Moving an FPVCamera", "[FPVCamera]") {
     GIVEN("An FPVCamera instance registered with the CameraSystem") {
         using namespace F9Sim::Graphics;
@@ -12,10 +15,10 @@ SCENARIO("Moving an FPVCamera", "[FPVCamera]") {
         camSys.bind("first_person_view");
 
         WHEN("The camera's position is queried before any movement") {
-            const chrono::Vector camPos = camSys.getActivePos();
+            const glm::dvec3 camPos = camSys.getActivePos();
 
             THEN("It is positioned at the origin") {
-                const chrono::Vector origin = {0, 0, 0};
+                const glm::dvec3 origin = {0, 0, 0};
                 REQUIRE(camPos == origin);
             }
         }
@@ -27,11 +30,11 @@ SCENARIO("Moving an FPVCamera", "[FPVCamera]") {
             fpvCam.update(1.0);
 
             THEN("It is positioned on the -Z axis") {
-                const chrono::Vector pos = camSys.getActivePos();
+                const glm::dvec3 pos = camSys.getActivePos();
 
-                REQUIRE(pos.x() == Approx(0.0).margin(1e-12));
-                REQUIRE(pos.y() == Approx(0.0).margin(1e-12));
-                REQUIRE(pos.z() < 0.0);
+                REQUIRE(pos.x == Approx(0.0).margin(errorMargin));
+                REQUIRE(pos.y == Approx(0.0).margin(errorMargin));
+                REQUIRE(pos.z < 0.0);
             }
         }
         AND_WHEN("The camera is moved right") {
@@ -42,11 +45,11 @@ SCENARIO("Moving an FPVCamera", "[FPVCamera]") {
             fpvCam.update(1.0);
 
             THEN("It is positioned on the +X axis") {
-                const chrono::Vector pos = camSys.getActivePos();
+                const glm::dvec3 pos = camSys.getActivePos();
 
-                REQUIRE(pos.x() > 0.0);
-                REQUIRE(pos.y() == Approx(0.0).margin(1e-12));
-                REQUIRE(pos.z() == Approx(0.0).margin(1e-12));
+                REQUIRE(pos.x > 0.0);
+                REQUIRE(pos.y == Approx(0.0).margin(errorMargin));
+                REQUIRE(pos.z == Approx(0.0).margin(errorMargin));
             }
         }
         AND_WHEN("The camera is moved up") {
@@ -57,11 +60,11 @@ SCENARIO("Moving an FPVCamera", "[FPVCamera]") {
             fpvCam.update(1.0);
 
             THEN("It is positioned on the +Y axis") {
-                const chrono::Vector pos = camSys.getActivePos();
+                const glm::dvec3 pos = camSys.getActivePos();
 
-                REQUIRE(pos.x() == Approx(0.0).margin(1e-12));
-                REQUIRE(pos.y() > 0.0);
-                REQUIRE(pos.z() == Approx(0.0).margin(1e-12));
+                REQUIRE(pos.x == Approx(0.0).margin(errorMargin));
+                REQUIRE(pos.y > 0.0);
+                REQUIRE(pos.z == Approx(0.0).margin(errorMargin));
             }
         }
         AND_WHEN("The camera is moved backwards") {
@@ -72,11 +75,11 @@ SCENARIO("Moving an FPVCamera", "[FPVCamera]") {
             fpvCam.update(1.0);
 
             THEN("It is positioned on the +Z axis") {
-                const chrono::Vector pos = camSys.getActivePos();
+                const glm::dvec3 pos = camSys.getActivePos();
 
-                REQUIRE(pos.x() == Approx(0.0).margin(1e-12));
-                REQUIRE(pos.y() == Approx(0.0).margin(1e-12));
-                REQUIRE(pos.z() > 0.0);
+                REQUIRE(pos.x == Approx(0.0).margin(errorMargin));
+                REQUIRE(pos.y == Approx(0.0).margin(errorMargin));
+                REQUIRE(pos.z > 0.0);
             }
         }
         AND_WHEN("The camera is moved left") {
@@ -87,11 +90,11 @@ SCENARIO("Moving an FPVCamera", "[FPVCamera]") {
             fpvCam.update(1.0);
 
             THEN("It is positioned on the -X axis") {
-                const chrono::Vector pos = camSys.getActivePos();
+                const glm::dvec3 pos = camSys.getActivePos();
 
-                REQUIRE(pos.x() < 0.0);
-                REQUIRE(pos.y() == Approx(0.0).margin(1e-12));
-                REQUIRE(pos.z() == Approx(0.0).margin(1e-12));
+                REQUIRE(pos.x < 0.0);
+                REQUIRE(pos.y == Approx(0.0).margin(errorMargin));
+                REQUIRE(pos.z == Approx(0.0).margin(errorMargin));
             }
         }
         AND_WHEN("The camera is moved down") {
@@ -102,11 +105,11 @@ SCENARIO("Moving an FPVCamera", "[FPVCamera]") {
             fpvCam.update(1.0);
 
             THEN("It is positioned on the -Y axis") {
-                const chrono::Vector pos = camSys.getActivePos();
+                const glm::dvec3 pos = camSys.getActivePos();
 
-                REQUIRE(pos.x() == Approx(0.0).margin(1e-12));
-                REQUIRE(pos.y() < 0.0);
-                REQUIRE(pos.z() == Approx(0.0).margin(1e-12));
+                REQUIRE(pos.x == Approx(0.0).margin(errorMargin));
+                REQUIRE(pos.y < 0.0);
+                REQUIRE(pos.z == Approx(0.0).margin(errorMargin));
             }
         }
     }
@@ -128,11 +131,11 @@ SCENARIO("Rotating an FPVCamera", "[FPVCamera]") {
             fpvCam.update(1.0);
 
             THEN("It is positioned along +X") {
-                const chrono::Vector pos = camSys.getActivePos();
+                const glm::dvec3 pos = camSys.getActivePos();
 
-                REQUIRE(pos.x() > 0.0);
-                REQUIRE(pos.y() == Approx(0.0).margin(1e-12));
-                REQUIRE(pos.z() == Approx(0.0).margin(1e-12));
+                REQUIRE(pos.x > 0.0);
+                REQUIRE(pos.y == Approx(0.0).margin(errorMargin));
+                REQUIRE(pos.z == Approx(0.0).margin(errorMargin));
             }
         }
         AND_WHEN("The camera is rotated 90 degrees anticlockwise and moved forward") {
@@ -144,11 +147,11 @@ SCENARIO("Rotating an FPVCamera", "[FPVCamera]") {
             fpvCam.update(1.0);
 
             THEN("It is positioned along -X") {
-                const chrono::Vector pos = camSys.getActivePos();
+                const glm::dvec3 pos = camSys.getActivePos();
 
-                REQUIRE(pos.x() < 0.0);
-                REQUIRE(pos.y() == Approx(0.0).margin(1e-12));
-                REQUIRE(pos.z() == Approx(0.0).margin(1e-12));
+                REQUIRE(pos.x < 0.0);
+                REQUIRE(pos.y == Approx(0.0).margin(errorMargin));
+                REQUIRE(pos.z == Approx(0.0).margin(errorMargin));
             }
         }
         AND_WHEN("The camera is rotated 270 degrees clockwise and moved forward") {
@@ -160,11 +163,11 @@ SCENARIO("Rotating an FPVCamera", "[FPVCamera]") {
             fpvCam.update(1.0);
 
             THEN("It is still positioned along the -X") {
-                const chrono::Vector pos = camSys.getActivePos();
+                const glm::dvec3 pos = camSys.getActivePos();
 
-                REQUIRE(pos.x() < 0.0);
-                REQUIRE(pos.y() == Approx(0.0).margin(1e-12));
-                REQUIRE(pos.z() == Approx(0.0).margin(1e-12));
+                REQUIRE(pos.x < 0.0);
+                REQUIRE(pos.y == Approx(0.0).margin(errorMargin));
+                REQUIRE(pos.z == Approx(0.0).margin(errorMargin));
             }
         }
         AND_WHEN("The camera is rotated 60 degrees clockwise and moved forward") {
@@ -176,9 +179,9 @@ SCENARIO("Rotating an FPVCamera", "[FPVCamera]") {
             fpvCam.update(1.0);
 
             THEN("It is closer to the +X axis than the -Z axis") {
-                const chrono::Vector pos = camSys.getActivePos();
+                const glm::dvec3 pos = camSys.getActivePos();
 
-                REQUIRE(pos.x() > abs(pos.z()));
+                REQUIRE(pos.x > abs(pos.z));
             }
         }
         AND_WHEN("The camera is rotated 30 degrees clockwise and moved backward") {
@@ -190,9 +193,9 @@ SCENARIO("Rotating an FPVCamera", "[FPVCamera]") {
             fpvCam.update(1.0);
 
             THEN("It is closer to the +X axis than the -Z axis") {
-                const chrono::Vector pos = camSys.getActivePos();
+                const glm::dvec3 pos = camSys.getActivePos();
 
-                REQUIRE(pos.z() > abs(pos.x()));
+                REQUIRE(pos.z > abs(pos.x));
             }
         }
         AND_WHEN("The camera is rotated 345 and then 105 degrees clockwise, causing yaw to wrap around") {
@@ -209,11 +212,11 @@ SCENARIO("Rotating an FPVCamera", "[FPVCamera]") {
             fpvCam.update(1.0);
 
             THEN("It is positioned along +X") {
-                const chrono::Vector pos = camSys.getActivePos();
+                const glm::dvec3 pos = camSys.getActivePos();
 
-                REQUIRE(pos.x() > 0.0);
-                REQUIRE(pos.y() == Approx(0.0).margin(1e-12));
-                REQUIRE(pos.z() == Approx(0.0).margin(1e-12));
+                REQUIRE(pos.x > 0.0);
+                REQUIRE(pos.y == Approx(0.0).margin(errorMargin));
+                REQUIRE(pos.z == Approx(0.0).margin(errorMargin));
             }
         }
         AND_WHEN("The camera is rotated 15 degrees clockwise and then 105 degrees anticlockwise, causing yaw to wrap around") {
@@ -230,11 +233,11 @@ SCENARIO("Rotating an FPVCamera", "[FPVCamera]") {
             fpvCam.update(1.0);
 
             THEN("It is positioned along -X") {
-                const chrono::Vector pos = camSys.getActivePos();
+                const glm::dvec3 pos = camSys.getActivePos();
 
-                REQUIRE(pos.x() < 0.0);
-                REQUIRE(pos.y() == Approx(0.0).margin(1e-12));
-                REQUIRE(pos.z() == Approx(0.0).margin(1e-12));
+                REQUIRE(pos.x < 0.0);
+                REQUIRE(pos.y == Approx(0.0).margin(errorMargin));
+                REQUIRE(pos.z == Approx(0.0).margin(errorMargin));
             }
         }
     }

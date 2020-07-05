@@ -5,7 +5,7 @@
 
 #include "CameraBaseState.h"
 
-#include <glm/vec2.hpp>
+#include <glm/vec3.hpp>
 
 
 namespace F9Sim {
@@ -15,8 +15,8 @@ namespace Graphics {
 class FPVCamera {
 public:
     struct Input {
-        float pitchDelta_degs;
-        float yawDelta_degs;
+        double pitchDelta_degs;
+        double yawDelta_degs;
 
         struct Move {
             bool forward;
@@ -32,22 +32,22 @@ public:
 
 private:
     struct Sensitivity {
-        static const float zoom;
-        static const float adjustSpeed;
+        static const double zoom;
+        static const double adjustSpeed;
     };
 
     struct Movement {
-        static const float minSpeed;
-        static const float maxSpeed;
-        static const float friction;
+        static const double minSpeed;
+        static const double maxSpeed;
+        static const double friction;
     };
 
     CameraBaseState m_camera;
-    chrono::ChVector<> m_accelVec;
-    chrono::ChVector<> m_velocity;
-    float m_accel;
-    float m_pitch;
-    float m_yaw;
+    glm::dvec3 m_accelVec;
+    glm::dvec3 m_velocity;
+    double m_accel;
+    double m_pitch;
+    double m_yaw;
 
 public:
     FPVCamera();
@@ -58,7 +58,7 @@ public:
 
 private:
     void moveInput(Input::Move move);
-    void directionInput(float pitchDelta_degs, float yawDelta_degs);
+    void directionInput(double pitchDelta_degs, double yawDelta_degs);
     void zoomInput();
     void clampPitchYaw();
     void syncLookAtWithPitchYaw();

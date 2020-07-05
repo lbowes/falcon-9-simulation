@@ -10,6 +10,7 @@
 #include <bgfx/platform.h>
 #include <bx/bx.h>
 #include <bx/math.h>
+#include <glm/geometric.hpp>
 #include <stdio.h>
 
 #define GLFW_EXPOSE_NATIVE_X11
@@ -80,7 +81,7 @@ Visualisation::Visualisation() :
     m_staticCamera.verticalFOV = 45.0f;
     m_staticCamera.position = {10.0f, 10.0f, 10.0f};
     m_staticCamera.up = {0.0f, 1.0f, 0.0f};
-    m_staticCamera.lookAt = -m_staticCamera.position.GetNormalized();
+    m_staticCamera.lookAt = -glm::normalize(m_staticCamera.position);
     cams.registerCam(m_staticCamera, "static_cam");
     //
 

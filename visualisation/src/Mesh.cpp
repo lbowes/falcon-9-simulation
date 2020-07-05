@@ -24,21 +24,24 @@ uint64_t Mesh::s_renderState =
     BGFX_STATE_MSAA;
 
 
-Mesh::Mesh(const char* filepath) {
+Mesh::Mesh(const char* filepath) :
+    m_position(glm::dvec3()),
+    m_orientation(glm::dquat()) {
+
     Vertex::init();
 
     // Get the data from the obj file into the correct bgfx objects ready for rendering
     // (this is just temporary data for testing camera movement)
     {
         static Vertex s_cubeVertices[] = {
-            {-1.0f, 1.0f, 1.0f, 0xff000000},
-            {1.0f, 1.0f, 1.0f, 0xff0000ff},
-            {-1.0f, -1.0f, 1.0f, 0xff00ff00},
-            {1.0f, -1.0f, 1.0f, 0xff00ffff},
-            {-1.0f, 1.0f, -1.0f, 0xffff0000},
-            {1.0f, 1.0f, -1.0f, 0xffff00ff},
-            {-1.0f, -1.0f, -1.0f, 0xffffff00},
-            {1.0f, -1.0f, -1.0f, 0xffffffff},
+            {-1.0f, 1.0f, 1.0f, 0xff00ffff},
+            {1.0f, 1.0f, 1.0f, 0xffffffff},
+            {-1.0f, -1.0f, 1.0f, 0xff0000ff},
+            {1.0f, -1.0f, 1.0f, 0xffff0000},
+            {-1.0f, 1.0f, -1.0f, 0xff00ff00},
+            {1.0f, 1.0f, -1.0f, 0xffffff00},
+            {-1.0f, -1.0f, -1.0f, 0xff000000},
+            {1.0f, -1.0f, -1.0f, 0xffff0000},
         };
 
         m_vbh = bgfx::createVertexBuffer(bgfx::makeRef(s_cubeVertices, sizeof(s_cubeVertices)), Vertex::ms_decl);
@@ -99,8 +102,9 @@ Mesh::~Mesh() {
 }
 
 
-void Mesh::setTransform(const chrono::ChCoordsys<>& transform) {
-    m_transform = transform;
+void Mesh::setTransform(glm::dvec3 position, glm::dquat orientation) {
+    m_position = position;
+    m_orientation = orientation;
 }
 
 
@@ -116,16 +120,21 @@ void Mesh::draw() const {
 
 void Mesh::updateTransform() const {
     // Rotation
-    const chrono::Quaternion r = m_transform.rot;
-    const bx::Quaternion orientation = {(float)r.e3(), (float)r.e0(), (float)r.e1(), (float)r.e2()};
+    //const bx::Quaternion orientation = {(float)r.e3(), (float)r.e0(), (float)r.e1(), (float)r.e2()};
+    const bx::Quaternion orientation = {
+        (float)m_orientation.w,
+        (float)m_orientation.x,
+        (float)m_orientation.y,
+        (float)m_orientation.z};
+
     float rotation[16];
     bx::mtxQuat(rotation, orientation);
 
     // Translation
-    const chrono::Vector camPos = CameraSystem::getInstance().getActivePos();
-    const chrono::Vector d = m_transform.pos - camPos;
+    const glm::dvec3 camPos = CameraSystem::getInstance().getActivePos();
+    const glm::dvec3 d = m_position - camPos;
     float translation[16];
-    bx::mtxTranslate(translation, (float)d.x(), (float)d.y(), (float)d.z());
+    bx::mtxTranslate(translation, (float)d.x, (float)d.y, (float)d.z);
 
     // Combine rotation and translation
     float transform[16];

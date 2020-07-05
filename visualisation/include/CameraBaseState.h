@@ -3,7 +3,7 @@
 #pragma once
 
 
-#include <chrono/core/ChVector.h>
+#include <glm/vec3.hpp>
 
 
 namespace F9Sim {
@@ -18,9 +18,9 @@ struct CameraBaseState {
     float near;
     float far;
     float verticalFOV;
-    chrono::Vector position;
-    chrono::Vector up;
-    chrono::Vector lookAt;
+    glm::dvec3 position;
+    glm::dvec3 up;
+    glm::dvec3 lookAt;
 
 
     CameraBaseState() {
