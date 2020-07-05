@@ -13,7 +13,7 @@ namespace Graphics {
 
 
 struct Vertex {
-    static bgfx::VertexLayout ms_decl;
+    static bgfx::VertexLayout ms_layout;
 
     float m_x;
     float m_y;
@@ -21,7 +21,7 @@ struct Vertex {
     uint32_t m_abgr;
 
     static void init() {
-        ms_decl
+        ms_layout
             .begin()
             .add(bgfx::Attrib::Position, 3, bgfx::AttribType::Float)
             .add(bgfx::Attrib::Color0, 4, bgfx::AttribType::Uint8, true)

@@ -3,7 +3,6 @@
 #include "CameraSystem.h"
 #include "ShaderUtils.h"
 
-#include <bgfx/bgfx.h>
 #include <bgfx/platform.h>
 #include <bx/math.h>
 
@@ -12,7 +11,7 @@ namespace F9Sim {
 namespace Graphics {
 
 
-bgfx::VertexLayout Vertex::ms_decl;
+bgfx::VertexLayout Vertex::ms_layout;
 
 
 uint64_t Mesh::s_renderState =
@@ -44,7 +43,7 @@ Mesh::Mesh(const char* filepath) :
             {1.0f, -1.0f, -1.0f, 0xffff0000},
         };
 
-        m_vbh = bgfx::createVertexBuffer(bgfx::makeRef(s_cubeVertices, sizeof(s_cubeVertices)), Vertex::ms_decl);
+        m_vbh = bgfx::createVertexBuffer(bgfx::makeRef(s_cubeVertices, sizeof(s_cubeVertices)), Vertex::ms_layout);
 
         static const uint16_t s_cubeTriList[] = {
             0,
