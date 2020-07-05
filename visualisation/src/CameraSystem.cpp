@@ -14,8 +14,8 @@ CameraSystem::CameraSystem() :
     m_eye({0.0f, 0.0f, 0.0f}),
     m_activeCamera(nullptr) {
 
-    registerCam(m_defaultCamera, "default_camera");
-    bind("default_camera");
+    registerCam(m_defaultCamera, "default");
+    bind("default");
 }
 
 
