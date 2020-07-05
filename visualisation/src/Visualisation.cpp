@@ -69,6 +69,7 @@ Visualisation::Visualisation() :
 
     // temp
     m_mesh = std::make_unique<Mesh>("resources/obj/Merlin1D.obj");
+    m_scene = std::make_unique<Scene>();
 
     m_fpvCam = std::make_unique<FPVCamera>(m_camSystem);
     m_camSystem.bind("first_person_view");
@@ -161,6 +162,7 @@ void Visualisation::run() {
             m_camSystem.setViewTransform(aspectRatio);
 
             m_mesh->draw(m_camSystem.getActivePos());
+            m_scene->draw(m_camSystem.getActivePos());
         }
         bgfx::frame();
 
