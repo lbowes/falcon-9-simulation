@@ -13,4 +13,5 @@ target_sources(f9sim-tests
 		test_main.cpp
 		test_Simulation.cpp
 		test_FPVCamera.cpp
+		test_CameraSystem.cpp
 )
