@@ -12,6 +12,8 @@ namespace F9Sim {
 namespace Graphics {
 
 
+class CameraSystem;
+
 class FPVCamera {
 public:
     struct Input {
@@ -50,7 +52,7 @@ private:
     double m_yaw;
 
 public:
-    FPVCamera();
+    FPVCamera(CameraSystem& camSys);
     ~FPVCamera() = default;
 
     void process(Input input);

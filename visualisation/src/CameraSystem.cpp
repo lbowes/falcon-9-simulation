@@ -19,12 +19,6 @@ CameraSystem::CameraSystem() :
 }
 
 
-CameraSystem& CameraSystem::getInstance() {
-    static CameraSystem instance;
-    return instance;
-}
-
-
 glm::dvec3 CameraSystem::getActivePos() const {
     return m_activeCamera->position;
 }

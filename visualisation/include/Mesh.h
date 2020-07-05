@@ -47,10 +47,10 @@ public:
     ~Mesh();
 
     void setTransform(glm::dvec3 position, glm::dquat orientation);
-    void draw() const;
+    void draw(glm::dvec3 camPos) const;
 
 private:
-    void updateTransform() const;
+    void updateTransformRelativeTo(glm::dvec3 camPos) const;
 };
 
 
