@@ -3,6 +3,7 @@
 #pragma once
 
 
+#include "CameraSystem.h"
 #include "FPVCamera.h"
 #include "Mesh.h"
 
@@ -25,6 +26,7 @@ private:
     std::unique_ptr<Mesh> m_mesh;
     std::unique_ptr<FPVCamera> m_fpvCam;
     bool m_fpvCamFocused;
+    CameraSystem m_camSystem;
     CameraBaseState m_staticCamera;
 
 public:

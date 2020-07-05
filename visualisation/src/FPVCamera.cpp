@@ -29,7 +29,7 @@ FPVCamera::Input::Input() {
 }
 
 
-FPVCamera::FPVCamera() :
+FPVCamera::FPVCamera(CameraSystem& camSys) :
     m_velocity(glm::dvec3()),
     m_accelVec(glm::dvec3()),
     m_accel(100.0f),
@@ -45,7 +45,7 @@ FPVCamera::FPVCamera() :
     m_camera.lookAt = {0, 0, -1};
 
     syncPitchYawWithLookAt();
-    CameraSystem::getInstance().registerCam(m_camera, "first_person_view");
+    camSys.registerCam(m_camera, "first_person_view");
 }
 
 

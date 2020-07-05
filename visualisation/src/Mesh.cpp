@@ -108,8 +108,8 @@ void Mesh::setTransform(glm::dvec3 position, glm::dquat orientation) {
 }
 
 
-void Mesh::draw() const {
-    updateTransform();
+void Mesh::draw(glm::dvec3 camPos) const {
+    updateTransformRelativeTo(camPos);
 
     bgfx::setVertexBuffer(0, m_vbh);
     bgfx::setIndexBuffer(m_ibh);
@@ -118,9 +118,8 @@ void Mesh::draw() const {
 }
 
 
-void Mesh::updateTransform() const {
+void Mesh::updateTransformRelativeTo(glm::dvec3 camPos) const {
     // Rotation
-    //const bx::Quaternion orientation = {(float)r.e3(), (float)r.e0(), (float)r.e1(), (float)r.e2()};
     const bx::Quaternion orientation = {
         (float)m_orientation.w,
         (float)m_orientation.x,
@@ -131,7 +130,6 @@ void Mesh::updateTransform() const {
     bx::mtxQuat(rotation, orientation);
 
     // Translation
-    const glm::dvec3 camPos = CameraSystem::getInstance().getActivePos();
     const glm::dvec3 d = m_position - camPos;
     float translation[16];
     bx::mtxTranslate(translation, (float)d.x, (float)d.y, (float)d.z);
