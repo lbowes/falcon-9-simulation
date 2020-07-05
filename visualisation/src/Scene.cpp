@@ -30,9 +30,9 @@ Scene::Scene() {
     const int halfExtent = 10;
     uint16_t vertexCounter = 0;
 
-    static const uint16_t numVertices = 8 * halfExtent + 4;
-    static GridVertex gridVertices[numVertices];
-    static uint16_t gridIndices[numVertices];
+    const uint16_t numVertices = 8 * halfExtent + 4;
+    GridVertex gridVertices[numVertices];
+    uint16_t gridIndices[numVertices];
     const uint32_t col_abgr = 0xff666666;
 
     // Horizontal grid lines
