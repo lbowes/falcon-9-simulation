@@ -128,7 +128,8 @@ void Visualisation::run() {
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        if(Input::isMouseButtonReleased(GLFW_MOUSE_BUTTON_LEFT))
+        ImGuiIO& io = ImGui::GetIO();
+        if(Input::isMouseButtonReleased(GLFW_MOUSE_BUTTON_LEFT) && !io.WantCaptureMouse)
             m_fpvCamFocused = true;
 
         if(Input::isMouseButtonReleased(GLFW_MOUSE_BUTTON_RIGHT))
@@ -164,10 +165,36 @@ void Visualisation::run() {
         bgfx::frame();
 
         // Render ImGui on top of everything else
+        showCameraSelectPanel();
         ImGui::Render();
 
         dt = frameTime - lastFrameTime;
     }
+}
+
+
+void Visualisation::showCameraSelectPanel() {
+    ImGui::Begin("Cameras");
+
+    const std::vector<std::string> items = m_camSystem.getRegisteredCamNames();
+    static int itemIdx = 0;
+    const std::string label = items[itemIdx];
+
+    if(ImGui::BeginCombo("active camera", label.c_str())) {
+        for(int n = 0; n < items.size(); n++) {
+            const bool isSelected = (itemIdx == n);
+            if(ImGui::Selectable(items[n].c_str(), isSelected))
+                itemIdx = n;
+
+            if(isSelected)
+                ImGui::SetItemDefaultFocus();
+        }
+        ImGui::EndCombo();
+    };
+
+    m_camSystem.bind(items[itemIdx]);
+
+    ImGui::End();
 }
 
 

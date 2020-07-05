@@ -42,6 +42,8 @@ public:
 private:
     Visualisation();
     ~Visualisation();
+
+    void showCameraSelectPanel();
 };
 
 
