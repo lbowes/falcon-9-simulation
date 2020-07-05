@@ -10,8 +10,8 @@ SCENARIO("Moving an FPVCamera", "[FPVCamera]") {
     GIVEN("An FPVCamera instance registered with the CameraSystem") {
         using namespace F9Sim::Graphics;
 
-        FPVCamera fpvCam;
-        CameraSystem& camSys = CameraSystem::getInstance();
+        CameraSystem camSys;
+        FPVCamera fpvCam(camSys);
         camSys.bind("first_person_view");
 
         WHEN("The camera's position is queried before any movement") {
@@ -119,8 +119,9 @@ SCENARIO("Rotating an FPVCamera", "[FPVCamera]") {
     using namespace F9Sim::Graphics;
 
     GIVEN("An FPVCamera instance registered with the CameraSystem") {
-        FPVCamera fpvCam;
-        CameraSystem& camSys = CameraSystem::getInstance();
+        CameraSystem camSys;
+        FPVCamera fpvCam(camSys);
+        camSys.bind("first_person_view");
 
         WHEN("The camera is rotated 90 degrees clockwise and moved forward") {
             FPVCamera::Input input;

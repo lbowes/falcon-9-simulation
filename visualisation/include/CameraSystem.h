@@ -23,22 +23,14 @@ private:
     std::unordered_map<std::string, const CameraBaseState*> m_cameraMap;
 
 public:
-    static CameraSystem& getInstance();
-
-    CameraSystem(const CameraSystem&) = delete;
-    CameraSystem(CameraSystem&&) = delete;
-    void operator=(const CameraSystem&) = delete;
-    void operator=(CameraSystem&&) = delete;
+    CameraSystem();
+    ~CameraSystem() = default;
 
     glm::dvec3 getActivePos() const;
     bool registerCam(const CameraBaseState& cam, const std::string& name);
     bool bind(const std::string& name);
     void setViewTransform(float aspectRatio);
     std::vector<std::string> getRegisteredCamNames() const;
-
-private:
-    CameraSystem();
-    ~CameraSystem() = default;
 };
 
 

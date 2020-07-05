@@ -2,7 +2,6 @@
 #include "../3rd_party/imgui/imgui.h"
 #include "../3rd_party/imgui/imgui_impl_bgfx.h"
 #include "../3rd_party/imgui/imgui_impl_glfw.h"
-#include "CameraSystem.h"
 #include "Input.h"
 
 #include <GLFW/glfw3.h>
@@ -71,9 +70,8 @@ Visualisation::Visualisation() :
     // temp
     m_mesh = std::make_unique<Mesh>("resources/obj/Merlin1D.obj");
 
-    m_fpvCam = std::make_unique<FPVCamera>();
-    CameraSystem& cams = CameraSystem::getInstance();
-    cams.bind("first_person_view");
+    m_fpvCam = std::make_unique<FPVCamera>(m_camSystem);
+    m_camSystem.bind("first_person_view");
 
     m_staticCamera.aspectRatio = 1.0f;
     m_staticCamera.near = 0.1f;
@@ -82,7 +80,7 @@ Visualisation::Visualisation() :
     m_staticCamera.position = {10.0f, 10.0f, 10.0f};
     m_staticCamera.up = {0.0f, 1.0f, 0.0f};
     m_staticCamera.lookAt = -glm::normalize(m_staticCamera.position);
-    cams.registerCam(m_staticCamera, "static_cam");
+    m_camSystem.registerCam(m_staticCamera, "static_cam");
     //
 
     bgfx::touch(0);
@@ -159,9 +157,9 @@ void Visualisation::run() {
         bgfx::touch(0);
         {
             const float aspectRatio = (float)m_width / (float)m_height;
-            CameraSystem::getInstance().setViewTransform(aspectRatio);
+            m_camSystem.setViewTransform(aspectRatio);
 
-            m_mesh->draw();
+            m_mesh->draw(m_camSystem.getActivePos());
         }
         bgfx::frame();
 
