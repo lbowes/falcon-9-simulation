@@ -25,6 +25,11 @@ cmake ..
 make
 make install
 
+# ========== GLFW ==========
+apt-get -y install xorg-dev
+apt-get -y install libgtk-3-dev
+apt-get -y install libglfw3-dev
+
 # ========== BGFX ==========
 # Install dependency packages
 apt-get -y install libgl1-mesa-dev
