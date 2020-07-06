@@ -1,5 +1,7 @@
 add_executable(f9sim-tests "")
 
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+
 include_directories("../simulation/include")
 include_directories("../visualisation/include")
 
