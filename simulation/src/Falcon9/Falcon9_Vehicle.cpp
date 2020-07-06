@@ -25,7 +25,7 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
         mCube->SetInertia(1.0 / 6.0 * mass);
         auto cubeCollisionModel = mCube->GetCollisionModel();
         cubeCollisionModel->ClearModel();
-        cubeCollisionModel->AddBox(1.0f, 1.0f, 1.0f);
+        cubeCollisionModel->AddBox(mat, 1.0f, 1.0f, 1.0f);
         mCube->SetCollide(true);
 
         const chrono::ChVector<> position = {0.0f, 10.0f, 0.0f};
@@ -41,7 +41,7 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
         mFloorPlane->SetBodyFixed(true);
         auto planeCollisionModel = mFloorPlane->GetCollisionModel();
         planeCollisionModel->ClearModel();
-        planeCollisionModel->AddBox(20.0f, 1.0f, 20.0f);
+        planeCollisionModel->AddBox(mat, 20.0f, 1.0f, 20.0f);
         mFloorPlane->SetCollide(true);
     }
     //
