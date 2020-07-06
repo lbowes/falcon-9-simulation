@@ -168,6 +168,7 @@ void Visualisation::run() {
 
         // Render ImGui on top of everything else
         showCameraSelectPanel();
+        adjustBoxTransform_temp();
         ImGui::Render();
 
         dt = frameTime - lastFrameTime;
@@ -196,6 +197,21 @@ void Visualisation::showCameraSelectPanel() {
 
     m_camSystem.bind(items[itemIdx]);
 
+    ImGui::End();
+}
+
+
+void Visualisation::adjustBoxTransform_temp() {
+    ImGui::Begin("box transform");
+
+    static float x = 0.0f;
+    ImGui::SliderFloat("x", &x, 0.0f, 10.0f);
+    static float y = 0.0f;
+    ImGui::SliderFloat("y", &y, 0.0f, 10.0f);
+    static float z = 0.0f;
+    ImGui::SliderFloat("z", &z, 0.0f, 10.0f);
+
+    m_mesh->setTransform(glm::dvec3(x, y, z), glm::dquat());
     ImGui::End();
 }
 

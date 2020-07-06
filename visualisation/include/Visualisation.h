@@ -32,7 +32,8 @@ private:
     std::unique_ptr<Scene> m_scene;
 
 public:
-    static Visualisation& getInstance();
+    static Visualisation&
+    getInstance();
 
     Visualisation(const Visualisation&) = delete;
     Visualisation(Visualisation&&) = delete;
@@ -46,6 +47,7 @@ private:
     ~Visualisation();
 
     void showCameraSelectPanel();
+    void adjustBoxTransform_temp();
 };
 
 
