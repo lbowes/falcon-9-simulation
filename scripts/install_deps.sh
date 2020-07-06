@@ -25,6 +25,9 @@ cmake ..
 make
 make install
 
+# ========== GLM ==========
+apt-get -y install libglm-dev
+
 # ========== GLFW ==========
 apt-get -y install xorg-dev
 apt-get -y install libgtk-3-dev
