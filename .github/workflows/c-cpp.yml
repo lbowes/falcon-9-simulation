@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: Build
+    name: Build and test
     runs-on: ubuntu-18.04
 
     steps:   
@@ -29,33 +29,7 @@ jobs:
           make all
           chmod +x tests/f9sim-tests
           
-      - uses: actions/upload-artifact@v2
-        with:
-          name: f9sim-tests
-          path: build/dev/tests
-        
-  test:
-    name: Test
-    needs: build
-    runs-on: ubuntu-18.04
-    
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
-        
-      - name: Download tests binary
-        uses: actions/download-artifact@v2
-        with:
-          name: f9sim-tests
-          path: build/dev/tests
-      
       - name: Run tests
         run: |
           chmod +x ./build/dev/tests/f9sim-tests
           sudo ./build/dev/tests/f9sim-tests --success
-      
-      # Delete the test binary artifact after it's been run (only required for life of this workflow)
-      - uses: geekyeggo/delete-artifact@v1
-        with:
-          name: f9sim-tests
