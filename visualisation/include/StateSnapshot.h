@@ -13,7 +13,9 @@ namespace Graphics {
 
 
 class StateSnapshot {
-private:
+    //temp
+public:
+    //private:
     struct Cube {
         glm::dvec3 position;
         glm::dquat orientation;

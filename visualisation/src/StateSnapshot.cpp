@@ -15,10 +15,10 @@ StateSnapshot::StateSnapshot() :
 
 StateSnapshot::StateSnapshot(const nlohmann::json& data) {
     for(int i = 0; i < 3; i++)
-        data["falcon_9"]["position_world"][i].get_to(cube1.position[i]);
+        data["position_world"][i].get_to(cube1.position[i]);
 
     for(int i = 0; i < 4; i++)
-        data["falcon_9"]["orientation_world"][i].get_to(cube1.position[i]);
+        data["orientation_world"][i].get_to(cube1.orientation[i]);
 }
 
 
