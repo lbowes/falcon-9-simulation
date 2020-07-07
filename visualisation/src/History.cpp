@@ -1,11 +1,12 @@
 #include "History.h"
+#include "../3rd_party/json.hpp"
 
 
 namespace F9Sim {
 namespace Graphics {
 
 
-void History::loadWith(const nlohmann::json& data) {
+History::History(const nlohmann::json& data) {
     // todo
 }
 

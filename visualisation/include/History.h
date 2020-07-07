@@ -1,5 +1,6 @@
 #ifndef F9SIM_GRAPHICS_HISTORY_H_
 #define F9SIM_GRAPHICS_HISTORY_H_
+#pragma once
 
 
 #include "../3rd_party/json.hpp"
@@ -12,10 +13,9 @@ namespace Graphics {
 
 class History {
 public:
-    History() = default;
+    History(const nlohmann::json& data);
     ~History() = default;
 
-    void loadWith(const nlohmann::json& data);
     StateSnapshot stateAt(double) const;
 };
 
