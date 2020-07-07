@@ -13,6 +13,20 @@ static float randReal(double min, double max) {
     return dist(generator);
 }
 
+static std::string randCamName() {
+    static const char alphanum[] =
+        "0123456789"
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        "abcdefghijklmnopqrstuvwxyz";
+
+    std::string s;
+
+    const unsigned short len = 16;
+    for(int i = 0; i < len; ++i)
+        s += alphanum[rand() % (sizeof(alphanum) - 1)];
+
+    return s;
+}
 
 static glm::dvec3 randPos() {
     return {
@@ -35,7 +49,7 @@ SCENARIO("Cameras are registered and bound to the CameraSystem", "[CameraSystem]
                 const std::vector<std::string> registeredCams = camSys.getRegisteredCamNames();
 
                 REQUIRE(registeredCams.size() == 1);
-                REQUIRE(registeredCams[0] == "default_camera");
+                REQUIRE(camSys.getActiveName() == "default");
             }
             THEN("The default camera is positioned at the origin") {
                 const glm::dvec3 pos = camSys.getActivePos();
@@ -46,7 +60,7 @@ SCENARIO("Cameras are registered and bound to the CameraSystem", "[CameraSystem]
         }
     }
     GIVEN("One camera is registered with the CameraSystem") {
-        const std::string name = "name";
+        const std::string name = randCamName();
         bool registered = camSys.registerCam(newCamera, name);
 
         WHEN("The name used to register is unique") {
@@ -78,6 +92,7 @@ SCENARIO("Cameras are registered and bound to the CameraSystem", "[CameraSystem]
 
             THEN("The camera is successfully bound") {
                 REQUIRE(bound);
+                REQUIRE(camSys.getActiveName() == name);
             }
             AND_THEN("The position of the camera is the same as the active camera") {
                 const glm::dvec3 activeCamPos = camSys.getActivePos();
@@ -89,6 +104,7 @@ SCENARIO("Cameras are registered and bound to the CameraSystem", "[CameraSystem]
 
             THEN("The camera is not successfully bound") {
                 REQUIRE(!bound);
+                REQUIRE(camSys.getActiveName() != name);
             }
         }
     }

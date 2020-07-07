@@ -71,9 +71,7 @@ Visualisation::Visualisation() :
     m_mesh = std::make_unique<Mesh>("resources/obj/Merlin1D.obj");
     m_scene = std::make_unique<Scene>();
 
-    m_fpvCam = std::make_unique<FPVCamera>(m_camSystem);
-    m_camSystem.bind("first_person_view");
-
+    // Static camera
     m_staticCamera.aspectRatio = 1.0f;
     m_staticCamera.near = 0.1f;
     m_staticCamera.far = 100.0f;
@@ -82,6 +80,10 @@ Visualisation::Visualisation() :
     m_staticCamera.up = {0.0f, 1.0f, 0.0f};
     m_staticCamera.lookAt = -glm::normalize(m_staticCamera.position);
     m_camSystem.registerCam(m_staticCamera, "static");
+
+    // First-person-view camera
+    m_fpvCam = std::make_unique<FPVCamera>(m_camSystem);
+    m_camSystem.bind("first_person_view");
     //
 
     bgfx::touch(0);
@@ -94,12 +96,6 @@ Visualisation::~Visualisation() {
     ImGui::DestroyContext();
     bgfx::shutdown();
     glfwTerminate();
-}
-
-
-Visualisation& Visualisation::getInstance() {
-    static Visualisation instance;
-    return instance;
 }
 
 
@@ -130,7 +126,8 @@ void Visualisation::run() {
         ImGui::NewFrame();
 
         ImGuiIO& io = ImGui::GetIO();
-        if(Input::isMouseButtonReleased(GLFW_MOUSE_BUTTON_LEFT) && !io.WantCaptureMouse)
+        const std::string boundCam = m_camSystem.getActiveName();
+        if(Input::isMouseButtonReleased(GLFW_MOUSE_BUTTON_LEFT) && !io.WantCaptureMouse && boundCam == "first_person_view")
             m_fpvCamFocused = true;
 
         if(Input::isMouseButtonReleased(GLFW_MOUSE_BUTTON_RIGHT))
@@ -161,8 +158,9 @@ void Visualisation::run() {
             const float aspectRatio = (float)m_width / (float)m_height;
             m_camSystem.setViewTransform(aspectRatio);
 
-            m_mesh->draw(m_camSystem.getActivePos());
-            m_scene->draw(m_camSystem.getActivePos());
+            const glm::dvec3 activeCamPos = m_camSystem.getActivePos();
+            m_mesh->draw(activeCamPos);
+            m_scene->draw(activeCamPos);
         }
         bgfx::frame();
 
