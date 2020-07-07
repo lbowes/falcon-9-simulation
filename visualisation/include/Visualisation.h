@@ -32,19 +32,12 @@ private:
     std::unique_ptr<Scene> m_scene;
 
 public:
-    static Visualisation& getInstance();
-
-    Visualisation(const Visualisation&) = delete;
-    Visualisation(Visualisation&&) = delete;
-    void operator=(const Visualisation&) = delete;
-    void operator=(Visualisation&&) = delete;
+    Visualisation();
+    ~Visualisation();
 
     void run();
 
 private:
-    Visualisation();
-    ~Visualisation();
-
     void showCameraSelectPanel();
 };
 
