@@ -23,6 +23,20 @@ uint64_t Scene::s_gridRenderState =
 
 
 Scene::Scene() {
+    loadGrid();
+
+    m_mesh = std::make_unique<Mesh>("resources/obj/Merlin1D.obj");
+}
+
+
+Scene::~Scene() {
+    bgfx::destroy(m_gridVBH);
+    bgfx::destroy(m_gridIBH);
+    bgfx::destroy(m_gridShader);
+}
+
+
+void Scene::loadGrid() {
     // load all resources required by the grid
     GridVertex::init();
 
@@ -72,8 +86,14 @@ Scene::Scene() {
 }
 
 
-void Scene::draw(glm::dvec3 camPos) const {
+void Scene::setState(StateSnapshot state) {
+    m_mesh->setTransform(state.cube1.position, state.cube1.orientation);
+}
+
+
+void Scene::drawFrom(glm::dvec3 camPos) const {
     drawGrid(camPos);
+    drawState(camPos);
 }
 
 
@@ -84,6 +104,11 @@ void Scene::drawGrid(glm::dvec3 camPos) const {
     bgfx::setIndexBuffer(m_gridIBH);
     bgfx::setState(s_gridRenderState);
     bgfx::submit(0, m_gridShader);
+}
+
+
+void Scene::drawState(glm::dvec3 camPos) const {
+    m_mesh->draw(camPos);
 }
 
 
