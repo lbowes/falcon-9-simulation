@@ -86,7 +86,12 @@ void Scene::loadGrid() {
 }
 
 
-void Scene::draw(glm::dvec3 camPos) const {
+void Scene::setState(StateSnapshot state) {
+    m_mesh->setTransform(state.cube1.position, state.cube1.orientation);
+}
+
+
+void Scene::drawFrom(glm::dvec3 camPos) const {
     drawGrid(camPos);
     drawState(camPos);
 }

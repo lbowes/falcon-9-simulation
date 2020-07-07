@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Mesh.h"
+#include "StateSnapshot.h"
 
 #include <bgfx/bgfx.h>
 #include <glm/vec3.hpp>
@@ -45,7 +46,8 @@ public:
     Scene();
     ~Scene();
 
-    void draw(glm::dvec3 camPos) const;
+    void setState(StateSnapshot state);
+    void drawFrom(glm::dvec3 camPos) const;
 
 private:
     void loadGrid();

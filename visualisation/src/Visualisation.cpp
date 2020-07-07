@@ -157,8 +157,13 @@ void Visualisation::run() {
             const float aspectRatio = (float)m_width / (float)m_height;
             m_camSystem.setViewTransform(aspectRatio);
 
+            StateSnapshot s;
+            s.cube1.position = {0.0, 5.0, 0.0};
+            s.cube1.orientation = glm::angleAxis(glm::radians(45.0), glm::dvec3(0.0, 1.0, 0.0));
+            m_scene->setState(s);
+
             const glm::dvec3 activeCamPos = m_camSystem.getActivePos();
-            m_scene->draw(activeCamPos);
+            m_scene->drawFrom(activeCamPos);
         }
         bgfx::frame();
 
