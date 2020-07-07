@@ -2,9 +2,11 @@
 #define F9SIM_GRAPHICS_SCENE_H_
 #pragma once
 
+#include "Mesh.h"
 
 #include <bgfx/bgfx.h>
 #include <glm/vec3.hpp>
+#include <memory>
 
 
 namespace F9Sim {
@@ -37,14 +39,18 @@ private:
     bgfx::IndexBufferHandle m_gridIBH;
     bgfx::ProgramHandle m_gridShader;
 
+    std::unique_ptr<Mesh> m_mesh;
+
 public:
     Scene();
-    ~Scene() = default;
+    ~Scene();
 
     void draw(glm::dvec3 camPos) const;
 
 private:
+    void loadGrid();
     void drawGrid(glm::dvec3 camPos) const;
+    void drawState(glm::dvec3 camPos) const;
     void updateTransformRelativeTo(glm::dvec3 camPos) const;
 };
 

@@ -68,7 +68,6 @@ Visualisation::Visualisation() :
     Input::init(*m_window);
 
     // temp
-    m_mesh = std::make_unique<Mesh>("resources/obj/Merlin1D.obj");
     m_scene = std::make_unique<Scene>();
 
     // Static camera
@@ -159,7 +158,6 @@ void Visualisation::run() {
             m_camSystem.setViewTransform(aspectRatio);
 
             const glm::dvec3 activeCamPos = m_camSystem.getActivePos();
-            m_mesh->draw(activeCamPos);
             m_scene->draw(activeCamPos);
         }
         bgfx::frame();
