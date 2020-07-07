@@ -16,7 +16,7 @@ public:
     History(const nlohmann::json& data);
     ~History() = default;
 
-    StateSnapshot stateAt(double) const;
+    StateSnapshot stateAt(double time) const;
 };
 
 
