@@ -18,10 +18,8 @@ SCENARIO("Using the simulation state history", "[History]") {
     using namespace F9Sim::Graphics;
 
     GIVEN("An initialised simulation history") {
-        History history;
-
         nlohmann::json simData;
-        history.loadWith(simData);
+        History history(simData);
 
         WHEN("The user requests the state of the simulation at some point in time") {
             double time = randTime(0.0, 10.0);
