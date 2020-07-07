@@ -5,7 +5,6 @@
 
 #include "CameraSystem.h"
 #include "FPVCamera.h"
-#include "Mesh.h"
 #include "Scene.h"
 
 #include <memory>
@@ -24,7 +23,6 @@ private:
     int m_width;
     int m_height;
 
-    std::unique_ptr<Mesh> m_mesh;
     std::unique_ptr<FPVCamera> m_fpvCam;
     bool m_fpvCamFocused;
     CameraSystem m_camSystem;
