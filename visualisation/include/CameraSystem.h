@@ -17,8 +17,12 @@ namespace Graphics {
 
 class CameraSystem {
 private:
+    struct {
+        CameraBaseState const* handle;
+        std::string name;
+    } m_activeCam;
+
     const bx::Vec3 m_eye;
-    CameraBaseState const* m_activeCamera;
     CameraBaseState m_defaultCamera;
     std::unordered_map<std::string, const CameraBaseState*> m_cameraMap;
 
@@ -27,6 +31,7 @@ public:
     ~CameraSystem() = default;
 
     glm::dvec3 getActivePos() const;
+    std::string getActiveName() const;
     bool registerCam(const CameraBaseState& cam, const std::string& name);
     bool bind(const std::string& name);
     void setViewTransform(float aspectRatio);

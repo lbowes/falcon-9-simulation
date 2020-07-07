@@ -12,7 +12,7 @@ namespace Graphics {
 
 CameraSystem::CameraSystem() :
     m_eye({0.0f, 0.0f, 0.0f}),
-    m_activeCamera(nullptr) {
+    m_activeCam({.handle = nullptr, .name = ""}) {
 
     registerCam(m_defaultCamera, "default");
     bind("default");
@@ -20,7 +20,12 @@ CameraSystem::CameraSystem() :
 
 
 glm::dvec3 CameraSystem::getActivePos() const {
-    return m_activeCamera->position;
+    return m_activeCam.handle->position;
+}
+
+
+std::string CameraSystem::getActiveName() const {
+    return m_activeCam.name;
 }
 
 
@@ -45,21 +50,18 @@ bool CameraSystem::bind(const std::string& name) {
         return false;
     }
 
-    m_activeCamera = it->second;
+    m_activeCam.handle = it->second;
+    m_activeCam.name = name;
+
     return true;
 }
 
 
 void CameraSystem::setViewTransform(float aspectRatio) {
-    const bx::Vec3 at = bx::Vec3(
-        m_activeCamera->lookAt.x,
-        m_activeCamera->lookAt.y,
-        m_activeCamera->lookAt.z);
+    CameraBaseState const* const cam = m_activeCam.handle;
 
-    const bx::Vec3 up = bx::Vec3(
-        m_activeCamera->up.x,
-        m_activeCamera->up.y,
-        m_activeCamera->up.z);
+    const bx::Vec3 at = bx::Vec3(cam->lookAt.x, cam->lookAt.y, cam->lookAt.z);
+    const bx::Vec3 up = bx::Vec3(cam->up.x, cam->up.y, cam->up.z);
 
     float view[16];
     bx::mtxLookAt(view, m_eye, at, up, bx::Handness::Right);
@@ -67,10 +69,10 @@ void CameraSystem::setViewTransform(float aspectRatio) {
     float proj[16];
     bx::mtxProj(
         proj,
-        m_activeCamera->verticalFOV,
+        cam->verticalFOV,
         aspectRatio,
-        m_activeCamera->near,
-        m_activeCamera->far,
+        cam->near,
+        cam->far,
         bgfx::getCaps()->homogeneousDepth,
         bx::Handness::Right);
 
