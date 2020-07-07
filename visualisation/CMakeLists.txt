@@ -3,6 +3,7 @@ include_directories("../")
 include_directories("../simulation/include")
 include_directories(${GLFW_INCLUDE_DIRS})
 
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 
 # ========== Visualisation library ========== 
 add_library(f9sim-visualisation-lib)
