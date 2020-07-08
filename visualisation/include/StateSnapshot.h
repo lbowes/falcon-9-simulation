@@ -2,6 +2,8 @@
 #define F9SIM_GRAPHICS_STATESNAPSHOT_H_
 
 
+#include "../3rd_party/json.hpp"
+
 #include <glm/gtc/quaternion.hpp>
 #include <glm/vec3.hpp>
 
@@ -10,7 +12,8 @@ namespace F9Sim {
 namespace Graphics {
 
 
-struct StateSnapshot {
+class StateSnapshot {
+public:
     struct Cube {
         glm::dvec3 position;
         glm::dquat orientation;
@@ -18,6 +21,16 @@ struct StateSnapshot {
 
     Cube cube1;
     Cube cube2;
+
+public:
+    StateSnapshot();
+    StateSnapshot(const nlohmann::json& data);
+    ~StateSnapshot() = default;
+
+    static StateSnapshot lerp(const StateSnapshot& a, const StateSnapshot& b, double x);
+
+private:
+    static Cube lerp(const Cube& a, const Cube& b, double x);
 };
 
 
