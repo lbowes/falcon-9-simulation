@@ -23,6 +23,7 @@ target_sources(f9sim-visualisation-lib
 		src/Mesh.cpp
 		src/History.cpp
 		src/CameraSystem.cpp
+		src/StateSnapshot.cpp
 		src/FPVCamera.cpp
 		src/ShaderUtils.cpp
 		src/Input.cpp
