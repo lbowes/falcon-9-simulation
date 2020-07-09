@@ -14,6 +14,8 @@ namespace Graphics {
 class History {
 private:
     // todo
+    nlohmann::json temp;
+
 public:
     History(const nlohmann::json& data);
     ~History() = default;

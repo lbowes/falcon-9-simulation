@@ -5,6 +5,7 @@
 
 #include "CameraSystem.h"
 #include "FPVCamera.h"
+#include "History.h"
 #include "Scene.h"
 
 #include <memory>
@@ -27,6 +28,7 @@ private:
     bool m_fpvCamFocused;
     CameraSystem m_camSystem;
     CameraBaseState m_staticCamera;
+    std::unique_ptr<History> m_history;
     std::unique_ptr<Scene> m_scene;
 
 public:

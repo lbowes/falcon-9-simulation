@@ -9,7 +9,9 @@
 #include <bgfx/platform.h>
 #include <bx/bx.h>
 #include <bx/math.h>
+#include <fstream>
 #include <glm/geometric.hpp>
+#include <sstream>
 #include <stdio.h>
 
 #define GLFW_EXPOSE_NATIVE_X11
@@ -67,7 +69,12 @@ Visualisation::Visualisation() :
 
     Input::init(*m_window);
 
-    // temp
+    std::ifstream simDataFile("../simulation/output.json");
+    std::stringstream buffer;
+    buffer << simDataFile.rdbuf();
+    const nlohmann::json simData = nlohmann::json::parse(buffer.str());
+    m_history = std::make_unique<History>(simData["history"]);
+
     m_scene = std::make_unique<Scene>();
 
     // Static camera
@@ -83,7 +90,6 @@ Visualisation::Visualisation() :
     // First-person-view camera
     m_fpvCam = std::make_unique<FPVCamera>(m_camSystem);
     m_camSystem.bind("first_person_view");
-    //
 
     bgfx::touch(0);
 }
@@ -157,25 +163,8 @@ void Visualisation::run() {
             const float aspectRatio = (float)m_width / (float)m_height;
             m_camSystem.setViewTransform(aspectRatio);
 
-            nlohmann::json aData;
-            aData["position_world"] = {0.0, 0.0, 0.0};
-            const glm::dquat aOri = glm::angleAxis(glm::radians(0.0), glm::dvec3(0.0, 1.0, 0.0));
-            aData["orientation_world"] = {aOri.w, aOri.x, aOri.y, aOri.z};
-            StateSnapshot a(aData);
-
-            nlohmann::json bData;
-            bData["position_world"] = {5.0, 8.0, -1.0};
-            const glm::dquat bOri = glm::angleAxis(glm::radians(90.0), glm::dvec3(0.0, 1.0, 0.0));
-            bData["orientation_world"] = {bOri.w, bOri.x, bOri.y, bOri.z};
-            StateSnapshot b(bData);
-
-            ImGui::Begin("x");
-            static float x = 0.0f;
-            ImGui::SliderFloat("x", &x, 0.0, 10.0);
-            ImGui::End();
-
-            StateSnapshot c = StateSnapshot::lerp(a, b, x);
-            m_scene->setState(c);
+            const StateSnapshot& s = m_history->stateAt(1.0);
+            m_scene->setState(s);
 
             const glm::dvec3 activeCamPos = m_camSystem.getActivePos();
             m_scene->drawFrom(activeCamPos);
