@@ -1,5 +1,5 @@
-#ifndef HARDWARE_FALCON9_VEHICLE_H_
-#define HARDWARE_FALCON9_VEHICLE_H_
+#ifndef F9SIM_PHYSICS_FALCON9_VEHICLE_H_
+#define F9SIM_PHYSICS_FALCON9_VEHICLE_H_
 #pragma once
 
 
@@ -12,7 +12,8 @@ struct SensorReadings {};
 struct ControlProfile {};
 
 
-namespace Hardware {
+namespace F9Sim {
+namespace Physics {
 
 
 class Falcon9_Vehicle {
@@ -21,6 +22,7 @@ private:
 
     // temp
     std::shared_ptr<chrono::ChBodyAuxRef> mCube;
+    std::shared_ptr<chrono::ChBodyAuxRef> m_cube2;
     std::shared_ptr<chrono::ChBody> mFloorPlane;
     //
 
@@ -34,8 +36,9 @@ public:
 };
 
 
-} // namespace Hardware
+} // namespace Physics
+} // namespace F9Sim
 
 
-#endif // HARDWARE_FALCON9_VEHICLE_H_
+#endif // F9SIM_PHYSICS_FALCON9_VEHICLE_H_
 

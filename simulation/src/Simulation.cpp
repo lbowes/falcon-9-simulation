@@ -4,6 +4,10 @@
 #include <iomanip>
 
 
+namespace F9Sim {
+namespace Physics {
+
+
 Simulation::Simulation() :
     mUpdateFreq_hz(100),
     mFalcon9(mSystem) {
@@ -67,3 +71,7 @@ void Simulation::writeOutputToFile(const nlohmann::json& history) const {
     file << std::setw(4) << history;
     file.close();
 }
+
+
+} // namespace Physics
+} // namespace F9Sim
