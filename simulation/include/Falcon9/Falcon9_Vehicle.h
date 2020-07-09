@@ -17,11 +17,11 @@ namespace Hardware {
 
 class Falcon9_Vehicle {
 private:
-    chrono::ChSystemNSC& mSystemHandle;
+    chrono::ChSystemNSC& m_systemHandle;
 
     // temp
-    std::shared_ptr<chrono::ChBodyAuxRef> mCube;
-    std::shared_ptr<chrono::ChBody> mFloorPlane;
+    std::shared_ptr<chrono::ChBodyAuxRef> m_cube;
+    std::shared_ptr<chrono::ChBody> m_floorPlane;
     //
 
 public:
