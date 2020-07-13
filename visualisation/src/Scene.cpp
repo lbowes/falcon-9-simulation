@@ -25,7 +25,8 @@ uint64_t Scene::s_gridRenderState =
 Scene::Scene() {
     loadGrid();
 
-    m_mesh = std::make_unique<Mesh>("resources/obj/Merlin1D.obj");
+    m_cube1 = std::make_unique<Mesh>("");
+    m_cube2 = std::make_unique<Mesh>("");
 }
 
 
@@ -87,7 +88,8 @@ void Scene::loadGrid() {
 
 
 void Scene::setState(StateSnapshot state) {
-    m_mesh->setTransform(state.cube1.position, state.cube1.orientation);
+    m_cube1->setTransform(state.cube1.position, state.cube1.orientation);
+    m_cube2->setTransform(glm::dvec3(0.0f, 3.0f, 0.0f), glm::dquat());
 }
 
 
@@ -108,7 +110,8 @@ void Scene::drawGrid(glm::dvec3 camPos) const {
 
 
 void Scene::drawState(glm::dvec3 camPos) const {
-    m_mesh->draw(camPos);
+    m_cube1->draw(camPos);
+    m_cube2->draw(camPos);
 }
 
 
