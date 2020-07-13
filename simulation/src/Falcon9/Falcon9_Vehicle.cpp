@@ -50,7 +50,7 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
         cubeCollisionModel->AddBox(mat, 1.0f, 1.0f, 1.0f);
         m_cube2->SetCollide(true);
 
-        const chrono::ChVector<> position = {4.0f, 10.0f, 0.0f};
+        const chrono::ChVector<> position = {4.0f, 20.0f, 0.0f};
         const chrono::ChQuaternion<> orientation = chrono::Q_from_Euler123({10.0, 40.0, 140.0});
         const chrono::ChFrame<> frame = chrono::ChFrame<>(position, orientation);
         m_cube2->SetFrame_REF_to_abs(frame);
