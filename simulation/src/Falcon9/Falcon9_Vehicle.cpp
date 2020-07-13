@@ -16,23 +16,23 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
 
     // Cube 1
     {
-        mCube = std::make_shared<chrono::ChBodyAuxRef>();
-        mSystemHandle.AddBody(mCube);
+        m_cube1 = std::make_shared<chrono::ChBodyAuxRef>();
+        mSystemHandle.AddBody(m_cube1);
 
-        mCube->SetNameString("unit_cube");
+        m_cube1->SetNameString("unit_cube_1");
         const double mass = 10.0;
-        mCube->SetMass(mass);
-        mCube->SetBodyFixed(false);
-        mCube->SetInertia(1.0 / 6.0 * mass);
-        auto cubeCollisionModel = mCube->GetCollisionModel();
+        m_cube1->SetMass(mass);
+        m_cube1->SetBodyFixed(false);
+        m_cube1->SetInertia(1.0 / 6.0 * mass);
+        auto cubeCollisionModel = m_cube1->GetCollisionModel();
         cubeCollisionModel->ClearModel();
         cubeCollisionModel->AddBox(mat, 1.0f, 1.0f, 1.0f);
-        mCube->SetCollide(true);
+        m_cube1->SetCollide(true);
 
         const chrono::ChVector<> position = {4.0f, 10.0f, 0.0f};
         const chrono::ChQuaternion<> orientation = chrono::Q_from_AngX(10.0);
         const chrono::ChFrame<> frame = chrono::ChFrame<>(position, orientation);
-        mCube->SetFrame_REF_to_abs(frame);
+        m_cube1->SetFrame_REF_to_abs(frame);
     }
 
     // Cube 2
@@ -40,7 +40,7 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
         m_cube2 = std::make_shared<chrono::ChBodyAuxRef>();
         mSystemHandle.AddBody(m_cube2);
 
-        m_cube2->SetNameString("unit_cube");
+        m_cube2->SetNameString("unit_cube_2");
         const double mass = 10.0;
         m_cube2->SetMass(mass);
         m_cube2->SetBodyFixed(false);
@@ -89,8 +89,8 @@ void Falcon9_Vehicle::setControlProfile(const ControlProfile& p) {
 void Falcon9_Vehicle::saveSnapshotTo(nlohmann::json& snapshot) const {
     // todo: In future this will call the saveSnapshotTo methods of subsystems
 
-    const chrono::ChVector<> cube1Pos = mCube->GetPos();
-    const chrono::ChQuaternion<> cube1Orientation = mCube->GetRot();
+    const chrono::ChVector<> cube1Pos = m_cube1->GetPos();
+    const chrono::ChQuaternion<> cube1Orientation = m_cube1->GetRot();
     nlohmann::json& cube1 = snapshot["cube1"];
     cube1["position_world"] = {cube1Pos.x(), cube1Pos.y(), cube1Pos.z()};
     cube1["orientation_world"] = {cube1Orientation.e0(), cube1Orientation.e1(), cube1Orientation.e2(), cube1Orientation.e3()};

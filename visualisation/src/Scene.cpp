@@ -89,7 +89,7 @@ void Scene::loadGrid() {
 
 void Scene::setState(StateSnapshot state) {
     m_cube1->setTransform(state.cube1.position, state.cube1.orientation);
-    m_cube2->setTransform(glm::dvec3(0.0f, 3.0f, 0.0f), glm::dquat());
+    m_cube2->setTransform(state.cube2.position, state.cube2.orientation);
 }
 
 
