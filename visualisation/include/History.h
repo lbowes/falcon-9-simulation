@@ -28,5 +28,5 @@ public:
 } // namespace F9Sim
 
 
-#endif // #define F9SIM_GRAPHICS_HISTORY_H_
+#endif // F9SIM_GRAPHICS_HISTORY_H_
 

@@ -8,13 +8,14 @@ namespace Graphics {
 
 
 StateSnapshot::StateSnapshot() :
-    m_cube1({.position = glm::dvec3(), .orientation = glm::dvec3()}),
-    m_cube2({.position = glm::dvec3(), .orientation = glm::dvec3()}),
+    m_cube1({.position = glm::dvec3(), .orientation = glm::dquat()}),
+    m_cube2({.position = glm::dvec3(), .orientation = glm::dquat()}),
     m_time_s(0.0) {
 }
 
 
 StateSnapshot::StateSnapshot(const nlohmann::json& data) {
+    // Time
     data["time_s"].get_to(m_time_s);
 
     // Cube 1
@@ -32,6 +33,9 @@ StateSnapshot::StateSnapshot(const nlohmann::json& data) {
 
     for(int i = 0; i < 4; i++)
         cube2["orientation_world"][i].get_to(m_cube2.orientation[i]);
+
+    //m_cube2.position = glm::dvec3();
+    //m_cube2.orientation = glm::dquat();
 }
 
 

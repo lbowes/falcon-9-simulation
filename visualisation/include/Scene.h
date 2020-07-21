@@ -40,7 +40,8 @@ private:
     bgfx::IndexBufferHandle m_gridIBH;
     bgfx::ProgramHandle m_gridShader;
 
-    std::unique_ptr<Mesh> m_mesh;
+    std::unique_ptr<Mesh> m_cube1;
+    std::unique_ptr<Mesh> m_cube2;
 
 public:
     Scene();
