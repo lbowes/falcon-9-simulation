@@ -158,15 +158,20 @@ void Visualisation::run() {
             m_camSystem.setViewTransform(aspectRatio);
 
             nlohmann::json aData;
-            aData["position_world"] = {0.0, 0.0, 0.0};
+            aData["cube1"]["position_world"] = {0.0, 0.0, 0.0};
+            aData["cube2"]["position_world"] = {0.0, 0.0, 0.0};
             const glm::dquat aOri = glm::angleAxis(glm::radians(0.0), glm::dvec3(0.0, 1.0, 0.0));
-            aData["orientation_world"] = {aOri.w, aOri.x, aOri.y, aOri.z};
+            aData["cube1"]["orientation_world"] = {aOri.w, aOri.x, aOri.y, aOri.z};
+            aData["cube2"]["orientation_world"] = {aOri.w, aOri.x, aOri.y, aOri.z};
             StateSnapshot a(aData);
 
             nlohmann::json bData;
-            bData["position_world"] = {5.0, 8.0, -1.0};
+            bData["cube1"]["position_world"] = {0.0, 2.0, 0.0};
             const glm::dquat bOri = glm::angleAxis(glm::radians(90.0), glm::dvec3(0.0, 1.0, 0.0));
-            bData["orientation_world"] = {bOri.w, bOri.x, bOri.y, bOri.z};
+            bData["cube1"]["orientation_world"] = {bOri.w, bOri.x, bOri.y, bOri.z};
+            bData["cube2"]["position_world"] = {0.0, 6.0, 0.0};
+            const glm::dquat bOriCube2 = glm::angleAxis(glm::radians(40.0), glm::dvec3(0.0, 1.0, 0.0));
+            bData["cube2"]["orientation_world"] = {bOriCube2.w, bOriCube2.x, bOriCube2.y, bOriCube2.z};
             StateSnapshot b(bData);
 
             ImGui::Begin("x");
