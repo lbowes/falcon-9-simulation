@@ -73,7 +73,7 @@ Visualisation::Visualisation() :
     std::stringstream buffer;
     buffer << simDataFile.rdbuf();
     const nlohmann::json simData = nlohmann::json::parse(buffer.str());
-    m_history = std::make_unique<History>(simData["history"]);
+    m_animation = std::make_unique<Animation>(simData["history"], 100);
 
     m_scene = std::make_unique<Scene>();
 
@@ -163,7 +163,7 @@ void Visualisation::run() {
             const float aspectRatio = (float)m_width / (float)m_height;
             m_camSystem.setViewTransform(aspectRatio);
 
-            const StateSnapshot& s = m_history->stateAt(1.0);
+            const StateSnapshot& s = m_animation->stateAt(1.0);
             m_scene->setState(s);
 
             const glm::dvec3 activeCamPos = m_camSystem.getActivePos();

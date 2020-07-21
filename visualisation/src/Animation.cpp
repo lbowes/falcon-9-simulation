@@ -1,39 +1,48 @@
 #include "Animation.h"
+#include "../3rd_party/imgui/imgui.h"
 
 #include <algorithm>
+#include <iostream>
 
 
-Animation::Animation(double frameInterval_s, double duration_s) :
-    mFrameInterval_s(frameInterval_s),
-    mDuration_s(duration_s),
-    mFrameCount(0) {
+namespace F9Sim {
+namespace Graphics {
 
-    load();
+
+Animation::Animation(const nlohmann::json& data, unsigned short keyFramesPerSec) :
+    m_startTime_s(0.0),
+    m_endTime_s(0.0),
+    m_duration_s(0.0),
+    m_keyFramesPerSec(keyFramesPerSec) {
+
+    // Load the timestamps of each snapshot in the simulation data
+    std::vector<float> snapshotTimes;
+
+    for(auto& state : data)
+        snapshotTimes.push_back(state["time_s"]);
+
+    if(!snapshotTimes.empty()) {
+        m_startTime_s = snapshotTimes.front();
+        m_endTime_s = snapshotTimes.back();
+        m_duration_s = m_endTime_s - m_startTime_s;
+    }
+
+    // todo: load and store whatever information is necessary to make `stateAt` behave correctly
 }
 
 
-void Animation::updateTime(double time_s) {
-    // This function is responsible for updating `mVisibleFrame` to show the state of the simulation at time `time_s`
-    // given the data loaded in `mFrames`.
+StateSnapshot Animation::stateAt(double time) const {
+    time = std::clamp(time, m_startTime_s, m_endTime_s);
 
-    // Work out which `AnimationFrame`s sit at either side of the time we want to update to
-    const unsigned int prevFrameIdx = static_cast<unsigned int>(floor(time_s / mFrameInterval_s));
-    const AnimationFrame& prevFrame = mFrames[prevFrameIdx];
+    StateSnapshot output;
 
-    const unsigned int nextFrameIdx = std::clamp(prevFrameIdx + 1, 1U, mFrameCount);
-    const AnimationFrame& nextFrame = mFrames[nextFrameIdx];
+    if(!m_snapshots.empty()) {
+        // todo
+    }
 
-    const double betweenFrames_0_1 = fmod(time_s, mFrameInterval_s) / mFrameInterval_s;
-    AnimationFrame::lerp(prevFrame, nextFrame, betweenFrames_0_1, mVisibleFrame);
+    return output;
 }
 
 
-void Animation::load() {
-    // This function is responsible for fully populating `mFrames` with the correct information that has come from the
-    // simulation output file. Note, there does not need to be a 1:1 correspondence between lines in the simulation
-    // output file and key frames stored in this class. The simulation just outputs 'some' data at 'some' (possibly
-    // irregular) timestamps. This function needs to convert this output into an animation format with regularly spaced
-    // keyframes.
-
-    // TODO
-}
+} // namespace Graphics
+} // namespace F9Sim
