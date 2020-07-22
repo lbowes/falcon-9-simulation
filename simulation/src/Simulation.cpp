@@ -5,7 +5,7 @@
 
 
 Simulation::Simulation() :
-    mUpdateFreq_hz(100),
+    mUpdateFreq_hz(5),
     mFalcon9(mSystem) {
 
     //temp

@@ -13,17 +13,15 @@ namespace Graphics {
 
 class Animation {
 private:
-    double m_duration_s;
-    double m_startTime_s;
-    double m_endTime_s;
-    unsigned short m_keyFramesPerSec;
+    float m_duration_s;
+    float m_snapshotInterval_s;
     std::vector<StateSnapshot> m_snapshots;
 
 public:
-    Animation(const nlohmann::json& data, unsigned short keyFramesPerSec);
+    Animation(const nlohmann::json& data, float snapshotInterval_s);
     ~Animation() = default;
 
-    StateSnapshot stateAt(double time) const;
+    StateSnapshot stateAt(float time_s) const;
 };
 
 

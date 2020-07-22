@@ -9,37 +9,42 @@ namespace F9Sim {
 namespace Graphics {
 
 
-Animation::Animation(const nlohmann::json& data, unsigned short keyFramesPerSec) :
-    m_startTime_s(0.0),
-    m_endTime_s(0.0),
+Animation::Animation(const nlohmann::json& data, float snapshotInterval_s) :
     m_duration_s(0.0),
-    m_keyFramesPerSec(keyFramesPerSec) {
+    m_snapshotInterval_s(snapshotInterval_s) {
 
-    // Load the timestamps of each snapshot in the simulation data
-    std::vector<float> snapshotTimes;
+    // This initialisation assumes that:
+    // 1. the first snapshot is at time 0
+    // 2. the snapshots are spaced equally
 
     for(auto& state : data)
-        snapshotTimes.push_back(state["time_s"]);
-
-    if(!snapshotTimes.empty()) {
-        m_startTime_s = snapshotTimes.front();
-        m_endTime_s = snapshotTimes.back();
-        m_duration_s = m_endTime_s - m_startTime_s;
-    }
-
-    // todo: load and store whatever information is necessary to make `stateAt` behave correctly
+        m_snapshots.push_back(state);
 }
 
 
-StateSnapshot Animation::stateAt(double time) const {
-    time = std::clamp(time, m_startTime_s, m_endTime_s);
+StateSnapshot Animation::stateAt(float time_s) const {
+    static float time = 0.0f;
+    ImGui::Begin("time control");
+    ImGui::SliderFloat("time", &time, 0.0f, 10.0f);
+    //time = std::clamp(time, 0.0f, m_duration_s);
 
     StateSnapshot output;
 
     if(!m_snapshots.empty()) {
-        // todo
+        const float s = floor(time / m_snapshotInterval_s);
+        const float between = fmod(time, m_snapshotInterval_s) / m_snapshotInterval_s;
+
+        const unsigned int lastSnapshotIdx = m_snapshots.size() - 1;
+        const unsigned int previousSnapshotIdx = std::clamp(static_cast<unsigned int>(s), 0U, lastSnapshotIdx);
+        ImGui::Text("previousSnapshotIdx: %i", previousSnapshotIdx);
+
+        const StateSnapshot previous = m_snapshots.at(previousSnapshotIdx);
+        const StateSnapshot next = m_snapshots.at(std::clamp(previousSnapshotIdx + 1, 0U, lastSnapshotIdx));
+
+        output = StateSnapshot::lerp(previous, next, between);
     }
 
+    ImGui::End();
     return output;
 }
 

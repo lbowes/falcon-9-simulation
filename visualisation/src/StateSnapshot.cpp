@@ -19,7 +19,7 @@ StateSnapshot::StateSnapshot(const nlohmann::json& data) {
     data["time_s"].get_to(m_time_s);
 
     // Cube 1
-    const nlohmann::json& cube1 = data["falcon9"]["cube1"];
+    const nlohmann::json& cube1 = data["cube"]["cube1"];
     for(int i = 0; i < 3; i++)
         cube1["position_world"][i].get_to(m_cube1.position[i]);
 
@@ -27,7 +27,7 @@ StateSnapshot::StateSnapshot(const nlohmann::json& data) {
         cube1["orientation_world"][i].get_to(m_cube1.orientation[i]);
 
     // Cube 2
-    const nlohmann::json& cube2 = data["falcon9"]["cube2"];
+    const nlohmann::json& cube2 = data["cube"]["cube2"];
     for(int i = 0; i < 3; i++)
         cube2["position_world"][i].get_to(m_cube2.position[i]);
 

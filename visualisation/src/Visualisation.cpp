@@ -73,7 +73,7 @@ Visualisation::Visualisation() :
     std::stringstream buffer;
     buffer << simDataFile.rdbuf();
     const nlohmann::json simData = nlohmann::json::parse(buffer.str());
-    m_animation = std::make_unique<Animation>(simData["history"], 100);
+    m_animation = std::make_unique<Animation>(simData["history"], 0.2);
 
     m_scene = std::make_unique<Scene>();
 
