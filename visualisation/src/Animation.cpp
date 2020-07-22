@@ -26,7 +26,7 @@ StateSnapshot Animation::stateAt(float time_s) const {
     static float time = 0.0f;
     ImGui::Begin("time control");
     ImGui::SliderFloat("time", &time, 0.0f, 10.0f);
-    //time = std::clamp(time, 0.0f, m_duration_s);
+    time = std::clamp(time, 0.0f, m_duration_s);
 
     StateSnapshot output;
 
@@ -36,7 +36,6 @@ StateSnapshot Animation::stateAt(float time_s) const {
 
         const unsigned int lastSnapshotIdx = m_snapshots.size() - 1;
         const unsigned int previousSnapshotIdx = std::clamp(static_cast<unsigned int>(s), 0U, lastSnapshotIdx);
-        ImGui::Text("previousSnapshotIdx: %i", previousSnapshotIdx);
 
         const StateSnapshot previous = m_snapshots.at(previousSnapshotIdx);
         const StateSnapshot next = m_snapshots.at(std::clamp(previousSnapshotIdx + 1, 0U, lastSnapshotIdx));
