@@ -21,9 +21,14 @@ private:
     chrono::ChSystemNSC& m_systemHandle;
 
     // temp
+<<<<<<< HEAD
+    std::shared_ptr<chrono::ChBodyAuxRef> m_cube;
+    std::shared_ptr<chrono::ChBody> m_floorPlane;
+=======
     std::shared_ptr<chrono::ChBodyAuxRef> m_cube1;
     std::shared_ptr<chrono::ChBodyAuxRef> m_cube2;
     std::shared_ptr<chrono::ChBody> mFloorPlane;
+>>>>>>> 298e44e7900454c911543e03f0d9ad1b7b0fea32
     //
 
 public:

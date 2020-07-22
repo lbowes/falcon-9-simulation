@@ -19,23 +19,20 @@ StateSnapshot::StateSnapshot(const nlohmann::json& data) {
     data["time_s"].get_to(m_time_s);
 
     // Cube 1
-    const nlohmann::json& cube1 = data["cube"]["cube1"];
+    const nlohmann::json& a = data["system"]["cube1"];
     for(int i = 0; i < 3; i++)
-        cube1["position_world"][i].get_to(m_cube1.position[i]);
+        a["position_world"][i].get_to(m_cube1.position[i]);
 
     for(int i = 0; i < 4; i++)
-        cube1["orientation_world"][i].get_to(m_cube1.orientation[i]);
+        a["orientation_world"][i].get_to(m_cube1.orientation[i]);
 
     // Cube 2
-    const nlohmann::json& cube2 = data["cube"]["cube2"];
+    const nlohmann::json& b = data["system"]["cube2"];
     for(int i = 0; i < 3; i++)
-        cube2["position_world"][i].get_to(m_cube2.position[i]);
+        b["position_world"][i].get_to(m_cube2.position[i]);
 
     for(int i = 0; i < 4; i++)
-        cube2["orientation_world"][i].get_to(m_cube2.orientation[i]);
-
-    //m_cube2.position = glm::dvec3();
-    //m_cube2.orientation = glm::dquat();
+        b["orientation_world"][i].get_to(m_cube2.orientation[i]);
 }
 
 

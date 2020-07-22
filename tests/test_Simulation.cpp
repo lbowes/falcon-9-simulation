@@ -21,7 +21,7 @@ static bool fileEmpty(const char* file) {
 
 SCENARIO("Running a simulation", "[Simulation]") {
     GIVEN("A simulation instance") {
-        Simulation sim;
+        F9Sim::Physics::Simulation sim;
 
         WHEN("The simulation is run") {
             sim.run();

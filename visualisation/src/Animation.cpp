@@ -18,7 +18,9 @@ Animation::Animation(const nlohmann::json& data, float snapshotInterval_s) :
     // 2. the snapshots are spaced equally
 
     for(auto& state : data)
-        m_snapshots.push_back(state);
+        m_snapshots.push_back(StateSnapshot(state));
+
+    m_duration_s = m_snapshots.back().m_time_s;
 }
 
 
