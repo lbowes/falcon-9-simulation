@@ -53,7 +53,7 @@ void Simulation::saveSnapshotTo(nlohmann::json& history) const {
     nlohmann::json snapshot;
 
     snapshot["time_s"] = mSystem.GetChTime();
-    mFalcon9.saveSnapshotTo(snapshot["falcon9"]);
+    mFalcon9.saveSnapshotTo(snapshot["system"]);
     // todo: save the complete contents of a simulation snapshot to json object
 
     history.push_back(snapshot);
