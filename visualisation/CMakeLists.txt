@@ -25,6 +25,7 @@ target_sources(f9sim-visualisation-lib
 		src/CameraSystem.cpp
 		src/StateSnapshot.cpp
 		src/FPVCamera.cpp
+		src/MountedCamera.cpp
 		src/ShaderUtils.cpp
 		src/Input.cpp
 		src/Scene.cpp

@@ -5,6 +5,7 @@
 
 #include "CameraSystem.h"
 #include "FPVCamera.h"
+#include "MountedCamera.h"
 #include "Scene.h"
 
 #include <memory>
@@ -24,6 +25,7 @@ private:
     int m_height;
 
     std::unique_ptr<FPVCamera> m_fpvCam;
+    std::unique_ptr<MountedCamera> m_mountedCam;
     bool m_fpvCamFocused;
     CameraSystem m_camSystem;
     CameraBaseState m_staticCamera;

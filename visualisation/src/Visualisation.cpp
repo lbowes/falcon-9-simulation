@@ -80,10 +80,12 @@ Visualisation::Visualisation() :
     m_staticCamera.lookAt = -glm::normalize(m_staticCamera.position);
     m_camSystem.registerCam(m_staticCamera, "static");
 
+    // Mounted camera
+    m_mountedCam = std::make_unique<MountedCamera>(m_camSystem);
+
     // First-person-view camera
     m_fpvCam = std::make_unique<FPVCamera>(m_camSystem);
     m_camSystem.bind("first_person_view");
-    //
 
     bgfx::touch(0);
 }
