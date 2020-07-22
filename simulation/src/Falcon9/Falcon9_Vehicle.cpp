@@ -17,7 +17,7 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
     // Cube
     {
         m_cube1 = std::make_shared<chrono::ChBodyAuxRef>();
-        mSystemHandle.AddBody(m_cube1);
+        m_systemHandle.AddBody(m_cube1);
 
         m_cube1->SetNameString("unit_cube_1");
         const double mass = 10.0;
@@ -38,7 +38,7 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
     // Cube 2
     {
         m_cube2 = std::make_shared<chrono::ChBodyAuxRef>();
-        mSystemHandle.AddBody(m_cube2);
+        m_systemHandle.AddBody(m_cube2);
 
         m_cube2->SetNameString("unit_cube_2");
         const double mass = 10.0;
@@ -58,13 +58,13 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
 
     // Floor plane
     {
-        mFloorPlane = std::make_unique<chrono::ChBody>();
-        mSystemHandle.AddBody(mFloorPlane);
-        mFloorPlane->SetBodyFixed(true);
-        auto planeCollisionModel = mFloorPlane->GetCollisionModel();
+        m_floorPlane = std::make_unique<chrono::ChBody>();
+        m_systemHandle.AddBody(m_floorPlane);
+        m_floorPlane->SetBodyFixed(true);
+        auto planeCollisionModel = m_floorPlane->GetCollisionModel();
         planeCollisionModel->ClearModel();
         planeCollisionModel->AddBox(mat, 20.0f, 1.0f, 20.0f);
-        mFloorPlane->SetCollide(true);
+        m_floorPlane->SetCollide(true);
     }
     //
 }
