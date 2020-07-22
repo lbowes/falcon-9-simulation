@@ -8,17 +8,25 @@ namespace Graphics {
 
 
 StateSnapshot::StateSnapshot() :
-    cube1({.position = glm::dvec3(), .orientation = glm::dvec3()}),
-    cube2({.position = glm::dvec3(), .orientation = glm::dvec3()}) {
+    cube1({.position = glm::dvec3(), .orientation = glm::dquat()}),
+    cube2({.position = glm::dvec3(), .orientation = glm::dquat()}) {
 }
 
 
 StateSnapshot::StateSnapshot(const nlohmann::json& data) {
+    // Cube 1
     for(int i = 0; i < 3; i++)
-        data["position_world"][i].get_to(cube1.position[i]);
+        data["cube1"]["position_world"][i].get_to(cube1.position[i]);
 
     for(int i = 0; i < 4; i++)
-        data["orientation_world"][i].get_to(cube1.orientation[i]);
+        data["cube1"]["orientation_world"][i].get_to(cube1.orientation[i]);
+
+    // Cube 2
+    for(int i = 0; i < 3; i++)
+        data["cube2"]["position_world"][i].get_to(cube2.position[i]);
+
+    for(int i = 0; i < 4; i++)
+        data["cube2"]["orientation_world"][i].get_to(cube2.orientation[i]);
 }
 
 

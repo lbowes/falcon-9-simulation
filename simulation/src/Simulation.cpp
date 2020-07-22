@@ -4,6 +4,10 @@
 #include <iomanip>
 
 
+namespace F9Sim {
+namespace Physics {
+
+
 Simulation::Simulation() :
     mUpdateFreq_hz(100),
     mFalcon9(mSystem) {
@@ -49,7 +53,7 @@ void Simulation::saveSnapshotTo(nlohmann::json& history) const {
     nlohmann::json snapshot;
 
     snapshot["time_s"] = mSystem.GetChTime();
-    mFalcon9.saveSnapshotTo(snapshot["falcon9"]);
+    mFalcon9.saveSnapshotTo(snapshot["system"]);
     // todo: save the complete contents of a simulation snapshot to json object
 
     history.push_back(snapshot);
@@ -67,3 +71,7 @@ void Simulation::writeOutputToFile(const nlohmann::json& history) const {
     file << std::setw(4) << history;
     file.close();
 }
+
+
+} // namespace Physics
+} // namespace F9Sim
