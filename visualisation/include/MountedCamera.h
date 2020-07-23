@@ -4,6 +4,7 @@
 
 
 #include "CameraBaseState.h"
+#include "Transform.h"
 
 
 namespace F9Sim {
@@ -14,11 +15,14 @@ class CameraSystem;
 
 class MountedCamera {
 private:
+    Transform toParent;
     CameraBaseState m_camera;
 
 public:
     MountedCamera(CameraSystem& camSys);
     ~MountedCamera() = default;
+
+    void setParentTransform(Transform newTransform);
 };
 
 

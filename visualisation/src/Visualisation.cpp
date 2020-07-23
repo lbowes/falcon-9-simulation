@@ -57,7 +57,7 @@ Visualisation::Visualisation() :
 
     bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH);
     bgfx::setViewRect(0, 0, 0, bgfx::BackbufferRatio::Equal);
-    bgfx::setDebug(BGFX_DEBUG_TEXT);
+    bgfx::setDebug(BGFX_DEBUG_TEXT | BGFX_DEBUG_WIREFRAME);
 
     // Setup imgui
     IMGUI_CHECKVERSION();
@@ -68,7 +68,7 @@ Visualisation::Visualisation() :
     Input::init(*m_window);
 
     // temp
-    m_scene = std::make_unique<Scene>();
+    m_scene = std::make_unique<Scene>(m_camSystem);
 
     // Static camera
     m_staticCamera.aspectRatio = 1.0f;
@@ -79,9 +79,6 @@ Visualisation::Visualisation() :
     m_staticCamera.up = {0.0f, 1.0f, 0.0f};
     m_staticCamera.lookAt = -glm::normalize(m_staticCamera.position);
     m_camSystem.registerCam(m_staticCamera, "static");
-
-    // Mounted camera
-    m_mountedCam = std::make_unique<MountedCamera>(m_camSystem);
 
     // First-person-view camera
     m_fpvCam = std::make_unique<FPVCamera>(m_camSystem);

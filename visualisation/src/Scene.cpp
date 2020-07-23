@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include "CameraSystem.h"
 #include "ShaderUtils.h"
 
 #include <bgfx/bgfx.h>
@@ -22,7 +23,9 @@ uint64_t Scene::s_gridRenderState =
     BGFX_STATE_PT_LINES;
 
 
-Scene::Scene() {
+Scene::Scene(CameraSystem& camSys) :
+    m_mountedCam(camSys) {
+
     loadGrid();
 
     m_mesh = std::make_unique<Mesh>("resources/obj/Merlin1D.obj");
@@ -87,7 +90,10 @@ void Scene::loadGrid() {
 
 
 void Scene::setState(StateSnapshot state) {
-    m_mesh->setTransform(state.cube1.position, state.cube1.orientation);
+    const Transform cubeTransform = {state.cube1.position, state.cube1.orientation};
+
+    m_mesh->setTransform(cubeTransform);
+    m_mountedCam.setParentTransform(cubeTransform);
 }
 
 

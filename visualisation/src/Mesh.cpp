@@ -20,12 +20,11 @@ uint64_t Mesh::s_renderState =
     BGFX_STATE_WRITE_A |
     BGFX_STATE_WRITE_Z |
     BGFX_STATE_DEPTH_TEST_LESS |
+    BGFX_STATE_MSAA |
     BGFX_STATE_MSAA;
 
 
-Mesh::Mesh(const char* filepath) :
-    m_position(glm::dvec3()),
-    m_orientation(glm::dquat()) {
+Mesh::Mesh(const char* filepath) {
 
     Vertex::init();
 
@@ -101,9 +100,8 @@ Mesh::~Mesh() {
 }
 
 
-void Mesh::setTransform(glm::dvec3 position, glm::dquat orientation) {
-    m_position = position;
-    m_orientation = orientation;
+void Mesh::setTransform(Transform newTransform) {
+    m_transform = newTransform;
 }
 
 
@@ -120,16 +118,16 @@ void Mesh::draw(glm::dvec3 camPos) const {
 void Mesh::updateTransformRelativeTo(glm::dvec3 camPos) const {
     // Rotation
     const bx::Quaternion orientation = {
-        (float)m_orientation.w,
-        (float)m_orientation.x,
-        (float)m_orientation.y,
-        (float)m_orientation.z};
+        (float)m_transform.orientation.w,
+        (float)m_transform.orientation.x,
+        (float)m_transform.orientation.y,
+        (float)m_transform.orientation.z};
 
     float rotation[16];
     bx::mtxQuat(rotation, orientation);
 
     // Translation
-    const glm::dvec3 d = m_position - camPos;
+    const glm::dvec3 d = m_transform.position - camPos;
     float translation[16];
     bx::mtxTranslate(translation, (float)d.x, (float)d.y, (float)d.z);
 

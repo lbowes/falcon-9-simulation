@@ -2,7 +2,9 @@
 #define F9SIM_GRAPHICS_SCENE_H_
 #pragma once
 
+
 #include "Mesh.h"
+#include "MountedCamera.h"
 #include "StateSnapshot.h"
 
 #include <bgfx/bgfx.h>
@@ -32,10 +34,13 @@ struct GridVertex {
 };
 
 
+class CameraSystem;
+
 class Scene {
 private:
     static uint64_t s_gridRenderState;
 
+    MountedCamera m_mountedCam;
     bgfx::VertexBufferHandle m_gridVBH;
     bgfx::IndexBufferHandle m_gridIBH;
     bgfx::ProgramHandle m_gridShader;
@@ -43,7 +48,7 @@ private:
     std::unique_ptr<Mesh> m_mesh;
 
 public:
-    Scene();
+    Scene(CameraSystem& camSys);
     ~Scene();
 
     void setState(StateSnapshot state);

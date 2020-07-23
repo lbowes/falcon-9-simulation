@@ -3,6 +3,8 @@
 #pragma once
 
 
+#include "Transform.h"
+
 #include <bgfx/bgfx.h>
 #include <glm/gtc/quaternion.hpp>
 #include <glm/vec3.hpp>
@@ -35,8 +37,7 @@ private:
     static uint64_t s_renderState;
 
     // todo: static shader, bgfx mesh data
-    glm::dvec3 m_position;
-    glm::dquat m_orientation;
+    Transform m_transform;
 
     bgfx::VertexBufferHandle m_vbh;
     bgfx::IndexBufferHandle m_ibh;
@@ -46,7 +47,7 @@ public:
     Mesh(const char* filepath);
     ~Mesh();
 
-    void setTransform(glm::dvec3 position, glm::dquat orientation);
+    void setTransform(Transform newTransform);
     void draw(glm::dvec3 camPos) const;
 
 private:
