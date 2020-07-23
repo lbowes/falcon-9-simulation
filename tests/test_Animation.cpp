@@ -19,7 +19,7 @@ SCENARIO("Using the simulation state history", "[Animation]") {
 
     GIVEN("An initialised simulation animation") {
         nlohmann::json simData;
-        Animation animation(simData, 100);
+        Animation animation(simData, 0.1);
 
         WHEN("The user requests the state of the simulation at some point in time") {
             double time = randTime(0.0, 10.0);
