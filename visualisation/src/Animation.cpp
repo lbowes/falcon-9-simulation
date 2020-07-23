@@ -33,6 +33,7 @@ StateSnapshot Animation::stateAt(float time_s) const {
     StateSnapshot output;
 
     if(!m_snapshots.empty()) {
+        // TODO: This is not perfect, at certain individual frames the state is not interpolated, and jumps/flickers
         const float s = floor(time / m_snapshotInterval_s);
         const float between = fmod(time, m_snapshotInterval_s) / m_snapshotInterval_s;
 
