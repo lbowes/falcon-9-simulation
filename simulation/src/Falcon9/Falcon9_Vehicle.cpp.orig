@@ -14,10 +14,33 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
     mat->SetFriction(0.4f);
     mat->SetRestitution(0.1f);
 
-    // Cube
+    // Cube 1
     {
+<<<<<<< HEAD
+        m_cube = std::make_shared<chrono::ChBodyAuxRef>();
+        m_systemHandle.AddBody(m_cube);
+
+        m_cube->SetNameString("unit_cube");
+        const double mass = 10.0;
+        m_cube->SetMass(mass);
+        m_cube->SetBodyFixed(false);
+        m_cube->SetInertia(1.0 / 6.0 * mass);
+        const chrono::ChFrame<> cogToRef(chrono::Vector(0.0, 0.5, 0.0));
+        m_cube->SetFrame_COG_to_REF(cogToRef);
+        auto cubeCollisionModel = m_cube->GetCollisionModel();
+        cubeCollisionModel->ClearModel();
+        cubeCollisionModel->AddBox(mat, 0.5, 0.5, 0.5);
+        m_cube->SetCollide(true);
+
+        const chrono::Vector position = {0.0, 10.0, 0.0};
+        const chrono::Quaternion orientation = chrono::Q_from_Euler123({10.0, 70.0, 130.0});
+        //const chrono::Quaternion orientation = chrono::Q_from_Euler123({0.0, 0.0, 0.0});
+        chrono::ChFrame<> refToAbs = chrono::ChFrame<>(position, orientation);
+        m_cube->SetFrame_REF_to_abs(refToAbs);
+        m_cube->SetPos_dt(chrono::Vector(4.0, 0.0, 0.0));
+=======
         m_cube1 = std::make_shared<chrono::ChBodyAuxRef>();
-        m_systemHandle.AddBody(m_cube1);
+        mSystemHandle.AddBody(m_cube1);
 
         m_cube1->SetNameString("unit_cube_1");
         const double mass = 10.0;
@@ -38,7 +61,7 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
     // Cube 2
     {
         m_cube2 = std::make_shared<chrono::ChBodyAuxRef>();
-        m_systemHandle.AddBody(m_cube2);
+        mSystemHandle.AddBody(m_cube2);
 
         m_cube2->SetNameString("unit_cube_2");
         const double mass = 10.0;
@@ -54,16 +77,22 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
         const chrono::ChQuaternion<> orientation = chrono::Q_from_Euler123({10.0, 40.0, 140.0});
         const chrono::ChFrame<> frame = chrono::ChFrame<>(position, orientation);
         m_cube2->SetFrame_REF_to_abs(frame);
+>>>>>>> 298e44e7900454c911543e03f0d9ad1b7b0fea32
     }
 
     // Floor plane
     {
         m_floorPlane = std::make_unique<chrono::ChBody>();
         m_systemHandle.AddBody(m_floorPlane);
+
+        m_floorPlane->SetNameString("floor_plane");
         m_floorPlane->SetBodyFixed(true);
         auto planeCollisionModel = m_floorPlane->GetCollisionModel();
         planeCollisionModel->ClearModel();
-        planeCollisionModel->AddBox(mat, 20.0f, 1.0f, 20.0f);
+
+        const double floorPlaneHeight = 1.0;
+        const chrono::Vector floorPos = {0.0, -floorPlaneHeight * 0.5, 0.0};
+        planeCollisionModel->AddBox(mat, 20.0, floorPlaneHeight * 0.5, 20.0, floorPos);
         m_floorPlane->SetCollide(true);
     }
     //
@@ -89,6 +118,13 @@ void Falcon9_Vehicle::setControlProfile(const ControlProfile& p) {
 void Falcon9_Vehicle::saveSnapshotTo(nlohmann::json& snapshot) const {
     // todo: In future this will call the saveSnapshotTo methods of subsystems
 
+<<<<<<< HEAD
+    const chrono::ChFrame<>& abs = m_cube->GetFrame_REF_to_abs();
+    const chrono::ChVector<> position = abs.GetPos();
+    const chrono::ChQuaternion<> orientation = abs.GetRot();
+    snapshot["position_world"] = {position.x(), position.y(), position.z()};
+    snapshot["orientation_world"] = {orientation.e0(), orientation.e1(), orientation.e2(), orientation.e3()};
+=======
     const chrono::ChVector<> cube1Pos = m_cube1->GetPos();
     const chrono::ChQuaternion<> cube1Orientation = m_cube1->GetRot();
     nlohmann::json& cube1 = snapshot["cube1"];
@@ -97,6 +133,10 @@ void Falcon9_Vehicle::saveSnapshotTo(nlohmann::json& snapshot) const {
 
     const chrono::ChVector<> cube2Pos = m_cube2->GetPos();
     const chrono::ChQuaternion<> cube2Orientation = m_cube2->GetRot();
+    nlohmann::json& cube2 = snapshot["cube2"];
+    cube2["position_world"] = {cube2Pos.x(), cube2Pos.y(), cube2Pos.z()};
+    cube2["orientation_world"] = {cube2Orientation.e0(), cube2Orientation.e2(), cube2Orientation.e2(), cube2Orientation.e3()};
+>>>>>>> 298e44e7900454c911543e03f0d9ad1b7b0fea32
 }
 
 

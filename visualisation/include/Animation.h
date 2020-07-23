@@ -1,32 +1,33 @@
-#ifndef ANIMATION_H_
-#define ANIMATION_H_
-
-#include "AnimationFrame.h"
-
-#include <vector>
+#ifndef F9SIM_GRAPHICS_ANIMATION_H_
+#define F9SIM_GRAPHICS_ANIMATION_H_
+#pragma once
 
 
-template <class Real = double>
-chrono::ChCoordsys<Real> lerpCoordSys(const chrono::ChCoordsys<Real>& a, const chrono::ChCoordsys<Real>& b, Real x);
+#include "../3rd_party/json.hpp"
+#include "StateSnapshot.h"
+
+
+namespace F9Sim {
+namespace Graphics {
+
 
 class Animation {
 private:
-    const double mFrameInterval_s;
-    double mDuration_s;
-    unsigned int mFrameCount;
-    AnimationFrame mVisibleFrame;
-    std::vector<AnimationFrame> mFrames;
+    float m_duration_s;
+    float m_snapshotInterval_s;
+    std::vector<StateSnapshot> m_snapshots;
 
 public:
-    Animation(double frameInterval_s, double duration_s);
+    Animation(const nlohmann::json& data, float snapshotInterval_s);
     ~Animation() = default;
 
-    void updateTime(double time_s);
-
-private:
-    void load();
+    StateSnapshot stateAt(float time_s) const;
 };
 
 
-#endif // ANIMATION_H_
+} // namespace Graphics
+} // namespace F9Sim
+
+
+#endif // F9SIM_GRAPHICS_ANIMATION_H_
 

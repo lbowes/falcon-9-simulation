@@ -25,8 +25,13 @@ uint64_t Scene::s_gridRenderState =
 Scene::Scene() {
     loadGrid();
 
+<<<<<<< HEAD
+    m_cube1 = std::make_unique<Mesh>("resources/obj/Merlin1D.obj");
+    m_cube2 = std::make_unique<Mesh>("resources/obj/Merlin1D.obj");
+=======
     m_cube1 = std::make_unique<Mesh>("");
     m_cube2 = std::make_unique<Mesh>("");
+>>>>>>> 298e44e7900454c911543e03f0d9ad1b7b0fea32
 }
 
 
@@ -88,8 +93,13 @@ void Scene::loadGrid() {
 
 
 void Scene::setState(StateSnapshot state) {
+<<<<<<< HEAD
     m_cube1->setTransform(state.m_cube1.position, state.m_cube1.orientation);
     m_cube2->setTransform(state.m_cube2.position, state.m_cube2.orientation);
+=======
+    m_cube1->setTransform(state.cube1.position, state.cube1.orientation);
+    m_cube2->setTransform(state.cube2.position, state.cube2.orientation);
+>>>>>>> 298e44e7900454c911543e03f0d9ad1b7b0fea32
 }
 
 
