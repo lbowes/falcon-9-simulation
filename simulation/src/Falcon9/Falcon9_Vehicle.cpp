@@ -97,6 +97,9 @@ void Falcon9_Vehicle::saveSnapshotTo(nlohmann::json& snapshot) const {
 
     const chrono::ChVector<> cube2Pos = m_cube2->GetPos();
     const chrono::ChQuaternion<> cube2Orientation = m_cube2->GetRot();
+    nlohmann::json& cube2 = snapshot["cube2"];
+    cube2["position_world"] = {cube2Pos.x(), cube2Pos.y(), cube2Pos.z()};
+    cube2["orientation_world"] = {cube2Orientation.e0(), cube2Orientation.e1(), cube2Orientation.e2(), cube2Orientation.e3()};
 }
 
 
