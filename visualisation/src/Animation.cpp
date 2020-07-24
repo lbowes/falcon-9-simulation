@@ -29,15 +29,11 @@ StateSnapshot Animation::stateAt(float time_s) const {
     if(m_snapshots.empty())
         return StateSnapshot();
 
-    static float time = 0.0f;
-    ImGui::Begin("time control");
-    ImGui::SliderFloat("time", &time, 0.0f, 10.0f);
-    time = std::clamp(time, 0.0f, m_duration_s);
-    ImGui::End();
+    time_s = std::clamp(time_s, 0.0f, m_duration_s);
 
     // TODO: This is not perfect, at certain individual frames the state is not interpolated, and jumps/flickers
-    const float s = floor(time / m_snapshotInterval_s);
-    const float between = fmod(time, m_snapshotInterval_s) / m_snapshotInterval_s;
+    const float s = floor(time_s / m_snapshotInterval_s);
+    const float between = fmod(time_s, m_snapshotInterval_s) / m_snapshotInterval_s;
 
     const unsigned int lastSnapshotIdx = m_snapshots.size() - 1;
     const unsigned int previousSnapshotIdx = std::clamp(static_cast<unsigned int>(s), 0U, lastSnapshotIdx);

@@ -108,6 +108,7 @@ void Visualisation::run() {
     double dt = 0.0;
     double frameTime = 0.0;
     double lastFrameTime = 0.0;
+    float accumulator = 0.0;
 
     while(!glfwWindowShouldClose(m_window)) {
         lastFrameTime = frameTime;
@@ -163,7 +164,12 @@ void Visualisation::run() {
             const float aspectRatio = (float)m_width / (float)m_height;
             m_camSystem.setViewTransform(aspectRatio);
 
-            const StateSnapshot& s = m_animation->stateAt(1.0);
+            ImGui::Begin("time control");
+            ImGui::SliderFloat("time", &accumulator, 0.0f, 10.0f);
+            if(accumulator > 10.0f)
+                accumulator -= 10.0f;
+            ImGui::End();
+            const StateSnapshot& s = m_animation->stateAt(accumulator);
             m_scene->setState(s);
 
             const glm::dvec3 activeCamPos = m_camSystem.getActivePos();
@@ -176,6 +182,7 @@ void Visualisation::run() {
         ImGui::Render();
 
         dt = frameTime - lastFrameTime;
+        accumulator += dt;
     }
 }
 
