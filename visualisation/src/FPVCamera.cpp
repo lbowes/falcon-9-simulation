@@ -40,7 +40,7 @@ FPVCamera::FPVCamera(CameraSystem& camSys) :
     m_camera.far = 100.0f;
     m_camera.aspectRatio = 1.0f;
     m_camera.verticalFOV = 44.7f;
-    m_camera.position = {0.0, 0.0, 0.0};
+    m_camera.position = {0.0, 5.0, 4.0};
     m_camera.up = {0, 1, 0};
     m_camera.lookAt = {0, 0, -1};
 

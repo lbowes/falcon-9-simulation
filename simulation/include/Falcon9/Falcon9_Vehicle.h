@@ -23,7 +23,7 @@ private:
     // temp
     std::shared_ptr<chrono::ChBodyAuxRef> m_cube1;
     std::shared_ptr<chrono::ChBodyAuxRef> m_cube2;
-    std::shared_ptr<chrono::ChBody> m_floorPlane;
+    std::shared_ptr<chrono::ChBodyAuxRef> m_floorPlane;
     //
 
 public:

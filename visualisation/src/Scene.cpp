@@ -1,6 +1,7 @@
 #include "Scene.h"
 #include "ShaderUtils.h"
 
+#include "../3rd_party/imgui/imgui.h"
 #include <bgfx/bgfx.h>
 #include <bx/math.h>
 #include <vector>
@@ -88,6 +89,10 @@ void Scene::loadGrid() {
 
 
 void Scene::setState(StateSnapshot state) {
+    ImGui::Begin("Scene state");
+    ImGui::Text("Cube1 position: %f, %f, %f\n", state.m_cube1.position.x, state.m_cube1.position.y, state.m_cube1.position.z);
+    ImGui::End();
+
     m_cube1->setTransform(state.m_cube1.position, state.m_cube1.orientation);
     m_cube2->setTransform(state.m_cube2.position, state.m_cube2.orientation);
 }

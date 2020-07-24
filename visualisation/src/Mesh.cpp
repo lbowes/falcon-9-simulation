@@ -33,14 +33,14 @@ Mesh::Mesh(const char* filepath) :
     // (this is just temporary data for testing camera movement)
     {
         static Vertex s_cubeVertices[] = {
-            {-0.5f, 1.0f, 0.5f, 0xff00ffff},
+            {-0.5f, 1.0f, 0.5f, 0xffffffff},
             {0.5f, 1.0f, 0.5f, 0xffffffff},
-            {-0.5f, 0.0f, 0.5f, 0xff0000ff},
-            {0.5f, 0.0f, 0.5f, 0xffff0000},
-            {-0.5f, 1.0f, -0.5f, 0xff00ff00},
-            {0.5f, 1.0f, -0.5f, 0xffffff00},
+            {-0.5f, 0.0f, 0.5f, 0xff000000},
+            {0.5f, 0.0f, 0.5f, 0xff000000},
+            {-0.5f, 1.0f, -0.5f, 0xffffffff},
+            {0.5f, 1.0f, -0.5f, 0xffffffff},
             {-0.5f, 0.0f, -0.5f, 0xff000000},
-            {0.5f, 0.0f, -0.5f, 0xffff0000},
+            {0.5f, 0.0f, -0.5f, 0xff000000},
         };
 
         m_vbh = bgfx::createVertexBuffer(bgfx::makeRef(s_cubeVertices, sizeof(s_cubeVertices)), Vertex::ms_layout);
