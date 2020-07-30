@@ -164,6 +164,7 @@ void Visualisation::run() {
             m_camSystem.setViewTransform(aspectRatio);
 
             static float accumulator = 0.0f;
+            static float speed = 1.0f;
             static bool paused = false;
             ImGui::Begin("time control");
 
@@ -174,10 +175,12 @@ void Visualisation::run() {
             if(accumulator > 10.0f)
                 accumulator -= 10.0f;
 
+            ImGui::SliderFloat("speed", &speed, 0.0f, 1.0f);
+
             ImGui::End();
             const StateSnapshot& s = m_animation->stateAt(accumulator);
             if(!paused)
-                accumulator += dt;
+                accumulator += dt * speed;
 
             m_scene->setState(s);
 

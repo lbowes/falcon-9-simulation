@@ -5,6 +5,9 @@
 
 #include <bgfx/platform.h>
 #include <bx/math.h>
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/gtc/quaternion.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 
 namespace F9Sim {
@@ -32,16 +35,25 @@ Mesh::Mesh(const char* filepath) :
     // Get the data from the obj file into the correct bgfx objects ready for rendering
     // (this is just temporary data for testing camera movement)
     {
+        //static Vertex s_cubeVertices[] = {
+        //    {-0.5f, 1.0f, 0.5f, 0xffffffff},
+        //    {0.5f, 1.0f, 0.5f, 0xffffffff},
+        //    {-0.5f, 0.0f, 0.5f, 0xff000000},
+        //    {0.5f, 0.0f, 0.5f, 0xff000000},
+        //    {-0.5f, 1.0f, -0.5f, 0xffffffff},
+        //    {0.5f, 1.0f, -0.5f, 0xffffffff},
+        //    {-0.5f, 0.0f, -0.5f, 0xff000000},
+        //    {0.5f, 0.0f, -0.5f, 0xff000000},
+        //};
         static Vertex s_cubeVertices[] = {
-            {-0.5f, 1.0f, 0.5f, 0xffffffff},
-            {0.5f, 1.0f, 0.5f, 0xffffffff},
-            {-0.5f, 0.0f, 0.5f, 0xff000000},
-            {0.5f, 0.0f, 0.5f, 0xff000000},
-            {-0.5f, 1.0f, -0.5f, 0xffffffff},
-            {0.5f, 1.0f, -0.5f, 0xffffffff},
-            {-0.5f, 0.0f, -0.5f, 0xff000000},
-            {0.5f, 0.0f, -0.5f, 0xff000000},
-        };
+            {-0.5f, 0.5f, 0.5f, 0xffffffff},
+            {0.5f, 0.5f, 0.5f, 0xffffffff},
+            {-0.5f, -0.5f, 0.5f, 0xff000000},
+            {0.5f, -0.5f, 0.5f, 0xff000000},
+            {-0.5f, 0.5f, -0.5f, 0xffffffff},
+            {0.5f, 0.5f, -0.5f, 0xffffffff},
+            {-0.5f, -0.5f, -0.5f, 0xff000000},
+            {0.5f, -0.5f, -0.5f, 0xff000000}};
 
         m_vbh = bgfx::createVertexBuffer(bgfx::makeRef(s_cubeVertices, sizeof(s_cubeVertices)), Vertex::ms_layout);
 
@@ -120,13 +132,15 @@ void Mesh::draw(glm::dvec3 camPos) const {
 void Mesh::updateTransformRelativeTo(glm::dvec3 camPos) const {
     // Rotation
     const bx::Quaternion orientation = {
-        (float)m_orientation.w,
         (float)m_orientation.x,
         (float)m_orientation.y,
-        (float)m_orientation.z};
+        (float)m_orientation.z,
+        (float)m_orientation.w};
 
     float rotation[16];
     bx::mtxQuat(rotation, orientation);
+    //glm::mat4 rotMtx = glm::mat4_cast(m_orientation);
+    //float* rotation = glm::value_ptr(rotMtx);
 
     // Translation
     const glm::dvec3 d = m_position - camPos;
