@@ -34,8 +34,8 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
         m_cube1->SetInertiaXX(chrono::Vector(1 / 6.0f * mass, 1 / 6.0f * mass, 1 / 6.0f * mass));
 
         // Centre of mass
-        //const chrono::ChFrame<> cog = chrono::ChFrame<>(chrono::ChVector(0.0, 1.0, 0.0));
-        //m_cube1->SetFrame_REF_to_COG(cog);
+        //const chrono::ChFrame<> cog = chrono::ChFrame<>(chrono::ChVector(0.0, 0.5, 0.0));
+        //m_cube1->SetFrame_COG_to_REF(cog);
 
         // Collision features
         auto cubeCollisionModel = m_cube1->GetCollisionModel();
@@ -45,13 +45,15 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
         cubeCollisionModel->BuildModel();
         m_cube1->SetCollide(true);
 
-        //chrono::ChFrame<> frame;
-        //frame.SetPos({-6.0, 10.0f, 0.2f});
+        chrono::ChFrame<> frame;
+        frame.SetPos({-6.0, 10.0f, 0.2f});
         //m_cube1->SetFrame_REF_to_abs(frame);
-        m_cube1->SetPos(chrono::Vector(-6.0, 10.0f, 0.2f));
-        m_cube1->SetPos_dt(chrono::Vector(2.0, -10.0, 0.0));
+        //m_cube1->SetPos(chrono::Vector(-6.0, 10.0f, 0.2f));
+        //m_cube1->SetPos_dt(chrono::Vector(2.0, -10.0, 0.0));
 
-        m_cube1->SetWvel_par(chrono::Vector(5, 0, chrono::CH_C_DEG_TO_RAD * 360.0));
+        m_cube1->SetPos(chrono::Vector(0, 10, 0));
+        m_cube1->SetRot(chrono::Q_from_AngZ(2.0));
+        m_cube1->SetWvel_par(chrono::Vector(chrono::CH_C_DEG_TO_RAD * 180.0, 0, 0));
         m_systemHandle.AddBody(m_cube1);
     }
 
@@ -131,7 +133,11 @@ void Falcon9_Vehicle::saveSnapshotTo(nlohmann::json& snapshot) const {
     nlohmann::json& cube1 = snapshot["cube1"];
 
     cube1["position_world"] = {cube1Pos.x(), cube1Pos.y(), cube1Pos.z()};
+#if 1
+    cube1["orientation_world"] = {cube1Orientation.e3(), cube1Orientation.e0(), cube1Orientation.e1(), cube1Orientation.e2()};
+#else
     cube1["orientation_world"] = {cube1Orientation.e0(), cube1Orientation.e1(), cube1Orientation.e2(), cube1Orientation.e3()};
+#endif
 
     const chrono::ChFrame cube2Frame = m_cube2->GetFrame_REF_to_abs();
     const chrono::Vector cube2Pos = cube2Frame.GetPos();

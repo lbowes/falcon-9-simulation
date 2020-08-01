@@ -35,66 +35,41 @@ Mesh::Mesh(const char* filepath) :
     // Get the data from the obj file into the correct bgfx objects ready for rendering
     // (this is just temporary data for testing camera movement)
     {
-        //static Vertex s_cubeVertices[] = {
-        //    {-0.5f, 1.0f, 0.5f, 0xffffffff},
-        //    {0.5f, 1.0f, 0.5f, 0xffffffff},
-        //    {-0.5f, 0.0f, 0.5f, 0xff000000},
-        //    {0.5f, 0.0f, 0.5f, 0xff000000},
-        //    {-0.5f, 1.0f, -0.5f, 0xffffffff},
-        //    {0.5f, 1.0f, -0.5f, 0xffffffff},
-        //    {-0.5f, 0.0f, -0.5f, 0xff000000},
-        //    {0.5f, 0.0f, -0.5f, 0xff000000},
-        //};
+#if 0
         static Vertex s_cubeVertices[] = {
-            {-0.5f, 0.5f, 0.5f, 0xffffffff},
-            {0.5f, 0.5f, 0.5f, 0xffffffff},
-            {-0.5f, -0.5f, 0.5f, 0xff000000},
-            {0.5f, -0.5f, 0.5f, 0xff000000},
-            {-0.5f, 0.5f, -0.5f, 0xffffffff},
-            {0.5f, 0.5f, -0.5f, 0xffffffff},
-            {-0.5f, -0.5f, -0.5f, 0xff000000},
-            {0.5f, -0.5f, -0.5f, 0xff000000}};
+            {-0.5f, 1.0f, 0.5f, 0xff00ff00},
+            {0.5f, 1.0f, 0.5f, 0xff00ff00},
+            {-0.5f, 0.0f, 0.5f, 0xff0000ff},
+            {0.5f, 0.0f, 0.5f, 0xff0000ff},
+            {-0.5f, 1.0f, -0.5f, 0xff00ff00},
+            {0.5f, 1.0f, -0.5f, 0xff00ff00},
+            {-0.5f, 0.0f, -0.5f, 0xff0000ff},
+            {0.5f, 0.0f, -0.5f, 0xff0000ff},
+        };
+#else
+        static Vertex s_cubeVertices[] = {
+            {-0.5f, 0.5f, 0.5f, 0xff00ff00},
+            {0.5f, 0.5f, 0.5f, 0xff00ff00},
+            {-0.5f, -0.5f, 0.5f, 0xff0000ff},
+            {0.5f, -0.5f, 0.5f, 0xff0000ff},
+            {-0.5f, 0.5f, -0.5f, 0xff00ff00},
+            {0.5f, 0.5f, -0.5f, 0xff00ff00},
+            {-0.5f, -0.5f, -0.5f, 0xff0000ff},
+            {0.5f, -0.5f, -0.5f, 0xff0000ff}};
+#endif
 
         m_vbh = bgfx::createVertexBuffer(bgfx::makeRef(s_cubeVertices, sizeof(s_cubeVertices)), Vertex::ms_layout);
 
+        /* clang-format off */
         static const uint16_t s_cubeTriList[] = {
-            0,
-            1,
-            2, // 0
-            1,
-            3,
-            2,
-            4,
-            6,
-            5, // 2
-            5,
-            6,
-            7,
-            0,
-            2,
-            4, // 4
-            4,
-            2,
-            6,
-            1,
-            5,
-            3, // 6
-            5,
-            7,
-            3,
-            0,
-            4,
-            1, // 8
-            4,
-            5,
-            1,
-            2,
-            3,
-            6, // 10
-            6,
-            3,
-            7,
+            0, 1, 2, 1, 3, 2,
+            4, 6, 5, 5, 6, 7,
+            0, 2, 4, 4, 2, 6,
+            1, 5, 3, 5, 7, 3,
+            0, 4, 1, 4, 5, 1,
+            2, 3, 6, 6, 3, 7
         };
+        /* clang-format on */
 
         m_ibh = bgfx::createIndexBuffer(bgfx::makeRef(s_cubeTriList, sizeof(s_cubeTriList)));
     }
@@ -132,11 +107,14 @@ void Mesh::draw(glm::dvec3 camPos) const {
 void Mesh::updateTransformRelativeTo(glm::dvec3 camPos) const {
     // Rotation
     const bx::Quaternion orientation = {
+        (float)m_orientation.w,
         (float)m_orientation.x,
         (float)m_orientation.y,
-        (float)m_orientation.z,
-        (float)m_orientation.w};
+        (float)m_orientation.z};
 
+    // setting this rotation matrix to the identity shows that the problem lies with m_orientation. why does this flip
+    // the mesh? and at what point does this happen?
+    // setting m_orientation to the default unit quaternion also eliminates the problem, so the
     float rotation[16];
     bx::mtxQuat(rotation, orientation);
     //glm::mat4 rotMtx = glm::mat4_cast(m_orientation);
