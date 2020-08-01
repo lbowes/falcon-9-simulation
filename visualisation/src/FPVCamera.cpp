@@ -60,9 +60,6 @@ void FPVCamera::update(double dt) {
     m_velocity += m_accelVec * m_accel * dt;
     m_velocity *= 1.0 / (1.0 + (Movement::friction * dt));
     m_camera.position += m_velocity * dt;
-
-    if(m_camera.position.y < 0.0)
-        m_camera.position.y += abs(m_camera.position.y);
 }
 
 
