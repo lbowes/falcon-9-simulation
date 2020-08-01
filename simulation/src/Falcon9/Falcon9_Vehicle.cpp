@@ -47,7 +47,7 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
         frame.SetPos({0.0, 10.0f, -1.0f});
         m_cube1->SetFrame_REF_to_abs(frame);
 
-        m_cube1->SetWvel_par(chrono::Vector(chrono::CH_C_DEG_TO_RAD * 180.0, 0, 0));
+        m_cube1->SetWvel_par(chrono::Vector(0, chrono::CH_C_DEG_TO_RAD * 180.0, 0));
 
         m_systemHandle.AddBody(m_cube1);
     }

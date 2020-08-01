@@ -18,8 +18,16 @@ void MountedCamera::setParentTransform(Transform newTransform) {
     // etc such that the camera moves with the parent's reference frame.
 
     // temp
-    m_camera.position = newTransform.position + glm::dvec3(0.0, 1.0, 0.0);
-    m_camera.lookAt = glm::dvec3(0.0, 0.0, -1.0) * newTransform.orientation;
+    m_camera.position = glm::dvec3(0.0, 0.5, 0.0) * newTransform;
+
+    const glm::dquat t = {
+        -newTransform.orientation.w,
+        newTransform.orientation.x,
+        newTransform.orientation.y,
+        newTransform.orientation.z,
+    };
+
+    m_camera.lookAt = t * glm::dvec3(0.0, 0.0, -1.0);
 }
 
 

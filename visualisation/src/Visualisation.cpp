@@ -59,7 +59,7 @@ Visualisation::Visualisation() :
 
     bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH);
     bgfx::setViewRect(0, 0, 0, bgfx::BackbufferRatio::Equal);
-    bgfx::setDebug(BGFX_DEBUG_TEXT);
+    bgfx::setDebug(BGFX_DEBUG_TEXT | BGFX_DEBUG_WIREFRAME);
 
     // Setup imgui
     IMGUI_CHECKVERSION();

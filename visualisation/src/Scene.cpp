@@ -92,7 +92,7 @@ void Scene::loadGrid() {
 
 
 void Scene::setState(StateSnapshot state) {
-    const Transform cube1Transform = {state.cube1.position, state.cube1.orientation};
+    const Transform cube1Transform = {state.m_cube1.position, state.m_cube1.orientation};
 
     ImGui::Begin("Scene state");
     ImGui::Text("Cube1 position: %f, %f, %f\n", cube1Transform.position.x, cube1Transform.position.y, cube1Transform.position.z);

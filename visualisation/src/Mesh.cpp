@@ -28,7 +28,6 @@ uint64_t Mesh::s_renderState =
 
 
 Mesh::Mesh(const char* filepath) {
-
     Vertex::init();
 
     // Get the data from the obj file into the correct bgfx objects ready for rendering
