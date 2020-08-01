@@ -1,5 +1,6 @@
-#ifndef SIMULATION_H_
-#define SIMULATION_H_
+#ifndef F9SIM_PHYSICS_SIMULATION_H_
+#define F9SIM_PHYSICS_SIMULATION_H_
+#pragma once
 
 
 #include "../3rd_party/json.hpp"
@@ -10,11 +11,15 @@
 #include <stdint.h>
 
 
+namespace F9Sim {
+namespace Physics {
+
+
 class Simulation {
 private:
     chrono::ChSystemNSC mSystem;
     const uint16_t mUpdateFreq_hz;
-    Hardware::Falcon9_Vehicle mFalcon9;
+    Falcon9_Vehicle mFalcon9;
     Software::FlightComputer mFlightComputer;
 
 public:
@@ -30,5 +35,9 @@ private:
 };
 
 
-#endif // SIMULATION_H_
+} // namespace Physics
+} // namespace F9Sim
+
+
+#endif // F9SIM_PHYSICS_SIMULATION_H_
 

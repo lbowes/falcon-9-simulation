@@ -1,8 +1,6 @@
 #include "Scene.h"
-#include "CameraSystem.h"
 #include "ShaderUtils.h"
 
-#include "../3rd_party/imgui/imgui.h"
 #include <bgfx/bgfx.h>
 #include <bx/math.h>
 #include <vector>
@@ -24,13 +22,16 @@ uint64_t Scene::s_gridRenderState =
     BGFX_STATE_PT_LINES;
 
 
-Scene::Scene(CameraSystem& camSys) :
-    m_mountedCam(camSys) {
-
+Scene::Scene() {
     loadGrid();
 
+<<<<<<< HEAD
+    m_cube1 = std::make_unique<Mesh>("resources/obj/Merlin1D.obj");
+    m_cube2 = std::make_unique<Mesh>("resources/obj/Merlin1D.obj");
+=======
     m_cube1 = std::make_unique<Mesh>("");
     m_cube2 = std::make_unique<Mesh>("");
+>>>>>>> 298e44e7900454c911543e03f0d9ad1b7b0fea32
 }
 
 
@@ -92,15 +93,13 @@ void Scene::loadGrid() {
 
 
 void Scene::setState(StateSnapshot state) {
-    const Transform cube1Transform = {state.cube1.position, state.cube1.orientation};
-
-    ImGui::Begin("Scene state");
-    ImGui::Text("Cube1 position: %f, %f, %f\n", cube1Transform.position.x, cube1Transform.position.y, cube1Transform.position.z);
-    ImGui::End();
-
-    m_cube1->setTransform(cube1Transform);
-    m_cube2->setTransform({state.m_cube2.position, state.m_cube2.orientation});
-    m_mountedCam.setParentTransform(cube1Transform);
+<<<<<<< HEAD
+    m_cube1->setTransform(state.m_cube1.position, state.m_cube1.orientation);
+    m_cube2->setTransform(state.m_cube2.position, state.m_cube2.orientation);
+=======
+    m_cube1->setTransform(state.cube1.position, state.cube1.orientation);
+    m_cube2->setTransform(state.cube2.position, state.cube2.orientation);
+>>>>>>> 298e44e7900454c911543e03f0d9ad1b7b0fea32
 }
 
 

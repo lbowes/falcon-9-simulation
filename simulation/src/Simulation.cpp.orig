@@ -9,7 +9,7 @@ namespace Physics {
 
 
 Simulation::Simulation() :
-    mUpdateFreq_hz(200),
+    mUpdateFreq_hz(5),
     mFalcon9(mSystem) {
 
     //temp
@@ -19,13 +19,8 @@ Simulation::Simulation() :
     mSystem.SetSolverType(chrono::ChSolver::Type::BARZILAIBORWEIN);
     mSystem.SetTimestepperType(chrono::ChTimestepper::Type::EULER_IMPLICIT_PROJECTED);
     mSystem.SetSolverMaxIterations(20);
-
-#define GRAVITY 0
-#if GRAVITY
     mSystem.Set_G_acc(chrono::ChVector<>(0.0, -9.80665, 0.0));
-#else
-    mSystem.Set_G_acc(chrono::ChVector<>(0.0, 0.0, 0.0));
-#endif
+    //
 }
 
 
@@ -58,7 +53,11 @@ void Simulation::saveSnapshotTo(nlohmann::json& history) const {
     nlohmann::json snapshot;
 
     snapshot["time_s"] = mSystem.GetChTime();
+<<<<<<< HEAD
+    mFalcon9.saveSnapshotTo(snapshot["cube"]);
+=======
     mFalcon9.saveSnapshotTo(snapshot["system"]);
+>>>>>>> 298e44e7900454c911543e03f0d9ad1b7b0fea32
     // todo: save the complete contents of a simulation snapshot to json object
 
     history.push_back(snapshot);

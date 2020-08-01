@@ -3,7 +3,7 @@
 
 int main() {
     printf("Running simulation...\n");
-    Simulation sim;
+    F9Sim::Physics::Simulation sim;
     sim.run();
 
     return 0;

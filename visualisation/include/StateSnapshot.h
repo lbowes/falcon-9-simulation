@@ -19,11 +19,15 @@ public:
         glm::dquat orientation;
     };
 
-    Cube cube1;
-    Cube cube2;
+    Cube m_cube1;
+    Cube m_cube2;
+
+    double m_time_s;
 
 public:
     StateSnapshot();
+    StateSnapshot(const StateSnapshot& other);
+    void operator=(const StateSnapshot& other);
     StateSnapshot(const nlohmann::json& data);
     ~StateSnapshot() = default;
 

@@ -1,39 +1,50 @@
 #include "Animation.h"
+#include "../3rd_party/imgui/imgui.h"
 
 #include <algorithm>
+#include <iostream>
 
 
-Animation::Animation(double frameInterval_s, double duration_s) :
-    mFrameInterval_s(frameInterval_s),
-    mDuration_s(duration_s),
-    mFrameCount(0) {
+namespace F9Sim {
+namespace Graphics {
 
-    load();
+
+Animation::Animation(const nlohmann::json& data, float snapshotInterval_s) :
+    m_duration_s(0.0),
+    m_snapshotInterval_s(snapshotInterval_s) {
+
+    // This initialisation assumes that:
+    // 1. the first snapshot is at time 0
+    // 2. the snapshots are spaced equally
+
+    for(auto& state : data)
+        m_snapshots.push_back(StateSnapshot(state));
+
+    if(!m_snapshots.empty())
+        m_duration_s = m_snapshots.back().m_time_s;
 }
 
 
-void Animation::updateTime(double time_s) {
-    // This function is responsible for updating `mVisibleFrame` to show the state of the simulation at time `time_s`
-    // given the data loaded in `mFrames`.
+StateSnapshot Animation::stateAt(float time_s) const {
+    if(m_snapshots.empty())
+        return StateSnapshot();
 
-    // Work out which `AnimationFrame`s sit at either side of the time we want to update to
-    const unsigned int prevFrameIdx = static_cast<unsigned int>(floor(time_s / mFrameInterval_s));
-    const AnimationFrame& prevFrame = mFrames[prevFrameIdx];
+    time_s = std::clamp(time_s, 0.0f, m_duration_s);
 
-    const unsigned int nextFrameIdx = std::clamp(prevFrameIdx + 1, 1U, mFrameCount);
-    const AnimationFrame& nextFrame = mFrames[nextFrameIdx];
+    // TODO: This is not perfect, at certain individual frames the state is not interpolated, and jumps/flickers
+    const float s = floor(time_s / m_snapshotInterval_s);
+    const float between = fmod(time_s, m_snapshotInterval_s) / m_snapshotInterval_s;
 
-    const double betweenFrames_0_1 = fmod(time_s, mFrameInterval_s) / mFrameInterval_s;
-    AnimationFrame::lerp(prevFrame, nextFrame, betweenFrames_0_1, mVisibleFrame);
+    const unsigned int lastSnapshotIdx = m_snapshots.size() - 1;
+    const unsigned int previousSnapshotIdx = std::clamp(static_cast<unsigned int>(s), 0U, lastSnapshotIdx);
+
+    const StateSnapshot previous = m_snapshots.at(previousSnapshotIdx);
+    const StateSnapshot next = m_snapshots.at(std::clamp(previousSnapshotIdx + 1, 0U, lastSnapshotIdx));
+    const StateSnapshot output = StateSnapshot::lerp(previous, next, between);
+
+    return output;
 }
 
 
-void Animation::load() {
-    // This function is responsible for fully populating `mFrames` with the correct information that has come from the
-    // simulation output file. Note, there does not need to be a 1:1 correspondence between lines in the simulation
-    // output file and key frames stored in this class. The simulation just outputs 'some' data at 'some' (possibly
-    // irregular) timestamps. This function needs to convert this output into an animation format with regularly spaced
-    // keyframes.
-
-    // TODO
-}
+} // namespace Graphics
+} // namespace F9Sim
