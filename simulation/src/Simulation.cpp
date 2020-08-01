@@ -20,7 +20,7 @@ Simulation::Simulation() :
     mSystem.SetTimestepperType(chrono::ChTimestepper::Type::EULER_IMPLICIT_PROJECTED);
     mSystem.SetSolverMaxIterations(20);
 
-#define GRAVITY 1
+#define GRAVITY 0
 #if GRAVITY
     mSystem.Set_G_acc(chrono::ChVector<>(0.0, -9.80665, 0.0));
 #else

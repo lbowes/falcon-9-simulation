@@ -23,7 +23,7 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
 
     // Cube
     {
-        m_cube1 = std::make_shared<chrono::ChBody>();
+        m_cube1 = std::make_shared<chrono::ChBodyAuxRef>();
 
         m_cube1->SetNameString("unit_cube_1");
         m_cube1->SetBodyFixed(false);
@@ -34,35 +34,27 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
         m_cube1->SetInertiaXX(chrono::Vector(1 / 6.0f * mass, 1 / 6.0f * mass, 1 / 6.0f * mass));
 
         // Centre of mass
-        //const chrono::ChFrame<> cog = chrono::ChFrame<>(chrono::ChVector(0.0, 0.5, 0.0));
-        //m_cube1->SetFrame_COG_to_REF(cog);
+        m_cube1->SetFrame_COG_to_REF(chrono::ChFrame<>(chrono::ChVector(0.0, 0.5, 0.0)));
 
         // Collision features
         auto cubeCollisionModel = m_cube1->GetCollisionModel();
         cubeCollisionModel->ClearModel();
-        //cubeCollisionModel->AddBox(mat, 0.5, 0.5, 0.5, chrono::Vector(0.0, 0.5, 0.0));
-        cubeCollisionModel->AddBox(mat, 0.5, 0.5, 0.5);
+        cubeCollisionModel->AddBox(mat, 0.5, 0.5, 0.5, chrono::Vector(0.0, 0.5, 0.0));
         cubeCollisionModel->BuildModel();
         m_cube1->SetCollide(true);
 
         chrono::ChFrame<> frame;
-        frame.SetPos({0.0, 10.0f, 0.0f});
-        //m_cube1->SetFrame_REF_to_abs(frame);
-        //m_cube1->SetPos(chrono::Vector(-6.0, 10.0f, 0.2f));
-        //m_cube1->SetPos_dt(chrono::Vector(2.0, -10.0, 0.0));
+        frame.SetPos({0.0, 10.0f, -1.0f});
+        m_cube1->SetFrame_REF_to_abs(frame);
 
-        m_cube1->SetPos(chrono::Vector(0.5, 10, 0.5));
-        m_cube1->SetPos_dt(chrono::Vector(0, 10, 0));
-        //m_cube1->SetRot(chrono::Q_from_AngZ(chrono::CH_C_DEG_TO_RAD * 30.0));
-        m_cube1->SetRot_dt(chrono::Q_from_AngZ(chrono::CH_C_DEG_TO_RAD * 180.0));
-        //m_cube1->SetWvel_par(chrono::Vector(chrono::CH_C_DEG_TO_RAD * 180.0, 0, 0));
+        m_cube1->SetWvel_par(chrono::Vector(chrono::CH_C_DEG_TO_RAD * 180.0, 0, 0));
 
         m_systemHandle.AddBody(m_cube1);
     }
 
     // Cube 2
     {
-        m_cube2 = std::make_shared<chrono::ChBody>();
+        m_cube2 = std::make_shared<chrono::ChBodyAuxRef>();
 
         m_cube2->SetNameString("unit_cube_2");
         m_cube2->SetBodyFixed(false);
@@ -71,17 +63,17 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
         m_cube2->SetMass(mass);
         m_cube2->SetInertiaXX(chrono::Vector(1 / 6.0f * mass, 1 / 6.0f * mass, 1 / 6.0f * mass));
 
+        // Centre of mass
+        m_cube2->SetFrame_COG_to_REF(chrono::ChFrame(chrono::Vector(0.0, 0.5, 0.0)));
+
         auto cubeCollisionModel = m_cube2->GetCollisionModel();
         cubeCollisionModel->ClearModel();
-        cubeCollisionModel->AddBox(mat, 0.5, 0.5, 0.5);
+        cubeCollisionModel->AddBox(mat, 0.5, 0.5, 0.5, {0.0, 0.5, 0.0});
         cubeCollisionModel->BuildModel();
         m_cube2->SetCollide(true);
 
-        //const chrono::ChFrame<> cog = chrono::ChFrame<>(chrono::ChVector(0.0, 0.5, 0.0));
-        //m_cube2->SetFrame_COG_to_REF(cog);
-
-        m_cube2->SetPos(chrono::Vector(0.0, 20, 0));
-        //m_cube1->SetPos_dt(chrono::Vector(0, 4, 0));
+        const chrono::ChFrame<> cog = chrono::ChFrame<>(chrono::ChVector(0.0, 0.5, 0.0));
+        m_cube2->SetFrame_COG_to_REF(cog);
 
         m_systemHandle.AddBody(m_cube2);
     }

@@ -35,7 +35,6 @@ Mesh::Mesh(const char* filepath) :
     // Get the data from the obj file into the correct bgfx objects ready for rendering
     // (this is just temporary data for testing camera movement)
     {
-#if 0
         static Vertex s_cubeVertices[] = {
             {-0.5f, 1.0f, 0.5f, 0xff00ff00},
             {0.5f, 1.0f, 0.5f, 0xff00ff00},
@@ -46,17 +45,6 @@ Mesh::Mesh(const char* filepath) :
             {-0.5f, 0.0f, -0.5f, 0xff0000ff},
             {0.5f, 0.0f, -0.5f, 0xff0000ff},
         };
-#else
-        static Vertex s_cubeVertices[] = {
-            {-0.5f, 0.5f, 0.5f, 0xff00ff00},
-            {0.5f, 0.5f, 0.5f, 0xff00ff00},
-            {-0.5f, -0.5f, 0.5f, 0xff0000ff},
-            {0.5f, -0.5f, 0.5f, 0xff0000ff},
-            {-0.5f, 0.5f, -0.5f, 0xff00ff00},
-            {0.5f, 0.5f, -0.5f, 0xff00ff00},
-            {-0.5f, -0.5f, -0.5f, 0xff0000ff},
-            {0.5f, -0.5f, -0.5f, 0xff0000ff}};
-#endif
 
         m_vbh = bgfx::createVertexBuffer(bgfx::makeRef(s_cubeVertices, sizeof(s_cubeVertices)), Vertex::ms_layout);
 
@@ -112,9 +100,6 @@ void Mesh::updateTransformRelativeTo(glm::dvec3 camPos) const {
         (float)m_orientation.y,
         (float)m_orientation.z};
 
-    // setting this rotation matrix to the identity shows that the problem lies with m_orientation. why does this flip
-    // the mesh? and at what point does this happen?
-    // setting m_orientation to the default unit quaternion also eliminates the problem, so the
     float rotation[16];
     bx::mtxQuat(rotation, orientation);
 
