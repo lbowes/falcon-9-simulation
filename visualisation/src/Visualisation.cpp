@@ -73,7 +73,7 @@ Visualisation::Visualisation() :
     std::stringstream buffer;
     buffer << simDataFile.rdbuf();
     const nlohmann::json simData = nlohmann::json::parse(buffer.str());
-    m_animation = std::make_unique<Animation>(simData["history"], 0.01);
+    m_animation = std::make_unique<Animation>(simData["history"], 0.005);
 
     m_scene = std::make_unique<Scene>();
 
@@ -108,7 +108,6 @@ void Visualisation::run() {
     double dt = 0.0;
     double frameTime = 0.0;
     double lastFrameTime = 0.0;
-    float accumulator = 0.0;
 
     while(!glfwWindowShouldClose(m_window)) {
         lastFrameTime = frameTime;
@@ -164,12 +163,25 @@ void Visualisation::run() {
             const float aspectRatio = (float)m_width / (float)m_height;
             m_camSystem.setViewTransform(aspectRatio);
 
+            static float accumulator = 0.0f;
+            static float speed = 1.0f;
+            static bool paused = false;
             ImGui::Begin("time control");
+
+            if(ImGui::Button(paused ? "resume" : "pause"))
+                paused = !paused;
+
             ImGui::SliderFloat("time", &accumulator, 0.0f, 10.0f);
             if(accumulator > 10.0f)
                 accumulator -= 10.0f;
+
+            ImGui::SliderFloat("speed", &speed, 0.0f, 1.0f);
+
             ImGui::End();
             const StateSnapshot& s = m_animation->stateAt(accumulator);
+            if(!paused)
+                accumulator += dt * speed;
+
             m_scene->setState(s);
 
             const glm::dvec3 activeCamPos = m_camSystem.getActivePos();
@@ -182,7 +194,6 @@ void Visualisation::run() {
         ImGui::Render();
 
         dt = frameTime - lastFrameTime;
-        accumulator += dt;
     }
 }
 

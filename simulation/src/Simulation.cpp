@@ -19,9 +19,13 @@ Simulation::Simulation() :
     mSystem.SetSolverType(chrono::ChSolver::Type::BARZILAIBORWEIN);
     mSystem.SetTimestepperType(chrono::ChTimestepper::Type::EULER_IMPLICIT_PROJECTED);
     mSystem.SetSolverMaxIterations(20);
-    //mSystem.Set_G_acc(chrono::ChVector<>(0.0, -9.80665, 0.0));
+
+#define GRAVITY 0
+#if GRAVITY
+    mSystem.Set_G_acc(chrono::ChVector<>(0.0, -9.80665, 0.0));
+#else
     mSystem.Set_G_acc(chrono::ChVector<>(0.0, 0.0, 0.0));
-    //
+#endif
 }
 
 

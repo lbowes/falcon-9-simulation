@@ -26,6 +26,8 @@ public:
 
 public:
     StateSnapshot();
+    StateSnapshot(const StateSnapshot& other);
+    void operator=(const StateSnapshot& other);
     StateSnapshot(const nlohmann::json& data);
     ~StateSnapshot() = default;
 
