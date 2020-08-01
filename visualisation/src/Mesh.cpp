@@ -107,7 +107,7 @@ void Mesh::draw(glm::dvec3 camPos) const {
 void Mesh::updateTransformRelativeTo(glm::dvec3 camPos) const {
     // Rotation
     const bx::Quaternion orientation = {
-        (float)m_orientation.w,
+        -(float)m_orientation.w,
         (float)m_orientation.x,
         (float)m_orientation.y,
         (float)m_orientation.z};
@@ -117,8 +117,6 @@ void Mesh::updateTransformRelativeTo(glm::dvec3 camPos) const {
     // setting m_orientation to the default unit quaternion also eliminates the problem, so the
     float rotation[16];
     bx::mtxQuat(rotation, orientation);
-    //glm::mat4 rotMtx = glm::mat4_cast(m_orientation);
-    //float* rotation = glm::value_ptr(rotMtx);
 
     // Translation
     const glm::dvec3 d = m_position - camPos;

@@ -9,7 +9,7 @@ namespace Physics {
 
 
 Simulation::Simulation() :
-    mUpdateFreq_hz(100),
+    mUpdateFreq_hz(200),
     mFalcon9(mSystem) {
 
     //temp

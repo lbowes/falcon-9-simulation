@@ -46,39 +46,42 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
         m_cube1->SetCollide(true);
 
         chrono::ChFrame<> frame;
-        frame.SetPos({-6.0, 10.0f, 0.2f});
+        frame.SetPos({0.0, 10.0f, 0.0f});
         //m_cube1->SetFrame_REF_to_abs(frame);
         //m_cube1->SetPos(chrono::Vector(-6.0, 10.0f, 0.2f));
         //m_cube1->SetPos_dt(chrono::Vector(2.0, -10.0, 0.0));
 
-        m_cube1->SetPos(chrono::Vector(0, 10, 0));
-        m_cube1->SetRot(chrono::Q_from_AngZ(2.0));
-        m_cube1->SetWvel_par(chrono::Vector(chrono::CH_C_DEG_TO_RAD * 180.0, 0, 0));
+        m_cube1->SetPos(chrono::Vector(0.5, 10, 0.5));
+        m_cube1->SetPos_dt(chrono::Vector(0, 10, 0));
+        //m_cube1->SetRot(chrono::Q_from_AngZ(chrono::CH_C_DEG_TO_RAD * 30.0));
+        m_cube1->SetRot_dt(chrono::Q_from_AngZ(chrono::CH_C_DEG_TO_RAD * 180.0));
+        //m_cube1->SetWvel_par(chrono::Vector(chrono::CH_C_DEG_TO_RAD * 180.0, 0, 0));
+
         m_systemHandle.AddBody(m_cube1);
     }
 
     // Cube 2
     {
-        m_cube2 = std::make_shared<chrono::ChBodyAuxRef>();
+        m_cube2 = std::make_shared<chrono::ChBody>();
 
         m_cube2->SetNameString("unit_cube_2");
+        m_cube2->SetBodyFixed(false);
+
         const double mass = 10.0;
         m_cube2->SetMass(mass);
-        m_cube2->SetBodyFixed(false);
         m_cube2->SetInertiaXX(chrono::Vector(1 / 6.0f * mass, 1 / 6.0f * mass, 1 / 6.0f * mass));
+
         auto cubeCollisionModel = m_cube2->GetCollisionModel();
         cubeCollisionModel->ClearModel();
-        cubeCollisionModel->AddBox(mat, 0.5, 0.5, 0.5, {0.0, 0.5, 0.0});
+        cubeCollisionModel->AddBox(mat, 0.5, 0.5, 0.5);
         cubeCollisionModel->BuildModel();
         m_cube2->SetCollide(true);
 
-        const chrono::ChFrame<> cog = chrono::ChFrame<>(chrono::ChVector(0.0, 0.5, 0.0));
-        m_cube2->SetFrame_COG_to_REF(cog);
+        //const chrono::ChFrame<> cog = chrono::ChFrame<>(chrono::ChVector(0.0, 0.5, 0.0));
+        //m_cube2->SetFrame_COG_to_REF(cog);
 
-        const chrono::ChVector<> position = {4.0f, 20.0f, 0.0f};
-        const chrono::ChQuaternion<> orientation = chrono::Q_from_AngX(chrono::CH_C_DEG_TO_RAD * 90.0);
-        const chrono::ChFrame<> frame = chrono::ChFrame<>(position, orientation);
-        m_cube2->SetFrame_REF_to_abs(frame);
+        m_cube2->SetPos(chrono::Vector(0.0, 20, 0));
+        //m_cube1->SetPos_dt(chrono::Vector(0, 4, 0));
 
         m_systemHandle.AddBody(m_cube2);
     }
@@ -131,20 +134,15 @@ void Falcon9_Vehicle::saveSnapshotTo(nlohmann::json& snapshot) const {
     const chrono::Vector cube1Pos = cube1Frame.GetPos();
     const chrono::ChQuaternion<> cube1Orientation = cube1Frame.GetRot();
     nlohmann::json& cube1 = snapshot["cube1"];
-
     cube1["position_world"] = {cube1Pos.x(), cube1Pos.y(), cube1Pos.z()};
-#if 1
-    cube1["orientation_world"] = {cube1Orientation.e3(), cube1Orientation.e0(), cube1Orientation.e1(), cube1Orientation.e2()};
-#else
     cube1["orientation_world"] = {cube1Orientation.e0(), cube1Orientation.e1(), cube1Orientation.e2(), cube1Orientation.e3()};
-#endif
 
-    const chrono::ChFrame cube2Frame = m_cube2->GetFrame_REF_to_abs();
+    const chrono::ChFrame<> cube2Frame = m_cube2->GetFrame_REF_to_abs();
     const chrono::Vector cube2Pos = cube2Frame.GetPos();
     const chrono::ChQuaternion<> cube2Orientation = cube2Frame.GetRot();
     nlohmann::json& cube2 = snapshot["cube2"];
     cube2["position_world"] = {cube2Pos.x(), cube2Pos.y(), cube2Pos.z()};
-    cube2["orientation_world"] = {cube2Orientation.e3(), cube2Orientation.e0(), cube2Orientation.e1(), cube2Orientation.e2()};
+    cube2["orientation_world"] = {cube2Orientation.e0(), cube2Orientation.e1(), cube2Orientation.e2(), cube2Orientation.e3()};
 }
 
 

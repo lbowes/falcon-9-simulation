@@ -39,7 +39,6 @@ StateSnapshot::StateSnapshot(const nlohmann::json& data) {
 
     for(int i = 0; i < 4; i++)
         a["orientation_world"][i].get_to(m_cube1.orientation[i]);
-    //m_cube1.orientation = glm::dquat();
 
     // Cube 2
     const nlohmann::json& b = data["system"]["cube2"];
