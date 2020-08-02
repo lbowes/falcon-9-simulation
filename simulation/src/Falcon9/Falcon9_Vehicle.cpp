@@ -44,7 +44,7 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
         m_cube1->SetCollide(true);
 
         chrono::ChFrame<> frame;
-        frame.SetPos({0.0, 10.0f, -1.0f});
+        frame.SetPos({0.0, 1.0f, 0.0f});
         m_cube1->SetFrame_REF_to_abs(frame);
 
         m_cube1->SetWvel_par(chrono::Vector(0, chrono::CH_C_DEG_TO_RAD * 180.0, 0));
@@ -72,8 +72,9 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
         cubeCollisionModel->BuildModel();
         m_cube2->SetCollide(true);
 
-        const chrono::ChFrame<> cog = chrono::ChFrame<>(chrono::ChVector(0.0, 0.5, 0.0));
-        m_cube2->SetFrame_COG_to_REF(cog);
+        chrono::ChFrame<> frame;
+        frame.SetPos({0.0, 10.0f, -1.0f});
+        m_cube2->SetFrame_REF_to_abs(frame);
 
         m_systemHandle.AddBody(m_cube2);
     }
