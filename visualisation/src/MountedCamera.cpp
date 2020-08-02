@@ -22,9 +22,9 @@ void MountedCamera::setParentTransform(Transform newTransform) {
     const glm::dmat4 rotation = glm::toMat4(orientation_corrected);
     const glm::dmat4 t = glm::translate(glm::dmat4(), newTransform.position) * glm::toMat4(orientation_corrected);
 
-    m_camera.position = glm::dvec3(0.0, 0.5, 0.0) * glm::dmat3(t);
+    m_camera.position = glm::dmat3(t) * glm::dvec3(0.0, 0.0, 0.0);
     m_camera.up = orientation_corrected * glm::dvec3(0.0, 1.0, 0.0);
-    //m_camera.lookAt = ;
+    m_camera.lookAt = orientation_corrected * glm::dvec3(0.0, 0.0, -1.0);
 }
 
 

@@ -200,7 +200,6 @@ void Visualisation::run() {
 void Visualisation::showCameraSelectPanel() {
     const std::vector<std::string> items = m_camSystem.getRegisteredCamNames();
     static int itemIdx = 0;
-    const std::string label = items[itemIdx];
 
     // Camera cycling shortcut
     if(Input::isKeyPressed(GLFW_KEY_C)) {
@@ -209,7 +208,7 @@ void Visualisation::showCameraSelectPanel() {
     }
 
     ImGui::Begin("Cameras");
-
+    const std::string label = items[itemIdx];
     if(ImGui::BeginCombo("active camera", label.c_str())) {
         for(int n = 0; n < items.size(); n++) {
             const bool isSelected = (itemIdx == n);
@@ -223,7 +222,6 @@ void Visualisation::showCameraSelectPanel() {
     };
 
     m_camSystem.bind(items[itemIdx]);
-
     ImGui::End();
 }
 

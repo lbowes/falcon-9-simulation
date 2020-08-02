@@ -28,10 +28,6 @@ make install
 # ========== GLM ==========
 apt-get -y install libglm-dev
 
-# ========== OpenGL ==========
-apt-get -y install libgl1-mesa-dev
-apt-get -y install libglu1-mesa-dev
-
 # ========== GLFW ==========
 apt-get -y install xorg-dev
 apt-get -y install libgtk-3-dev
@@ -40,6 +36,7 @@ apt-get -y install libglfw3-dev
 # ========== BGFX ==========
 # Install dependency packages
 apt-get -y install libgl1-mesa-dev
+apt-get -y install libglu1-mesa-dev
 apt-get -y install x11proto-core-dev
 apt-get -y install libx11-dev
 
