@@ -202,19 +202,10 @@ void Visualisation::showCameraSelectPanel() {
     static int itemIdx = 0;
     const std::string label = items[itemIdx];
 
+    // Camera cycling shortcut
     if(Input::isKeyPressed(GLFW_KEY_C)) {
-        printf("down");
-        const int maxItemIdx = items.size() - 1;
-
-        if(ImGui::IsKeyDown(GLFW_KEY_LEFT_SHIFT)) {
-            itemIdx--;
-            if(itemIdx < 0)
-                itemIdx = maxItemIdx - 1;
-        } else {
-            itemIdx++;
-            if(itemIdx > maxItemIdx)
-                itemIdx = 0;
-        }
+        itemIdx += Input::isKeyDown(GLFW_KEY_LEFT_SHIFT) ? -1 : 1;
+        itemIdx %= items.size();
     }
 
     ImGui::Begin("Cameras");
