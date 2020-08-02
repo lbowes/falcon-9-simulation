@@ -1,33 +1,30 @@
 #include "MountedCamera.h"
 #include "CameraSystem.h"
 
+#include <glm/gtc/matrix_transform.hpp>
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/gtx/quaternion.hpp>
+
 
 namespace F9Sim {
 namespace Graphics {
 
 
 MountedCamera::MountedCamera(CameraSystem& camSys) {
-    m_camera.position = {0.0, 0.0, 20.0};
-
     camSys.registerCam(m_camera, "mounted");
 }
 
 
 void MountedCamera::setParentTransform(Transform newTransform) {
-    // todo: use the parent transform passed in to update the internal `m_camera` state variables, position, lookAt, up,
-    // etc such that the camera moves with the parent's reference frame.
+    // This function should take in enough information about the cube object that the camera is attached to, to
+    // update the camera's position and orientation as the object moves. That is it.
+    const glm::dquat orientation_corrected = {newTransform.orientation.w, newTransform.orientation.x, newTransform.orientation.y, newTransform.orientation.z};
+    const glm::dmat4 rotation = glm::toMat4(orientation_corrected);
+    const glm::dmat4 t = glm::translate(glm::dmat4(), newTransform.position) * glm::toMat4(orientation_corrected);
 
-    // temp
-    m_camera.position = glm::dvec3(0.0, 0.5, 0.0) * newTransform;
-
-    const glm::dquat t = {
-        -newTransform.orientation.w,
-        newTransform.orientation.x,
-        newTransform.orientation.y,
-        newTransform.orientation.z,
-    };
-
-    m_camera.lookAt = t * glm::dvec3(0.0, 0.0, -1.0);
+    m_camera.position = glm::dvec3(0.0, 0.5, 0.0) * glm::dmat3(t);
+    m_camera.up = orientation_corrected * glm::dvec3(0.0, 1.0, 0.0);
+    //m_camera.lookAt = ;
 }
 
 

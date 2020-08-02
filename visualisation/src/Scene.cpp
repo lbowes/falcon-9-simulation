@@ -46,7 +46,7 @@ void Scene::loadGrid() {
     GridVertex::init();
 
     // Generate grid buffer data
-    const int halfExtent = 10;
+    const int halfExtent = 20;
     uint16_t vertexCounter = 0;
 
     static const uint16_t numVertices = 8 * halfExtent + 4;

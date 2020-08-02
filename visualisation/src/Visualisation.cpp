@@ -198,11 +198,26 @@ void Visualisation::run() {
 
 
 void Visualisation::showCameraSelectPanel() {
-    ImGui::Begin("Cameras");
-
     const std::vector<std::string> items = m_camSystem.getRegisteredCamNames();
     static int itemIdx = 0;
     const std::string label = items[itemIdx];
+
+    if(Input::isKeyPressed(GLFW_KEY_C)) {
+        printf("down");
+        const int maxItemIdx = items.size() - 1;
+
+        if(ImGui::IsKeyDown(GLFW_KEY_LEFT_SHIFT)) {
+            itemIdx--;
+            if(itemIdx < 0)
+                itemIdx = maxItemIdx - 1;
+        } else {
+            itemIdx++;
+            if(itemIdx > maxItemIdx)
+                itemIdx = 0;
+        }
+    }
+
+    ImGui::Begin("Cameras");
 
     if(ImGui::BeginCombo("active camera", label.c_str())) {
         for(int n = 0; n < items.size(); n++) {
