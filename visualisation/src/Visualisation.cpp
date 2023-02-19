@@ -59,7 +59,8 @@ Visualisation::Visualisation() :
 
     bgfx::setViewClear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH);
     bgfx::setViewRect(0, 0, 0, bgfx::BackbufferRatio::Equal);
-    bgfx::setDebug(BGFX_DEBUG_TEXT | BGFX_DEBUG_WIREFRAME);
+    //bgfx::setDebug(BGFX_DEBUG_TEXT | BGFX_DEBUG_WIREFRAME);
+    bgfx::setDebug(BGFX_DEBUG_TEXT);
 
     // Setup imgui
     IMGUI_CHECKVERSION();
@@ -212,6 +213,7 @@ void Visualisation::showCameraSelectPanel() {
     if(ImGui::BeginCombo("active camera", label.c_str())) {
         for(int n = 0; n < items.size(); n++) {
             const bool isSelected = (itemIdx == n);
+
             if(ImGui::Selectable(items[n].c_str(), isSelected))
                 itemIdx = n;
 

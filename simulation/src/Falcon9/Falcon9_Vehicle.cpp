@@ -57,7 +57,7 @@ Falcon9_Vehicle::Falcon9_Vehicle(chrono::ChSystemNSC& system) :
         m_cube2 = std::make_shared<chrono::ChBodyAuxRef>();
 
         m_cube2->SetNameString("unit_cube_2");
-        m_cube2->SetBodyFixed(false);
+        m_cube2->SetBodyFixed(true);
 
         const double mass = 10.0;
         m_cube2->SetMass(mass);
